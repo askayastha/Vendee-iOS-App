@@ -1,0 +1,6 @@
+framework module Pods_FlickShop {
+  umbrella header "Pods-FlickShop-umbrella.h"
+
+  export *
+  module * { export * }
+}

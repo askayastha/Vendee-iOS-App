@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>picture</key>
+		<string>category_0</string>
+		<key>name</key>
+		<string>Clothing</string>
+		<key>keyword</key>
+		<string>womens-clothes</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_1</string>
+		<key>name</key>
+		<string>Shoes</string>
+		<key>keyword</key>
+		<string>womens-shoes</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_2</string>
+		<key>name</key>
+		<string>Bags</string>
+		<key>keyword</key>
+		<string>handbags</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_3</string>
+		<key>name</key>
+		<string>Jewelry</string>
+		<key>keyword</key>
+		<string>jewelry</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_4</string>
+		<key>name</key>
+		<string>Accessories</string>
+		<key>keyword</key>
+		<string>hair-accessories</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_5</string>
+		<key>name</key>
+		<string>Beauty</string>
+		<key>keyword</key>
+		<string>womens-beauty</string>
+	</dict>
+</array>
+</plist>

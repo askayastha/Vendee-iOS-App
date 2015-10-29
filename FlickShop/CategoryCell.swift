@@ -26,13 +26,13 @@ class CategoryCell: UICollectionViewCell {
 //        super.init(frame: frame)
 //    }
 //    
-//    required init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        
-//        layer.borderWidth = 3.0
-//        layer.borderColor = UIColor(red: 238/255, green: 232/255, blue: 240/255, alpha: 1.0).CGColor
-//        layer.cornerRadius = 5.0
-//    }
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor(red: 238/255, green: 232/255, blue: 240/255, alpha: 1.0).CGColor
+        layer.cornerRadius = 5.0
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()

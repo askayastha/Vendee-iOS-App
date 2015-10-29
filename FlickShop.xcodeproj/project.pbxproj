@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */; };
+		753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */; };
+		753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */; };
 		75A31E391BDFBAAE006FD010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E381BDFBAAE006FD010 /* Assets.xcassets */; };
 		75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E3A1BDFBAAE006FD010 /* LaunchScreen.storyboard */; };
 		75A31E471BDFBAAE006FD010 /* FlickShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E461BDFBAAE006FD010 /* FlickShopTests.swift */; };
@@ -66,6 +69,9 @@
 /* Begin PBXFileReference section */
 		03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD496926D078ABA0D4796DA /* Pods-FlickShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.release.xcconfig"; sourceTree = "<group>"; };
+		753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
+		753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
+		753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
 		75A31E2E1BDFBAAD006FD010 /* FlickShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A31E381BDFBAAE006FD010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A31E3B1BDFBAAE006FD010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -267,9 +273,12 @@
 			children = (
 				75A31E381BDFBAAE006FD010 /* Assets.xcassets */,
 				75F12D191BE0A54D00258874 /* Categories.xcassets */,
-				75F12CFC1BE0A35900258874 /* ProximaNova-Bold.ttf */,
+				753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */,
+				753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */,
+				753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */,
 				75F12CFD1BE0A35900258874 /* ProximaNova-Reg.ttf */,
 				75F12CFE1BE0A35900258874 /* ProximaNova-Sbold.ttf */,
+				75F12CFC1BE0A35900258874 /* ProximaNova-Bold.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -432,6 +441,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */,
+				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
+				753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */,
 				75F12D041BE0A35900258874 /* Categories.plist in Resources */,
 				75F12D021BE0A35900258874 /* Brands.plist in Resources */,
 				75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */,

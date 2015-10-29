@@ -29,9 +29,12 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Quicksand-Light.ttf</string>
+		<string>Quicksand-Regular.ttf</string>
+		<string>Quicksand-Bold.ttf</string>
 		<string>ProximaNova-Reg.ttf</string>
-		<string>ProximaNova-Bold.ttf</string>
 		<string>ProximaNova-SBold.ttf</string>
+		<string>ProximaNova-Bold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>up</string>

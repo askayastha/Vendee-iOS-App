@@ -23,7 +23,7 @@ class HomeViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        backgroundImageView.image = categories[0].picture
+//        backgroundImageView.image = categories[0].picture
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         
     }
@@ -114,21 +114,21 @@ extension HomeViewController: UICollectionViewDelegate {
         print("Velocity: \(velocity)")
         
         var xOffset = itemIndex * dragOffset
-        var nextItemIndex = featuredItemIndex
+//        var nextItemIndex = featuredItemIndex
         
         if velocity.x > 0.0 {
             xOffset = CGFloat(featuredItemIndex + 1) * dragOffset
 //            backgroundImageView.image = categories[featuredItemIndex + 1].picture
-            nextItemIndex = min(categories.count - 1, featuredItemIndex + 1)
+//            nextItemIndex = min(categories.count - 1, featuredItemIndex + 1)
             
         } else if velocity.x < -0.0 {
             xOffset = CGFloat(featuredItemIndex) * dragOffset
 //            backgroundImageView.image = categories[featuredItemIndex].picture
         }
         
-        UIView.transitionWithView(backgroundImageView, duration: 0.3, options: .TransitionCrossDissolve, animations: {
-            self.backgroundImageView.image = self.categories[nextItemIndex].picture
-            }, completion: nil)
+//        UIView.transitionWithView(backgroundImageView, duration: 0.3, options: .TransitionCrossDissolve, animations: {
+//            self.backgroundImageView.image = self.categories[nextItemIndex].picture
+//            }, completion: nil)
         
         offset = CGPoint(x: xOffset, y: 0)
         

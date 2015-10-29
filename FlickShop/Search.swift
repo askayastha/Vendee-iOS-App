@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-typealias SearchComplete = (Bool) -> Void
+typealias SearchComplete = (Bool, Int) -> Void
 
 class Search {
     
@@ -25,6 +25,8 @@ class Search {
     private(set) var state: State = .NotSearchedYet
     private(set) var products = NSMutableOrderedSet()
     private(set) var lastItem = 0
+    
+    let scout = ImageScout()
     
     func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, forCategory category: String, completion: SearchComplete) {
         
@@ -113,13 +115,70 @@ class Search {
                     print("Request successful")
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        completion(success)
+                        completion(success, self.lastItem)
                     }
                     
                 }
             } else {
                 self.state = .Failed
                 
+                completion(success, self.lastItem)
+            }
+        }
+    }
+    
+    func populatePhotoSizesForLimit(limit: Int, completion: (Bool, Int) -> ()) {
+        
+        var success = false
+        var count = 0
+        let fromIndex = lastItem - limit
+        
+        for var i = fromIndex; i < lastItem; i++ {
+            let product = products.objectAtIndex(i) as! Product
+            
+            scout.scoutImageWithURI(product.smallImageURL!) { [unowned self]
+                error, size, type in
+                
+                if let unwrappedError = error {
+                    print(unwrappedError.code)
+                    
+                } else {
+                    let imageSize = CGSize(width: size.width, height: size.height)
+                    product.smallImageSize = imageSize
+                    print("\(count)*****\(imageSize)")
+                    count++
+                    
+                    success = true
+                }
+                
+                if count == limit {
+                    
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(success, self.lastItem)
+                    }
+                }
+            }
+        }
+    }
+    
+    func populatePhotoSizeForIndexPath(indexPath: NSIndexPath, completion: (Bool) -> ()) {
+        
+        var success = false
+        
+        let product = products.objectAtIndex(indexPath.item) as! Product
+        
+        scout.scoutImageWithURI(product.smallImageURL!) { error, size, type in
+            if let unwrappedError = error {
+                print(unwrappedError.code)
+                
+            } else {
+                product.smallImageSize = CGSize(width: size.width, height: size.height)
+                print("\(indexPath.item)*****\(CGSize(width: size.width, height: size.height))")
+                
+                success = true
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
                 completion(success)
             }
         }

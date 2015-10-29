@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import PINRemoteImage
 
 class CustomPhotoCell: UICollectionViewCell {
     
@@ -18,8 +19,8 @@ class CustomPhotoCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var salePriceLabel: UILabel!
     
-    var productImageRequest: Alamofire.Request?
-    var brandImageRequest: Alamofire.Request?
+//    var productImageRequest: Alamofire.Request?
+//    var brandImageRequest: Alamofire.Request?
     
     var product: Product? {
         didSet {
@@ -39,6 +40,10 @@ class CustomPhotoCell: UICollectionViewCell {
                     
                     salePriceLabel.text = product.formattedPrice ?? ""
                 }
+                
+//                imageView.pin_updateWithProgress = true
+                imageView.pin_setImageFromURL(NSURL(string: product.smallImageURL!)!)
+                
             }
         }
     }
@@ -68,10 +73,10 @@ class CustomPhotoCell: UICollectionViewCell {
         
         imageView.image = nil
         brandImageView.image = nil
-        productImageRequest?.cancel()
-        brandImageRequest?.cancel()
-        productImageRequest = nil
-        brandImageRequest = nil
+//        productImageRequest?.cancel()
+//        brandImageRequest?.cancel()
+//        productImageRequest = nil
+//        brandImageRequest = nil
     }
     
 //    override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {

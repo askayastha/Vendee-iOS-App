@@ -51,8 +51,8 @@ class FlickPageCell: UICollectionViewCell {
         return blurView
     }()
     
-    var productImageRequest: Alamofire.Request?
-    var brandImageRequest: Alamofire.Request?
+//    var productImageRequest: Alamofire.Request?
+//    var brandImageRequest: Alamofire.Request?
     
     private func updateUI() {
         brandNameLabel.text = product.brandName ?? product!.brandedName
@@ -69,6 +69,8 @@ class FlickPageCell: UICollectionViewCell {
             priceLabel.text = ""
             salePriceLabel.text = product!.formattedPrice ?? ""
         }
+        
+        imageView.pin_setImageFromURL(NSURL(string: product.largeImageURL!)!)
     }
     
 //    override init(frame: CGRect) {
@@ -110,14 +112,14 @@ class FlickPageCell: UICollectionViewCell {
         imageView.image = nil
         brandImageView.image = nil
         priceLabel.text = nil
-        productImageRequest?.cancel()
-        brandImageRequest?.cancel()
-        productImageRequest = nil
-        brandImageRequest = nil
+//        productImageRequest?.cancel()
+//        brandImageRequest?.cancel()
+//        productImageRequest = nil
+//        brandImageRequest = nil
         
-        if spinner.isAnimating() {
-            spinner.stopAnimating()
-        }
+//        if spinner.isAnimating() {
+//            spinner.stopAnimating()
+//        }
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {

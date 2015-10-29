@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var blurView: UIVisualEffectView!
     
     var categories = Category.allCategories()
+    var brands: [Brand]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,13 @@ class HomeViewController: UIViewController {
         
         backgroundImageView.image = categories[0].picture
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        brands = Brand.allBrands()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,6 +50,7 @@ class HomeViewController: UIViewController {
             let controller = segue.destinationViewController as! BrowseCollectionViewController
             let indexPath = sender as! NSIndexPath
             controller.productCategory = categories[indexPath.item].keyword
+            controller.brands = brands
         }
     }
 
@@ -85,6 +94,10 @@ extension HomeViewController: UICollectionViewDelegate {
 //    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
 //        print("scrollViewWillBeginDragging")
 //    }
+//    
+//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+//        print("scrollViewDidEndDecelerating")
+//    }
     
     func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
@@ -113,7 +126,7 @@ extension HomeViewController: UICollectionViewDelegate {
 //            backgroundImageView.image = categories[featuredItemIndex].picture
         }
         
-        UIView.transitionWithView(backgroundImageView, duration: 0.5, options: .TransitionCrossDissolve, animations: {
+        UIView.transitionWithView(backgroundImageView, duration: 0.3, options: .TransitionCrossDissolve, animations: {
             self.backgroundImageView.image = self.categories[nextItemIndex].picture
             }, completion: nil)
         

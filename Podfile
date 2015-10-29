@@ -8,6 +8,7 @@ target 'FlickShop' do
     pod 'MBProgressHUD', '~> 0.9'
     pod 'Ono', '~> 1.0'
     pod 'SwiftyJSON', '~> 2.0'
+    pod 'PINRemoteImage', '~> 1.0'
 end
 
 target 'FlickShopTests' do

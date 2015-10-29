@@ -21,14 +21,14 @@ class FlickCollectionViewController: UICollectionViewController {
     let cellIdentifier = "FlickPageCell"
     var productCategory = "women"
     
-    let imageCache = NSCache()
-    let brandImageCache = NSCache()
+//    let imageCache = NSCache()
+//    let brandImageCache = NSCache()
     var search = Search()
     
     var lastItem = 0
     var indexPath: NSIndexPath?
     var loadingHUDPresent = false
-    var brands = Brand.allBrands()
+    var brands: [Brand]!
         
 //    override func preferredStatusBarStyle() -> UIStatusBarStyle {
 //        return .LightContent
@@ -72,6 +72,7 @@ class FlickCollectionViewController: UICollectionViewController {
         collectionView!.registerNib(nib, forCellWithReuseIdentifier: cellIdentifier)
         
         collectionView!.backgroundColor = UIColor.lightGrayColor()
+//        collectionView!.backgroundColor = UIColor.blackColor()
 //        collectionView!.backgroundColor = UIColor(red: 96/255, green: 99/255, blue: 104/255, alpha: 1.0)
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
         
@@ -141,58 +142,70 @@ class FlickCollectionViewController: UICollectionViewController {
         cell.product = product
         cell.delegate = self
         
-        // Set the brand image
-        if let brandName = product.brandName {
-            if let image = brandImageCache.objectForKey(brandName) as? UIImage {
-                cell.brandImageView.image = image
-            } else {
-                let brandImageURL = brands.filter {$0.nickname == brandName}.first?.picURL
-                print("BRAND IMAGE URL: \(brandImageURL)")
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            if let brandName = product.brandName {
+                let brandImageURL = self.brands.filter {$0.nickname == brandName}.first?.picURL
                 
-                if let imageURL = brandImageURL {
-                    cell.brandImageRequest = Alamofire.request(.GET, imageURL).validate(contentType: ["image/*"]).responseImage() {
-                        response in
-                        
-                        let image = response.result.value
-                        
-                        if response.result.isSuccess && image != nil {
-                            self.brandImageCache.setObject(image!, forKey: brandName)
-                            
-                            cell.brandImageView.image = image
-                        }
+                dispatch_async(dispatch_get_main_queue()) {
+                    if let imageURL = brandImageURL {
+                        cell.brandImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
                     }
                 }
             }
         }
         
+        // Set the brand image
+//        if let brandName = product.brandName {
+//            if let image = brandImageCache.objectForKey(brandName) as? UIImage {
+//                cell.brandImageView.image = image
+//            } else {
+//                let brandImageURL = brands.filter {$0.nickname == brandName}.first?.picURL
+//                print("BRAND IMAGE URL: \(brandImageURL)")
+//                
+//                if let imageURL = brandImageURL {
+//                    cell.brandImageRequest = Alamofire.request(.GET, imageURL).validate(contentType: ["image/*"]).responseImage() {
+//                        response in
+//                        
+//                        let image = response.result.value
+//                        
+//                        if response.result.isSuccess && image != nil {
+//                            self.brandImageCache.setObject(image!, forKey: brandName)
+//                            
+//                            cell.brandImageView.image = image
+//                        }
+//                    }
+//                }
+//            }
+//        }
+        
         // Set the product image
-        if let imageURL = product.largeImageURL {
-            if let image = imageCache.objectForKey(imageURL) as? UIImage {
-                cell.imageView.image = image
-                
-            } else {
-                cell.spinner.startAnimating()
-                
-                // Download the image from the server, but this time validate the content-type of the returned response. If it's not an image, error will contain a value and therefore you won't do anything with the potentially invalid image response. The key here is that you store the Alamofire request object in the cell, for use when your asynchronous network call returns.
-                cell.productImageRequest = Alamofire.request(.GET, imageURL).validate(contentType: ["image/*"]).responseImage() {
-                    response in
-                    
-                    let image = response.result.value
-                    
-                    if response.result.isSuccess && image != nil {
-                        // If you did not receive an error and you downloaded a proper photo, cache it for later.
-                        self.imageCache.setObject(image!, forKey: imageURL)
-                        
-                        // Set the cell's image accordingly.
-                        cell.spinner.stopAnimating()
-                        cell.imageView.image = image
-                        
-                    } else {
-                        /* If the cell went off-screen before the image was downloaded, we cancel it and an NSURLErrorDomain (-999: cancelled) is returned. This is normal behavior. */
-                    }
-                }
-            }
-        }
+//        if let imageURL = product.largeImageURL {
+//            if let image = imageCache.objectForKey(imageURL) as? UIImage {
+//                cell.imageView.image = image
+//                
+//            } else {
+//                cell.spinner.startAnimating()
+//                
+//                // Download the image from the server, but this time validate the content-type of the returned response. If it's not an image, error will contain a value and therefore you won't do anything with the potentially invalid image response. The key here is that you store the Alamofire request object in the cell, for use when your asynchronous network call returns.
+//                cell.productImageRequest = Alamofire.request(.GET, imageURL).validate(contentType: ["image/*"]).responseImage() {
+//                    response in
+//                    
+//                    let image = response.result.value
+//                    
+//                    if response.result.isSuccess && image != nil {
+//                        // If you did not receive an error and you downloaded a proper photo, cache it for later.
+//                        self.imageCache.setObject(image!, forKey: imageURL)
+//                        
+//                        // Set the cell's image accordingly.
+//                        cell.spinner.stopAnimating()
+//                        cell.imageView.image = image
+//                        
+//                    } else {
+//                        /* If the cell went off-screen before the image was downloaded, we cancel it and an NSURLErrorDomain (-999: cancelled) is returned. This is normal behavior. */
+//                    }
+//                }
+//            }
+//        }
     
         return cell
     }
@@ -236,9 +249,10 @@ class FlickCollectionViewController: UICollectionViewController {
         
         let limit = 10
         
-        search.parseShopStyleForItemOffset(search.lastItem, withLimit: limit, forCategory: category) { success in
+        search.parseShopStyleForItemOffset(search.lastItem, withLimit: limit, forCategory: category) { success, lastItem
+            in
             if !success {
-                print("Products Count: \(self.search.products.count)")
+                print("Products Count: \(lastItem)")
                 self.loadingHUDPresent = true
                 
                 print("Request Failed. Trying again...")
@@ -246,7 +260,7 @@ class FlickCollectionViewController: UICollectionViewController {
                 // self.showError()
             } else {
                 
-                print("Product count: \(self.search.products.count)")
+                print("Product count: \(lastItem)")
                 self.collectionView!.reloadData()
                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 self.loadingHUDPresent = false
@@ -313,6 +327,7 @@ extension FlickCollectionViewController: FlickPageCellDelegate {
         if let controller = detailsVC {
             controller.product = product
             controller.productCategory = product.categories?[0]
+            controller.brands = brands
             navigationController?.pushViewController(controller, animated: true)
         }
     }

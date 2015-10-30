@@ -319,6 +319,8 @@ extension ProductDetailsCollectionViewController {
         cell.brandImageView.layer.cornerRadius = 5.0
         cell.brandImageView.layer.masksToBounds = true
         
+        cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
+        
         cell.product = product
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {

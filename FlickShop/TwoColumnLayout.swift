@@ -45,6 +45,7 @@ class TwoColumnLayout: UICollectionViewLayout {
     var cellPadding: CGFloat = 4.0
     let brandPriceHeight: CGFloat = 40.0
     let verticalPadding: CGFloat = 5.0
+    let bottomPadding: CGFloat = 3.0
     
     // This is an array to cache the calculated attributes. When you call prepareLayout(), you'll calculate the attributes for all items and add them to the cache. When the collection view later requests the layout attributes, you can be efficient and query the cache instead of recalculating them every time.
     private var cache = [TwoColumnLayoutAttributes]()
@@ -82,7 +83,7 @@ class TwoColumnLayout: UICollectionViewLayout {
                 let width = columnWidth - cellPadding * 2
                 var photoHeight = delegate.collectionView(collectionView!, heightForPhotoAtIndexPath: indexPath, withWidth: width)
                 photoHeight = min(300.0, photoHeight)
-                let height = verticalPadding + brandPriceHeight + verticalPadding + photoHeight + verticalPadding
+                let height = verticalPadding + brandPriceHeight + verticalPadding + photoHeight + verticalPadding + bottomPadding
                 let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
                 let insetFrame = CGRectInset(frame, cellPadding, cellPadding)
                 

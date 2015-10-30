@@ -63,18 +63,6 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ypa-55-hGe">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uT7-ew-HmC">
-                                                    <rect key="frame" x="0.0" y="50" width="180" height="150"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="bfU-0B-udo"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="bfU-0B-udo"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ocC-Dt-jGa">
                                                     <rect key="frame" x="5" y="5" width="170" height="40"/>
                                                     <subviews>
@@ -122,11 +110,33 @@
                                                     </subviews>
                                                     <animations/>
                                                 </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uT7-ew-HmC">
+                                                    <rect key="frame" x="0.0" y="50" width="180" height="150"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="150" id="AHJ-wJ-5pM"/>
+                                                        <constraint firstAttribute="height" constant="150" id="bfU-0B-udo"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="bfU-0B-udo"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbT-fm-f7Q">
+                                                    <rect key="frame" x="0.0" y="50" width="180" height="1"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="A9C-WV-od3"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="uT7-ew-HmC" secondAttribute="trailing" id="1bU-9I-4aB"/>
+                                                <constraint firstItem="tbT-fm-f7Q" firstAttribute="top" secondItem="uT7-ew-HmC" secondAttribute="top" id="3Sj-u3-dck"/>
                                                 <constraint firstAttribute="bottom" secondItem="ocC-Dt-jGa" secondAttribute="bottom" constant="5" id="3i8-Nf-lfq"/>
                                                 <constraint firstAttribute="bottom" secondItem="uT7-ew-HmC" secondAttribute="bottom" id="9sh-Tb-sdC"/>
                                                 <constraint firstItem="ocC-Dt-jGa" firstAttribute="top" secondItem="uT7-ew-HmC" secondAttribute="bottom" constant="5" id="AV4-4G-Zmm"/>
@@ -134,13 +144,18 @@
                                                 <constraint firstItem="uT7-ew-HmC" firstAttribute="leading" secondItem="ypa-55-hGe" secondAttribute="leading" id="M5E-WE-5fc"/>
                                                 <constraint firstAttribute="trailing" secondItem="ocC-Dt-jGa" secondAttribute="trailing" constant="5" id="MqV-5R-50I"/>
                                                 <constraint firstItem="ocC-Dt-jGa" firstAttribute="leading" secondItem="ypa-55-hGe" secondAttribute="leading" constant="5" id="NDQ-tu-Jru"/>
+                                                <constraint firstAttribute="trailing" secondItem="tbT-fm-f7Q" secondAttribute="trailing" id="Qe9-v5-dBF"/>
+                                                <constraint firstItem="tbT-fm-f7Q" firstAttribute="top" secondItem="ocC-Dt-jGa" secondAttribute="bottom" constant="5" id="S7P-eX-8E6"/>
                                                 <constraint firstItem="uT7-ew-HmC" firstAttribute="top" secondItem="ypa-55-hGe" secondAttribute="top" id="TIC-YP-2x8"/>
                                                 <constraint firstItem="uT7-ew-HmC" firstAttribute="top" secondItem="ocC-Dt-jGa" secondAttribute="bottom" constant="5" id="n10-7A-tMZ"/>
+                                                <constraint firstItem="tbT-fm-f7Q" firstAttribute="leading" secondItem="ypa-55-hGe" secondAttribute="leading" id="sE9-8h-MKU"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="3i8-Nf-lfq"/>
                                                     <exclude reference="AV4-4G-Zmm"/>
+                                                    <exclude reference="3Sj-u3-dck"/>
+                                                    <exclude reference="9sh-Tb-sdC"/>
                                                     <exclude reference="TIC-YP-2x8"/>
                                                 </mask>
                                             </variation>
@@ -161,8 +176,10 @@
                                     <outlet property="brandImageView" destination="Mes-me-XzM" id="dwF-ws-4jI"/>
                                     <outlet property="brandNameLabel" destination="PUC-JL-z7m" id="p2r-aS-8Iv"/>
                                     <outlet property="imageView" destination="uT7-ew-HmC" id="05K-EI-QWL"/>
+                                    <outlet property="imageViewHeightLayoutConstraint" destination="AHJ-wJ-5pM" id="kSm-iN-XDK"/>
                                     <outlet property="priceLabel" destination="lev-JE-joM" id="h8W-bZ-P1w"/>
                                     <outlet property="salePriceLabel" destination="dzc-vr-jtR" id="FO5-tz-qSw"/>
+                                    <outlet property="topImageViewLineSeparatorHeightConstraint" destination="A9C-WV-od3" id="fDz-Ho-WxE"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -339,18 +356,6 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2J-Cm-VWf">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dxn-BI-iZC">
-                                                    <rect key="frame" x="0.0" y="50" width="180" height="150"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="150" id="7ud-3t-wLN"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="7ud-3t-wLN"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zt8-Y1-TIV">
                                                     <rect key="frame" x="5" y="5" width="170" height="40"/>
                                                     <subviews>
@@ -398,18 +403,44 @@
                                                     </subviews>
                                                     <animations/>
                                                 </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Dxn-BI-iZC">
+                                                    <rect key="frame" x="0.0" y="50" width="180" height="150"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="150" id="7ud-3t-wLN"/>
+                                                        <constraint firstAttribute="height" constant="150" id="OtO-Du-HGi"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="7ud-3t-wLN"/>
+                                                        </mask>
+                                                    </variation>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5NV-9C-xGu">
+                                                    <rect key="frame" x="0.0" y="50" width="180" height="1"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="2K3-2L-X0W"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="zt8-Y1-TIV" firstAttribute="leading" secondItem="J2J-Cm-VWf" secondAttribute="leading" constant="5" id="3Jc-y1-3QE"/>
+                                                <constraint firstItem="5NV-9C-xGu" firstAttribute="top" secondItem="zt8-Y1-TIV" secondAttribute="bottom" constant="5" id="4UG-xH-7C6"/>
                                                 <constraint firstItem="zt8-Y1-TIV" firstAttribute="top" secondItem="J2J-Cm-VWf" secondAttribute="top" constant="5" id="7MV-ca-3ab"/>
                                                 <constraint firstAttribute="trailing" secondItem="zt8-Y1-TIV" secondAttribute="trailing" constant="5" id="Ayf-WK-9mz"/>
                                                 <constraint firstItem="Dxn-BI-iZC" firstAttribute="leading" secondItem="J2J-Cm-VWf" secondAttribute="leading" id="Cb6-zY-Eod"/>
+                                                <constraint firstAttribute="trailing" secondItem="5NV-9C-xGu" secondAttribute="trailing" id="D7J-Me-kdh"/>
+                                                <constraint firstItem="5NV-9C-xGu" firstAttribute="bottom" secondItem="zt8-Y1-TIV" secondAttribute="bottom" id="HJy-xM-7At"/>
                                                 <constraint firstItem="Dxn-BI-iZC" firstAttribute="top" secondItem="J2J-Cm-VWf" secondAttribute="top" id="Qtm-aB-ISm"/>
                                                 <constraint firstItem="zt8-Y1-TIV" firstAttribute="top" secondItem="Dxn-BI-iZC" secondAttribute="bottom" constant="5" id="WvQ-uW-3qy"/>
+                                                <constraint firstItem="5NV-9C-xGu" firstAttribute="leading" secondItem="J2J-Cm-VWf" secondAttribute="leading" id="c3u-pg-cwW"/>
                                                 <constraint firstAttribute="bottom" secondItem="zt8-Y1-TIV" secondAttribute="bottom" constant="5" id="dTT-FC-sbE"/>
                                                 <constraint firstAttribute="bottom" secondItem="Dxn-BI-iZC" secondAttribute="bottom" id="fXG-a7-oo1"/>
+                                                <constraint firstItem="5NV-9C-xGu" firstAttribute="top" secondItem="Dxn-BI-iZC" secondAttribute="top" id="og3-rP-ySb"/>
                                                 <constraint firstAttribute="trailing" secondItem="Dxn-BI-iZC" secondAttribute="trailing" id="siu-GJ-MOD"/>
                                                 <constraint firstItem="Dxn-BI-iZC" firstAttribute="top" secondItem="zt8-Y1-TIV" secondAttribute="bottom" constant="5" id="ygQ-pS-8oc"/>
                                             </constraints>
@@ -417,7 +448,10 @@
                                                 <mask key="constraints">
                                                     <exclude reference="WvQ-uW-3qy"/>
                                                     <exclude reference="dTT-FC-sbE"/>
+                                                    <exclude reference="HJy-xM-7At"/>
+                                                    <exclude reference="og3-rP-ySb"/>
                                                     <exclude reference="Qtm-aB-ISm"/>
+                                                    <exclude reference="fXG-a7-oo1"/>
                                                 </mask>
                                             </variation>
                                         </view>
@@ -437,8 +471,10 @@
                                     <outlet property="brandImageView" destination="Cch-Ir-fa2" id="jKy-FX-LnR"/>
                                     <outlet property="brandNameLabel" destination="VZE-hb-BGW" id="ebs-tl-tiF"/>
                                     <outlet property="imageView" destination="Dxn-BI-iZC" id="8LO-gl-UGD"/>
+                                    <outlet property="imageViewHeightLayoutConstraint" destination="OtO-Du-HGi" id="Zvi-9R-sm8"/>
                                     <outlet property="priceLabel" destination="wNQ-n4-hyV" id="Rpu-NC-CLu"/>
                                     <outlet property="salePriceLabel" destination="SsU-lu-Iqb" id="uD8-xN-iTF"/>
+                                    <outlet property="topImageViewLineSeparatorHeightConstraint" destination="2K3-2L-X0W" id="8yu-1c-ca7"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

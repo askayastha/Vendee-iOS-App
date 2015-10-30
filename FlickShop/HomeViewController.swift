@@ -26,6 +26,12 @@ class HomeViewController: UIViewController {
 //        backgroundImageView.image = categories[0].picture
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         
+//        collectionView.contentInset = UIEdgeInsets(
+//            top: 0,
+//            left: (collectionView.bounds.width - 200.0) / 2,
+//            bottom: 0,
+//            right: (collectionView.bounds.width - 200.0) / 2
+//        )
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -99,49 +105,49 @@ extension HomeViewController: UICollectionViewDelegate {
 //        print("scrollViewDidEndDecelerating")
 //    }
     
-    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        let dragOffset = layout.itemSize.width + layout.minimumLineSpacing
-        
-        var offset = targetContentOffset.memory
-        let featuredItemIndex = max(0, Int(collectionView.contentOffset.x / dragOffset))
-        let itemIndex = round((offset.x + scrollView.contentInset.left) / dragOffset)
-        
-        print("\nCollectionView Offset: \(collectionView.contentOffset.x)")
-        print("Featured Index: \(featuredItemIndex)")
-        print("Index: \(itemIndex)")
-        print("Velocity: \(velocity)")
-        
-        var xOffset = itemIndex * dragOffset
-//        var nextItemIndex = featuredItemIndex
-        
-        if velocity.x > 0.0 {
-            xOffset = CGFloat(featuredItemIndex + 1) * dragOffset
-//            backgroundImageView.image = categories[featuredItemIndex + 1].picture
-//            nextItemIndex = min(categories.count - 1, featuredItemIndex + 1)
-            
-        } else if velocity.x < -0.0 {
-            xOffset = CGFloat(featuredItemIndex) * dragOffset
-//            backgroundImageView.image = categories[featuredItemIndex].picture
-        }
-        
-//        UIView.transitionWithView(backgroundImageView, duration: 0.3, options: .TransitionCrossDissolve, animations: {
-//            self.backgroundImageView.image = self.categories[nextItemIndex].picture
-//            }, completion: nil)
-        
-        offset = CGPoint(x: xOffset, y: 0)
-        
-        targetContentOffset.memory = offset
-    }
+//    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        
+//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+//        let dragOffset = layout.itemSize.width + layout.minimumLineSpacing
+//        
+//        var offset = targetContentOffset.memory
+//        let featuredItemIndex = max(0, Int(collectionView.contentOffset.x / dragOffset))
+//        let itemIndex = round((offset.x + scrollView.contentInset.left) / dragOffset)
+//        
+//        print("\nCollectionView Offset: \(collectionView.contentOffset.x)")
+//        print("Featured Index: \(featuredItemIndex)")
+//        print("Index: \(itemIndex)")
+//        print("Velocity: \(velocity)")
+//        
+//        var xOffset = itemIndex * dragOffset
+////        var nextItemIndex = featuredItemIndex
+//        
+//        if velocity.x > 0.0 {
+//            xOffset = CGFloat(featuredItemIndex + 1) * dragOffset
+////            backgroundImageView.image = categories[featuredItemIndex + 1].picture
+////            nextItemIndex = min(categories.count - 1, featuredItemIndex + 1)
+//            
+//        } else if velocity.x < -0.0 {
+//            xOffset = CGFloat(featuredItemIndex) * dragOffset
+////            backgroundImageView.image = categories[featuredItemIndex].picture
+//        }
+//        
+////        UIView.transitionWithView(backgroundImageView, duration: 0.3, options: .TransitionCrossDissolve, animations: {
+////            self.backgroundImageView.image = self.categories[nextItemIndex].picture
+////            }, completion: nil)
+//        
+//        offset = CGPoint(x: xOffset, y: 0)
+//        
+//        targetContentOffset.memory = offset
+//    }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let horizontalInset = (collectionView.bounds.width - layout.itemSize.width) / 2
-        return UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
-    }
+//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+//        
+//        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+//        
+//        let horizontalInset = (collectionView.bounds.width - layout.itemSize.width) / 2
+//        return UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
+//    }
 }
 
 extension HomeViewController: UIGestureRecognizerDelegate {

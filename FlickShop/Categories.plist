@@ -14,13 +14,45 @@
 		<key>picture</key>
 		<string>category_1</string>
 		<key>name</key>
+		<string>Tops</string>
+		<key>keyword</key>
+		<string>womens-tops</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_2</string>
+		<key>name</key>
+		<string>Pants</string>
+		<key>keyword</key>
+		<string>womens-pants</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_3</string>
+		<key>name</key>
+		<string>Skirts</string>
+		<key>keyword</key>
+		<string>skirts</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_4</string>
+		<key>name</key>
+		<string>Outerwear</string>
+		<key>keyword</key>
+		<string>womens-outerwear</string>
+	</dict>
+	<dict>
+		<key>picture</key>
+		<string>category_5</string>
+		<key>name</key>
 		<string>Shoes</string>
 		<key>keyword</key>
 		<string>womens-shoes</string>
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>category_2</string>
+		<string>category_6</string>
 		<key>name</key>
 		<string>Bags</string>
 		<key>keyword</key>
@@ -28,7 +60,7 @@
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>category_3</string>
+		<string>category_7</string>
 		<key>name</key>
 		<string>Jewelry</string>
 		<key>keyword</key>
@@ -36,7 +68,7 @@
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>category_4</string>
+		<string>category_8</string>
 		<key>name</key>
 		<string>Accessories</string>
 		<key>keyword</key>
@@ -44,7 +76,7 @@
 	</dict>
 	<dict>
 		<key>picture</key>
-		<string>category_5</string>
+		<string>category_9</string>
 		<key>name</key>
 		<string>Beauty</string>
 		<key>keyword</key>

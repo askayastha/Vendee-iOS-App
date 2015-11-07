@@ -17,7 +17,7 @@ class CategoryCell: UICollectionViewCell {
     var category: Category? {
         didSet {
             if let category = category {
-                categoryImageView.image = category.picture//.blendImageWithColor(UIColor.lightGrayColor(), blendMode: .Multiply)
+                categoryImageView.image = category.picture
                 categoryLabel.text = category.name
             }
         }

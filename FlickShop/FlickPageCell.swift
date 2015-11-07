@@ -70,7 +70,11 @@ class FlickPageCell: UICollectionViewCell {
             salePriceLabel.text = product!.formattedPrice ?? ""
         }
         
-        imageView.pin_setImageFromURL(NSURL(string: product.largeImageURL!)!)
+        spinner.startAnimating()
+        
+        imageView.pin_setImageFromURL(NSURL(string: product.largeImageURL!)!) { _ in
+            self.spinner.stopAnimating()
+        }
     }
     
 //    override init(frame: CGRect) {
@@ -117,9 +121,9 @@ class FlickPageCell: UICollectionViewCell {
 //        productImageRequest = nil
 //        brandImageRequest = nil
         
-//        if spinner.isAnimating() {
-//            spinner.stopAnimating()
-//        }
+        if spinner.isAnimating() {
+            spinner.stopAnimating()
+        }
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {

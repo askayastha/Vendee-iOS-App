@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */; };
 		753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */; };
 		753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */; };
 		753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */; };
@@ -71,6 +72,7 @@
 /* Begin PBXFileReference section */
 		03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD496926D078ABA0D4796DA /* Pods-FlickShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.release.xcconfig"; sourceTree = "<group>"; };
+		752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerFlickViewController.swift; sourceTree = "<group>"; };
 		753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
 		753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
 		753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				75F12CF91BE0A35900258874 /* HomeViewController.swift */,
 				75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */,
+				752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */,
 				75F12CF01BE0A35900258874 /* BrowseCollectionViewController.swift */,
 				75F12CF51BE0A35900258874 /* FlickCollectionViewController.swift */,
 				75F12CFB1BE0A35900258874 /* ProductDetailsCollectionViewController.swift */,
@@ -546,6 +549,7 @@
 				75F12D0E1BE0A35900258874 /* ProductDetailsCollectionViewController.swift in Sources */,
 				75F12D151BE0A3B800258874 /* Alamofire+CustomResponse.swift in Sources */,
 				75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */,
+				752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */,
 				75F12D131BE0A35900258874 /* TwoColumnLayout.swift in Sources */,
 				75F12CE81BE0A24100258874 /* Brand.swift in Sources */,
 				75F12CEB1BE0A24100258874 /* Search.swift in Sources */,

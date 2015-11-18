@@ -22,8 +22,6 @@ class BrowseCollectionViewController: UICollectionViewController {
     private let headerViewIdentifier = "HeaderView"
     
     let search = Search()
-//    let imageCache = NSCache()
-//    let brandImageCache = NSCache()
     
     weak var delegate: ScrollEventsDelegate?
     var requestingData = false
@@ -66,7 +64,7 @@ class BrowseCollectionViewController: UICollectionViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "FlickCategory" {
-            let controller = segue.destinationViewController as! FlickCollectionViewController
+            let controller = segue.destinationViewController as! ContainerFlickViewController
             let indexPath = sender as! NSIndexPath
             
             controller.search = search

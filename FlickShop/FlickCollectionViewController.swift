@@ -21,10 +21,9 @@ class FlickCollectionViewController: UICollectionViewController {
     let cellIdentifier = "FlickPageCell"
     var productCategory = "women"
     
-//    let imageCache = NSCache()
-//    let brandImageCache = NSCache()
     var search = Search()
     
+    weak var delegate: ScrollEventsDelegate?
     var lastItem = 0
     var indexPath: NSIndexPath?
     var loadingHUDPresent = false
@@ -34,12 +33,13 @@ class FlickCollectionViewController: UICollectionViewController {
 //        return .LightContent
 //    }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
+//    override func prefersStatusBarHidden() -> Bool {
+//        return true
+//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
         if let indexPath = indexPath {
             collectionView!.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.None, animated: false)
         }
@@ -56,12 +56,6 @@ class FlickCollectionViewController: UICollectionViewController {
         FlickViewConstants.height = collectionView!.bounds.height
         print("ViewDidLoad")
         
-//        collectionView!.layer.cornerRadius = 5.0
-//        collectionView!.layer.masksToBounds = true
-        
-//        navigationController?.navigationBar.barStyle = UIBarStyle.Black
-//        navigationController?.navigationBar.translucent = false
-        navigationController?.setNavigationBarHidden(true, animated: false)
 //        navigationController?.interactivePopGestureRecognizer?.delegate = self
 
         // Uncomment the following line to preserve selection between presentations
@@ -310,6 +304,17 @@ extension FlickCollectionViewController: SFSafariViewControllerDelegate {
     @available(iOS 9.0, *)
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+extension FlickCollectionViewController {
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        delegate?.didScroll()
+    }
+    
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        delegate?.didEndDecelerating()
     }
 }
 

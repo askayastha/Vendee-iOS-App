@@ -11,8 +11,6 @@ import UIKit
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var blurView: UIVisualEffectView!
     
     var categories = Category.allCategories()
     var brands: [Brand]!
@@ -53,8 +51,10 @@ class HomeViewController: UIViewController {
         if segue.identifier == "BrowseCategory" {
 //            let navigationController = segue.destinationViewController as! UINavigationController
 //            let controller = navigationController.topViewController as! BrowseCollectionViewController
-            let controller = segue.destinationViewController as! BrowseCollectionViewController
+            let controller = segue.destinationViewController as! ContainerBrowseViewController
+
             let indexPath = sender as! NSIndexPath
+            
             controller.productCategory = categories[indexPath.item].keyword
             controller.brands = brands
         }

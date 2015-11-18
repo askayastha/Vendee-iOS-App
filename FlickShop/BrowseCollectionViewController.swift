@@ -45,7 +45,7 @@ class BrowseCollectionViewController: UICollectionViewController {
         
 //        navigationItem.title = product.name
 //        navigationController?.navigationBar.translucent = false
-        navigationController?.setNavigationBarHidden(true, animated: false)
+//        navigationController?.setNavigationBarHidden(true, animated: false)
 //        navigationController?.navigationBar.barStyle = UIBarStyle.Default
 //        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         
@@ -71,7 +71,7 @@ class BrowseCollectionViewController: UICollectionViewController {
     }
     
     private func setupView() {
-        collectionView!.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)
         //        collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
@@ -192,59 +192,6 @@ extension BrowseCollectionViewController {
                 }
             }
         }
-        
-        // Set the brand image
-//        if let brandName = product.brandName {
-//            if let image = brandImageCache.objectForKey(brandName) as? UIImage {
-//                cell.brandImageView.image = image
-//            } else {
-//                let brandImageURL = brands.filter {$0.nickname == brandName}.first?.picURL
-//                print("BRAND IMAGE URL: \(brandImageURL)")
-//                
-//                if let imageURL = brandImageURL {
-//                    cell.brandImageRequest = Alamofire.request(.GET, imageURL).validate(contentType: ["image/*"]).responseImage() {
-//                        response in
-//                        
-//                        let image = response.result.value
-//                        
-//                        if response.result.isSuccess && image != nil {
-//                            self.brandImageCache.setObject(image!, forKey: brandName)
-//                            
-//                            cell.brandImageView.image = image
-//                        }
-//                    }
-//                }
-//            }
-//        }
-        
-        // Set the product image
-//        if let imageURL = product.smallImageURL {
-//            if let image = imageCache.objectForKey(imageURL) as? UIImage {
-//                cell.imageView.image = image
-//                
-//            } else {
-//                //                cell.spinner.startAnimating()
-//                
-//                // Download the image from the server, but this time validate the content-type of the returned response. If it's not an image, error will contain a value and therefore you won't do anything with the potentially invalid image response. The key here is that you store the Alamofire request object in the cell, for use when your asynchronous network call returns.
-//                cell.productImageRequest = Alamofire.request(.GET, imageURL).validate(contentType: ["image/*"]).responseImage() {
-//                    response in
-//                    
-//                    let image = response.result.value
-//                    
-//                    if response.result.isSuccess && image != nil {
-//                        // If you did not receive an error and you downloaded a proper photo, cache it for later.
-//                        self.imageCache.setObject(image!, forKey: imageURL)
-//                        
-//                        // Set the cell's image accordingly.
-//                        //                        cell.spinner.stopAnimating()
-//                        cell.imageView.image = image
-//                        
-//                    } else {
-//                        /* If the cell went off-screen before the image was downloaded, we cancel it and an NSURLErrorDomain (-999: cancelled) is returned. This is normal behavior. */
-//                    }
-//                }
-//            }
-//        }
         
         if search.products.count - (indexPath.item + 5) == 0 && search.products.count < 1000 {
             print("New request")

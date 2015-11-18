@@ -14,6 +14,7 @@
 		75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E3A1BDFBAAE006FD010 /* LaunchScreen.storyboard */; };
 		75A31E471BDFBAAE006FD010 /* FlickShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E461BDFBAAE006FD010 /* FlickShopTests.swift */; };
 		75A31E521BDFBAAE006FD010 /* FlickShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */; };
+		75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */; };
 		75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF28D61BE3DD31000B30F6 /* CategoriesLayout.swift */; };
 		75F12CC51BE0A00B00258874 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC01BE0A00B00258874 /* ImageParser.swift */; };
 		75F12CC61BE0A00B00258874 /* ImageScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC21BE0A00B00258874 /* ImageScout.swift */; };
@@ -83,6 +84,7 @@
 		75A31E4D1BDFBAAE006FD010 /* FlickShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickShopUITests.swift; sourceTree = "<group>"; };
 		75A31E531BDFBAAE006FD010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerBrowseViewController.swift; sourceTree = "<group>"; };
 		75DF28D61BE3DD31000B30F6 /* CategoriesLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesLayout.swift; sourceTree = "<group>"; };
 		75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickShop-Bridging-Header.h"; sourceTree = "<group>"; };
 		75F12CC01BE0A00B00258874 /* ImageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				75F12CF91BE0A35900258874 /* HomeViewController.swift */,
+				75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */,
 				75F12CF01BE0A35900258874 /* BrowseCollectionViewController.swift */,
 				75F12CF51BE0A35900258874 /* FlickCollectionViewController.swift */,
 				75F12CFB1BE0A35900258874 /* ProductDetailsCollectionViewController.swift */,
@@ -547,6 +550,7 @@
 				75F12CE81BE0A24100258874 /* Brand.swift in Sources */,
 				75F12CEB1BE0A24100258874 /* Search.swift in Sources */,
 				75F12CED1BE0A24100258874 /* UIImage+ImageEffects.m in Sources */,
+				75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */,
 				75F12D031BE0A35900258874 /* BrowseCollectionViewController.swift in Sources */,
 				75F12CEC1BE0A24100258874 /* UIImage+BlendEffects.swift in Sources */,
 				75F12CC81BE0A00B00258874 /* SessionDelegate.swift in Sources */,

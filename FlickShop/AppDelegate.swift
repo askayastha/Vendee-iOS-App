@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         customizeAppearance()
+        window!.layer.cornerRadius = 5.0
+        window!.layer.masksToBounds = true
         
         return true
     }

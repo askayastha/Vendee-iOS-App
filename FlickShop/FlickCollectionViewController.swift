@@ -56,6 +56,9 @@ class FlickCollectionViewController: UICollectionViewController {
         FlickViewConstants.height = collectionView!.bounds.height
         print("ViewDidLoad")
         
+//        collectionView!.layer.cornerRadius = 5.0
+//        collectionView!.layer.masksToBounds = true
+        
 //        navigationController?.navigationBar.barStyle = UIBarStyle.Black
 //        navigationController?.navigationBar.translucent = false
         navigationController?.setNavigationBarHidden(true, animated: false)

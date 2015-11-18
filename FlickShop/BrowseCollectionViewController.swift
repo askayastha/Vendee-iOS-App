@@ -10,6 +10,11 @@ import UIKit
 import Alamofire
 import AVFoundation
 
+protocol ScrollEventsDelegate: class {
+    func didScroll()
+    func didEndDecelerating()
+}
+
 class BrowseCollectionViewController: UICollectionViewController {
     
     private let cellIdentifier = "CustomPhotoCell"
@@ -20,7 +25,7 @@ class BrowseCollectionViewController: UICollectionViewController {
 //    let imageCache = NSCache()
 //    let brandImageCache = NSCache()
     
-    
+    weak var delegate: ScrollEventsDelegate?
     var requestingData = false
     var productCount = 0
     var productCategory: String!
@@ -222,6 +227,14 @@ extension BrowseCollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("FlickCategory", sender: indexPath)
+    }
+    
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        delegate?.didScroll()
+    }
+    
+    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        delegate?.didEndDecelerating()
     }
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lHe-g2-7e4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lHe-g2-7e4">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="ProximaNova-Reg.ttf">
@@ -42,7 +42,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNT-ze-eWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2720" y="111"/>
+            <point key="canvasLocation" x="2679" y="79"/>
         </scene>
         <!--Browse Collection View Controller-->
         <scene sceneID="jqT-FE-aVe">
@@ -327,16 +327,29 @@
                                     <segue destination="pbY-Vl-Rc6" kind="embed" identifier="ShowBrowseCategory" id="3WX-yO-dGa"/>
                                 </connections>
                             </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aO0-f3-gFG">
+                                <rect key="frame" x="13" y="77" width="40" height="40"/>
+                                <animations/>
+                                <state key="normal" image="back_arrow"/>
+                                <connections>
+                                    <action selector="backButtonTapped:" destination="JWt-4Q-eEb" eventType="touchUpInside" id="MJP-JH-pXd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="aO0-f3-gFG" firstAttribute="leading" secondItem="1He-bw-h9v" secondAttribute="leading" constant="13" id="3BV-NQ-HLC"/>
+                            <constraint firstItem="aO0-f3-gFG" firstAttribute="top" secondItem="nOY-es-QsK" secondAttribute="bottom" constant="13" id="KJH-oI-7Go"/>
                             <constraint firstItem="sGA-hQ-V8B" firstAttribute="top" secondItem="nOY-es-QsK" secondAttribute="bottom" id="KX1-2S-F78"/>
                             <constraint firstItem="sGA-hQ-V8B" firstAttribute="leading" secondItem="1He-bw-h9v" secondAttribute="leading" id="ha1-zA-HEt"/>
                             <constraint firstItem="8FM-Ej-N27" firstAttribute="top" secondItem="sGA-hQ-V8B" secondAttribute="bottom" id="o6e-Ch-q8s"/>
                             <constraint firstAttribute="trailing" secondItem="sGA-hQ-V8B" secondAttribute="trailing" id="uzh-5u-Ttg"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="aO0-f3-gFG" id="BYS-kK-cpq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2u-VR-zbO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -516,4 +529,7 @@
             <point key="canvasLocation" x="3377" y="111"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="back_arrow" width="40" height="40"/>
+    </resources>
 </document>

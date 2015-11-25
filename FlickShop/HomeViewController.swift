@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var categories = Category.allCategories()
-    var brands: [Brand]!
+    var brands = Brand.allBrands()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,12 +32,6 @@ class HomeViewController: UIViewController {
 //            bottom: 0,
 //            right: (collectionView.bounds.width - 200.0) / 2
 //        )
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        brands = Brand.allBrands()
     }
 
     override func didReceiveMemoryWarning() {

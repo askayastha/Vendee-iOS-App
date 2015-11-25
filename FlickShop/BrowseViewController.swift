@@ -15,7 +15,7 @@ protocol ScrollEventsDelegate: class {
     func didEndDecelerating()
 }
 
-class BrowseCollectionViewController: UICollectionViewController {
+class BrowseViewController: UICollectionViewController {
     
     private let cellIdentifier = "CustomPhotoCell"
     private let footerViewIdentifier = "FooterView"
@@ -158,7 +158,7 @@ class BrowseCollectionViewController: UICollectionViewController {
     //    }
 }
 
-extension BrowseCollectionViewController {
+extension BrowseViewController {
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -236,7 +236,7 @@ extension BrowseCollectionViewController {
     }
 }
 
-extension BrowseCollectionViewController: TwoColumnLayoutDelegate {
+extension BrowseViewController: TwoColumnLayoutDelegate {
     
     func collectionView(collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         let product = search.products.objectAtIndex(indexPath.item) as! Product

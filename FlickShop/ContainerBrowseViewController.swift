@@ -38,13 +38,16 @@ class ContainerBrowseViewController: UIViewController {
         navigationController?.popViewControllerAnimated(true)
     }
 
+//    @IBAction func filterButtonTapped(sender: UIButton) {
+//        
+//    }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowBrowseCategory" {
-            let controller = segue.destinationViewController as! BrowseCollectionViewController
+            let controller = segue.destinationViewController as! BrowseViewController
             
             controller.delegate = self
             controller.productCategory = productCategory

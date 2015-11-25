@@ -16,7 +16,7 @@ struct FlickViewConstants {
     static var height = UIScreen.mainScreen().bounds.height
 }
 
-class FlickCollectionViewController: UICollectionViewController {
+class FlickViewController: UICollectionViewController {
     
     let cellIdentifier = "FlickPageCell"
     var productCategory = "women"
@@ -299,7 +299,7 @@ class FlickCollectionViewController: UICollectionViewController {
 //    }
 }
 
-extension FlickCollectionViewController: SFSafariViewControllerDelegate {
+extension FlickViewController: SFSafariViewControllerDelegate {
     
     @available(iOS 9.0, *)
     func safariViewControllerDidFinish(controller: SFSafariViewController) {
@@ -307,7 +307,7 @@ extension FlickCollectionViewController: SFSafariViewControllerDelegate {
     }
 }
 
-extension FlickCollectionViewController {
+extension FlickViewController {
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         delegate?.didScroll()
@@ -318,7 +318,7 @@ extension FlickCollectionViewController {
     }
 }
 
-extension FlickCollectionViewController: FlickPageCellDelegate {
+extension FlickViewController: FlickPageCellDelegate {
     
     func openItemInStoreWithURL(url: NSURL?) {
 //        if #available(iOS 9.0, *) {
@@ -330,7 +330,7 @@ extension FlickCollectionViewController: FlickPageCellDelegate {
     }
     
     func displayMoreDetailsForProduct(product: Product) {
-        let detailsVC = storyboard!.instantiateViewControllerWithIdentifier("ProductDetailsViewController") as? ProductDetailsCollectionViewController
+        let detailsVC = storyboard!.instantiateViewControllerWithIdentifier("ProductDetailsViewController") as? ProductDetailsViewController
         
         if let controller = detailsVC {
             controller.product = product

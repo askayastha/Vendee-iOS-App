@@ -50,7 +50,7 @@ class ContainerFlickViewController: UIViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowFlickCategory" {
-            let controller = segue.destinationViewController as! FlickCollectionViewController
+            let controller = segue.destinationViewController as! FlickViewController
             
             controller.delegate = self
             controller.search = search

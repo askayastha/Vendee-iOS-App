@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AVFoundation
 
-class ProductDetailsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ProductDetailsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private let reuseIdentifier = "CustomPhotoCell"
     private let footerViewIdentifier = "FooterView"
@@ -299,7 +299,7 @@ class ProductDetailsHeaderView: UICollectionReusableView {
 //    }
 }
 
-extension ProductDetailsCollectionViewController {
+extension ProductDetailsViewController {
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -442,7 +442,7 @@ extension ProductDetailsCollectionViewController {
 //    }
 }
 
-extension ProductDetailsCollectionViewController: TwoColumnLayoutDelegate {
+extension ProductDetailsViewController: TwoColumnLayoutDelegate {
     
     func collectionView(collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
         let product = search.products.objectAtIndex(indexPath.item) as! Product

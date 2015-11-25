@@ -14,7 +14,7 @@ protocol SideTabDelegate: class {
 
 class SideTabViewController: UITableViewController {
     
-    var sideTabs = ["Category", "Brand", "Store", "Price", "Discount", "Size", "Color"]
+    var sideTabs = ["Category", "Brand", "Store", "Price", "Discount", "Color", "Sort"]
     
     weak var delegate: SideTabDelegate?
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class StoreViewController: UIViewController {
+class StoreFilterViewController: UIViewController {
     
     var stores: [String: [NSDictionary]]!
     var keys: [String]!
@@ -61,7 +61,7 @@ class StoreViewController: UIViewController {
 }
 
 // MARK: - Table view data source
-extension StoreViewController: UITableViewDataSource {
+extension StoreFilterViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return searching && !isKeywordEmpty() ? 1 : keys.count
@@ -108,7 +108,7 @@ extension StoreViewController: UITableViewDataSource {
     }
 }
 
-extension StoreViewController: UISearchResultsUpdating {
+extension StoreFilterViewController: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let searchString = searchController.searchBar.text!
@@ -140,7 +140,7 @@ extension StoreViewController: UISearchResultsUpdating {
     }
 }
 
-extension StoreViewController: UISearchControllerDelegate {
+extension StoreFilterViewController: UISearchControllerDelegate {
     
     func willPresentSearchController(searchController: UISearchController) {
         searching = true

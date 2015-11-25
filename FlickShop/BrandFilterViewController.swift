@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BrandViewController: UIViewController {
+class BrandFilterViewController: UIViewController {
     
     var brands: [String: [NSDictionary]]!
     var keys: [String]!
@@ -61,7 +61,7 @@ class BrandViewController: UIViewController {
 }
 
 // MARK: - Table view data source
-extension BrandViewController: UITableViewDataSource {
+extension BrandFilterViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return searching && !isKeywordEmpty() ? 1 : keys.count
@@ -108,7 +108,7 @@ extension BrandViewController: UITableViewDataSource {
     }
 }
 
-extension BrandViewController: UISearchResultsUpdating {
+extension BrandFilterViewController: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         let searchString = searchController.searchBar.text!
@@ -140,7 +140,7 @@ extension BrandViewController: UISearchResultsUpdating {
     }
 }
 
-extension BrandViewController: UISearchControllerDelegate {
+extension BrandFilterViewController: UISearchControllerDelegate {
     
     func willPresentSearchController(searchController: UISearchController) {
         searching = true

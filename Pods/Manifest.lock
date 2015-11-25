@@ -2,6 +2,7 @@ PODS:
   - Alamofire (3.1.0)
   - FLAnimatedImage (1.0.8)
   - MBProgressHUD (0.9.1)
+  - NMRangeSlider (1.2.3)
   - Ono (1.2.2)
   - PINCache (2.1)
   - PINRemoteImage (1.2.1):
@@ -16,14 +17,27 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - MBProgressHUD (~> 0.9)
+  - NMRangeSlider (from `https://github.com/chanil1218/NMRangeSlider.git`, commit
+    `c89890c`)
   - Ono (~> 1.0)
   - PINRemoteImage (~> 1.0)
   - SwiftyJSON (~> 2.0)
+
+EXTERNAL SOURCES:
+  NMRangeSlider:
+    :commit: c89890c
+    :git: https://github.com/chanil1218/NMRangeSlider.git
+
+CHECKOUT OPTIONS:
+  NMRangeSlider:
+    :commit: c89890c
+    :git: https://github.com/chanil1218/NMRangeSlider.git
 
 SPEC CHECKSUMS:
   Alamofire: 415bd7f56197722978759078486689f7ef913dce
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  NMRangeSlider: b57dad1b1f1b5c18b4ecfc8856a20910152dfcf3
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
   PINCache: 0581b0a7578fc0bbc6c7a8b70b0615388bea064c
   PINRemoteImage: 7560f0c975b0495d232e954342c5f49979335015

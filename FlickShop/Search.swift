@@ -191,6 +191,7 @@ struct ShopStyle {
         static let APIKey = "uid4529-31475977-85"
         
         case PopularProducts(Int, Int, String)
+        case Categories(String)
         
         var URLRequest: NSMutableURLRequest {
 //            let (path: String, parameters: [String: AnyObject]) = {
@@ -206,6 +207,9 @@ struct ShopStyle {
                 switch self {
                     case .PopularProducts(_):
                         return "products"
+                    
+                    case .Categories(_):
+                        return "categories"
                 }
             }()
             
@@ -222,6 +226,13 @@ struct ShopStyle {
                             "sort": "Popular"
                         ]
                         return params
+                    
+                    case .Categories (let category):
+                        let params = [
+                            "pid": Router.APIKey,
+                            "cat": category
+                        ]
+                    return params
                 }
             }()
         

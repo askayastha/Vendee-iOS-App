@@ -8,11 +8,6 @@
 
 import UIKit
 
-struct ImageSize {
-    var width: CGFloat
-    var height: CGFloat
-}
-
 class Product: NSObject {
     
     var id: String?

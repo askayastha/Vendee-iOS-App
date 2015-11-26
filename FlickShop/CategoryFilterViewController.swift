@@ -9,15 +9,21 @@
 import UIKit
 
 class CategoryFilterViewController: UITableViewController {
+    
+    var requestingData = false
+    var productCategory: String?
+    
+    var categories = [String]()
+    var tappedCategories = [String]()
+    var categoriesDict = [String: String]()
+    
+    let categorySearch = CategorySearch()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        productCategory = appDelegate.productCategory
+        requestCategoryFromShopStyle()
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,68 +34,111 @@ class CategoryFilterViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return categories.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
 
-        // Configure the cell...
+//        let categoryInfo = categorySearch.categories.objectAtIndex(indexPath.row) as! CategoryInfo
+        cell.textLabel?.text = categories[indexPath.row]
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let categoryName = categories[indexPath.row]    ; print(categoryName)
+        
+        // Reload the table with new data if the tapped category isn't the currently selected one.
+        if categoryName != tappedCategories.last {
+            
+            let categoryId = categoriesDict[categoryName]
+            var subcategories = [String]()
+            
+            // Keep track of the tapped categories.
+            if categoryName != categories[0] && !tappedCategories.contains(categoryName) {
+                tappedCategories.append(categoryName)
+                
+            // Remove the child categories if parent category is selected.
+            } else if tappedCategories.contains(categoryName) {
+                let categoryIndex = tappedCategories.indexOf(categoryName)! + 1
+                tappedCategories.removeRange(categoryIndex..<tappedCategories.count)
+                
+            // Clear the tapped categories if the root category is selected.
+            } else {
+                tappedCategories.removeAll()
+            }
+            
+            subcategories.appendContentsOf(tappedCategories)
+            
+            for item in categorySearch.categories {
+                let category = item as! CategoryInfo
+                
+                if category.parentId == categoryId {
+                    subcategories.append(category.shortName!)
+                }
+            }
+            
+            categories.replaceRange(1..<categories.count, with: subcategories)
+            
+            tableView.reloadData()
+            // let indexPaths = Array(1..<categories.count).map { NSIndexPath(forRow: $0, inSection: 0) }
+            var indexPaths = [NSIndexPath]()
+            for indexPath in tableView.indexPathsForVisibleRows! {
+                if indexPath.row > tappedCategories.count {
+                    indexPaths.append(indexPath)
+                }
+            }
+            
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Bottom)
+        }
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    private func requestCategoryFromShopStyle() {
+        
+        if requestingData {
+            return
+        }
+        
+        requestingData = true
+        
+        if let category = productCategory {
+            categorySearch.parseShopStyleForCategory(category) { [weak self]
+                success, lastItem in
+                if let strongSelf = self {
+                    if !success {
+                        print("Products Count: \(lastItem)")
+                        
+                        print("Request Failed. Trying again...")
+                        strongSelf.requestingData = false
+                        strongSelf.requestCategoryFromShopStyle()
+                        
+                    } else {
+                        strongSelf.requestingData = false
+                        print("Product count: \(lastItem)")
+                        
+//                        let rootCategory = categorySearch.categories.objectAtIndex(0) as! CategoryInfo
+//                        categories.append(rootCategory.shortName!)
+                        
+                        for item in strongSelf.categorySearch.categories {
+                            let category = item as! CategoryInfo
+                            
+                            if category.id == strongSelf.productCategory || category.parentId == strongSelf.productCategory {
+                                strongSelf.categories.append(category.shortName!)
+                                strongSelf.categoriesDict[category.shortName!] = category.id!
+                            }
+                        }
+                        
+                        strongSelf.tableView.reloadData()
+                    }
+                }
+                
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -82,6 +82,8 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        appDelegate.productCategory = categories[indexPath.item].keyword
+        
         performSegueWithIdentifier("BrowseCategory", sender: indexPath)
     }
     

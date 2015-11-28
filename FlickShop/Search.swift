@@ -27,6 +27,8 @@ class Search {
     private(set) var lastItem = 0
     
     var filteredSearch = false
+    var dataRequest: Alamofire.Request?
+    var retryCount = 0
     
     let scout = ImageScout()
     
@@ -47,7 +49,11 @@ class Search {
                 category = cat
             }
             
+            let sort = appDelegate.sort
+            
             var finalFilterParams: String?
+            
+            var modifiedURL = ShopStyle.Router.FilteredProducts(itemOffset, limit, category, finalFilterParams, sort).URLRequest.URLString
             
             if appDelegate.filterParams.count > 0 {
                 var filters = [String]()
@@ -58,14 +64,18 @@ class Search {
                 
                 let initialfilterParams = filters.joinWithSeparator("&")
                 
-                finalFilterParams = initialfilterParams.substringFromIndex(initialfilterParams.startIndex.advancedBy(2))
+//                finalFilterParams = initialfilterParams.substringFromIndex(initialfilterParams.startIndex.advancedBy(3))    ; print(finalFilterParams)
+                finalFilterParams = initialfilterParams
+                modifiedURL += "&" + finalFilterParams!
             }
             
-            let sort = appDelegate.sort
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+            print(modifiedURL)
             
-            
-            Alamofire.request(ShopStyle.Router.FilteredProducts(itemOffset, limit, category, finalFilterParams, sort)).validate().responseJSON() {
+            dataRequest = Alamofire.request(.GET, modifiedURL).responseJSON() {
                 response in
+                
+                print(response.request)
                 
                 if response.result.isSuccess {
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
@@ -90,7 +100,7 @@ class Search {
             }
             
         } else {
-            Alamofire.request(ShopStyle.Router.PopularProducts(itemOffset, limit, category)).validate().responseJSON() {
+            dataRequest = Alamofire.request(ShopStyle.Router.PopularProducts(itemOffset, limit, category)).validate().responseJSON() {
                 response in
                 
                 if response.result.isSuccess {
@@ -275,7 +285,7 @@ struct ShopStyle {
                         ]
                     return params
                     
-                    case .FilteredProducts (let offset, let limit, let category, let filters, let sort):
+                    case .FilteredProducts (let offset, let limit, let category, let filterParams, let sort):
                         var params = [
                             "pid": Router.APIKey,
                             "cat": category,
@@ -283,9 +293,9 @@ struct ShopStyle {
                             "limit": "\(limit)"
                         ]
                         
-                        if let filters = filters {
-                            params["fl"] = "\(filters)"
-                        }
+//                        if let filterParams = filterParams {
+//                            params["fl"] = "\(filterParams)"
+//                        }
                         
                         if let sort = sort {
                             params["sort"] = "\(sort)"

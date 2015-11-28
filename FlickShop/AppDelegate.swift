@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var productCategory: String?
     var category: String?
-//    var filters: [String]?
     var filterParams = [String]()
     var sort: String?
 
@@ -60,6 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            NSFontAttributeName: UIFont(name: "ProximaNova-Semibold", size: 16.0)!
 //        ]
 //        UINavigationBar.appearance().translucent = false
+    }
+    
+    func resetFilters() {
+        print("FILTER CLEARED !!!")
+        category = nil
+        filterParams.removeAll()
+        sort = nil
     }
 
 }

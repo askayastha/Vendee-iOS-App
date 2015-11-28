@@ -29,9 +29,9 @@ class CategoryFilterViewController: UITableViewController {
     deinit {
         print("CategoryFilterViewController Deallocating !!!")
         
-        if tappedCategories.count > 1 {
-            appDelegate.category = categoriesIdDict[tappedCategories.last!]
-        }
+//        if tappedCategories.count > 1 {
+//            appDelegate.category = categoriesIdDict[tappedCategories.last!]
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -131,6 +131,13 @@ class CategoryFilterViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath)
         cell?.setSelected(true, animated: false)
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        
+        // Filter Stuff
+        if tappedCategories.count > 1 {
+            appDelegate.category = categoriesIdDict[tappedCategories.last!]
+        } else {
+            appDelegate.category = nil
+        }
     }
 
     private func requestCategoryFromShopStyle() {

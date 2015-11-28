@@ -51,11 +51,13 @@ class BrandFilterViewController: UIViewController {
     }
     
     deinit {
-        populateBrandCodes()
+        print("BrandFilterViewController Deallocating !!!")
         
-        if let brandCodes = selectedBrandCodes {
-            appDelegate.filterParams.appendContentsOf(brandCodes)
-        }
+//        populateBrandCodes()
+//        
+//        if let brandCodes = selectedBrandCodes {
+//            appDelegate.filterParams.appendContentsOf(brandCodes)
+//        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -191,6 +193,13 @@ extension BrandFilterViewController: UITableViewDelegate {
         }
         
         print(selectedBrands)
+        
+        // Filter Stuff
+        populateBrandCodes()
+        
+        if let brandCodes = selectedBrandCodes {
+            appDelegate.filterParams.appendContentsOf(brandCodes)
+        }
     }
 }
 

@@ -51,11 +51,13 @@ class StoreFilterViewController: UIViewController {
     }
     
     deinit {
-        populateStoreCodes()
+        print("StoreFilterViewController Deallocating !!!")
         
-        if let storeCodes = selectedStoreCodes {
-            appDelegate.filterParams.appendContentsOf(storeCodes)
-        }
+//        populateStoreCodes()
+//        
+//        if let storeCodes = selectedStoreCodes {
+//            appDelegate.filterParams.appendContentsOf(storeCodes)
+//        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -192,6 +194,14 @@ extension StoreFilterViewController: UITableViewDelegate {
         }
         
         print(selectedStores)
+        
+        // Filter Stuff
+        populateStoreCodes()
+        
+        if let storeCodes = selectedStoreCodes {
+            appDelegate.filterParams.appendContentsOf(storeCodes)
+        }
+
     }
 }
 

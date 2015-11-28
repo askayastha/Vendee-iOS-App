@@ -26,6 +26,10 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     @IBAction func done() {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func clear() {
+        appDelegate.resetFilters()
+    }
 
     // MARK: - Navigation
 

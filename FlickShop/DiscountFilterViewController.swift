@@ -64,13 +64,9 @@ class DiscountFilterViewController: UITableViewController {
     }
     
     deinit {
-        if let saleCode = saleCode {
-            appDelegate.filterParams.append(saleCode)
-        }
+        print("DiscountFilterViewController Deallocating !!!")
         
-        if let offerCodes = offerCodes {
-            appDelegate.filterParams.appendContentsOf(offerCodes)
-        }
+        
     }
     
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {
@@ -85,6 +81,13 @@ class DiscountFilterViewController: UITableViewController {
         }
         
         print("SALE CODE: \(saleCode)")
+        
+        // Filter Stuff
+        if let saleCode = saleCode {
+            if !appDelegate.filterParams.contains(saleCode) {
+                appDelegate.filterParams.append(saleCode)
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -128,6 +131,11 @@ class DiscountFilterViewController: UITableViewController {
         
         print(offers)
         print(offerCodes)
+        
+        // Filter Stuff
+        if let offerCodes = offerCodes {
+            appDelegate.filterParams.appendContentsOf(offerCodes)
+        }
     }
     
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {

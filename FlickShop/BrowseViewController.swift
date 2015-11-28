@@ -21,7 +21,7 @@ class BrowseViewController: UICollectionViewController {
     private let footerViewIdentifier = "FooterView"
     private let headerViewIdentifier = "HeaderView"
     
-    let search = Search()
+    var search = Search()
     
     weak var delegate: ScrollEventsDelegate?
     var requestingData = false
@@ -36,6 +36,8 @@ class BrowseViewController: UICollectionViewController {
     
     deinit {
         print("Deallocating BrowseCollectionViewController !!!!!!!!!!!!!!!")
+        
+        search.dataRequest?.cancel()
     }
     
     override func viewDidLoad() {
@@ -60,6 +62,21 @@ class BrowseViewController: UICollectionViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func filterApply(segue: UIStoryboardSegue) {
+        // Cancel existing request
+        search.dataRequest?.cancel()
+        
+        // Scroll to top of the collection view
+        collectionView!.setContentOffset(CGPointZero, animated: false)
+        collectionView!.contentSize = CGSizeZero
+        
+        search = Search()
+        search.filteredSearch = true
+        collectionView!.reloadData()
+        
+        requestDataFromShopStyleForCategory(productCategory)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -98,10 +115,14 @@ class BrowseViewController: UICollectionViewController {
                     if !success {
                         print("Products Count: \(lastItem)")
                         
-                        print("Request Failed. Trying again...")
-                        strongSelf.requestingData = false
-                        strongSelf.requestDataFromShopStyleForCategory(category)
-                        // self.showError()
+                        if strongSelf.search.retryCount < limit {
+                            print("Request Failed. Trying again...")
+                            strongSelf.requestingData = false
+                            strongSelf.requestDataFromShopStyleForCategory(category)
+                            print("Request Count: \(strongSelf.search.retryCount)")
+                            strongSelf.search.retryCount++
+                        }
+                        
                     } else {
                         strongSelf.requestingData = false
                         print("Product count: \(lastItem)")

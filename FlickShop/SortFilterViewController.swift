@@ -27,9 +27,11 @@ class SortFilterViewController: UITableViewController {
     }
     
     deinit {
-        if let sortCode = sortCode {
-            appDelegate.sort = sortCode
-        }
+        print("SortFilterViewController Deallocating !!!")
+        
+//        if let sortCode = sortCode {
+//            appDelegate.sort = sortCode
+//        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +77,9 @@ class SortFilterViewController: UITableViewController {
         
         print(sort)
         print(sortCode)
+        
+        // Filter Stuff
+        appDelegate.sort = sortCode
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {

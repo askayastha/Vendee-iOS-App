@@ -242,6 +242,31 @@
 			path = FlickShopUITests;
 			sourceTree = "<group>";
 		};
+		75B6AC071C08E57200EB8F5F /* FilterControllers */ = {
+			isa = PBXGroup;
+			children = (
+				753AEA591BFF8BA10016B655 /* CategoryFilterViewController.swift */,
+				756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */,
+				7522B0C91C044BBD0055C9A6 /* StoreFilterViewController.swift */,
+				750D8E131C0617BA00D728F0 /* PriceFilterViewController.swift */,
+				750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */,
+				750D8E171C06336900D728F0 /* ColorFilterViewController.swift */,
+				750D8E1B1C0647AC00D728F0 /* SortFilterViewController.swift */,
+			);
+			name = FilterControllers;
+			sourceTree = "<group>";
+		};
+		75B6AC081C08E5A000EB8F5F /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				753AEA551BFF8B490016B655 /* ContainerFilterViewController.swift */,
+				753AEA571BFF8B820016B655 /* SideTabViewController.swift */,
+				756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */,
+				75B6AC071C08E57200EB8F5F /* FilterControllers */,
+			);
+			name = Filter;
+			sourceTree = "<group>";
+		};
 		75F12C2A1BE09D0400258874 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,18 +293,9 @@
 				75F12CF91BE0A35900258874 /* HomeViewController.swift */,
 				75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */,
 				75F12CF01BE0A35900258874 /* BrowseViewController.swift */,
+				75B6AC081C08E5A000EB8F5F /* Filter */,
 				752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */,
 				75F12CF51BE0A35900258874 /* FlickViewController.swift */,
-				753AEA551BFF8B490016B655 /* ContainerFilterViewController.swift */,
-				753AEA571BFF8B820016B655 /* SideTabViewController.swift */,
-				756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */,
-				753AEA591BFF8BA10016B655 /* CategoryFilterViewController.swift */,
-				756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */,
-				7522B0C91C044BBD0055C9A6 /* StoreFilterViewController.swift */,
-				750D8E131C0617BA00D728F0 /* PriceFilterViewController.swift */,
-				750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */,
-				750D8E171C06336900D728F0 /* ColorFilterViewController.swift */,
-				750D8E1B1C0647AC00D728F0 /* SortFilterViewController.swift */,
 				75F12CFB1BE0A35900258874 /* ProductDetailsViewController.swift */,
 			);
 			name = Controllers;

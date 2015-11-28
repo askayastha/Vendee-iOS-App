@@ -11,14 +11,16 @@ import NMRangeSlider
 
 class PriceFilterViewController: UITableViewController {
     
-    private let minValue: Float = 0
-    private let maxValue: Float = 29
+    private let minValue = 0
+    private let maxValue = 29
     
     let prices = [
         "0", "10", "25", "50", "75", "100", "125", "150", "200", "250",
         "300", "350", "400", "500", "600", "700", "800", "900", "1000", "1250",
         "1500", "1750", "2000", "2250", "2500", "3000", "3500", "4000", "4500", "5000+"
     ]
+    
+    var priceRangeCode: String?
     
     @IBOutlet weak var minPriceLabel: UILabel!
     @IBOutlet weak var maxPriceLabel: UILabel!
@@ -27,10 +29,11 @@ class PriceFilterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        priceRangeSlider.minimumValue = minValue
-        priceRangeSlider.maximumValue = maxValue
-        priceRangeSlider.lowerValue = minValue
-        priceRangeSlider.upperValue = maxValue
+        priceRangeSlider.minimumValue = Float(minValue)
+        priceRangeSlider.maximumValue = Float(maxValue)
+        priceRangeSlider.lowerValue = Float(minValue)
+        priceRangeSlider.upperValue = Float(maxValue)
+        priceRangeSlider.minimumRange = 1
         priceRangeSlider.stepValue = 1
         priceRangeSlider.stepValueContinuously = true
     }
@@ -41,6 +44,20 @@ class PriceFilterViewController: UITableViewController {
         
         minPriceLabel.text = "$" + prices[minIndex]
         maxPriceLabel.text = "$" + prices[maxIndex]
+        
+        if minIndex == minValue && maxIndex == maxValue {
+            priceRangeCode = nil
+        } else {
+            priceRangeCode = "p\(minIndex + 20):\(maxIndex + 20)"
+        }
+        
+        print("PRICE RANGE CODE: \(priceRangeCode)")
+    }
+    
+    deinit {
+        if let priceRangeCode = priceRangeCode {
+            appDelegate.filterParams.append(priceRangeCode)
+        }
     }
 
     override func didReceiveMemoryWarning() {

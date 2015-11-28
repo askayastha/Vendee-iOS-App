@@ -26,9 +26,11 @@ class Search {
     private(set) var products = NSMutableOrderedSet()
     private(set) var lastItem = 0
     
+    var filteredSearch = false
+    
     let scout = ImageScout()
     
-    func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, forCategory category: String, completion: SearchComplete) {
+    func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, var forCategory category: String, completion: SearchComplete) {
         
         if state == .Loading { // Do not request more data if a request is in process.
             return
@@ -38,91 +40,79 @@ class Search {
         state = .Loading
         var success = false
         
-        Alamofire.request(ShopStyle.Router.PopularProducts(itemOffset, limit, category)).validate().responseJSON() {
-            response in
+        if filteredSearch {
+            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             
-            if response.result.isSuccess {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                    print("----------Got results!----------")
-                    
-                    let jsonData = JSON(response.result.value!)
-//                    print(jsonData)
-                    
-                    if let productsArray = jsonData["products"].array {
-                        for item in productsArray {
-                            let id = item["id"]
-                            let buyURL = item["clickUrl"]
-                            let largeImageURL = item["image"]["sizes"]["Original"]["url"]
-                            let smallImageURL = item["image"]["sizes"]["IPhone"]["url"]
-                            let name = item["name"]
-                            let brandedName = item["brandedName"]
-                            let unbrandedName = item["unbrandedName"]
-                            let brandName = item["brand"]["name"]
-                            let brandImageURL = item["brand"]["userImage"]
-                            let price = item["priceLabel"]
-                            let salePrice = item["salePriceLabel"]
-                            let productDescription = item["description"]
-//                            var colors: [String]?
-//                            var sizes: [String]?
-                            var categories: [String]?
-                            
-//                            if let colorsArray = item["colors"].array {
-//                                colors = [String]()
-//                                for item in colorsArray {
-//                                    colors!.append(item["name"].stringValue)
-//                                }
-//                            }
-//                            
-//                            if let sizesArray = item["sizes"].array {
-//                                sizes = [String]()
-//                                for item in sizesArray {
-//                                    sizes!.append(item["name"].stringValue)
-//                                }
-//                            }
-                            
-                            if let categoriesArray = item["categories"].array {
-                                categories = [String]()
-                                for item in categoriesArray {
-                                    categories!.append(item["id"].stringValue)
-                                }
-                            }
-                            
-                            let product = Product()
-                            product.id = id.string
-                            product.buyURL = buyURL.string
-                            product.largeImageURL = largeImageURL.string
-                            product.smallImageURL = smallImageURL.string
-                            product.name = name.string
-                            product.brandedName = brandedName.string
-                            product.unbrandedName = unbrandedName.string
-                            product.brandName = brandName.string
-                            product.brandImageURL = brandImageURL.string
-                            product.formattedPrice = price.string
-                            product.formattedSalePrice = salePrice.string
-                            product.productDescription = productDescription.string
-//                            product.colors = colors
-//                            product.sizes = sizes
-                            product.categories = categories
-                            
-                            self.products.addObject(product)
+            if let cat = appDelegate.category {
+                category = cat
+            }
+            
+            var finalFilterParams: String?
+            
+            if appDelegate.filterParams.count > 0 {
+                var filters = [String]()
+                
+                for filter in appDelegate.filterParams {
+                    filters.append("fl=\(filter)")
+                }
+                
+                let initialfilterParams = filters.joinWithSeparator("&")
+                
+                finalFilterParams = initialfilterParams.substringFromIndex(initialfilterParams.startIndex.advancedBy(2))
+            }
+            
+            let sort = appDelegate.sort
+            
+            
+            Alamofire.request(ShopStyle.Router.FilteredProducts(itemOffset, limit, category, finalFilterParams, sort)).validate().responseJSON() {
+                response in
+                
+                if response.result.isSuccess {
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                        print("----------Got results!----------")
+                        
+                        let jsonData = JSON(response.result.value!)
+                        self.populateProducts(jsonData)
+                        success = true
+                        self.state = .Success
+                        print("Request successful")
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            completion(success, self.lastItem)
                         }
                         
-                        self.lastItem = self.products.count
                     }
+                } else {
+                    self.state = .Failed
                     
-                    success = true
-                    self.state = .Success
-                    print("Request successful")
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(success, self.lastItem)
-                    }
-                    
+                    completion(success, self.lastItem)
                 }
-            } else {
-                self.state = .Failed
+            }
+            
+        } else {
+            Alamofire.request(ShopStyle.Router.PopularProducts(itemOffset, limit, category)).validate().responseJSON() {
+                response in
                 
-                completion(success, self.lastItem)
+                if response.result.isSuccess {
+                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                        print("----------Got results!----------")
+                        
+                        let jsonData = JSON(response.result.value!)
+                        self.populateProducts(jsonData)
+                        success = true
+                        self.state = .Success
+                        print("Request successful")
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            completion(success, self.lastItem)
+                        }
+                        
+                    }
+                } else {
+                    self.state = .Failed
+                    
+                    completion(success, self.lastItem)
+                }
             }
         }
     }
@@ -183,6 +173,53 @@ class Search {
             }
         }
     }
+    
+    func populateProducts(json: JSON) {
+        if let productsArray = json["products"].array {
+            
+            for item in productsArray {
+                let id = item["id"]
+                let buyURL = item["clickUrl"]
+                let largeImageURL = item["image"]["sizes"]["Original"]["url"]
+                let smallImageURL = item["image"]["sizes"]["IPhone"]["url"]
+                let name = item["name"]
+                let brandedName = item["brandedName"]
+                let unbrandedName = item["unbrandedName"]
+                let brandName = item["brand"]["name"]
+                let brandImageURL = item["brand"]["userImage"]
+                let price = item["priceLabel"]
+                let salePrice = item["salePriceLabel"]
+                let productDescription = item["description"]
+                var categories: [String]?
+                
+                if let categoriesArray = item["categories"].array {
+                    categories = [String]()
+                    for item in categoriesArray {
+                        categories!.append(item["id"].stringValue)
+                    }
+                }
+                
+                let product = Product()
+                product.id = id.string
+                product.buyURL = buyURL.string
+                product.largeImageURL = largeImageURL.string
+                product.smallImageURL = smallImageURL.string
+                product.name = name.string
+                product.brandedName = brandedName.string
+                product.unbrandedName = unbrandedName.string
+                product.brandName = brandName.string
+                product.brandImageURL = brandImageURL.string
+                product.formattedPrice = price.string
+                product.formattedSalePrice = salePrice.string
+                product.productDescription = productDescription.string
+                product.categories = categories
+                
+                products.addObject(product)
+            }
+            
+            lastItem = products.count
+        }
+    }
 }
 
 struct ShopStyle {
@@ -192,6 +229,7 @@ struct ShopStyle {
         
         case PopularProducts(Int, Int, String)
         case Categories(String)
+        case FilteredProducts(Int, Int, String, String?, String?)
         
         var URLRequest: NSMutableURLRequest {
 //            let (path: String, parameters: [String: AnyObject]) = {
@@ -210,7 +248,10 @@ struct ShopStyle {
                     
                     case .Categories(_):
                         return "categories"
-                }
+                    
+                    case .FilteredProducts(_):
+                        return "products"
+                    }
             }()
             
             let parameters: [String: AnyObject] = {
@@ -233,6 +274,24 @@ struct ShopStyle {
                             "cat": category
                         ]
                     return params
+                    
+                    case .FilteredProducts (let offset, let limit, let category, let filters, let sort):
+                        var params = [
+                            "pid": Router.APIKey,
+                            "cat": category,
+                            "offset": "\(offset)",
+                            "limit": "\(limit)"
+                        ]
+                        
+                        if let filters = filters {
+                            params["fl"] = "\(filters)"
+                        }
+                        
+                        if let sort = sort {
+                            params["sort"] = "\(sort)"
+                        }
+                        
+                        return params
                 }
             }()
         

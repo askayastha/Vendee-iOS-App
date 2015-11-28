@@ -16,6 +16,9 @@ class StoreFilterViewController: UIViewController {
     var searchController: UISearchController!
     var searching = false
     
+    var selectedStores = [String]()
+    var selectedStoreCodes: [String]?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
     
@@ -47,6 +50,14 @@ class StoreFilterViewController: UIViewController {
         searchController.delegate = self
     }
     
+    deinit {
+        populateStoreCodes()
+        
+        if let storeCodes = selectedStoreCodes {
+            appDelegate.filterParams.appendContentsOf(storeCodes)
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -56,6 +67,37 @@ class StoreFilterViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func populateStoreCodes() {
+        let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
+        
+        if !selectedStores.isEmpty {
+            var selectedStoreCodesArray = [String]()
+            
+            for selectedStore in selectedStores {
+                var firstChar = String(selectedStore.characters.first!).uppercaseString
+                
+                if !alphabets.contains(firstChar) {
+                    firstChar = "#"
+                }
+                
+                let storeSection = stores[firstChar]!
+                
+                for store in storeSection {
+                    if selectedStore == store["name"] as! String {
+                        let storeCode = store["id"] as! String
+                        selectedStoreCodesArray.append("r" + storeCode)
+                        break
+                    }
+                }
+            }
+            
+            selectedStoreCodes = selectedStoreCodesArray
+            
+        } else {
+            selectedStoreCodes = nil
+        }
     }
     
 }
@@ -78,9 +120,9 @@ extension StoreFilterViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StoreCell", forIndexPath: indexPath)
         
-        let searchString = searchController.searchBar.text!
+        cell.accessoryType = UITableViewCellAccessoryType.None
         
-        if searching && !searchString.isEmpty {
+        if searching && !isKeywordEmpty() {
             cell.textLabel?.text = filteredStores[indexPath.row]
             
         } else {
@@ -89,6 +131,18 @@ extension StoreFilterViewController: UITableViewDataSource {
             
             cell.textLabel?.text = storeSection[indexPath.row]["name"] as? String
         }
+        
+        // Visually checkmark the selected stores.
+        if selectedStores.contains((cell.textLabel?.text)!) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        
+        //        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
+        //            if selectedIndexPaths.contains(indexPath) && selectedStores.contains((cell.textLabel?.text)!) {
+        //                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        //                cell.highlighted = true
+        //            }
+        //        }
         
         return cell
     }
@@ -105,6 +159,39 @@ extension StoreFilterViewController: UITableViewDataSource {
         let searchString = searchController.searchBar.text!
         
         return searchString.isEmpty
+    }
+}
+
+// MARK: - Table view delegate
+extension StoreFilterViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let storeName = (cell?.textLabel?.text)!
+        
+//        if searching && !isKeywordEmpty() {
+//            storeName = selectedStores[indexPath.row]
+//            
+//        } else {
+//            let key = keys[indexPath.section]
+//            let storeSection = stores[key]!
+//            
+//            storeName = storeSection[indexPath.row]["name"] as! String
+//        }
+        
+        if !selectedStores.contains(storeName) {
+            selectedStores.append(storeName)
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            
+        } else {
+            let removeIndex = selectedStores.indexOf(storeName)!
+            selectedStores.removeAtIndex(removeIndex)
+            cell?.accessoryType = UITableViewCellAccessoryType.None
+        }
+        
+        print(selectedStores)
     }
 }
 

@@ -11,7 +11,7 @@ import NMRangeSlider
 
 class DiscountFilterViewController: UITableViewController {
     
-//    let discounts = [
+//    let discountsDict = [
 //        "Regular and Sale Items": "d",
 //        "10": "d0",
 //        "20": "d1",
@@ -22,7 +22,7 @@ class DiscountFilterViewController: UITableViewController {
 //        "70": "d6"
 //    ]
     
-    let discounts: OrderedDictionary<String, String> = [
+    let discountsDict: OrderedDictionary<String, String> = [
         ("Regular and Sale Items", "d"),
         ("10", "d0"),
         ("20", "d1"),
@@ -33,6 +33,18 @@ class DiscountFilterViewController: UITableViewController {
         ("70", "d6")
     ]
     
+    let offersDict: OrderedDictionary<String, String> = [
+        ("New today", "d100"),
+        ("New this week", "d101"),
+        ("Free Shipping", "o0"),
+        ("Special Offer", "o1"),
+        ("Coupon Code", "o2")
+    ]
+    
+    var saleCode: String?
+    var offerCodes: [String]?
+    
+    var offers = [String]()
     var keys = [String]()
     
     @IBOutlet weak var discountLabel: UILabel!
@@ -51,86 +63,81 @@ class DiscountFilterViewController: UITableViewController {
         discountSlider.upperHandleHidden = true
     }
     
+    deinit {
+        if let saleCode = saleCode {
+            appDelegate.filterParams.append(saleCode)
+        }
+        
+        if let offerCodes = offerCodes {
+            appDelegate.filterParams.appendContentsOf(offerCodes)
+        }
+    }
+    
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {
         let index: Int = Int(sender.lowerValue)
         
         if index == 0 {
-            discountLabel.text = discounts.orderedKeys[index]
+            discountLabel.text = discountsDict.orderedKeys[index]
+            saleCode = nil
         } else {
-            discountLabel.text = discounts.orderedKeys[index] + "% on Sale"
+            discountLabel.text = discountsDict.orderedKeys[index] + "% on Sale"
+            saleCode = discountsDict[discountsDict.orderedKeys[index]]
         }
+        
+        print("SALE CODE: \(saleCode)")
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    // MARK: - Table view data source
-
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
-
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let offerName = (cell?.textLabel?.text)!
+        
+        // Keep track of the offers
+        if !offers.contains(offerName) {
+            offers.append(offerName)
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            
+        } else {
+            let removeIndex = offers.indexOf(offerName)!
+            offers.removeAtIndex(removeIndex)
+            cell?.accessoryType = UITableViewCellAccessoryType.None
+        }
+        
+        // Keep track of the offer codes
+        if !offers.isEmpty {
+            var offerCodesArray = [String]()
+            
+            for offer in offers {
+                let offerCode = offersDict[offer]!
+                offerCodesArray.append(offerCode)
+            }
+            
+            offerCodes = offerCodesArray
+            
+        } else {
+            offerCodes = nil
+        }
+        
+        print(offers)
+        print(offerCodes)
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+    
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let skipHighlightRows = [0, 1, 2, 5]
+        
+        if skipHighlightRows.contains(indexPath.row) {
+            return false
+        }
+        
         return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -16,6 +16,9 @@ class BrandFilterViewController: UIViewController {
     var searchController: UISearchController!
     var searching = false
     
+    var selectedBrands = [String]()
+    var selectedBrandCodes: [String]?
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
 
@@ -47,6 +50,14 @@ class BrandFilterViewController: UIViewController {
         searchController.delegate = self
     }
     
+    deinit {
+        populateBrandCodes()
+        
+        if let brandCodes = selectedBrandCodes {
+            appDelegate.filterParams.appendContentsOf(brandCodes)
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
@@ -56,6 +67,37 @@ class BrandFilterViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func populateBrandCodes() {
+        let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
+        
+        if !selectedBrands.isEmpty {
+            var selectedBrandCodesArray = [String]()
+            
+            for selectedBrand in selectedBrands {
+                var firstChar = String(selectedBrand.characters.first!).uppercaseString
+            
+                if !alphabets.contains(firstChar) {
+                    firstChar = "#"
+                }
+                
+                let brandSection = brands[firstChar]!
+                
+                for brand in brandSection {
+                    if selectedBrand == brand["name"] as! String {
+                        let brandCode = brand["id"] as! String
+                        selectedBrandCodesArray.append("b" + brandCode)
+                        break
+                    }
+                }
+            }
+            
+            selectedBrandCodes = selectedBrandCodesArray
+            
+        } else {
+            selectedBrandCodes = nil
+        }
     }
 
 }
@@ -68,7 +110,6 @@ extension BrandFilterViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         let key = keys[section]
         let brandSection = brands[key]!
         
@@ -78,9 +119,9 @@ extension BrandFilterViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BrandCell", forIndexPath: indexPath)
         
-        let searchString = searchController.searchBar.text!
+        cell.accessoryType = UITableViewCellAccessoryType.None
         
-        if searching && !searchString.isEmpty {
+        if searching && !isKeywordEmpty() {
             cell.textLabel?.text = filteredBrands[indexPath.row]
             
         } else {
@@ -89,6 +130,18 @@ extension BrandFilterViewController: UITableViewDataSource {
             
             cell.textLabel?.text = brandSection[indexPath.row]["name"] as? String
         }
+        
+        // Visually checkmark the selected brands.
+        if selectedBrands.contains((cell.textLabel?.text)!) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        
+//        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
+//            if selectedIndexPaths.contains(indexPath) && selectedBrands.contains((cell.textLabel?.text)!) {
+//                cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+//                cell.highlighted = true
+//            }
+//        }
         
         return cell
     }
@@ -105,6 +158,39 @@ extension BrandFilterViewController: UITableViewDataSource {
         let searchString = searchController.searchBar.text!
         
         return searchString.isEmpty
+    }
+}
+
+// MARK: - Table view delegate
+extension BrandFilterViewController: UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let brandName = (cell?.textLabel?.text)!
+        
+//        if searching && !isKeywordEmpty() {
+//            brandName = filteredBrands[indexPath.row]
+//            
+//        } else {
+//            let key = keys[indexPath.section]
+//            let brandSection = brands[key]!
+//            
+//            brandName = brandSection[indexPath.row]["name"] as! String
+//        }
+        
+        if !selectedBrands.contains(brandName) {
+            selectedBrands.append(brandName)
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            
+        } else {
+            let removeIndex = selectedBrands.indexOf(brandName)!
+            selectedBrands.removeAtIndex(removeIndex)
+            cell?.accessoryType = UITableViewCellAccessoryType.None
+        }
+        
+        print(selectedBrands)
     }
 }
 

@@ -84,9 +84,7 @@ class DiscountFilterViewController: UITableViewController {
         
         // Filter Stuff
         if let saleCode = saleCode {
-            if !appDelegate.filterParams.contains(saleCode) {
-                appDelegate.filterParams.append(saleCode)
-            }
+            appDelegate.filterParams["discount"] = saleCode
         }
     }
 
@@ -134,7 +132,12 @@ class DiscountFilterViewController: UITableViewController {
         
         // Filter Stuff
         if let offerCodes = offerCodes {
-            appDelegate.filterParams.appendContentsOf(offerCodes)
+            var filterCodes = appDelegate.filterParams["offer"] as? [String]
+            filterCodes?.appendContentsOf(offerCodes)
+            
+            appDelegate.filterParams["offer"] = filterCodes
+            
+//            appDelegate.filterParams.appendContentsOf(offerCodes)
         }
     }
     

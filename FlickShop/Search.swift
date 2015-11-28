@@ -58,8 +58,19 @@ class Search {
             if appDelegate.filterParams.count > 0 {
                 var filters = [String]()
                 
-                for filter in appDelegate.filterParams {
-                    filters.append("fl=\(filter)")
+//                for filter in appDelegate.filterParams {
+//                    filters.append("fl=\(filter)")
+//                }
+                
+                for filterCodes in appDelegate.filterParams.values {
+                    if let codes = filterCodes as? [String] {
+                        for code in codes {
+                            filters.append("fl=\(code)")
+                        }
+                        
+                    } else if let codes = filterCodes as? String {
+                        filters.append("fl=\(codes)")
+                    }
                 }
                 
                 let initialfilterParams = filters.joinWithSeparator("&")

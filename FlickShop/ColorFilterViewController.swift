@@ -128,7 +128,12 @@ class ColorFilterViewController: UITableViewController {
         
         // Filter Stuff
         if let colorCodes = colorCodes {
-            appDelegate.filterParams.appendContentsOf(colorCodes)
+            var filterCodes = appDelegate.filterParams["color"] as! [String]
+            filterCodes.appendContentsOf(colorCodes)
+            
+            appDelegate.filterParams["color"] = filterCodes
+            
+//            appDelegate.filterParams.appendContentsOf(colorCodes)
         }
     }
 

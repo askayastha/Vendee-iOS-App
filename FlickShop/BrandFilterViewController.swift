@@ -198,7 +198,12 @@ extension BrandFilterViewController: UITableViewDelegate {
         populateBrandCodes()
         
         if let brandCodes = selectedBrandCodes {
-            appDelegate.filterParams.appendContentsOf(brandCodes)
+            var filterCodes = appDelegate.filterParams["brand"] as! [String]
+            filterCodes.appendContentsOf(brandCodes)
+            
+            appDelegate.filterParams["brand"] = filterCodes
+            
+//            appDelegate.filterParams.appendContentsOf(brandCodes)
         }
     }
 }

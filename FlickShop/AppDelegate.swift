@@ -15,7 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var productCategory: String?
     var category: String?
-    var filterParams = [String]()
+    var filterParams: [String: AnyObject?] = [
+        "brand": [String](),
+        "store": [String](),
+        "price": nil,
+        "discount": nil,
+        "offer": [String](),
+        "color": [String]()
+    ]
     var sort: String?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -64,7 +71,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func resetFilters() {
         print("FILTER CLEARED !!!")
         category = nil
-        filterParams.removeAll()
+        filterParams = [
+            "brand": [String](),
+            "store": [String](),
+            "price": nil,
+            "discount": nil,
+            "offer": [String](),
+            "color": [String]()
+        ]
         sort = nil
     }
 

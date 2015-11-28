@@ -199,7 +199,12 @@ extension StoreFilterViewController: UITableViewDelegate {
         populateStoreCodes()
         
         if let storeCodes = selectedStoreCodes {
-            appDelegate.filterParams.appendContentsOf(storeCodes)
+            var filterCodes = appDelegate.filterParams["store"] as! [String]
+            filterCodes.appendContentsOf(storeCodes)
+            
+            appDelegate.filterParams["store"] = filterCodes
+            
+//            appDelegate.filterParams.appendContentsOf(storeCodes)
         }
 
     }

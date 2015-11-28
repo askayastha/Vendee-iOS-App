@@ -55,9 +55,7 @@ class PriceFilterViewController: UITableViewController {
         
         // Filter Stuff
         if let priceRangeCode = priceRangeCode {
-            if !appDelegate.filterParams.contains(priceRangeCode) {
-                appDelegate.filterParams.append(priceRangeCode)
-            }
+            appDelegate.filterParams["price"] = priceRangeCode
         }
     }
     

@@ -27,6 +27,7 @@
 		75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E3A1BDFBAAE006FD010 /* LaunchScreen.storyboard */; };
 		75A31E471BDFBAAE006FD010 /* FlickShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E461BDFBAAE006FD010 /* FlickShopTests.swift */; };
 		75A31E521BDFBAAE006FD010 /* FlickShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */; };
+		75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */; };
 		75BE17531C04DAA4007E0A59 /* Shopstyle_Brands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */; };
 		75BE17551C04DB88007E0A59 /* Shopstyle_Stores.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */; };
 		75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */; };
@@ -114,6 +115,7 @@
 		75A31E4D1BDFBAAE006FD010 /* FlickShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlickShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickShopUITests.swift; sourceTree = "<group>"; };
 		75A31E531BDFBAAE006FD010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSFSafariViewController.swift; sourceTree = "<group>"; };
 		75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shopstyle_Brands.plist; sourceTree = "<group>"; };
 		75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shopstyle_Stores.plist; sourceTree = "<group>"; };
 		75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerBrowseViewController.swift; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 				752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */,
 				75F12CF51BE0A35900258874 /* FlickViewController.swift */,
 				75F12CFB1BE0A35900258874 /* ProductDetailsViewController.swift */,
+				75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 				75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */,
 				750D8E161C06221900D728F0 /* DiscountFilterViewController.swift in Sources */,
 				75F12D061BE0A35900258874 /* CustomLayoutAttributes.swift in Sources */,
+				75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */,
 				750D8E1A1C06423C00D728F0 /* OrderedDictionary.swift in Sources */,
 				75F12CC51BE0A00B00258874 /* ImageParser.swift in Sources */,
 				75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */,

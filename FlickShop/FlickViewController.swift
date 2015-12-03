@@ -242,6 +242,7 @@ extension FlickViewController {
 extension FlickViewController: FlickPageCellDelegate {
     
     func openItemInStoreWithURL(url: NSURL?) {
+        indexPath = collectionView!.indexPathsForVisibleItems().first
 //        if #available(iOS 9.0, *) {
         if let url = url {
             let safariVC = CustomSFSafariViewController(URL: url)

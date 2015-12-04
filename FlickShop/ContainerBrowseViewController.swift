@@ -14,7 +14,8 @@ class ContainerBrowseViewController: UIViewController {
     var brands: [Brand]!
     var didScrollCount: Int = 0
     
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var backButton: FloatingButton!
+    @IBOutlet weak var filterButton: FloatingButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,8 @@ class ContainerBrowseViewController: UIViewController {
         
         didScrollCount = 0
         backButton.alpha = 1.0
+        backButton.adjustsImageWhenHighlighted = false
+        filterButton.adjustsImageWhenHighlighted = false
     }
 
     override func didReceiveMemoryWarning() {

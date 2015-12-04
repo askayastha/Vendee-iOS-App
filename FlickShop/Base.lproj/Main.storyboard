@@ -11,6 +11,7 @@
             <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
             <string>ProximaNova-Regular</string>
+            <string>ProximaNova-Regular</string>
         </mutableArray>
         <mutableArray key="ProximaNova-Sbold.ttf">
             <string>ProximaNova-Semibold</string>
@@ -673,23 +674,37 @@
                         <animations/>
                         <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideTabCell" textLabel="QzJ-I1-cp4" style="IBUITableViewCellStyleDefault" id="6dy-h1-2kK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideTabCell" id="6dy-h1-2kK">
                                 <rect key="frame" x="0.0" y="28" width="100" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6dy-h1-2kK" id="WT2-C1-GOu">
                                     <rect key="frame" x="0.0" y="0.0" width="100" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QzJ-I1-cp4">
-                                            <rect key="frame" x="15" y="0.0" width="70" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circular_check" translatesAutoresizingMaskIntoConstraints="NO" id="4xp-Ou-QgE">
+                                            <rect key="frame" x="8" y="16" width="12" height="12"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="12" id="IEz-Pf-6UQ"/>
+                                                <constraint firstAttribute="height" constant="12" id="VBN-BX-cv9"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-M7-I32">
+                                            <rect key="frame" x="28" y="13" width="57" height="18"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="12Y-M7-I32" firstAttribute="centerY" secondItem="WT2-C1-GOu" secondAttribute="centerY" id="8NC-8g-IV7"/>
+                                        <constraint firstAttribute="trailing" secondItem="12Y-M7-I32" secondAttribute="trailing" constant="15" id="T8D-mk-E7J"/>
+                                        <constraint firstItem="4xp-Ou-QgE" firstAttribute="centerY" secondItem="WT2-C1-GOu" secondAttribute="centerY" id="d9i-Zg-NUb"/>
+                                        <constraint firstItem="4xp-Ou-QgE" firstAttribute="leading" secondItem="WT2-C1-GOu" secondAttribute="leading" constant="8" id="g5w-r0-9LH"/>
+                                        <constraint firstItem="12Y-M7-I32" firstAttribute="leading" secondItem="4xp-Ou-QgE" secondAttribute="trailing" constant="8" id="ukH-qZ-7wK"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -1059,7 +1074,7 @@
                                 <state key="normal" image="filter"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="1" green="0.6588235294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1076,7 +1091,7 @@
                                 <state key="normal" image="back_arrow"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="1" green="0.6588235294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1135,7 +1150,7 @@
                                 <state key="normal" image="back_arrow"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="1" green="0.6588235294117647" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1338,8 +1353,9 @@
     </scenes>
     <resources>
         <image name="back_arrow" width="32" height="32"/>
+        <image name="circular_check" width="12" height="12"/>
         <image name="close" width="16" height="16"/>
         <image name="filter" width="32" height="32"/>
     </resources>
-    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+    <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
 </document>

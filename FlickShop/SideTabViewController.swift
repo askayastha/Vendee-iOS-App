@@ -23,9 +23,6 @@ class SideTabViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,21 +33,60 @@ class SideTabViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return sideTabs.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SideTabCell", forIndexPath: indexPath)
+        
+        let selectedImageView = cell.viewWithTag(1000) as? UIImageView!
+        let textLabel = cell.viewWithTag(1001) as? UILabel
 
-        cell.textLabel?.text = sideTabs[indexPath.row]
+        selectedImageView?.hidden = !isSelectedFilter(sideTabs[indexPath.row])
+        textLabel?.text = sideTabs[indexPath.row]
 
         return cell
+    }
+    
+    func isSelectedFilter(filter: String) -> Bool {
+        
+        let filter = filter.lowercaseString
+        var filterSelected = false
+        
+        switch filter {
+            case "category":
+                if let _ = appDelegate.category {
+                    filterSelected = true
+                }
+            case "sort":
+                if let _ = appDelegate.sort {
+                    filterSelected = true
+                }
+            case "brand", "store", "color":
+                if let codes = appDelegate.filterParams[filter] as? [String] {
+                    filterSelected = codes.count > 0
+                }
+            case "price":
+                if let _ = appDelegate.filterParams[filter] as? String {
+                    filterSelected = true
+                }
+            case "discount":
+                if let _ = appDelegate.filterParams[filter] as? String {
+                    filterSelected = true
+                } else if let  codes = appDelegate.filterParams["offer"] as? [String] {
+                    filterSelected = codes.count > 0
+                } else {
+                    filterSelected = false
+                }
+            default:
+                filterSelected = false
+        }
+        
+        return filterSelected
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

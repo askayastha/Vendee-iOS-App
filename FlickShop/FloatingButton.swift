@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class FloatingButton: UIButton {
     
-    let brightOrange = UIColor(red: 255/255, green: 168/255, blue: 0, alpha: 1.0)
+//    let brightOrange = UIColor(red: 255/255, green: 168/255, blue: 0, alpha: 1.0)
 
     @IBInspectable var fillColor: UIColor!
     
@@ -35,7 +35,7 @@ class FloatingButton: UIButton {
     override var highlighted: Bool {
         
         didSet {
-            fillColor = highlighted ? UIColor.orangeColor() : brightOrange
+            fillColor = highlighted ? UIColor.lightGrayColor() : UIColor.darkGrayColor()
             setNeedsDisplay()
         }
     }

@@ -28,10 +28,6 @@ class SortFilterViewController: UITableViewController {
     
     deinit {
         print("SortFilterViewController Deallocating !!!")
-        
-//        if let sortCode = sortCode {
-//            appDelegate.sort = sortCode
-//        }
     }
 
     override func didReceiveMemoryWarning() {

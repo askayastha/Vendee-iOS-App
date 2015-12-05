@@ -52,12 +52,6 @@ class BrandFilterViewController: UIViewController {
     
     deinit {
         print("BrandFilterViewController Deallocating !!!")
-        
-//        populateBrandCodes()
-//        
-//        if let brandCodes = selectedBrandCodes {
-//            appDelegate.filterParams.appendContentsOf(brandCodes)
-//        }
     }
     
     override func viewWillLayoutSubviews() {

@@ -56,10 +56,6 @@ class ColorFilterViewController: UITableViewController {
     
     deinit {
         print("ColorFilterViewController Deallocating !!!")
-        
-//        if let colorCodes = colorCodes {
-//            appDelegate.filterParams.appendContentsOf(colorCodes)
-//        }
     }
 
     override func didReceiveMemoryWarning() {

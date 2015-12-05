@@ -65,8 +65,6 @@ class DiscountFilterViewController: UITableViewController {
     
     deinit {
         print("DiscountFilterViewController Deallocating !!!")
-        
-        
     }
     
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {

@@ -28,10 +28,6 @@ class CategoryFilterViewController: UITableViewController {
     
     deinit {
         print("CategoryFilterViewController Deallocating !!!")
-        
-//        if tappedCategories.count > 1 {
-//            appDelegate.category = categoriesIdDict[tappedCategories.last!]
-//        }
     }
 
     override func didReceiveMemoryWarning() {

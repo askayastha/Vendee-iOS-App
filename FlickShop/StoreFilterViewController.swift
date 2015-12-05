@@ -52,12 +52,6 @@ class StoreFilterViewController: UIViewController {
     
     deinit {
         print("StoreFilterViewController Deallocating !!!")
-        
-//        populateStoreCodes()
-//        
-//        if let storeCodes = selectedStoreCodes {
-//            appDelegate.filterParams.appendContentsOf(storeCodes)
-//        }
     }
     
     override func viewWillLayoutSubviews() {

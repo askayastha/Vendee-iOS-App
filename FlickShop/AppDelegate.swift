@@ -80,6 +80,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             "color": [String]()
         ]
         sort = nil
+        
+        let brands = filterParams["brand"] as! [String]
+        
+        print("Brand Count: \(brands.count)")
     }
 
 }

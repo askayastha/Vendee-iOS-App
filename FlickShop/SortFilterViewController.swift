@@ -80,6 +80,9 @@ class SortFilterViewController: UITableViewController {
         
         // Filter Stuff
         appDelegate.sort = sortCode
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {

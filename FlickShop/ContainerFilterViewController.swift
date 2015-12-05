@@ -29,6 +29,9 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
     @IBAction func clear() {
         appDelegate.resetFilters()
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName("didFilterChange", object: nil)
     }
 
     // MARK: - Navigation

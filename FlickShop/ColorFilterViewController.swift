@@ -47,7 +47,7 @@ class ColorFilterViewController: UITableViewController {
     
     var keys = [String]()
     var colors = [String]()
-    var colorCodes: [String]?
+    var colorCodes = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,21 +120,17 @@ class ColorFilterViewController: UITableViewController {
             colorCodes = colorCodesArray
             
         } else {
-            colorCodes = nil
+            colorCodes.removeAll()
         }
         
         print(colors)
         print(colorCodes)
         
         // Filter Stuff
-        if let colorCodes = colorCodes {
-            var filterCodes = appDelegate.filterParams["color"] as! [String]
-            filterCodes.appendContentsOf(colorCodes)
-            
-            appDelegate.filterParams["color"] = filterCodes
-            
-//            appDelegate.filterParams.appendContentsOf(colorCodes)
-        }
+        appDelegate.filterParams["color"] = colorCodes
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 
 }

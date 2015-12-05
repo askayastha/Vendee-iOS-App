@@ -42,9 +42,9 @@ class DiscountFilterViewController: UITableViewController {
     ]
     
     var saleCode: String?
-    var offerCodes: [String]?
-    
     var offers = [String]()
+    var offerCodes = [String]()
+    
     var keys = [String]()
     
     @IBOutlet weak var discountLabel: UILabel!
@@ -85,7 +85,12 @@ class DiscountFilterViewController: UITableViewController {
         // Filter Stuff
         if let saleCode = saleCode {
             appDelegate.filterParams["discount"] = saleCode
+        } else {
+            appDelegate.filterParams["discount"] = nil
         }
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -124,21 +129,17 @@ class DiscountFilterViewController: UITableViewController {
             offerCodes = offerCodesArray
             
         } else {
-            offerCodes = nil
+            offerCodes.removeAll()
         }
         
         print(offers)
         print(offerCodes)
         
         // Filter Stuff
-        if let offerCodes = offerCodes {
-            var filterCodes = appDelegate.filterParams["offer"] as? [String]
-            filterCodes?.appendContentsOf(offerCodes)
-            
-            appDelegate.filterParams["offer"] = filterCodes
-            
-//            appDelegate.filterParams.appendContentsOf(offerCodes)
-        }
+        appDelegate.filterParams["offer"] = offerCodes
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
     
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -56,7 +56,12 @@ class PriceFilterViewController: UITableViewController {
         // Filter Stuff
         if let priceRangeCode = priceRangeCode {
             appDelegate.filterParams["price"] = priceRangeCode
+        } else {
+            appDelegate.filterParams["price"] = nil
         }
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
     
     deinit {

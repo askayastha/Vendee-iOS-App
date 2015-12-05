@@ -17,7 +17,7 @@ class StoreFilterViewController: UIViewController {
     var searching = false
     
     var selectedStores = [String]()
-    var selectedStoreCodes: [String]?
+    var selectedStoreCodes = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -98,7 +98,7 @@ class StoreFilterViewController: UIViewController {
             selectedStoreCodes = selectedStoreCodesArray
             
         } else {
-            selectedStoreCodes = nil
+            selectedStoreCodes.removeAll()
         }
     }
     
@@ -198,15 +198,10 @@ extension StoreFilterViewController: UITableViewDelegate {
         // Filter Stuff
         populateStoreCodes()
         
-        if let storeCodes = selectedStoreCodes {
-            var filterCodes = appDelegate.filterParams["store"] as! [String]
-            filterCodes.appendContentsOf(storeCodes)
-            
-            appDelegate.filterParams["store"] = filterCodes
-            
-//            appDelegate.filterParams.appendContentsOf(storeCodes)
-        }
-
+        appDelegate.filterParams["store"] = selectedStoreCodes
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 }
 

@@ -296,7 +296,7 @@ struct ShopStyle {
                         ]
                     return params
                     
-                    case .FilteredProducts (let offset, let limit, let category, let filterParams, let sort):
+                    case .FilteredProducts (let offset, let limit, let category, let _, let sort):
                         var params = [
                             "pid": Router.APIKey,
                             "cat": category,

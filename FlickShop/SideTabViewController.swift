@@ -23,6 +23,8 @@ class SideTabViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +63,7 @@ class SideTabViewController: UITableViewController {
             case "category":
                 if let _ = appDelegate.category {
                     filterSelected = true
+                    print("CATEGORY FILTER")
                 }
             case "sort":
                 if let _ = appDelegate.sort {
@@ -77,10 +80,8 @@ class SideTabViewController: UITableViewController {
             case "discount":
                 if let _ = appDelegate.filterParams[filter] as? String {
                     filterSelected = true
-                } else if let  codes = appDelegate.filterParams["offer"] as? [String] {
+                } else if let codes = appDelegate.filterParams["offer"] as? [String] {
                     filterSelected = codes.count > 0
-                } else {
-                    filterSelected = false
                 }
             default:
                 filterSelected = false
@@ -101,6 +102,10 @@ class SideTabViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    
+    func refreshTable() {
+        tableView.reloadData()
     }
 
 }

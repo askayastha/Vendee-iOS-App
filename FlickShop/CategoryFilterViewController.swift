@@ -107,10 +107,14 @@ class CategoryFilterViewController: UITableViewController {
             
             var indexPaths = [NSIndexPath]()
             
-            for indexPath in tableView.indexPathsForVisibleRows! {
-                if indexPath.row > tappedCategories.count {
-                    indexPaths.append(indexPath)
-                }
+//            for indexPath in tableView.indexPathsForVisibleRows! {
+//                if indexPath.row > tappedCategories.count {
+//                    indexPaths.append(indexPath)
+//                }
+//            }
+            
+            for indexPath in tableView.indexPathsForVisibleRows! where indexPath.row > tappedCategories.count {
+                indexPaths.append(indexPath)
             }
             
             print("Old Categories Count: \(oldCategoriesCount)")
@@ -138,6 +142,12 @@ class CategoryFilterViewController: UITableViewController {
         } else {
             appDelegate.category = nil
         }
+        
+        print(tappedCategories)
+        
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 
     private func requestCategoryFromShopStyle() {
@@ -171,8 +181,10 @@ class CategoryFilterViewController: UITableViewController {
                             
                             if category.id == strongSelf.productCategory || category.parentId == strongSelf.productCategory {
                                 strongSelf.categories.append(category.shortName!)
-                                strongSelf.categoriesIdDict[category.shortName!] = category.id!
                             }
+                            
+                            // Make of dictionary of [Category: CategoryID]
+                            strongSelf.categoriesIdDict[category.shortName!] = category.id!
                         }
                         
                         strongSelf.tableView.reloadData()

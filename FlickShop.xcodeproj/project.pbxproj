@@ -21,6 +21,7 @@
 		753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */; };
 		753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */; };
 		753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */; };
+		7551D3461C134A040088D32B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551D3451C134A040088D32B /* Constants.swift */; };
 		756FC4E71C01B03F007AB0C5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */; };
 		756FC4E91C01B16D007AB0C5 /* SwitchSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */; };
 		756FC4EB1C01C7F3007AB0C5 /* BrandFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */; };
@@ -104,6 +105,7 @@
 		753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
 		753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
 		753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		7551D3451C134A040088D32B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchSegue.swift; sourceTree = "<group>"; };
 		756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandFilterViewController.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				75F12CE21BE0A24100258874 /* Category.swift */,
 				75F12CE41BE0A24100258874 /* Search.swift */,
 				75DD48D81C0735A100C4C34D /* CategorySearch.swift */,
+				7551D3451C134A040088D32B /* Constants.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -630,6 +633,7 @@
 				75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */,
 				75F12D0E1BE0A35900258874 /* ProductDetailsViewController.swift in Sources */,
 				75F12D151BE0A3B800258874 /* Alamofire+CustomResponse.swift in Sources */,
+				7551D3461C134A040088D32B /* Constants.swift in Sources */,
 				750D8E1C1C0647AC00D728F0 /* SortFilterViewController.swift in Sources */,
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
 				75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */,

@@ -17,7 +17,7 @@ class BrandFilterViewController: UIViewController {
     var searching = false
     
     var selectedBrands = [String]()
-    var selectedBrandCodes: [String]?
+    var selectedBrandCodes = [String]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -98,7 +98,7 @@ class BrandFilterViewController: UIViewController {
             selectedBrandCodes = selectedBrandCodesArray
             
         } else {
-            selectedBrandCodes = nil
+            selectedBrandCodes.removeAll()
         }
     }
 
@@ -197,14 +197,10 @@ extension BrandFilterViewController: UITableViewDelegate {
         // Filter Stuff
         populateBrandCodes()
         
-        if let brandCodes = selectedBrandCodes {
-            var filterCodes = appDelegate.filterParams["brand"] as! [String]
-            filterCodes.appendContentsOf(brandCodes)
-            
-            appDelegate.filterParams["brand"] = filterCodes
-            
-//            appDelegate.filterParams.appendContentsOf(brandCodes)
-        }
+        appDelegate.filterParams["brand"] = selectedBrandCodes
+        
+        // Refresh Side Tab
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 }
 

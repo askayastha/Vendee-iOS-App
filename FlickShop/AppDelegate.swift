@@ -14,16 +14,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var productCategory: String?
-    var category: String?
-    var filterParams: [String: AnyObject?] = [
-        "brand": [String](),
-        "store": [String](),
-        "price": nil,
-        "discount": nil,
-        "offer": [String](),
-        "color": [String]()
+    var category: [String: AnyObject] = [
+        "categorySearch": CategorySearch(),
+        "displayCategories": [String](),
+        "tappedCategories": [String](),
+        "categoriesIdDict": [String: String]()
     ]
-    var sort: String?
+    var filterParams: [String: AnyObject] = [
+        "brand": [String: String](),
+        "store": [String: String](),
+        "price": [String: String](),
+        "discount": [String: String](),
+        "offer": [String: String](),
+        "color": [String: String]()
+    ]
+    var sort = [String: String]()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -69,21 +74,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func resetFilters() {
-        print("FILTER CLEARED !!!")
-        category = nil
-        filterParams = [
-            "brand": [String](),
-            "store": [String](),
-            "price": nil,
-            "discount": nil,
-            "offer": [String](),
-            "color": [String]()
+        print("FILTERS CLEARED !!!")
+        category = [
+            "categorySearch": CategorySearch(),
+            "displayCategories": [String](),
+            "tappedCategories": [String](),
+            "categoriesIdDict": [String: String]()
         ]
-        sort = nil
-        
-        let brands = filterParams["brand"] as! [String]
-        
-        print("Brand Count: \(brands.count)")
+        filterParams = [
+            "brand": [String: String](),
+            "store": [String: String](),
+            "price": [String: String](),
+            "discount": [String: String](),
+            "offer": [String: String](),
+            "color": [String: String]()
+        ]
+        sort.removeAll()
     }
 
 }

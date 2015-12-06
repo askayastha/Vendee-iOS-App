@@ -13,17 +13,28 @@ class CategoryFilterViewController: UITableViewController {
     var requestingData = false
     var productCategory: String?
     
-    var categories = [String]()
+    var displayCategories = [String]()
     var tappedCategories = [String]()
     var categoriesIdDict = [String: String]()
-    
-    let categorySearch = CategorySearch()
+    var categorySearch = CategorySearch()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         productCategory = appDelegate.productCategory
-        requestCategoryFromShopStyle()
+        
+        categorySearch = appDelegate.category["categorySearch"] as! CategorySearch
+        displayCategories = appDelegate.category["displayCategories"] as! [String]
+        tappedCategories = appDelegate.category["tappedCategories"] as! [String]
+        categoriesIdDict = appDelegate.category["categoriesIdDict"] as! [String: String]
+        
+        print(displayCategories)
+        print(tappedCategories)
+        
+        // Request display categories for the first load
+        if displayCategories.count == 0 {
+            requestCategoryFromShopStyle()
+        }
     }
     
     deinit {
@@ -42,13 +53,13 @@ class CategoryFilterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        return displayCategories.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = categories[indexPath.row]
+        cell.textLabel?.text = displayCategories[indexPath.row]
         cell.accessoryType = UITableViewCellAccessoryType.None
         
         // Visually checkmark the selected brands.
@@ -60,54 +71,19 @@ class CategoryFilterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let categoryName = categories[indexPath.row]    ; print(categoryName)
+        let categoryName = displayCategories[indexPath.row]    ; print(categoryName)
         
         // Reload the table with new data if the tapped category isn't the currently selected one.
         if categoryName != tappedCategories.last {
             
-            let categoryId = categoriesIdDict[categoryName]
-            var subcategories = [String]()
+            let subcategories = getSubcategoriesForCategoryName(categoryName)
             
-            // Keep track of the tapped categories.
-            if categoryName != categories[0] && !tappedCategories.contains(categoryName) {
-                tappedCategories.append(categoryName)
-                
-            // Remove the child categories if parent category is selected.
-            } else if tappedCategories.contains(categoryName) {
-                let categoryIndex = tappedCategories.indexOf(categoryName)! + 1
-                tappedCategories.removeRange(categoryIndex..<tappedCategories.count)
-                
-            // Clear the tapped categories if the root category is selected.
-            } else {
-                tappedCategories.removeRange(1..<tappedCategories.count)
-            }
-            
-            subcategories.appendContentsOf(tappedCategories)
-            
-            for item in categorySearch.categories {
-                let category = item as! CategoryInfo
-                
-                if category.parentId == categoryId {
-                    subcategories.append(category.shortName!)
-                }
-            }
-            
-            let oldCategoriesCount = categories.count
-            
-            categories.replaceRange(0..<categories.count, with: subcategories)
-            
-            let newCategoriesCount = categories.count
-            
+            let oldCategoriesCount = displayCategories.count
+            displayCategories.replaceRange(0..<displayCategories.count, with: subcategories)
+            let newCategoriesCount = displayCategories.count
             tableView.reloadData()
             
             var indexPaths = [NSIndexPath]()
-            
-//            for indexPath in tableView.indexPathsForVisibleRows! {
-//                if indexPath.row > tappedCategories.count {
-//                    indexPaths.append(indexPath)
-//                }
-//            }
             
             for indexPath in tableView.indexPathsForVisibleRows! where indexPath.row > tappedCategories.count {
                 indexPaths.append(indexPath)
@@ -116,6 +92,7 @@ class CategoryFilterViewController: UITableViewController {
             print("Old Categories Count: \(oldCategoriesCount)")
             print("New Categories Count: \(newCategoriesCount)")
             
+            // Animate the new display categories
             if newCategoriesCount > oldCategoriesCount {
                 tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Bottom)
                 print("EXPAND ANIMATION")
@@ -123,40 +100,65 @@ class CategoryFilterViewController: UITableViewController {
                 tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
                 print("COLLAPSE ANIMATION")
             }
-            
         }
         
-        let selectedIndexPath = NSIndexPath(forRow: categories.indexOf(categoryName)!, inSection: 0)
+        let selectedIndexPath = NSIndexPath(forRow: displayCategories.indexOf(categoryName)!, inSection: 0)
         
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath)
         cell?.setSelected(true, animated: false)
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         // Filter Stuff
-        if tappedCategories.count > 1 {
-            appDelegate.category = categoriesIdDict[tappedCategories.last!]
-        } else {
-            appDelegate.category = nil
-        }
+        appDelegate.category["displayCategories"] = displayCategories
+        appDelegate.category["tappedCategories"] = tappedCategories
         
         print(tappedCategories)
         
-        
         // Refresh Side Tab
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+        filterDidChangeNotification()
+    }
+    
+    private func getSubcategoriesForCategoryName(categoryName: String) -> [String] {
+        let categoryId = categoriesIdDict[categoryName]
+        var subcategories = [String]()
+        
+        // Keep track of the tapped categories.
+        if categoryName != displayCategories[0] && !tappedCategories.contains(categoryName) {
+            tappedCategories.append(categoryName)
+            
+            // Remove the child categories if parent category is selected.
+        } else if tappedCategories.contains(categoryName) {
+            let categoryIndex = tappedCategories.indexOf(categoryName)! + 1
+            tappedCategories.removeRange(categoryIndex..<tappedCategories.count)
+            
+            // Clear the tapped categories if the root category is selected.
+        } else {
+            tappedCategories.removeRange(1..<tappedCategories.count)
+        }
+        
+        subcategories.appendContentsOf(tappedCategories)
+        
+        for item in categorySearch.categories {
+            let category = item as! CategoryInfo
+            
+            if category.parentId == categoryId {
+                subcategories.append(category.shortName!)
+            }
+        }
+        
+        return subcategories
     }
 
     private func requestCategoryFromShopStyle() {
-        
         if requestingData {
             return
         }
-        
         requestingData = true
         
-        if let category = productCategory {
-            categorySearch.parseShopStyleForCategory(category) { [weak self]
-                success, lastItem in
+        if let productCategory = productCategory {
+            let categoryId = productCategory.componentsSeparatedByString(":").last!
+            
+            categorySearch.parseShopStyleForCategory(categoryId) { [weak self] success, lastItem in
                 if let strongSelf = self {
                     if !success {
                         print("Products Count: \(lastItem)")
@@ -175,20 +177,21 @@ class CategoryFilterViewController: UITableViewController {
                         for item in strongSelf.categorySearch.categories {
                             let category = item as! CategoryInfo
                             
-                            if category.id == strongSelf.productCategory || category.parentId == strongSelf.productCategory {
-                                strongSelf.categories.append(category.shortName!)
+                            if category.id == categoryId || category.parentId == categoryId {
+                                strongSelf.displayCategories.append(category.shortName!)
                             }
                             
                             // Make of dictionary of [Category: CategoryID]
                             strongSelf.categoriesIdDict[category.shortName!] = category.id!
                         }
+                        // Save for filter stuff
+                        strongSelf.appDelegate.category["categorySearch"] = strongSelf.categorySearch
+                        strongSelf.appDelegate.category["categoriesIdDict"] = strongSelf.categoriesIdDict
                         
                         strongSelf.tableView.reloadData()
                     }
                 }
-                
             }
         }
     }
-
 }

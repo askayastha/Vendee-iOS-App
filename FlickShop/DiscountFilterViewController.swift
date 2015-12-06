@@ -22,8 +22,13 @@ class DiscountFilterViewController: UITableViewController {
 //        "70": "d6"
 //    ]
     
+    private let minValue = 0
+    private let maxValue = 7
+    
+    let skipHighlightRows = [0, 1, 2, 5]
+    
     let discountsDict: OrderedDictionary<String, String> = [
-        ("Regular and Sale Items", "d"),
+        ("Regular and Sale Items", ""),
         ("10", "d0"),
         ("20", "d1"),
         ("30", "d2"),
@@ -42,8 +47,8 @@ class DiscountFilterViewController: UITableViewController {
     ]
     
     var saleCode: String?
-    var offers = [String]()
-    var offerCodes = [String]()
+    var selectedDiscount = [String: String]()
+    var selectedOffers = [String: String]()
     
     var keys = [String]()
     
@@ -53,14 +58,28 @@ class DiscountFilterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        discountSlider.minimumValue = 0
-        discountSlider.maximumValue = 7
-        discountSlider.lowerValue = 0
-        discountSlider.upperValue = 7
-        
+        // Discount setup
+        discountSlider.minimumValue = Float(minValue)
+        discountSlider.maximumValue = Float(maxValue)
+        discountSlider.upperValue = Float(maxValue)
         discountSlider.stepValue = 1
         discountSlider.stepValueContinuously = true
         discountSlider.upperHandleHidden = true
+        
+        selectedDiscount = appDelegate.filterParams["discount"] as! [String: String]
+        selectedOffers = appDelegate.filterParams["offer"] as! [String: String]
+        
+        // Setup previous values
+        if let discountKey = selectedDiscount.keys.first {
+            discountSlider.lowerValue = Float(discountKey)!
+            
+            // Update UI
+            discountSlider.setLowerValue(Float(discountKey)!, animated: false)
+            updateUIForLowerValue(Int(discountKey)!)
+            
+        } else {
+            discountSlider.lowerValue = Float(minValue)
+        }
     }
     
     deinit {
@@ -68,24 +87,29 @@ class DiscountFilterViewController: UITableViewController {
     }
     
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {
-        let index: Int = Int(sender.lowerValue)
+        let index = Int(sender.lowerValue)
         
         if index == 0 {
-            discountLabel.text = discountsDict.orderedKeys[index]
             saleCode = nil
         } else {
-            discountLabel.text = discountsDict.orderedKeys[index] + "% on Sale"
             saleCode = discountsDict[discountsDict.orderedKeys[index]]
         }
+        updateUIForLowerValue(index)
         
         print("SALE CODE: \(saleCode)")
         
         // Filter Stuff
         if let saleCode = saleCode {
-            appDelegate.filterParams["discount"] = saleCode
+            let discountKey = String(index)
+            
+            selectedDiscount.removeAll()
+            selectedDiscount[discountKey] = saleCode
+            
         } else {
-            appDelegate.filterParams["discount"] = nil
+            selectedDiscount.removeAll()
         }
+        print(selectedDiscount)
+        appDelegate.filterParams["discount"] = selectedDiscount
         
         // Refresh Side Tab
         NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
@@ -94,6 +118,19 @@ class DiscountFilterViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        
+        // Visually checkmark the selected offers.
+        if !skipHighlightRows.contains(indexPath.row) && selectedOffers.keys.contains((cell.textLabel?.text)!) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
+        
+        return cell
     }
     
     // MARK: - Table view delegate
@@ -105,49 +142,43 @@ class DiscountFilterViewController: UITableViewController {
         let offerName = (cell?.textLabel?.text)!
         
         // Keep track of the offers
-        if !offers.contains(offerName) {
-            offers.append(offerName)
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-            
-        } else {
-            let removeIndex = offers.indexOf(offerName)!
-            offers.removeAtIndex(removeIndex)
-            cell?.accessoryType = UITableViewCellAccessoryType.None
-        }
-        
-        // Keep track of the offer codes
-        if !offers.isEmpty {
-            var offerCodesArray = [String]()
-            
-            for offer in offers {
-                let offerCode = offersDict[offer]!
-                offerCodesArray.append(offerCode)
+        if !selectedOffers.keys.contains(offerName) {
+            if let offerCode = offersDict[offerName] {
+                selectedOffers[offerName] = offerCode
+                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
             
-            offerCodes = offerCodesArray
-            
         } else {
-            offerCodes.removeAll()
+            if let _ = selectedOffers.removeValueForKey(offerName) {
+                cell?.accessoryType = UITableViewCellAccessoryType.None
+            }
         }
         
-        print(offers)
-        print(offerCodes)
+        print(selectedOffers)
         
         // Filter Stuff
-        appDelegate.filterParams["offer"] = offerCodes
+        appDelegate.filterParams["offer"] = selectedOffers
         
         // Refresh Side Tab
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+        filterDidChangeNotification()
     }
     
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        let skipHighlightRows = [0, 1, 2, 5]
-        
         if skipHighlightRows.contains(indexPath.row) {
             return false
         }
         
         return true
+    }
+    
+    // MARK: - Helper methods
+    
+    private func updateUIForLowerValue(lowerValue: Int) {
+        if lowerValue == 0 {
+            discountLabel.text = discountsDict.orderedKeys[lowerValue]
+        } else {
+            discountLabel.text = discountsDict.orderedKeys[lowerValue] + "% on Sale"
+        }
     }
 
 }

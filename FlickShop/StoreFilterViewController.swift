@@ -16,8 +16,7 @@ class StoreFilterViewController: UIViewController {
     var searchController: UISearchController!
     var searching = false
     
-    var selectedStores = [String]()
-    var selectedStoreCodes = [String]()
+    var selectedStores = [String: String]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -48,6 +47,8 @@ class StoreFilterViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.delegate = self
+        
+        selectedStores = appDelegate.filterParams["store"] as! [String: String]
     }
     
     deinit {
@@ -63,37 +64,6 @@ class StoreFilterViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func populateStoreCodes() {
-        let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
-        
-        if !selectedStores.isEmpty {
-            var selectedStoreCodesArray = [String]()
-            
-            for selectedStore in selectedStores {
-                var firstChar = String(selectedStore.characters.first!).uppercaseString
-                
-                if !alphabets.contains(firstChar) {
-                    firstChar = "#"
-                }
-                
-                let storeSection = stores[firstChar]!
-                
-                for store in storeSection {
-                    if selectedStore == store["name"] as! String {
-                        let storeCode = store["id"] as! String
-                        selectedStoreCodesArray.append("r" + storeCode)
-                        break
-                    }
-                }
-            }
-            
-            selectedStoreCodes = selectedStoreCodesArray
-            
-        } else {
-            selectedStoreCodes.removeAll()
-        }
     }
     
 }
@@ -129,7 +99,7 @@ extension StoreFilterViewController: UITableViewDataSource {
         }
         
         // Visually checkmark the selected stores.
-        if selectedStores.contains((cell.textLabel?.text)!) {
+        if selectedStores.keys.contains((cell.textLabel?.text)!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
         
@@ -151,10 +121,35 @@ extension StoreFilterViewController: UITableViewDataSource {
         return searching && !isKeywordEmpty() ? nil : keys
     }
     
-    func isKeywordEmpty() -> Bool {
+    // MARK: - Helper Methods
+    
+    private func isKeywordEmpty() -> Bool {
         let searchString = searchController.searchBar.text!
         
         return searchString.isEmpty
+    }
+    
+    private func getCodeForStoreName(storeName: String) -> String? {
+        let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
+        
+        var firstChar = String(storeName.characters.first!).uppercaseString
+        var storeCode: String?
+        
+        if !alphabets.contains(firstChar) {
+            firstChar = "#"
+        }
+        
+        let storeSection = stores[firstChar]!
+        
+        for store in storeSection {
+            if storeName == store["name"] as! String {
+                let storeId = store["id"] as! String
+                storeCode = "b\(storeId)"
+                break
+            }
+        }
+        
+        return storeCode
     }
 }
 
@@ -177,25 +172,24 @@ extension StoreFilterViewController: UITableViewDelegate {
 //            storeName = storeSection[indexPath.row]["name"] as! String
 //        }
         
-        if !selectedStores.contains(storeName) {
-            selectedStores.append(storeName)
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        if !selectedStores.keys.contains(storeName) {
+            if let storeCode = getCodeForStoreName(storeName) {
+                selectedStores[storeName] = storeCode
+                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            }
             
         } else {
-            let removeIndex = selectedStores.indexOf(storeName)!
-            selectedStores.removeAtIndex(removeIndex)
-            cell?.accessoryType = UITableViewCellAccessoryType.None
+            if let _ = selectedStores.removeValueForKey(storeName) {
+                cell?.accessoryType = UITableViewCellAccessoryType.None
+            }
         }
         
         print(selectedStores)
         
-        // Filter Stuff
-        populateStoreCodes()
-        
-        appDelegate.filterParams["store"] = selectedStoreCodes
+        appDelegate.filterParams["store"] = selectedStores
         
         // Refresh Side Tab
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+        filterDidChangeNotification()
     }
 }
 

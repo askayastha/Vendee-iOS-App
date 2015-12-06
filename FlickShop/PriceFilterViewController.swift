@@ -21,6 +21,7 @@ class PriceFilterViewController: UITableViewController {
     ]
     
     var priceRangeCode: String?
+    var selectedPrices = [String: String]()
     
     @IBOutlet weak var minPriceLabel: UILabel!
     @IBOutlet weak var maxPriceLabel: UILabel!
@@ -29,39 +30,65 @@ class PriceFilterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Prices setup
         priceRangeSlider.minimumValue = Float(minValue)
         priceRangeSlider.maximumValue = Float(maxValue)
-        priceRangeSlider.lowerValue = Float(minValue)
-        priceRangeSlider.upperValue = Float(maxValue)
         priceRangeSlider.minimumRange = 1
         priceRangeSlider.stepValue = 1
         priceRangeSlider.stepValueContinuously = true
+        
+        selectedPrices = appDelegate.filterParams["price"] as! [String: String]
+        
+        // Setup previous values
+        if let priceKey = selectedPrices.keys.first {
+            let lowerIndex = priceKey.componentsSeparatedByString(":").first!   ;print("LOWER INDEX: \(lowerIndex)")
+            let upperIndex = priceKey.componentsSeparatedByString(":").last!    ;print("UPPER INDEX: \(upperIndex)")
+            
+            priceRangeSlider.lowerValue = Float(lowerIndex)!
+            priceRangeSlider.upperValue = Float(upperIndex)!
+            
+            // Update UI
+            priceRangeSlider.setLowerValue(Float(lowerIndex)!, upperValue: Float(upperIndex)!, animated: false)
+            updateUIForLowerValue(Int(lowerIndex)!, andUpperValue: Int(upperIndex)!)
+            
+        } else {
+            priceRangeSlider.lowerValue = Float(minValue)
+            priceRangeSlider.upperValue = Float(maxValue)
+        }
     }
     
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {
-        let minIndex: Int = Int(sender.lowerValue)
-        let maxIndex: Int = Int(sender.upperValue)
-        
-        minPriceLabel.text = "$" + prices[minIndex]
-        maxPriceLabel.text = "$" + prices[maxIndex]
+        let minIndex = Int(sender.lowerValue)
+        let maxIndex = Int(sender.upperValue)
         
         if minIndex == minValue && maxIndex == maxValue {
             priceRangeCode = nil
         } else {
             priceRangeCode = "p\(minIndex + 20):\(maxIndex + 20)"
         }
+        updateUIForLowerValue(minIndex, andUpperValue: maxIndex)
         
         print("PRICE RANGE CODE: \(priceRangeCode)")
         
         // Filter Stuff
         if let priceRangeCode = priceRangeCode {
-            appDelegate.filterParams["price"] = priceRangeCode
+            let lowerIndex = Int(sender.lowerValue)
+            let upperIndex = Int(sender.upperValue)
+            let priceKey = "\(lowerIndex):\(upperIndex)"
+            
+            selectedPrices.removeAll()
+            selectedPrices[priceKey] = priceRangeCode
+            
         } else {
-            appDelegate.filterParams["price"] = nil
+            selectedPrices.removeAll()
         }
         
+        print(selectedPrices)
+        
+        appDelegate.filterParams["price"] = selectedPrices
+        
         // Refresh Side Tab
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+        filterDidChangeNotification()
     }
     
     deinit {
@@ -71,6 +98,13 @@ class PriceFilterViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Helper methods
+    
+    private func updateUIForLowerValue(lowerValue: Int, andUpperValue upperValue: Int) {
+        minPriceLabel.text = "$\(prices[lowerValue])"
+        maxPriceLabel.text = "$\(prices[upperValue])"
     }
 
 }

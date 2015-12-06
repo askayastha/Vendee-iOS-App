@@ -64,7 +64,7 @@ class BrowseViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func filterApply(segue: UIStoryboardSegue) {
+    @IBAction func unwindFilterApply(segue: UIStoryboardSegue) {
         // Cancel existing request
         search.dataRequest?.cancel()
         

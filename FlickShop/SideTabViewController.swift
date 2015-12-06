@@ -61,28 +61,19 @@ class SideTabViewController: UITableViewController {
         
         switch filter {
             case "category":
-                if let _ = appDelegate.category {
-                    filterSelected = true
-                    print("CATEGORY FILTER")
-                }
+                let displayCategories = appDelegate.category["displayCategories"] as! [String]
+                let tappedCategories = appDelegate.category["tappedCategories"] as! [String]
+                let categoryName = appDelegate.productCategory?.componentsSeparatedByString(":").first
+                filterSelected = !(categoryName == tappedCategories.last || displayCategories.count == 0)
             case "sort":
-                if let _ = appDelegate.sort {
-                    filterSelected = true
-                }
-            case "brand", "store", "color":
-                if let codes = appDelegate.filterParams[filter] as? [String] {
+                    filterSelected = appDelegate.sort.count > 0
+            case "brand", "store", "color", "price":
+                let codes = appDelegate.filterParams[filter] as! [String: String]
                     filterSelected = codes.count > 0
-                }
-            case "price":
-                if let _ = appDelegate.filterParams[filter] as? String {
-                    filterSelected = true
-                }
             case "discount":
-                if let _ = appDelegate.filterParams[filter] as? String {
-                    filterSelected = true
-                } else if let codes = appDelegate.filterParams["offer"] as? [String] {
-                    filterSelected = codes.count > 0
-                }
+                let discountCode = appDelegate.filterParams[filter] as! [String: String]
+                let offerCodes = appDelegate.filterParams["offer"] as! [String: String]
+                filterSelected = discountCode.count > 0 || offerCodes.count > 0
             default:
                 filterSelected = false
         }

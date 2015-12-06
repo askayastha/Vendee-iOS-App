@@ -13,4 +13,8 @@ extension UIViewController {
     var appDelegate: AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
+    
+    func filterDidChangeNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
 }

@@ -45,13 +45,12 @@ class ColorFilterViewController: UITableViewController {
         ("Silver", "c19")
     ]
     
-    var keys = [String]()
-    var colors = [String]()
-    var colorCodes = [String]()
+    var selectedColors = [String: String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedColors = appDelegate.filterParams["color"] as! [String: String]
     }
     
     deinit {
@@ -80,7 +79,7 @@ class ColorFilterViewController: UITableViewController {
         cell.textLabel?.text = colorsDict.orderedKeys[indexPath.row]
         
         // Visually checkmark the selected colors.
-        if colors.contains((cell.textLabel?.text)!) {
+        if selectedColors.keys.contains((cell.textLabel?.text)!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
         
@@ -94,39 +93,25 @@ class ColorFilterViewController: UITableViewController {
         let colorName = (cell?.textLabel?.text)!
         
         // Keep track of the colors
-        if !colors.contains(colorName) {
-            colors.append(colorName)
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-            
-        } else {
-            let removeIndex = colors.indexOf(colorName)!
-            colors.removeAtIndex(removeIndex)
-            cell?.accessoryType = UITableViewCellAccessoryType.None
-        }
-        
-        // Keep track of the color codes
-        if !colors.isEmpty {
-            var colorCodesArray = [String]()
-            
-            for color in colors {
-                let colorCode = colorsDict[color]!
-                colorCodesArray.append(colorCode)
+        if !selectedColors.keys.contains(colorName) {
+            if let colorCode = colorsDict[colorName] {
+                selectedColors[colorName] = colorCode
+                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
             }
             
-            colorCodes = colorCodesArray
-            
         } else {
-            colorCodes.removeAll()
+            if let _ = selectedColors.removeValueForKey(colorName) {
+                cell?.accessoryType = UITableViewCellAccessoryType.None
+            }
         }
         
-        print(colors)
-        print(colorCodes)
+        print(selectedColors)
         
         // Filter Stuff
-        appDelegate.filterParams["color"] = colorCodes
+        appDelegate.filterParams["color"] = selectedColors
         
         // Refresh Side Tab
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+        filterDidChangeNotification()
     }
 
 }

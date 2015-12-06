@@ -16,8 +16,7 @@ class BrandFilterViewController: UIViewController {
     var searchController: UISearchController!
     var searching = false
     
-    var selectedBrands = [String]()
-    var selectedBrandCodes = [String]()
+    var selectedBrands = [String: String]()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -48,6 +47,8 @@ class BrandFilterViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.delegate = self
+        
+        selectedBrands = appDelegate.filterParams["brand"] as! [String: String]
     }
     
     deinit {
@@ -63,37 +64,6 @@ class BrandFilterViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func populateBrandCodes() {
-        let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
-        
-        if !selectedBrands.isEmpty {
-            var selectedBrandCodesArray = [String]()
-            
-            for selectedBrand in selectedBrands {
-                var firstChar = String(selectedBrand.characters.first!).uppercaseString
-            
-                if !alphabets.contains(firstChar) {
-                    firstChar = "#"
-                }
-                
-                let brandSection = brands[firstChar]!
-                
-                for brand in brandSection {
-                    if selectedBrand == brand["name"] as! String {
-                        let brandCode = brand["id"] as! String
-                        selectedBrandCodesArray.append("b" + brandCode)
-                        break
-                    }
-                }
-            }
-            
-            selectedBrandCodes = selectedBrandCodesArray
-            
-        } else {
-            selectedBrandCodes.removeAll()
-        }
     }
 
 }
@@ -128,7 +98,7 @@ extension BrandFilterViewController: UITableViewDataSource {
         }
         
         // Visually checkmark the selected brands.
-        if selectedBrands.contains((cell.textLabel?.text)!) {
+        if selectedBrands.keys.contains((cell.textLabel?.text)!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
         
@@ -150,10 +120,35 @@ extension BrandFilterViewController: UITableViewDataSource {
         return searching && !isKeywordEmpty() ? nil : keys
     }
     
-    func isKeywordEmpty() -> Bool {
+    // MARK: - Helper Methods
+    
+    private func isKeywordEmpty() -> Bool {
         let searchString = searchController.searchBar.text!
         
         return searchString.isEmpty
+    }
+    
+    private func getCodeForBrandName(brandName: String) -> String? {
+        let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
+        
+        var firstChar = String(brandName.characters.first!).uppercaseString
+        var brandCode: String?
+        
+        if !alphabets.contains(firstChar) {
+            firstChar = "#"
+        }
+        
+        let brandSection = brands[firstChar]!
+        
+        for brand in brandSection {
+            if brandName == brand["name"] as! String {
+                let brandId = brand["id"] as! String
+                brandCode = "b\(brandId)"
+                break
+            }
+        }
+        
+        return brandCode
     }
 }
 
@@ -176,25 +171,24 @@ extension BrandFilterViewController: UITableViewDelegate {
 //            brandName = brandSection[indexPath.row]["name"] as! String
 //        }
         
-        if !selectedBrands.contains(brandName) {
-            selectedBrands.append(brandName)
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        if !selectedBrands.keys.contains(brandName) {
+            if let brandCode = getCodeForBrandName(brandName) {
+                selectedBrands[brandName] = brandCode
+                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            }
             
         } else {
-            let removeIndex = selectedBrands.indexOf(brandName)!
-            selectedBrands.removeAtIndex(removeIndex)
-            cell?.accessoryType = UITableViewCellAccessoryType.None
+            if let _ = selectedBrands.removeValueForKey(brandName) {
+                cell?.accessoryType = UITableViewCellAccessoryType.None
+            }
         }
         
         print(selectedBrands)
         
-        // Filter Stuff
-        populateBrandCodes()
-        
-        appDelegate.filterParams["brand"] = selectedBrandCodes
+        appDelegate.filterParams["brand"] = selectedBrands
         
         // Refresh Side Tab
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+        filterDidChangeNotification()
     }
 }
 

@@ -18,12 +18,12 @@ class SortFilterViewController: UITableViewController {
     ]
     
     var keys = [String]()
-    var sort = ""
-    var sortCode: String?
+    var selectedSort = [String: String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        selectedSort = appDelegate.sort
     }
     
     deinit {
@@ -50,6 +50,10 @@ class SortFilterViewController: UITableViewController {
         
         cell.textLabel?.text = sortsDict.orderedKeys[indexPath.row]
         
+        // Visually checkmark the selected sort
+        if selectedSort.keys.contains((cell.textLabel?.text)!) {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        }
         
         return cell
     }
@@ -58,31 +62,30 @@ class SortFilterViewController: UITableViewController {
 //        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        let sortName = (cell?.textLabel?.text)!
         
-        if sort != (cell?.textLabel?.text)! {
-            sort = (cell?.textLabel?.text)!
-            sortCode = sortsDict[sort]
+        if !selectedSort.keys.contains(sortName) {
+            selectedSort[sortName] = sortsDict[sortName]
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
             
         } else {
-            cell?.accessoryType = UITableViewCellAccessoryType.None
+            selectedSort.removeAll()
             cell?.setSelected(false, animated: false)
-            sort = ""
-            sortCode = nil
+            cell?.accessoryType = UITableViewCellAccessoryType.None
         }
         
-        print(sort)
-        print(sortCode)
+        print(selectedSort)
         
         // Filter Stuff
-        appDelegate.sort = sortCode
+        appDelegate.sort = selectedSort
         
         // Refresh Side Tab
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+        filterDidChangeNotification()
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
+        selectedSort.removeAll()
         cell?.accessoryType = UITableViewCellAccessoryType.None
     }
 

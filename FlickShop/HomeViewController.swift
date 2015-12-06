@@ -69,10 +69,8 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CategoryCell", forIndexPath: indexPath) as! CategoryCell
-//        let categoryImage = categories[indexPath.item].picture
-//        cell.categoryImageView.image = blurView.blendViewWithImage(categoryImage, blendMode: .Multiply)
+        
         cell.category = categories[indexPath.item]
         
         return cell
@@ -82,26 +80,13 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        appDelegate.productCategory = categories[indexPath.item].keyword
+        let categoryName = categories[indexPath.item].name
+        let categoryId = categories[indexPath.item].keyword
+        
+        appDelegate.productCategory = "\(categoryName):\(categoryId)"
         
         performSegueWithIdentifier("BrowseCategory", sender: indexPath)
     }
-    
-//    func scrollViewDidScroll(scrollView: UIScrollView) {
-//        print("ScrollViewDidScroll")
-//    }
-    
-//    func scrollViewWillBeginDecelerating(scrollView: UIScrollView) {
-//        print("scrollViewWillBeginDecelerating")
-//    }
-    
-//    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-//        print("scrollViewWillBeginDragging")
-//    }
-//    
-//    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-//        print("scrollViewDidEndDecelerating")
-//    }
     
 //    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 //        

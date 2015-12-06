@@ -30,6 +30,7 @@ class Search {
     var dataRequest: Alamofire.Request?
     var retryCount = 0
     
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let scout = ImageScout()
     
     func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, var forCategory category: String, completion: SearchComplete) {
@@ -43,47 +44,22 @@ class Search {
         var success = false
         
         if filteredSearch {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            
-            if let cat = appDelegate.category {
-                category = cat
+            // Get category code for filter
+            if let filterCategory = getFilterCategory() {
+                category = filterCategory
             }
             
-            let sort = appDelegate.sort
+            // Get sort code for filter
+            let sort = appDelegate.sort.count > 0 ? appDelegate.sort.values.first : nil
             
-            var finalFilterParams: String?
-            
-            var modifiedURL = ShopStyle.Router.FilteredProducts(itemOffset, limit, category, finalFilterParams, sort).URLRequest.URLString
-            
-            if appDelegate.filterParams.count > 0 {
-                var filters = [String]()
-                
-//                for filter in appDelegate.filterParams {
-//                    filters.append("fl=\(filter)")
-//                }
-                
-                for filterCodes in appDelegate.filterParams.values {
-                    if let codes = filterCodes as? [String] {
-                        for code in codes {
-                            filters.append("fl=\(code)")
-                        }
-                        
-                    } else if let codes = filterCodes as? String {
-                        filters.append("fl=\(codes)")
-                    }
-                }
-                
-                let initialfilterParams = filters.joinWithSeparator("&")
-                
-//                finalFilterParams = initialfilterParams.substringFromIndex(initialfilterParams.startIndex.advancedBy(3))    ; print(finalFilterParams)
-                finalFilterParams = initialfilterParams
-                modifiedURL += "&" + finalFilterParams!
-            }
+            // New request URL for filter
+            var requestURL = ShopStyle.Router.FilteredProducts(itemOffset, limit, category, sort).URLRequest.URLString
+            requestURL.appendContentsOf(getFilterParams())
             
             print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
-            print(modifiedURL)
+            print(requestURL)
             
-            dataRequest = Alamofire.request(.GET, modifiedURL).responseJSON() {
+            dataRequest = Alamofire.request(.GET, requestURL).responseJSON() {
                 response in
                 
                 print(response.request)
@@ -195,6 +171,33 @@ class Search {
         }
     }
     
+    func getFilterCategory() -> String? {
+        let tappedCategories = appDelegate.category["tappedCategories"] as! [String]
+        let categoriesIdDict = appDelegate.category["categoriesIdDict"] as! [String: String]
+        var categoryId: String?
+        
+        if let category = tappedCategories.last {
+            categoryId = categoriesIdDict[category]
+        }
+        
+        return categoryId
+    }
+    
+    func getFilterParams() -> String {
+        var filterParams = [String]()
+        
+        for filters in appDelegate.filterParams.values {
+            for code in filters.values as! [String] {
+                filterParams.append("fl=\(code)")
+            }
+        }
+        
+        let finalFilterParams = filterParams.joinWithSeparator("&")
+        
+        // finalFilterParams = initialfilterParams.substringFromIndex(initialfilterParams.startIndex.advancedBy(3))    ; print(finalFilterParams)
+        return "&\(finalFilterParams)"
+    }
+    
     func populateProducts(json: JSON) {
         if let productsArray = json["products"].array {
             
@@ -250,7 +253,7 @@ struct ShopStyle {
         
         case PopularProducts(Int, Int, String)
         case Categories(String)
-        case FilteredProducts(Int, Int, String, String?, String?)
+        case FilteredProducts(Int, Int, String, String?)
         
         var URLRequest: NSMutableURLRequest {
 //            let (path: String, parameters: [String: AnyObject]) = {
@@ -296,17 +299,13 @@ struct ShopStyle {
                         ]
                     return params
                     
-                    case .FilteredProducts (let offset, let limit, let category, let _, let sort):
+                    case .FilteredProducts (let offset, let limit, let category, let sort):
                         var params = [
                             "pid": Router.APIKey,
                             "cat": category,
                             "offset": "\(offset)",
                             "limit": "\(limit)"
                         ]
-                        
-//                        if let filterParams = filterParams {
-//                            params["fl"] = "\(filterParams)"
-//                        }
                         
                         if let sort = sort {
                             params["sort"] = "\(sort)"

@@ -27,6 +27,8 @@ class StoreFilterViewController: UIViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
+        
         tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
         
         if let URL = NSBundle.mainBundle().URLForResource("Shopstyle_Stores", withExtension: "plist") {
@@ -76,7 +78,6 @@ extension StoreFilterViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         let key = keys[section]
         let storeSection = stores[key]!
         
@@ -85,8 +86,6 @@ extension StoreFilterViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StoreCell", forIndexPath: indexPath)
-        
-        cell.accessoryType = UITableViewCellAccessoryType.None
         
         if searching && !isKeywordEmpty() {
             cell.textLabel?.text = filteredStores[indexPath.row]
@@ -101,6 +100,8 @@ extension StoreFilterViewController: UITableViewDataSource {
         // Visually checkmark the selected stores.
         if selectedStores.keys.contains((cell.textLabel?.text)!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
         
         //        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
@@ -150,6 +151,12 @@ extension StoreFilterViewController: UITableViewDataSource {
         }
         
         return storeCode
+    }
+    
+    func refreshTable() {
+        selectedStores.removeAll()
+        searchController.active = false
+        tableView.reloadData()
     }
 }
 

@@ -29,6 +29,8 @@ class PriceFilterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
 
         // Prices setup
         priceRangeSlider.minimumValue = Float(minValue)
@@ -105,6 +107,18 @@ class PriceFilterViewController: UITableViewController {
     private func updateUIForLowerValue(lowerValue: Int, andUpperValue upperValue: Int) {
         minPriceLabel.text = "$\(prices[lowerValue])"
         maxPriceLabel.text = "$\(prices[upperValue])"
+    }
+    
+    func refreshTable() {
+        priceRangeSlider.lowerValue = Float(minValue)
+        priceRangeSlider.upperValue = Float(maxValue)
+        
+        // Update UI
+        priceRangeSlider.setLowerValue(Float(minValue), upperValue: Float(maxValue), animated: true)
+        updateUIForLowerValue(Int(minValue), andUpperValue: Int(maxValue))
+        
+        selectedPrices.removeAll()
+        tableView.reloadData()
     }
 
 }

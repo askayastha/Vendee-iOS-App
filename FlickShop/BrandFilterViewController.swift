@@ -27,6 +27,8 @@ class BrandFilterViewController: UIViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
+        
         tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
 
         if let URL = NSBundle.mainBundle().URLForResource("Shopstyle_Brands", withExtension: "plist") {
@@ -85,8 +87,6 @@ extension BrandFilterViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BrandCell", forIndexPath: indexPath)
         
-        cell.accessoryType = UITableViewCellAccessoryType.None
-        
         if searching && !isKeywordEmpty() {
             cell.textLabel?.text = filteredBrands[indexPath.row]
             
@@ -100,6 +100,8 @@ extension BrandFilterViewController: UITableViewDataSource {
         // Visually checkmark the selected brands.
         if selectedBrands.keys.contains((cell.textLabel?.text)!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
         
 //        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
@@ -149,6 +151,12 @@ extension BrandFilterViewController: UITableViewDataSource {
         }
         
         return brandCode
+    }
+    
+    func refreshTable() {
+        selectedBrands.removeAll()
+        searchController.active = false
+        tableView.reloadData()
     }
 }
 

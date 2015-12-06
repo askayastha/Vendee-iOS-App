@@ -17,4 +17,8 @@ extension UIViewController {
     func filterDidChangeNotification() {
         NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
     }
+    
+    func filterDidClearNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidClearNotification, object: nil)
+    }
 }

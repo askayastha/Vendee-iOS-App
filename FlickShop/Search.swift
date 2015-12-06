@@ -186,8 +186,15 @@ class Search {
     func getFilterParams() -> String {
         var filterParams = [String]()
         
-        for filters in appDelegate.filterParams.values {
-            for code in filters.values as! [String] {
+//        for filters in appDelegate.filterParams.values as! [String: String] {
+//            for code in filters.values as! [String] {
+//                filterParams.append("fl=\(code)")
+//            }
+//        }
+        
+        for filtersObj in [AnyObject](appDelegate.filterParams.values) {
+            let filters = filtersObj as! [String: String]
+            for code in [String](filters.values) {
                 filterParams.append("fl=\(code)")
             }
         }

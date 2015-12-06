@@ -50,6 +50,8 @@ class ColorFilterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
+        
         selectedColors = appDelegate.filterParams["color"] as! [String: String]
     }
     
@@ -75,12 +77,13 @@ class ColorFilterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath)
         
-        cell.accessoryType = UITableViewCellAccessoryType.None
         cell.textLabel?.text = colorsDict.orderedKeys[indexPath.row]
         
         // Visually checkmark the selected colors.
         if selectedColors.keys.contains((cell.textLabel?.text)!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
         
         return cell
@@ -112,6 +115,11 @@ class ColorFilterViewController: UITableViewController {
         
         // Refresh Side Tab
         filterDidChangeNotification()
+    }
+    
+    func refreshTable() {
+        selectedColors.removeAll()
+        tableView.reloadData()
     }
 
 }

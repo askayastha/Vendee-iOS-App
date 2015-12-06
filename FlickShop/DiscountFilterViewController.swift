@@ -57,6 +57,8 @@ class DiscountFilterViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
 
         // Discount setup
         discountSlider.minimumValue = Float(minValue)
@@ -128,6 +130,8 @@ class DiscountFilterViewController: UITableViewController {
         // Visually checkmark the selected offers.
         if !skipHighlightRows.contains(indexPath.row) && selectedOffers.keys.contains((cell.textLabel?.text)!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
         
         return cell
@@ -179,6 +183,18 @@ class DiscountFilterViewController: UITableViewController {
         } else {
             discountLabel.text = discountsDict.orderedKeys[lowerValue] + "% on Sale"
         }
+    }
+    
+    func refreshTable() {
+        discountSlider.lowerValue = Float(minValue)
+        
+        // Update UI
+        discountSlider.setLowerValue(Float(minValue), animated: true)
+        updateUIForLowerValue(Int(minValue))
+        
+        selectedDiscount.removeAll()
+        selectedOffers.removeAll()
+        tableView.reloadData()
     }
 
 }

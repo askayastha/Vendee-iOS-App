@@ -21,6 +21,8 @@ class CategoryFilterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
+        
         productCategory = appDelegate.productCategory
         
         categorySearch = appDelegate.category["categorySearch"] as! CategorySearch
@@ -60,11 +62,12 @@ class CategoryFilterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
 
         cell.textLabel?.text = displayCategories[indexPath.row]
-        cell.accessoryType = UITableViewCellAccessoryType.None
         
-        // Visually checkmark the selected brands.
+        // Visually checkmark the selected categories.
         if tappedCategories.last == (cell.textLabel?.text)! {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
 
         return cell
@@ -147,6 +150,48 @@ class CategoryFilterViewController: UITableViewController {
         }
         
         return subcategories
+    }
+    
+    func refreshTable() {
+        let oldCategoriesCount = displayCategories.count
+        
+        // Clear model
+        displayCategories.removeAll()
+        tappedCategories.removeAll()
+        
+        // Repopulate original model
+        let categoryId = productCategory?.componentsSeparatedByString(":").last!
+        let rootCategory = categorySearch.categories.objectAtIndex(0) as! CategoryInfo
+        tappedCategories.append(rootCategory.shortName!)
+        
+        for item in categorySearch.categories {
+            let category = item as! CategoryInfo
+            
+            if category.id == categoryId || category.parentId == categoryId {
+                displayCategories.append(category.shortName!)
+            }
+            
+            // Make of dictionary of [Category: CategoryID]
+            categoriesIdDict[category.shortName!] = category.id!
+        }
+        let newCategoriesCount = displayCategories.count
+        
+        tableView.reloadData()
+        
+        var indexPaths = [NSIndexPath]()
+        
+        for indexPath in tableView.indexPathsForVisibleRows! where indexPath.row > tappedCategories.count {
+            indexPaths.append(indexPath)
+        }
+        
+        // Animate the new display categories
+        if newCategoriesCount > oldCategoriesCount {
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Bottom)
+            print("EXPAND ANIMATION")
+        } else {
+            tableView.reloadRowsAtIndexPaths(indexPaths, withRowAnimation: .Top)
+            print("COLLAPSE ANIMATION")
+        }
     }
 
     private func requestCategoryFromShopStyle() {

@@ -82,6 +82,11 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let categoryName = categories[indexPath.item].name
         let categoryId = categories[indexPath.item].keyword
+        let oldCategoryName = appDelegate.productCategory?.componentsSeparatedByString(":").first!
+        
+        if categoryName != oldCategoryName {
+            appDelegate.resetFilters()
+        }
         
         appDelegate.productCategory = "\(categoryName):\(categoryId)"
         

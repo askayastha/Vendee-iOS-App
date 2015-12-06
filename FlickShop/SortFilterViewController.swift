@@ -22,6 +22,8 @@ class SortFilterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
+        
         selectedSort = appDelegate.sort
     }
     
@@ -52,6 +54,8 @@ class SortFilterViewController: UITableViewController {
         // Visually checkmark the selected sort
         if selectedSort.keys.contains((cell.textLabel?.text)!) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryType.None
         }
         
         return cell
@@ -86,6 +90,11 @@ class SortFilterViewController: UITableViewController {
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         selectedSort.removeAll()
         cell?.accessoryType = UITableViewCellAccessoryType.None
+    }
+    
+    func refreshTable() {
+        selectedSort.removeAll()
+        tableView.reloadData()
     }
 
 }

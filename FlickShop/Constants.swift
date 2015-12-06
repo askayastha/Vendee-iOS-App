@@ -10,4 +10,5 @@ import Foundation
 
 struct CustomNotifications {
     static let FilterDidChangeNotification = "FilterDidChange"
+    static let FilterDidClearNotification = "FilterDidClear"
 }

@@ -21,7 +21,7 @@ class PriceFilterViewController: UITableViewController {
     ]
     
     var priceRangeCode: String?
-    var selectedPrices = [String: String]()
+    var selectedPrices: [String: String]!
     
     @IBOutlet weak var minPriceLabel: UILabel!
     @IBOutlet weak var maxPriceLabel: UILabel!

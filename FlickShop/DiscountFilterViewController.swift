@@ -47,8 +47,8 @@ class DiscountFilterViewController: UITableViewController {
     ]
     
     var saleCode: String?
-    var selectedDiscount = [String: String]()
-    var selectedOffers = [String: String]()
+    var selectedDiscount: [String: String]!
+    var selectedOffers: [String: String]!
     
     var keys = [String]()
     

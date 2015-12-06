@@ -45,7 +45,7 @@ class ColorFilterViewController: UITableViewController {
         ("Silver", "c19")
     ]
     
-    var selectedColors = [String: String]()
+    var selectedColors: [String: String]!
 
     override func viewDidLoad() {
         super.viewDidLoad()

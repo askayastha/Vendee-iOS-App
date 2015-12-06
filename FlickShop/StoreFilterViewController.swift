@@ -16,7 +16,7 @@ class StoreFilterViewController: UIViewController {
     var searchController: UISearchController!
     var searching = false
     
-    var selectedStores = [String: String]()
+    var selectedStores: [String: String]!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!

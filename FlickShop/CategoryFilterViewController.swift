@@ -13,10 +13,10 @@ class CategoryFilterViewController: UITableViewController {
     var requestingData = false
     var productCategory: String?
     
-    var displayCategories = [String]()
-    var tappedCategories = [String]()
-    var categoriesIdDict = [String: String]()
-    var categorySearch = CategorySearch()
+    var displayCategories: [String]!
+    var tappedCategories: [String]!
+    var categoriesIdDict: [String: String]!
+    var categorySearch: CategorySearch!
 
     override func viewDidLoad() {
         super.viewDidLoad()

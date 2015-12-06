@@ -17,8 +17,7 @@ class SortFilterViewController: UITableViewController {
         ("Highest Price", "PriceHiLo")
     ]
     
-    var keys = [String]()
-    var selectedSort = [String: String]()
+    var selectedSort: [String: String]!
 
     override func viewDidLoad() {
         super.viewDidLoad()

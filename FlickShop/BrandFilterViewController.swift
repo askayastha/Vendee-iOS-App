@@ -16,7 +16,7 @@ class BrandFilterViewController: UIViewController {
     var searchController: UISearchController!
     var searching = false
     
-    var selectedBrands = [String: String]()
+    var selectedBrands: [String: String]!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!

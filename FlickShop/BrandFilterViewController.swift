@@ -55,6 +55,7 @@ class BrandFilterViewController: UIViewController {
     
     deinit {
         print("BrandFilterViewController Deallocating !!!")
+        searchController.active = false
     }
     
     override func viewWillLayoutSubviews() {

@@ -16,6 +16,16 @@ class SideTabViewController: UITableViewController {
     
     var sideTabs = ["Category", "Brand", "Store", "Price", "Discount", "Color", "Sort"]
     
+    let sideTabsDict: OrderedDictionary<String, String> = [
+        ("Category", "tab_category"),
+        ("Brand", "tab_brand"),
+        ("Store", "tab_store"),
+        ("Price", "tab_price"),
+        ("Discount", "tab_discount"),
+        ("Color", "tab_color"),
+        ("Sort", "tab_sort")
+    ]
+    
     weak var delegate: SideTabDelegate?
 
     override func viewDidLoad() {
@@ -45,13 +55,20 @@ class SideTabViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SideTabCell", forIndexPath: indexPath)
         
-        let selectedImageView = cell.viewWithTag(1000) as? UIImageView!
+        let selectedImageView = cell.viewWithTag(1000) as? UIImageView
         let textLabel = cell.viewWithTag(1001) as? UILabel
+        let imageView = cell.viewWithTag(1002) as? UIImageView
 
-        selectedImageView?.hidden = !isSelectedFilter(sideTabs[indexPath.row])
+        selectedImageView?.hidden = !isSelectedFilter(sideTabsDict.orderedKeys[indexPath.row])
         textLabel?.text = sideTabs[indexPath.row]
+        imageView?.image = UIImage(named: sideTabsDict.orderedValues[indexPath.row])
+//        imageView?.image = UIImage(named: "brand")
 
         return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 64.0
     }
     
     func isSelectedFilter(filter: String) -> Bool {

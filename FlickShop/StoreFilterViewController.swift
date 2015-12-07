@@ -55,6 +55,7 @@ class StoreFilterViewController: UIViewController {
     
     deinit {
         print("StoreFilterViewController Deallocating !!!")
+        searchController.active = false
     }
     
     override func viewWillLayoutSubviews() {

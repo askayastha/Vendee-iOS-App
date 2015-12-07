@@ -231,6 +231,8 @@ class CategoryFilterViewController: UITableViewController {
                         }
                         // Save for filter stuff
                         strongSelf.appDelegate.category["categorySearch"] = strongSelf.categorySearch
+                        strongSelf.appDelegate.category["displayCategories"] = strongSelf.displayCategories
+                        strongSelf.appDelegate.category["tappedCategories"] = strongSelf.tappedCategories
                         strongSelf.appDelegate.category["categoriesIdDict"] = strongSelf.categoriesIdDict
                         
                         strongSelf.tableView.reloadData()

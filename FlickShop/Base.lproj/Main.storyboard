@@ -246,9 +246,9 @@
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <animations/>
                                 <items>
-                                    <barButtonItem title="Clear" id="okz-eN-O8K">
+                                    <barButtonItem title="Reset" id="okz-eN-O8K">
                                         <connections>
-                                            <action selector="clear" destination="Ww8-fr-eeY" id="sL2-AR-Zqf"/>
+                                            <action selector="reset" destination="Ww8-fr-eeY" id="EMU-3j-Pjj"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bMQ-tY-VMr"/>
@@ -261,7 +261,7 @@
                             </toolbar>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="p2b-Fa-uQL" firstAttribute="top" secondItem="mSr-ir-ZrD" secondAttribute="bottom" id="0Yg-c0-KPz"/>
                             <constraint firstAttribute="trailing" secondItem="mSr-ir-ZrD" secondAttribute="trailing" id="APl-dN-Gqr"/>
@@ -290,6 +290,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="tmF-cL-bVH" id="WjH-G0-4OF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLE-8R-2ou" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8gG-tI-Tsf" userLabel="Exit" sceneMemberID="exit"/>
@@ -674,7 +677,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SideTabCell" rowHeight="64" id="6dy-h1-2kK">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SideTabCell" rowHeight="64" id="6dy-h1-2kK">
                                 <rect key="frame" x="0.0" y="28" width="90" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6dy-h1-2kK" id="WT2-C1-GOu">

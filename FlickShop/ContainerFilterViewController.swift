@@ -10,12 +10,14 @@ import UIKit
 
 class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     var containerVC: ContainerViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        navigationBar.barTintColor = UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {
@@ -27,7 +29,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func clear() {
+    @IBAction func reset() {
         appDelegate.resetFilters()
         
         // Refresh side tab

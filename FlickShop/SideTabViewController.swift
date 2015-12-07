@@ -14,7 +14,7 @@ protocol SideTabDelegate: class {
 
 class SideTabViewController: UITableViewController {
     
-    var sideTabs = ["Category", "Brand", "Store", "Price", "Discount", "Color", "Sort"]
+    var selectedFilter = "Category"
     
     let sideTabsDict: OrderedDictionary<String, String> = [
         ("Category", "tab_category"),
@@ -49,7 +49,7 @@ class SideTabViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sideTabs.count
+        return sideTabsDict.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -60,9 +60,14 @@ class SideTabViewController: UITableViewController {
         let imageView = cell.viewWithTag(1002) as? UIImageView
 
         selectedImageView?.hidden = !isSelectedFilter(sideTabsDict.orderedKeys[indexPath.row])
-        textLabel?.text = sideTabs[indexPath.row]
+        textLabel?.text = sideTabsDict.orderedKeys[indexPath.row]
+        textLabel?.textColor = UIColor.blackColor()
         imageView?.image = UIImage(named: sideTabsDict.orderedValues[indexPath.row])
-//        imageView?.image = UIImage(named: "brand")
+        
+        if selectedFilter == textLabel?.text {
+            textLabel?.textColor = UIColor(red: 255/255, green: 168/255, blue: 0, alpha: 1.0)
+            imageView?.image = UIImage(named: sideTabsDict.orderedValues[indexPath.row] + "_selected")
+        }
 
         return cell
     }
@@ -99,9 +104,17 @@ class SideTabViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let identifier = "Embed\(sideTabs[indexPath.row])"
+        let identifier = "Embed\(sideTabsDict.orderedKeys[indexPath.row])"
         print("Filter Type: \(identifier)")
-        delegate?.showTab(identifier)
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let textLabel = cell?.viewWithTag(1001) as? UILabel
+        
+        if selectedFilter != textLabel?.text {
+            delegate?.showTab(identifier)
+        }
+        
+        selectedFilter = (textLabel?.text)!
+        tableView.reloadData()
     }
 
     // MARK: - Navigation

@@ -11,7 +11,6 @@ import UIKit
 class ContainerViewController: UIViewController {
     
     private let categoryIdentifier = "EmbedCategory"
-    private let brandIdentifier = "EmbedBrand"
 
     override func viewDidLoad() {
         super.viewDidLoad()

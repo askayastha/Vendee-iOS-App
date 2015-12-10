@@ -102,6 +102,12 @@ class PriceFilterViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Table view delegate
+    
+    override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+    
     // MARK: - Helper methods
     
     private func updateUIForLowerValue(lowerValue: Int, andUpperValue upperValue: Int) {

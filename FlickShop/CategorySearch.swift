@@ -24,7 +24,6 @@ class CategorySearch {
     private(set) var lastItem = 0
     
     func parseShopStyleForCategory(category: String, completion: SearchComplete) {
-        
         if state == .Loading { // Do not request more data if a request is in process.
             return
         }
@@ -70,7 +69,6 @@ class CategorySearch {
                             
                             self.categories.addObject(categoryInfo)
                         }
-                        
                         self.lastItem = self.categories.count
                     }
                     
@@ -81,11 +79,10 @@ class CategorySearch {
                     dispatch_async(dispatch_get_main_queue()) {
                         completion(success, self.lastItem)
                     }
-                    
                 }
+                
             } else {
                 self.state = .Failed
-                
                 completion(success, self.lastItem)
             }
         }

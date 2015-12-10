@@ -30,13 +30,8 @@ class BrowseViewController: UICollectionViewController {
 //    var product: Product!
     var brands: [Brand]!
     
-    //    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-    //        return .LightContent
-    //    }
-    
     deinit {
         print("Deallocating BrowseCollectionViewController !!!!!!!!!!!!!!!")
-        
         search.dataRequest?.cancel()
     }
     
@@ -45,14 +40,6 @@ class BrowseViewController: UICollectionViewController {
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
-//        productCategory = product.categories?[0]
-        
-//        navigationItem.title = product.name
-//        navigationController?.navigationBar.translucent = false
-//        navigationController?.setNavigationBarHidden(true, animated: false)
-//        navigationController?.navigationBar.barStyle = UIBarStyle.Default
-//        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         
         setupView()
         print("MORE REQUESTS")
@@ -92,7 +79,7 @@ class BrowseViewController: UICollectionViewController {
     
     private func setupView() {
         collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)
-        //        collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        // collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
             layout.delegate = self
@@ -100,22 +87,40 @@ class BrowseViewController: UICollectionViewController {
     }
     
     private func requestDataFromShopStyleForCategory(category: String!) {
-        let limit = 5
-        
         if requestingData {
             return
         }
         
-        requestingData = true
+        let requestLimit = 10
+        let retryLimit = 5
+        let populateLimit = 2
         
+        func populatePhotosFromIndex(index: Int) {
+            search.populatePhotoSizesFromIndex(index, withLimit: populateLimit) { success, lastIndex in
+                self.productCount = lastIndex
+                let fromIndex = lastIndex - populateLimit
+                let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
+                
+                self.collectionView!.performBatchUpdates({
+                    self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                    }, completion: { success in
+                        print("INSERTS SUCCESSFUL")
+                        if success && lastIndex != self.search.lastItem {
+                            populatePhotosFromIndex(lastIndex)
+                        }
+                })
+            }
+        }
+        
+        requestingData = true
         if let category = category {
-            search.parseShopStyleForItemOffset(search.lastItem, withLimit: limit, forCategory: category) { [weak self]
+            search.parseShopStyleForItemOffset(search.lastItem, withLimit: requestLimit, forCategory: category) { [weak self]
                 success, lastItem in
                 if let strongSelf = self {
                     if !success {
                         print("Products Count: \(lastItem)")
                         
-                        if strongSelf.search.retryCount < limit {
+                        if strongSelf.search.retryCount < retryLimit {
                             print("Request Failed. Trying again...")
                             strongSelf.requestingData = false
                             strongSelf.requestDataFromShopStyleForCategory(category)
@@ -126,18 +131,7 @@ class BrowseViewController: UICollectionViewController {
                     } else {
                         strongSelf.requestingData = false
                         print("Product count: \(lastItem)")
-                        
-                        // Algorithm 1
-                        strongSelf.search.populatePhotoSizesForLimit(limit) { success, lastIndex in
-                            let fromIndex = lastIndex - limit
-                            let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
-                            
-                            strongSelf.collectionView!.performBatchUpdates({
-                                strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
-                                }, completion: { success in
-                                    print("INSERTS SUCCESSFUL")
-                            })
-                        }
+                        populatePhotosFromIndex(strongSelf.productCount)
                         
                         // Algorithm 2
 //                        for var i = lastItem - limit; i < lastItem; i++ {
@@ -165,8 +159,6 @@ class BrowseViewController: UICollectionViewController {
         }
     }
     
-    
-    
     //    override func scrollViewDidScroll(scrollView: UIScrollView) {
     //        // Populate more photos when the scrollbar indicator is at 80%
     //        if scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8 {
@@ -186,8 +178,7 @@ extension BrowseViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return search.lastItem
-//        return productCount
+        return productCount
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -201,9 +192,7 @@ extension BrowseViewController {
         cell.brandImageView.layer.borderWidth = 0.5
         cell.brandImageView.layer.cornerRadius = 5.0
         cell.brandImageView.layer.masksToBounds = true
-        
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
-        
         cell.product = product
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
@@ -218,7 +207,7 @@ extension BrowseViewController {
             }
         }
         
-        if search.products.count - indexPath.item == 5 && search.products.count < 1000 {
+        if search.lastItem - indexPath.item == 5 && search.lastItem < 1000 {
             print("New request")
             requestDataFromShopStyleForCategory(productCategory)
         }
@@ -268,6 +257,6 @@ extension BrowseViewController: TwoColumnLayoutDelegate {
         }
         
         return ceil(rect.size.height)
-        //        return rect.size.height
+        // return rect.size.height
     }
 }

@@ -29,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         "color": [String: String]()
     ]
     var sort = [String: String]()
+    
+    let filter = Filter()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

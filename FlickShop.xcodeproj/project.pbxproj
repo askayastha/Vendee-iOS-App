@@ -35,6 +35,7 @@
 		75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */; };
 		75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48D81C0735A100C4C34D /* CategorySearch.swift */; };
 		75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */; };
+		75DD7F3C1C19F45300BDB0A3 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD7F3B1C19F45300BDB0A3 /* Filter.swift */; };
 		75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF28D61BE3DD31000B30F6 /* CategoriesLayout.swift */; };
 		75F12CC51BE0A00B00258874 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC01BE0A00B00258874 /* ImageParser.swift */; };
 		75F12CC61BE0A00B00258874 /* ImageScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC21BE0A00B00258874 /* ImageScout.swift */; };
@@ -125,6 +126,7 @@
 		75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerBrowseViewController.swift; sourceTree = "<group>"; };
 		75DD48D81C0735A100C4C34D /* CategorySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategorySearch.swift; sourceTree = "<group>"; };
 		75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+SharedAppDelegate.swift"; sourceTree = "<group>"; };
+		75DD7F3B1C19F45300BDB0A3 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		75DF28D61BE3DD31000B30F6 /* CategoriesLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesLayout.swift; sourceTree = "<group>"; };
 		75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickShop-Bridging-Header.h"; sourceTree = "<group>"; };
 		75F12CC01BE0A00B00258874 /* ImageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				75F12CE41BE0A24100258874 /* Search.swift */,
 				75DD48D81C0735A100C4C34D /* CategorySearch.swift */,
 				7551D3451C134A040088D32B /* Constants.swift */,
+				75DD7F3B1C19F45300BDB0A3 /* Filter.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -626,6 +629,7 @@
 				75F12D061BE0A35900258874 /* CustomLayoutAttributes.swift in Sources */,
 				75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */,
 				750D8E1A1C06423C00D728F0 /* OrderedDictionary.swift in Sources */,
+				75DD7F3C1C19F45300BDB0A3 /* Filter.swift in Sources */,
 				75F12CC51BE0A00B00258874 /* ImageParser.swift in Sources */,
 				75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */,
 				751E9F261C11AF96007C990C /* FloatingButton.swift in Sources */,

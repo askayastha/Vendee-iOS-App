@@ -59,8 +59,7 @@ class Search {
             print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
             print(requestURL)
             
-            dataRequest = Alamofire.request(.GET, requestURL).responseJSON() {
-                response in
+            dataRequest = Alamofire.request(.GET, requestURL).responseJSON() { response in
                 
                 print(response.request)
                 
@@ -87,8 +86,7 @@ class Search {
             }
             
         } else {
-            dataRequest = Alamofire.request(ShopStyle.Router.PopularProducts(itemOffset, limit, category)).validate().responseJSON() {
-                response in
+            dataRequest = Alamofire.request(ShopStyle.Router.PopularProducts(itemOffset, limit, category)).validate().responseJSON() { response in
                 
                 if response.result.isSuccess {
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
@@ -103,31 +101,27 @@ class Search {
                         dispatch_async(dispatch_get_main_queue()) {
                             completion(success, self.lastItem)
                         }
-                        
                     }
                 } else {
                     self.state = .Failed
-                    
                     completion(success, self.lastItem)
                 }
             }
         }
     }
     
-    func populatePhotoSizesForLimit(limit: Int, completion: (Bool, Int) -> ()) {
-        
+    func populatePhotoSizesFromIndex(index: Int, withLimit limit: Int, completion: (Bool, Int) -> ()) {
         var success = false
         var count = 0
-        let fromIndex = lastItem - limit
+        let lastIndex = index + limit
         
-        for var i = fromIndex; i < lastItem; i++ {
-            let product = products.objectAtIndex(i) as! Product
-            
-            scout.scoutImageWithURI(product.smallImageURL!) { [unowned self]
+        func populatePhotoSizeForProduct(product: Product) {
+            scout.scoutImageWithURI(product.smallImageURL!) { //[unowned self]
                 error, size, type in
                 
                 if let unwrappedError = error {
                     print(unwrappedError.code)
+                    populatePhotoSizeForProduct(product)
                     
                 } else {
                     let imageSize = CGSize(width: size.width, height: size.height)
@@ -136,20 +130,22 @@ class Search {
                     count++
                     
                     success = true
-                }
-                
-                if count == limit {
-                    
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(success, self.lastItem)
+                    if count == limit {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            completion(success, lastIndex)
+                        }
                     }
                 }
             }
         }
+        
+        for var i = index; i < lastIndex; i++ {
+            let product = products.objectAtIndex(i) as! Product
+            populatePhotoSizeForProduct(product)
+        }
     }
     
     func populatePhotoSizeForIndexPath(indexPath: NSIndexPath, completion: (Bool) -> ()) {
-        
         var success = false
         let product = products.objectAtIndex(indexPath.item) as! Product
         
@@ -186,12 +182,6 @@ class Search {
     
     func getFilterParams() -> String {
         var filterParams = [String]()
-        
-//        for filters in appDelegate.filterParams.values as! [String: String] {
-//            for code in filters.values as! [String] {
-//                filterParams.append("fl=\(code)")
-//            }
-//        }
         
         for filtersObj in [AnyObject](appDelegate.filterParams.values) {
             let filters = filtersObj as! [String: String]

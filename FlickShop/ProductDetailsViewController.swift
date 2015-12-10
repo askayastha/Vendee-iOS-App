@@ -151,38 +151,16 @@ class ProductDetailsViewController: UICollectionViewController, UICollectionView
                         strongSelf.requestingData = false
                         print("Product count: \(lastItem)")
                         
-                        strongSelf.search.populatePhotoSizesForLimit(limit) { success, lastIndex in
-                            let fromIndex = lastIndex - limit
-                            let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
-                            
-                            strongSelf.collectionView!.performBatchUpdates({
-                                strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
-                                }, completion: { success in
-                                    print("INSERTS SUCCESSFUL")
-                            })
-                        }
-                        
-                        ////                    var indexPaths = [NSIndexPath]()
-                        //
-                        //                    for var i = self.search.lastItem - 5; i < self.search.lastItem; i++ {
-                        //                        let indexPath = NSIndexPath(forItem: i, inSection: 0)
-                        //                        print("NSIndexPath ***: \(i)")
-                        //
-                        //                        self.populatePhotoSizeForIndexPath(indexPath) { success in
-                        //                            if success {
-                        //                                print("NSIndexPath: \(self.productCount)")
-                        //                                let newIndexPath = NSIndexPath(forItem: self.productCount, inSection: 0)
-                        ////                                indexPaths.append(newIndexPath)
-                        //                                self.productCount++
-                        //
-                        //                                self.collectionView!.performBatchUpdates({
-                        //                                    self.collectionView!.insertItemsAtIndexPaths([newIndexPath])
-                        //                                    }, completion: { success in
-                        //                                        print("INSERT SUCCESSFUL")
-                        //                                })
-                        //                            }
-                        //                        }
-                        //                    }
+//                        strongSelf.search.populatePhotoSizesForLimit(limit) { success, lastIndex in
+//                            let fromIndex = lastIndex - limit
+//                            let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
+//                            
+//                            strongSelf.collectionView!.performBatchUpdates({
+//                                strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
+//                                }, completion: { success in
+//                                    print("INSERTS SUCCESSFUL")
+//                            })
+//                        }
                     }
                 }
             }

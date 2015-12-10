@@ -144,7 +144,7 @@ class FlickViewController: UICollectionViewController {
             }
         }
         
-        if search.products.count - indexPath.item == 1 && search.products.count < 1000 {
+        if search.lastItem - indexPath.item == 1 && search.lastItem < 1000 {
             print("New request")
             requestDataFromShopStyleForCategory(productCategory)
         }

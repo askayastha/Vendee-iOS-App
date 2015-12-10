@@ -26,8 +26,8 @@ class ContainerBrowseViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        didScrollCount = 0
-        backButton.alpha = 1.0
+//        didScrollCount = 0
+//        backButton.alpha = 1.0
         backButton.adjustsImageWhenHighlighted = false
         filterButton.adjustsImageWhenHighlighted = false
     }
@@ -64,18 +64,18 @@ class ContainerBrowseViewController: UIViewController {
 extension ContainerBrowseViewController: ScrollEventsDelegate {
     
     func didScroll() {
-        didScrollCount++
-        
-        if didScrollCount > 5 {
-            UIView.animateWithDuration(0.2) {
-                self.backButton.alpha = 0.0
-            }
-        }
+//        didScrollCount++
+//        
+//        if didScrollCount > 5 {
+//            UIView.animateWithDuration(0.2) {
+//                self.backButton.alpha = 0.0
+//            }
+//        }
     }
     
     func didEndDecelerating() {
-        UIView.animateWithDuration(0.2) {
-            self.backButton.alpha = 1.0
-        }
+//        UIView.animateWithDuration(0.2) {
+//            self.backButton.alpha = 1.0
+//        }
     }
 }

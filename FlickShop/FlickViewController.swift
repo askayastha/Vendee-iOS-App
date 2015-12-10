@@ -104,13 +104,6 @@ class FlickViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        if search.products.count - (indexPath.item + 1) == 0 && search.products.count < 1000 {
-            print("New request")
-            requestDataFromShopStyleForCategory(productCategory)
-        }
-        print("Page \(indexPath.item)")
-        print("ProductInfos count: \(search.products.count)")
-        
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! FlickPageCell
         
 //        cell.layer.shouldRasterize = true
@@ -150,6 +143,12 @@ class FlickViewController: UICollectionViewController {
                 }
             }
         }
+        
+        if search.products.count - indexPath.item == 1 && search.products.count < 1000 {
+            print("New request")
+            requestDataFromShopStyleForCategory(productCategory)
+        }
+        print("Page \(indexPath.item)")
     
         return cell
     }

@@ -127,6 +127,7 @@ class BrowseViewController: UICollectionViewController {
                         strongSelf.requestingData = false
                         print("Product count: \(lastItem)")
                         
+                        // Algorithm 1
                         strongSelf.search.populatePhotoSizesForLimit(limit) { success, lastIndex in
                             let fromIndex = lastIndex - limit
                             let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
@@ -138,27 +139,26 @@ class BrowseViewController: UICollectionViewController {
                             })
                         }
                         
-                        ////                    var indexPaths = [NSIndexPath]()
-                        //
-                        //                    for var i = self.search.lastItem - 5; i < self.search.lastItem; i++ {
-                        //                        let indexPath = NSIndexPath(forItem: i, inSection: 0)
-                        //                        print("NSIndexPath ***: \(i)")
-                        //
-                        //                        self.populatePhotoSizeForIndexPath(indexPath) { success in
-                        //                            if success {
-                        //                                print("NSIndexPath: \(self.productCount)")
-                        //                                let newIndexPath = NSIndexPath(forItem: self.productCount, inSection: 0)
-                        ////                                indexPaths.append(newIndexPath)
-                        //                                self.productCount++
-                        //
-                        //                                self.collectionView!.performBatchUpdates({
-                        //                                    self.collectionView!.insertItemsAtIndexPaths([newIndexPath])
-                        //                                    }, completion: { success in
-                        //                                        print("INSERT SUCCESSFUL")
-                        //                                })
-                        //                            }
-                        //                        }
-                        //                    }
+                        // Algorithm 2
+//                        for var i = lastItem - limit; i < lastItem; i++ {
+//                            let indexPath = NSIndexPath(forItem: i, inSection: 0)
+//    
+//                            strongSelf.search.populatePhotoSizeForIndexPath(indexPath) { success in
+//                                if success {
+//                                    let newIndexPath = NSIndexPath(forItem: strongSelf.productCount, inSection: 0)
+//                                    strongSelf.productCount++
+//                                    
+//                                    strongSelf.collectionView!.insertItemsAtIndexPaths([newIndexPath])
+//                                    print("INSERT SUCCESSFULL")
+//    
+////                                    strongSelf.collectionView!.performBatchUpdates({
+////                                        strongSelf.collectionView!.insertItemsAtIndexPaths([newIndexPath])
+////                                        }, completion: { success in
+////                                            print("INSERT SUCCESSFUL")
+////                                    })
+//                                }
+//                            }
+//                        }
                     }
                 }
             }
@@ -187,6 +187,7 @@ extension BrowseViewController {
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return search.lastItem
+//        return productCount
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -217,12 +218,10 @@ extension BrowseViewController {
             }
         }
         
-        if search.products.count - (indexPath.item + 5) == 0 && search.products.count < 1000 {
+        if search.products.count - indexPath.item == 5 && search.products.count < 1000 {
             print("New request")
             requestDataFromShopStyleForCategory(productCategory)
         }
-        print("Page \(indexPath.item)")
-        print("ProductInfos count: \(search.products.count)")
         
         return cell
     }

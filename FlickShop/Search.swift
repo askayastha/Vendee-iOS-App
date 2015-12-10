@@ -151,22 +151,23 @@ class Search {
     func populatePhotoSizeForIndexPath(indexPath: NSIndexPath, completion: (Bool) -> ()) {
         
         var success = false
-        
         let product = products.objectAtIndex(indexPath.item) as! Product
         
         scout.scoutImageWithURI(product.smallImageURL!) { error, size, type in
             if let unwrappedError = error {
-                print(unwrappedError.code)
+                print("ImageScout Error: \(unwrappedError.code)")
+                
+                // Retry if error
+                self.populatePhotoSizeForIndexPath(indexPath, completion: completion)
                 
             } else {
                 product.smallImageSize = CGSize(width: size.width, height: size.height)
                 print("\(indexPath.item)*****\(CGSize(width: size.width, height: size.height))")
                 
                 success = true
-            }
-            
-            dispatch_async(dispatch_get_main_queue()) {
-                completion(success)
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(success)
+                }
             }
         }
     }

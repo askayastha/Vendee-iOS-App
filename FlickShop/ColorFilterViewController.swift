@@ -52,7 +52,7 @@ class ColorFilterViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
         
-        selectedColors = appDelegate.filterParams["color"] as! [String: String]
+        selectedColors = appDelegate.filter.filterParams["color"] as! [String: String]
     }
     
     deinit {
@@ -111,7 +111,7 @@ class ColorFilterViewController: UITableViewController {
         print(selectedColors)
         
         // Filter Stuff
-        appDelegate.filterParams["color"] = selectedColors
+        appDelegate.filter.filterParams["color"] = selectedColors
         
         // Refresh Side Tab
         filterDidChangeNotification()

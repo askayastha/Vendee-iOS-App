@@ -50,7 +50,7 @@ class StoreFilterViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         
-        selectedStores = appDelegate.filterParams["store"] as! [String: String]
+        selectedStores = appDelegate.filter.filterParams["store"] as! [String: String]
     }
     
     deinit {
@@ -194,7 +194,7 @@ extension StoreFilterViewController: UITableViewDelegate {
         
         print(selectedStores)
         
-        appDelegate.filterParams["store"] = selectedStores
+        appDelegate.filter.filterParams["store"] = selectedStores
         
         // Refresh Side Tab
         filterDidChangeNotification()

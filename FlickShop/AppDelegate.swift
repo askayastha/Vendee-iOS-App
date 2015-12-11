@@ -12,23 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-    var productCategory: String?
-    var category: [String: AnyObject] = [
-        "categorySearch": CategorySearch(),
-        "displayCategories": [String](),
-        "tappedCategories": [String](),
-        "categoriesIdDict": [String: String]()
-    ]
-    var filterParams: [String: AnyObject] = [
-        "brand": [String: String](),
-        "store": [String: String](),
-        "price": [String: String](),
-        "discount": [String: String](),
-        "offer": [String: String](),
-        "color": [String: String]()
-    ]
-    var sort = [String: String]()
     
     let filter = Filter()
 
@@ -73,25 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            NSFontAttributeName: UIFont(name: "ProximaNova-Semibold", size: 16.0)!
 //        ]
 //        UINavigationBar.appearance().translucent = false
-    }
-    
-    func resetFilters() {
-        print("FILTERS CLEARED !!!")
-        category = [
-            "categorySearch": CategorySearch(),
-            "displayCategories": [String](),
-            "tappedCategories": [String](),
-            "categoriesIdDict": [String: String]()
-        ]
-        filterParams = [
-            "brand": [String: String](),
-            "store": [String: String](),
-            "price": [String: String](),
-            "discount": [String: String](),
-            "offer": [String: String](),
-            "color": [String: String]()
-        ]
-        sort.removeAll()
     }
 
 }

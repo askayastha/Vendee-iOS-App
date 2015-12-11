@@ -39,7 +39,7 @@ class PriceFilterViewController: UITableViewController {
         priceRangeSlider.stepValue = 1
         priceRangeSlider.stepValueContinuously = true
         
-        selectedPrices = appDelegate.filterParams["price"] as! [String: String]
+        selectedPrices = appDelegate.filter.filterParams["price"] as! [String: String]
         
         // Setup previous values
         if let priceKey = selectedPrices.keys.first {
@@ -87,7 +87,7 @@ class PriceFilterViewController: UITableViewController {
         
         print(selectedPrices)
         
-        appDelegate.filterParams["price"] = selectedPrices
+        appDelegate.filter.filterParams["price"] = selectedPrices
         
         // Refresh Side Tab
         filterDidChangeNotification()

@@ -45,10 +45,7 @@ class HomeViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "BrowseCategory" {
-//            let navigationController = segue.destinationViewController as! UINavigationController
-//            let controller = navigationController.topViewController as! BrowseCollectionViewController
             let controller = segue.destinationViewController as! ContainerBrowseViewController
-
             let indexPath = sender as! NSIndexPath
             
             controller.productCategory = categories[indexPath.item].keyword
@@ -82,13 +79,13 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let categoryName = categories[indexPath.item].name
         let categoryId = categories[indexPath.item].keyword
-        let oldCategoryName = appDelegate.productCategory?.componentsSeparatedByString(":").first!
+        let oldCategoryName = appDelegate.filter.productCategory?.componentsSeparatedByString(":").first!
         
         if categoryName != oldCategoryName {
-            appDelegate.resetFilters()
+            appDelegate.filter.resetFilters()
         }
         
-        appDelegate.productCategory = "\(categoryName):\(categoryId)"
+        appDelegate.filter.productCategory = "\(categoryName):\(categoryId)"
         
         performSegueWithIdentifier("BrowseCategory", sender: indexPath)
     }

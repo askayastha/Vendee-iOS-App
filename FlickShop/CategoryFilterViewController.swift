@@ -23,12 +23,12 @@ class CategoryFilterViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
         
-        productCategory = appDelegate.productCategory
+        productCategory = appDelegate.filter.productCategory
         
-        categorySearch = appDelegate.category["categorySearch"] as! CategorySearch
-        displayCategories = appDelegate.category["displayCategories"] as! [String]
-        tappedCategories = appDelegate.category["tappedCategories"] as! [String]
-        categoriesIdDict = appDelegate.category["categoriesIdDict"] as! [String: String]
+        categorySearch = appDelegate.filter.category["categorySearch"] as! CategorySearch
+        displayCategories = appDelegate.filter.category["displayCategories"] as! [String]
+        tappedCategories = appDelegate.filter.category["tappedCategories"] as! [String]
+        categoriesIdDict = appDelegate.filter.category["categoriesIdDict"] as! [String: String]
         
         print(displayCategories)
         print(tappedCategories)
@@ -112,8 +112,8 @@ class CategoryFilterViewController: UITableViewController {
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         // Filter Stuff
-        appDelegate.category["displayCategories"] = displayCategories
-        appDelegate.category["tappedCategories"] = tappedCategories
+        appDelegate.filter.category["displayCategories"] = displayCategories
+        appDelegate.filter.category["tappedCategories"] = tappedCategories
         
         print(tappedCategories)
         
@@ -230,10 +230,10 @@ class CategoryFilterViewController: UITableViewController {
                             strongSelf.categoriesIdDict[category.shortName!] = category.id!
                         }
                         // Save for filter stuff
-                        strongSelf.appDelegate.category["categorySearch"] = strongSelf.categorySearch
-                        strongSelf.appDelegate.category["displayCategories"] = strongSelf.displayCategories
-                        strongSelf.appDelegate.category["tappedCategories"] = strongSelf.tappedCategories
-                        strongSelf.appDelegate.category["categoriesIdDict"] = strongSelf.categoriesIdDict
+                        strongSelf.appDelegate.filter.category["categorySearch"] = strongSelf.categorySearch
+                        strongSelf.appDelegate.filter.category["displayCategories"] = strongSelf.displayCategories
+                        strongSelf.appDelegate.filter.category["tappedCategories"] = strongSelf.tappedCategories
+                        strongSelf.appDelegate.filter.category["categoriesIdDict"] = strongSelf.categoriesIdDict
                         
                         strongSelf.tableView.reloadData()
                     }

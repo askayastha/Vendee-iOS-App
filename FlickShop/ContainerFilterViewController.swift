@@ -30,7 +30,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     }
     
     @IBAction func reset() {
-        appDelegate.resetFilters()
+        appDelegate.filter.resetFilters()
         
         // Refresh side tab
         filterDidChangeNotification()

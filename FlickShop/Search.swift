@@ -16,22 +16,40 @@ typealias SearchComplete = (Bool, Int) -> Void
 class Search {
     
     enum State {
-        case NotSearchedYet
+        case Idle
         case Loading
         case Success
         case Failed
     }
     
-    private(set) var state: State = .NotSearchedYet
+    private(set) var dataRequest: Alamofire.Request?
+    private(set) var state: State = .Idle
     private(set) var products = NSMutableOrderedSet()
     private(set) var lastItem = 0
+    private(set) var retryCount = 0
     
     var filteredSearch = false
-    var dataRequest: Alamofire.Request?
-    var retryCount = 0
+    var cancelled = false
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let scout = ImageScout()
+    
+    func resetSearch() {
+        dataRequest?.cancel()
+        state = .Idle
+        cancelled = true
+        products.removeAllObjects()
+        lastItem = 0
+        retryCount = 0
+    }
+    
+    deinit {
+        print("SEARCH DEALLOCATING !!!!!")
+    }
+    
+    func incrementRetryCount() {
+        retryCount++
+    }
     
     func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, var forCategory category: String, completion: SearchComplete) {
         
@@ -50,19 +68,16 @@ class Search {
             }
             
             // Get sort code for filter
-            let sort = appDelegate.sort.count > 0 ? appDelegate.sort.values.first : nil
+            let sort = appDelegate.filter.sort.count > 0 ? appDelegate.filter.sort.values.first : nil
             
             // New request URL for filter
             var requestURL = ShopStyle.Router.FilteredProducts(itemOffset, limit, category, sort).URLRequest.URLString
             requestURL.appendContentsOf(getFilterParams())
             
-            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
             print(requestURL)
             
             dataRequest = Alamofire.request(.GET, requestURL).responseJSON() { response in
-                
-                print(response.request)
-                
                 if response.result.isSuccess {
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                         print("----------Got results!----------")
@@ -76,11 +91,9 @@ class Search {
                         dispatch_async(dispatch_get_main_queue()) {
                             completion(success, self.lastItem)
                         }
-                        
                     }
                 } else {
                     self.state = .Failed
-                    
                     completion(success, self.lastItem)
                 }
             }
@@ -116,7 +129,7 @@ class Search {
         let lastIndex = index + limit
         
         func populatePhotoSizeForProduct(product: Product) {
-            scout.scoutImageWithURI(product.smallImageURL!) { //[unowned self]
+            scout.scoutImageWithURI(product.smallImageURL!) { [unowned self]
                 error, size, type in
                 
                 if let unwrappedError = error {
@@ -126,11 +139,11 @@ class Search {
                 } else {
                     let imageSize = CGSize(width: size.width, height: size.height)
                     product.smallImageSize = imageSize
-                    print("\(count)*****\(imageSize)")
+                    print("\(index + count)*****\(imageSize)")
                     count++
                     
                     success = true
-                    if count == limit {
+                    if count == limit && !self.cancelled {
                         dispatch_async(dispatch_get_main_queue()) {
                             completion(success, lastIndex)
                         }
@@ -140,8 +153,10 @@ class Search {
         }
         
         for var i = index; i < lastIndex; i++ {
-            let product = products.objectAtIndex(i) as! Product
-            populatePhotoSizeForProduct(product)
+            if products.count > 0 {
+                let product = products.objectAtIndex(i) as! Product
+                populatePhotoSizeForProduct(product)
+            }
         }
     }
     
@@ -169,8 +184,8 @@ class Search {
     }
     
     func getFilterCategory() -> String? {
-        let tappedCategories = appDelegate.category["tappedCategories"] as! [String]
-        let categoriesIdDict = appDelegate.category["categoriesIdDict"] as! [String: String]
+        let tappedCategories = appDelegate.filter.category["tappedCategories"] as! [String]
+        let categoriesIdDict = appDelegate.filter.category["categoriesIdDict"] as! [String: String]
         var categoryId: String?
         
         if let category = tappedCategories.last {
@@ -183,7 +198,7 @@ class Search {
     func getFilterParams() -> String {
         var filterParams = [String]()
         
-        for filtersObj in [AnyObject](appDelegate.filterParams.values) {
+        for filtersObj in [AnyObject](appDelegate.filter.filterParams.values) {
             let filters = filtersObj as! [String: String]
             for code in [String](filters.values) {
                 filterParams.append("fl=\(code)")
@@ -241,91 +256,5 @@ class Search {
             
             lastItem = products.count
         }
-    }
-}
-
-struct ShopStyle {
-    enum Router: URLRequestConvertible {
-        static let baseURLString = "https://api.shopstyle.com/api/v2"
-        static let APIKey = "uid4529-31475977-85"
-        
-        case PopularProducts(Int, Int, String)
-        case Categories(String)
-        case FilteredProducts(Int, Int, String, String?)
-        
-        var URLRequest: NSMutableURLRequest {
-//            let (path: String, parameters: [String: AnyObject]) = {
-//                switch self {
-//                    case .PopularProducts (let offset):
-//                        
-//                        let params = ["pid": Router.APIKey, "cat": "womens-clothes", "offset": "\(offset)"]
-//                        return ("/products", params)
-//                }
-//            }()
-        
-            let path: String = {
-                switch self {
-                    case .PopularProducts(_):
-                        return "products"
-                    
-                    case .Categories(_):
-                        return "categories"
-                    
-                    case .FilteredProducts(_):
-                        return "products"
-                    }
-            }()
-            
-            let parameters: [String: AnyObject] = {
-                switch self {
-                    case .PopularProducts (let offset, let limit, let category):
-                        let params = [
-                            "pid": Router.APIKey,
-                            "cat": category,
-                            "offset": "\(offset)",
-                            "limit": "\(limit)",
-//                            "fl": "d0&fl=b3510&fl=b689&fl=r21",
-                            "fl": "d100",
-                            "sort": "Popular"
-                        ]
-                        return params
-                    
-                    case .Categories (let category):
-                        let params = [
-                            "pid": Router.APIKey,
-                            "cat": category
-                        ]
-                    return params
-                    
-                    case .FilteredProducts (let offset, let limit, let category, let sort):
-                        var params = [
-                            "pid": Router.APIKey,
-                            "cat": category,
-                            "offset": "\(offset)",
-                            "limit": "\(limit)"
-                        ]
-                        
-                        if let sort = sort {
-                            params["sort"] = "\(sort)"
-                        }
-                        
-                        return params
-                }
-            }()
-        
-            let URL = NSURL(string: Router.baseURLString)
-            let URLRequest = NSURLRequest(URL: URL!.URLByAppendingPathComponent(path))
-            let encoding = Alamofire.ParameterEncoding.URL
-            
-            return encoding.encode(URLRequest, parameters: parameters).0
-        }
-    }
-    
-    enum ImageSize: Int {
-        case Tiny = 1
-        case Small = 2
-        case Medium = 3
-        case Large = 4
-        case XLarge = 5
     }
 }

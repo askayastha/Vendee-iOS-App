@@ -24,7 +24,7 @@ class SortFilterViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
         
-        selectedSort = appDelegate.sort
+        selectedSort = appDelegate.filter.sort
     }
     
     deinit {
@@ -80,7 +80,7 @@ class SortFilterViewController: UITableViewController {
         print(selectedSort)
         
         // Filter Stuff
-        appDelegate.sort = selectedSort
+        appDelegate.filter.sort = selectedSort
         
         // Refresh Side Tab
         filterDidChangeNotification()

@@ -21,13 +21,12 @@ class BrowseViewController: UICollectionViewController {
     private let footerViewIdentifier = "FooterView"
     private let headerViewIdentifier = "HeaderView"
     
-    var search = Search()
+    var search: Search!
     
     weak var delegate: ScrollEventsDelegate?
     var requestingData = false
     var productCount = 0
     var productCategory: String!
-//    var product: Product!
     var brands: [Brand]!
     
     deinit {
@@ -41,8 +40,8 @@ class BrowseViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        search = Search()
         setupView()
-        print("MORE REQUESTS")
         requestDataFromShopStyleForCategory(productCategory)
     }
     
@@ -52,16 +51,16 @@ class BrowseViewController: UICollectionViewController {
     }
     
     @IBAction func unwindFilterApply(segue: UIStoryboardSegue) {
-        // Cancel existing request
-        search.dataRequest?.cancel()
+        search.resetSearch()
+        search = Search()
+        search.filteredSearch = true
+        productCount = 0
         
         // Scroll to top of the collection view
         collectionView!.setContentOffset(CGPointZero, animated: false)
         collectionView!.contentSize = CGSizeZero
-        
-        search = Search()
-        search.filteredSearch = true
         collectionView!.reloadData()
+        print("COLLECTION VIEW RELOADED")
         
         requestDataFromShopStyleForCategory(productCategory)
     }
@@ -96,12 +95,14 @@ class BrowseViewController: UICollectionViewController {
         let populateLimit = 2
         
         func populatePhotosFromIndex(index: Int) {
+            
             search.populatePhotoSizesFromIndex(index, withLimit: populateLimit) { success, lastIndex in
-                self.productCount = lastIndex
+                self.productCount += populateLimit
                 let fromIndex = lastIndex - populateLimit
                 let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
                 
                 self.collectionView!.performBatchUpdates({
+                    print("READY FOR INSERTS: \(lastIndex)")
                     self.collectionView!.insertItemsAtIndexPaths(indexPaths)
                     }, completion: { success in
                         print("INSERTS SUCCESSFUL")
@@ -110,6 +111,14 @@ class BrowseViewController: UICollectionViewController {
                         }
                 })
             }
+        }
+        
+        func showNoResultsError() {
+            let alert = UIAlertController(title: nil, message: "No results found.", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alert.addAction(OKAction)
+            
+            presentViewController(alert, animated: true, completion: nil)
         }
         
         requestingData = true
@@ -125,13 +134,18 @@ class BrowseViewController: UICollectionViewController {
                             strongSelf.requestingData = false
                             strongSelf.requestDataFromShopStyleForCategory(category)
                             print("Request Count: \(strongSelf.search.retryCount)")
-                            strongSelf.search.retryCount++
+                            strongSelf.search.incrementRetryCount()
                         }
                         
                     } else {
                         strongSelf.requestingData = false
                         print("Product count: \(lastItem)")
-                        populatePhotosFromIndex(strongSelf.productCount)
+                        
+                        if lastItem > 0 {
+                            populatePhotosFromIndex(strongSelf.productCount)
+                        } else {
+                            showNoResultsError()
+                        }
                         
                         // Algorithm 2
 //                        for var i = lastItem - limit; i < lastItem; i++ {
@@ -157,6 +171,14 @@ class BrowseViewController: UICollectionViewController {
                 }
             }
         }
+    }
+    
+    func showError() {
+        let alert = UIAlertController(title: "Whoops...", message: "No results found.", preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alert.addAction(OKAction)
+
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     //    override func scrollViewDidScroll(scrollView: UIScrollView) {

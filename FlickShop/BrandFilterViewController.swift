@@ -50,7 +50,7 @@ class BrandFilterViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         
-        selectedBrands = appDelegate.filterParams["brand"] as! [String: String]
+        selectedBrands = appDelegate.filter.filterParams["brand"] as! [String: String]
     }
     
     deinit {
@@ -194,7 +194,7 @@ extension BrandFilterViewController: UITableViewDelegate {
         
         print(selectedBrands)
         
-        appDelegate.filterParams["brand"] = selectedBrands
+        appDelegate.filter.filterParams["brand"] = selectedBrands
         
         // Refresh Side Tab
         filterDidChangeNotification()

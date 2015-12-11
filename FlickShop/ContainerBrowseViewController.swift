@@ -13,6 +13,7 @@ class ContainerBrowseViewController: UIViewController {
     var productCategory: String!
     var brands: [Brand]!
     var didScrollCount: Int = 0
+    var browseViewController: BrowseViewController?
     
     @IBOutlet weak var backButton: FloatingButton!
     @IBOutlet weak var filterButton: FloatingButton!
@@ -42,7 +43,6 @@ class ContainerBrowseViewController: UIViewController {
     }
 
 //    @IBAction func filterButtonTapped(sender: UIButton) {
-//        
 //    }
     
     // MARK: - Navigation
@@ -51,11 +51,11 @@ class ContainerBrowseViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "EmbedBrowseCategory" {
-            let controller = segue.destinationViewController as! BrowseViewController
+            browseViewController = segue.destinationViewController as? BrowseViewController
             
-            controller.delegate = self
-            controller.productCategory = productCategory
-            controller.brands = brands
+            browseViewController?.delegate = self
+            browseViewController?.productCategory = productCategory
+            browseViewController?.brands = brands
         }
     }
 

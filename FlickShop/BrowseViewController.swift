@@ -18,16 +18,13 @@ protocol ScrollEventsDelegate: class {
 class BrowseViewController: UICollectionViewController {
     
     private let cellIdentifier = "CustomPhotoCell"
-    private let footerViewIdentifier = "FooterView"
-    private let headerViewIdentifier = "HeaderView"
-    
-    var search: Search!
     
     weak var delegate: ScrollEventsDelegate?
+    var search: Search!
+    var brands: [Brand]!
+    var productCategory: String!
     var requestingData = false
     var productCount = 0
-    var productCategory: String!
-    var brands: [Brand]!
     
     deinit {
         print("Deallocating BrowseCollectionViewController !!!!!!!!!!!!!!!")
@@ -73,6 +70,7 @@ class BrowseViewController: UICollectionViewController {
             controller.search = search
             controller.indexPath = indexPath
             controller.brands = brands
+            controller.productCategory = productCategory
         }
     }
     
@@ -90,15 +88,11 @@ class BrowseViewController: UICollectionViewController {
             return
         }
         
-        let requestLimit = 10
-        let retryLimit = 5
-        let populateLimit = 2
-        
         func populatePhotosFromIndex(index: Int) {
             
-            search.populatePhotoSizesFromIndex(index, withLimit: populateLimit) { success, lastIndex in
-                self.productCount += populateLimit
-                let fromIndex = lastIndex - populateLimit
+            search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { success, lastIndex in
+                self.productCount += NumericConstants.populateLimit
+                let fromIndex = lastIndex - NumericConstants.populateLimit
                 let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
                 
                 self.collectionView!.performBatchUpdates({
@@ -108,6 +102,8 @@ class BrowseViewController: UICollectionViewController {
                         print("INSERTS SUCCESSFUL")
                         if success && lastIndex != self.search.lastItem {
                             populatePhotosFromIndex(lastIndex)
+                        } else {
+                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                         }
                 })
             }
@@ -123,18 +119,21 @@ class BrowseViewController: UICollectionViewController {
         
         requestingData = true
         if let category = category {
-            search.parseShopStyleForItemOffset(search.lastItem, withLimit: requestLimit, forCategory: category) { [weak self]
+            search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self]
                 success, lastItem in
                 if let strongSelf = self {
                     if !success {
                         print("Products Count: \(lastItem)")
                         
-                        if strongSelf.search.retryCount < retryLimit {
+                        if strongSelf.search.retryCount < NumericConstants.retryLimit {
                             print("Request Failed. Trying again...")
                             strongSelf.requestingData = false
                             strongSelf.requestDataFromShopStyleForCategory(category)
                             print("Request Count: \(strongSelf.search.retryCount)")
                             strongSelf.search.incrementRetryCount()
+                        } else {
+                            strongSelf.search.resetRetryCount()
+                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                         }
                         
                     } else {
@@ -171,14 +170,6 @@ class BrowseViewController: UICollectionViewController {
                 }
             }
         }
-    }
-    
-    func showError() {
-        let alert = UIAlertController(title: "Whoops...", message: "No results found.", preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alert.addAction(OKAction)
-
-        presentViewController(alert, animated: true, completion: nil)
     }
     
     //    override func scrollViewDidScroll(scrollView: UIScrollView) {

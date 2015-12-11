@@ -13,6 +13,7 @@ class ContainerFlickViewController: UIViewController {
     var search: Search!
     var indexPath: NSIndexPath?
     var brands: [Brand]!
+    var productCategory: String!
     var didScrollCount: Int = 0
     
     @IBOutlet weak var backButton: UIButton!
@@ -57,6 +58,7 @@ class ContainerFlickViewController: UIViewController {
             controller.search = search
             controller.indexPath = indexPath
             controller.brands = brands
+            controller.productCategory = productCategory
         }
     }
 

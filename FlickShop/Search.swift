@@ -51,6 +51,10 @@ class Search {
         retryCount++
     }
     
+    func resetRetryCount() {
+        retryCount = 0
+    }
+    
     func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, var forCategory category: String, completion: SearchComplete) {
         
         if state == .Loading { // Do not request more data if a request is in process.

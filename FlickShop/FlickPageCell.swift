@@ -94,8 +94,8 @@ class FlickPageCell: UICollectionViewCell {
         contentView.addSubview(blurView)
         
         spinner.center = CGPoint(
-            x: FlickViewConstants.width / 2,
-            y: FlickViewConstants.height / 2
+            x: ScreenConstants.width / 2,
+            y: ScreenConstants.height / 2
         )
         
         spinner.hidesWhenStopped = true

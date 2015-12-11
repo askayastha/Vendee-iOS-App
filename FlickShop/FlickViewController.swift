@@ -11,31 +11,22 @@ import Alamofire
 import MBProgressHUD
 import SafariServices
 
-struct FlickViewConstants {
-    static var width = UIScreen.mainScreen().bounds.width
-    static var height = UIScreen.mainScreen().bounds.height
-}
+//struct FlickViewConstants {
+//    static var width = UIScreen.mainScreen().bounds.width
+//    static var height = UIScreen.mainScreen().bounds.height
+//}
 
 class FlickViewController: UICollectionViewController {
     
-    let cellIdentifier = "FlickPageCell"
-    var productCategory = "women"
+    private let cellIdentifier = "FlickPageCell"
     
     var search = Search()
-    
+    var brands: [Brand]!
+    var indexPath: NSIndexPath?
+    var productCategory: String!
     weak var delegate: ScrollEventsDelegate?
     var lastItem = 0
-    var indexPath: NSIndexPath?
     var loadingHUDPresent = false
-    var brands: [Brand]!
-        
-//    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-//        return .LightContent
-//    }
-    
-//    override func prefersStatusBarHidden() -> Bool {
-//        return true
-//    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -52,9 +43,8 @@ class FlickViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FlickViewConstants.width = collectionView!.bounds.width
-        FlickViewConstants.height = collectionView!.bounds.height
-        print("ViewDidLoad")
+//        FlickViewConstants.width = collectionView!.bounds.width
+//        FlickViewConstants.height = collectionView!.bounds.height
         
 //        navigationController?.interactivePopGestureRecognizer?.delegate = self
 
@@ -69,21 +59,8 @@ class FlickViewController: UICollectionViewController {
         collectionView!.registerNib(nib, forCellWithReuseIdentifier: cellIdentifier)
         
         collectionView!.backgroundColor = UIColor.lightGrayColor()
-//        collectionView!.backgroundColor = UIColor.blackColor()
 //        collectionView!.backgroundColor = UIColor(red: 96/255, green: 99/255, blue: 104/255, alpha: 1.0)
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
-        
-        print("Initial Request")
-//        requestData()
-        
-        if let indexPath = indexPath {
-            print("INDEXPATH: \(indexPath.item)")
-        } else {
-            requestDataFromShopStyleForCategory(productCategory)
-        }
-        
-//        requestDataFromShopStyleForCategory(productCategory)
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -110,12 +87,6 @@ class FlickViewController: UICollectionViewController {
 //        cell.layer.rasterizationScale = UIScreen.mainScreen().scale
     
         let product = search.products.objectAtIndex(indexPath.item) as! Product
-        
-//        while product?.largeImageURL == nil {
-//            search.products.removeObjectAtIndex(indexPath.item)
-//
-//            product = search.products.objectAtIndex(indexPath.item) as? Product
-//        }
         
         // Configure the cell
         
@@ -164,19 +135,24 @@ class FlickViewController: UICollectionViewController {
             loadingHUD.userInteractionEnabled = false
         }
         
-        let limit = 10
-        
-        search.parseShopStyleForItemOffset(search.lastItem, withLimit: limit, forCategory: category) { success, lastItem
-            in
+        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { success, lastItem in
             if !success {
-                print("Products Count: \(lastItem)")
-                self.loadingHUDPresent = true
+                print("Products count: \(lastItem)")
                 
-                print("Request Failed. Trying again...")
-                self.requestDataFromShopStyleForCategory(category)
-                // self.showError()
+                if self.search.retryCount < NumericConstants.retryLimit {
+                    print("Request Failed. Trying again...")
+                    self.requestDataFromShopStyleForCategory(category)
+                    print("Request Count: \(self.search.retryCount)")
+                    self.search.incrementRetryCount()
+                    
+                } else {
+                    self.search.resetRetryCount()
+                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                    self.loadingHUDPresent = false
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                }
+                
             } else {
-                
                 print("Product count: \(lastItem)")
                 self.collectionView!.reloadData()
                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
@@ -186,29 +162,13 @@ class FlickViewController: UICollectionViewController {
         }
     }
     
-//    func showError() {
-//        let alert = UIAlertController(title: "Whoops...", message: "There was an error. Please try again.", preferredStyle: .Alert)
-//        let retryAction = UIAlertAction(title: "Retry", style: .Default, handler: { _ in
-//            print("Failed Request. Trying again.")
-//            self.requestData()
-//        })
-//        
-//        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-//        
-//        alert.addAction(retryAction)
-//        alert.addAction(OKAction)
-//        
-//        presentViewController(alert, animated: true, completion: nil)
-//    }
-    
     private func getImageViewHeight() -> CGFloat {
         let collectionViewHeight = collectionView!.bounds.size.height
-        let screenHeight = UIScreen.mainScreen().bounds.height
         
         print("CollectionView Height: \(collectionViewHeight)")
-        print("Screen Height: \(screenHeight)")
+        print("Screen Height: \(ScreenConstants.height)")
         
-        return screenHeight - (60 + 20 + 46 + 30)
+        return ScreenConstants.height - (60 + 20 + 46 + 30)
     }
     
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

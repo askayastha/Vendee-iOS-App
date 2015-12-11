@@ -12,9 +12,9 @@ import UIKit
 struct FlickLayoutConstants {
     struct Cell {
         /* The height of the non-featured cell */
-        static let standardHeight: CGFloat = FlickViewConstants.height * 0.5
+        static let standardHeight: CGFloat = ScreenConstants.height * 0.5
         /* The height of the first visible cell */
-        static let featuredHeight: CGFloat = FlickViewConstants.height
+        static let featuredHeight: CGFloat = ScreenConstants.height
     }
 }
 

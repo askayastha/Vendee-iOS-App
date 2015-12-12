@@ -18,20 +18,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        view.layer.cornerRadius = 5.0
-//        view.layer.masksToBounds = true
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-//        backgroundImageView.image = categories[0].picture
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
-        
-//        collectionView.contentInset = UIEdgeInsets(
-//            top: 0,
-//            left: (collectionView.bounds.width - 200.0) / 2,
-//            bottom: 0,
-//            right: (collectionView.bounds.width - 200.0) / 2
-//        )
     }
 
     override func didReceiveMemoryWarning() {

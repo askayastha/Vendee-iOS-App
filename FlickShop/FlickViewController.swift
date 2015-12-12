@@ -45,14 +45,6 @@ class FlickViewController: UICollectionViewController {
         
 //        FlickViewConstants.width = collectionView!.bounds.width
 //        FlickViewConstants.height = collectionView!.bounds.height
-        
-//        navigationController?.interactivePopGestureRecognizer?.delegate = self
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-//        self.collectionView!.registerClass(FlickPageCell.self, forCellWithReuseIdentifier: cellIdentifier)
 
         // Do any additional setup after loading the view.
         let nib = UINib(nibName: cellIdentifier, bundle: nil)
@@ -135,10 +127,10 @@ class FlickViewController: UICollectionViewController {
             loadingHUD.userInteractionEnabled = false
         }
         
-        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { success, lastItem in
+        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [unowned self] success, lastItem in
+            
+            print("Products count: \(lastItem)")
             if !success {
-                print("Products count: \(lastItem)")
-                
                 if self.search.retryCount < NumericConstants.retryLimit {
                     print("Request Failed. Trying again...")
                     self.requestDataFromShopStyleForCategory(category)
@@ -153,7 +145,6 @@ class FlickViewController: UICollectionViewController {
                 }
                 
             } else {
-                print("Product count: \(lastItem)")
                 self.collectionView!.reloadData()
                 MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 self.loadingHUDPresent = false
@@ -221,14 +212,3 @@ extension FlickViewController: FlickPageCellDelegate {
         }
     }
 }
-
-//extension FlickCollectionViewController: UIGestureRecognizerDelegate {
-//    
-//    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if navigationController?.viewControllers.count > 1 {
-//            return true
-//        }
-//        
-//        return false
-//    }
-//}

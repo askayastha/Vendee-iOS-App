@@ -28,14 +28,10 @@ class BrowseViewController: UICollectionViewController {
     
     deinit {
         print("Deallocating BrowseCollectionViewController !!!!!!!!!!!!!!!")
-        search.dataRequest?.cancel()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         search = Search()
         setupView()
@@ -90,7 +86,7 @@ class BrowseViewController: UICollectionViewController {
         
         func populatePhotosFromIndex(index: Int) {
             
-            search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { success, lastIndex in
+            search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [unowned self] success, lastIndex in
                 self.productCount += NumericConstants.populateLimit
                 let fromIndex = lastIndex - NumericConstants.populateLimit
                 let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
@@ -119,54 +115,51 @@ class BrowseViewController: UICollectionViewController {
         
         requestingData = true
         if let category = category {
-            search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self]
-                success, lastItem in
-                if let strongSelf = self {
-                    if !success {
-                        print("Products Count: \(lastItem)")
-                        
-                        if strongSelf.search.retryCount < NumericConstants.retryLimit {
-                            print("Request Failed. Trying again...")
-                            strongSelf.requestingData = false
-                            strongSelf.requestDataFromShopStyleForCategory(category)
-                            print("Request Count: \(strongSelf.search.retryCount)")
-                            strongSelf.search.incrementRetryCount()
-                        } else {
-                            strongSelf.search.resetRetryCount()
-                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                        }
+            search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [unowned self] success, lastItem in
+                
+                print("Products count: \(lastItem)")
+                if !success {
+                    if self.search.retryCount < NumericConstants.retryLimit {
+                        self.requestingData = false
+                        self.requestDataFromShopStyleForCategory(category)
+                        self.search.incrementRetryCount()
+                        print("Request Failed. Trying again...")
+                        print("Request Count: \(self.search.retryCount)")
                         
                     } else {
-                        strongSelf.requestingData = false
-                        print("Product count: \(lastItem)")
-                        
-                        if lastItem > 0 {
-                            populatePhotosFromIndex(strongSelf.productCount)
-                        } else {
-                            showNoResultsError()
-                        }
-                        
-                        // Algorithm 2
-//                        for var i = lastItem - limit; i < lastItem; i++ {
-//                            let indexPath = NSIndexPath(forItem: i, inSection: 0)
-//    
-//                            strongSelf.search.populatePhotoSizeForIndexPath(indexPath) { success in
-//                                if success {
-//                                    let newIndexPath = NSIndexPath(forItem: strongSelf.productCount, inSection: 0)
-//                                    strongSelf.productCount++
-//                                    
-//                                    strongSelf.collectionView!.insertItemsAtIndexPaths([newIndexPath])
-//                                    print("INSERT SUCCESSFULL")
-//    
+                        self.search.resetRetryCount()
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    }
+                    
+                } else {
+                    self.requestingData = false
+                    
+                    if lastItem > 0 {
+                        populatePhotosFromIndex(self.productCount)
+                    } else {
+                        showNoResultsError()
+                    }
+                    
+                    // Algorithm 2
+//                    for var i = lastItem - limit; i < lastItem; i++ {
+//                        let indexPath = NSIndexPath(forItem: i, inSection: 0)
+//
+//                        strongSelf.search.populatePhotoSizeForIndexPath(indexPath) { success in
+//                            if success {
+//                                let newIndexPath = NSIndexPath(forItem: strongSelf.productCount, inSection: 0)
+//                                strongSelf.productCount++
+//                                
+//                                strongSelf.collectionView!.insertItemsAtIndexPaths([newIndexPath])
+//                                print("INSERT SUCCESSFULL")
+//
 ////                                    strongSelf.collectionView!.performBatchUpdates({
 ////                                        strongSelf.collectionView!.insertItemsAtIndexPaths([newIndexPath])
 ////                                        }, completion: { success in
 ////                                            print("INSERT SUCCESSFUL")
 ////                                    })
-//                                }
 //                            }
 //                        }
-                    }
+//                    }
                 }
             }
         }

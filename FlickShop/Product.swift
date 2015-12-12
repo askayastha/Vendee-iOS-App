@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Product: NSObject {
+class Product {
     
     var id: String?
     var buyURL: String?

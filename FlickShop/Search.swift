@@ -34,6 +34,10 @@ class Search {
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let scout = ImageScout()
     
+    deinit {
+        print("SEARCH DEALLOCATING !!!!!")
+    }
+    
     func resetSearch() {
         dataRequest?.cancel()
         state = .Idle
@@ -41,10 +45,6 @@ class Search {
         products.removeAllObjects()
         lastItem = 0
         retryCount = 0
-    }
-    
-    deinit {
-        print("SEARCH DEALLOCATING !!!!!")
     }
     
     func incrementRetryCount() {
@@ -133,8 +133,7 @@ class Search {
         let lastIndex = index + limit
         
         func populatePhotoSizeForProduct(product: Product) {
-            scout.scoutImageWithURI(product.smallImageURL!) { [unowned self]
-                error, size, type in
+            scout.scoutImageWithURI(product.smallImageURL!) { [unowned self] error, size, type in
                 
                 if let unwrappedError = error {
                     print(unwrappedError.code)

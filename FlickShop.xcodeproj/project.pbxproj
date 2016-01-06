@@ -38,6 +38,9 @@
 		75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */; };
 		75DD7F3C1C19F45300BDB0A3 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD7F3B1C19F45300BDB0A3 /* Filter.swift */; };
 		75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF28D61BE3DD31000B30F6 /* CategoriesLayout.swift */; };
+		75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */; };
+		75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */; };
+		75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */; };
 		75F12CC51BE0A00B00258874 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC01BE0A00B00258874 /* ImageParser.swift */; };
 		75F12CC61BE0A00B00258874 /* ImageScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC21BE0A00B00258874 /* ImageScout.swift */; };
 		75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC31BE0A00B00258874 /* ScoutOperation.swift */; };
@@ -130,6 +133,9 @@
 		75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+SharedAppDelegate.swift"; sourceTree = "<group>"; };
 		75DD7F3B1C19F45300BDB0A3 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		75DF28D61BE3DD31000B30F6 /* CategoriesLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesLayout.swift; sourceTree = "<group>"; };
+		75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-Book-Bas.otf"; sourceTree = "<group>"; };
+		75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-BookItal-Bas.otf"; sourceTree = "<group>"; };
+		75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-Semibold-Bas.otf"; sourceTree = "<group>"; };
 		75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickShop-Bridging-Header.h"; sourceTree = "<group>"; };
 		75F12CC01BE0A00B00258874 /* ImageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
 		75F12CC11BE0A00B00258874 /* ImageScout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScout.h; sourceTree = "<group>"; };
@@ -357,6 +363,9 @@
 			children = (
 				75A31E381BDFBAAE006FD010 /* Assets.xcassets */,
 				75F12D191BE0A54D00258874 /* Categories.xcassets */,
+				75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */,
+				75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */,
+				75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */,
 				753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */,
 				753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */,
 				753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */,
@@ -529,6 +538,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */,
+				75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */,
+				75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */,
 				753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */,
 				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
 				753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */,

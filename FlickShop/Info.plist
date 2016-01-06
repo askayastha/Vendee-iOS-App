@@ -35,6 +35,9 @@
 		<string>ProximaNova-Reg.ttf</string>
 		<string>ProximaNova-SBold.ttf</string>
 		<string>ProximaNova-Bold.ttf</string>
+		<string>Whitney-Book-Bas.otf</string>
+		<string>Whitney-BookItal-Bas.otf</string>
+		<string>Whitney-Semibold-Bas.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>up</string>

@@ -19,6 +19,8 @@ class Product {
     var unbrandedName: String?
     var brandName: String?
     var brandImageURL: String?
+    var price: Float?
+    var salePrice: Float?
     var formattedPrice: String?
     var formattedSalePrice: String?
     var colors: [String]?

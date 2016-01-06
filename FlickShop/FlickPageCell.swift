@@ -26,8 +26,7 @@ class FlickPageCell: UICollectionViewCell {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var brandNameLabel: UILabel!
     @IBOutlet weak var brandImageView: UIImageView!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var salePriceLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
@@ -96,7 +95,7 @@ class FlickPageCell: UICollectionViewCell {
         scrollView.subviews.forEach { $0.removeFromSuperview() }
         scrollView.contentOffset.x = 0
         brandImageView.image = nil
-        priceLabel.text = nil
+        discountLabel.text = nil
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
@@ -150,19 +149,13 @@ class FlickPageCell: UICollectionViewCell {
     
     private func updateUI() {
         print("##### Updating UI #####")
-        brandNameLabel.text = product.brandName ?? product!.brandedName
+        brandNameLabel.text = product!.brandedName
         
-        if let salePrice = product.formattedSalePrice {
-            priceLabel.attributedText = NSAttributedString(
-                string: product.formattedPrice ?? "",
-                attributes: [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue ]
-            )
-            
-            salePriceLabel.text = salePrice
-            
+        if let salePrice = product.salePrice {
+            let discount = (product.price! - salePrice) * 100 / product.price!
+            discountLabel.text = "\(Int(discount))% Off"
         } else {
-            priceLabel.text = ""
-            salePriceLabel.text = product!.formattedPrice ?? ""
+            discountLabel.text = "0% Off"
         }
         print("PRODUCT ID: \(product!.id)")
         // Setup page control
@@ -173,7 +166,10 @@ class FlickPageCell: UICollectionViewCell {
             spinners.append(nil)
             imageViews.append(nil)
         }
-        scrollView.contentSize = CGSizeMake(scrollViewBounds.size.width * CGFloat(pageControl.numberOfPages), scrollViewBounds.size.height)
+        scrollView.contentSize = CGSizeMake(
+            scrollViewBounds.size.width * CGFloat(pageControl.numberOfPages),
+            scrollViewBounds.size.height
+        )
         loadVisiblePages()
         scrollView.delegate = self
     }
@@ -263,7 +259,6 @@ class FlickPageCell: UICollectionViewCell {
         if frame.size.width > ScreenConstants.width {
             frame.size.width = ScreenConstants.width
         }
-        
         return frame
     }
 }

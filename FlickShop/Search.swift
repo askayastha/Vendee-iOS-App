@@ -227,8 +227,10 @@ class Search {
                 let unbrandedName = item["unbrandedName"]
                 let brandName = item["brand"]["name"]
                 let brandImageURL = item["brand"]["userImage"]
-                let price = item["priceLabel"]
-                let salePrice = item["salePriceLabel"]
+                let price = item["price"]
+                let salePrice = item["salePrice"]
+                let formattedPrice = item["priceLabel"]
+                let formattedSalePrice = item["salePriceLabel"]
                 let productDescription = item["description"]
                 var categories: [String]!
                 
@@ -261,8 +263,10 @@ class Search {
                 product.unbrandedName = unbrandedName.string
                 product.brandName = brandName.string
                 product.brandImageURL = brandImageURL.string
-                product.formattedPrice = price.string
-                product.formattedSalePrice = salePrice.string
+                product.price = price.float
+                product.salePrice = salePrice.float
+                product.formattedPrice = formattedPrice.string
+                product.formattedSalePrice = formattedSalePrice.string
                 product.productDescription = productDescription.string
                 product.categories = categories
                 

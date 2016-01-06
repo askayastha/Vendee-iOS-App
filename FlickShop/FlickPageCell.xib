@@ -5,14 +5,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="ProximaNova-Sbold.ttf">
-            <string>ProximaNova-Semibold</string>
-            <string>ProximaNova-Semibold</string>
-        </mutableArray>
         <mutableArray key="Whitney-Book-Bas.otf">
             <string>Whitney-Book</string>
         </mutableArray>
         <mutableArray key="Whitney-Semibold-Bas.otf">
+            <string>Whitney-Semibold</string>
+            <string>Whitney-Semibold</string>
             <string>Whitney-Semibold</string>
             <string>Whitney-Semibold</string>
         </mutableArray>
@@ -194,7 +192,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AeY-6E-yr6">
                                 <rect key="frame" x="529" y="7" width="16" height="16"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="13"/>
                                 <color key="textColor" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -207,7 +205,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6m-qz-aaF">
                                 <rect key="frame" x="577" y="7" width="8" height="16"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Semibold" family="Proxima Nova" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="13"/>
                                 <color key="textColor" red="0.72549019609999998" green="0.72549019609999998" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

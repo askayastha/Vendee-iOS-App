@@ -82,7 +82,7 @@ class FlickViewController: UICollectionViewController {
         
         // Configure the cell
         
-        cell.imageViewHeightConstraint.constant = getImageViewHeight()
+        cell.scrollViewHeightConstraint.constant = getImageViewHeight()
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topLikesCommentsViewLineSeparatorHeightConstraint.constant = 0.5

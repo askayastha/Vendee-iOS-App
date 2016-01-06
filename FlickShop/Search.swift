@@ -218,9 +218,9 @@ class Search {
         if let productsArray = json["products"].array {
             
             for item in productsArray {
-                let id = item["id"]
+                let id = item["id"].intValue
                 let buyURL = item["clickUrl"]
-                let largeImageURL = item["image"]["sizes"]["Original"]["url"]
+                var largeImageURLs: [String]!
                 let smallImageURL = item["image"]["sizes"]["IPhone"]["url"]
                 let name = item["name"]
                 let brandedName = item["brandedName"]
@@ -230,19 +230,31 @@ class Search {
                 let price = item["priceLabel"]
                 let salePrice = item["salePriceLabel"]
                 let productDescription = item["description"]
-                var categories: [String]?
+                var categories: [String]!
                 
                 if let categoriesArray = item["categories"].array {
                     categories = [String]()
                     for item in categoriesArray {
-                        categories!.append(item["id"].stringValue)
+                        categories.append(item["id"].stringValue)
+                    }
+                }
+                
+                if let alternateImagesArray = item["alternateImages"].array {
+                    largeImageURLs = [String]()
+                    
+                    // First URL
+                    largeImageURLs.append(item["image"]["sizes"]["Original"]["url"].stringValue)
+                    
+                    // Alternate URLs
+                    for item in alternateImagesArray {
+                        largeImageURLs.append(item["sizes"]["Original"]["url"].stringValue)
                     }
                 }
                 
                 let product = Product()
-                product.id = id.string
+                product.id = String(id)
                 product.buyURL = buyURL.string
-                product.largeImageURL = largeImageURL.string
+                product.largeImageURLs = largeImageURLs
                 product.smallImageURL = smallImageURL.string
                 product.name = name.string
                 product.brandedName = brandedName.string

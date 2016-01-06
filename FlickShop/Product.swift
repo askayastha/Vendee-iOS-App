@@ -12,7 +12,7 @@ class Product {
     
     var id: String?
     var buyURL: String?
-    var largeImageURL: String?
+    var largeImageURLs: [String]?
     var smallImageURL: String?
     var name: String?
     var brandedName: String?

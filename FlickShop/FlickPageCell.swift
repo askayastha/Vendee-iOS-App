@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 protocol FlickPageCellDelegate: class {
     func openItemInStoreWithURL(url: NSURL?)
@@ -23,59 +22,42 @@ class FlickPageCell: UICollectionViewCell {
         }
     }
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var brandNameLabel: UILabel!
     @IBOutlet weak var brandImageView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var salePriceLabel: UILabel!
-    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topLikesCommentsViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buyButton: UIButton!
     
     weak var delegate: FlickPageCellDelegate?
-    
-    let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-    
+    var imageViews: [UIImageView?]
+    var spinners: [UIActivityIndicatorView?]
     var product: Product! {
         didSet {
             updateUI()
         }
     }
-    
+    var scrollViewBounds: CGRect {
+        return fixFrame(scrollView.bounds)
+    }
+    var currentPage: Int {
+        // First, determine which page is currently visible
+        let pageWidth = scrollViewBounds.size.width
+        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+        
+        return page
+    }
     var blurView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .Light)
         let blurView = UIVisualEffectView(effect: blurEffect)
         
         return blurView
     }()
-    
-//    var productImageRequest: Alamofire.Request?
-//    var brandImageRequest: Alamofire.Request?
-    
-    private func updateUI() {
-        brandNameLabel.text = product.brandName ?? product!.brandedName
-        
-        if let salePrice = product.formattedSalePrice {
-            priceLabel.attributedText = NSAttributedString(
-                string: product.formattedPrice ?? "",
-                attributes: [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue ]
-            )
-            
-            salePriceLabel.text = salePrice
-            
-        } else {
-            priceLabel.text = ""
-            salePriceLabel.text = product!.formattedPrice ?? ""
-        }
-        
-        spinner.startAnimating()
-        
-        imageView.pin_setImageFromURL(NSURL(string: product.largeImageURL!)!) { _ in
-            self.spinner.stopAnimating()
-        }
-    }
     
 //    override init(frame: CGRect) {
 //        super.init(frame: frame)
@@ -84,6 +66,8 @@ class FlickPageCell: UICollectionViewCell {
 //    }
     
     required init?(coder aDecoder: NSCoder) {
+        imageViews = [UIImageView?]()
+        spinners = [UIActivityIndicatorView?]()
         super.init(coder: aDecoder)
         print("$$$$$$$$$$ FlickCell initialization $$$$$$$$$$")
 
@@ -92,19 +76,12 @@ class FlickPageCell: UICollectionViewCell {
         
         blurView.frame = bounds
         contentView.addSubview(blurView)
-        
-        spinner.center = CGPoint(
-            x: ScreenConstants.width / 2,
-            y: ScreenConstants.height / 2
-        )
-        
-        spinner.hidesWhenStopped = true
-        contentView.addSubview(spinner)
     }
     
     override func awakeFromNib() {
+        print("Yay. Awoke from Nib.")
         super.awakeFromNib()
-
+        
         buyButton.layer.cornerRadius = 5.0
         buyButton.layer.masksToBounds = true
     }
@@ -113,17 +90,13 @@ class FlickPageCell: UICollectionViewCell {
         super.prepareForReuse()
         print("Yay. I am getting reused.")
         
-        imageView.image = nil
+        spinners.removeAll()
+        imageViews.removeAll()
+        scrollView.delegate = nil
+        scrollView.subviews.forEach { $0.removeFromSuperview() }
+        scrollView.contentOffset.x = 0
         brandImageView.image = nil
         priceLabel.text = nil
-//        productImageRequest?.cancel()
-//        brandImageRequest?.cancel()
-//        productImageRequest = nil
-//        brandImageRequest = nil
-        
-        if spinner.isAnimating() {
-            spinner.stopAnimating()
-        }
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
@@ -162,5 +135,144 @@ class FlickPageCell: UICollectionViewCell {
         if let product = product {
             delegate?.displayMoreDetailsForProduct(product)
         }
+    }
+    
+    @IBAction func pageChanged(sender: UIPageControl) {
+        UIView.animateWithDuration(0.3, delay: 0, options: .CurveEaseInOut, animations: {
+            self.scrollView.contentOffset = CGPoint(
+                x: self.scrollView.bounds.size.width * CGFloat(sender.currentPage),
+                y: 0)
+            },
+            completion: nil)
+    }
+    
+    // MARK: - Helper methods
+    
+    private func updateUI() {
+        print("##### Updating UI #####")
+        brandNameLabel.text = product.brandName ?? product!.brandedName
+        
+        if let salePrice = product.formattedSalePrice {
+            priceLabel.attributedText = NSAttributedString(
+                string: product.formattedPrice ?? "",
+                attributes: [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue ]
+            )
+            
+            salePriceLabel.text = salePrice
+            
+        } else {
+            priceLabel.text = ""
+            salePriceLabel.text = product!.formattedPrice ?? ""
+        }
+        print("PRODUCT ID: \(product!.id)")
+        // Setup page control
+        pageControl.currentPage = currentPage
+        pageControl.numberOfPages = product.largeImageURLs!.count
+        
+        for _ in 0..<product.largeImageURLs!.count {
+            spinners.append(nil)
+            imageViews.append(nil)
+        }
+        scrollView.contentSize = CGSizeMake(scrollViewBounds.size.width * CGFloat(pageControl.numberOfPages), scrollViewBounds.size.height)
+        loadVisiblePages()
+        scrollView.delegate = self
+    }
+    
+    private func loadPage(page: Int) {
+        
+        if page < 0 || page >= pageControl.numberOfPages {
+            // If it's outside the range of what you have to display, then do nothing
+            return
+        }
+
+        if let _ = imageViews[page] {
+            // Do nothing. The view is already loaded.
+        } else {
+            var frame = scrollViewBounds   ; print("ScrollView Bounds: \(frame)")
+            frame.origin.x = frame.size.width * CGFloat(page)
+            frame.origin.y = 0
+            
+            // Spinner setup
+            let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+            spinner.hidesWhenStopped = true
+            spinner.center = CGPoint(x: frame.origin.x + frame.size.width / 2, y: frame.size.height / 2)
+            spinner.startAnimating()
+            scrollView.addSubview(spinner)
+            spinners[page] = spinner
+            
+            // ImageView setup
+            let imageView = UIImageView()
+            imageView.contentMode = .ScaleAspectFit
+            imageView.frame = frame
+            imageView.pin_setImageFromURL(NSURL(string: product.largeImageURLs![page])!) { _ in
+                spinner.stopAnimating()
+            }
+            scrollView.addSubview(imageView)
+            imageViews[page] = imageView
+        }
+    }
+    
+    private func purgePage(page: Int) {
+        
+        if page < 0 || page >= pageControl.numberOfPages {
+            // If it's outside the range of what you have to display, then do nothing
+            return
+        }
+        
+        // Remove a spinner from the scroll view and reset the container array
+        if let spinner = spinners[page] {
+            spinner.removeFromSuperview()
+            spinners[page] = nil
+        }
+        
+        // Remove a page from the scroll view and reset the container array
+        if let imageView = imageViews[page] {
+            imageView.removeFromSuperview()
+            imageViews[page] = nil
+        }
+    }
+    
+    private func loadVisiblePages() {
+        
+        // Update the page control
+        pageControl.currentPage = currentPage
+        print("Current Image: \(currentPage)")
+        
+        // Work out which pages you want to load
+        let firstPage = currentPage - 1
+        let lastPage = currentPage + 1
+        
+        
+        // Purge anything before the first page
+        for var index = 0; index < firstPage; ++index {
+            purgePage(index)
+        }
+        
+        // Load pages in our range
+        for var index = firstPage; index <= lastPage; ++index {
+            loadPage(index)
+        }
+        
+        // Purge anything after the last page
+        for var index = lastPage + 1; index < pageControl.numberOfPages; ++index {
+            purgePage(index)
+        }
+    }
+    
+    private func fixFrame(var frame: CGRect) -> CGRect {
+        if frame.size.width > ScreenConstants.width {
+            frame.size.width = ScreenConstants.width
+        }
+        
+        return frame
+    }
+}
+
+extension FlickPageCell: UIScrollViewDelegate {
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Load the pages that are now on screen
+        print("scrollViewDidScroll")
+        loadVisiblePages()
     }
 }

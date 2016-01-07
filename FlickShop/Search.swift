@@ -249,7 +249,10 @@ class Search {
                     
                     // Alternate URLs
                     for item in alternateImagesArray {
-                        largeImageURLs.append(item["sizes"]["Original"]["url"].stringValue)
+                        let url = item["sizes"]["Original"]["url"].stringValue
+                        if !largeImageURLs.contains(url) {
+                            largeImageURLs.append(url)
+                        }
                     }
                 }
                 

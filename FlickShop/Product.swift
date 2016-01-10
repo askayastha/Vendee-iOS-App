@@ -11,33 +11,31 @@ import UIKit
 class Product {
     
     var id: String?
+    var productDescription: String?
+    
     var buyURL: String?
+    var brandImageURL: String?
+    
+    var tinyImageURLs: [String]?
+    var smallImageURLs: [String]?
     var largeImageURLs: [String]?
-    var smallImageURL: String?
+    
+    var tinyImageSize: CGSize?
+    var smallImageSize: CGSize?
+    var largeImageSizes = [CGSize?]()
+    
     var name: String?
     var brandedName: String?
     var unbrandedName: String?
     var brandName: String?
-    var brandImageURL: String?
+    
     var price: Float?
     var salePrice: Float?
     var formattedPrice: String?
     var formattedSalePrice: String?
+    
     var colors: [String]?
     var sizes: [String]?
-    var productDescription: String?
+    
     var categories: [String]?
-    var smallImageSize: CGSize?
-    
-//    init(id: String, detailPageURL: String, largeImageURL: String) {
-//        self.id = id
-//        self.detailPageURL = detailPageURL
-//        self.largeImageURL = largeImageURL
-//        
-//        super.init()
-//    }
-    
-//    required init(response: NSHTTPURLResponse, representation: AnyObject) {
-//        
-//    }
 }

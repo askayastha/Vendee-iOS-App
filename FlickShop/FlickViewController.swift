@@ -211,4 +211,15 @@ extension FlickViewController: FlickPageCellDelegate {
             navigationController?.pushViewController(controller, animated: true)
         }
     }
+    
+    func openPhotosViewControllerForProduct(product: Product, withPage page: Int) {
+        indexPath = collectionView!.indexPathsForVisibleItems().first
+        let photosVC = storyboard!.instantiateViewControllerWithIdentifier("PhotosViewController") as? PhotosViewController
+        
+        if let controller = photosVC {
+            controller.product = product
+            controller.page = page
+            presentViewController(controller, animated: true, completion: nil)
+        }
+    }
 }

@@ -133,7 +133,7 @@ class Search {
         let lastIndex = index + limit
         
         func populatePhotoSizeForProduct(product: Product) {
-            scout.scoutImageWithURI(product.smallImageURL!) { [unowned self] error, size, type in
+            scout.scoutImageWithURI(product.smallImageURLs!.first!) { error, size, type in
                 
                 if let unwrappedError = error {
                     print(unwrappedError.code)
@@ -167,7 +167,7 @@ class Search {
         var success = false
         let product = products.objectAtIndex(indexPath.item) as! Product
         
-        scout.scoutImageWithURI(product.smallImageURL!) { error, size, type in
+        scout.scoutImageWithURI(product.smallImageURLs!.first!) { error, size, type in
             if let unwrappedError = error {
                 print("ImageScout Error: \(unwrappedError.code)")
                 
@@ -220,8 +220,9 @@ class Search {
             for item in productsArray {
                 let id = item["id"].intValue
                 let buyURL = item["clickUrl"]
+                var tinyImageURLs: [String]!
+                var smallImageURLs: [String]!
                 var largeImageURLs: [String]!
-                let smallImageURL = item["image"]["sizes"]["IPhone"]["url"]
                 let name = item["name"]
                 let brandedName = item["brandedName"]
                 let unbrandedName = item["unbrandedName"]
@@ -242,16 +243,29 @@ class Search {
                 }
                 
                 if let alternateImagesArray = item["alternateImages"].array {
+                    tinyImageURLs = [String]()
+                    smallImageURLs = [String]()
                     largeImageURLs = [String]()
                     
                     // First URL
+                    tinyImageURLs.append(item["image"]["sizes"]["IPhoneSmall"]["url"].stringValue)
+                    smallImageURLs.append(item["image"]["sizes"]["IPhone"]["url"].stringValue)
                     largeImageURLs.append(item["image"]["sizes"]["Original"]["url"].stringValue)
                     
                     // Alternate URLs
                     for item in alternateImagesArray {
-                        let url = item["sizes"]["Original"]["url"].stringValue
-                        if !largeImageURLs.contains(url) {
-                            largeImageURLs.append(url)
+                        let tinyImageURL = item["sizes"]["IPhoneSmall"]["url"].stringValue
+                        let smallImageURL = item["sizes"]["IPhone"]["url"].stringValue
+                        let largeImageURL = item["sizes"]["Original"]["url"].stringValue
+                        
+                        if !tinyImageURLs.contains(tinyImageURL) {
+                            tinyImageURLs.append(tinyImageURL)
+                        }
+                        if !smallImageURLs.contains(smallImageURL) {
+                            smallImageURLs.append(smallImageURL)
+                        }
+                        if !largeImageURLs.contains(largeImageURL) {
+                            largeImageURLs.append(largeImageURL)
                         }
                     }
                 }
@@ -259,8 +273,9 @@ class Search {
                 let product = Product()
                 product.id = String(id)
                 product.buyURL = buyURL.string
+                product.tinyImageURLs = tinyImageURLs
+                product.smallImageURLs = smallImageURLs
                 product.largeImageURLs = largeImageURLs
-                product.smallImageURL = smallImageURL.string
                 product.name = name.string
                 product.brandedName = brandedName.string
                 product.unbrandedName = unbrandedName.string

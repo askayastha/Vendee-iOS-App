@@ -176,7 +176,7 @@ class ProductDetailsViewController: UICollectionViewController, UICollectionView
         for var i = fromIndex; i < self.search.lastItem; i++ {
             let product = self.search.products.objectAtIndex(i) as! Product
             
-            scout.scoutImageWithURI(product.smallImageURL!) { error, size, type in
+            scout.scoutImageWithURI(product.smallImageURLs!.first!) { error, size, type in
                 if let unwrappedError = error {
                     print(unwrappedError.code)
                     
@@ -205,7 +205,7 @@ class ProductDetailsViewController: UICollectionViewController, UICollectionView
         
         let product = self.search.products.objectAtIndex(indexPath.item) as! Product
         
-        scout.scoutImageWithURI(product.smallImageURL!) { error, size, type in
+        scout.scoutImageWithURI(product.smallImageURLs!.first!) { error, size, type in
             if let unwrappedError = error {
                 print(unwrappedError.code)
                 

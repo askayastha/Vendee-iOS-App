@@ -10,6 +10,7 @@ import UIKit
 
 protocol FlickPageCellDelegate: class {
     func openItemInStoreWithURL(url: NSURL?)
+    func openPhotosViewControllerForProduct(product: Product, withPage page: Int)
     func displayMoreDetailsForProduct(product: Product)
 }
 
@@ -93,7 +94,7 @@ class FlickPageCell: UICollectionViewCell {
         imageViews.removeAll()
         scrollView.delegate = nil
         scrollView.subviews.forEach { $0.removeFromSuperview() }
-        scrollView.contentOffset.x = 0
+        scrollView.setContentOffset(CGPointMake(0.0, 0.0), animated: false)
         brandImageView.image = nil
         discountLabel.text = nil
     }
@@ -171,7 +172,7 @@ class FlickPageCell: UICollectionViewCell {
             scrollViewBounds.size.height
         )
         loadVisiblePages()
-        scrollView.delegate = self
+        scrollView.delegate = self  // Delegate set here to prevent unwanted scrolling method calls.
     }
     
     private func loadPage(page: Int) {
@@ -199,10 +200,16 @@ class FlickPageCell: UICollectionViewCell {
             // ImageView setup
             let imageView = UIImageView()
             imageView.contentMode = .ScaleAspectFit
+            imageView.userInteractionEnabled = true
             imageView.frame = frame
             imageView.pin_setImageFromURL(NSURL(string: product.largeImageURLs![page])!) { _ in
                 spinner.stopAnimating()
             }
+            
+            // TapGestureRecognizer setup
+            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
+            imageView.addGestureRecognizer(tapGestureRecognizer)
+            
             scrollView.addSubview(imageView)
             imageViews[page] = imageView
         }
@@ -255,11 +262,8 @@ class FlickPageCell: UICollectionViewCell {
         }
     }
     
-    private func fixFrame(var frame: CGRect) -> CGRect {
-        if frame.size.width > ScreenConstants.width {
-            frame.size.width = ScreenConstants.width
-        }
-        return frame
+    func imageViewTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        delegate?.openPhotosViewControllerForProduct(product, withPage: currentPage)
     }
 }
 

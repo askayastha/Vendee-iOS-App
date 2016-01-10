@@ -43,7 +43,7 @@ class CustomPhotoCell: UICollectionViewCell {
                 }
                 
 //                imageView.pin_updateWithProgress = true
-                imageView.pin_setImageFromURL(NSURL(string: product.smallImageURL!)!)
+                imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs!.first!)!)
                 
             }
         }

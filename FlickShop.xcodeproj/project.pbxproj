@@ -22,6 +22,7 @@
 		753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */; };
 		753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */; };
 		753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */; };
+		7541FECE1C3E720B005CEB11 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */; };
 		7551D3461C134A040088D32B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551D3451C134A040088D32B /* Constants.swift */; };
 		756FC4E71C01B03F007AB0C5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */; };
 		756FC4E91C01B16D007AB0C5 /* SwitchSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */; };
@@ -111,6 +112,7 @@
 		753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
 		753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
 		753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		7551D3451C134A040088D32B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchSegue.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				75F12CF51BE0A35900258874 /* FlickViewController.swift */,
 				75F12CFB1BE0A35900258874 /* ProductDetailsViewController.swift */,
 				75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */,
+				7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				75F12D131BE0A35900258874 /* TwoColumnLayout.swift in Sources */,
 				753AEA5A1BFF8BA10016B655 /* CategoryFilterViewController.swift in Sources */,
 				75F12CE81BE0A24100258874 /* Brand.swift in Sources */,
+				7541FECE1C3E720B005CEB11 /* PhotosViewController.swift in Sources */,
 				75F12CEB1BE0A24100258874 /* Search.swift in Sources */,
 				75F12CED1BE0A24100258874 /* UIImage+ImageEffects.m in Sources */,
 				75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */,

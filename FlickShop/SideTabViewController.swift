@@ -59,12 +59,14 @@ class SideTabViewController: UITableViewController {
         let textLabel = cell.viewWithTag(1001) as? UILabel
         let imageView = cell.viewWithTag(1002) as? UIImageView
 
+        cell.backgroundColor = UIColor(red: 248/255, green: 248/255, blue: 248/255, alpha: 1.0)
         selectedImageView?.hidden = !isSelectedFilter(sideTabsDict.orderedKeys[indexPath.row])
         textLabel?.text = sideTabsDict.orderedKeys[indexPath.row]
         textLabel?.textColor = UIColor.blackColor()
         imageView?.image = UIImage(named: sideTabsDict.orderedValues[indexPath.row])
         
         if selectedFilter == textLabel?.text {
+            cell.backgroundColor = UIColor.whiteColor()
             textLabel?.textColor = UIColor(red: 255/255, green: 168/255, blue: 0, alpha: 1.0)
             imageView?.image = UIImage(named: sideTabsDict.orderedValues[indexPath.row] + "_selected")
         }

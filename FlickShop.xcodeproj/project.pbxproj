@@ -16,6 +16,7 @@
 		751E9F261C11AF96007C990C /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E9F251C11AF96007C990C /* FloatingButton.swift */; };
 		7522B0CA1C044BBD0055C9A6 /* StoreFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7522B0C91C044BBD0055C9A6 /* StoreFilterViewController.swift */; };
 		752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */; };
+		752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B9C4F1C42C831000CE855 /* PhotoViewController.swift */; };
 		753AEA561BFF8B490016B655 /* ContainerFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA551BFF8B490016B655 /* ContainerFilterViewController.swift */; };
 		753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA571BFF8B820016B655 /* SideTabViewController.swift */; };
 		753AEA5A1BFF8BA10016B655 /* CategoryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA591BFF8BA10016B655 /* CategoryFilterViewController.swift */; };
@@ -106,6 +107,7 @@
 		751E9F251C11AF96007C990C /* FloatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		7522B0C91C044BBD0055C9A6 /* StoreFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StoreFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerFlickViewController.swift; sourceTree = "<group>"; };
+		752B9C4F1C42C831000CE855 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		753AEA551BFF8B490016B655 /* ContainerFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerFilterViewController.swift; sourceTree = "<group>"; };
 		753AEA571BFF8B820016B655 /* SideTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SideTabViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		753AEA591BFF8BA10016B655 /* CategoryFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryFilterViewController.swift; sourceTree = "<group>"; };
@@ -317,6 +319,7 @@
 				75F12CFB1BE0A35900258874 /* ProductDetailsViewController.swift */,
 				75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */,
 				7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */,
+				752B9C4F1C42C831000CE855 /* PhotoViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				750D8E1C1C0647AC00D728F0 /* SortFilterViewController.swift in Sources */,
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
 				75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */,
+				752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */,
 				752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */,
 				75F12D131BE0A35900258874 /* TwoColumnLayout.swift in Sources */,
 				753AEA5A1BFF8BA10016B655 /* CategoryFilterViewController.swift in Sources */,

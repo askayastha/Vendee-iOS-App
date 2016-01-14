@@ -217,7 +217,8 @@ extension FlickViewController: FlickPageCellDelegate {
         let photosVC = storyboard!.instantiateViewControllerWithIdentifier("PhotosViewController") as? PhotosViewController
         
         if let controller = photosVC {
-            controller.product = product
+            controller.imageURLs = product.largeImageURLs
+            controller.tinyImageURLs = product.tinyImageURLs
             controller.page = page
             presentViewController(controller, animated: true, completion: nil)
         }

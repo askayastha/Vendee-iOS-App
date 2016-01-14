@@ -12,8 +12,8 @@ import UIKit
 class FloatingButton: UIButton {
     
 //    let brightOrange = UIColor(red: 255/255, green: 168/255, blue: 0, alpha: 1.0)
-    let lightGrayTransparent = UIColor(red: 185/255, green: 185/255, blue: 185/255, alpha: 0.5)
-    let darkGrayTransparent = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 0.5)
+    let lightGrayTransparent = UIColor(red: 185/255, green: 185/255, blue: 185/255, alpha: 1.0)
+    let darkGrayTransparent = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 1.0)
 
     @IBInspectable var fillColor: UIColor!
     

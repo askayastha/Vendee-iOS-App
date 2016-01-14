@@ -79,22 +79,22 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="yYe-fU-sgW">
                                                             <rect key="frame" x="45" y="0.0" width="125" height="40"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUC-JL-z7m">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUC-JL-z7m">
                                                                     <rect key="frame" x="0.0" y="0.0" width="63" height="23"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-uS-pBp">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-uS-pBp">
                                                                     <rect key="frame" x="0.0" y="18" width="64" height="22"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$8.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-vr-jtR">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$8.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-vr-jtR">
                                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="22"/>
                                                                             <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
                                                                             <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$9.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lev-JE-joM">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lev-JE-joM">
                                                                             <rect key="frame" x="35" y="0.0" width="29" height="22"/>
                                                                             <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
                                                                             <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
@@ -1005,7 +1005,7 @@
                                 <state key="normal" image="filter"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1021,7 +1021,7 @@
                                 <state key="normal" image="back_arrow"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1077,7 +1077,7 @@
                                 <state key="normal" image="back_arrow"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="0.5" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -1154,22 +1154,22 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="yNh-wW-9lQ">
                                                             <rect key="frame" x="45" y="0.0" width="125" height="40"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-hb-BGW">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZE-hb-BGW">
                                                                     <rect key="frame" x="0.0" y="0.0" width="66" height="23"/>
                                                                     <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                                     <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="26l-Gy-aRn">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="26l-Gy-aRn">
                                                                     <rect key="frame" x="0.0" y="18" width="68" height="22"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$8.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsU-lu-Iqb">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$8.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SsU-lu-Iqb">
                                                                             <rect key="frame" x="0.0" y="0.0" width="32" height="22"/>
                                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                                             <color key="textColor" red="0.81568627449999997" green="0.0078431372550000003" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$9.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNQ-n4-hyV">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wNQ-n4-hyV">
                                                                             <rect key="frame" x="37" y="0.0" width="31" height="22"/>
                                                                             <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="12"/>
                                                                             <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -1274,10 +1274,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jfx-zy-J1v">
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ai9-vQ-9kH">
                                 <rect key="frame" x="0.0" y="20" width="600" height="500"/>
-                            </scrollView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTX-6T-lgT">
+                                <connections>
+                                    <segue destination="TYV-dW-phH" kind="embed" identifier="EmbedPage" id="y8z-kE-dY6"/>
+                                </connections>
+                            </containerView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BTX-6T-lgT">
                                 <rect key="frame" x="0.0" y="520" width="600" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="7No-ks-eEp"/>
@@ -1297,25 +1300,32 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jfx-zy-J1v" secondAttribute="trailing" id="1R8-aE-7Jk"/>
+                            <constraint firstItem="ai9-vQ-9kH" firstAttribute="top" secondItem="3aC-jr-uuK" secondAttribute="bottom" id="0Gh-ZM-XbR"/>
+                            <constraint firstItem="ai9-vQ-9kH" firstAttribute="leading" secondItem="J3m-yI-5Ly" secondAttribute="leading" id="7m6-R3-0Ts"/>
                             <constraint firstItem="BTX-6T-lgT" firstAttribute="leading" secondItem="J3m-yI-5Ly" secondAttribute="leading" id="C3a-FX-ezP"/>
                             <constraint firstAttribute="trailing" secondItem="BTX-6T-lgT" secondAttribute="trailing" id="Ceb-be-1YO"/>
                             <constraint firstAttribute="trailing" secondItem="MTD-Nh-bIA" secondAttribute="trailing" id="K6i-Jp-Nrf"/>
-                            <constraint firstItem="jfx-zy-J1v" firstAttribute="leading" secondItem="J3m-yI-5Ly" secondAttribute="leading" id="XSU-SZ-Bc9"/>
                             <constraint firstItem="3te-q3-Dmq" firstAttribute="top" secondItem="BTX-6T-lgT" secondAttribute="bottom" id="cZm-mk-LwQ"/>
-                            <constraint firstItem="BTX-6T-lgT" firstAttribute="top" secondItem="jfx-zy-J1v" secondAttribute="bottom" id="mdw-M9-syX"/>
+                            <constraint firstItem="BTX-6T-lgT" firstAttribute="top" secondItem="ai9-vQ-9kH" secondAttribute="bottom" id="kQF-yK-X8i"/>
+                            <constraint firstAttribute="trailing" secondItem="ai9-vQ-9kH" secondAttribute="trailing" id="mp0-g3-LYX"/>
                             <constraint firstItem="MTD-Nh-bIA" firstAttribute="top" secondItem="3aC-jr-uuK" secondAttribute="bottom" id="ut4-z1-pAx"/>
-                            <constraint firstItem="jfx-zy-J1v" firstAttribute="top" secondItem="3aC-jr-uuK" secondAttribute="bottom" id="vyO-Ys-4Wd"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="pagingScrollView" destination="jfx-zy-J1v" id="F93-zn-MIQ"/>
                         <outlet property="photoScrubbingScrollView" destination="BTX-6T-lgT" id="efd-FU-Spp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itu-Y4-S6w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3377" y="838"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="j6g-rx-5TL">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="10" navigationOrientation="horizontal" spineLocation="none" id="TYV-dW-phH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y7D-ug-H7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3377" y="1534"/>
         </scene>
     </scenes>
     <resources>

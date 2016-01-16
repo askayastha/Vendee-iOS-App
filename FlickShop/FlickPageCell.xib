@@ -48,6 +48,7 @@
                                     <constraint firstAttribute="width" constant="36" id="9K1-3O-sai"/>
                                     <constraint firstAttribute="height" constant="36" id="nvD-Az-2W4"/>
                                 </constraints>
+                                <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                 <state key="normal" image="info"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
@@ -308,7 +309,7 @@
     <resources>
         <image name="comment" width="16" height="16"/>
         <image name="favorite" width="16" height="16"/>
-        <image name="info" width="16" height="16"/>
+        <image name="info" width="32" height="32"/>
         <image name="more" width="16" height="16"/>
         <image name="share" width="16" height="16"/>
         <image name="shopping_cart" width="32" height="32"/>

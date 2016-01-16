@@ -50,7 +50,7 @@ class PhotoViewController: UIViewController {
         imageView.pin_setImageFromURL(imageURL) { [unowned self] _ in
             spinner.stopAnimating()
             
-            print("Large Image Size: \(self.imageView.image!.size)")
+            print("Image Size: \(self.imageView.image!.size)")
             self.imageView.frame = CGRect(origin: CGPointMake(0, 0), size: self.imageView.image!.size)
 //            self.imageView.frame = self.centerFrameFromImage(self.imageView.image)
             
@@ -140,7 +140,6 @@ extension PhotoViewController: UIScrollViewDelegate {
     }
     
     func scrollViewDidZoom(zoomingScrollView: UIScrollView) {
-        print("scrollViewDidZoom")
         centerScrollViewContents()
     }
 }

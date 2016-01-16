@@ -20,9 +20,6 @@ class CustomPhotoCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var salePriceLabel: UILabel!
     
-//    var productImageRequest: Alamofire.Request?
-//    var brandImageRequest: Alamofire.Request?
-    
     var product: Product? {
         didSet {
             if let product = product {
@@ -79,10 +76,6 @@ class CustomPhotoCell: UICollectionViewCell {
         
         imageView.image = nil
         brandImageView.image = nil
-//        productImageRequest?.cancel()
-//        brandImageRequest?.cancel()
-//        productImageRequest = nil
-//        brandImageRequest = nil
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {

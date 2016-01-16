@@ -42,17 +42,41 @@
                                     <action selector="pageChanged:" destination="cT6-e4-j9m" eventType="valueChanged" id="wcK-vR-CLI"/>
                                 </connections>
                             </pageControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-aY-FKA" customClass="InfoButton" customModule="FlickShop" customModuleProvider="target">
+                                <rect key="frame" x="549" y="362" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="9K1-3O-sai"/>
+                                    <constraint firstAttribute="height" constant="36" id="nvD-Az-2W4"/>
+                                </constraints>
+                                <state key="normal" image="info"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="0.5" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="infoButtonTapped:" destination="cT6-e4-j9m" eventType="touchUpInside" id="7Me-Kc-43a"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="KZx-aY-FKA" firstAttribute="leading" secondItem="vPW-YU-CQK" secondAttribute="leading" constant="15" id="2dt-2d-dJT"/>
                             <constraint firstAttribute="trailing" secondItem="phq-mC-NVg" secondAttribute="trailing" id="Bd5-Mj-dwb"/>
+                            <constraint firstAttribute="bottom" secondItem="KZx-aY-FKA" secondAttribute="bottom" constant="10" id="JWS-ul-YX4"/>
                             <constraint firstAttribute="bottom" secondItem="qk9-8k-TIY" secondAttribute="bottom" id="RTv-qv-WYJ"/>
                             <constraint firstItem="phq-mC-NVg" firstAttribute="leading" secondItem="vPW-YU-CQK" secondAttribute="leading" id="UfC-ov-OQC"/>
+                            <constraint firstAttribute="trailing" secondItem="KZx-aY-FKA" secondAttribute="trailing" constant="15" id="bcm-vU-KKD"/>
                             <constraint firstAttribute="trailing" secondItem="qk9-8k-TIY" secondAttribute="trailing" id="g1J-s0-7ik"/>
                             <constraint firstAttribute="bottom" secondItem="phq-mC-NVg" secondAttribute="bottom" constant="10" id="n3A-0A-yUj"/>
                             <constraint firstItem="qk9-8k-TIY" firstAttribute="leading" secondItem="vPW-YU-CQK" secondAttribute="leading" id="slE-gq-xxb"/>
                             <constraint firstItem="phq-mC-NVg" firstAttribute="top" secondItem="vPW-YU-CQK" secondAttribute="top" constant="10" id="tBx-qn-40v"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2dt-2d-dJT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NR4-MD-ZYy" userLabel="ActionView">
                         <rect key="frame" x="0.0" y="468" width="600" height="46"/>
@@ -88,9 +112,6 @@
                                     <constraint firstAttribute="height" constant="16" id="eJ6-HU-GmK"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="more"/>
-                                <connections>
-                                    <action selector="infoButtonTapped:" destination="cT6-e4-j9m" eventType="touchUpInside" id="qWy-Fc-APA"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcZ-MO-zbK">
                                 <rect key="frame" x="485" y="5" width="100" height="36"/>
@@ -287,6 +308,7 @@
     <resources>
         <image name="comment" width="16" height="16"/>
         <image name="favorite" width="16" height="16"/>
+        <image name="info" width="16" height="16"/>
         <image name="more" width="16" height="16"/>
         <image name="share" width="16" height="16"/>
         <image name="shopping_cart" width="32" height="32"/>

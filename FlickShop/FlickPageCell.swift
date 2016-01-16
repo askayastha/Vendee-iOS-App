@@ -11,7 +11,7 @@ import UIKit
 protocol FlickPageCellDelegate: class {
     func openItemInStoreWithURL(url: NSURL?)
     func openPhotosViewControllerForProduct(product: Product, withPage page: Int)
-    func displayMoreDetailsForProduct(product: Product)
+    func openDetailsForProduct(product: Product)
 }
 
 class FlickPageCell: UICollectionViewCell {
@@ -133,7 +133,7 @@ class FlickPageCell: UICollectionViewCell {
     @IBAction func infoButtonTapped(sender: AnyObject) {
         
         if let product = product {
-            delegate?.displayMoreDetailsForProduct(product)
+            delegate?.openDetailsForProduct(product)
         }
     }
     

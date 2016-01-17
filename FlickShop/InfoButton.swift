@@ -11,8 +11,8 @@ import UIKit
 @IBDesignable
 class InfoButton: UIButton {
     
-//    let lightGrayTransparent = UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 0.5)
-    let lightGrayTransparent = UIColor(white: 0.9, alpha: 0.5)
+    let lightGrayTransparent = UIColor(red: 242/255, green: 242/255, blue: 242/255, alpha: 0.5)
+//    let lightGrayTransparent = UIColor(white: 0.9, alpha: 0.5)
     let darkGrayTransparent = UIColor(white: 0.3, alpha: 0.5)
 //    let darkGrayTransparent = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 0.5)
 

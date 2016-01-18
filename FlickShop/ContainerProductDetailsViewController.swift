@@ -33,12 +33,8 @@ class ContainerProductDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    @IBAction func backButtonTapped(sender: UIButton) {
-//        navigationController?.popViewControllerAnimated(true)
-//    }
-    
-    @IBAction func closeButton() {
-        dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func backButtonTapped(sender: UIButton) {
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - Navigation

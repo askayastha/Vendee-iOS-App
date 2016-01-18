@@ -15,8 +15,10 @@ class ContainerFlickViewController: UIViewController {
     var brands: [Brand]!
     var productCategory: String!
     var didScrollCount: Int = 0
+    var flickViewController: FlickViewController?
     
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -35,6 +37,8 @@ class ContainerFlickViewController: UIViewController {
         didScrollCount = 0
         backButton.alpha = 1.0
         backButton.adjustsImageWhenHighlighted = false
+        infoButton.alpha = 1.0
+        infoButton.adjustsImageWhenHighlighted = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,19 +50,23 @@ class ContainerFlickViewController: UIViewController {
         navigationController?.popViewControllerAnimated(true)
     }
     
+    @IBAction func infoButtonTapped(sender: UIButton) {
+        flickViewController?.openDetailsForProduct(Product())
+    }
+    
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EmbedFlickCategory" {
-            let controller = segue.destinationViewController as! FlickViewController
+            flickViewController = segue.destinationViewController as? FlickViewController
             
-            controller.delegate = self
-            controller.search = search
-            controller.indexPath = indexPath
-            controller.brands = brands
-            controller.productCategory = productCategory
+            flickViewController?.delegate = self
+            flickViewController?.search = search
+            flickViewController?.indexPath = indexPath
+            flickViewController?.brands = brands
+            flickViewController?.productCategory = productCategory
         }
     }
 
@@ -72,6 +80,7 @@ extension ContainerFlickViewController: ScrollEventsDelegate {
         if didScrollCount > 5 {
             UIView.animateWithDuration(0.2) {
                 self.backButton.alpha = 0.0
+                self.infoButton.alpha = 0.0
             }
         }
     }
@@ -79,6 +88,7 @@ extension ContainerFlickViewController: ScrollEventsDelegate {
     func didEndDecelerating() {
         UIView.animateWithDuration(0.2) {
             self.backButton.alpha = 1.0
+            self.infoButton.alpha = 1.0
         }
     }
 }

@@ -207,10 +207,10 @@ extension FlickViewController: FlickPageCellDelegate {
         
         if let controller = detailsVC {
             print("Categories: \(product.categories)")
-            controller.product = product
+            controller.product = search.products.objectAtIndex(indexPath!.row) as! Product
             controller.brands = brands
-//            navigationController?.pushViewController(controller, animated: true)
-            presentViewController(controller, animated: true, completion: nil)
+            navigationController?.pushViewController(controller, animated: true)
+//            presentViewController(controller, animated: true, completion: nil)
         }
     }
     

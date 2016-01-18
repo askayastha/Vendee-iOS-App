@@ -47,11 +47,6 @@ class ProductDetailsViewController: UITableViewController {
         
         setupView()
         
-//        navigationController?.navigationBar.translucent = false
-//        navigationController?.setNavigationBarHidden(false, animated: false)
-//        navigationController?.navigationBar.barStyle = UIBarStyle.Default
-//        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
-        
         print("SIMILAR REQUESTS")
         requestDataFromShopStyleForCategory(product.categories?.first)
     }
@@ -122,6 +117,7 @@ class ProductDetailsViewController: UITableViewController {
         productDescLabel.attributedText = productDesc
         
         tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: TableViewCellIdentifiers.headerCell)
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // CollectionView stuff
         let layout = UICollectionViewFlowLayout()
@@ -173,7 +169,7 @@ class ProductDetailsViewController: UITableViewController {
     }
 }
 
-extension ProductDetailsViewController: UICollectionViewDataSource {
+extension ProductDetailsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -192,16 +188,18 @@ extension ProductDetailsViewController: UICollectionViewDataSource {
         return cell
     }
     
-//    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        let feedVC = storyboard!.instantiateViewControllerWithIdentifier("FlickCollectionViewController") as? FlickCollectionViewController
-//        
-//        if let controller = feedVC {
-//            controller.productCategory = productCategory
-//            controller.indexPath  = indexPath
-//            controller.search = search
-//            navigationController?.pushViewController(controller, animated: true)
-//        }
-//    }
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        print("CollectionViewDidSelectItemAtIndexPath")
+        let flickVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
+        
+        if let controller = flickVC {
+            controller.productCategory = product.categories?.first
+            controller.indexPath  = indexPath
+            controller.search = search
+            controller.brands = brands
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
 }
 
 extension ProductDetailsViewController {
@@ -222,24 +220,10 @@ extension ProductDetailsViewController {
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(TableViewCellIdentifiers.headerCell)
-//        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.headerCell)
-        
-//        let headerLabel = cell?.viewWithTag(100) as! UILabel
-//        let headerLabel = (cell?.textLabel)!
-//        headerLabel.font = UIFont(name: "Whitney-Book", size: 12.0)!
-//        
-//        if section == 0 {
-//            headerLabel.text = "Details"
-//        } else if section == 1 {
-//            headerLabel.text = "Similar Products"
-//        } else {
-//            headerLabel.text = ""
-//        }
         
         cell?.backgroundView = UIView()
         cell?.backgroundView?.backgroundColor = UIColor.whiteColor()
         
-//        let label = UILabel(frame: CGRect(x: 15, y: 11, width: view.frame.size.width, height: 22.0))
         let label = UILabel()
         label.font = UIFont(name: "Whitney-Semibold", size: 16.0)!
         label.textColor = UIColor(red: 32/255, green: 49/255, blue: 67/255, alpha: 1.0)
@@ -250,7 +234,7 @@ extension ProductDetailsViewController {
         } else if section == 1 {
             label.text = "Similar Products"
         } else {
-            label.text = "Others"
+            label.text = ""
         }
         
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -271,7 +255,7 @@ extension ProductDetailsViewController {
                 metrics: nil,
                 views: ["label": label])
             ].flatten().map{$0})
-        print("Header Height: \(tableView.sectionHeaderHeight)")
+        
         let separatorLine = UIView(frame: CGRect(x: 15, y: tableView.sectionHeaderHeight, width: view.frame.size.width - 15, height: 0.5))
         separatorLine.backgroundColor = UIColor(red: 201/255, green: 198/255, blue: 204/255, alpha: 1.0)
         cell?.contentView.addSubview(separatorLine)

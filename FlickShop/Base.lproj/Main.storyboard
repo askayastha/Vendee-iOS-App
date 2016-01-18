@@ -46,7 +46,7 @@
         <!--Flick View Controller-->
         <scene sceneID="fjI-E5-msJ">
             <objects>
-                <collectionViewController storyboardIdentifier="FlickCollectionViewController" id="Bcp-Tw-j0d" customClass="FlickViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Bcp-Tw-j0d" customClass="FlickViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="5tc-ML-J6a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1072,7 +1072,7 @@
         <!--Container Flick View Controller-->
         <scene sceneID="PC5-3v-OKl">
             <objects>
-                <viewController id="cMP-WJ-9Fx" customClass="ContainerFlickViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContainerFlickViewController" id="cMP-WJ-9Fx" customClass="ContainerFlickViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kgV-s6-rGT"/>
                         <viewControllerLayoutGuide type="bottom" id="TyM-hC-HwU"/>
@@ -1104,6 +1104,25 @@
                                     <action selector="backButtonTapped:" destination="cMP-WJ-9Fx" eventType="touchUpInside" id="Ttf-Fd-u2H"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAm-tQ-wCl" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
+                                <rect key="frame" x="545" y="75" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="qfb-aw-VD1"/>
+                                    <constraint firstAttribute="height" constant="40" id="wc9-Au-W54"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Baskerville-SemiBoldItalic" family="Baskerville" pointSize="30"/>
+                                <state key="normal" title="i">
+                                    <color key="titleColor" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="infoButtonTapped:" destination="cMP-WJ-9Fx" eventType="touchUpInside" id="7S6-Xv-6zP"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1111,12 +1130,21 @@
                             <constraint firstItem="576-La-M9F" firstAttribute="top" secondItem="kgV-s6-rGT" secondAttribute="bottom" id="9ne-QN-xHY"/>
                             <constraint firstItem="TyM-hC-HwU" firstAttribute="top" secondItem="576-La-M9F" secondAttribute="bottom" id="DjI-K9-R66"/>
                             <constraint firstItem="cV7-QJ-cnS" firstAttribute="leading" secondItem="21I-Au-fo2" secondAttribute="leading" constant="15" id="Vpc-Df-Ig6"/>
+                            <constraint firstItem="TyM-hC-HwU" firstAttribute="top" secondItem="RAm-tQ-wCl" secondAttribute="bottom" constant="75" id="cHY-sS-fQg"/>
                             <constraint firstItem="576-La-M9F" firstAttribute="leading" secondItem="21I-Au-fo2" secondAttribute="leading" id="hAv-BN-oll"/>
                             <constraint firstItem="cV7-QJ-cnS" firstAttribute="top" secondItem="kgV-s6-rGT" secondAttribute="bottom" constant="75" id="lVu-ra-17g"/>
+                            <constraint firstItem="RAm-tQ-wCl" firstAttribute="top" secondItem="kgV-s6-rGT" secondAttribute="bottom" constant="75" id="mUa-tM-joB"/>
+                            <constraint firstAttribute="trailing" secondItem="RAm-tQ-wCl" secondAttribute="trailing" constant="15" id="xF3-jq-WeH"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="cHY-sS-fQg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="cV7-QJ-cnS" id="Zxf-Yf-QYV"/>
+                        <outlet property="infoButton" destination="RAm-tQ-wCl" id="w2g-Sc-Nbu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ug-Ik-TZR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1300,16 +1328,21 @@
                                     <segue destination="Vhy-UI-L4B" kind="embed" identifier="EmbedDetails" id="Mp0-Pr-sHw"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KK-Ub-LL4">
-                                <rect key="frame" x="550" y="20" width="50" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79t-Dz-0Cn" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
+                                <rect key="frame" x="15" y="35" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="6yE-iJ-257"/>
-                                    <constraint firstAttribute="height" constant="50" id="FpH-lZ-hIH"/>
+                                    <constraint firstAttribute="height" constant="40" id="gUz-n6-HlC"/>
+                                    <constraint firstAttribute="width" constant="40" id="hU2-Ce-Dde"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="22"/>
-                                <state key="normal" image="close"/>
+                                <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                <state key="normal" image="back_arrow_sharp_gray"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                                        <color key="value" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="closeButton" destination="Dvh-ok-7KF" eventType="touchUpInside" id="B0a-8R-tv5"/>
+                                    <action selector="backButtonTapped:" destination="Dvh-ok-7KF" eventType="touchUpInside" id="kQE-vB-MaV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1318,9 +1351,9 @@
                             <constraint firstItem="dal-l7-sVM" firstAttribute="leading" secondItem="tkX-BD-qJK" secondAttribute="leading" id="Fku-mz-lod"/>
                             <constraint firstItem="hnV-M4-0Ph" firstAttribute="top" secondItem="dal-l7-sVM" secondAttribute="bottom" id="M0Z-Nb-zkf"/>
                             <constraint firstItem="dal-l7-sVM" firstAttribute="top" secondItem="KgA-X6-sHa" secondAttribute="bottom" id="NQu-XG-OC3"/>
-                            <constraint firstAttribute="trailing" secondItem="0KK-Ub-LL4" secondAttribute="trailing" id="OK3-Tr-7Wg"/>
                             <constraint firstAttribute="trailing" secondItem="dal-l7-sVM" secondAttribute="trailing" id="T6c-mz-LMK"/>
-                            <constraint firstItem="0KK-Ub-LL4" firstAttribute="top" secondItem="KgA-X6-sHa" secondAttribute="bottom" id="zWg-EU-49A"/>
+                            <constraint firstItem="79t-Dz-0Cn" firstAttribute="leading" secondItem="tkX-BD-qJK" secondAttribute="leading" constant="15" id="gsH-c3-Y4d"/>
+                            <constraint firstItem="79t-Dz-0Cn" firstAttribute="top" secondItem="KgA-X6-sHa" secondAttribute="bottom" constant="15" id="mjC-gQ-hs0"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -1331,7 +1364,7 @@
         <!--Product Details View Controller-->
         <scene sceneID="e56-01-raO">
             <objects>
-                <tableViewController storyboardIdentifier="ProductDetailsViewController" id="Vhy-UI-L4B" customClass="ProductDetailsViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Vhy-UI-L4B" customClass="ProductDetailsViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nbh-K0-8b0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1482,7 +1515,7 @@
                                                     </cells>
                                                     <connections>
                                                         <outlet property="dataSource" destination="Vhy-UI-L4B" id="FK2-5d-kum"/>
-                                                        <outlet property="delegate" destination="Vhy-UI-L4B" id="s07-YW-G6x"/>
+                                                        <outlet property="delegate" destination="Vhy-UI-L4B" id="Wbj-Yj-eSt"/>
                                                     </connections>
                                                 </collectionView>
                                             </subviews>
@@ -1492,18 +1525,6 @@
                                                 <constraint firstItem="FTK-Sg-3r8" firstAttribute="top" secondItem="5CQ-lr-VwS" secondAttribute="top" id="kPk-ab-H9K"/>
                                                 <constraint firstAttribute="bottom" secondItem="FTK-Sg-3r8" secondAttribute="bottom" id="uTb-lO-81E"/>
                                             </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle=" " id="UnM-Kq-aae">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wI0-jN-4Dd">
-                                        <rect key="frame" x="0.0" y="421" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wI0-jN-4Dd" id="c61-aP-Nxa">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

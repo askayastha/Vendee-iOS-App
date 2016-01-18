@@ -74,6 +74,9 @@
                             <constraint firstItem="phq-mC-NVg" firstAttribute="top" secondItem="vPW-YU-CQK" secondAttribute="top" constant="10" id="tBx-qn-40v"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="KZx-aY-FKA"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="2dt-2d-dJT"/>
                             </mask>

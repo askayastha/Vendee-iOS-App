@@ -232,7 +232,7 @@ class Search {
                 let salePrice = item["salePrice"]
                 let formattedPrice = item["priceLabel"]
                 let formattedSalePrice = item["salePriceLabel"]
-                let productDescription = item["description"]
+                let description = item["description"]
                 var categories: [String]!
                 
                 if let categoriesArray = item["categories"].array {
@@ -285,7 +285,7 @@ class Search {
                 product.salePrice = salePrice.float
                 product.formattedPrice = formattedPrice.string
                 product.formattedSalePrice = formattedSalePrice.string
-                product.productDescription = productDescription.string
+                product.description = description.string
                 product.categories = categories
                 
                 products.addObject(product)

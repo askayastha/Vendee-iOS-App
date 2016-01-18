@@ -20,14 +20,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9XE-ef-Jao">
-                        <rect key="frame" x="15" y="13" width="32" height="17"/>
+                        <rect key="frame" x="15" y="13" width="290" height="17"/>
                         <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="14"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9XE-ef-Jao" firstAttribute="centerY" secondItem="GpT-E3-a9Z" secondAttribute="centerY" id="OSm-cg-e1x"/>
+                    <constraint firstAttribute="trailing" secondItem="9XE-ef-Jao" secondAttribute="trailing" constant="15" id="ZXf-3C-o3W"/>
                     <constraint firstItem="9XE-ef-Jao" firstAttribute="leading" secondItem="GpT-E3-a9Z" secondAttribute="leading" constant="15" id="v8j-HV-lgA"/>
                 </constraints>
             </tableViewCellContentView>

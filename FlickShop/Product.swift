@@ -11,7 +11,7 @@ import UIKit
 class Product {
     
     var id: String?
-    var productDescription: String?
+    var description: String?
     
     var buyURL: String?
     var brandImageURL: String?

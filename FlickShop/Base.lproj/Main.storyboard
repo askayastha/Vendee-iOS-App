@@ -1300,37 +1300,29 @@
                                     <segue destination="Vhy-UI-L4B" kind="embed" identifier="EmbedDetails" id="Mp0-Pr-sHw"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jra-KY-MQh" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
-                                <rect key="frame" x="13" y="33" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0KK-Ub-LL4">
+                                <rect key="frame" x="550" y="20" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="IGE-xf-dIo"/>
-                                    <constraint firstAttribute="height" constant="40" id="aFS-Au-PQB"/>
+                                    <constraint firstAttribute="width" constant="50" id="6yE-iJ-257"/>
+                                    <constraint firstAttribute="height" constant="50" id="FpH-lZ-hIH"/>
                                 </constraints>
-                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                <state key="normal" image="back_arrow_sharp_gray"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
-                                        <color key="value" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="22"/>
+                                <state key="normal" image="close"/>
                                 <connections>
-                                    <action selector="backButtonTapped:" destination="Dvh-ok-7KF" eventType="touchUpInside" id="YKu-6Z-rIm"/>
+                                    <action selector="closeButton" destination="Dvh-ok-7KF" eventType="touchUpInside" id="B0a-8R-tv5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dal-l7-sVM" firstAttribute="leading" secondItem="tkX-BD-qJK" secondAttribute="leading" id="Fku-mz-lod"/>
-                            <constraint firstItem="jra-KY-MQh" firstAttribute="leading" secondItem="tkX-BD-qJK" secondAttribute="leading" constant="13" id="IuB-QC-9q0"/>
                             <constraint firstItem="hnV-M4-0Ph" firstAttribute="top" secondItem="dal-l7-sVM" secondAttribute="bottom" id="M0Z-Nb-zkf"/>
                             <constraint firstItem="dal-l7-sVM" firstAttribute="top" secondItem="KgA-X6-sHa" secondAttribute="bottom" id="NQu-XG-OC3"/>
+                            <constraint firstAttribute="trailing" secondItem="0KK-Ub-LL4" secondAttribute="trailing" id="OK3-Tr-7Wg"/>
                             <constraint firstAttribute="trailing" secondItem="dal-l7-sVM" secondAttribute="trailing" id="T6c-mz-LMK"/>
-                            <constraint firstItem="jra-KY-MQh" firstAttribute="top" secondItem="KgA-X6-sHa" secondAttribute="bottom" constant="13" id="tYp-l5-a0m"/>
+                            <constraint firstItem="0KK-Ub-LL4" firstAttribute="top" secondItem="KgA-X6-sHa" secondAttribute="bottom" id="zWg-EU-49A"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="backButton" destination="jra-KY-MQh" id="Nax-h1-TLe"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kaf-8j-Asv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1345,7 +1337,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
-                            <tableViewSection headerTitle="Details" id="dPC-Wg-98V">
+                            <tableViewSection headerTitle=" " id="dPC-Wg-98V">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="127" id="YyQ-M1-ddD">
                                         <rect key="frame" x="0.0" y="28" width="600" height="127"/>
@@ -1354,19 +1346,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="126"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrc-Ao-Qcw">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jrc-Ao-Qcw">
                                                     <rect key="frame" x="15" y="15" width="570" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="LD7-l4-ZhA"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sdm-jm-hR0">
                                                     <rect key="frame" x="15" y="37" width="570" height="74"/>
                                                     <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1383,7 +1375,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Similar Products" id="Ju7-cK-40Y">
+                            <tableViewSection headerTitle=" " id="Ju7-cK-40Y">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="210" id="dnW-2N-20g">
                                         <rect key="frame" x="0.0" y="183" width="600" height="210"/>
@@ -1504,10 +1496,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="UnM-Kq-aae">
+                            <tableViewSection headerTitle=" " id="UnM-Kq-aae">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wI0-jN-4Dd">
-                                        <rect key="frame" x="0.0" y="393" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="421" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wI0-jN-4Dd" id="c61-aP-Nxa">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -1526,6 +1518,7 @@
                         <outlet property="collectionView" destination="FTK-Sg-3r8" id="abo-VN-Afd"/>
                         <outlet property="productDescLabel" destination="sdm-jm-hR0" id="ehP-Bf-lD9"/>
                         <outlet property="productTitleLabel" destination="jrc-Ao-Qcw" id="DgV-XB-gLL"/>
+                        <outlet property="titleHeight" destination="LD7-l4-ZhA" id="Qvg-BN-3FV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hbu-CH-nFB" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -24,7 +24,7 @@ class SimilarProductCell: UICollectionViewCell {
     var product: Product? {
         didSet {
             if let product = product {
-                brandNameLabel.text = product.brandedName
+                brandNameLabel.text = product.brandName ?? product.brandedName
                 
                 if let salePrice = product.salePrice {
                     let discount = (product.price! - salePrice) * 100 / product.price!

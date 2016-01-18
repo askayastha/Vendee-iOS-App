@@ -202,13 +202,15 @@ extension FlickViewController: FlickPageCellDelegate {
     }
     
     func openDetailsForProduct(product: Product) {
+        indexPath = collectionView!.indexPathsForVisibleItems().first
         let detailsVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerProductDetailsViewController") as? ContainerProductDetailsViewController
         
         if let controller = detailsVC {
             print("Categories: \(product.categories)")
             controller.product = product
             controller.brands = brands
-            navigationController?.pushViewController(controller, animated: true)
+//            navigationController?.pushViewController(controller, animated: true)
+            presentViewController(controller, animated: true, completion: nil)
         }
     }
     

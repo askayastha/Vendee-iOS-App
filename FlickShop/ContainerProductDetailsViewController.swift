@@ -17,11 +17,15 @@ class ContainerProductDetailsViewController: UIViewController {
     var didScrollCount: Int = 0
     
     @IBOutlet weak var backButton: FloatingButton!
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,8 +33,12 @@ class ContainerProductDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func backButtonTapped(sender: UIButton) {
-        navigationController?.popViewControllerAnimated(true)
+//    @IBAction func backButtonTapped(sender: UIButton) {
+//        navigationController?.popViewControllerAnimated(true)
+//    }
+    
+    @IBAction func closeButton() {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Navigation

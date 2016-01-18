@@ -10,6 +10,11 @@ import UIKit
 import Alamofire
 import AVFoundation
 
+enum DocumentType {
+    case PlainText
+    case HtmlText
+}
+
 class ProductDetailsViewController: UITableViewController {
     
     let search = Search()
@@ -18,8 +23,7 @@ class ProductDetailsViewController: UITableViewController {
     var requestingData = false
     var product: Product!
     var brands: [Brand]!
-    var headerViewHeight: CGFloat = 0
-    var htmlDescription = NSAttributedString(string: "", attributes: nil)
+    var productDetailsHeight: CGFloat = 0
     
     struct TableViewCellIdentifiers {
         static let similarProductCell = "SimilarProductCell"
@@ -29,6 +33,7 @@ class ProductDetailsViewController: UITableViewController {
     @IBOutlet weak var productTitleLabel: UILabel!
     @IBOutlet weak var productDescLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var titleHeight: NSLayoutConstraint!
     
     deinit {
         print("Deallocating ProductDetailsViewController !!!!!!!!!!!!!!!")
@@ -42,10 +47,10 @@ class ProductDetailsViewController: UITableViewController {
         
         setupView()
         
-        navigationController?.navigationBar.translucent = false
+//        navigationController?.navigationBar.translucent = false
 //        navigationController?.setNavigationBarHidden(false, animated: false)
 //        navigationController?.navigationBar.barStyle = UIBarStyle.Default
-        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
+//        navigationController?.navigationBar.barTintColor = UIColor.whiteColor()
         
         print("SIMILAR REQUESTS")
         requestDataFromShopStyleForCategory(product.categories?.first)
@@ -56,49 +61,69 @@ class ProductDetailsViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    private func calculateHeaderHeight() {
+    private func convertText(text: String?, usingFont font: UIFont, forDocumentType docType: DocumentType) -> NSAttributedString? {
+        guard let text = text else {
+            return nil
+        }
         
-        if let description = product.productDescription {
-            print(description)
-            let htmlData = description.dataUsingEncoding(NSUnicodeStringEncoding)!
-            let font = UIFont(name: "Whitney-Book", size: 14.0)!
-            let horizontalPadding = CGFloat(15)
-            let verticalPadding = CGFloat(15)
-            let labelPadding = CGFloat(5)
-            let titleHeight = CGFloat(17)
-            
-            do {
-                let attribString = try NSMutableAttributedString(
-                    data: htmlData,
-                    options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType ],
+        print(text)
+        let data = text.dataUsingEncoding(NSUnicodeStringEncoding)!
+        var attribString: NSMutableAttributedString!
+        
+        do {
+            switch docType {
+            case .PlainText:
+                attribString = try NSMutableAttributedString(
+                    data: data,
+                    options: [ NSDocumentTypeDocumentAttribute: NSPlainTextDocumentType ],
                     documentAttributes: nil)
                 
-                attribString.addAttribute(NSFontAttributeName, value: font, range: NSMakeRange(0, attribString.length))
-                
-                htmlDescription = attribString
-                
-                let rect = attribString.boundingRectWithSize(CGSizeMake(CGRectGetWidth(collectionView!.bounds) - horizontalPadding * 2, CGFloat(MAXFLOAT)
-                    ), options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
-                
-                headerViewHeight = verticalPadding + titleHeight + labelPadding + ceil(rect.height) + verticalPadding
-                print(headerViewHeight)
-                
-            } catch {
-                print(error)
+            case .HtmlText:
+                attribString = try NSMutableAttributedString(
+                    data: data,
+                    options: [ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType ],
+                    documentAttributes: nil)
             }
+            
+            attribString.addAttribute(NSFontAttributeName, value: font, range: NSMakeRange(0, attribString.length))
+            
+            return attribString
+            
+        } catch {
+            print(error)
+            return nil
         }
     }
     
-    private func setupView() {
-        calculateHeaderHeight()
-        productTitleLabel.text = product.name
-        productDescLabel.attributedText = htmlDescription
+    private func heightForAttributedString(attribString: NSAttributedString?) -> CGFloat {
+        guard let attribString = attribString else {
+            return 0
+        }
         
+        let horizontalPadding = CGFloat(15)
+        
+        let rect = attribString.boundingRectWithSize(CGSizeMake(CGRectGetWidth(tableView.bounds) - horizontalPadding * 2, CGFloat(MAXFLOAT)
+            ), options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
+        
+        return ceil(rect.height)
+    }
+    
+    private func setupView() {
         // TableView stuff
-//        let headerNib = UINib(nibName: TableViewCellIdentifiers.headerCell, bundle: nil)
-//        tableView.registerNib(headerNib, forHeaderFooterViewReuseIdentifier: TableViewCellIdentifiers.headerCell)
+        let verticalPadding = CGFloat(15)
+        let labelPadding = CGFloat(5)
+        let productDesc = convertText(product.description, usingFont: UIFont(name: "Whitney-Book", size: 14.0)!, forDocumentType: .HtmlText)
+        
+        titleHeight.constant = heightForAttributedString(convertText(product.name, usingFont: UIFont(name: "Whitney-Semibold", size: 14.0)!, forDocumentType: .PlainText))
+        print("Title Height: \(titleHeight.constant)")
+        productDetailsHeight = verticalPadding + titleHeight.constant + labelPadding + heightForAttributedString(productDesc) + verticalPadding
+        
+        productTitleLabel.text = product.name
+        productDescLabel.attributedText = productDesc
+        
         tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: TableViewCellIdentifiers.headerCell)
         
+        // CollectionView stuff
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 130, height: 200)
         layout.minimumInteritemSpacing = 4.0
@@ -106,7 +131,7 @@ class ProductDetailsViewController: UITableViewController {
         layout.minimumLineSpacing = 4.0
         
         collectionView!.collectionViewLayout = layout
-        collectionView!.contentInset = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        collectionView!.contentInset = UIEdgeInsets(top: 4, left: 10, bottom: 4, right: 10)
     }
     
     private func requestDataFromShopStyleForCategory(category: String!) {
@@ -187,7 +212,7 @@ extension ProductDetailsViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 && indexPath.row == 0 {
-            return headerViewHeight
+            return productDetailsHeight
         } else if indexPath.section == 1 && indexPath.row == 0 {
             return 210.0
         }
@@ -200,16 +225,56 @@ extension ProductDetailsViewController {
 //        let cell = tableView.dequeueReusableCellWithIdentifier(TableViewCellIdentifiers.headerCell)
         
 //        let headerLabel = cell?.viewWithTag(100) as! UILabel
-        let headerLabel = (cell?.textLabel)!
-        headerLabel.font = UIFont(name: "Whitney-Book", size: 12.0)!
+//        let headerLabel = (cell?.textLabel)!
+//        headerLabel.font = UIFont(name: "Whitney-Book", size: 12.0)!
+//        
+//        if section == 0 {
+//            headerLabel.text = "Details"
+//        } else if section == 1 {
+//            headerLabel.text = "Similar Products"
+//        } else {
+//            headerLabel.text = ""
+//        }
+        
+        cell?.backgroundView = UIView()
+        cell?.backgroundView?.backgroundColor = UIColor.whiteColor()
+        
+//        let label = UILabel(frame: CGRect(x: 15, y: 11, width: view.frame.size.width, height: 22.0))
+        let label = UILabel()
+        label.font = UIFont(name: "Whitney-Semibold", size: 16.0)!
+        label.textColor = UIColor(red: 32/255, green: 49/255, blue: 67/255, alpha: 1.0)
+        cell?.contentView.addSubview(label)
         
         if section == 0 {
-            headerLabel.text = "Details"
+            label.text = "Product Description"
         } else if section == 1 {
-            headerLabel.text = "Similar Products"
+            label.text = "Similar Products"
         } else {
-            headerLabel.text = ""
+            label.text = "Others"
         }
+        
+        label.translatesAutoresizingMaskIntoConstraints = false
+//        cell?.contentView.addConstraints([
+//            NSLayoutConstraint(item: label, attribute: .Leading, relatedBy: .Equal, toItem: cell?.contentView, attribute: .Leading, multiplier: 1, constant: 15),
+//            NSLayoutConstraint(item: label, attribute: .Trailing, relatedBy: .Equal, toItem: cell?.contentView, attribute: .Trailing, multiplier: 1, constant: 15),
+//            NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: cell?.contentView, attribute: .CenterY, multiplier: 1, constant: 0)
+//            ])
+        NSLayoutConstraint.activateConstraints([
+            NSLayoutConstraint.constraintsWithVisualFormat(
+                "H:|-15-[label]-15-|",
+                options: [],
+                metrics: nil,
+                views: ["label" : label]),
+            NSLayoutConstraint.constraintsWithVisualFormat(
+                "V:|[label]|",
+                options: [],
+                metrics: nil,
+                views: ["label": label])
+            ].flatten().map{$0})
+        print("Header Height: \(tableView.sectionHeaderHeight)")
+        let separatorLine = UIView(frame: CGRect(x: 15, y: tableView.sectionHeaderHeight, width: view.frame.size.width - 15, height: 0.5))
+        separatorLine.backgroundColor = UIColor(red: 201/255, green: 198/255, blue: 204/255, alpha: 1.0)
+        cell?.contentView.addSubview(separatorLine)
         
         return cell
     }

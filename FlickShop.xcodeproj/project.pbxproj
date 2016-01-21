@@ -23,6 +23,8 @@
 		753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */; };
 		753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */; };
 		753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */; };
+		75414D741C51462100C2E3FE /* ContainerWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75414D731C51462100C2E3FE /* ContainerWebViewController.swift */; };
+		75414D761C51465400C2E3FE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75414D751C51465400C2E3FE /* WebViewController.swift */; };
 		7541FECE1C3E720B005CEB11 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */; };
 		7546CB1E1C4A447A000C9635 /* ContainerProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB1D1C4A447A000C9635 /* ContainerProductDetailsViewController.swift */; };
 		7546CB221C4A5A0E000C9635 /* SimilarProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB211C4A5A0E000C9635 /* SimilarProductCell.swift */; };
@@ -117,6 +119,8 @@
 		753E2BB31BE2A0F9000F374A /* Quicksand-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.ttf"; sourceTree = "<group>"; };
 		753E2BB41BE2A0F9000F374A /* Quicksand-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.ttf"; sourceTree = "<group>"; };
 		753E2BB51BE2A0F9000F374A /* Quicksand-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.ttf"; sourceTree = "<group>"; };
+		75414D731C51462100C2E3FE /* ContainerWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerWebViewController.swift; sourceTree = "<group>"; };
+		75414D751C51465400C2E3FE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		7546CB1D1C4A447A000C9635 /* ContainerProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerProductDetailsViewController.swift; sourceTree = "<group>"; };
 		7546CB211C4A5A0E000C9635 /* SimilarProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimilarProductCell.swift; sourceTree = "<group>"; };
@@ -327,6 +331,8 @@
 				75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */,
 				7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */,
 				752B9C4F1C42C831000CE855 /* PhotoViewController.swift */,
+				75414D731C51462100C2E3FE /* ContainerWebViewController.swift */,
+				75414D751C51465400C2E3FE /* WebViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				7546CB221C4A5A0E000C9635 /* SimilarProductCell.swift in Sources */,
 				750D8E141C0617BA00D728F0 /* PriceFilterViewController.swift in Sources */,
 				75F12CC61BE0A00B00258874 /* ImageScout.swift in Sources */,
+				75414D761C51465400C2E3FE /* WebViewController.swift in Sources */,
 				75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */,
 				750D8E161C06221900D728F0 /* DiscountFilterViewController.swift in Sources */,
 				75149F3E1C1B088700A2A57C /* ShopStyle.swift in Sources */,
@@ -669,6 +676,7 @@
 				75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */,
 				75F12D0E1BE0A35900258874 /* ProductDetailsViewController.swift in Sources */,
 				75F12D151BE0A3B800258874 /* Alamofire+CustomResponse.swift in Sources */,
+				75414D741C51462100C2E3FE /* ContainerWebViewController.swift in Sources */,
 				7551D3461C134A040088D32B /* Constants.swift in Sources */,
 				7546CB1E1C4A447A000C9635 /* ContainerProductDetailsViewController.swift in Sources */,
 				750D8E1C1C0647AC00D728F0 /* SortFilterViewController.swift in Sources */,

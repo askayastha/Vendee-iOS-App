@@ -195,9 +195,16 @@ extension FlickViewController: FlickPageCellDelegate {
         indexPath = collectionView!.indexPathsForVisibleItems().first
 //        if #available(iOS 9.0, *) {
         if let url = url {
-            let safariVC = CustomSFSafariViewController(URL: url)
-            safariVC.delegate = self
-            presentViewController(safariVC, animated: true, completion: nil)
+//            let safariVC = CustomSFSafariViewController(URL: url)
+//            safariVC.delegate = self
+//            presentViewController(safariVC, animated: true, completion: nil)
+            
+            let webVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerWebViewController") as? ContainerWebViewController
+            
+            if let controller = webVC {
+                controller.url = url
+                navigationController?.pushViewController(controller, animated: true)
+            }
         }
     }
     

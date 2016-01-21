@@ -36,9 +36,9 @@ class ContainerFlickViewController: UIViewController {
         
         didScrollCount = 0
         backButton.alpha = 1.0
-        backButton.adjustsImageWhenHighlighted = false
+//        backButton.adjustsImageWhenHighlighted = false
         infoButton.alpha = 1.0
-        infoButton.adjustsImageWhenHighlighted = false
+//        infoButton.adjustsImageWhenHighlighted = false
     }
     
     override func didReceiveMemoryWarning() {

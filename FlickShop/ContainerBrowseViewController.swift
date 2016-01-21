@@ -29,8 +29,8 @@ class ContainerBrowseViewController: UIViewController {
         
 //        didScrollCount = 0
 //        backButton.alpha = 1.0
-        backButton.adjustsImageWhenHighlighted = false
-        filterButton.adjustsImageWhenHighlighted = false
+//        backButton.adjustsImageWhenHighlighted = false
+//        filterButton.adjustsImageWhenHighlighted = false
     }
 
     override func didReceiveMemoryWarning() {

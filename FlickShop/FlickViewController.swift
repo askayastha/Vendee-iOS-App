@@ -210,19 +210,56 @@ extension FlickViewController: FlickPageCellDelegate {
             controller.product = search.products.objectAtIndex(indexPath!.row) as! Product
             controller.brands = brands
             navigationController?.pushViewController(controller, animated: true)
-//            presentViewController(controller, animated: true, completion: nil)
         }
     }
     
-    func openPhotosViewControllerForProduct(product: Product, withPage page: Int) {
+    func openActivityViewForURL(url: String, andImage image: UIImage?) {
+        indexPath = collectionView!.indexPathsForVisibleItems().first
+        
+        let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found on Vendee")
+        let promoText = "Love this! What do you think? @vendeefashion"
+        
+        var items = [AnyObject]()
+        items.append(subjectActivityItem)
+        items.append(promoText)
+        items.append(url)
+        if let image = image { items.append(image) }
+        
+        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        presentViewController(activityVC, animated: true, completion: nil)
+    }
+    
+    func openPhotosViewerForProduct(product: Product, onPage page: Int) {
         indexPath = collectionView!.indexPathsForVisibleItems().first
         let photosVC = storyboard!.instantiateViewControllerWithIdentifier("PhotosViewController") as? PhotosViewController
         
         if let controller = photosVC {
+            controller.modalTransitionStyle = .CrossDissolve
             controller.imageURLs = product.largeImageURLs
             controller.tinyImageURLs = product.tinyImageURLs
             controller.page = page
             presentViewController(controller, animated: true, completion: nil)
         }
+    }
+}
+
+class SubjectActivityItem: NSObject, UIActivityItemSource {
+    
+    var subject: String
+    
+    init(subject: String) {
+        self.subject = subject
+    }
+    
+    func activityViewControllerPlaceholderItem(activityViewController: UIActivityViewController) -> AnyObject {
+        return ""
+    }
+    
+    func activityViewController(activityViewController: UIActivityViewController, itemForActivityType activityType: String) -> AnyObject? {
+        return ""
+    }
+    
+    func activityViewController(activityViewController: UIActivityViewController, subjectForActivityType activityType: String?) -> String {
+        return subject
     }
 }

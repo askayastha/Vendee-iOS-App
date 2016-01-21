@@ -10,8 +10,9 @@ import UIKit
 
 protocol FlickPageCellDelegate: class {
     func openItemInStoreWithURL(url: NSURL?)
-    func openPhotosViewControllerForProduct(product: Product, withPage page: Int)
+    func openPhotosViewerForProduct(product: Product, onPage page: Int)
     func openDetailsForProduct(product: Product)
+    func openActivityViewForURL(url: String, andImage image: UIImage?)
 }
 
 class FlickPageCell: UICollectionViewCell {
@@ -134,6 +135,14 @@ class FlickPageCell: UICollectionViewCell {
         
         if let product = product {
             delegate?.openDetailsForProduct(product)
+        }
+    }
+    
+    @IBAction func actionButtonTapped(sender: AnyObject) {
+        
+        if let product = product {
+            let url = "https://www.vendeeapp.com/product?id=\(product.id!)"
+            delegate?.openActivityViewForURL(url, andImage: imageViews[currentPage]?.image)
         }
     }
     
@@ -263,7 +272,7 @@ class FlickPageCell: UICollectionViewCell {
     }
     
     func imageViewTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        delegate?.openPhotosViewControllerForProduct(product, withPage: currentPage)
+        delegate?.openPhotosViewerForProduct(product, onPage: currentPage)
     }
 }
 

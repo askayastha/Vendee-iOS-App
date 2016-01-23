@@ -47,24 +47,27 @@ class PhotoViewController: UIViewController {
         // Large ImageView setup
         imageView = UIImageView()
         imageView.contentMode = .ScaleAspectFit
-        imageView.pin_setImageFromURL(imageURL) { [unowned self] _ in
+        imageView.pin_setImageFromURL(imageURL) { [weak self] _ in
             spinner.stopAnimating()
             
-            print("Image Size: \(self.imageView.image!.size)")
-            self.imageView.frame = CGRect(origin: CGPointMake(0, 0), size: self.imageView.image!.size)
-//            self.imageView.frame = self.centerFrameFromImage(self.imageView.image)
-            
-            // Zooming ScrollView scale setup
-            self.zoomingScrollView.addSubview(self.imageView)
-            self.zoomingScrollView.contentSize = self.imageView.image!.size
-            
-            let scaleWidth = self.zoomingScrollView.bounds.size.width / self.zoomingScrollView.contentSize.width
-            let scaleHeight = self.zoomingScrollView.bounds.size.height / self.zoomingScrollView.contentSize.height
-            let minScale = min(scaleWidth, scaleHeight)
-            self.zoomingScrollView.minimumZoomScale = minScale  ; print("Min Zoom Scale: \(self.zoomingScrollView.minimumZoomScale)")
-            self.zoomingScrollView.maximumZoomScale = 1.5
-            self.zoomingScrollView.zoomScale = minScale         ; print("Zoom Scale: \(self.zoomingScrollView.zoomScale)")            
-            self.centerScrollViewContents()
+            if let strongSelf = self {
+                print("Image Size: \(strongSelf.imageView.image!.size)")
+                
+                strongSelf.imageView.frame = CGRect(origin: CGPointMake(0, 0), size: strongSelf.imageView.image!.size)
+                // strongSelf.imageView.frame = strongSelf.centerFrameFromImage(strongSelf.imageView.image)
+                
+                // Zooming ScrollView scale setup
+                strongSelf.zoomingScrollView.addSubview(strongSelf.imageView)
+                strongSelf.zoomingScrollView.contentSize = strongSelf.imageView.image!.size
+                
+                let scaleWidth = strongSelf.zoomingScrollView.bounds.size.width / strongSelf.zoomingScrollView.contentSize.width
+                let scaleHeight = strongSelf.zoomingScrollView.bounds.size.height / strongSelf.zoomingScrollView.contentSize.height
+                let minScale = min(scaleWidth, scaleHeight)
+                strongSelf.zoomingScrollView.minimumZoomScale = minScale  ; print("Min Zoom Scale: \(strongSelf.zoomingScrollView.minimumZoomScale)")
+                strongSelf.zoomingScrollView.maximumZoomScale = 1.5
+                strongSelf.zoomingScrollView.zoomScale = minScale         ; print("Zoom Scale: \(strongSelf.zoomingScrollView.zoomScale)")
+                strongSelf.centerScrollViewContents()
+            }
         }
         
         view.addSubview(zoomingScrollView)

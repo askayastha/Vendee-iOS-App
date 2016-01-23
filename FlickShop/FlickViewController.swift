@@ -241,7 +241,6 @@ extension FlickViewController: FlickPageCellDelegate {
         let photosVC = storyboard!.instantiateViewControllerWithIdentifier("PhotosViewController") as? PhotosViewController
         
         if let controller = photosVC {
-            controller.modalTransitionStyle = .CrossDissolve
             controller.imageURLs = product.largeImageURLs
             controller.tinyImageURLs = product.tinyImageURLs
             controller.page = page

@@ -31,6 +31,7 @@ class PhotosViewController: UIViewController {
         tinyImageViews = [UIImageView]()
         super.init(coder: aDecoder)
         print("##### PhotosViewController initialization #####")
+        modalTransitionStyle = .CrossDissolve
     }
     
     deinit {

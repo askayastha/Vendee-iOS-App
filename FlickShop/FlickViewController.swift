@@ -127,27 +127,28 @@ class FlickViewController: UICollectionViewController {
             loadingHUD.userInteractionEnabled = false
         }
         
-        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [unowned self] success, lastItem in
+        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, lastItem in
             
+            guard let strongSelf = self else { return }
             print("Products count: \(lastItem)")
             if !success {
-                if self.search.retryCount < NumericConstants.retryLimit {
+                if strongSelf.search.retryCount < NumericConstants.retryLimit {
                     print("Request Failed. Trying again...")
-                    self.requestDataFromShopStyleForCategory(category)
-                    print("Request Count: \(self.search.retryCount)")
-                    self.search.incrementRetryCount()
+                    strongSelf.requestDataFromShopStyleForCategory(category)
+                    print("Request Count: \(strongSelf.search.retryCount)")
+                    strongSelf.search.incrementRetryCount()
                     
                 } else {
-                    self.search.resetRetryCount()
-                    MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                    self.loadingHUDPresent = false
+                    strongSelf.search.resetRetryCount()
+                    MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
+                    strongSelf.loadingHUDPresent = false
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 }
                 
             } else {
-                self.collectionView!.reloadData()
-                MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                self.loadingHUDPresent = false
+                strongSelf.collectionView!.reloadData()
+                MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
+                strongSelf.loadingHUDPresent = false
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
         }

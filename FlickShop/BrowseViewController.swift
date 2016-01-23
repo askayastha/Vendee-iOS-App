@@ -86,17 +86,18 @@ class BrowseViewController: UICollectionViewController {
         
         func populatePhotosFromIndex(index: Int) {
             
-            search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [unowned self] success, lastIndex in
-                self.productCount += NumericConstants.populateLimit
+            search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, lastIndex in
+                guard let strongSelf = self else { return }
+                strongSelf.productCount += NumericConstants.populateLimit
                 let fromIndex = lastIndex - NumericConstants.populateLimit
                 let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
                 
-                self.collectionView!.performBatchUpdates({
+                strongSelf.collectionView!.performBatchUpdates({
                     print("READY FOR INSERTS: \(lastIndex)")
-                    self.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                    strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
                     }, completion: { success in
                         print("INSERTS SUCCESSFUL")
-                        if success && lastIndex != self.search.lastItem {
+                        if success && lastIndex != strongSelf.search.lastItem {
                             populatePhotosFromIndex(lastIndex)
                         } else {
                             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
@@ -115,27 +116,28 @@ class BrowseViewController: UICollectionViewController {
         
         requestingData = true
         if let category = category {
-            search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [unowned self] success, lastItem in
+            search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, lastItem in
                 
+                guard let strongSelf = self else { return }
                 print("Products count: \(lastItem)")
                 if !success {
-                    if self.search.retryCount < NumericConstants.retryLimit {
-                        self.requestingData = false
-                        self.requestDataFromShopStyleForCategory(category)
-                        self.search.incrementRetryCount()
+                    if strongSelf.search.retryCount < NumericConstants.retryLimit {
+                        strongSelf.requestingData = false
+                        strongSelf.requestDataFromShopStyleForCategory(category)
+                        strongSelf.search.incrementRetryCount()
                         print("Request Failed. Trying again...")
-                        print("Request Count: \(self.search.retryCount)")
+                        print("Request Count: \(strongSelf.search.retryCount)")
                         
                     } else {
-                        self.search.resetRetryCount()
+                        strongSelf.search.resetRetryCount()
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     }
                     
                 } else {
-                    self.requestingData = false
+                    strongSelf.requestingData = false
                     
                     if lastItem > 0 {
-                        populatePhotosFromIndex(self.productCount)
+                        populatePhotosFromIndex(strongSelf.productCount)
                     } else {
                         showNoResultsError()
                     }

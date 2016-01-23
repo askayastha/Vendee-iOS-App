@@ -19,14 +19,14 @@ import SafariServices
 class FlickViewController: UICollectionViewController {
     
     private let cellIdentifier = "FlickPageCell"
+    private var lastItem = 0
+    private var loadingHUDPresent = false
     
-    var search = Search()
+    var search: Search!
     var brands: [Brand]!
     var indexPath: NSIndexPath?
     var productCategory: String!
     weak var delegate: ScrollEventsDelegate?
-    var lastItem = 0
-    var loadingHUDPresent = false
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -37,7 +37,7 @@ class FlickViewController: UICollectionViewController {
     }
     
     deinit {
-        print("Deallocating FlickCollectionViewController !!!!!!!!!!!!!!!")
+        print("Deallocating FlickViewController !!!!!!!!!!!!!!!")
     }
 
     override func viewDidLoad() {

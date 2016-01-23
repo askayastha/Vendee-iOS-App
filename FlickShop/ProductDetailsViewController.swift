@@ -10,20 +10,20 @@ import UIKit
 import Alamofire
 import AVFoundation
 
-enum DocumentType {
-    case PlainText
-    case HtmlText
-}
-
 class ProductDetailsViewController: UITableViewController {
     
-    let search = Search()
+    private var requestingData = false
+    private var productDetailsHeight: CGFloat = 0
     
+    let search = Search()    
     weak var delegate: ScrollEventsDelegate?
-    var requestingData = false
     var product: Product!
     var brands: [Brand]!
-    var productDetailsHeight: CGFloat = 0
+    
+    enum DocumentType {
+        case PlainText
+        case HtmlText
+    }
     
     struct TableViewCellIdentifiers {
         static let similarProductCell = "SimilarProductCell"

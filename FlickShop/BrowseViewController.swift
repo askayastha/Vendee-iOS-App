@@ -18,22 +18,26 @@ protocol ScrollEventsDelegate: class {
 class BrowseViewController: UICollectionViewController {
     
     private let cellIdentifier = "CustomPhotoCell"
+    private var requestingData = false
+    private var productCount = 0
     
     weak var delegate: ScrollEventsDelegate?
-    var search: Search!
+    var search: Search
     var brands: [Brand]!
     var productCategory: String!
-    var requestingData = false
-    var productCount = 0
     
     deinit {
-        print("Deallocating BrowseCollectionViewController !!!!!!!!!!!!!!!")
+        print("Deallocating BrowseViewController !!!!!!!!!!!!!!!")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        search = Search()
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        search = Search()
         setupView()
         requestDataFromShopStyleForCategory(productCategory)
     }
@@ -141,7 +145,7 @@ class BrowseViewController: UICollectionViewController {
                     } else {
                         showNoResultsError()
                     }
-                    
+        
                     // Algorithm 2
 //                    for var i = lastItem - limit; i < lastItem; i++ {
 //                        let indexPath = NSIndexPath(forItem: i, inSection: 0)
@@ -162,6 +166,7 @@ class BrowseViewController: UICollectionViewController {
 //                            }
 //                        }
 //                    }
+        
                 }
             }
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TwoColumnLayoutDelegate {
+protocol TwoColumnLayoutDelegate: class {
     func collectionView(collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat
 }
 
@@ -38,7 +38,7 @@ class TwoColumnLayoutAttributes: UICollectionViewLayoutAttributes {
 
 class TwoColumnLayout: UICollectionViewLayout {
     // This keeps a reference to the delegate
-    var delegate: TwoColumnLayoutDelegate!
+    weak var delegate: TwoColumnLayoutDelegate!
     
     // These are two public properties for configuring the layout: the nunmber of columns and the cell padding.
     var numberOfColumns = 2

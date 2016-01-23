@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, WKNavigationDelegate {
     
     var url: NSURL!
     private var webView: WKWebView
@@ -21,15 +21,24 @@ class WebViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIBarButtonItem!
     
     required init?(coder aDecoder: NSCoder) {
-        webView = WKWebView(frame: CGRect.zero)
+        let configuration = WKWebViewConfiguration()
+        let hideForwardingScriptURL = NSBundle.mainBundle().pathForResource("hideForwarding", ofType: "js")
+        let hideForwardingJS = try! String(contentsOfFile: hideForwardingScriptURL!, encoding: NSUTF8StringEncoding)
+        let hideForwardingScript = WKUserScript(source: hideForwardingJS, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
+        configuration.userContentController.addUserScript(hideForwardingScript)
+        webView = WKWebView(frame: CGRect.zero, configuration: configuration)
         spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
         spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
         super.init(coder: aDecoder)
+        webView.navigationDelegate = self
     }
     
     deinit {
         webView.removeObserver(self, forKeyPath: "loading")
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
+        webView.removeObserver(self, forKeyPath: "title")
         webView.stopLoading()
     }
 
@@ -68,6 +77,7 @@ class WebViewController: UIViewController {
         
         webView.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
+        webView.addObserver(self, forKeyPath: "title", options: .New, context: nil)
         webView.loadRequest(NSURLRequest(URL: url))
     }
 
@@ -85,7 +95,11 @@ class WebViewController: UIViewController {
     }
     
     @IBAction func reloadButtonPressed(sender: UIBarButtonItem) {
-        webView.loadRequest(NSURLRequest(URL: url))
+        if webView.loading {
+            webView.stopLoading()
+        } else {
+            webView.loadRequest(NSURLRequest(URL: url))
+        }
     }
     
     // MARK: - Key Value Observer
@@ -95,18 +109,26 @@ class WebViewController: UIViewController {
         if keyPath == "loading" {
             backButton.enabled = webView.canGoBack
             forwardButton.enabled = webView.canGoForward
+            reloadButton.image = webView.loading ? UIImage(named: "close") : UIImage(named: "bar_reload")
             
-            guard let change = change else { return }
-            if let val = change[NSKeyValueChangeNewKey] as? Bool {
-                if val {
-                    spinner.startAnimating()
-                } else {
-                    spinner.stopAnimating()
-                }
-            }
+//            guard let change = change else { return }
+//            if let val = change[NSKeyValueChangeNewKey] as? Bool {
+//                if val {  }
+//            }
         } else if keyPath == "estimatedProgress" {
             print("Estimated Progress: \(webView.estimatedProgress)")
+        } else if keyPath == "title" {
+            print("Webpage Title: \(webView.title)")
         }
     }
-
+    
+    func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
+        spinner.stopAnimating()
+    }
+    
+    func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        presentViewController(alert, animated: true, completion: nil)
+    }
 }

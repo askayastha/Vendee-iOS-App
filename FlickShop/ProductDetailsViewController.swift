@@ -141,27 +141,27 @@ class ProductDetailsViewController: UITableViewController {
         if let category = category {
             search.parseShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, lastItem in
                 
-                if let strongSelf = self {
-                    if strongSelf.search.retryCount < NumericConstants.retryLimit {
-                        if !success {
-                            strongSelf.requestingData = false
-                            strongSelf.requestDataFromShopStyleForCategory(category)
-                            strongSelf.search.incrementRetryCount()
-                            print("Request Failed. Trying again...")
-                            print("Request Count: \(strongSelf.search.retryCount)")
-                            
-                        } else {
-                            strongSelf.requestingData = false
-                            print("Product Count: \(lastItem)")
-                            
-                            let indexPaths = (0..<lastItem).map { NSIndexPath(forItem: $0, inSection: 0) }
-                            
-                            strongSelf.collectionView!.performBatchUpdates({
-                                print("READY FOR INSERTS")
-                                strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
-                                }, completion: nil
-                            )
-                        }
+                guard let strongSelf = self else { return }
+                
+                if strongSelf.search.retryCount < NumericConstants.retryLimit {
+                    if !success {
+                        strongSelf.requestingData = false
+                        strongSelf.requestDataFromShopStyleForCategory(category)
+                        strongSelf.search.incrementRetryCount()
+                        print("Request Failed. Trying again...")
+                        print("Request Count: \(strongSelf.search.retryCount)")
+                        
+                    } else {
+                        strongSelf.requestingData = false
+                        print("Product Count: \(lastItem)")
+                        
+                        let indexPaths = (0..<lastItem).map { NSIndexPath(forItem: $0, inSection: 0) }
+                        
+                        strongSelf.collectionView!.performBatchUpdates({
+                            print("READY FOR INSERTS")
+                            strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                            }, completion: nil
+                        )
                     }
                 }
             }

@@ -129,4 +129,8 @@ class TwoColumnLayout: UICollectionViewLayout {
     override class func layoutAttributesClass() -> AnyClass {
         return TwoColumnLayoutAttributes.self
     }
+    
+    func reset() {
+        contentHeight = 0
+    }
 }

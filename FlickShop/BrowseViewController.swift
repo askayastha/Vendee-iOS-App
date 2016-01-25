@@ -52,8 +52,9 @@ class BrowseViewController: UICollectionViewController {
         productCount = 0
         
         // Scroll to top of the collection view
-        collectionView!.setContentOffset(CGPointZero, animated: false)
-        collectionView!.contentSize = CGSizeZero
+        if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
+            layout.reset()
+        }
         collectionView!.reloadData()
         print("COLLECTION VIEW RELOADED")
         

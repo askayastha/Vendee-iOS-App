@@ -25,7 +25,7 @@ class ProductDetailsViewController: UITableViewController {
         case HtmlText
     }
     
-    struct TableViewCellIdentifiers {
+    struct ProductDetailsViewCellIdentifiers {
         static let similarProductCell = "SimilarProductCell"
         static let headerCell = "HeaderCell"
     }
@@ -116,7 +116,7 @@ class ProductDetailsViewController: UITableViewController {
         productTitleLabel.text = product.name
         productDescLabel.attributedText = productDesc
         
-        tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: TableViewCellIdentifiers.headerCell)
+        tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: ProductDetailsViewCellIdentifiers.headerCell)
         tableView.tableFooterView = UIView(frame: CGRect.zero)
         
         // CollectionView stuff
@@ -180,7 +180,7 @@ extension ProductDetailsViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(TableViewCellIdentifiers.similarProductCell, forIndexPath: indexPath) as! SimilarProductCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(ProductDetailsViewCellIdentifiers.similarProductCell, forIndexPath: indexPath) as! SimilarProductCell
         
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0
         cell.product = search.products.objectAtIndex(indexPath.item) as? Product
@@ -219,7 +219,7 @@ extension ProductDetailsViewController {
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(TableViewCellIdentifiers.headerCell)
+        let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(ProductDetailsViewCellIdentifiers.headerCell)
         
         cell?.backgroundView = UIView()
         cell?.backgroundView?.backgroundColor = UIColor.whiteColor()

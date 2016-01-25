@@ -11,7 +11,6 @@ import UIKit
 class ContainerBrowseViewController: UIViewController {
     
     var productCategory: String!
-    var brands: [Brand]!
     var didScrollCount: Int = 0
     var browseViewController: BrowseViewController?
     
@@ -59,7 +58,6 @@ class ContainerBrowseViewController: UIViewController {
             
             browseViewController?.delegate = self
             browseViewController?.productCategory = productCategory
-            browseViewController?.brands = brands
         }
     }
 

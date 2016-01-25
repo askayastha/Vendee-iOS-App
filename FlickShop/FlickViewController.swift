@@ -18,7 +18,6 @@ import SafariServices
 
 class FlickViewController: UICollectionViewController {
     
-    private let cellIdentifier = "FlickPageCell"
     private var lastItem = 0
     private var loadingHUDPresent = false
     
@@ -27,6 +26,10 @@ class FlickViewController: UICollectionViewController {
     var indexPath: NSIndexPath?
     var productCategory: String!
     weak var delegate: ScrollEventsDelegate?
+    
+    struct FlickViewCellIdentifiers {
+        static let flickPageCell = "FlickPageCell"
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,8 +50,8 @@ class FlickViewController: UICollectionViewController {
 //        FlickViewConstants.height = collectionView!.bounds.height
 
         // Do any additional setup after loading the view.
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        collectionView!.registerNib(nib, forCellWithReuseIdentifier: cellIdentifier)
+        let nib = UINib(nibName: FlickViewCellIdentifiers.flickPageCell, bundle: nil)
+        collectionView!.registerNib(nib, forCellWithReuseIdentifier: FlickViewCellIdentifiers.flickPageCell)
         
         collectionView!.backgroundColor = UIColor.lightGrayColor()
 //        collectionView!.backgroundColor = UIColor(red: 96/255, green: 99/255, blue: 104/255, alpha: 1.0)
@@ -73,7 +76,7 @@ class FlickViewController: UICollectionViewController {
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! FlickPageCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(FlickViewCellIdentifiers.flickPageCell, forIndexPath: indexPath) as! FlickPageCell
         
 //        cell.layer.shouldRasterize = true
 //        cell.layer.rasterizationScale = UIScreen.mainScreen().scale

@@ -17,22 +17,20 @@ protocol ScrollEventsDelegate: class {
 
 class BrowseViewController: UICollectionViewController {
     
-    private let cellIdentifier = "CustomPhotoCell"
     private var requestingData = false
     private var productCount = 0
     
     weak var delegate: ScrollEventsDelegate?
-    var search: Search
-    var brands: [Brand]!
+    var search = Search()
+    var brands = Brand.allBrands()
     var productCategory: String!
+    
+    struct BrowseViewCellIdentifiers {
+        static let customProductCell = "CustomPhotoCell"
+    }
     
     deinit {
         print("Deallocating BrowseViewController !!!!!!!!!!!!!!!")
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        search = Search()
-        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
@@ -195,7 +193,7 @@ extension BrowseViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentifier, forIndexPath: indexPath) as! CustomPhotoCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(BrowseViewCellIdentifiers.customProductCell, forIndexPath: indexPath) as! CustomPhotoCell
 //        cell.layer.shouldRasterize = true
 //        cell.layer.rasterizationScale = UIScreen.mainScreen().scale
         

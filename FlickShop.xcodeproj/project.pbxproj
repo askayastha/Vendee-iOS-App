@@ -81,6 +81,7 @@
 		75F12D151BE0A3B800258874 /* Alamofire+CustomResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12D141BE0A3B800258874 /* Alamofire+CustomResponse.swift */; };
 		75F12D181BE0A46000258874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F12D161BE0A46000258874 /* Main.storyboard */; };
 		75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F12D191BE0A54D00258874 /* Categories.xcassets */; };
+		75F72C741C565E1300D21E50 /* SubjectActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F72C731C565E1300D21E50 /* SubjectActivityItem.swift */; };
 		9467AA39D88A2E86E1AD25CE /* Pods_FlickShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */; };
 /* End PBXBuildFile section */
 
@@ -187,6 +188,7 @@
 		75F12D141BE0A3B800258874 /* Alamofire+CustomResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+CustomResponse.swift"; sourceTree = "<group>"; };
 		75F12D171BE0A46000258874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75F12D191BE0A54D00258874 /* Categories.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Categories.xcassets; sourceTree = "<group>"; };
+		75F72C731C565E1300D21E50 /* SubjectActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectActivityItem.swift; sourceTree = "<group>"; };
 		983955C99D9E0C495F28783E /* Pods-FlickShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -249,6 +251,7 @@
 		75A31E301BDFBAAD006FD010 /* FlickShop */ = {
 			isa = PBXGroup;
 			children = (
+				75F72C721C565DED00D21E50 /* Activities */,
 				752BDD561C522FF6007F76BF /* Scripts */,
 				75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */,
 				75F12CEE1BE0A35900258874 /* AppDelegate.swift */,
@@ -441,6 +444,14 @@
 				756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */,
 			);
 			name = "Storyboards & Xibs";
+			sourceTree = "<group>";
+		};
+		75F72C721C565DED00D21E50 /* Activities */ = {
+			isa = PBXGroup;
+			children = (
+				75F72C731C565E1300D21E50 /* SubjectActivityItem.swift */,
+			);
+			name = Activities;
 			sourceTree = "<group>";
 		};
 		7AA5E59AD30AA3D38AC2E840 /* Frameworks */ = {
@@ -695,6 +706,7 @@
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
 				75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */,
 				752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */,
+				75F72C741C565E1300D21E50 /* SubjectActivityItem.swift in Sources */,
 				752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */,
 				75F12D131BE0A35900258874 /* TwoColumnLayout.swift in Sources */,
 				753AEA5A1BFF8BA10016B655 /* CategoryFilterViewController.swift in Sources */,

@@ -94,11 +94,26 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.goForward()
     }
     
+    @IBAction func actionButtonPressed(sender: UIBarButtonItem) {
+        let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found on Vendee")
+        let promoText = "Love this! What do you think? @vendeefashion"
+        
+        var items = [AnyObject]()
+        items.append(subjectActivityItem)
+        items.append(promoText)
+        items.append(url)
+        
+        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        presentViewController(activityVC, animated: true, completion: nil)
+    }
+    
     @IBAction func reloadButtonPressed(sender: UIBarButtonItem) {
         if webView.loading {
             webView.stopLoading()
+            spinner.stopAnimating()
         } else {
             webView.loadRequest(NSURLRequest(URL: url))
+            spinner.startAnimating()
         }
     }
     
@@ -109,7 +124,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         if keyPath == "loading" {
             backButton.enabled = webView.canGoBack
             forwardButton.enabled = webView.canGoForward
-            reloadButton.image = webView.loading ? UIImage(named: "close") : UIImage(named: "bar_reload")
+            reloadButton.image = webView.loading ? UIImage(named: "bar_stop") : UIImage(named: "bar_reload")
             
 //            guard let change = change else { return }
 //            if let val = change[NSKeyValueChangeNewKey] as? Bool {

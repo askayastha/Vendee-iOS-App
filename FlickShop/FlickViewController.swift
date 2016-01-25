@@ -252,24 +252,3 @@ extension FlickViewController: FlickPageCellDelegate {
         }
     }
 }
-
-class SubjectActivityItem: NSObject, UIActivityItemSource {
-    
-    var subject: String
-    
-    init(subject: String) {
-        self.subject = subject
-    }
-    
-    func activityViewControllerPlaceholderItem(activityViewController: UIActivityViewController) -> AnyObject {
-        return ""
-    }
-    
-    func activityViewController(activityViewController: UIActivityViewController, itemForActivityType activityType: String) -> AnyObject? {
-        return ""
-    }
-    
-    func activityViewController(activityViewController: UIActivityViewController, subjectForActivityType activityType: String?) -> String {
-        return subject
-    }
-}

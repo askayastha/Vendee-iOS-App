@@ -34,6 +34,7 @@
 		756FC4E71C01B03F007AB0C5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */; };
 		756FC4E91C01B16D007AB0C5 /* SwitchSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */; };
 		756FC4EB1C01C7F3007AB0C5 /* BrandFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */; };
+		757D57AC1C56816D00F64907 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757D57AA1C56816D00F64907 /* Filter.storyboard */; };
 		75A31E391BDFBAAE006FD010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E381BDFBAAE006FD010 /* Assets.xcassets */; };
 		75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E3A1BDFBAAE006FD010 /* LaunchScreen.storyboard */; };
 		75A31E471BDFBAAE006FD010 /* FlickShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E461BDFBAAE006FD010 /* FlickShopTests.swift */; };
@@ -132,6 +133,7 @@
 		756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchSegue.swift; sourceTree = "<group>"; };
 		756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BrandFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		757D57AB1C56816D00F64907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Filter.storyboard; sourceTree = "<group>"; };
 		75A31E2E1BDFBAAD006FD010 /* FlickShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A31E381BDFBAAE006FD010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A31E3B1BDFBAAE006FD010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				75F12D161BE0A46000258874 /* Main.storyboard */,
+				757D57AA1C56816D00F64907 /* Filter.storyboard */,
 				75F12CF81BE0A35900258874 /* FlickPageCell.xib */,
 				75A31E3A1BDFBAAE006FD010 /* LaunchScreen.storyboard */,
 				756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */,
@@ -583,6 +586,7 @@
 			files = (
 				75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */,
 				75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */,
+				757D57AC1C56816D00F64907 /* Filter.storyboard in Resources */,
 				75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */,
 				753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */,
 				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
@@ -761,6 +765,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		757D57AA1C56816D00F64907 /* Filter.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				757D57AB1C56816D00F64907 /* Base */,
+			);
+			name = Filter.storyboard;
+			sourceTree = "<group>";
+		};
 		75A31E3A1BDFBAAE006FD010 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

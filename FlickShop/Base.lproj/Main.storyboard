@@ -311,8 +311,8 @@
                                     <constraint firstAttribute="width" constant="40" id="GFJ-Ph-ooS"/>
                                     <constraint firstAttribute="height" constant="40" id="iJA-9Z-mBt"/>
                                 </constraints>
-                                <inset key="imageEdgeInsets" minX="12" minY="10" maxX="12" maxY="10"/>
-                                <state key="normal" image="filter_sharp_gray"/>
+                                <inset key="imageEdgeInsets" minX="11" minY="12" maxX="11" maxY="12"/>
+                                <state key="normal" image="filter_vertical"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
                                         <color key="value" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
@@ -896,7 +896,7 @@
         <image name="bar_forward" width="16" height="16"/>
         <image name="bar_reload" width="16" height="18"/>
         <image name="bar_stop" width="16" height="16"/>
-        <image name="filter_sharp_gray" width="32" height="32"/>
+        <image name="filter_vertical" width="32" height="32"/>
     </resources>
     <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
 </document>

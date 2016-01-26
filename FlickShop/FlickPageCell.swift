@@ -166,6 +166,7 @@ class FlickPageCell: UICollectionViewCell {
         } else {
             discountLabel.text = "0% Off"
         }
+        buyButton.setTitle(discountLabel.text, forState: .Normal)
         print("PRODUCT ID: \(product!.id)")
         // Setup page control
         pageControl.currentPage = currentPage

@@ -12,7 +12,7 @@ protocol FlickPageCellDelegate: class {
     func openItemInStoreWithURL(url: NSURL?)
     func openPhotosViewerForProduct(product: Product, onPage page: Int)
     func openDetailsForProduct(product: Product)
-    func openActivityViewForURL(url: String, andImage image: UIImage?)
+    func openActivityViewForProduct(product: Product, andImage image: UIImage?)
 }
 
 class FlickPageCell: UICollectionViewCell {
@@ -141,8 +141,7 @@ class FlickPageCell: UICollectionViewCell {
     @IBAction func actionButtonTapped(sender: AnyObject) {
         
         if let product = product {
-            let url = "https://www.vendeeapp.com/product?id=\(product.id!)"
-            delegate?.openActivityViewForURL(url, andImage: imageViews[currentPage]?.image)
+            delegate?.openActivityViewForProduct(product, andImage: imageViews[currentPage]?.image)
         }
     }
     

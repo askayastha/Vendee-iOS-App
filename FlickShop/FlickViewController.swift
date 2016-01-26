@@ -229,17 +229,19 @@ extension FlickViewController: FlickPageCellDelegate {
         }
     }
     
-    func openActivityViewForURL(url: String, andImage image: UIImage?) {
+    func openActivityViewForProduct(product: Product, andImage image: UIImage?) {
         indexPath = collectionView!.indexPathsForVisibleItems().first
         
+        let url = "https://www.vendeeapp.com/product?id=\(product.id!)"
         let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found on Vendee")
-        let promoText = "Love this! What do you think? @vendeefashion"
+//        let promoText = "Download Vendee app for free in the App Store."
+        let promoText = "I found this on the Vendee app!"
         
         var items = [AnyObject]()
         items.append(subjectActivityItem)
         items.append(promoText)
-        items.append(url)
         if let image = image { items.append(image) }
+        items.append(url)
         
         let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         presentViewController(activityVC, animated: true, completion: nil)

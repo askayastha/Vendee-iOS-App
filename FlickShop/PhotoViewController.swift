@@ -39,7 +39,6 @@ class PhotoViewController: UIViewController {
         
         // Spinner setup
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        spinner.hidesWhenStopped = true
         spinner.center = CGPoint(x: view.center.x, y: view.center.y)
         spinner.startAnimating()
         view.addSubview(spinner)

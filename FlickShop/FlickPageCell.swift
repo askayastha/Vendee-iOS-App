@@ -199,7 +199,6 @@ class FlickPageCell: UICollectionViewCell {
             
             // Spinner setup
             let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-            spinner.hidesWhenStopped = true
             spinner.center = CGPoint(x: frame.origin.x + frame.size.width / 2, y: frame.size.height / 2)
             spinner.startAnimating()
             scrollView.addSubview(spinner)

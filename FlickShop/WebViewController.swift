@@ -13,7 +13,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     
     var url: NSURL!
     private var webView: WKWebView
-    private var spinner: UIActivityIndicatorView!
+    private var spinner: UIActivityIndicatorView
     weak var delegate: SwipeDelegate?
     
     @IBOutlet weak var window: UIView!

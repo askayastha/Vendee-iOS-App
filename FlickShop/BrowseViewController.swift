@@ -14,6 +14,13 @@ class BrowseViewController: UICollectionViewController {
     
     private var requestingData = false
     private var productCount = 0
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
+        return spinner
+    }()
     
     weak var delegate: SwipeDelegate?
     var search = Search()
@@ -69,6 +76,15 @@ class BrowseViewController: UICollectionViewController {
     }
     
     private func setupView() {
+        // Spinner setup
+        spinner.center = CGPoint(x: collectionView!.center.x, y: collectionView!.center.y)
+        collectionView!.addSubview(spinner)
+//        spinner.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activateConstraints([
+//            spinner.centerXAnchor.constraintEqualToAnchor(collectionView!.centerXAnchor),
+//            spinner.centerYAnchor.constraintEqualToAnchor(collectionView!.centerYAnchor)
+//            ])
+        
         // Swipe gesture setup
         let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
         swipeUpRecognizer.delegate = self
@@ -86,6 +102,12 @@ class BrowseViewController: UICollectionViewController {
         
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
             layout.delegate = self
+        }
+    }
+    
+    private func hideSpinner() {
+        if spinner.isAnimating() {
+            spinner.stopAnimating()
         }
     }
     
@@ -141,10 +163,12 @@ class BrowseViewController: UICollectionViewController {
                     } else {
                         strongSelf.search.resetRetryCount()
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                        strongSelf.hideSpinner()
                     }
                     
                 } else {
                     strongSelf.requestingData = false
+                    strongSelf.hideSpinner()
                     
                     if lastItem > 0 {
                         populatePhotosFromIndex(strongSelf.productCount)

@@ -52,6 +52,7 @@ extension ContainerWebViewController: SwipeDelegate {
         
         // Hide button with animation
         UIView.animateWithDuration(0.3, animations: {
+            self.backButton.transform = CGAffineTransformMakeScale(0.1, 0.1)
             self.backButton.alpha = 0.0
             }, completion: { _ in
                 self.backButtonHidden = true
@@ -63,6 +64,7 @@ extension ContainerWebViewController: SwipeDelegate {
         
         // Show button with animation
         UIView.animateWithDuration(0.3, animations: {
+            self.backButton.transform = CGAffineTransformIdentity
             self.backButton.alpha = 1.0
             }, completion: { _ in
                 self.backButtonHidden = false

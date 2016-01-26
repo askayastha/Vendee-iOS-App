@@ -71,6 +71,8 @@ extension ContainerBrowseViewController: SwipeDelegate {
         
         // Hide button with animation
         UIView.animateWithDuration(0.3, animations: {
+            self.backButton.transform = CGAffineTransformMakeScale(0.1, 0.1)
+            self.filterButton.transform = CGAffineTransformMakeScale(0.1, 0.1)
             self.backButton.alpha = 0.0
             self.filterButton.alpha = 0.0
             }, completion: { _ in
@@ -83,6 +85,8 @@ extension ContainerBrowseViewController: SwipeDelegate {
         
         // Show button with animation
         UIView.animateWithDuration(0.3, animations: {
+            self.backButton.transform = CGAffineTransformIdentity
+            self.filterButton.transform = CGAffineTransformIdentity
             self.backButton.alpha = 1.0
             self.filterButton.alpha = 1.0
             }, completion: { _ in

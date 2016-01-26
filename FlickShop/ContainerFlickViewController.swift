@@ -79,6 +79,8 @@ extension ContainerFlickViewController: ScrollEventsDelegate {
         
         if didScrollCount > 5 {
             UIView.animateWithDuration(0.3) {
+//                self.backButton.transform = CGAffineTransformMakeScale(0.1, 0.1)
+//                self.infoButton.transform = CGAffineTransformMakeScale(0.1, 0.1)
                 self.backButton.alpha = 0.0
                 self.infoButton.alpha = 0.0
             }
@@ -87,6 +89,8 @@ extension ContainerFlickViewController: ScrollEventsDelegate {
     
     func didEndDecelerating() {
         UIView.animateWithDuration(0.3) {
+//            self.backButton.transform = CGAffineTransformIdentity
+//            self.infoButton.transform = CGAffineTransformIdentity
             self.backButton.alpha = 1.0
             self.infoButton.alpha = 1.0
         }

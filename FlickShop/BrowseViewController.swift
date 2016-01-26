@@ -10,17 +10,12 @@ import UIKit
 import Alamofire
 import AVFoundation
 
-protocol ScrollEventsDelegate: class {
-    func didScroll()
-    func didEndDecelerating()
-}
-
 class BrowseViewController: UICollectionViewController {
     
     private var requestingData = false
     private var productCount = 0
     
-    weak var delegate: ScrollEventsDelegate?
+    weak var delegate: SwipeDelegate?
     var search = Search()
     var brands = Brand.allBrands()
     var productCategory: String!
@@ -74,6 +69,18 @@ class BrowseViewController: UICollectionViewController {
     }
     
     private func setupView() {
+        // Swipe gesture setup
+        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
+        swipeUpRecognizer.delegate = self
+        swipeUpRecognizer.direction = .Up
+        
+        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
+        swipeDownRecognizer.delegate = self
+        swipeDownRecognizer.direction = .Down
+        
+        collectionView!.addGestureRecognizer(swipeUpRecognizer)
+        collectionView!.addGestureRecognizer(swipeDownRecognizer)
+        
         collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)
         // collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
@@ -247,14 +254,6 @@ extension BrowseViewController {
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("FlickCategory", sender: indexPath)
     }
-    
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
-        delegate?.didScroll()
-    }
-    
-    override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-        delegate?.didEndDecelerating()
-    }
 }
 
 extension BrowseViewController: TwoColumnLayoutDelegate {
@@ -270,5 +269,22 @@ extension BrowseViewController: TwoColumnLayoutDelegate {
         
         return ceil(rect.size.height)
         // return rect.size.height
+    }
+}
+
+extension BrowseViewController: UIGestureRecognizerDelegate {
+    
+    func swipedUp(recognizer: UISwipeGestureRecognizer) {
+        print("swipedUp")
+        delegate?.swipedUp()
+    }
+    
+    func swipedDown(recognizer: UISwipeGestureRecognizer) {
+        print("swipedDown")
+        delegate?.swipedDown()
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

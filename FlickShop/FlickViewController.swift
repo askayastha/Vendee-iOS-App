@@ -16,6 +16,11 @@ import SafariServices
 //    static var height = UIScreen.mainScreen().bounds.height
 //}
 
+protocol ScrollEventsDelegate: class {
+    func didScroll()
+    func didEndDecelerating()
+}
+
 class FlickViewController: UICollectionViewController {
     
     private var lastItem = 0

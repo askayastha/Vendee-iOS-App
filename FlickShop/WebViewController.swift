@@ -14,6 +14,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     var url: NSURL!
     private var webView: WKWebView
     private var spinner: UIActivityIndicatorView!
+    weak var delegate: SwipeDelegate?
     
     @IBOutlet weak var window: UIView!
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -183,11 +184,13 @@ extension WebViewController: UIGestureRecognizerDelegate {
     
     func swipedUp(recognizer: UISwipeGestureRecognizer) {
         print("swipedUp")
+        delegate?.swipedUp()
         setToolBarVisible(false, animated: true)
     }
     
     func swipedDown(recognizer: UISwipeGestureRecognizer) {
         print("swipedDown")
+        delegate?.swipedDown()
         setToolBarVisible(true, animated: true)
     }
     

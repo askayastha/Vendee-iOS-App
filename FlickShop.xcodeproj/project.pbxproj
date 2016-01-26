@@ -35,6 +35,7 @@
 		756FC4E91C01B16D007AB0C5 /* SwitchSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */; };
 		756FC4EB1C01C7F3007AB0C5 /* BrandFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */; };
 		757D57AC1C56816D00F64907 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757D57AA1C56816D00F64907 /* Filter.storyboard */; };
+		758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758EB6CA1C579C50007ECD91 /* SwipeDelegate.swift */; };
 		75A31E391BDFBAAE006FD010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E381BDFBAAE006FD010 /* Assets.xcassets */; };
 		75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E3A1BDFBAAE006FD010 /* LaunchScreen.storyboard */; };
 		75A31E471BDFBAAE006FD010 /* FlickShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E461BDFBAAE006FD010 /* FlickShopTests.swift */; };
@@ -134,6 +135,7 @@
 		756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchSegue.swift; sourceTree = "<group>"; };
 		756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BrandFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		757D57AB1C56816D00F64907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Filter.storyboard; sourceTree = "<group>"; };
+		758EB6CA1C579C50007ECD91 /* SwipeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeDelegate.swift; sourceTree = "<group>"; };
 		75A31E2E1BDFBAAD006FD010 /* FlickShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A31E381BDFBAAE006FD010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A31E3B1BDFBAAE006FD010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -228,6 +230,14 @@
 			name = Scripts;
 			sourceTree = "<group>";
 		};
+		758EB6C91C579C0E007ECD91 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				758EB6CA1C579C50007ECD91 /* SwipeDelegate.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		75A31E251BDFBAAD006FD010 = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +263,7 @@
 		75A31E301BDFBAAD006FD010 /* FlickShop */ = {
 			isa = PBXGroup;
 			children = (
+				758EB6C91C579C0E007ECD91 /* Protocols */,
 				75F72C721C565DED00D21E50 /* Activities */,
 				752BDD561C522FF6007F76BF /* Scripts */,
 				75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */,
@@ -707,6 +718,7 @@
 				7551D3461C134A040088D32B /* Constants.swift in Sources */,
 				7546CB1E1C4A447A000C9635 /* ContainerProductDetailsViewController.swift in Sources */,
 				750D8E1C1C0647AC00D728F0 /* SortFilterViewController.swift in Sources */,
+				758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */,
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
 				75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */,
 				752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */,

@@ -558,6 +558,9 @@
                             <constraint firstItem="YNH-lY-DfX" firstAttribute="top" secondItem="ih8-mE-ca7" secondAttribute="bottom" id="pVV-ej-pEt"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="sig-g5-O9W" id="dsf-zw-q57"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOP-1W-7s1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

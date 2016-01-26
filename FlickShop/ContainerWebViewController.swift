@@ -12,6 +12,9 @@ class ContainerWebViewController: UIViewController {
     
     var url: NSURL!
     var webViewController: WebViewController?
+    var backButtonHidden = false
+    
+    @IBOutlet weak var backButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,33 @@ class ContainerWebViewController: UIViewController {
         if segue.identifier == "EmbedWebView" {
             webViewController = segue.destinationViewController as? WebViewController
             webViewController?.url = url
+            webViewController?.delegate = self
         }
     }
 
+}
+
+extension ContainerWebViewController: SwipeDelegate {
+    
+    func swipedUp() {
+        if backButtonHidden { return }
+        
+        // Hide button with animation
+        UIView.animateWithDuration(0.3, animations: {
+            self.backButton.alpha = 0.0
+            }, completion: { _ in
+                self.backButtonHidden = true
+        })
+    }
+    
+    func swipedDown() {
+        if !backButtonHidden { return }
+        
+        // Show button with animation
+        UIView.animateWithDuration(0.3, animations: {
+            self.backButton.alpha = 1.0
+            }, completion: { _ in
+                self.backButtonHidden = false
+        })
+    }
 }

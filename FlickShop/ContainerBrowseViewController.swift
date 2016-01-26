@@ -13,6 +13,7 @@ class ContainerBrowseViewController: UIViewController {
     var productCategory: String!
     var didScrollCount: Int = 0
     var browseViewController: BrowseViewController?
+    var buttonsHidden = false
     
     @IBOutlet weak var backButton: FloatingButton!
     @IBOutlet weak var filterButton: FloatingButton!
@@ -63,21 +64,29 @@ class ContainerBrowseViewController: UIViewController {
 
 }
 
-extension ContainerBrowseViewController: ScrollEventsDelegate {
+extension ContainerBrowseViewController: SwipeDelegate {
     
-    func didScroll() {
-//        didScrollCount++
-//        
-//        if didScrollCount > 5 {
-//            UIView.animateWithDuration(0.2) {
-//                self.backButton.alpha = 0.0
-//            }
-//        }
+    func swipedUp() {
+        if buttonsHidden { return }
+        
+        // Hide button with animation
+        UIView.animateWithDuration(0.3, animations: {
+            self.backButton.alpha = 0.0
+            self.filterButton.alpha = 0.0
+            }, completion: { _ in
+                self.buttonsHidden = true
+        })
     }
     
-    func didEndDecelerating() {
-//        UIView.animateWithDuration(0.2) {
-//            self.backButton.alpha = 1.0
-//        }
+    func swipedDown() {
+        if !buttonsHidden { return }
+        
+        // Show button with animation
+        UIView.animateWithDuration(0.3, animations: {
+            self.backButton.alpha = 1.0
+            self.filterButton.alpha = 1.0
+            }, completion: { _ in
+                self.buttonsHidden = false
+        })
     }
 }

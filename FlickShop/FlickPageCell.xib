@@ -111,6 +111,7 @@
                                     <constraint firstAttribute="height" constant="40" id="1Fn-TX-Id3"/>
                                     <constraint firstAttribute="width" constant="40" id="bW1-9K-Ya1"/>
                                 </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
                                 <state key="normal" image="share"/>
                                 <connections>
                                     <action selector="actionButtonTapped:" destination="cT6-e4-j9m" eventType="touchUpInside" id="4ns-NR-LBv"/>
@@ -278,6 +279,6 @@
         <image name="favorite" width="16" height="16"/>
         <image name="info" width="32" height="32"/>
         <image name="more" width="16" height="16"/>
-        <image name="share" width="16" height="16"/>
+        <image name="share" width="15" height="20"/>
     </resources>
 </document>

@@ -32,7 +32,7 @@ class FlickPageCell: UICollectionViewCell {
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var topLikesCommentsViewLineSeparatorHeightConstraint: NSLayoutConstraint!
+//    @IBOutlet weak var topLikesCommentsViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buyButton: UIButton!
     
     weak var delegate: FlickPageCellDelegate?

@@ -88,7 +88,7 @@ class FlickViewController: UICollectionViewController {
         cell.scrollViewHeightConstraint.constant = getImageViewHeight()
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
-        cell.topLikesCommentsViewLineSeparatorHeightConstraint.constant = 0.5
+//        cell.topLikesCommentsViewLineSeparatorHeightConstraint.constant = 0.5
         
         cell.brandImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
         cell.brandImageView.layer.borderWidth = 0.5
@@ -163,7 +163,7 @@ class FlickViewController: UICollectionViewController {
         print("CollectionView Height: \(collectionViewHeight)")
         print("Screen Height: \(ScreenConstants.height)")
         
-        return ScreenConstants.height - (60 + 20 + 46 + 30)
+        return ScreenConstants.height - (60 + 20 + 52)
     }
     
 //    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

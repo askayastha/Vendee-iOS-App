@@ -19,6 +19,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var backButton: UIBarButtonItem!
     @IBOutlet weak var forwardButton: UIBarButtonItem!
     @IBOutlet weak var reloadButton: UIBarButtonItem!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     required init?(coder aDecoder: NSCoder) {
         let configuration = WKWebViewConfiguration()
@@ -79,6 +80,18 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "title", options: .New, context: nil)
         webView.loadRequest(NSURLRequest(URL: url))
+        
+        // Swipe gesture setup
+        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
+        swipeUpRecognizer.delegate = self
+        swipeUpRecognizer.direction = .Up
+        
+        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
+        swipeDownRecognizer.delegate = self
+        swipeDownRecognizer.direction = .Down
+        
+        webView.addGestureRecognizer(swipeUpRecognizer)
+        webView.addGestureRecognizer(swipeDownRecognizer)
     }
 
     override func didReceiveMemoryWarning() {
@@ -145,5 +158,40 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
         alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Helper methods
+    
+    private func setToolBarVisible(visible: Bool, animated: Bool) {
+        if isToolBarVisible() == visible { return }
+        
+        let frame = toolBar.frame
+        let height = frame.size.height
+        let offsetY = visible ? -height : height
+        
+        UIView.animateWithDuration(animated ? 0.3 : 0.0) {
+            self.toolBar.frame = CGRectOffset(frame, 0, offsetY)
+        }
+    }
+    
+    private func isToolBarVisible() -> Bool {
+        return toolBar.frame.origin.y < CGRectGetMaxY(view.frame)
+    }
+}
+
+extension WebViewController: UIGestureRecognizerDelegate {
+    
+    func swipedUp(recognizer: UISwipeGestureRecognizer) {
+        print("swipedUp")
+        setToolBarVisible(false, animated: true)
+    }
+    
+    func swipedDown(recognizer: UISwipeGestureRecognizer) {
+        print("swipedDown")
+        setToolBarVisible(true, animated: true)
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

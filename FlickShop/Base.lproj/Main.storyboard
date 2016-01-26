@@ -623,6 +623,7 @@
                         <outlet property="backButton" destination="Dzt-Rn-zai" id="A92-Tu-Cvj"/>
                         <outlet property="forwardButton" destination="5WO-qA-Vum" id="FMZ-wQ-v6v"/>
                         <outlet property="reloadButton" destination="eso-VL-hcH" id="74R-fU-r1q"/>
+                        <outlet property="toolBar" destination="fET-c1-kgt" id="pI6-dZ-NdX"/>
                         <outlet property="window" destination="uPX-ZJ-4pa" id="ftW-EW-5T1"/>
                     </connections>
                 </viewController>

@@ -160,16 +160,16 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0vA-4c-BOg">
                                         <rect key="frame" x="54" y="0.0" width="516" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forever 21" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ep-HK-Feh">
-                                                <rect key="frame" x="0.0" y="0.0" width="69" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Brand Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ep-HK-Feh">
+                                                <rect key="frame" x="0.0" y="0.0" width="91" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="16"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50% Off" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytC-qz-kx0">
-                                                <rect key="frame" x="0.0" y="22" width="58" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Unbranded Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytC-qz-kx0">
+                                                <rect key="frame" x="0.0" y="22" width="128" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="16"/>
-                                                <color key="textColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -231,11 +231,11 @@
                 <outlet property="brandImageView" destination="hmx-Nc-ciu" id="Yr8-Sn-9nH"/>
                 <outlet property="brandNameLabel" destination="1Ep-HK-Feh" id="HYh-HQ-a9u"/>
                 <outlet property="buyButton" destination="lcZ-MO-zbK" id="LfP-kS-LpW"/>
-                <outlet property="discountLabel" destination="ytC-qz-kx0" id="5al-1R-7DM"/>
                 <outlet property="pageControl" destination="qk9-8k-TIY" id="L8f-Sn-IgO"/>
                 <outlet property="scrollView" destination="phq-mC-NVg" id="t1h-98-MO2"/>
                 <outlet property="scrollViewHeightConstraint" destination="T8r-Cs-Zva" id="Lif-6m-16A"/>
                 <outlet property="topImageViewLineSeparatorHeightConstraint" destination="fP0-GR-OIK" id="yD7-Zr-kgx"/>
+                <outlet property="unbrandedNameLabel" destination="ytC-qz-kx0" id="Sif-jp-DMm"/>
             </connections>
             <point key="canvasLocation" x="321" y="270"/>
         </collectionViewCell>

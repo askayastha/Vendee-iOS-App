@@ -28,7 +28,7 @@ class FlickPageCell: UICollectionViewCell {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var brandNameLabel: UILabel!
     @IBOutlet weak var brandImageView: UIImageView!
-    @IBOutlet weak var discountLabel: UILabel!
+    @IBOutlet weak var unbrandedNameLabel: UILabel!
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
@@ -97,7 +97,7 @@ class FlickPageCell: UICollectionViewCell {
         scrollView.subviews.forEach { $0.removeFromSuperview() }
         scrollView.setContentOffset(CGPointMake(0.0, 0.0), animated: false)
         brandImageView.image = nil
-        discountLabel.text = nil
+        unbrandedNameLabel.text = nil
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
@@ -158,15 +158,15 @@ class FlickPageCell: UICollectionViewCell {
     
     private func updateUI() {
         print("##### Updating UI #####")
-        brandNameLabel.text = product!.brandedName
+        brandNameLabel.text = product!.brandName ?? "\u{2014}"
+        unbrandedNameLabel.text = product!.unbrandedName
+        var discountText = "0% Off"
         
         if let salePrice = product.salePrice {
             let discount = (product.price! - salePrice) * 100 / product.price!
-            discountLabel.text = "\(Int(discount))% Off"
-        } else {
-            discountLabel.text = "0% Off"
+            discountText = "\(Int(discount))% Off"
         }
-        buyButton.setTitle(discountLabel.text, forState: .Normal)
+        buyButton.setTitle(discountText, forState: .Normal)
         print("PRODUCT ID: \(product!.id)")
         // Setup page control
         pageControl.currentPage = currentPage

@@ -14,6 +14,13 @@ class ContainerBrowseViewController: UIViewController {
     var didScrollCount: Int = 0
     var browseViewController: BrowseViewController?
     var buttonsHidden = false
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
+        return spinner
+    }()
     
     @IBOutlet weak var backButton: FloatingButton!
     @IBOutlet weak var filterButton: FloatingButton!
@@ -26,6 +33,10 @@ class ContainerBrowseViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        // Spinner setup
+        spinner.center = CGPoint(x: view.center.x, y: view.center.y)
+        view.addSubview(spinner)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,9 +56,6 @@ class ContainerBrowseViewController: UIViewController {
     @IBAction func backButtonTapped(sender: UIButton) {
         navigationController?.popViewControllerAnimated(true)
     }
-
-//    @IBAction func filterButtonTapped(sender: UIButton) {
-//    }
     
     // MARK: - Navigation
 
@@ -59,9 +67,13 @@ class ContainerBrowseViewController: UIViewController {
             
             browseViewController?.delegate = self
             browseViewController?.productCategory = productCategory
+            browseViewController?.hideSpinner = {
+                if self.spinner.isAnimating() {
+                    self.spinner.stopAnimating()
+                }
+            }
         }
     }
-
 }
 
 extension ContainerBrowseViewController: SwipeDelegate {

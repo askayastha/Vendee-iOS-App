@@ -13,13 +13,28 @@ class ContainerWebViewController: UIViewController {
     var url: NSURL!
     var webViewController: WebViewController?
     var backButtonHidden = false
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
+        return spinner
+    }()
     
     @IBOutlet weak var backButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Spinner setup
+        spinner.center = CGPoint(x: view.center.x, y: view.center.y)
+        view.addSubview(spinner)
+        
+//        spinner.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activateConstraints([
+//            spinner.centerXAnchor.constraintEqualToAnchor(webView.centerXAnchor),
+//            spinner.centerYAnchor.constraintEqualToAnchor(webView.centerYAnchor)
+//            ])
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +55,13 @@ class ContainerWebViewController: UIViewController {
             webViewController = segue.destinationViewController as? WebViewController
             webViewController?.url = url
             webViewController?.delegate = self
+            webViewController?.hideSpinner = { hide in
+                if hide {
+                    self.spinner.stopAnimating()
+                } else {
+                    self.spinner.startAnimating()
+                }
+            }
         }
     }
 

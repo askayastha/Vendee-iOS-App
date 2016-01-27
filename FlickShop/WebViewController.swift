@@ -13,8 +13,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     
     var url: NSURL!
     private var webView: WKWebView
-    private var spinner: UIActivityIndicatorView
     weak var delegate: SwipeDelegate?
+    var hideSpinner: ((Bool)->())?
     
     @IBOutlet weak var window: UIView!
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -29,9 +29,6 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         let hideForwardingScript = WKUserScript(source: hideForwardingJS, injectionTime: .AtDocumentStart, forMainFrameOnly: true)
         configuration.userContentController.addUserScript(hideForwardingScript)
         webView = WKWebView(frame: CGRect.zero, configuration: configuration)
-        spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
-        spinner.color = UIColor(white: 0.1, alpha: 0.5)
-        spinner.startAnimating()
         
         super.init(coder: aDecoder)
         webView.navigationDelegate = self
@@ -50,10 +47,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         backButton.enabled = false
         forwardButton.enabled = false
         
-        webView.addSubview(spinner)
         window.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
-        spinner.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activateConstraints([
             NSLayoutConstraint.constraintsWithVisualFormat(
@@ -68,10 +63,6 @@ class WebViewController: UIViewController, WKNavigationDelegate {
                 views: ["webView": webView])
             ].flatten().map{$0})
         
-        NSLayoutConstraint.activateConstraints([
-            spinner.centerXAnchor.constraintEqualToAnchor(webView.centerXAnchor),
-            spinner.centerYAnchor.constraintEqualToAnchor(webView.centerYAnchor)
-            ])
 //        webView.addConstraints([
 //            NSLayoutConstraint(item: spinner, attribute: .CenterX, relatedBy: .Equal, toItem: webView, attribute: .CenterX, multiplier: 1, constant: 0),
 //            NSLayoutConstraint(item: spinner, attribute: .CenterY, relatedBy: .Equal, toItem: webView, attribute: .CenterY, multiplier: 1, constant: 0)
@@ -124,10 +115,10 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     @IBAction func reloadButtonPressed(sender: UIBarButtonItem) {
         if webView.loading {
             webView.stopLoading()
-            spinner.stopAnimating()
+            hideSpinner?(true)
         } else {
             webView.loadRequest(NSURLRequest(URL: url))
-            spinner.startAnimating()
+            hideSpinner?(false)
         }
     }
     
@@ -146,13 +137,16 @@ class WebViewController: UIViewController, WKNavigationDelegate {
 //            }
         } else if keyPath == "estimatedProgress" {
             print("Estimated Progress: \(webView.estimatedProgress)")
+            if webView.estimatedProgress > 0.893 && webView.estimatedProgress < 0.899 {
+                hideSpinner?(true)
+            }
         } else if keyPath == "title" {
             print("Webpage Title: \(webView.title)")
         }
     }
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        spinner.stopAnimating()
+        hideSpinner?(true)
     }
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {

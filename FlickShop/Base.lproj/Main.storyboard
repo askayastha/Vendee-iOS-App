@@ -16,8 +16,12 @@
             <string>Whitney-Book</string>
             <string>Whitney-Book</string>
             <string>Whitney-Book</string>
+            <string>Whitney-Book</string>
+            <string>Whitney-Book</string>
+            <string>Whitney-Book</string>
         </mutableArray>
         <mutableArray key="Whitney-Semibold-Bas.otf">
+            <string>Whitney-Semibold</string>
             <string>Whitney-Semibold</string>
             <string>Whitney-Semibold</string>
             <string>Whitney-Semibold</string>
@@ -565,6 +569,94 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOP-1W-7s1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4751" y="111"/>
+        </scene>
+        <!--Price Details View Controller-->
+        <scene sceneID="8Q8-eH-DoZ">
+            <objects>
+                <viewController storyboardIdentifier="PriceDetailsViewController" id="gPj-xt-wAc" customClass="PriceDetailsViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IMY-Fq-zWK"/>
+                        <viewControllerLayoutGuide type="bottom" id="NlS-qG-cpd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="H9h-hi-m4l">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y1r-EU-H5V">
+                                <rect key="frame" x="180" y="251" width="240" height="98"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGp-er-jtr">
+                                        <rect key="frame" x="98" y="5" width="43" height="24"/>
+                                        <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="20"/>
+                                        <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eng-rD-uFe">
+                                        <rect key="frame" x="0.0" y="34" width="240" height="1"/>
+                                        <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="qV9-qw-pUu"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XV4-Us-wa8">
+                                        <rect key="frame" x="60" y="40" width="120" height="53"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-TH-Kr5">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owN-i7-WdS">
+                                                        <rect key="frame" x="0.0" y="0.0" width="49" height="24"/>
+                                                        <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="20"/>
+                                                        <color key="textColor" red="0.81568627450980391" green="0.0078431372549019607" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtA-bZ-B7G">
+                                                        <rect key="frame" x="59" y="0.0" width="61" height="24"/>
+                                                        <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="20"/>
+                                                        <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
+                                                <rect key="frame" x="18" y="29" width="85" height="24"/>
+                                                <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="20"/>
+                                                <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="eng-rD-uFe" secondAttribute="trailing" id="1gp-YX-AKM"/>
+                                    <constraint firstItem="KGp-er-jtr" firstAttribute="centerX" secondItem="Y1r-EU-H5V" secondAttribute="centerX" id="4mh-Bm-d9G"/>
+                                    <constraint firstAttribute="bottom" secondItem="XV4-Us-wa8" secondAttribute="bottom" constant="5" id="FXc-5n-kMQ"/>
+                                    <constraint firstItem="XV4-Us-wa8" firstAttribute="top" secondItem="eng-rD-uFe" secondAttribute="bottom" constant="5" id="Puj-bB-2Ws"/>
+                                    <constraint firstAttribute="width" constant="240" id="SgK-47-67O"/>
+                                    <constraint firstItem="KGp-er-jtr" firstAttribute="top" secondItem="Y1r-EU-H5V" secondAttribute="top" constant="5" id="W0Q-UD-3uM"/>
+                                    <constraint firstItem="XV4-Us-wa8" firstAttribute="centerX" secondItem="Y1r-EU-H5V" secondAttribute="centerX" id="W39-K2-Pp7"/>
+                                    <constraint firstItem="eng-rD-uFe" firstAttribute="leading" secondItem="Y1r-EU-H5V" secondAttribute="leading" id="eXz-81-82U"/>
+                                    <constraint firstItem="eng-rD-uFe" firstAttribute="top" secondItem="KGp-er-jtr" secondAttribute="bottom" constant="5" id="kOM-8T-9UE"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Y1r-EU-H5V" firstAttribute="centerX" secondItem="H9h-hi-m4l" secondAttribute="centerX" id="8sx-Gz-ZVp"/>
+                            <constraint firstItem="Y1r-EU-H5V" firstAttribute="centerY" secondItem="H9h-hi-m4l" secondAttribute="centerY" id="QhE-MD-YbT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="discountLabel" destination="qu2-Dc-3Fj" id="XHN-BC-ROn"/>
+                        <outlet property="popupView" destination="Y1r-EU-H5V" id="87T-t4-GRi"/>
+                        <outlet property="priceLabel" destination="JtA-bZ-B7G" id="cGU-xX-ttK"/>
+                        <outlet property="salePriceLabel" destination="owN-i7-WdS" id="p2u-lr-NRQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gm0-Y9-R8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5425" y="111"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="pyz-6X-Jrb">

@@ -41,6 +41,13 @@
 		75A31E471BDFBAAE006FD010 /* FlickShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E461BDFBAAE006FD010 /* FlickShopTests.swift */; };
 		75A31E521BDFBAAE006FD010 /* FlickShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */; };
 		75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */; };
+		75B455EE1C58FAEB00424B21 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455ED1C58FAEB00424B21 /* GradientView.swift */; };
+		75B455F21C58FB5B00424B21 /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */; };
+		75B455F41C58FB7F00424B21 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */; };
+		75B455F61C58FB9B00424B21 /* BounceAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F51C58FB9B00424B21 /* BounceAnimationController.swift */; };
+		75B455F81C58FF5800424B21 /* PriceDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F71C58FF5800424B21 /* PriceDetailsViewController.swift */; };
+		75B455FA1C59012600424B21 /* SlideOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F91C59012600424B21 /* SlideOutAnimationController.swift */; };
+		75B455FC1C59483700424B21 /* SlideInAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455FB1C59483700424B21 /* SlideInAnimationController.swift */; };
 		75BE17531C04DAA4007E0A59 /* Shopstyle_Brands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */; };
 		75BE17551C04DB88007E0A59 /* Shopstyle_Stores.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */; };
 		75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */; };
@@ -147,6 +154,13 @@
 		75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickShopUITests.swift; sourceTree = "<group>"; };
 		75A31E531BDFBAAE006FD010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSFSafariViewController.swift; sourceTree = "<group>"; };
+		75B455ED1C58FAEB00424B21 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeOutAnimationController.swift; sourceTree = "<group>"; };
+		75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
+		75B455F51C58FB9B00424B21 /* BounceAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BounceAnimationController.swift; sourceTree = "<group>"; };
+		75B455F71C58FF5800424B21 /* PriceDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceDetailsViewController.swift; sourceTree = "<group>"; };
+		75B455F91C59012600424B21 /* SlideOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideOutAnimationController.swift; sourceTree = "<group>"; };
+		75B455FB1C59483700424B21 /* SlideInAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideInAnimationController.swift; sourceTree = "<group>"; };
 		75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shopstyle_Brands.plist; sourceTree = "<group>"; };
 		75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shopstyle_Stores.plist; sourceTree = "<group>"; };
 		75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerBrowseViewController.swift; sourceTree = "<group>"; };
@@ -299,6 +313,25 @@
 			path = FlickShopUITests;
 			sourceTree = "<group>";
 		};
+		75B455EF1C58FB3200424B21 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */,
+				75B455F51C58FB9B00424B21 /* BounceAnimationController.swift */,
+				75B455FB1C59483700424B21 /* SlideInAnimationController.swift */,
+				75B455F91C59012600424B21 /* SlideOutAnimationController.swift */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		75B455F01C58FB4300424B21 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
 		75B6AC071C08E57200EB8F5F /* FilterControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -347,6 +380,8 @@
 		75F12D1B1BE0A76F00258874 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				75B455F01C58FB4300424B21 /* Presentation */,
+				75B455EF1C58FB3200424B21 /* Animation */,
 				75F12CF91BE0A35900258874 /* HomeViewController.swift */,
 				75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */,
 				75F12CF01BE0A35900258874 /* BrowseViewController.swift */,
@@ -360,6 +395,7 @@
 				752B9C4F1C42C831000CE855 /* PhotoViewController.swift */,
 				75414D731C51462100C2E3FE /* ContainerWebViewController.swift */,
 				75414D751C51465400C2E3FE /* WebViewController.swift */,
+				75B455F71C58FF5800424B21 /* PriceDetailsViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -432,6 +468,7 @@
 				75F12CFF1BE0A35900258874 /* RoundedCornersView.swift */,
 				751E9F251C11AF96007C990C /* FloatingButton.swift */,
 				7546CB2D1C4A884D000C9635 /* InfoButton.swift */,
+				75B455ED1C58FAEB00424B21 /* GradientView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -696,6 +733,7 @@
 				75F12D011BE0A35900258874 /* AppDelegate.swift in Sources */,
 				75F12D081BE0A35900258874 /* FlickViewController.swift in Sources */,
 				75F12D121BE0A35900258874 /* RoundedCornersView.swift in Sources */,
+				75B455F61C58FB9B00424B21 /* BounceAnimationController.swift in Sources */,
 				7546CB221C4A5A0E000C9635 /* SimilarProductCell.swift in Sources */,
 				750D8E141C0617BA00D728F0 /* PriceFilterViewController.swift in Sources */,
 				75F12CC61BE0A00B00258874 /* ImageScout.swift in Sources */,
@@ -709,14 +747,17 @@
 				75DD7F3C1C19F45300BDB0A3 /* Filter.swift in Sources */,
 				75F12CC51BE0A00B00258874 /* ImageParser.swift in Sources */,
 				75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */,
+				75B455FA1C59012600424B21 /* SlideOutAnimationController.swift in Sources */,
 				751E9F261C11AF96007C990C /* FloatingButton.swift in Sources */,
 				75F12CEA1BE0A24100258874 /* Functions.swift in Sources */,
 				75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */,
 				75F12D0E1BE0A35900258874 /* ProductDetailsViewController.swift in Sources */,
+				75B455F21C58FB5B00424B21 /* FadeOutAnimationController.swift in Sources */,
 				75F12D151BE0A3B800258874 /* Alamofire+CustomResponse.swift in Sources */,
 				75414D741C51462100C2E3FE /* ContainerWebViewController.swift in Sources */,
 				7551D3461C134A040088D32B /* Constants.swift in Sources */,
 				7546CB1E1C4A447A000C9635 /* ContainerProductDetailsViewController.swift in Sources */,
+				75B455F41C58FB7F00424B21 /* DimmingPresentationController.swift in Sources */,
 				750D8E1C1C0647AC00D728F0 /* SortFilterViewController.swift in Sources */,
 				758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */,
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
@@ -731,8 +772,11 @@
 				75F12CEB1BE0A24100258874 /* Search.swift in Sources */,
 				75F12CED1BE0A24100258874 /* UIImage+ImageEffects.m in Sources */,
 				75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */,
+				75B455FC1C59483700424B21 /* SlideInAnimationController.swift in Sources */,
 				75F12D031BE0A35900258874 /* BrowseViewController.swift in Sources */,
 				75F12CEC1BE0A24100258874 /* UIImage+BlendEffects.swift in Sources */,
+				75B455EE1C58FAEB00424B21 /* GradientView.swift in Sources */,
+				75B455F81C58FF5800424B21 /* PriceDetailsViewController.swift in Sources */,
 				75F12CC81BE0A00B00258874 /* SessionDelegate.swift in Sources */,
 				756FC4E71C01B03F007AB0C5 /* ContainerViewController.swift in Sources */,
 				7546CB2E1C4A884D000C9635 /* InfoButton.swift in Sources */,

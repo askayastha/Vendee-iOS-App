@@ -11,8 +11,10 @@ import UIKit
 class ContainerWebViewController: UIViewController {
     
     var url: NSURL!
+    var product: Product!
     var webViewController: WebViewController?
     var backButtonHidden = false
+    var showPopup = true
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
         spinner.color = UIColor(white: 0.1, alpha: 0.5)
@@ -54,12 +56,22 @@ class ContainerWebViewController: UIViewController {
         if segue.identifier == "EmbedWebView" {
             webViewController = segue.destinationViewController as? WebViewController
             webViewController?.url = url
+            webViewController?.product = product
             webViewController?.delegate = self
-            webViewController?.hideSpinner = { hide in
-                if hide {
-                    self.spinner.stopAnimating()
-                } else {
+            webViewController?.animateSpinner = { animate in
+                if animate {
                     self.spinner.startAnimating()
+                } else {
+                    self.spinner.stopAnimating()
+                }
+            }
+            webViewController?.showPopup = {
+                guard self.showPopup else { return }
+                
+                if let priceDetailsVC = self.storyboard!.instantiateViewControllerWithIdentifier("PriceDetailsViewController") as? PriceDetailsViewController {
+                    priceDetailsVC.product = self.product
+                    self.presentViewController(priceDetailsVC, animated: true, completion: nil)
+                    self.showPopup = false
                 }
             }
         }

@@ -160,14 +160,14 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="0vA-4c-BOg">
                                         <rect key="frame" x="54" y="0.0" width="516" height="44"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Brand Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ep-HK-Feh">
-                                                <rect key="frame" x="0.0" y="0.0" width="91" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ep-HK-Feh">
+                                                <rect key="frame" x="0.0" y="0.0" width="84" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="16"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" misplaced="YES" text="Unbranded Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytC-qz-kx0">
-                                                <rect key="frame" x="0.0" y="22" width="128" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Unbranded Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytC-qz-kx0">
+                                                <rect key="frame" x="0.0" y="22" width="118" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="16"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>

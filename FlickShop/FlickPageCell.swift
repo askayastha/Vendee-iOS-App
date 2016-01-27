@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FlickPageCellDelegate: class {
-    func openItemInStoreWithURL(url: NSURL?)
+    func openItemInStoreWithProduct(product: Product)
     func openPhotosViewerForProduct(product: Product, onPage page: Int)
     func openDetailsForProduct(product: Product)
     func openActivityViewForProduct(product: Product, andImage image: UIImage?)
@@ -126,8 +126,8 @@ class FlickPageCell: UICollectionViewCell {
     
     @IBAction func buyButtonTapped(sender: AnyObject) {
         
-        if let buyURL = product?.buyURL {
-            delegate?.openItemInStoreWithURL(NSURL(string: buyURL))
+        if let product = product {
+            delegate?.openItemInStoreWithProduct(product)
         }
     }
     

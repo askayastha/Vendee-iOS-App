@@ -12,9 +12,11 @@ import WebKit
 class WebViewController: UIViewController, WKNavigationDelegate {
     
     var url: NSURL!
+    var product: Product!
     private var webView: WKWebView
     weak var delegate: SwipeDelegate?
-    var hideSpinner: ((Bool)->())?
+    var animateSpinner: ((Bool)->())?
+    var showPopup: (()->())?
     
     @IBOutlet weak var window: UIView!
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -115,10 +117,10 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     @IBAction func reloadButtonPressed(sender: UIBarButtonItem) {
         if webView.loading {
             webView.stopLoading()
-            hideSpinner?(true)
+            animateSpinner?(false)
         } else {
             webView.loadRequest(NSURLRequest(URL: url))
-            hideSpinner?(false)
+            animateSpinner?(true)
         }
     }
     
@@ -138,7 +140,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         } else if keyPath == "estimatedProgress" {
             print("Estimated Progress: \(webView.estimatedProgress)")
             if webView.estimatedProgress > 0.893 && webView.estimatedProgress < 0.899 {
-                hideSpinner?(true)
+                animateSpinner?(false)
+                showPopup?()
             }
         } else if keyPath == "title" {
             print("Webpage Title: \(webView.title)")
@@ -146,7 +149,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     }
     
     func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!) {
-        hideSpinner?(true)
+        animateSpinner?(false)
     }
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {

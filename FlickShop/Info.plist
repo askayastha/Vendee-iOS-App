@@ -53,5 +53,9 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>com.ashish.flickshop.webview</string>
+	</array>
 </dict>
 </plist>

@@ -209,7 +209,7 @@ extension FlickViewController: FlickPageCellDelegate {
         let webVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerWebViewController") as? ContainerWebViewController
         
         if let controller = webVC {
-            controller.url = url
+            controller.webpageURL = url
             controller.product = product
             navigationController?.pushViewController(controller, animated: true)
         }

@@ -11,7 +11,7 @@ import WebKit
 
 class WebViewController: UIViewController, WKNavigationDelegate {
     
-    var url: NSURL!
+    var webpageURL: NSURL!
     var product: Product!
     private var webView: WKWebView
     weak var delegate: SwipeDelegate?
@@ -41,6 +41,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
         webView.removeObserver(self, forKeyPath: "title")
         webView.stopLoading()
+        
+        print("Deallocating WebViewController !!!!!!!!!!!!!!!")
     }
 
     override func viewDidLoad() {
@@ -73,7 +75,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.addObserver(self, forKeyPath: "loading", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "estimatedProgress", options: .New, context: nil)
         webView.addObserver(self, forKeyPath: "title", options: .New, context: nil)
-        webView.loadRequest(NSURLRequest(URL: url))
+        webView.loadRequest(NSURLRequest(URL: webpageURL))
         
         // Swipe gesture setup
         let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
@@ -108,7 +110,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         var items = [AnyObject]()
         items.append(subjectActivityItem)
         items.append(promoText)
-        items.append(url)
+        items.append(webpageURL)
         
         let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         presentViewController(activityVC, animated: true, completion: nil)
@@ -119,7 +121,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
             webView.stopLoading()
             animateSpinner?(false)
         } else {
-            webView.loadRequest(NSURLRequest(URL: url))
+            webView.loadRequest(NSURLRequest(URL: webpageURL))
             animateSpinner?(true)
         }
     }
@@ -139,7 +141,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
 //            }
         } else if keyPath == "estimatedProgress" {
             print("Estimated Progress: \(webView.estimatedProgress)")
-            if webView.estimatedProgress > 0.893 && webView.estimatedProgress < 0.899 {
+            if webView.estimatedProgress > 0.890 && webView.estimatedProgress < 0.899 {
                 animateSpinner?(false)
                 showPopup?()
             }

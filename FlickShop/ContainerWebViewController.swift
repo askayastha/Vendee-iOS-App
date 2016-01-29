@@ -10,7 +10,7 @@ import UIKit
 
 class ContainerWebViewController: UIViewController {
     
-    var url: NSURL!
+    var webpageURL: NSURL!
     var product: Product!
     var webViewController: WebViewController?
     var backButtonHidden = false
@@ -24,6 +24,10 @@ class ContainerWebViewController: UIViewController {
     }()
     
     @IBOutlet weak var backButton: UIButton!
+    
+    deinit {
+        print("Deallocating FlickViewController !!!!!!!!!!!!!!!")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +41,17 @@ class ContainerWebViewController: UIViewController {
 //            spinner.centerXAnchor.constraintEqualToAnchor(webView.centerXAnchor),
 //            spinner.centerYAnchor.constraintEqualToAnchor(webView.centerYAnchor)
 //            ])
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Start NSUserActivity
+        let activity = NSUserActivity(activityType: "com.ashish.flickshop.webview")
+        activity.title = "View Shopping URL"
+        activity.webpageURL = webpageURL
+        userActivity = activity
+        userActivity?.becomeCurrent()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,23 +70,25 @@ class ContainerWebViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EmbedWebView" {
             webViewController = segue.destinationViewController as? WebViewController
-            webViewController?.url = url
+            webViewController?.webpageURL = webpageURL
             webViewController?.product = product
             webViewController?.delegate = self
-            webViewController?.animateSpinner = { animate in
+            webViewController?.animateSpinner = { [weak self] animate in
+                guard let strongSelf = self else { return }
                 if animate {
-                    self.spinner.startAnimating()
+                    strongSelf.spinner.startAnimating()
                 } else {
-                    self.spinner.stopAnimating()
+                    strongSelf.spinner.stopAnimating()
                 }
             }
-            webViewController?.showPopup = {
-                guard self.showPopup else { return }
+            webViewController?.showPopup = { [weak self] in
+                guard let strongSelf = self else { return }
+                guard strongSelf.showPopup else { return }
                 
-                if let priceDetailsVC = self.storyboard!.instantiateViewControllerWithIdentifier("PriceDetailsViewController") as? PriceDetailsViewController {
-                    priceDetailsVC.product = self.product
-                    self.presentViewController(priceDetailsVC, animated: true, completion: nil)
-                    self.showPopup = false
+                if let priceDetailsVC = strongSelf.storyboard!.instantiateViewControllerWithIdentifier("PriceDetailsViewController") as? PriceDetailsViewController {
+                    priceDetailsVC.product = strongSelf.product
+                    strongSelf.presentViewController(priceDetailsVC, animated: true, completion: nil)
+                    strongSelf.showPopup = false
                 }
             }
         }

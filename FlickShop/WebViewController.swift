@@ -141,7 +141,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
 //            }
         } else if keyPath == "estimatedProgress" {
             print("Estimated Progress: \(webView.estimatedProgress)")
-            if webView.estimatedProgress > 0.880 && webView.estimatedProgress < 0.899 {
+            if webView.estimatedProgress > 0.850 && webView.estimatedProgress < 0.899 {
                 animateSpinner?(false)
                 showPopup?()
             }

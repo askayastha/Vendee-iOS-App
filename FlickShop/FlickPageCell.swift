@@ -10,7 +10,7 @@ import UIKit
 
 protocol FlickPageCellDelegate: class {
     func openItemInStoreWithProduct(product: Product)
-    func openPhotosViewerForProduct(product: Product, onPage page: Int)
+    func openPhotosViewerForProduct(product: Product, andImageView imageView: UIImageView, onPage page: Int)
     func openDetailsForProduct(product: Product)
     func openActivityViewForProduct(product: Product, andImage image: UIImage?)
 }
@@ -271,7 +271,7 @@ class FlickPageCell: UICollectionViewCell {
     }
     
     func imageViewTapped(tapGestureRecognizer: UITapGestureRecognizer) {
-        delegate?.openPhotosViewerForProduct(product, onPage: currentPage)
+        delegate?.openPhotosViewerForProduct(product, andImageView: imageViews[currentPage]!, onPage: currentPage)
     }
 }
 

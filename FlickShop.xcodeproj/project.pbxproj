@@ -35,6 +35,7 @@
 		756FC4E91C01B16D007AB0C5 /* SwitchSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */; };
 		756FC4EB1C01C7F3007AB0C5 /* BrandFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */; };
 		757D57AC1C56816D00F64907 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 757D57AA1C56816D00F64907 /* Filter.storyboard */; };
+		7587C7BB1C5B806100E99A6B /* PopAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7587C7BA1C5B806100E99A6B /* PopAnimationController.swift */; };
 		758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758EB6CA1C579C50007ECD91 /* SwipeDelegate.swift */; };
 		75A31E391BDFBAAE006FD010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E381BDFBAAE006FD010 /* Assets.xcassets */; };
 		75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E3A1BDFBAAE006FD010 /* LaunchScreen.storyboard */; };
@@ -142,6 +143,7 @@
 		756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchSegue.swift; sourceTree = "<group>"; };
 		756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BrandFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		757D57AB1C56816D00F64907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Filter.storyboard; sourceTree = "<group>"; };
+		7587C7BA1C5B806100E99A6B /* PopAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimationController.swift; sourceTree = "<group>"; };
 		758EB6CA1C579C50007ECD91 /* SwipeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeDelegate.swift; sourceTree = "<group>"; };
 		75A31E2E1BDFBAAD006FD010 /* FlickShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A31E381BDFBAAE006FD010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -320,6 +322,7 @@
 				75B455F51C58FB9B00424B21 /* BounceAnimationController.swift */,
 				75B455FB1C59483700424B21 /* SlideInAnimationController.swift */,
 				75B455F91C59012600424B21 /* SlideOutAnimationController.swift */,
+				7587C7BA1C5B806100E99A6B /* PopAnimationController.swift */,
 			);
 			name = Animation;
 			sourceTree = "<group>";
@@ -771,6 +774,7 @@
 				7541FECE1C3E720B005CEB11 /* PhotosViewController.swift in Sources */,
 				75F12CEB1BE0A24100258874 /* Search.swift in Sources */,
 				75F12CED1BE0A24100258874 /* UIImage+ImageEffects.m in Sources */,
+				7587C7BB1C5B806100E99A6B /* PopAnimationController.swift in Sources */,
 				75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */,
 				75B455FC1C59483700424B21 /* SlideInAnimationController.swift in Sources */,
 				75F12D031BE0A35900258874 /* BrowseViewController.swift in Sources */,

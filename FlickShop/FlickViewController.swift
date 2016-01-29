@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import MBProgressHUD
 import SafariServices
+import AVFoundation
 
 //struct FlickViewConstants {
 //    static var width = UIScreen.mainScreen().bounds.width
@@ -31,6 +32,8 @@ class FlickViewController: UICollectionViewController {
     var indexPath: NSIndexPath?
     var productCategory: String!
     weak var delegate: ScrollEventsDelegate?
+    let transition = PopAnimationController()
+    var selectedImage: UIImageView?
     
     struct FlickViewCellIdentifiers {
         static let flickPageCell = "FlickPageCell"
@@ -245,7 +248,23 @@ extension FlickViewController: FlickPageCellDelegate {
         presentViewController(activityVC, animated: true, completion: nil)
     }
     
-    func openPhotosViewerForProduct(product: Product, onPage page: Int) {
+//    func openPhotosViewerForProduct(product: Product, onPage page: Int) {
+//        indexPath = collectionView!.indexPathsForVisibleItems().first
+//        let photosVC = storyboard!.instantiateViewControllerWithIdentifier("PhotosViewController") as? PhotosViewController
+//        
+//        if let controller = photosVC {
+//            controller.imageURLs = product.largeImageURLs
+//            controller.tinyImageURLs = product.tinyImageURLs
+//            controller.page = page
+//            controller.transitioningDelegate = self
+//            presentViewController(controller, animated: true, completion: nil)
+//        }
+//    }
+    
+    func openPhotosViewerForProduct(product: Product, andImageView imageView: UIImageView, onPage page: Int) {
+        guard let _ = imageView.image else { return }
+        
+        selectedImage = imageView
         indexPath = collectionView!.indexPathsForVisibleItems().first
         let photosVC = storyboard!.instantiateViewControllerWithIdentifier("PhotosViewController") as? PhotosViewController
         
@@ -253,7 +272,36 @@ extension FlickViewController: FlickPageCellDelegate {
             controller.imageURLs = product.largeImageURLs
             controller.tinyImageURLs = product.tinyImageURLs
             controller.page = page
+            controller.transitioningDelegate = self
             presentViewController(controller, animated: true, completion: nil)
         }
     }
+}
+
+extension FlickViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        transition.originFrame = selectedImage!.superview!.convertRect(selectedImage!.frame, toView: nil)
+        
+        let intialBoundingRect = CGRect(x: 0, y: 0, width: ScreenConstants.width, height: getImageViewHeight())
+        var initialAspectRect = CGRect.zero
+        
+        initialAspectRect = AVMakeRectWithAspectRatioInsideRect(selectedImage!.image!.size, intialBoundingRect)
+        transition.initialBoundingFrame = initialAspectRect
+        
+        let finalBoundingRect = CGRect(x: 0, y: 0, width: ScreenConstants.width, height: ScreenConstants.height)
+        var finalAspectRect = CGRect.zero
+        
+        finalAspectRect = AVMakeRectWithAspectRatioInsideRect(selectedImage!.image!.size, finalBoundingRect)
+        transition.finalBoundingFrame = finalAspectRect
+        
+        transition.presenting = true
+        
+        return transition
+    }
+    
+//    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+//        transition.presenting = false
+//        return transition
+//    }
 }

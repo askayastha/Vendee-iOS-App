@@ -42,10 +42,12 @@ class ContainerBrowseViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        didScrollCount = 0
-//        backButton.alpha = 1.0
-//        backButton.adjustsImageWhenHighlighted = false
-//        filterButton.adjustsImageWhenHighlighted = false
+        if buttonsHidden {
+            backButton.alpha = 1.0
+            filterButton.alpha = 1.0
+            backButton.transform = CGAffineTransformIdentity
+            filterButton.transform = CGAffineTransformIdentity
+        }
     }
 
     override func didReceiveMemoryWarning() {

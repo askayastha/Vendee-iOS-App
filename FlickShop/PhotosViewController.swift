@@ -26,6 +26,7 @@ class PhotosViewController: UIViewController {
             tinyImageViews[selectedPage].layer.borderWidth = 1.0
         }
     }
+    var didSetup = false
     
     required init?(coder aDecoder: NSCoder) {
         tinyImageViews = [UIImageView]()
@@ -47,12 +48,34 @@ class PhotosViewController: UIViewController {
     }
 
     override func viewDidLoad() {
+        print("viewDidLoad")
         super.viewDidLoad()
-        let tinyImageWidth: CGFloat = 60.0
-        photoScrubbingScrollView.contentSize = CGSize(width: tinyImageWidth * CGFloat(tinyImageURLs.count), height: photoScrubbingScrollView.bounds.size.height)
         
         // Setup page view
         pageViewController?.setViewControllers([viewControllerAtIndex(page)!], direction: .Forward, animated: false, completion: nil)
+        
+        positionImagesInPhotoScrubber()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        print("viewDidLayoutSubviews")
+            didSetup = true
+            photoScrubbingScrollView.hidden = true
+            setPhotoScrubberVisible(false, animated: false)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("viewDidAppear")
+        super.viewDidAppear(animated)
+        
+        photoScrubbingScrollView.hidden = false
+        setPhotoScrubberVisible(true, animated: true)
+    }
+    
+    private func positionImagesInPhotoScrubber() {
+        
+        let tinyImageWidth: CGFloat = 60.0
+        photoScrubbingScrollView.contentSize = CGSize(width: tinyImageWidth * CGFloat(tinyImageURLs.count), height: photoScrubbingScrollView.bounds.size.height)
         
         for page in 0..<imageURLs.count {
             
@@ -112,6 +135,28 @@ class PhotosViewController: UIViewController {
             pageViewController?.dataSource = self
             pageViewController?.delegate = self
         }
+    }
+    
+    // MARK: - Helper methods
+    
+    private func setPhotoScrubberVisible(visible: Bool, animated: Bool) {
+        if isPhotoScrubberVisible() == visible { return }
+        print("HAHAHAHAHHA: \(photoScrubbingScrollView.frame)")
+        let frame = photoScrubbingScrollView.frame
+        let height = frame.size.height
+        let offsetY = visible ? -height : height
+        
+//        UIView.animateWithDuration(animated ? 0.3 : 0.0) {
+//            self.photoScrubbingScrollView.frame = CGRectOffset(frame, 0, offsetY)
+//        }
+        UIView.animateWithDuration(animated ? 0.3 : 0.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+            self.photoScrubbingScrollView.frame = CGRectOffset(frame, 0, offsetY)
+            }, completion: nil)
+        print("HAHAHAHAHHA: \(photoScrubbingScrollView.frame)")
+    }
+    
+    private func isPhotoScrubberVisible() -> Bool {
+        return photoScrubbingScrollView.frame.origin.y < CGRectGetMaxY(view.frame)
     }
 }
 

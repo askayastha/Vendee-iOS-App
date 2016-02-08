@@ -55,7 +55,7 @@ class Search {
         retryCount = 0
     }
     
-    func parseShopStyleForProductId(productId: Int, completion: SearchComplete) {
+    func parseShopStyleForProductId(productId: String, completion: SearchComplete) {
         if state == .Loading { return }     // Do not request more data if a request is in process.
         var success = false
         

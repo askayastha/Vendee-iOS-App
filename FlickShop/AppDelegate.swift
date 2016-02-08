@@ -84,14 +84,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    private func findProductId(components: NSURLComponents) -> Int? {
-        if let fragmentString = components.fragment, let fragment = Int(fragmentString) {
-            return fragment
+    private func findProductId(components: NSURLComponents) -> String? {
+        if let fragmentString = components.fragment {
+            return fragmentString
         } else if let queryItems = components.queryItems {
             for item in queryItems {
                 if item.name == "id" {
-                    if let valueString = item.value, let value = Int(valueString) {
-                        return value
+                    if let valueString = item.value {
+                        return valueString
                     }
                 }
             }
@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return nil
     }
     
-    private func requestDataForProductId(productId: Int, forSearch search: Search) {
+    private func requestDataForProductId(productId: String, forSearch search: Search) {
         
         search.parseShopStyleForProductId(productId) { success, _ in
             if !success {

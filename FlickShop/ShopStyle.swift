@@ -18,7 +18,7 @@ struct ShopStyle {
         case PopularProducts(Int, Int, String)
         case Categories(String)
         case FilteredProducts(Int, Int, String, String?)
-        case Product(Int)
+        case Product(String)
         
         var URLRequest: NSMutableURLRequest {
             //            let (path: String, parameters: [String: AnyObject]) = {

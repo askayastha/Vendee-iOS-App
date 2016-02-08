@@ -46,8 +46,101 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        
+        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            let productURL = userActivity.webpageURL!
+            
+            if !presentURL(productURL) {
+                let alert = UIAlertController(title: "Error", message: "Product not found.", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alert.addAction(okAction)
+                
+                window!.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+        
+        return true
+    }
+    
+    private func presentURL(url: NSURL) -> Bool {
+        if let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: true), let host = components.host, let pathComponents = components.path?.componentsSeparatedByString("/") {
+            switch host {
+                case "www.vendeeapp.com":
+                    if pathComponents.count >= 1 {
+                        switch (pathComponents[1]) {
+                        case "product":
+                            if let productId = findProductId(components) {
+                                print("Product Id: \(productId)")
+                                requestDataForProductId(productId, forSearch: Search())
+                                
+                                return true
+                            }
+                            
+                        default:
+                            return false
+                        }
+                    }
+            default:
+                return false
+            }
+        }
+        return false
+    }
+    
+    private func findProductId(components: NSURLComponents) -> Int? {
+        if let fragmentString = components.fragment, let fragment = Int(fragmentString) {
+            return fragment
+        } else if let queryItems = components.queryItems {
+            for item in queryItems {
+                if item.name == "id" {
+                    if let valueString = item.value, let value = Int(valueString) {
+                        return value
+                    }
+                }
+            }
+        }
+        
+        return nil
+    }
+    
+    private func requestDataForProductId(productId: Int, forSearch search: Search) {
+        
+        search.parseShopStyleForProductId(productId) { success, _ in
+            
+            if !success {
+                if search.retryCount < NumericConstants.retryLimit {
+                    print("Request Failed. Trying again...")
+                    self.requestDataForProductId(productId, forSearch: search)
+                    print("Request Count: \(search.retryCount)")
+                    search.incrementRetryCount()
+                    
+                } else {
+                    search.resetRetryCount()
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                }
+                
+            } else {
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                
+                let flickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
+                if let controller = flickVC {
+                    controller.moreRequests = false
+                    controller.search = search
+                    controller.brands = Brand.allBrands()
+                    let navigationController = self.window!.rootViewController as! UINavigationController
+                    
+                    if navigationController.topViewController is ContainerFlickViewController {
+                        navigationController.popToRootViewControllerAnimated(true)
+                    }
+                    navigationController.pushViewController(controller, animated: true)
+                }
+            }
+        }
+    }
 
-    func customizeAppearance() {
+    private func customizeAppearance() {
 //        let barTintColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1)  // Translucent Gray
         
 //        UINavigationBar.appearance().barTintColor = barTintColor

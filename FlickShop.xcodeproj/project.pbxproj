@@ -116,6 +116,7 @@
 /* Begin PBXFileReference section */
 		03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD496926D078ABA0D4796DA /* Pods-FlickShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.release.xcconfig"; sourceTree = "<group>"; };
+		750564681C6744F80060A400 /* FlickShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlickShop.entitlements; sourceTree = "<group>"; };
 		750D8E131C0617BA00D728F0 /* PriceFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PriceFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DiscountFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750D8E171C06336900D728F0 /* ColorFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ColorFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -281,6 +282,7 @@
 		75A31E301BDFBAAD006FD010 /* FlickShop */ = {
 			isa = PBXGroup;
 			children = (
+				750564681C6744F80060A400 /* FlickShop.entitlements */,
 				758EB6C91C579C0E007ECD91 /* Protocols */,
 				75F72C721C565DED00D21E50 /* Activities */,
 				752BDD561C522FF6007F76BF /* Scripts */,
@@ -600,6 +602,11 @@
 					75A31E2D1BDFBAAD006FD010 = {
 						CreatedOnToolsVersion = 7.1;
 						DevelopmentTeam = X7ULP599YE;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					75A31E411BDFBAAE006FD010 = {
 						CreatedOnToolsVersion = 7.1;
@@ -943,6 +950,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FlickShop/FlickShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -959,6 +967,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = FlickShop/FlickShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

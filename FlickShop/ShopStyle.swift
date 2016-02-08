@@ -18,6 +18,7 @@ struct ShopStyle {
         case PopularProducts(Int, Int, String)
         case Categories(String)
         case FilteredProducts(Int, Int, String, String?)
+        case Product(Int)
         
         var URLRequest: NSMutableURLRequest {
             //            let (path: String, parameters: [String: AnyObject]) = {
@@ -39,6 +40,9 @@ struct ShopStyle {
                     
                 case .FilteredProducts(_):
                     return "products"
+                    
+                case .Product(let id):
+                    return "products/\(id)"
                 }
             }()
             
@@ -74,6 +78,12 @@ struct ShopStyle {
                         params["sort"] = "\(sort)"
                     }
                     
+                    return params
+                    
+                case .Product(_):
+                    let params = [
+                        "pid": Router.APIKey
+                    ]
                     return params
                 }
             }()

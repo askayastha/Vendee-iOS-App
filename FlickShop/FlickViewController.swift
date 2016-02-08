@@ -24,7 +24,7 @@ protocol ScrollEventsDelegate: class {
 
 class FlickViewController: UICollectionViewController {
     
-    private var lastItem = 0
+//    private var lastItem = 0
     private var loadingHUDPresent = false
     
     var search: Search!
@@ -34,6 +34,7 @@ class FlickViewController: UICollectionViewController {
     weak var delegate: ScrollEventsDelegate?
     let transition = PopAnimationController()
     var selectedImage: UIImageView?
+    var moreRequests = true
     
     struct FlickViewCellIdentifiers {
         static let flickPageCell = "FlickPageCell"
@@ -64,6 +65,7 @@ class FlickViewController: UICollectionViewController {
         collectionView!.backgroundColor = UIColor.lightGrayColor()
 //        collectionView!.backgroundColor = UIColor(red: 96/255, green: 99/255, blue: 104/255, alpha: 1.0)
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
+//        collectionView!.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,13 +81,13 @@ class FlickViewController: UICollectionViewController {
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        print("YESYESYES: \(search.products.count)")
         return search.products.count
     }
 
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(FlickViewCellIdentifiers.flickPageCell, forIndexPath: indexPath) as! FlickPageCell
-        
 //        cell.layer.shouldRasterize = true
 //        cell.layer.rasterizationScale = UIScreen.mainScreen().scale
     
@@ -118,7 +120,7 @@ class FlickViewController: UICollectionViewController {
             }
         }
         
-        if search.lastItem - indexPath.item == 1 && search.lastItem < 1000 {
+        if moreRequests && (search.lastItem - indexPath.item == 1) && search.lastItem < 1000 {
             print("New request")
             requestDataFromShopStyleForCategory(productCategory)
         }
@@ -173,13 +175,6 @@ class FlickViewController: UICollectionViewController {
         
         return ScreenConstants.height - (60 + 20 + 52)
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "MoreDetails" {
-//            let controller = segue.destinationViewController as! ProductDetailsCollectionViewController
-//            controller.product = sender as! Product
-//        }
-//    }
 }
 
 extension FlickViewController: SFSafariViewControllerDelegate {

@@ -106,7 +106,7 @@ class Search {
             print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
             print(requestURL)
             
-            dataRequest = Alamofire.request(.GET, requestURL).responseJSON() { response in
+            dataRequest = Alamofire.request(.GET, requestURL).validate().responseJSON() { response in
                 if response.result.isSuccess {
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                         print("----------Got results!----------")

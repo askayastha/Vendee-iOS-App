@@ -13,6 +13,7 @@ protocol FlickPageCellDelegate: class {
     func openPhotosViewerForProduct(product: Product, andImageView imageView: UIImageView, onPage page: Int)
     func openDetailsForProduct(product: Product)
     func openActivityViewForProduct(product: Product, andImage image: UIImage?)
+//    func favoriteForProduct(product: Product)
 }
 
 class FlickPageCell: UICollectionViewCell {
@@ -34,10 +35,12 @@ class FlickPageCell: UICollectionViewCell {
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
 //    @IBOutlet weak var topLikesCommentsViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     
     weak var delegate: FlickPageCellDelegate?
     var imageViews: [UIImageView?]
     var spinners: [UIActivityIndicatorView?]
+    var favoriteToggle: Bool = false
     var product: Product! {
         didSet {
             updateUI()
@@ -98,6 +101,7 @@ class FlickPageCell: UICollectionViewCell {
         scrollView.setContentOffset(CGPointMake(0.0, 0.0), animated: false)
         brandImageView.image = nil
         unbrandedNameLabel.text = nil
+        favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
@@ -122,6 +126,24 @@ class FlickPageCell: UICollectionViewCell {
         
 //        println("blurView.alpha \(blurView.alpha)")
 //        println("transform3D: \(max(pow(delta, 2), 0.8))")
+    }
+    
+    @IBAction func favoriteButtonTapped(sender: AnyObject) {
+//        if let product = product {
+//            delegate?.favoriteForProduct(product)
+//        }
+        
+        favoriteToggle = !favoriteToggle
+        if favoriteToggle {
+            favoriteButton.imageView?.transform = CGAffineTransformMakeScale(0.1, 0.1)
+            favoriteButton.setImage(UIImage(named: "favorite_selected"), forState: .Normal)
+            
+            UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: {
+                self.favoriteButton.imageView?.transform = CGAffineTransformIdentity
+                }, completion: nil)
+        } else {
+            favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+        }
     }
     
     @IBAction func buyButtonTapped(sender: AnyObject) {

@@ -146,7 +146,7 @@ extension StoreFilterViewController: UITableViewDataSource {
         for store in storeSection {
             if storeName == store["name"] as! String {
                 let storeId = store["id"] as! String
-                storeCode = "b\(storeId)"
+                storeCode = "r\(storeId)"
                 break
             }
         }

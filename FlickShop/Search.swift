@@ -66,7 +66,7 @@ class Search {
                     
                     let jsonData = JSON(response.result.value!)
                     self.populateProduct(jsonData)
-                    print("YESYESYES: \(self.products.count)")
+                    
                     success = true
                     self.state = .Success
                     print("Request successful")

@@ -24,7 +24,6 @@ protocol ScrollEventsDelegate: class {
 
 class FlickViewController: UICollectionViewController {
     
-//    private var lastItem = 0
     private var loadingHUDPresent = false
     
     var search: Search!
@@ -88,17 +87,12 @@ class FlickViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(FlickViewCellIdentifiers.flickPageCell, forIndexPath: indexPath) as! FlickPageCell
-//        cell.layer.shouldRasterize = true
-//        cell.layer.rasterizationScale = UIScreen.mainScreen().scale
-    
-        let product = search.products.objectAtIndex(indexPath.item) as! Product
         
         // Configure the cell
-        
+        let product = search.products.objectAtIndex(indexPath.item) as! Product
         cell.scrollViewHeightConstraint.constant = getImageViewHeight()
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
-//        cell.topLikesCommentsViewLineSeparatorHeightConstraint.constant = 0.5
         
         cell.brandImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
         cell.brandImageView.layer.borderWidth = 0.5

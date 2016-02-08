@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let filter = Filter()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
-        
         customizeAppearance()
         window!.layer.cornerRadius = 5.0
         window!.layer.masksToBounds = true
@@ -65,23 +63,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func presentURL(url: NSURL) -> Bool {
-        if let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: true), let host = components.host, let pathComponents = components.path?.componentsSeparatedByString("/") {
+        if let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: true), let host = components.host, let path = components.path {
             switch host {
                 case "www.vendeeapp.com":
-                    if pathComponents.count >= 1 {
-                        switch (pathComponents[1]) {
-                        case "product":
-                            if let productId = findProductId(components) {
-                                print("Product Id: \(productId)")
-                                requestDataForProductId(productId, forSearch: Search())
-                                
-                                return true
-                            }
+                    switch path {
+                    case "/product":
+                        if let productId = findProductId(components) {
+                            print("Product Id: \(productId)")
+                            requestDataForProductId(productId, forSearch: Search())
                             
-                        default:
-                            return false
+                            return true
                         }
-                    }
+                    default:
+                        return false
+                }
             default:
                 return false
             }
@@ -108,7 +103,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func requestDataForProductId(productId: Int, forSearch search: Search) {
         
         search.parseShopStyleForProductId(productId) { success, _ in
-            
             if !success {
                 if search.retryCount < NumericConstants.retryLimit {
                     print("Request Failed. Trying again...")
@@ -123,8 +117,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
             } else {
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let flickVC = storyboard.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
                 
-                let flickVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
                 if let controller = flickVC {
                     controller.moreRequests = false
                     controller.search = search

@@ -135,12 +135,20 @@ class FlickPageCell: UICollectionViewCell {
         
         favoriteToggle = !favoriteToggle
         if favoriteToggle {
-            favoriteButton.imageView?.transform = CGAffineTransformMakeScale(0.1, 0.1)
+            favoriteButton.imageView?.transform = CGAffineTransformMakeScale(0.7, 0.7)
             favoriteButton.setImage(UIImage(named: "favorite_selected"), forState: .Normal)
             
-            UIView.animateWithDuration(0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: .CurveEaseOut, animations: {
-                self.favoriteButton.imageView?.transform = CGAffineTransformIdentity
-                }, completion: nil)
+            UIView.animateKeyframesWithDuration(0.4, delay: 0, options: .CalculationModeCubic, animations: {
+                UIView.addKeyframeWithRelativeStartTime(0.0, relativeDuration: 0.334, animations: {
+                    self.favoriteButton.imageView?.transform = CGAffineTransformMakeScale(1.2, 1.2)
+                })
+                UIView.addKeyframeWithRelativeStartTime(0.334, relativeDuration: 0.333, animations: {
+                    self.favoriteButton.imageView?.transform = CGAffineTransformMakeScale(0.9, 0.9)
+                })
+                UIView.addKeyframeWithRelativeStartTime(0.666, relativeDuration: 0.333, animations: {
+                    self.favoriteButton.imageView?.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                })}, completion: nil
+            )
         } else {
             favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
         }

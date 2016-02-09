@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
                 alert.addAction(okAction)
                 
-                window!.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                viewControllerForShowingAlert().presentViewController(alert, animated: true, completion: nil)
             }
         }
         
@@ -132,6 +132,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+    }
+    
+    private func viewControllerForShowingAlert() -> UIViewController {
+        let rootViewController = window!.rootViewController!
+        
+        if let presentedViewControler = rootViewController.presentedViewController {
+            return presentedViewControler
+        }
+        return rootViewController
     }
 
     private func customizeAppearance() {

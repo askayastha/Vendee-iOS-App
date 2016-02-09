@@ -68,7 +68,6 @@ class ContainerFlickViewController: UIViewController {
             flickViewController?.indexPath = indexPath
             flickViewController?.brands = brands
             flickViewController?.productCategory = productCategory
-            flickViewController?.moreRequests = moreRequests
         }
     }
 

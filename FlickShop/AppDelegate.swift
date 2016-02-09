@@ -121,7 +121,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let flickVC = storyboard.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
                 
                 if let controller = flickVC {
-                    controller.moreRequests = false
                     controller.search = search
                     controller.brands = Brand.allBrands()
                     let navigationController = self.window!.rootViewController as! UINavigationController

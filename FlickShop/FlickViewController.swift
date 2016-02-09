@@ -25,6 +25,9 @@ protocol ScrollEventsDelegate: class {
 class FlickViewController: UICollectionViewController {
     
     private var loadingHUDPresent = false
+    private var moreRequests: Bool {
+        return productCategory != nil
+    }
     
     var search: Search!
     var brands: [Brand]!
@@ -33,7 +36,6 @@ class FlickViewController: UICollectionViewController {
     weak var delegate: ScrollEventsDelegate?
     let transition = PopAnimationController()
     var selectedImage: UIImageView?
-    var moreRequests = true
     
     struct FlickViewCellIdentifiers {
         static let flickPageCell = "FlickPageCell"

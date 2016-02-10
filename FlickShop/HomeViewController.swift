@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var categories = Category.allCategories()
+    var dataModel: DataModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class HomeViewController: UIViewController {
             let indexPath = sender as! NSIndexPath
             
             controller.productCategory = categories[indexPath.item].keyword
+            controller.dataModel = dataModel
         }
     }
 

@@ -307,7 +307,7 @@ class Search {
         product.salePrice = salePrice.float
         product.formattedPrice = formattedPrice.string
         product.formattedSalePrice = formattedSalePrice.string
-        product.description = description.string
+        product.productDescription = description.string
         product.categories = categories
         
         products.addObject(product)

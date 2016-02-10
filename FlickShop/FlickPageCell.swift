@@ -11,9 +11,13 @@ import UIKit
 protocol FlickPageCellDelegate: class {
     func openItemInStoreWithProduct(product: Product)
     func openPhotosViewerForProduct(product: Product, andImageView imageView: UIImageView, onPage page: Int)
-    func openDetailsForProduct(product: Product)
     func openActivityViewForProduct(product: Product, andImage image: UIImage?)
-//    func favoriteForProduct(product: Product)
+    func favoriteState(state: FavoriteState, forProduct product: Product)
+}
+
+enum FavoriteState {
+    case Selected
+    case Unselected
 }
 
 class FlickPageCell: UICollectionViewCell {
@@ -40,7 +44,11 @@ class FlickPageCell: UICollectionViewCell {
     weak var delegate: FlickPageCellDelegate?
     var imageViews: [UIImageView?]
     var spinners: [UIActivityIndicatorView?]
-    var favoriteToggle: Bool = false
+    var favorited: Bool = false {
+        didSet {
+            favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+        }
+    }
     var product: Product! {
         didSet {
             updateUI()
@@ -101,7 +109,7 @@ class FlickPageCell: UICollectionViewCell {
         scrollView.setContentOffset(CGPointMake(0.0, 0.0), animated: false)
         brandImageView.image = nil
         unbrandedNameLabel.text = nil
-        favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+        favorited = false
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {
@@ -129,12 +137,9 @@ class FlickPageCell: UICollectionViewCell {
     }
     
     @IBAction func favoriteButtonTapped(sender: AnyObject) {
-//        if let product = product {
-//            delegate?.favoriteForProduct(product)
-//        }
+        toggleFavorited()
         
-        favoriteToggle = !favoriteToggle
-        if favoriteToggle {
+        if favorited {
             favoriteButton.imageView?.transform = CGAffineTransformMakeScale(0.7, 0.7)
             favoriteButton.setImage(UIImage(named: "favorite_selected"), forState: .Normal)
             
@@ -149,30 +154,20 @@ class FlickPageCell: UICollectionViewCell {
                     self.favoriteButton.imageView?.transform = CGAffineTransformMakeScale(1.0, 1.0)
                 })}, completion: nil
             )
+            delegate?.favoriteState(.Selected, forProduct: product)
+            
         } else {
             favoriteButton.setImage(UIImage(named: "favorite"), forState: .Normal)
+            delegate?.favoriteState(.Unselected, forProduct: product)
         }
     }
     
     @IBAction func buyButtonTapped(sender: AnyObject) {
-        
-        if let product = product {
-            delegate?.openItemInStoreWithProduct(product)
-        }
-    }
-    
-    @IBAction func infoButtonTapped(sender: AnyObject) {
-        
-        if let product = product {
-            delegate?.openDetailsForProduct(product)
-        }
+        delegate?.openItemInStoreWithProduct(product)
     }
     
     @IBAction func actionButtonTapped(sender: AnyObject) {
-        
-        if let product = product {
-            delegate?.openActivityViewForProduct(product, andImage: imageViews[currentPage]?.image)
-        }
+        delegate?.openActivityViewForProduct(product, andImage: imageViews[currentPage]?.image)
     }
     
     @IBAction func pageChanged(sender: UIPageControl) {
@@ -186,8 +181,15 @@ class FlickPageCell: UICollectionViewCell {
     
     // MARK: - Helper methods
     
+    private func toggleFavorited() {
+        favorited = !favorited
+    }
+    
     private func updateUI() {
         print("##### Updating UI #####")
+        if favorited {
+            favoriteButton.setImage(UIImage(named: "favorite_selected"), forState: .Normal)
+        }
         brandNameLabel.text = product!.brandName ?? "\u{2014}"
         unbrandedNameLabel.text = product!.unbrandedName
         var discountText = "0% Off"

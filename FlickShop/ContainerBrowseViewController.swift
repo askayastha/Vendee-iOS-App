@@ -14,6 +14,8 @@ class ContainerBrowseViewController: UIViewController {
     var didScrollCount: Int = 0
     var browseViewController: BrowseViewController?
     var buttonsHidden = false
+    var dataModel: DataModel!
+    
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
         spinner.color = UIColor(white: 0.1, alpha: 0.5)
@@ -69,6 +71,7 @@ class ContainerBrowseViewController: UIViewController {
             
             browseViewController?.delegate = self
             browseViewController?.productCategory = productCategory
+            browseViewController?.dataModel = dataModel
             browseViewController?.hideSpinner = {
                 if self.spinner.isAnimating() {
                     self.spinner.stopAnimating()

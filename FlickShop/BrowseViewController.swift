@@ -21,6 +21,7 @@ class BrowseViewController: UICollectionViewController {
     var search = Search()
     var brands = Brand.allBrands()
     var productCategory: String!
+    var dataModel: DataModel!
     
     struct BrowseViewCellIdentifiers {
         static let customProductCell = "CustomPhotoCell"
@@ -67,6 +68,7 @@ class BrowseViewController: UICollectionViewController {
             controller.indexPath = indexPath
             controller.brands = brands
             controller.productCategory = productCategory
+            controller.dataModel = dataModel
         }
     }
     
@@ -98,9 +100,7 @@ class BrowseViewController: UICollectionViewController {
     }
     
     private func requestDataFromShopStyleForCategory(category: String!) {
-        if requestingData {
-            return
-        }
+        if requestingData { return }
         
         func populatePhotosFromIndex(index: Int) {
             

@@ -25,6 +25,7 @@ protocol ScrollEventsDelegate: class {
 class FlickViewController: UICollectionViewController {
     
     private var loadingHUDPresent = false
+    private var requestingData = false
     private var moreRequests: Bool {
         return productCategory != nil
     }
@@ -36,6 +37,7 @@ class FlickViewController: UICollectionViewController {
     weak var delegate: ScrollEventsDelegate?
     let transition = PopAnimationController()
     var selectedImage: UIImageView?
+    var dataModel: DataModel!
     
     struct FlickViewCellIdentifiers {
         static let flickPageCell = "FlickPageCell"
@@ -92,6 +94,8 @@ class FlickViewController: UICollectionViewController {
         
         // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
+        
+        cell.favorited = dataModel.favoriteProductIds.contains(product.id!) ? true : false
         cell.scrollViewHeightConstraint.constant = getImageViewHeight()
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
@@ -129,6 +133,8 @@ class FlickViewController: UICollectionViewController {
     // MARK: - Helper Methods
     
     private func requestDataFromShopStyleForCategory(category: String) {
+        
+        if requestingData { return }
 
         if !loadingHUDPresent {
             let loadingHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
@@ -136,6 +142,7 @@ class FlickViewController: UICollectionViewController {
             loadingHUD.userInteractionEnabled = false
         }
         
+        requestingData = true
         search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, lastItem in
             
             guard let strongSelf = self else { return }
@@ -194,6 +201,23 @@ extension FlickViewController {
 
 extension FlickViewController: FlickPageCellDelegate {
     
+    func favoriteState(state: FavoriteState, forProduct product: Product) {
+        switch state {
+        case .Selected:
+            guard !dataModel.favoriteProductIds.contains(product.id!) else { return }
+            dataModel.favoriteProducts.addObject(product)
+            dataModel.favoriteProductIds.insert(product.id!)
+            
+        case .Unselected:
+            guard dataModel.favoriteProductIds.contains(product.id!) else { return }
+            dataModel.favoriteProducts.removeObject(product)
+            dataModel.favoriteProductIds.remove(product.id!)
+        }
+        dataModel.saveProducts()
+        print(dataModel.favoriteProducts)
+        print(dataModel.favoriteProductIds)
+    }
+    
     func openItemInStoreWithProduct(product: Product) {
         guard let buyURL = product.buyURL else { return }
         guard let url = NSURL(string: buyURL) else { return }
@@ -209,14 +233,15 @@ extension FlickViewController: FlickPageCellDelegate {
         }
     }
     
-    func openDetailsForProduct(product: Product) {
+    func openDetailsForProduct() {
         indexPath = collectionView!.indexPathsForVisibleItems().first
         let detailsVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerProductDetailsViewController") as? ContainerProductDetailsViewController
         
         if let controller = detailsVC {
-            print("Categories: \(product.categories)")
             controller.product = search.products.objectAtIndex(indexPath!.row) as! Product
             controller.brands = brands
+            print("Categories: \(controller.product.categories)")
+            
             navigationController?.pushViewController(controller, animated: true)
         }
     }

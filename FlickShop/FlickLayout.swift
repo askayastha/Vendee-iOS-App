@@ -107,8 +107,16 @@ class FlickLayout: UICollectionViewLayout {
             
             if collectionView!.contentOffset.y > 0 {
                 let scale = max(1 - pow(nextItemPercentageOffset, 2), 0.9)
+                let yTranslate = nextItemPercentageOffset * (standardHeight + 10)
+                
+                var cellTransform = CGAffineTransformIdentity
+                cellTransform = CGAffineTransformScale(cellTransform, scale, scale)
+                cellTransform = CGAffineTransformTranslate(cellTransform, 0, yTranslate)
+                
 //                attributes.transform3D = CATransform3DMakeScale(scale, scale, 1.0)
-                attributes.transform = CGAffineTransformMakeScale(scale, scale)
+//                attributes.transform = CGAffineTransformMakeScale(scale, scale)
+
+                attributes.transform = cellTransform
             }
             
         } else if indexPath.item == (featuredItemIndex + 1) && indexPath.item != numberOfItems {

@@ -14,11 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let filter = Filter()
+    let dataModel = DataModel()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         customizeAppearance()
-        window!.layer.cornerRadius = 5.0
-        window!.layer.masksToBounds = true
+        
+        let navigationController = window!.rootViewController as! UINavigationController
+        let controller = navigationController.viewControllers[0] as! HomeViewController
+        controller.dataModel = dataModel
         
         return true
     }
@@ -123,6 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if let controller = flickVC {
                     controller.search = search
                     controller.brands = Brand.allBrands()
+                    controller.dataModel = self.dataModel
                     let navigationController = self.window!.rootViewController as! UINavigationController
                     
                     if navigationController.topViewController is ContainerFlickViewController {
@@ -151,7 +155,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            NSForegroundColorAttributeName: UIColor.whiteColor(),
 //            NSFontAttributeName: UIFont(name: "ProximaNova-Semibold", size: 16.0)!
 //        ]
-//        UINavigationBar.appearance().translucent = false
+        
+        window!.layer.cornerRadius = 5.0
+        window!.layer.masksToBounds = true
     }
 
 }

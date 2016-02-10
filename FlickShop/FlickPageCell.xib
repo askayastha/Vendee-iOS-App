@@ -53,9 +53,6 @@
                                         <color key="value" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="0.5" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="infoButtonTapped:" destination="cT6-e4-j9m" eventType="touchUpInside" id="7Me-Kc-43a"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -83,7 +80,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NR4-MD-ZYy" userLabel="ActionView">
                         <rect key="frame" x="0.0" y="468" width="600" height="52"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6B2-gE-3fn">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="6B2-gE-3fn">
                                 <rect key="frame" x="3" y="6" width="85" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-y2-8lJ">
@@ -97,7 +94,7 @@
                                             <action selector="favoriteButtonTapped:" destination="cT6-e4-j9m" eventType="touchUpInside" id="gdp-OJ-hSt"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7He-T2-LbF">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7He-T2-LbF">
                                         <rect key="frame" x="45" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="SsU-uA-2Mp"/>

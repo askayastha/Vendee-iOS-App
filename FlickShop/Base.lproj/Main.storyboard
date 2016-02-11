@@ -1030,10 +1030,10 @@
             </objects>
             <point key="canvasLocation" x="1953" y="1497"/>
         </scene>
-        <!--Table View Controller-->
+        <!--More View Controller-->
         <scene sceneID="tfx-Up-0t0">
             <objects>
-                <tableViewController id="sLu-wt-16t" sceneMemberID="viewController">
+                <tableViewController id="sLu-wt-16t" customClass="MoreViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="HjB-Lp-jfh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

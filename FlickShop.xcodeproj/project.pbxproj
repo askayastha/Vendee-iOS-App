@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75019BFC1C6D0A8200B4CDBD /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */; };
 		750D8E141C0617BA00D728F0 /* PriceFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E131C0617BA00D728F0 /* PriceFilterViewController.swift */; };
 		750D8E161C06221900D728F0 /* DiscountFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */; };
 		750D8E181C06336900D728F0 /* ColorFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E171C06336900D728F0 /* ColorFilterViewController.swift */; };
@@ -119,6 +120,7 @@
 /* Begin PBXFileReference section */
 		03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DD496926D078ABA0D4796DA /* Pods-FlickShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.release.xcconfig"; sourceTree = "<group>"; };
+		75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		750564681C6744F80060A400 /* FlickShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlickShop.entitlements; sourceTree = "<group>"; };
 		750D8E131C0617BA00D728F0 /* PriceFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PriceFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DiscountFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -400,6 +402,7 @@
 				75F12CF01BE0A35900258874 /* BrowseViewController.swift */,
 				756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */,
 				756264B21C6C860700149516 /* FavoritesViewController.swift */,
+				75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */,
 				75B6AC081C08E5A000EB8F5F /* Filter */,
 				752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */,
 				75F12CF51BE0A35900258874 /* FlickViewController.swift */,
@@ -785,6 +788,7 @@
 				7546CB1E1C4A447A000C9635 /* ContainerProductDetailsViewController.swift in Sources */,
 				75B455F41C58FB7F00424B21 /* DimmingPresentationController.swift in Sources */,
 				750D8E1C1C0647AC00D728F0 /* SortFilterViewController.swift in Sources */,
+				75019BFC1C6D0A8200B4CDBD /* MoreViewController.swift in Sources */,
 				758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */,
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
 				75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */,

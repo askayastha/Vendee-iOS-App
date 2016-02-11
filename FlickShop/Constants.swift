@@ -12,6 +12,7 @@ import UIKit
 struct CustomNotifications {
     static let FilterDidChangeNotification = "FilterDidChange"
     static let FilterDidClearNotification = "FilterDidClear"
+    static let DataModelDidChangeNotification = "DataModelDidChange"
 }
 
 struct NumericConstants {

@@ -214,6 +214,8 @@ extension FlickViewController: FlickPageCellDelegate {
             dataModel.favoriteProductIds.remove(product.id!)
         }
         dataModel.saveProducts()
+        dataModelDidChangeNotification()
+        
         print(dataModel.favoriteProducts)
         print(dataModel.favoriteProductIds)
     }

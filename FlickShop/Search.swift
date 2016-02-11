@@ -24,9 +24,13 @@ class Search {
     
     private(set) var dataRequest: Alamofire.Request?
     private(set) var state: State = .Idle
-    private(set) var products = NSMutableOrderedSet()
-    private(set) var lastItem = 0
+    private(set) var products: NSMutableOrderedSet
+//    private(set) var lastItem = 0
     private(set) var retryCount = 0
+    
+    var lastItem: Int {
+        return products.count
+    }
     
     var filteredSearch = false
     var cancelled = false
@@ -38,12 +42,20 @@ class Search {
         print("SEARCH DEALLOCATING !!!!!")
     }
     
+    init(products: NSMutableOrderedSet) {
+        self.products = products
+    }
+    
+    init() {
+        products = NSMutableOrderedSet()
+    }
+    
     func resetSearch() {
         dataRequest?.cancel()
         state = .Idle
         cancelled = true
         products.removeAllObjects()
-        lastItem = 0
+//        lastItem = 0
         retryCount = 0
     }
     
@@ -181,35 +193,39 @@ class Search {
         }
         
         for var i = index; i < lastIndex; i++ {
-            if products.count > 0 {
-                let product = products.objectAtIndex(i) as! Product
+            guard products.count > 0 else { break }
+            
+            let product = products.objectAtIndex(i) as! Product
+            if let _ = product.smallImageSize {
+                count++
+            } else {
                 populatePhotoSizeForProduct(product)
             }
         }
     }
     
-    func populatePhotoSizeForIndexPath(indexPath: NSIndexPath, completion: (Bool) -> ()) {
-        var success = false
-        let product = products.objectAtIndex(indexPath.item) as! Product
-        
-        scout.scoutImageWithURI(product.smallImageURLs!.first!) { error, size, type in
-            if let unwrappedError = error {
-                print("ImageScout Error: \(unwrappedError.code)")
-                
-                // Retry if error
-                self.populatePhotoSizeForIndexPath(indexPath, completion: completion)
-                
-            } else {
-                product.smallImageSize = CGSize(width: size.width, height: size.height)
-                print("\(indexPath.item)*****\(CGSize(width: size.width, height: size.height))")
-                
-                success = true
-                dispatch_async(dispatch_get_main_queue()) {
-                    completion(success)
-                }
-            }
-        }
-    }
+//    func populatePhotoSizeForIndexPath(indexPath: NSIndexPath, completion: (Bool) -> ()) {
+//        var success = false
+//        let product = products.objectAtIndex(indexPath.item) as! Product
+//        
+//        scout.scoutImageWithURI(product.smallImageURLs!.first!) { error, size, type in
+//            if let unwrappedError = error {
+//                print("ImageScout Error: \(unwrappedError.code)")
+//                
+//                // Retry if error
+//                self.populatePhotoSizeForIndexPath(indexPath, completion: completion)
+//                
+//            } else {
+//                product.smallImageSize = CGSize(width: size.width, height: size.height)
+//                print("\(indexPath.item)*****\(CGSize(width: size.width, height: size.height))")
+//                
+//                success = true
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    completion(success)
+//                }
+//            }
+//        }
+//    }
     
     func getFilterCategory() -> String? {
         let tappedCategories = appDelegate.filter.category["tappedCategories"] as! [String]
@@ -249,12 +265,11 @@ class Search {
         let brandedName = product["brandedName"]
         let unbrandedName = product["unbrandedName"]
         let brandName = product["brand"]["name"]
-        let brandImageURL = product["brand"]["userImage"]
         let price = product["price"]
         let salePrice = product["salePrice"]
         let formattedPrice = product["priceLabel"]
         let formattedSalePrice = product["salePriceLabel"]
-        let description = product["description"]
+        let productDescription = product["description"]
         var categories: [String]!
         
         if let categoriesArray = product["categories"].array {
@@ -302,12 +317,11 @@ class Search {
         product.brandedName = brandedName.string
         product.unbrandedName = unbrandedName.string
         product.brandName = brandName.string
-        product.brandImageURL = brandImageURL.string
         product.price = price.float
         product.salePrice = salePrice.float
         product.formattedPrice = formattedPrice.string
         product.formattedSalePrice = formattedSalePrice.string
-        product.productDescription = description.string
+        product.productDescription = productDescription.string
         product.categories = categories
         
         products.addObject(product)
@@ -320,7 +334,7 @@ class Search {
                 populateProduct(product)
             }
             
-            lastItem = products.count
+//            lastItem = products.count
         }
     }
 }

@@ -107,7 +107,7 @@ class ProductDetailsViewController: UITableViewController {
         // TableView stuff
         let verticalPadding = CGFloat(15)
         let labelPadding = CGFloat(5)
-        let productDesc = convertText(product.description, usingFont: UIFont(name: "Whitney-Book", size: 14.0)!, forDocumentType: .HtmlText)
+        let productDesc = convertText(product.productDescription, usingFont: UIFont(name: "Whitney-Book", size: 14.0)!, forDocumentType: .HtmlText)
         
         titleHeight.constant = heightForAttributedString(convertText(product.name, usingFont: UIFont(name: "Whitney-Semibold", size: 14.0)!, forDocumentType: .PlainText))
         print("Title Height: \(titleHeight.constant)")
@@ -272,21 +272,5 @@ extension ProductDetailsViewController {
     
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         delegate?.didEndDecelerating()
-    }
-}
-
-extension ProductDetailsViewController: TwoColumnLayoutDelegate {
-    
-    func collectionView(collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: NSIndexPath, withWidth width: CGFloat) -> CGFloat {
-        let product = search.products.objectAtIndex(indexPath.item) as! Product
-        let boundingRect = CGRect(x: 0, y: 0, width: width, height: CGFloat(MAXFLOAT))
-        var rect = CGRectZero
-        
-        if let imageSize = product.smallImageSize {
-            rect = AVMakeRectWithAspectRatioInsideRect(imageSize, boundingRect)
-        }
-        
-        return ceil(rect.size.height)
-//        return rect.size.height
     }
 }

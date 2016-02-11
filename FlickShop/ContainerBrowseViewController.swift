@@ -79,6 +79,26 @@ class ContainerBrowseViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Helper methods
+    
+    private func setTabBarVisible(visible: Bool, animated: Bool) {
+        if isToolBarVisible() == visible { return }
+        
+        let tabBar = navigationController?.tabBarController?.tabBar
+        let frame = tabBar!.frame
+        let height = frame.size.height
+        let offsetY = visible ? -height : height
+        
+        UIView.animateWithDuration(animated ? 0.3 : 0.0) {
+            tabBar!.frame = CGRectOffset(frame, 0, offsetY)
+        }
+    }
+    
+    private func isToolBarVisible() -> Bool {
+        let tabBar = navigationController?.tabBarController?.tabBar
+        return tabBar!.frame.origin.y < CGRectGetMaxY(view.frame)
+    }
 }
 
 extension ContainerBrowseViewController: SwipeDelegate {
@@ -95,6 +115,7 @@ extension ContainerBrowseViewController: SwipeDelegate {
             }, completion: { _ in
                 self.buttonsHidden = true
         })
+//        setTabBarVisible(false, animated: true)
     }
     
     func swipedDown() {
@@ -109,5 +130,6 @@ extension ContainerBrowseViewController: SwipeDelegate {
             }, completion: { _ in
                 self.buttonsHidden = false
         })
+//        setTabBarVisible(true, animated: true)
     }
 }

@@ -69,6 +69,7 @@ class BrowseViewController: UICollectionViewController {
             controller.brands = brands
             controller.productCategory = productCategory
             controller.dataModel = dataModel
+            controller.hidesBottomBarWhenPushed = true
         }
     }
     

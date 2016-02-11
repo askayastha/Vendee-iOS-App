@@ -14,7 +14,6 @@ class Product: NSObject, NSCoding {
     var productDescription: String?
     
     var buyURL: String?
-    var brandImageURL: String?
     
     var tinyImageURLs: [String]?
     var smallImageURLs: [String]?
@@ -47,11 +46,10 @@ class Product: NSObject, NSCoding {
         productDescription = aDecoder.decodeObjectForKey("ProductDescription") as? String
         
         buyURL = aDecoder.decodeObjectForKey("BuyURL") as? String
-        brandImageURL = aDecoder.decodeObjectForKey("BrandImageURL") as? String
         
-        tinyImageURLs = aDecoder.decodeObjectForKey("TinyImageURL") as? [String]
-        smallImageURLs = aDecoder.decodeObjectForKey("SmallImageURL") as? [String]
-        largeImageURLs = aDecoder.decodeObjectForKey("LargeImageURL") as? [String]
+        tinyImageURLs = aDecoder.decodeObjectForKey("TinyImageURLs") as? [String]
+        smallImageURLs = aDecoder.decodeObjectForKey("SmallImageURLs") as? [String]
+        largeImageURLs = aDecoder.decodeObjectForKey("LargeImageURLs") as? [String]
         
         tinyImageSize = aDecoder.decodeObjectForKey("TinyImageSize") as? CGSize
         smallImageSize = aDecoder.decodeObjectForKey("SmallImageSize") as? CGSize
@@ -79,7 +77,6 @@ class Product: NSObject, NSCoding {
         aCoder.encodeObject(productDescription, forKey: "ProductDescription")
         
         aCoder.encodeObject(buyURL, forKey: "BuyURL")
-        aCoder.encodeObject(brandImageURL, forKey: "BrandImageURL")
         
         aCoder.encodeObject(tinyImageURLs, forKey: "TinyImageURLs")
         aCoder.encodeObject(smallImageURLs, forKey: "SmallImageURLs")

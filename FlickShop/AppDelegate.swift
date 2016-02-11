@@ -19,10 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         customizeAppearance()
         
-        let navigationController = window!.rootViewController as! UINavigationController
-        let controller = navigationController.viewControllers[0] as! HomeViewController
-        controller.dataModel = dataModel
-        
         return true
     }
 
@@ -155,6 +151,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            NSForegroundColorAttributeName: UIColor.whiteColor(),
 //            NSFontAttributeName: UIFont(name: "ProximaNova-Semibold", size: 16.0)!
 //        ]
+        
+        let tabBarController = window!.rootViewController as! UITabBarController
+        
+        if let tabBarControllers = tabBarController.viewControllers {
+            var navigationController = tabBarControllers[0] as! UINavigationController
+            navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+            let homeVC = navigationController.viewControllers[0] as! HomeViewController
+            homeVC.dataModel = dataModel
+            
+            navigationController = tabBarControllers[1] as! UINavigationController
+            navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+            let favoritesVC = navigationController.viewControllers[0] as! ContainerFavoritesViewController
+            favoritesVC.dataModel = dataModel
+            
+            navigationController = tabBarControllers[2] as! UINavigationController
+            navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+        }
         
         window!.layer.cornerRadius = 5.0
         window!.layer.masksToBounds = true

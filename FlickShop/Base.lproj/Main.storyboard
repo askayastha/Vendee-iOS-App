@@ -29,8 +29,6 @@
             <string>Whitney-Book</string>
             <string>Whitney-Book</string>
             <string>Whitney-Book</string>
-            <string>Whitney-Book</string>
-            <string>Whitney-Book</string>
         </mutableArray>
         <mutableArray key="Whitney-Semibold-Bas.otf">
             <string>Whitney-Semibold</string>
@@ -82,53 +80,42 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ocC-Dt-jGa">
-                                                    <rect key="frame" x="5" y="5" width="170" height="40"/>
+                                                    <rect key="frame" x="5" y="5" width="170" height="35"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mes-me-XzM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="SLE-Ge-gGp"/>
-                                                                <constraint firstAttribute="height" constant="40" id="v8S-6b-QbO"/>
+                                                                <constraint firstAttribute="width" constant="35" id="SLE-Ge-gGp"/>
+                                                                <constraint firstAttribute="height" constant="35" id="v8S-6b-QbO"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="yYe-fU-sgW">
-                                                            <rect key="frame" x="45" y="0.0" width="125" height="40"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yYe-fU-sgW">
+                                                            <rect key="frame" x="40" y="0.0" width="130" height="35"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUC-JL-z7m">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="63" height="23"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="63" height="18"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LoW-uS-pBp">
-                                                                    <rect key="frame" x="0.0" y="18" width="64" height="22"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$8.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-vr-jtR">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="22"/>
-                                                                            <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
-                                                                            <color key="textColor" red="0.96078431372549022" green="0.16862745098039217" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lev-JE-joM">
-                                                                            <rect key="frame" x="35" y="0.0" width="29" height="22"/>
-                                                                            <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
-                                                                            <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-vr-jtR">
+                                                                    <rect key="frame" x="0.0" y="18" width="44" height="17"/>
+                                                                    <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
+                                                                    <color key="textColor" red="0.96078431372549022" green="0.16862745098039217" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uT7-ew-HmC">
-                                                    <rect key="frame" x="0.0" y="50" width="180" height="150"/>
+                                                    <rect key="frame" x="0.0" y="45" width="180" height="150"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="AHJ-wJ-5pM"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbT-fm-f7Q">
-                                                    <rect key="frame" x="0.0" y="50" width="180" height="1"/>
+                                                    <rect key="frame" x="0.0" y="45" width="180" height="1"/>
                                                     <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="A9C-WV-od3"/>
@@ -161,10 +148,9 @@
                                 <connections>
                                     <outlet property="brandImageView" destination="Mes-me-XzM" id="dwF-ws-4jI"/>
                                     <outlet property="brandNameLabel" destination="PUC-JL-z7m" id="p2r-aS-8Iv"/>
+                                    <outlet property="discountLabel" destination="dzc-vr-jtR" id="S62-xJ-cRh"/>
                                     <outlet property="imageView" destination="uT7-ew-HmC" id="05K-EI-QWL"/>
                                     <outlet property="imageViewHeightLayoutConstraint" destination="AHJ-wJ-5pM" id="kSm-iN-XDK"/>
-                                    <outlet property="priceLabel" destination="lev-JE-joM" id="h8W-bZ-P1w"/>
-                                    <outlet property="salePriceLabel" destination="dzc-vr-jtR" id="FO5-tz-qSw"/>
                                     <outlet property="topImageViewLineSeparatorHeightConstraint" destination="A9C-WV-od3" id="fDz-Ho-WxE"/>
                                 </connections>
                             </collectionViewCell>
@@ -637,7 +623,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
                                                 <rect key="frame" x="17" y="27" width="76" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="18"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -1183,53 +1169,42 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MwO-Bf-0jL">
-                                                    <rect key="frame" x="5" y="5" width="170" height="40"/>
+                                                    <rect key="frame" x="5" y="5" width="170" height="35"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fY3-3w-D56">
-                                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="40" id="m3o-0f-eWU"/>
-                                                                <constraint firstAttribute="height" constant="40" id="mxp-Xr-VI7"/>
+                                                                <constraint firstAttribute="width" constant="35" id="m3o-0f-eWU"/>
+                                                                <constraint firstAttribute="height" constant="35" id="mxp-Xr-VI7"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="noL-c7-WAg">
-                                                            <rect key="frame" x="45" y="0.0" width="125" height="40"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="noL-c7-WAg">
+                                                            <rect key="frame" x="40" y="0.0" width="130" height="35"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-Re-uEz">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="63" height="23"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="63" height="18"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5pP-hw-afi">
-                                                                    <rect key="frame" x="0.0" y="18" width="64" height="22"/>
-                                                                    <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$8.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEl-iS-JW9">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="22"/>
-                                                                            <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
-                                                                            <color key="textColor" red="0.96078431369999995" green="0.16862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$9.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XAJ-qO-AyC">
-                                                                            <rect key="frame" x="35" y="0.0" width="29" height="22"/>
-                                                                            <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
-                                                                            <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                    </subviews>
-                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEl-iS-JW9">
+                                                                    <rect key="frame" x="0.0" y="18" width="44" height="17"/>
+                                                                    <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
+                                                                    <color key="textColor" red="0.96078431369999995" green="0.16862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Q9b-sK-hC1">
-                                                    <rect key="frame" x="0.0" y="50" width="180" height="150"/>
+                                                    <rect key="frame" x="0.0" y="45" width="180" height="150"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="P3W-3i-2Bl"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ELK-gS-cps">
-                                                    <rect key="frame" x="0.0" y="50" width="180" height="1"/>
+                                                    <rect key="frame" x="0.0" y="45" width="180" height="1"/>
                                                     <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="A51-sK-NgO"/>
@@ -1262,10 +1237,9 @@
                                 <connections>
                                     <outlet property="brandImageView" destination="fY3-3w-D56" id="gjJ-sn-iHf"/>
                                     <outlet property="brandNameLabel" destination="6Ta-Re-uEz" id="v2k-lP-2IG"/>
+                                    <outlet property="discountLabel" destination="jEl-iS-JW9" id="PK0-rW-nec"/>
                                     <outlet property="imageView" destination="Q9b-sK-hC1" id="mq8-vh-qrv"/>
                                     <outlet property="imageViewHeightLayoutConstraint" destination="P3W-3i-2Bl" id="sIx-hi-BtY"/>
-                                    <outlet property="priceLabel" destination="XAJ-qO-AyC" id="7ql-Dr-aCc"/>
-                                    <outlet property="salePriceLabel" destination="jEl-iS-JW9" id="eks-cg-MOX"/>
                                     <outlet property="topImageViewLineSeparatorHeightConstraint" destination="A51-sK-NgO" id="fgQ-DB-LLn"/>
                                 </connections>
                             </collectionViewCell>

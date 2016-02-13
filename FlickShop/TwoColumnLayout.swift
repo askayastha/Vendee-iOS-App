@@ -43,7 +43,7 @@ class TwoColumnLayout: UICollectionViewLayout {
     // These are two public properties for configuring the layout: the nunmber of columns and the cell padding.
     var numberOfColumns = 2
     var cellPadding: CGFloat = 4.0
-    let brandPriceHeight: CGFloat = 40.0
+    let brandPriceHeight: CGFloat = 35.0
     let verticalPadding: CGFloat = 5.0
     let bottomPadding: CGFloat = 3.0
     

@@ -17,29 +17,33 @@ class CustomPhotoCell: UICollectionViewCell {
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var brandImageView: UIImageView!
     @IBOutlet weak var brandNameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var salePriceLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
     
     var product: Product? {
         didSet {
             if let product = product {
                 brandNameLabel.text = product.brandName ?? product.brandedName
                 
-                if let salePrice = product.formattedSalePrice {
-                    priceLabel.attributedText = NSAttributedString(
-                        string: product.formattedPrice ?? "",
-                        attributes: [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue ]
-                    )
-                    
-                    salePriceLabel.text = salePrice
-                    
-                } else {
-                    priceLabel.text = ""
-                    
-                    salePriceLabel.text = product.formattedPrice ?? ""
-                }
+//                if let salePrice = product.formattedSalePrice {
+//                    priceLabel.attributedText = NSAttributedString(
+//                        string: product.formattedPrice ?? "",
+//                        attributes: [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue ]
+//                    )
+//                    salePriceLabel.text = salePrice
+//                    
+//                } else {
+//                    priceLabel.text = ""
+//                    salePriceLabel.text = product.formattedPrice ?? ""
+//                }
                 
-//                imageView.pin_updateWithProgress = true
+                var discountText = "0% Off"
+                
+                if let salePrice = product.salePrice {
+                    let discount = (product.price! - salePrice) * 100 / product.price!
+                    discountText = "\(Int(discount))% Off"
+                }
+                discountLabel.text = discountText
+                
                 imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs!.first!)!)
                 
             }

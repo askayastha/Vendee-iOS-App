@@ -36,6 +36,10 @@
 		7559FA311C65017500177064 /* Brands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7559FA301C65017500177064 /* Brands.plist */; };
 		756264AF1C6C85A000149516 /* ContainerFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */; };
 		756264B31C6C860700149516 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756264B21C6C860700149516 /* FavoritesViewController.swift */; };
+		756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */; };
+		756E15B01C7213D20046CCBA /* FaktFlipboard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */; };
+		756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AD1C7213D20046CCBA /* FaktFlipboard-Normal.otf */; };
+		756E15B21C7213D20046CCBA /* FaktFlipboard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AE1C7213D20046CCBA /* FaktFlipboard-SemiBold.otf */; };
 		756FC4E71C01B03F007AB0C5 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */; };
 		756FC4E91C01B16D007AB0C5 /* SwitchSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */; };
 		756FC4EB1C01C7F3007AB0C5 /* BrandFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */; };
@@ -152,6 +156,10 @@
 		7559FA301C65017500177064 /* Brands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Brands.plist; sourceTree = "<group>"; };
 		756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerFavoritesViewController.swift; sourceTree = "<group>"; };
 		756264B21C6C860700149516 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Light.otf"; sourceTree = "<group>"; };
+		756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Medium.otf"; sourceTree = "<group>"; };
+		756E15AD1C7213D20046CCBA /* FaktFlipboard-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Normal.otf"; sourceTree = "<group>"; };
+		756E15AE1C7213D20046CCBA /* FaktFlipboard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-SemiBold.otf"; sourceTree = "<group>"; };
 		756FC4E61C01B03F007AB0C5 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		756FC4E81C01B16D007AB0C5 /* SwitchSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchSegue.swift; sourceTree = "<group>"; };
 		756FC4EA1C01C7F3007AB0C5 /* BrandFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BrandFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -493,6 +501,10 @@
 			children = (
 				75A31E381BDFBAAE006FD010 /* Assets.xcassets */,
 				75F12D191BE0A54D00258874 /* Categories.xcassets */,
+				756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */,
+				756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */,
+				756E15AD1C7213D20046CCBA /* FaktFlipboard-Normal.otf */,
+				756E15AE1C7213D20046CCBA /* FaktFlipboard-SemiBold.otf */,
 				75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */,
 				75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */,
 				75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */,
@@ -699,9 +711,13 @@
 				75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */,
 				75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */,
 				75F12D0B1BE0A35900258874 /* FlickPageCell.xib in Resources */,
+				756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */,
 				7559FA311C65017500177064 /* Brands.plist in Resources */,
+				756E15B01C7213D20046CCBA /* FaktFlipboard-Medium.otf in Resources */,
 				75BE17531C04DAA4007E0A59 /* Shopstyle_Brands.plist in Resources */,
+				756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */,
 				75F12D0F1BE0A35900258874 /* ProximaNova-Bold.ttf in Resources */,
+				756E15B21C7213D20046CCBA /* FaktFlipboard-SemiBold.otf in Resources */,
 				75F12D101BE0A35900258874 /* ProximaNova-Reg.ttf in Resources */,
 				75F12D181BE0A46000258874 /* Main.storyboard in Resources */,
 				75BE17551C04DB88007E0A59 /* Shopstyle_Stores.plist in Resources */,

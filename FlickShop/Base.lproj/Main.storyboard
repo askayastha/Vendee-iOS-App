@@ -5,8 +5,8 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="ProximaNova-Reg.ttf">
-            <string>ProximaNova-Regular</string>
+        <mutableArray key="FaktFlipboard-Normal.otf">
+            <string>FaktFlipboard-Normal</string>
         </mutableArray>
         <mutableArray key="Quicksand-Bold.ttf">
             <string>Quicksand-Bold</string>
@@ -1116,7 +1116,7 @@
                             </containerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't favorited anything yet!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozQ-L5-dIK">
                                 <rect key="frame" x="30" y="290" width="540" height="20"/>
-                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="FaktFlipboard-Normal" family="Fakt Flipboard" pointSize="16"/>
                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>

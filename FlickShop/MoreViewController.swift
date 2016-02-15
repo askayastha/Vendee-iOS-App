@@ -16,8 +16,6 @@ class MoreViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,24 +38,34 @@ class MoreViewController: UITableViewController {
         
         switch (indexPath.section, indexPath.row) {
 
-        case (0, 0):    // FAQs
-            break
-        case (0, 1):    // Contact us
-            sendSupportEmail()
+        // Send Feedback
+        case (0, 0):
+            sendSupportEmailWithSubject("General Feedback")
         
-        case (1, 0):    // Rate us
+        // Report a Problem
+        case (0, 1):
+            sendSupportEmailWithSubject("Something Isn't Working")
+        
+        // Rate this app
+        case (1, 0):
             break
-        case (1, 1):    // Share the app
+        
+        // Share this app
+        case (1, 1):
             shareTheApp()
-        
-        case (2, 0):    // About us
-            break
-        case (2, 1):    // Terms of service
-            break
-        case (2, 2):    // Version
-            break
+            
         default:
             break
+        }
+    }
+    
+    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        switch (indexPath.section, indexPath.row) {
+        case (2, 1):
+            return nil
+            
+        default:
+            return indexPath
         }
     }
     
@@ -76,14 +84,12 @@ class MoreViewController: UITableViewController {
         presentViewController(activityVC, animated: true, completion: nil)
     }
     
-    private func sendSupportEmail() {
+    private func sendSupportEmailWithSubject(subject: String) {
         if MFMailComposeViewController.canSendMail() {
             let controller = MFMailComposeViewController()
-            controller.setSubject("Vendee Feedback")
+            controller.setSubject(subject)
             controller.setToRecipients(["vendeeapp.dev@gmail.com"])
-            controller.setMessageBody("Hey. I wanted to give you some feedback on the Vendee App.", isHTML: false)
             controller.mailComposeDelegate = self
-//            controller.modalPresentationStyle = .FormSheet
             self.presentViewController(controller, animated: true, completion: nil)
         }
     }

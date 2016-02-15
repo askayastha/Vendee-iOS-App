@@ -16,8 +16,12 @@ func afterDelay(seconds: Double, closure: () -> ()) {
 }
 
 func fixFrame(var frame: CGRect) -> CGRect {
+    let headerView: CGFloat = 60.0
+    let imageViewGap: CGFloat = 20.0
+    let actionView: CGFloat = 52.2
     if frame.size.width > ScreenConstants.width {
         frame.size.width = ScreenConstants.width
+        frame.size.height = ScreenConstants.height - headerView - imageViewGap - actionView
     }
     return frame
 }

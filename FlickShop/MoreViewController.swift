@@ -16,6 +16,10 @@ class MoreViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
+        
+        navigationController?.navigationBar.titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+        ]
     }
 
     override func didReceiveMemoryWarning() {

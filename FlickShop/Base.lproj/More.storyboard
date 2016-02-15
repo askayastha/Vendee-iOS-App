@@ -18,7 +18,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--More View Controller-->
+        <!--More-->
         <scene sceneID="tfx-Up-0t0">
             <objects>
                 <tableViewController id="sLu-wt-16t" customClass="MoreViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
@@ -150,7 +150,9 @@
                             <outlet property="delegate" destination="sLu-wt-16t" id="IAA-4A-d6a"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="MFP-1M-Jo0"/>
+                    <navigationItem key="navigationItem" title="More" id="MFP-1M-Jo0">
+                        <barButtonItem key="backBarButtonItem" title=" " id="YCL-wS-DmV"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hQf-No-gqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,7 +196,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="NNj-ku-kFL" firstAttribute="centerX" secondItem="Y7C-33-fyn" secondAttribute="centerX" id="2df-BE-5sn"/>
                             <constraint firstItem="hd6-Tz-YYs" firstAttribute="top" secondItem="NNj-ku-kFL" secondAttribute="bottom" constant="20" id="5mK-0g-QTC"/>

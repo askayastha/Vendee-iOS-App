@@ -47,7 +47,7 @@ class FlickViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         
         if let indexPath = indexPath {
-            collectionView!.scrollToItemAtIndexPath(indexPath, atScrollPosition: UICollectionViewScrollPosition.None, animated: false)
+            collectionView!.scrollToItemAtIndexPath(indexPath, atScrollPosition: .None, animated: false)
         }
     }
     

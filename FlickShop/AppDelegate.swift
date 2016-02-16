@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let dataModel = DataModel()
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        customizeAppearance()
+        window!.layer.cornerRadius = 5.0
+        window!.layer.masksToBounds = true
+        customizeNavBar()
+        customizeTabBar()
         
         return true
     }
@@ -143,15 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return rootViewController
     }
 
-    private func customizeAppearance() {
-//        let barTintColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1)  // Translucent Gray
-        
-//        UINavigationBar.appearance().barTintColor = barTintColor
-//        UINavigationBar.appearance().titleTextAttributes = [
-//            NSForegroundColorAttributeName: UIColor.whiteColor(),
-//            NSFontAttributeName: UIFont(name: "ProximaNova-Semibold", size: 16.0)!
-//        ]
-        
+    private func customizeTabBar() {
         let tabBarController = window!.rootViewController as! UITabBarController
         
         if let tabBarControllers = tabBarController.viewControllers {
@@ -168,9 +163,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navigationController = tabBarControllers[2] as! UINavigationController
             navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
         }
+    }
+    
+    private func customizeNavBar() {
+        let navAppearance = UINavigationBar.appearance()
         
-        window!.layer.cornerRadius = 5.0
-        window!.layer.masksToBounds = true
+        let backImage = UIImage(named: "nav_back_arrow")
+        navAppearance.backIndicatorImage = backImage
+        navAppearance.backIndicatorTransitionMaskImage = backImage
+        navAppearance.titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+        ]
+        navAppearance.tintColor = UIColor.blackColor()
+        
+        let barButtonAppearance = UIBarButtonItem.appearance()
+        barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
+        barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Compact)
     }
 
 }

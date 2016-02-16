@@ -30,9 +30,6 @@ class AboutViewController: UIViewController {
         appVersionLabel.text = "Vendee 1.0"
         copyrightLabel.text = "© 2016 Ashish Kayastha"
         thirdPartyLibrariesLabel.text = thirdPartyLibraries.joinWithSeparator("\n")
-        
-        navigationController?.navigationBar.backIndicatorImage = UIImage(named: "nav_back_arrow")
-        navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "nav_back_arrow")
     }
 
     override func didReceiveMemoryWarning() {

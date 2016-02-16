@@ -16,11 +16,11 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
-  - MBProgressHUD (~> 0.9)
+  - MBProgressHUD
   - NMRangeSlider (from `https://github.com/chanil1218/NMRangeSlider.git`, commit
     `c89890c`)
-  - Ono (~> 1.0)
-  - PINRemoteImage (~> 1.0)
+  - Ono
+  - PINRemoteImage
   - SwiftyJSON (~> 2.0)
 
 EXTERNAL SOURCES:

@@ -11,7 +11,8 @@ import AVFoundation
 
 class FavoritesViewController: UICollectionViewController {
     
-    private var productCount = 0
+    private(set) var productCount = 0
+    private(set) var dataModelChanged: Bool = false
     
     var hideSpinner: (()->())?
     var brands = Brand.allBrands()
@@ -30,9 +31,8 @@ class FavoritesViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("FavoritesViewControllerDidLoad")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshFavorites", name: CustomNotifications.DataModelDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataModel", name: CustomNotifications.DataModelDidChangeNotification, object: nil)
         setupView()
         
         if dataModel.favoriteProducts.count > 0 {
@@ -43,6 +43,22 @@ class FavoritesViewController: UICollectionViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         print("FavoritesViewControllerWillAppear")
+        
+        if dataModelChanged {
+            dataModelChanged = false
+            productCount = 0
+            search = Search(products: dataModel.favoriteProducts)
+            
+            // Reset content size of the collection view
+            if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
+                layout.reset()
+            }
+            collectionView!.reloadData()
+            
+            if dataModel.favoriteProducts.count > 0 {
+                populatePhotosFromIndex(productCount)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,20 +66,11 @@ class FavoritesViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func refreshFavorites() {
-        search.resetSearch()
-        search = Search(products: dataModel.favoriteProducts)
-        productCount = 0
+    func refreshDataModel() {
+        print("Favorite Products: \(dataModel.favoriteProducts)")
         
-        if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
-            layout.reset()
-        }
-        collectionView!.reloadData()
-        print("COLLECTION VIEW RELOADED")
-        
-        if dataModel.favoriteProducts.count > 0 {
-            populatePhotosFromIndex(productCount)
-        }
+        // Mark data model as dirty
+        dataModelChanged = true
     }
     
     private func setupView() {
@@ -115,6 +122,7 @@ extension FavoritesViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(BrowseViewCellIdentifiers.customProductCell, forIndexPath: indexPath) as! CustomPhotoCell
         
+        // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
         cell.brandImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor

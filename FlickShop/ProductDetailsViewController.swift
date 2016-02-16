@@ -12,8 +12,8 @@ import AVFoundation
 
 class ProductDetailsViewController: UITableViewController {
     
-    private var requestingData = false
-    private var productDetailsHeight: CGFloat = 0
+    private(set) var requestingData = false
+    private(set) var productDetailsHeight: CGFloat = 0
     
     let search = Search()    
     weak var delegate: ScrollEventsDelegate?

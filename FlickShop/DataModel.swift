@@ -41,7 +41,9 @@ class DataModel {
             if let data = NSData(contentsOfURL: fileURL) {
                 let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
                 favoriteProducts = unarchiver.decodeObjectForKey("FavoriteProducts") as! NSMutableOrderedSet
+                print(favoriteProducts)
                 favoriteProductIds = unarchiver.decodeObjectForKey("FavoriteProductIds") as! Set<String>
+                print(favoriteProductIds)
                 unarchiver.finishDecoding()
 //                sortFavoriteProducts()
             }

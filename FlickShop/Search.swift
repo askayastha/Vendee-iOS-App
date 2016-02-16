@@ -25,7 +25,6 @@ class Search {
     private(set) var dataRequest: Alamofire.Request?
     private(set) var state: State = .Idle
     private(set) var products: NSMutableOrderedSet
-//    private(set) var lastItem = 0
     private(set) var retryCount = 0
     
     var lastItem: Int {
@@ -55,7 +54,6 @@ class Search {
         state = .Idle
         cancelled = true
         products.removeAllObjects()
-//        lastItem = 0
         retryCount = 0
     }
     
@@ -197,6 +195,12 @@ class Search {
             let product = products.objectAtIndex(i) as! Product
             if let _ = product.smallImageSize {
                 count++
+                success = true
+                if count == limit && !self.cancelled {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(success, lastIndex)
+                    }
+                }
             } else {
                 populatePhotoSizeForProduct(product)
             }

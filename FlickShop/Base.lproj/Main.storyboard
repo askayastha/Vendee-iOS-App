@@ -616,7 +616,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
                                                 <rect key="frame" x="17" y="27" width="76" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="18"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -994,7 +994,7 @@
             <objects>
                 <collectionViewController id="wEd-nf-eK0" customClass="FavoritesViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="LMA-fO-TYD">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                         <collectionViewLayout key="collectionViewLayout" id="kFE-N4-VOB" customClass="TwoColumnLayout" customModule="FlickShop" customModuleProvider="target"/>
@@ -1108,8 +1108,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oah-XP-uPN">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oah-XP-uPN">
+                                <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                                 <connections>
                                     <segue destination="wEd-nf-eK0" kind="embed" identifier="EmbedBrowseFavorites" id="WSH-Ua-bSw"/>
                                 </connections>
@@ -1124,8 +1124,8 @@
                         <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ozQ-L5-dIK" secondAttribute="trailing" constant="30" id="IAL-hn-mPo"/>
-                            <constraint firstItem="FN7-iU-VtK" firstAttribute="top" secondItem="Oah-XP-uPN" secondAttribute="bottom" id="Ygm-sA-ZRB"/>
                             <constraint firstAttribute="trailing" secondItem="Oah-XP-uPN" secondAttribute="trailing" id="a2B-Uo-7OD"/>
+                            <constraint firstItem="Oah-XP-uPN" firstAttribute="height" secondItem="2u9-Kr-btQ" secondAttribute="height" id="dJb-PB-OK3"/>
                             <constraint firstItem="ozQ-L5-dIK" firstAttribute="centerY" secondItem="2u9-Kr-btQ" secondAttribute="centerY" id="eNS-9R-0vs"/>
                             <constraint firstItem="Oah-XP-uPN" firstAttribute="leading" secondItem="2u9-Kr-btQ" secondAttribute="leading" id="eyz-HC-M8j"/>
                             <constraint firstItem="ozQ-L5-dIK" firstAttribute="leading" secondItem="2u9-Kr-btQ" secondAttribute="leading" constant="30" id="k4S-Ed-vcV"/>

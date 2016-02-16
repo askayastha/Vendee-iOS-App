@@ -7,38 +7,84 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class Product: NSObject, NSCoding {
     
-    var id: String?
-    var productDescription: String?
+    var id: String!
+    var productDescription: String!
     
-    var buyURL: String?
+    var buyURL: String!
     
-    var tinyImageURLs: [String]?
-    var smallImageURLs: [String]?
-    var largeImageURLs: [String]?
+    var tinyImageURLs: [String]!
+    var smallImageURLs: [String]!
+    var largeImageURLs: [String]!
     
-    var tinyImageSize: CGSize?
-    var smallImageSize: CGSize?
+    var tinyImageSize: CGSize!
+    var smallImageSize: CGSize!
     
-    var name: String?
-    var brandedName: String?
-    var unbrandedName: String?
-    var brandName: String?
+    var name: String!
+    var brandedName: String!
+    var unbrandedName: String!
+    var brandName: String!
     
-    var price: Float?
-    var salePrice: Float?
-    var formattedPrice: String?
-    var formattedSalePrice: String?
+    var price: Float!
+    var salePrice: Float!
+    var formattedPrice: String!
+    var formattedSalePrice: String!
     
-    var colors: [String]?
-    var sizes: [String]?
+    var colors: [String]!
+    var sizes: [String]!
     
-    var categories: [String]?
+    var categories: [String]!
     
-    override init() {
-        super.init()
+    init(data: JSON) {
+        self.id = String(data["id"].int)
+        self.buyURL = data["clickUrl"].string
+        self.name = data["name"].string
+        self.brandedName = data["brandedName"].string
+        self.unbrandedName = data["unbrandedName"].string
+        self.brandName = data["brand"]["name"].string
+        self.price = data["price"].float
+        self.salePrice = data["salePrice"].float
+        self.formattedPrice = data["priceLabel"].string
+        self.formattedSalePrice = data["salePriceLabel"].string
+        self.productDescription = data["description"].string
+        
+        if let categoriesArray = data["categories"].array {
+            categories = [String]()
+            for category in categoriesArray {
+                categories.append(category["id"].stringValue)
+            }
+        }
+        
+        if let alternateImages = data["alternateImages"].array {
+            tinyImageURLs = [String]()
+            smallImageURLs = [String]()
+            largeImageURLs = [String]()
+            
+            // First URL
+            tinyImageURLs.append(data["image"]["sizes"]["IPhoneSmall"]["url"].stringValue)
+            smallImageURLs.append(data["image"]["sizes"]["IPhone"]["url"].stringValue)
+            largeImageURLs.append(data["image"]["sizes"]["Original"]["url"].stringValue)
+            
+            // Alternate URLs
+            for alternateImage in alternateImages {
+                let tinyImageURL = alternateImage["sizes"]["IPhoneSmall"]["url"].stringValue
+                let smallImageURL = alternateImage["sizes"]["IPhone"]["url"].stringValue
+                let largeImageURL = alternateImage["sizes"]["Original"]["url"].stringValue
+                
+                if !tinyImageURLs.contains(tinyImageURL) {
+                    tinyImageURLs.append(tinyImageURL)
+                }
+                if !smallImageURLs.contains(smallImageURL) {
+                    smallImageURLs.append(smallImageURL)
+                }
+                if !largeImageURLs.contains(largeImageURL) {
+                    largeImageURLs.append(largeImageURL)
+                }
+            }
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

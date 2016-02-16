@@ -213,9 +213,8 @@ extension BrowseViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(BrowseViewCellIdentifiers.customProductCell, forIndexPath: indexPath) as! CustomPhotoCell
-//        cell.layer.shouldRasterize = true
-//        cell.layer.rasterizationScale = UIScreen.mainScreen().scale
         
+        // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
         cell.brandImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor

@@ -95,7 +95,7 @@ class FlickViewController: UICollectionViewController {
         // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
-        cell.favorited = dataModel.favoriteProductIds.contains(product.id!) ? true : false
+        cell.favorited = dataModel.favoriteProductIds.contains(product.id) ? true : false
         cell.scrollViewHeightConstraint.constant = getImageViewHeight()
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5

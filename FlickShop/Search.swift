@@ -77,7 +77,7 @@ class Search {
                     print("----------Got results!----------")
                     
                     let jsonData = JSON(response.result.value!)
-                    self.populateProduct(jsonData)
+                    self.products.addObject(Product(data: jsonData))
                     
                     success = true
                     self.state = .Success
@@ -146,8 +146,7 @@ class Search {
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                         print("----------Got results!----------")
                         
-                        let jsonData = JSON(response.result.value!)
-                        self.populateProducts(jsonData)
+                        self.populateProducts(JSON(response.result.value!))
                         success = true
                         self.state = .Success
                         print("Request successful")
@@ -255,86 +254,11 @@ class Search {
         return "&\(finalFilterParams)"
     }
     
-    private func populateProduct(product: JSON) {
-        let id = product["id"].intValue
-        let buyURL = product["clickUrl"]
-        var tinyImageURLs: [String]!
-        var smallImageURLs: [String]!
-        var largeImageURLs: [String]!
-        let name = product["name"]
-        let brandedName = product["brandedName"]
-        let unbrandedName = product["unbrandedName"]
-        let brandName = product["brand"]["name"]
-        let price = product["price"]
-        let salePrice = product["salePrice"]
-        let formattedPrice = product["priceLabel"]
-        let formattedSalePrice = product["salePriceLabel"]
-        let productDescription = product["description"]
-        var categories: [String]!
-        
-        if let categoriesArray = product["categories"].array {
-            categories = [String]()
-            for category in categoriesArray {
-                categories.append(category["id"].stringValue)
-            }
-        }
-        
-        if let alternateImages = product["alternateImages"].array {
-            tinyImageURLs = [String]()
-            smallImageURLs = [String]()
-            largeImageURLs = [String]()
-            
-            // First URL
-            tinyImageURLs.append(product["image"]["sizes"]["IPhoneSmall"]["url"].stringValue)
-            smallImageURLs.append(product["image"]["sizes"]["IPhone"]["url"].stringValue)
-            largeImageURLs.append(product["image"]["sizes"]["Original"]["url"].stringValue)
-            
-            // Alternate URLs
-            for alternateImage in alternateImages {
-                let tinyImageURL = alternateImage["sizes"]["IPhoneSmall"]["url"].stringValue
-                let smallImageURL = alternateImage["sizes"]["IPhone"]["url"].stringValue
-                let largeImageURL = alternateImage["sizes"]["Original"]["url"].stringValue
-                
-                if !tinyImageURLs.contains(tinyImageURL) {
-                    tinyImageURLs.append(tinyImageURL)
-                }
-                if !smallImageURLs.contains(smallImageURL) {
-                    smallImageURLs.append(smallImageURL)
-                }
-                if !largeImageURLs.contains(largeImageURL) {
-                    largeImageURLs.append(largeImageURL)
-                }
-            }
-        }
-        
-        let product = Product()
-        product.id = String(id)
-        product.buyURL = buyURL.string
-        product.tinyImageURLs = tinyImageURLs
-        product.smallImageURLs = smallImageURLs
-        product.largeImageURLs = largeImageURLs
-        product.name = name.string
-        product.brandedName = brandedName.string
-        product.unbrandedName = unbrandedName.string
-        product.brandName = brandName.string
-        product.price = price.float
-        product.salePrice = salePrice.float
-        product.formattedPrice = formattedPrice.string
-        product.formattedSalePrice = formattedSalePrice.string
-        product.productDescription = productDescription.string
-        product.categories = categories
-        
-        products.addObject(product)
-    }
-    
     private func populateProducts(json: JSON) {
         if let products = json["products"].array {
-            
-            for product in products {
-                populateProduct(product)
+            for jsonData in products {
+                self.products.addObject(Product(data: jsonData))
             }
-            
-//            lastItem = products.count
         }
     }
 }

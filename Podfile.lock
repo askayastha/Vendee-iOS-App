@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.1.0)
+  - Alamofire (3.2.0)
   - FLAnimatedImage (1.0.8)
   - HexColors (2.2.1)
   - MBProgressHUD (0.9.1)
@@ -18,7 +18,7 @@ PODS:
     - HexColors (~> 2.2.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.0)
+  - Alamofire (= 3.2.0)
   - MBProgressHUD
   - NMRangeSlider (from `https://github.com/chanil1218/NMRangeSlider.git`, commit
     `c89890c`)
@@ -38,7 +38,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/chanil1218/NMRangeSlider.git
 
 SPEC CHECKSUMS:
-  Alamofire: 415bd7f56197722978759078486689f7ef913dce
+  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
   FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad

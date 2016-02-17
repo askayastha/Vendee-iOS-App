@@ -10,6 +10,7 @@ target 'FlickShop' do
     pod 'SwiftyJSON', '~> 2.0'
     pod 'PINRemoteImage'
     pod 'NMRangeSlider', :git => 'https://github.com/chanil1218/NMRangeSlider.git', :commit => 'c89890c'
+    pod 'TSMessages'
 end
 
 target 'FlickShopTests' do

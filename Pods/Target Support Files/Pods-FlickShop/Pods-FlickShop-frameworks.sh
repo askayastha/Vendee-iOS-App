@@ -86,20 +86,24 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FlickShop/Alamofire.framework"
   install_framework "Pods-FlickShop/FLAnimatedImage.framework"
+  install_framework "Pods-FlickShop/HexColors.framework"
   install_framework "Pods-FlickShop/MBProgressHUD.framework"
   install_framework "Pods-FlickShop/NMRangeSlider.framework"
   install_framework "Pods-FlickShop/Ono.framework"
   install_framework "Pods-FlickShop/PINCache.framework"
   install_framework "Pods-FlickShop/PINRemoteImage.framework"
   install_framework "Pods-FlickShop/SwiftyJSON.framework"
+  install_framework "Pods-FlickShop/TSMessages.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FlickShop/Alamofire.framework"
   install_framework "Pods-FlickShop/FLAnimatedImage.framework"
+  install_framework "Pods-FlickShop/HexColors.framework"
   install_framework "Pods-FlickShop/MBProgressHUD.framework"
   install_framework "Pods-FlickShop/NMRangeSlider.framework"
   install_framework "Pods-FlickShop/Ono.framework"
   install_framework "Pods-FlickShop/PINCache.framework"
   install_framework "Pods-FlickShop/PINRemoteImage.framework"
   install_framework "Pods-FlickShop/SwiftyJSON.framework"
+  install_framework "Pods-FlickShop/TSMessages.framework"
 fi

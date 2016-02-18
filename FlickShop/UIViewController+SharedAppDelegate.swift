@@ -25,4 +25,8 @@ extension UIViewController {
     func dataModelDidChangeNotification() {
         NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.DataModelDidChangeNotification, object: nil)
     }
+    
+    func networkDidChangeToReachableNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
+    }
 }

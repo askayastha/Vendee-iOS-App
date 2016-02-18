@@ -36,6 +36,10 @@
 		7559FA311C65017500177064 /* Brands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7559FA301C65017500177064 /* Brands.plist */; };
 		756264AF1C6C85A000149516 /* ContainerFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */; };
 		756264B31C6C860700149516 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756264B21C6C860700149516 /* FavoritesViewController.swift */; };
+		756848661C75DD1700D85E67 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756848611C75DD1700D85E67 /* ImageParser.swift */; };
+		756848671C75DD1700D85E67 /* ImageScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756848631C75DD1700D85E67 /* ImageScout.swift */; };
+		756848681C75DD1700D85E67 /* ScoutOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756848641C75DD1700D85E67 /* ScoutOperation.swift */; };
+		756848691C75DD1700D85E67 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756848651C75DD1700D85E67 /* SessionDelegate.swift */; };
 		756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */; };
 		756E15B01C7213D20046CCBA /* FaktFlipboard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */; };
 		756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AD1C7213D20046CCBA /* FaktFlipboard-Normal.otf */; };
@@ -70,10 +74,6 @@
 		75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */; };
 		75EEE39D1C6F510900C507FC /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EEE39B1C6F510900C507FC /* More.storyboard */; };
 		75EEE39F1C6F53CA00C507FC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */; };
-		75F12CC51BE0A00B00258874 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC01BE0A00B00258874 /* ImageParser.swift */; };
-		75F12CC61BE0A00B00258874 /* ImageScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC21BE0A00B00258874 /* ImageScout.swift */; };
-		75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC31BE0A00B00258874 /* ScoutOperation.swift */; };
-		75F12CC81BE0A00B00258874 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CC41BE0A00B00258874 /* SessionDelegate.swift */; };
 		75F12CE81BE0A24100258874 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE11BE0A24100258874 /* Brand.swift */; };
 		75F12CE91BE0A24100258874 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE21BE0A24100258874 /* Category.swift */; };
 		75F12CEA1BE0A24100258874 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE31BE0A24100258874 /* Functions.swift */; };
@@ -156,6 +156,11 @@
 		7559FA301C65017500177064 /* Brands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Brands.plist; sourceTree = "<group>"; };
 		756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerFavoritesViewController.swift; sourceTree = "<group>"; };
 		756264B21C6C860700149516 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		756848611C75DD1700D85E67 /* ImageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
+		756848621C75DD1700D85E67 /* ImageScout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScout.h; sourceTree = "<group>"; };
+		756848631C75DD1700D85E67 /* ImageScout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScout.swift; sourceTree = "<group>"; };
+		756848641C75DD1700D85E67 /* ScoutOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoutOperation.swift; sourceTree = "<group>"; };
+		756848651C75DD1700D85E67 /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Light.otf"; sourceTree = "<group>"; };
 		756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Medium.otf"; sourceTree = "<group>"; };
 		756E15AD1C7213D20046CCBA /* FaktFlipboard-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Normal.otf"; sourceTree = "<group>"; };
@@ -197,11 +202,6 @@
 		75EEE39C1C6F510900C507FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/More.storyboard; sourceTree = "<group>"; };
 		75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickShop-Bridging-Header.h"; sourceTree = "<group>"; };
-		75F12CC01BE0A00B00258874 /* ImageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
-		75F12CC11BE0A00B00258874 /* ImageScout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScout.h; sourceTree = "<group>"; };
-		75F12CC21BE0A00B00258874 /* ImageScout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScout.swift; sourceTree = "<group>"; };
-		75F12CC31BE0A00B00258874 /* ScoutOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoutOperation.swift; sourceTree = "<group>"; };
-		75F12CC41BE0A00B00258874 /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
 		75F12CE11BE0A24100258874 /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		75F12CE21BE0A24100258874 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		75F12CE31BE0A24100258874 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
@@ -433,11 +433,11 @@
 		75F12CBF1BE0A00B00258874 /* ImageScout */ = {
 			isa = PBXGroup;
 			children = (
-				75F12CC01BE0A00B00258874 /* ImageParser.swift */,
-				75F12CC11BE0A00B00258874 /* ImageScout.h */,
-				75F12CC21BE0A00B00258874 /* ImageScout.swift */,
-				75F12CC31BE0A00B00258874 /* ScoutOperation.swift */,
-				75F12CC41BE0A00B00258874 /* SessionDelegate.swift */,
+				756848611C75DD1700D85E67 /* ImageParser.swift */,
+				756848621C75DD1700D85E67 /* ImageScout.h */,
+				756848631C75DD1700D85E67 /* ImageScout.swift */,
+				756848641C75DD1700D85E67 /* ScoutOperation.swift */,
+				756848651C75DD1700D85E67 /* SessionDelegate.swift */,
 			);
 			path = ImageScout;
 			sourceTree = "<group>";
@@ -803,13 +803,14 @@
 				75F12D051BE0A35900258874 /* CategoryCell.swift in Sources */,
 				75F12D0C1BE0A35900258874 /* HomeViewController.swift in Sources */,
 				7522B0CA1C044BBD0055C9A6 /* StoreFilterViewController.swift in Sources */,
+				756848671C75DD1700D85E67 /* ImageScout.swift in Sources */,
 				75F12D011BE0A35900258874 /* AppDelegate.swift in Sources */,
 				75F12D081BE0A35900258874 /* FlickViewController.swift in Sources */,
 				75F12D121BE0A35900258874 /* RoundedCornersView.swift in Sources */,
 				75B455F61C58FB9B00424B21 /* BounceAnimationController.swift in Sources */,
+				756848691C75DD1700D85E67 /* SessionDelegate.swift in Sources */,
 				7546CB221C4A5A0E000C9635 /* SimilarProductCell.swift in Sources */,
 				750D8E141C0617BA00D728F0 /* PriceFilterViewController.swift in Sources */,
-				75F12CC61BE0A00B00258874 /* ImageScout.swift in Sources */,
 				75414D761C51465400C2E3FE /* WebViewController.swift in Sources */,
 				75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */,
 				750D8E161C06221900D728F0 /* DiscountFilterViewController.swift in Sources */,
@@ -819,10 +820,10 @@
 				750D8E1A1C06423C00D728F0 /* OrderedDictionary.swift in Sources */,
 				75DD7F3C1C19F45300BDB0A3 /* Filter.swift in Sources */,
 				75409E201C6A572A00E5C282 /* DataModel.swift in Sources */,
-				75F12CC51BE0A00B00258874 /* ImageParser.swift in Sources */,
 				75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */,
 				75B455FA1C59012600424B21 /* SlideOutAnimationController.swift in Sources */,
 				751E9F261C11AF96007C990C /* FloatingButton.swift in Sources */,
+				756848681C75DD1700D85E67 /* ScoutOperation.swift in Sources */,
 				75EEE39F1C6F53CA00C507FC /* AboutViewController.swift in Sources */,
 				75F12CEA1BE0A24100258874 /* Functions.swift in Sources */,
 				75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */,
@@ -839,7 +840,6 @@
 				75019BFC1C6D0A8200B4CDBD /* MoreViewController.swift in Sources */,
 				758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */,
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
-				75F12CC71BE0A00B00258874 /* ScoutOperation.swift in Sources */,
 				752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */,
 				75F72C741C565E1300D21E50 /* SubjectActivityItem.swift in Sources */,
 				752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */,
@@ -856,7 +856,6 @@
 				75F12CEC1BE0A24100258874 /* UIImage+BlendEffects.swift in Sources */,
 				75B455EE1C58FAEB00424B21 /* GradientView.swift in Sources */,
 				75B455F81C58FF5800424B21 /* PriceDetailsViewController.swift in Sources */,
-				75F12CC81BE0A00B00258874 /* SessionDelegate.swift in Sources */,
 				756FC4E71C01B03F007AB0C5 /* ContainerViewController.swift in Sources */,
 				7546CB2E1C4A884D000C9635 /* InfoButton.swift in Sources */,
 				75F12D071BE0A35900258874 /* CustomPhotoCell.swift in Sources */,
@@ -865,6 +864,7 @@
 				75F12CE91BE0A24100258874 /* Category.swift in Sources */,
 				753AEA561BFF8B490016B655 /* ContainerFilterViewController.swift in Sources */,
 				75F12D091BE0A35900258874 /* FlickLayout.swift in Sources */,
+				756848661C75DD1700D85E67 /* ImageParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

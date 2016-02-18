@@ -13,6 +13,7 @@ struct CustomNotifications {
     static let FilterDidChangeNotification = "FilterDidChange"
     static let FilterDidClearNotification = "FilterDidClear"
     static let DataModelDidChangeNotification = "DataModelDidChange"
+    static let NetworkDidChangeToReachableNotification = "NetworkDidChangeToReachable"
 }
 
 struct NumericConstants {

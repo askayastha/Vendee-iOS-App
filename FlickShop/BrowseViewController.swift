@@ -35,7 +35,12 @@ class BrowseViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "requestData", name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
         setupView()
+        requestData()
+    }
+    
+    func requestData() {
         requestDataFromShopStyleForCategory(productCategory)
     }
     
@@ -251,7 +256,7 @@ extension BrowseViewController {
         
         if search.lastItem - indexPath.item == 5 && search.lastItem < 1000 {
             print("New request")
-            requestDataFromShopStyleForCategory(productCategory)
+            requestData()
         }
         
         return cell

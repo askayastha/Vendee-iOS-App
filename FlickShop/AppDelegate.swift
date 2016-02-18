@@ -34,8 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
                 
             case .Reachable(_):
-                print("Network is reachable. Post reachability notification.")
                 TSMessage.showNotificationWithTitle("Network Reachable", subtitle: "Network is reachable. Post reachability notification.", type: .Success)
+                NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
                 
             default:
                 break

@@ -19,10 +19,6 @@ class FavoritesViewController: UICollectionViewController {
     var dataModel: DataModel!
     var search: Search!
     
-    struct BrowseViewCellIdentifiers {
-        static let customProductCell = "CustomPhotoCell"
-    }
-    
     deinit {
         print("Deallocating FavoritesViewController !!!!!!!!!!!!!!!")
         
@@ -36,6 +32,7 @@ class FavoritesViewController: UICollectionViewController {
         setupView()
         
         if dataModel.favoriteProducts.count > 0 {
+            print("Initial favorites data request.")
             populatePhotosFromIndex(productCount)
         }
     }

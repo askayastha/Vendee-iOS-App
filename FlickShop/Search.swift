@@ -178,6 +178,7 @@ class Search {
                         retryCount++
                         populatePhotoSizeForProduct(product)
                     } else {
+                        print("Retry failed. Moving on to completion.")
                         dispatch_async(dispatch_get_main_queue()) {
                             completion(false, lastIndex)
                         }

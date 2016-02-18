@@ -11,10 +11,14 @@ import Alamofire
 import AVFoundation
 import TSMessages
 
+struct BrowseViewCellIdentifiers {
+    static let customProductCell = "CustomPhotoCell"
+}
+
 class BrowseViewController: UICollectionViewController {
     
-    private var requestingData = false
-    private var productCount = 0
+    private(set) var requestingData = false
+    private(set) var productCount = 0
     
     var hideSpinner: (()->())?
     
@@ -24,10 +28,6 @@ class BrowseViewController: UICollectionViewController {
     var productCategory: String!
     var dataModel: DataModel!
     
-    struct BrowseViewCellIdentifiers {
-        static let customProductCell = "CustomPhotoCell"
-    }
-    
     deinit {
         print("Deallocating BrowseViewController !!!!!!!!!!!!!!!")
     }
@@ -35,12 +35,8 @@ class BrowseViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "requestData", name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "populateData", name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
         setupView()
-        requestData()
-    }
-    
-    func requestData() {
         requestDataFromShopStyleForCategory(productCategory)
     }
     
@@ -55,13 +51,10 @@ class BrowseViewController: UICollectionViewController {
         search.filteredSearch = true
         productCount = 0
         
-        // Scroll to top of the collection view
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
             layout.reset()
         }
         collectionView!.reloadData()
-        print("COLLECTION VIEW RELOADED")
-        
         requestDataFromShopStyleForCategory(productCategory)
     }
     
@@ -78,6 +71,8 @@ class BrowseViewController: UICollectionViewController {
             controller.hidesBottomBarWhenPushed = true
         }
     }
+    
+    // MARK: - Helper methods
     
     private func setupView() {
 //        spinner.translatesAutoresizingMaskIntoConstraints = false
@@ -106,53 +101,44 @@ class BrowseViewController: UICollectionViewController {
         }
     }
     
+    func populateData() {
+        populatePhotosFromIndex(productCount)
+    }
+    
+    private func populatePhotosFromIndex(index: Int) {
+        
+        search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, lastIndex in
+            guard let strongSelf = self else { return }
+            guard success else {
+                print("GUARDING SUCCESS")
+                strongSelf.hideSpinner?()
+                strongSelf.populatePhotosFromIndex(lastIndex)
+                return
+            }
+            strongSelf.productCount += NumericConstants.populateLimit
+            let fromIndex = lastIndex - NumericConstants.populateLimit
+            let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
+            
+            strongSelf.collectionView!.performBatchUpdates({
+                print("READY FOR INSERTS: \(lastIndex)")
+                strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                }, completion: { success in
+                    print("INSERTS SUCCESSFUL")
+                    if success && lastIndex != strongSelf.search.lastItem {
+                        strongSelf.hideSpinner?()
+                        strongSelf.populatePhotosFromIndex(lastIndex)
+                    } else {
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    }
+            })
+        }
+    }
+    
     private func requestDataFromShopStyleForCategory(category: String!) {
         if requestingData { return }
-        
-        func populatePhotosFromIndex(index: Int) {
-            
-            search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, lastIndex in
-                guard let strongSelf = self else { return }
-                guard success else {
-                    print("GUARDING SUCCESS")
-                    strongSelf.hideSpinner?()
-                    populatePhotosFromIndex(lastIndex)
-                    return
-                }
-                strongSelf.productCount += NumericConstants.populateLimit
-                let fromIndex = lastIndex - NumericConstants.populateLimit
-                let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
-                
-                strongSelf.collectionView!.performBatchUpdates({
-                    print("READY FOR INSERTS: \(lastIndex)")
-                    strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
-                    }, completion: { success in
-                        print("INSERTS SUCCESSFUL")
-                        if success && lastIndex != strongSelf.search.lastItem {
-                            strongSelf.hideSpinner?()
-                            populatePhotosFromIndex(lastIndex)
-                        } else {
-                            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                        }
-                })
-            }
-        }
-        
-        func showNoResultsError() {
-//            let alert = UIAlertController(title: nil, message: "No results found.", preferredStyle: .Alert)
-//            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-//            alert.addAction(OKAction)
-//            
-//            presentViewController(alert, animated: true, completion: nil)
-            
-            TSMessage.showNotificationWithTitle("No results found.", type: .Warning)
-        }
+        guard let category = category else { return }
         
         requestingData = true
-        guard let category = category else {
-            return
-        }
-        
         search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
             
             guard let strongSelf = self else { return }
@@ -177,9 +163,9 @@ class BrowseViewController: UICollectionViewController {
                 strongSelf.requestingData = false
                 
                 if lastItem > 0 {
-                    populatePhotosFromIndex(strongSelf.productCount)
+                    strongSelf.populatePhotosFromIndex(strongSelf.productCount)
                 } else {
-                    showNoResultsError()
+                    TSMessage.showNotificationWithTitle("No results found.", type: .Warning)
                 }
     
                 // Algorithm 2
@@ -256,7 +242,7 @@ extension BrowseViewController {
         
         if search.lastItem - indexPath.item == 5 && search.lastItem < 1000 {
             print("New request")
-            requestData()
+            requestDataFromShopStyleForCategory(productCategory)
         }
         
         return cell

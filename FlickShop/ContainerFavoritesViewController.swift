@@ -49,14 +49,6 @@ class ContainerFavoritesViewController: UIViewController {
         }
     }
     
-    func showNoFavoritesAlert() {
-        let alert = UIAlertController(title: nil, message: "You haven't found a favorite yet!", preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alert.addAction(OKAction)
-        
-        presentViewController(alert, animated: true, completion: nil)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -69,7 +61,6 @@ class ContainerFavoritesViewController: UIViewController {
         
         if segue.identifier == "EmbedBrowseFavorites" {
             favoritesViewController = segue.destinationViewController as? FavoritesViewController
-            print("HELLO I AM HERE")
             favoritesViewController?.dataModel = dataModel
             favoritesViewController?.search = Search(products: dataModel.favoriteProducts)
             favoritesViewController?.hideSpinner = {

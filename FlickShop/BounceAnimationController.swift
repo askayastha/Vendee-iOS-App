@@ -1,6 +1,6 @@
 //
 //  BounceAnimationController.swift
-//  FlickShop
+//  Vendee
 //
 //  Created by Ashish Kayastha on 1/27/16.
 //  Copyright © 2016 Ashish Kayastha. All rights reserved.

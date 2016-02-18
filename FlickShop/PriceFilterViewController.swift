@@ -1,6 +1,6 @@
 //
 //  PriceViewController.swift
-//  FlickShop
+//  Vendee
 //
 //  Created by Ashish Kayastha on 11/25/15.
 //  Copyright © 2015 Ashish Kayastha. All rights reserved.

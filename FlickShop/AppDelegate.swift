@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AmazonProduct
+//  Vendee
 //
 //  Created by Ashish Kayastha on 8/23/15.
 //  Copyright (c) 2015 Ashish Kayastha. All rights reserved.

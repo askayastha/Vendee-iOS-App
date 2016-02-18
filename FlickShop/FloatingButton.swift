@@ -1,6 +1,6 @@
 //
 //  BackButton.swift
-//  FlickShop
+//  Vendee
 //
 //  Created by Ashish Kayastha on 12/4/15.
 //  Copyright © 2015 Ashish Kayastha. All rights reserved.

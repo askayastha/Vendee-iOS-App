@@ -1,6 +1,6 @@
 //
 //  Alamofire+CustomRequests.swift
-//  FlickShop
+//  Vendee
 //
 //  Created by Ashish Kayastha on 10/28/15.
 //  Copyright © 2015 Ashish Kayastha. All rights reserved.

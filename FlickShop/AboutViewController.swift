@@ -1,6 +1,6 @@
 //
 //  AboutViewController.swift
-//  FlickShop
+//  Vendee
 //
 //  Created by Ashish Kayastha on 2/13/16.
 //  Copyright © 2016 Ashish Kayastha. All rights reserved.

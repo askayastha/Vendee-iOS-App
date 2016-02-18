@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import TSMessages
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,12 +17,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let filter = Filter()
     let dataModel = DataModel()
+    let manager = NetworkReachabilityManager(host: "api.shopstyle.com")
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window!.layer.cornerRadius = 5.0
         window!.layer.masksToBounds = true
+        TSMessage.setDelegate(self)
         customizeNavBar()
         customizeTabBar()
+        
+        manager?.listener = { status in
+            print("Network Status Changed: \(status)")
+            
+            switch status {
+            case .NotReachable:
+                TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
+                
+            case .Reachable(_):
+                print("Network is reachable. Post reachability notification.")
+                TSMessage.showNotificationWithTitle("Network Reachable", subtitle: "Network is reachable. Post reachability notification.", type: .Success)
+                
+            default:
+                break
+            }
+        }
+        manager?.startListening()
         
         return true
     }
@@ -53,11 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let productURL = userActivity.webpageURL!
             
             if !presentURL(productURL) {
-                let alert = UIAlertController(title: "Error", message: "Product not found.", preferredStyle: .Alert)
-                let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alert.addAction(okAction)
-                
-                viewControllerForShowingAlert().presentViewController(alert, animated: true, completion: nil)
+                TSMessage.showNotificationWithTitle("Error", subtitle: "Something wrong .", type: .Warning)
             }
         }
         
@@ -104,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func requestDataForProductId(productId: String, forSearch search: Search) {
         
-        search.parseShopStyleForProductId(productId) { success, _ in
+        search.parseShopStyleForProductId(productId) { success, description, _ in
             if !success {
                 if search.retryCount < NumericConstants.retryLimit {
                     print("Request Failed. Trying again...")
@@ -115,6 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 } else {
                     search.resetRetryCount()
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                 }
                 
             } else {
@@ -126,12 +144,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     controller.search = search
                     controller.brands = Brand.allBrands()
                     controller.dataModel = self.dataModel
-                    let navigationController = self.window!.rootViewController as! UINavigationController
+                    controller.hidesBottomBarWhenPushed = true
+                    let tabBarController = self.window!.rootViewController as! UITabBarController
                     
-                    if navigationController.topViewController is ContainerFlickViewController {
-                        navigationController.popToRootViewControllerAnimated(true)
+                    if let tabBarControllers = tabBarController.viewControllers, let navigationController = tabBarControllers[0] as? UINavigationController {
+                        
+                        if navigationController.topViewController is ContainerFlickViewController {
+                            navigationController.popToRootViewControllerAnimated(true)
+                        }
+                        navigationController.pushViewController(controller, animated: true)
                     }
-                    navigationController.pushViewController(controller, animated: true)
                 }
             }
         }
@@ -183,3 +205,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: TSMessageViewProtocol {
+    
+    func customizeMessageView(messageView: TSMessageView!) {
+        messageView.alpha = 0.8
+    }
+}

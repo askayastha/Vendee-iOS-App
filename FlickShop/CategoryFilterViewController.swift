@@ -203,40 +203,45 @@ class CategoryFilterViewController: UITableViewController {
         if let productCategory = productCategory {
             let categoryId = productCategory.componentsSeparatedByString(":").last!
             
-            categorySearch.parseShopStyleForCategory(categoryId) { [weak self] success, lastItem in
-                if let strongSelf = self {
-                    if !success {
-                        print("Products Count: \(lastItem)")
-                        
-                        print("Request Failed. Trying again...")
+            categorySearch.parseShopStyleForCategory(categoryId) { [weak self] success, description, lastItem in
+                guard let strongSelf = self else { return }
+                
+                if !success {
+                    if strongSelf.categorySearch.retryCount < NumericConstants.retryLimit {
                         strongSelf.requestingData = false
                         strongSelf.requestCategoryFromShopStyle()
-                        
+                        strongSelf.categorySearch.incrementRetryCount()
+                        print("Request Failed. Trying again...")
+                        print("Request Count: \(strongSelf.categorySearch.retryCount)")
                     } else {
-                        strongSelf.requestingData = false
-                        print("Product count: \(lastItem)")
-                        
-                        let rootCategory = strongSelf.categorySearch.categories.objectAtIndex(0) as! CategoryInfo
-                        strongSelf.tappedCategories.append(rootCategory.shortName!)
-                        
-                        for item in strongSelf.categorySearch.categories {
-                            let category = item as! CategoryInfo
-                            
-                            if category.id == categoryId || category.parentId == categoryId {
-                                strongSelf.displayCategories.append(category.shortName!)
-                            }
-                            
-                            // Make of dictionary of [Category: CategoryID]
-                            strongSelf.categoriesIdDict[category.shortName!] = category.id!
-                        }
-                        // Save for filter stuff
-                        strongSelf.appDelegate.filter.category["categorySearch"] = strongSelf.categorySearch
-                        strongSelf.appDelegate.filter.category["displayCategories"] = strongSelf.displayCategories
-                        strongSelf.appDelegate.filter.category["tappedCategories"] = strongSelf.tappedCategories
-                        strongSelf.appDelegate.filter.category["categoriesIdDict"] = strongSelf.categoriesIdDict
-                        
-                        strongSelf.tableView.reloadData()
+                        strongSelf.categorySearch.resetRetryCount()
+                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     }
+                    
+                } else {
+                    strongSelf.requestingData = false
+                    print("Product count: \(lastItem)")
+                    
+                    let rootCategory = strongSelf.categorySearch.categories.objectAtIndex(0) as! CategoryInfo
+                    strongSelf.tappedCategories.append(rootCategory.shortName!)
+                    
+                    for item in strongSelf.categorySearch.categories {
+                        let category = item as! CategoryInfo
+                        
+                        if category.id == categoryId || category.parentId == categoryId {
+                            strongSelf.displayCategories.append(category.shortName!)
+                        }
+                        
+                        // Make of dictionary of [Category: CategoryID]
+                        strongSelf.categoriesIdDict[category.shortName!] = category.id!
+                    }
+                    // Save for filter stuff
+                    strongSelf.appDelegate.filter.category["categorySearch"] = strongSelf.categorySearch
+                    strongSelf.appDelegate.filter.category["displayCategories"] = strongSelf.displayCategories
+                    strongSelf.appDelegate.filter.category["tappedCategories"] = strongSelf.tappedCategories
+                    strongSelf.appDelegate.filter.category["categoriesIdDict"] = strongSelf.categoriesIdDict
+                    
+                    strongSelf.tableView.reloadData()
                 }
             }
         }

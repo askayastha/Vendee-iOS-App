@@ -11,6 +11,7 @@ import Alamofire
 import MBProgressHUD
 import SafariServices
 import AVFoundation
+import TSMessages
 
 //struct FlickViewConstants {
 //    static var width = UIScreen.mainScreen().bounds.width
@@ -143,25 +144,29 @@ class FlickViewController: UICollectionViewController {
         }
         
         requestingData = true
-        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, lastItem in
+        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
             
             guard let strongSelf = self else { return }
             print("Products count: \(lastItem)")
             if !success {
                 if strongSelf.search.retryCount < NumericConstants.retryLimit {
-                    print("Request Failed. Trying again...")
+                    strongSelf.requestingData = false
                     strongSelf.requestDataFromShopStyleForCategory(category)
-                    print("Request Count: \(strongSelf.search.retryCount)")
                     strongSelf.search.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.search.retryCount)")
                     
                 } else {
+                    strongSelf.requestingData = false
                     strongSelf.search.resetRetryCount()
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
                     strongSelf.loadingHUDPresent = false
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                 }
                 
             } else {
+                strongSelf.requestingData = false
                 strongSelf.collectionView!.reloadData()
                 MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
                 strongSelf.loadingHUDPresent = false
@@ -324,4 +329,11 @@ extension FlickViewController: UIViewControllerTransitioningDelegate {
 //        transition.presenting = false
 //        return transition
 //    }
+}
+
+extension FlickViewController: TSMessageViewProtocol {
+    
+    func customizeMessageView(messageView: TSMessageView!) {
+        messageView.alpha = 0.8
+    }
 }

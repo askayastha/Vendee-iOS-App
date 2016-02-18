@@ -13,15 +13,39 @@ import SwiftyJSON
 class CategorySearch {
     
     enum State {
-        case NotSearchedYet
+        case Idle
         case Loading
         case Success
         case Failed
     }
     
-    private(set) var state: State = .NotSearchedYet
+    private(set) var state: State = .Idle
     private(set) var categories = NSMutableOrderedSet()
-    private(set) var lastItem = 0
+    private(set) var retryCount = 0
+    
+    var lastItem: Int {
+        return categories.count
+    }
+    
+    deinit {
+        print("CATEGORY SEARCH DEALLOCATING !!!!!")
+    }
+    
+    init(categories: NSMutableOrderedSet) {
+        self.categories = categories
+    }
+    
+    init() {
+        categories = NSMutableOrderedSet()
+    }
+    
+    func incrementRetryCount() {
+        retryCount++
+    }
+    
+    func resetRetryCount() {
+        retryCount = 0
+    }
     
     func parseShopStyleForCategory(category: String, completion: SearchComplete) {
         if state == .Loading { // Do not request more data if a request is in process.
@@ -69,7 +93,6 @@ class CategorySearch {
                             
                             self.categories.addObject(categoryInfo)
                         }
-                        self.lastItem = self.categories.count
                     }
                     
                     success = true
@@ -77,13 +100,13 @@ class CategorySearch {
                     print("Request successful")
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        completion(success, self.lastItem)
+                        completion(success, response.result.description, self.lastItem)
                     }
                 }
                 
             } else {
                 self.state = .Failed
-                completion(success, self.lastItem)
+                completion(success, response.result.error!.localizedDescription, self.lastItem)
             }
         }
     }

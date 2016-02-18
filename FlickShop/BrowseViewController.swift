@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AVFoundation
+import TSMessages
 
 class BrowseViewController: UICollectionViewController {
     
@@ -107,6 +108,12 @@ class BrowseViewController: UICollectionViewController {
             
             search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, lastIndex in
                 guard let strongSelf = self else { return }
+                guard success else {
+                    print("GUARDING SUCCESS")
+                    strongSelf.hideSpinner?()
+                    populatePhotosFromIndex(lastIndex)
+                    return
+                }
                 strongSelf.productCount += NumericConstants.populateLimit
                 let fromIndex = lastIndex - NumericConstants.populateLimit
                 let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
@@ -127,16 +134,18 @@ class BrowseViewController: UICollectionViewController {
         }
         
         func showNoResultsError() {
-            let alert = UIAlertController(title: nil, message: "No results found.", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-            alert.addAction(OKAction)
+//            let alert = UIAlertController(title: nil, message: "No results found.", preferredStyle: .Alert)
+//            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+//            alert.addAction(OKAction)
+//            
+//            presentViewController(alert, animated: true, completion: nil)
             
-            presentViewController(alert, animated: true, completion: nil)
+            TSMessage.showNotificationWithTitle("No results found.", type: .Warning)
         }
         
         requestingData = true
         if let category = category {
-            search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, lastItem in
+            search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
                 
                 guard let strongSelf = self else { return }
                 print("Products count: \(lastItem)")
@@ -149,9 +158,11 @@ class BrowseViewController: UICollectionViewController {
                         print("Request Count: \(strongSelf.search.retryCount)")
                         
                     } else {
+                        strongSelf.requestingData = false
                         strongSelf.search.resetRetryCount()
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                         strongSelf.hideSpinner?()
+                        TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                     }
                     
                 } else {
@@ -296,5 +307,12 @@ extension BrowseViewController: UIGestureRecognizerDelegate {
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+}
+
+extension BrowseViewController: TSMessageViewProtocol {
+    
+    func customizeMessageView(messageView: TSMessageView!) {
+        messageView.alpha = 0.8
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AVFoundation
+import TSMessages
 
 class ProductDetailsViewController: UITableViewController {
     
@@ -139,7 +140,7 @@ class ProductDetailsViewController: UITableViewController {
         requestingData = true
         
         if let category = category {
-            search.parseShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, lastItem in
+            search.parseShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, description, lastItem in
                 
                 guard let strongSelf = self else { return }
                 
@@ -150,6 +151,7 @@ class ProductDetailsViewController: UITableViewController {
                         strongSelf.search.incrementRetryCount()
                         print("Request Failed. Trying again...")
                         print("Request Count: \(strongSelf.search.retryCount)")
+                        TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                         
                     } else {
                         strongSelf.requestingData = false
@@ -272,5 +274,12 @@ extension ProductDetailsViewController {
     
     override func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         delegate?.didEndDecelerating()
+    }
+}
+
+extension ProductDetailsViewController: TSMessageViewProtocol {
+    
+    func customizeMessageView(messageView: TSMessageView!) {
+        messageView.alpha = 0.8
     }
 }

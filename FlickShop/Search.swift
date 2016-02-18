@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-typealias SearchComplete = (Bool, Int) -> Void
+typealias SearchComplete = (Bool, String, Int) -> Void
 
 class Search {
     
@@ -82,12 +82,12 @@ class Search {
                     print("Request successful")
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        completion(success, self.lastItem)
+                        completion(success, response.result.description, self.lastItem)
                     }
                 }
             } else {
                 self.state = .Failed
-                completion(success, self.lastItem)
+                completion(success, response.result.error!.localizedDescription, self.lastItem)
             }
         }
     }
@@ -128,12 +128,12 @@ class Search {
                         print("Request successful")
                         
                         dispatch_async(dispatch_get_main_queue()) {
-                            completion(success, self.lastItem)
+                            completion(success, response.result.description, self.lastItem)
                         }
                     }
                 } else {
                     self.state = .Failed
-                    completion(success, self.lastItem)
+                    completion(success, response.result.error!.localizedDescription, self.lastItem)
                 }
             }
             
@@ -150,12 +150,12 @@ class Search {
                         print("Request successful")
                         
                         dispatch_async(dispatch_get_main_queue()) {
-                            completion(success, self.lastItem)
+                            completion(success, response.result.description, self.lastItem)
                         }
                     }
                 } else {
                     self.state = .Failed
-                    completion(success, self.lastItem)
+                    completion(success, response.result.error!.localizedDescription, self.lastItem)
                 }
             }
         }
@@ -164,6 +164,7 @@ class Search {
     func populatePhotoSizesFromIndex(index: Int, withLimit limit: Int, completion: (Bool, Int) -> ()) {
         var success = false
         var count = 0
+        var retryCount = 0
         let lastIndex = index + limit
         
         func populatePhotoSizeForProduct(product: Product) {
@@ -171,7 +172,16 @@ class Search {
                 
                 if let unwrappedError = error {
                     print(unwrappedError.code)
-                    populatePhotoSizeForProduct(product)
+                    
+                    if retryCount < 1 {
+                        print("Retry getting small image size.")
+                        retryCount++
+                        populatePhotoSizeForProduct(product)
+                    } else {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            completion(false, lastIndex)
+                        }
+                    }
                     
                 } else {
                     let imageSize = CGSize(width: size.width, height: size.height)
@@ -190,7 +200,7 @@ class Search {
         }
         
         for var i = index; i < lastIndex; i++ {
-            guard products.count > 0 else { break }
+            guard i < products.count else { break }
             
             let product = products.objectAtIndex(i) as! Product
             if let _ = product.smallImageSize {

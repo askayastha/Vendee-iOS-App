@@ -67,7 +67,6 @@ class Search {
     
     func parseShopStyleForProductId(productId: String, completion: SearchComplete) {
         if state == .Loading { return }     // Do not request more data if a request is in process.
-        var success = false
         
         dataRequest = Alamofire.request(ShopStyle.Router.Product(productId)).validate().responseJSON() { response in
             if response.result.isSuccess {
@@ -76,18 +75,17 @@ class Search {
                     
                     let jsonData = JSON(response.result.value!)
                     self.products.addObject(Product(data: jsonData))
-                    
-                    success = true
                     self.state = .Success
                     print("Request successful")
                     
                     dispatch_async(dispatch_get_main_queue()) {
-                        completion(success, response.result.description, self.lastItem)
+                        completion(true, response.result.description, self.lastItem)
                     }
                 }
+                
             } else {
                 self.state = .Failed
-                completion(success, response.result.error!.localizedDescription, self.lastItem)
+                completion(false, response.result.error!.localizedDescription, self.lastItem)
             }
         }
     }
@@ -98,7 +96,6 @@ class Search {
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading
-        var success = false
         
         if filteredSearch {
             // Get category code for filter
@@ -123,17 +120,16 @@ class Search {
                         
                         let jsonData = JSON(response.result.value!)
                         self.populateProducts(jsonData)
-                        success = true
                         self.state = .Success
                         print("Request successful")
                         
                         dispatch_async(dispatch_get_main_queue()) {
-                            completion(success, response.result.description, self.lastItem)
+                            completion(true, response.result.description, self.lastItem)
                         }
                     }
                 } else {
                     self.state = .Failed
-                    completion(success, response.result.error!.localizedDescription, self.lastItem)
+                    completion(false, response.result.error!.localizedDescription, self.lastItem)
                 }
             }
             
@@ -145,24 +141,22 @@ class Search {
                         print("----------Got results!----------")
                         
                         self.populateProducts(JSON(response.result.value!))
-                        success = true
                         self.state = .Success
                         print("Request successful")
                         
                         dispatch_async(dispatch_get_main_queue()) {
-                            completion(success, response.result.description, self.lastItem)
+                            completion(true, response.result.description, self.lastItem)
                         }
                     }
                 } else {
                     self.state = .Failed
-                    completion(success, response.result.error!.localizedDescription, self.lastItem)
+                    completion(false, response.result.error!.localizedDescription, self.lastItem)
                 }
             }
         }
     }
     
     func populatePhotoSizesFromIndex(index: Int, withLimit limit: Int, completion: (Bool, Int) -> ()) {
-        var success = false
         var count = 0
         var retryCount = 0
         let lastIndex = index + limit
@@ -190,10 +184,9 @@ class Search {
                     print("\(index + count)*****\(imageSize)")
                     count++
                     
-                    success = true
                     if count == limit && !self.cancelled {
                         dispatch_async(dispatch_get_main_queue()) {
-                            completion(success, lastIndex)
+                            completion(true, lastIndex)
                         }
                     }
                 }
@@ -206,10 +199,9 @@ class Search {
             let product = products.objectAtIndex(i) as! Product
             if let _ = product.smallImageSize {
                 count++
-                success = true
                 if count == limit && !self.cancelled {
                     dispatch_async(dispatch_get_main_queue()) {
-                        completion(success, lastIndex)
+                        completion(true, lastIndex)
                     }
                 }
             } else {

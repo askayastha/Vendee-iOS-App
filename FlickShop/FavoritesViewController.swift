@@ -8,11 +8,13 @@
 
 import UIKit
 import AVFoundation
+import TSMessages
 
 class FavoritesViewController: UICollectionViewController {
     
     private(set) var productCount = 0
-    private(set) var dataModelChanged: Bool = false
+    private(set) var dataModelChanged = false
+    private(set) var populatingData = false
     
     var hideSpinner: (()->())?
     var brands = Brand.allBrands()
@@ -23,18 +25,17 @@ class FavoritesViewController: UICollectionViewController {
         print("Deallocating FavoritesViewController !!!!!!!!!!!!!!!")
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.DataModelDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataModel", name: CustomNotifications.DataModelDidChangeNotification, object: nil)
-        setupView()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataModel", name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
         
-        if dataModel.favoriteProducts.count > 0 {
-            print("Initial favorites data request.")
-            populatePhotosFromIndex(productCount)
-        }
+        setupView()
+        populateData()  ; print("Initial favorites data request.")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -51,10 +52,18 @@ class FavoritesViewController: UICollectionViewController {
                 layout.reset()
             }
             collectionView!.reloadData()
-            
-            if dataModel.favoriteProducts.count > 0 {
-                populatePhotosFromIndex(productCount)
-            }
+            populateData()
+        }
+    }
+    
+    func populateData() {
+        if dataModel.favoriteProducts.count > 0 && appDelegate.networkManager!.isReachable {
+            if populatingData { return }
+            populatingData = true
+            populatePhotosFromIndex(productCount)
+        } else {
+            hideSpinner?()
+            TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
         }
     }
     
@@ -86,6 +95,12 @@ class FavoritesViewController: UICollectionViewController {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         search.populatePhotoSizesFromIndex(index, withLimit: populateLimit) { [weak self] success, lastIndex in
             guard let strongSelf = self else { return }
+            guard success else {
+                print("GUARDING SUCCESS")
+                strongSelf.hideSpinner?()
+                strongSelf.populatePhotosFromIndex(lastIndex)
+                return
+            }
             strongSelf.productCount += populateLimit
             let fromIndex = lastIndex - populateLimit
             let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
@@ -101,6 +116,7 @@ class FavoritesViewController: UICollectionViewController {
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     }
                     strongSelf.hideSpinner?()
+                    strongSelf.populatingData = false
             })
         }
     }

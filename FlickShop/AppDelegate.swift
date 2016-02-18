@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let filter = Filter()
     let dataModel = DataModel()
-    let manager = NetworkReachabilityManager(host: "api.shopstyle.com")
+    let networkManager = NetworkReachabilityManager(host: "api.shopstyle.com")
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window!.layer.cornerRadius = 5.0
@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeNavBar()
         customizeTabBar()
         
-        manager?.listener = { status in
+        networkManager?.listener = { status in
             print("Network Status Changed: \(status)")
             
             switch status {
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 break
             }
         }
-        manager?.startListening()
+        networkManager?.startListening()
         
         return true
     }

@@ -30,6 +30,8 @@ class BrowseViewController: UICollectionViewController {
     
     deinit {
         print("Deallocating BrowseViewController !!!!!!!!!!!!!!!")
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
     }
     
     override func viewDidLoad() {

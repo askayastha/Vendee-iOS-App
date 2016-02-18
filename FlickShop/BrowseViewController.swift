@@ -144,37 +144,40 @@ class BrowseViewController: UICollectionViewController {
         }
         
         requestingData = true
-        if let category = category {
-            search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
-                
-                guard let strongSelf = self else { return }
-                print("Products count: \(lastItem)")
-                if !success {
-                    if strongSelf.search.retryCount < NumericConstants.retryLimit {
-                        strongSelf.requestingData = false
-                        strongSelf.requestDataFromShopStyleForCategory(category)
-                        strongSelf.search.incrementRetryCount()
-                        print("Request Failed. Trying again...")
-                        print("Request Count: \(strongSelf.search.retryCount)")
-                        
-                    } else {
-                        strongSelf.requestingData = false
-                        strongSelf.search.resetRetryCount()
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                        strongSelf.hideSpinner?()
-                        TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
-                    }
+        guard let category = category else {
+            return
+        }
+        
+        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
+            
+            guard let strongSelf = self else { return }
+            print("Products count: \(lastItem)")
+            if !success {
+                if strongSelf.search.retryCount < NumericConstants.retryLimit {
+                    strongSelf.requestingData = false
+                    strongSelf.requestDataFromShopStyleForCategory(category)
+                    strongSelf.search.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.search.retryCount)")
                     
                 } else {
                     strongSelf.requestingData = false
-                    
-                    if lastItem > 0 {
-                        populatePhotosFromIndex(strongSelf.productCount)
-                    } else {
-                        showNoResultsError()
-                    }
-        
-                    // Algorithm 2
+                    strongSelf.search.resetRetryCount()
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    strongSelf.hideSpinner?()
+                    TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
+                }
+                
+            } else {
+                strongSelf.requestingData = false
+                
+                if lastItem > 0 {
+                    populatePhotosFromIndex(strongSelf.productCount)
+                } else {
+                    showNoResultsError()
+                }
+    
+                // Algorithm 2
 //                    for var i = lastItem - limit; i < lastItem; i++ {
 //                        let indexPath = NSIndexPath(forItem: i, inSection: 0)
 //
@@ -194,8 +197,7 @@ class BrowseViewController: UICollectionViewController {
 //                            }
 //                        }
 //                    }
-        
-                }
+    
             }
         }
     }

@@ -71,7 +71,9 @@ class PhotoScout {
             if let _ = product.smallImageSize {
                 count++
                 if count == limit && !self.cancelled {
-                    completion(true, lastIndex)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(true, lastIndex)
+                    }
                 }
             } else {
                 populatePhotoSizeForProduct(product)

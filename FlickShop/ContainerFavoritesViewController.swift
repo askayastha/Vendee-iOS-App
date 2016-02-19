@@ -59,10 +59,12 @@ class ContainerFavoritesViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "EmbedBrowseFavorites" {
+            let favoriteProductsCopy = dataModel.favoriteProducts.mutableCopy() as! NSMutableOrderedSet
+            
             let favoritesViewController = segue.destinationViewController as? FavoritesViewController
             favoritesViewController?.dataModel = dataModel
-            favoritesViewController?.search = Search(products: dataModel.favoriteProducts)
-            favoritesViewController?.scout = PhotoScout(products: dataModel.favoriteProducts)
+            favoritesViewController?.search = Search(products: favoriteProductsCopy)
+            favoritesViewController?.scout = PhotoScout(products: favoriteProductsCopy)
             favoritesViewController?.hideSpinner = { [unowned self] in
                 if self.spinner.isAnimating() {
                     self.spinner.stopAnimating()

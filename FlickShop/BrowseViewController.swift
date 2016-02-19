@@ -50,6 +50,15 @@ class BrowseViewController: UICollectionViewController {
         requestDataFromShopStyleForCategory(productCategory)
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        print("BrowseViewControllerWillAppear")
+        
+        if !requestingData {
+            populateData()
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -116,7 +125,15 @@ class BrowseViewController: UICollectionViewController {
     }
     
     func populateData() {
-        populatePhotosFromIndex(productCount)
+        print("Browse PopulateData Count: \(productCount)")
+        if dataModel.favoriteProducts.count > 0 && appDelegate.networkManager!.isReachable {
+            populatePhotosFromIndex(productCount)
+        } else if !appDelegate.networkManager!.isReachable {
+            hideSpinner?()
+            TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
+        } else {
+            hideSpinner?()
+        }
     }
     
     private func populatePhotosFromIndex(index: Int) {

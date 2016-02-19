@@ -43,12 +43,14 @@ class FavoritesViewController: UICollectionViewController {
         print("FavoritesViewControllerWillAppear")
         
         if dataModelChanged {
+            print("DATA MODEL CHANGED")
             dataModelChanged = false
             populatingData = false
             productCount = 0
-            search.resetSearch()
-            search = Search(products: dataModel.favoriteProducts)
-            scout = PhotoScout(products: search.products)
+            
+            let favoriteProductsCopy = dataModel.favoriteProducts.mutableCopy() as! NSMutableOrderedSet
+            search = Search(products: favoriteProductsCopy)
+            scout = PhotoScout(products: favoriteProductsCopy)
             
             // Reset content size of the collection view
             if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
@@ -60,12 +62,14 @@ class FavoritesViewController: UICollectionViewController {
     }
     
     func populateData() {
-        print("PopulateData Count: \(dataModel.favoriteProducts.count)")
-        if dataModel.favoriteProducts.count > 0 && appDelegate.networkManager!.isReachable {
+        print("PopulateData Count: \(search.products.count)")
+        if search.products.count > 0 && appDelegate.networkManager!.isReachable {
             populatePhotosFromIndex(productCount)
+            
         } else if !appDelegate.networkManager!.isReachable {
             hideSpinner?()
             TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
+            
         } else {
             hideSpinner?()
         }
@@ -112,7 +116,7 @@ class FavoritesViewController: UICollectionViewController {
             strongSelf.productCount += populateLimit
             let fromIndex = lastIndex - populateLimit
             let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
-            
+            print(NSThread.currentThread().description)
             strongSelf.collectionView!.performBatchUpdates({
                 print("READY FOR INSERTS: \(lastIndex)")
                 strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)

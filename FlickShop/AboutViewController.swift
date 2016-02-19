@@ -20,7 +20,8 @@ class AboutViewController: UIViewController {
         "MBProgressHUD by Matej Bukovinski",
         "SwiftyJSON by Ruoyu Fu",
         "PINRemoteImage by Pinterest, Inc.",
-        "NMRangeSlider by Null Monkey Pty. Ltd."
+        "NMRangeSlider by Null Monkey Pty. Ltd.",
+        "TSMessages by  Felix Krause"
     ]
 
     override func viewDidLoad() {

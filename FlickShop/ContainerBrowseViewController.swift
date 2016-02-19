@@ -12,7 +12,6 @@ class ContainerBrowseViewController: UIViewController {
     
     var productCategory: String!
     var didScrollCount: Int = 0
-    var browseViewController: BrowseViewController?
     var buttonsHidden = false
     var dataModel: DataModel!
     
@@ -59,6 +58,7 @@ class ContainerBrowseViewController: UIViewController {
     
     @IBAction func backButtonTapped(sender: UIButton) {
         navigationController?.popViewControllerAnimated(true)
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
     
     // MARK: - Navigation
@@ -67,12 +67,12 @@ class ContainerBrowseViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "EmbedBrowseCategory" {
-            browseViewController = segue.destinationViewController as? BrowseViewController
+            let browseViewController = segue.destinationViewController as? BrowseViewController
             
             browseViewController?.delegate = self
             browseViewController?.productCategory = productCategory
             browseViewController?.dataModel = dataModel
-            browseViewController?.hideSpinner = {
+            browseViewController?.hideSpinner = { [unowned self] in
                 if self.spinner.isAnimating() {
                     self.spinner.stopAnimating()
                 }

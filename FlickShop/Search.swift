@@ -32,10 +32,7 @@ class Search {
     }
     
     var filteredSearch = false
-    var cancelled = false
-    
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-    let scout = ImageScout()
     
     deinit {
         print("SEARCH DEALLOCATING !!!!!")
@@ -52,7 +49,6 @@ class Search {
     func resetSearch() {
         dataRequest?.cancel()
         state = .Idle
-        cancelled = true
         products.removeAllObjects()
         retryCount = 0
     }
@@ -152,60 +148,6 @@ class Search {
                     self.state = .Failed
                     completion(false, response.result.error!.localizedDescription, self.lastItem)
                 }
-            }
-        }
-    }
-    
-    func populatePhotoSizesFromIndex(index: Int, withLimit limit: Int, completion: (Bool, Int) -> ()) {
-        var count = 0
-        var retryCount = 0
-        let lastIndex = index + limit
-        
-        func populatePhotoSizeForProduct(product: Product) {
-            scout.scoutImageWithURI(product.smallImageURLs!.first!) { error, size, type in
-                
-                if let unwrappedError = error {
-                    print(unwrappedError.code)
-                    
-                    if retryCount < 1 {
-                        print("Retry getting small image size.")
-                        retryCount++
-                        populatePhotoSizeForProduct(product)
-                    } else {
-                        print("Retry failed. Moving on to completion.")
-                        dispatch_async(dispatch_get_main_queue()) {
-                            completion(false, lastIndex)
-                        }
-                    }
-                    
-                } else {
-                    let imageSize = CGSize(width: size.width, height: size.height)
-                    product.smallImageSize = imageSize
-                    print("\(index + count)*****\(imageSize)")
-                    count++
-                    
-                    if count == limit && !self.cancelled {
-                        dispatch_async(dispatch_get_main_queue()) {
-                            completion(true, lastIndex)
-                        }
-                    }
-                }
-            }
-        }
-        
-        for var i = index; i < lastIndex; i++ {
-            guard i < products.count else { break }
-            
-            let product = products.objectAtIndex(i) as! Product
-            if let _ = product.smallImageSize {
-                count++
-                if count == limit && !self.cancelled {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        completion(true, lastIndex)
-                    }
-                }
-            } else {
-                populatePhotoSizeForProduct(product)
             }
         }
     }

@@ -18,12 +18,14 @@ struct BrowseViewCellIdentifiers {
 class BrowseViewController: UICollectionViewController {
     
     private(set) var requestingData = false
+    private(set) var populatingData = false
     private(set) var productCount = 0
     
     var hideSpinner: (()->())?
     
     weak var delegate: SwipeDelegate?
     var search = Search()
+    var scout: PhotoScout
     var brands = Brand.allBrands()
     var productCategory: String!
     var dataModel: DataModel!
@@ -32,6 +34,12 @@ class BrowseViewController: UICollectionViewController {
         print("Deallocating BrowseViewController !!!!!!!!!!!!!!!")
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        search = Search()
+        scout = PhotoScout(products: search.products)
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
@@ -49,10 +57,14 @@ class BrowseViewController: UICollectionViewController {
     
     @IBAction func unwindFilterApply(segue: UIStoryboardSegue) {
         search.resetSearch()
-        search = Search()
         search.filteredSearch = true
         productCount = 0
         
+        scout.cancelled = true
+        populatingData = false
+        scout = PhotoScout(products: search.products)
+        
+        // Reset content size of the collection view
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
             layout.reset()
         }
@@ -108,12 +120,17 @@ class BrowseViewController: UICollectionViewController {
     }
     
     private func populatePhotosFromIndex(index: Int) {
+        if populatingData { return }
         
-        search.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, lastIndex in
+        print("populatePhotosFromIndex")
+        populatingData = true
+        
+        scout.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, lastIndex in
             guard let strongSelf = self else { return }
             guard success else {
                 print("GUARDING SUCCESS")
                 strongSelf.hideSpinner?()
+                strongSelf.populatingData = false
                 strongSelf.populatePhotosFromIndex(lastIndex)
                 return
             }
@@ -125,13 +142,16 @@ class BrowseViewController: UICollectionViewController {
                 print("READY FOR INSERTS: \(lastIndex)")
                 strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
                 }, completion: { success in
-                    print("INSERTS SUCCESSFUL")
+                    strongSelf.populatingData = false
+                    strongSelf.hideSpinner?()
+                    
                     if success && lastIndex != strongSelf.search.lastItem {
-                        strongSelf.hideSpinner?()
                         strongSelf.populatePhotosFromIndex(lastIndex)
                     } else {
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     }
+                    print("INSERTS SUCCESSFUL")
+                    
             })
         }
     }

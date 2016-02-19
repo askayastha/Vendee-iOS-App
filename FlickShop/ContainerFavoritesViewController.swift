@@ -63,7 +63,8 @@ class ContainerFavoritesViewController: UIViewController {
             favoritesViewController = segue.destinationViewController as? FavoritesViewController
             favoritesViewController?.dataModel = dataModel
             favoritesViewController?.search = Search(products: dataModel.favoriteProducts)
-            favoritesViewController?.hideSpinner = {
+            favoritesViewController?.scout = PhotoScout(products: dataModel.favoriteProducts)
+            favoritesViewController?.hideSpinner = { [unowned self] in
                 if self.spinner.isAnimating() {
                     self.spinner.stopAnimating()
                 }

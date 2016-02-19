@@ -34,6 +34,7 @@
 		7546CB2E1C4A884D000C9635 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB2D1C4A884D000C9635 /* InfoButton.swift */; };
 		7551D3461C134A040088D32B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551D3451C134A040088D32B /* Constants.swift */; };
 		7559FA311C65017500177064 /* Brands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7559FA301C65017500177064 /* Brands.plist */; };
+		755F62FE1C770AA7003BA832 /* PhotoScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F62FD1C770AA7003BA832 /* PhotoScout.swift */; };
 		756264AF1C6C85A000149516 /* ContainerFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */; };
 		756264B31C6C860700149516 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756264B21C6C860700149516 /* FavoritesViewController.swift */; };
 		756848661C75DD1700D85E67 /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756848611C75DD1700D85E67 /* ImageParser.swift */; };
@@ -154,6 +155,7 @@
 		7546CB2D1C4A884D000C9635 /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InfoButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7551D3451C134A040088D32B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Constants.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7559FA301C65017500177064 /* Brands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Brands.plist; sourceTree = "<group>"; };
+		755F62FD1C770AA7003BA832 /* PhotoScout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoScout.swift; sourceTree = "<group>"; };
 		756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerFavoritesViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		756264B21C6C860700149516 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FavoritesViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		756848611C75DD1700D85E67 /* ImageParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				75DD7F3B1C19F45300BDB0A3 /* Filter.swift */,
 				75149F3D1C1B088700A2A57C /* ShopStyle.swift */,
 				75409E1F1C6A572A00E5C282 /* DataModel.swift */,
+				755F62FD1C770AA7003BA832 /* PhotoScout.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */,
 				75B455FC1C59483700424B21 /* SlideInAnimationController.swift in Sources */,
 				75F12D031BE0A35900258874 /* BrowseViewController.swift in Sources */,
+				755F62FE1C770AA7003BA832 /* PhotoScout.swift in Sources */,
 				75F12CEC1BE0A24100258874 /* UIImage+BlendEffects.swift in Sources */,
 				75B455EE1C58FAEB00424B21 /* GradientView.swift in Sources */,
 				75B455F81C58FF5800424B21 /* PriceDetailsViewController.swift in Sources */,

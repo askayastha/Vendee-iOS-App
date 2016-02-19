@@ -20,6 +20,7 @@ class FavoritesViewController: UICollectionViewController {
     var brands = Brand.allBrands()
     var dataModel: DataModel!
     var search: Search!
+    var scout: PhotoScout!
     
     deinit {
         print("Deallocating FavoritesViewController !!!!!!!!!!!!!!!")
@@ -44,22 +45,24 @@ class FavoritesViewController: UICollectionViewController {
         
         if dataModelChanged {
             dataModelChanged = false
+            populatingData = false
             productCount = 0
+            search.resetSearch()
             search = Search(products: dataModel.favoriteProducts)
+            scout = PhotoScout(products: search.products)
             
             // Reset content size of the collection view
             if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
                 layout.reset()
             }
             collectionView!.reloadData()
-            populateData()
         }
+        populateData()
     }
     
     func populateData() {
+        print("PopulateData Count: \(dataModel.favoriteProducts.count)")
         if dataModel.favoriteProducts.count > 0 && appDelegate.networkManager!.isReachable {
-            if populatingData { return }
-            populatingData = true
             populatePhotosFromIndex(productCount)
         } else {
             hideSpinner?()
@@ -90,14 +93,18 @@ class FavoritesViewController: UICollectionViewController {
     }
     
     private func populatePhotosFromIndex(index: Int) {
+        if populatingData { return }
+        
+        print("populatePhotosFromIndex")
+        populatingData = true
         let populateLimit = 1
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        search.populatePhotoSizesFromIndex(index, withLimit: populateLimit) { [weak self] success, lastIndex in
+        scout.populatePhotoSizesFromIndex(index, withLimit: populateLimit) { [weak self] success, lastIndex in
             guard let strongSelf = self else { return }
             guard success else {
                 print("GUARDING SUCCESS")
                 strongSelf.hideSpinner?()
+                strongSelf.populatingData = false
                 strongSelf.populatePhotosFromIndex(lastIndex)
                 return
             }
@@ -109,14 +116,15 @@ class FavoritesViewController: UICollectionViewController {
                 print("READY FOR INSERTS: \(lastIndex)")
                 strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
                 }, completion: { success in
-                    print("INSERTS SUCCESSFUL")
+                    strongSelf.populatingData = false
+                    strongSelf.hideSpinner?()
+                    
                     if success && lastIndex != strongSelf.search.lastItem {
                         strongSelf.populatePhotosFromIndex(lastIndex)
                     } else {
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     }
-                    strongSelf.hideSpinner?()
-                    strongSelf.populatingData = false
+                    print("INSERTS SUCCESSFUL")
             })
         }
     }

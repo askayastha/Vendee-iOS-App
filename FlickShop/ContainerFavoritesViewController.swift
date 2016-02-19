@@ -10,7 +10,6 @@ import UIKit
 
 class ContainerFavoritesViewController: UIViewController {
     
-    var favoritesViewController: FavoritesViewController?
     var dataModel: DataModel!
     
     @IBOutlet weak var messageLabel: UILabel!
@@ -60,7 +59,7 @@ class ContainerFavoritesViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "EmbedBrowseFavorites" {
-            favoritesViewController = segue.destinationViewController as? FavoritesViewController
+            let favoritesViewController = segue.destinationViewController as? FavoritesViewController
             favoritesViewController?.dataModel = dataModel
             favoritesViewController?.search = Search(products: dataModel.favoriteProducts)
             favoritesViewController?.scout = PhotoScout(products: dataModel.favoriteProducts)

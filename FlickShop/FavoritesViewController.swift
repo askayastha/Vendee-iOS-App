@@ -36,7 +36,6 @@ class FavoritesViewController: UICollectionViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataModel", name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
         
         setupView()
-        populateData()  ; print("Initial favorites data request.")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -64,9 +63,11 @@ class FavoritesViewController: UICollectionViewController {
         print("PopulateData Count: \(dataModel.favoriteProducts.count)")
         if dataModel.favoriteProducts.count > 0 && appDelegate.networkManager!.isReachable {
             populatePhotosFromIndex(productCount)
-        } else {
+        } else if !appDelegate.networkManager!.isReachable {
             hideSpinner?()
             TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
+        } else {
+            hideSpinner?()
         }
     }
     

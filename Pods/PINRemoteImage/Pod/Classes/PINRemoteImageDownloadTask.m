@@ -11,13 +11,27 @@
 #import "PINRemoteImage.h"
 #import "PINRemoteImageCallbacks.h"
 
+@interface PINRemoteImageDownloadTask () {
+    BOOL _canSetDataTaskPriority;
+}
+
+@end
+
 @implementation PINRemoteImageDownloadTask
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _canSetDataTaskPriority = [NSURLSessionTask instancesRespondToSelector:@selector(setPriority:)];
+    }
+    return self;
+}
 
 - (BOOL)hasProgressBlocks
 {
     __block BOOL hasProgressBlocks = NO;
     [self.callbackBlocks enumerateKeysAndObjectsUsingBlock:^(NSUUID *UUID, PINRemoteImageCallbacks *callback, BOOL *stop) {
-        if (callback.progressBlock) {
+        if (callback.progressImageBlock) {
             hasProgressBlocks = YES;
             *stop = YES;
         }
@@ -25,18 +39,19 @@
     return hasProgressBlocks;
 }
 
-- (void)callProgressWithQueue:(dispatch_queue_t)queue withImage:(UIImage *)image
+- (void)callProgressWithQueue:(dispatch_queue_t)queue withImage:(PINImage *)image
 {
     [self.callbackBlocks enumerateKeysAndObjectsUsingBlock:^(NSUUID *UUID, PINRemoteImageCallbacks *callback, BOOL *stop) {
-        if (callback.progressBlock != nil) {
+        if (callback.progressImageBlock != nil) {
             PINLog(@"calling progress for UUID: %@ key: %@", UUID, self.key);
             dispatch_async(queue, ^
             {
-                callback.progressBlock([PINRemoteImageManagerResult imageResultWithImage:image
-                                                                          animatedImage:nil
-                                                                          requestLength:CACurrentMediaTime() - callback.requestTime
-                                                                                  error:nil
-                                                                             resultType:PINRemoteImageResultTypeProgress UUID:UUID]);
+                callback.progressImageBlock([PINRemoteImageManagerResult imageResultWithImage:image
+                                                                                animatedImage:nil
+                                                                                requestLength:CACurrentMediaTime() - callback.requestTime
+                                                                                        error:nil
+                                                                                   resultType:PINRemoteImageResultTypeProgress
+                                                                                         UUID:UUID]);
             });
         }
     }];
@@ -57,7 +72,9 @@
 - (void)setPriority:(PINRemoteImageManagerPriority)priority
 {
     [super setPriority:priority];
-    self.urlSessionTaskOperation.dataTask.priority = dataTaskPriorityWithImageManagerPriority(priority);
+    if (_canSetDataTaskPriority) {
+        self.urlSessionTaskOperation.dataTask.priority = dataTaskPriorityWithImageManagerPriority(priority);
+    }
     self.urlSessionTaskOperation.queuePriority = operationPriorityWithImageManagerPriority(priority);
 }
 

@@ -1,16 +1,16 @@
 PODS:
   - Alamofire (3.2.0)
-  - FLAnimatedImage (1.0.8)
+  - FLAnimatedImage (1.0.12)
   - HexColors (2.2.1)
   - MBProgressHUD (0.9.2)
   - NMRangeSlider (1.2.3)
   - Ono (1.2.2)
-  - PINCache (2.1)
-  - PINRemoteImage (1.2.1):
-    - PINRemoteImage/FLAnimatedImage (= 1.2.1)
-  - PINRemoteImage/Core (1.2.1):
+  - PINCache (2.2.1)
+  - PINRemoteImage (2.0):
+    - PINRemoteImage/FLAnimatedImage (= 2.0)
+  - PINRemoteImage/Core (2.0):
     - PINCache (>= 2.1)
-  - PINRemoteImage/FLAnimatedImage (1.2.1):
+  - PINRemoteImage/FLAnimatedImage (2.0):
     - FLAnimatedImage (>= 1.0)
     - PINRemoteImage/Core
   - SwiftyJSON (2.3.1)
@@ -23,7 +23,7 @@ DEPENDENCIES:
   - NMRangeSlider (from `https://github.com/chanil1218/NMRangeSlider.git`, commit
     `c89890c`)
   - Ono
-  - PINRemoteImage
+  - PINRemoteImage (= 2.0)
   - SwiftyJSON (~> 2.0)
   - TSMessages
 
@@ -39,13 +39,13 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
-  FLAnimatedImage: f9422f796135aff80d8c00b2afc48015bb746e24
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   NMRangeSlider: b57dad1b1f1b5c18b4ecfc8856a20910152dfcf3
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
-  PINCache: 0581b0a7578fc0bbc6c7a8b70b0615388bea064c
-  PINRemoteImage: 7560f0c975b0495d232e954342c5f49979335015
+  PINCache: ed1f07a85cc6fbf488f8ecc1980b07b49b7b85b5
+  PINRemoteImage: 23729466b9ec74fe8bc75a9a119097b5ab90864e
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 

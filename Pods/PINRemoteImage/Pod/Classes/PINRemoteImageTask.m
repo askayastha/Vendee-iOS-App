@@ -8,7 +8,6 @@
 
 #import "PINRemoteImageTask.h"
 
-#import "PINRemoteImage.h"
 #import "PINRemoteImageCallbacks.h"
 
 @implementation PINRemoteImageTask
@@ -26,11 +25,15 @@
     return [NSString stringWithFormat:@"<%@: %p> completionBlocks: %lu", NSStringFromClass([self class]), self, (unsigned long)self.callbackBlocks.count];
 }
 
-- (void)addCallbacksWithCompletionBlock:(PINRemoteImageManagerImageCompletion)completionBlock progressBlock:(PINRemoteImageManagerImageCompletion)progressBlock withUUID:(NSUUID *)UUID
+- (void)addCallbacksWithCompletionBlock:(PINRemoteImageManagerImageCompletion)completionBlock
+                     progressImageBlock:(PINRemoteImageManagerImageCompletion)progressImageBlock
+                  progressDownloadBlock:(PINRemoteImageManagerProgressDownload)progressDownloadBlock
+                               withUUID:(NSUUID *)UUID
 {
     PINRemoteImageCallbacks *completion = [[PINRemoteImageCallbacks alloc] init];
     completion.completionBlock = completionBlock;
-    completion.progressBlock = progressBlock;
+    completion.progressImageBlock = progressImageBlock;
+    completion.progressDownloadBlock = progressDownloadBlock;
     
     [self.callbackBlocks setObject:completion forKey:UUID];
 }
@@ -42,7 +45,7 @@
 
 - (void)callCompletionsWithQueue:(dispatch_queue_t)queue
                           remove:(BOOL)remove
-                       withImage:(UIImage *)image
+                       withImage:(PINImage *)image
                    animatedImage:(FLAnimatedImage *)animatedImage
                           cached:(BOOL)cached
                            error:(NSError *)error
@@ -54,11 +57,17 @@
             PINLog(@"calling completion for UUID: %@ key: %@", UUID, strongSelf.key);
             dispatch_async(queue, ^
             {
+                PINRemoteImageResultType result;
+                if (image || animatedImage) {
+                    result = cached ? PINRemoteImageResultTypeCache : PINRemoteImageResultTypeDownload;
+                } else {
+                    result = PINRemoteImageResultTypeNone;
+                }
                 callback.completionBlock([PINRemoteImageManagerResult imageResultWithImage:image
                                                                             animatedImage:animatedImage
                                                                             requestLength:CACurrentMediaTime() - callback.requestTime
                                                                                     error:error
-                                                                               resultType:cached?PINRemoteImageResultTypeCache:PINRemoteImageResultTypeDownload
+                                                                               resultType:result
                                                                                      UUID:UUID]);
             });
         }

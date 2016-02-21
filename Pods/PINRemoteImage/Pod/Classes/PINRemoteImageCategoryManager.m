@@ -20,7 +20,7 @@
 
 + (void)setImageOnView:(id <PINRemoteImageCategory>)view
                fromURL:(NSURL *)url
-      placeholderImage:(UIImage *)placeholderImage
+      placeholderImage:(PINImage *)placeholderImage
 {
     [self setImageOnView:view fromURL:url placeholderImage:placeholderImage completion:nil];
 }
@@ -34,7 +34,7 @@
 
 + (void)setImageOnView:(id <PINRemoteImageCategory>)view
                fromURL:(NSURL *)url
-      placeholderImage:(UIImage *)placeholderImage
+      placeholderImage:(PINImage *)placeholderImage
             completion:(PINRemoteImageManagerImageCompletion)completion
 {
     [self setImageOnView:view
@@ -59,7 +59,7 @@
 
 + (void)setImageOnView:(id <PINRemoteImageCategory>)view
                fromURL:(NSURL *)url
-      placeholderImage:(UIImage *)placeholderImage
+      placeholderImage:(PINImage *)placeholderImage
           processorKey:(NSString *)processorKey
              processor:(PINRemoteImageManagerImageProcessor)processor
 {
@@ -86,7 +86,7 @@
 }
 
 + (void)setImageOnView:(id <PINRemoteImageCategory>)view
-              fromURLs:(NSArray *)urls
+              fromURLs:(NSArray <NSURL *> *)urls
 {
     [self setImageOnView:view
                 fromURLs:urls
@@ -94,8 +94,8 @@
 }
 
 + (void)setImageOnView:(id <PINRemoteImageCategory>)view
-              fromURLs:(NSArray *)urls
-      placeholderImage:(UIImage *)placeholderImage
+              fromURLs:(NSArray <NSURL *> *)urls
+      placeholderImage:(PINImage *)placeholderImage
 {
     [self setImageOnView:view
                 fromURLs:urls
@@ -104,8 +104,8 @@
 }
 
 + (void)setImageOnView:(id <PINRemoteImageCategory>)view
-              fromURLs:(NSArray *)urls
-      placeholderImage:(UIImage *)placeholderImage
+              fromURLs:(NSArray <NSURL *> *)urls
+      placeholderImage:(PINImage *)placeholderImage
             completion:(PINRemoteImageManagerImageCompletion)completion
 {
     return [self setImageOnView:view
@@ -145,8 +145,8 @@
 }
 
 + (void)setImageOnView:(id <PINRemoteImageCategory>)view
-              fromURLs:(NSArray *)urls
-      placeholderImage:(UIImage *)placeholderImage
+              fromURLs:(NSArray <NSURL *> *)urls
+      placeholderImage:(PINImage *)placeholderImage
           processorKey:(NSString *)processorKey
              processor:(PINRemoteImageManagerImageProcessor)processor
             completion:(PINRemoteImageManagerImageCompletion)completion
@@ -164,13 +164,16 @@
     }
     
     [self cancelImageDownloadOnView:view];
-    if (urls == nil || urls.count == 0) {
-        [view pin_clearImages];
-        return;
-    }
-    
+  
     if (placeholderImage) {
         [view pin_setPlaceholderWithImage:placeholderImage];
+    }
+    
+    if (urls == nil || urls.count == 0) {
+        if (!placeholderImage) {
+            [view pin_clearImages];
+        }
+        return;
     }
     
     PINRemoteImageManagerDownloadOptions options;
@@ -184,6 +187,8 @@
         options |= PINRemoteImageManagerDownloadOptionsIgnoreGIFs;
     }
     
+    BOOL updateWithFullResult = [view respondsToSelector:@selector(pin_updateUIWithRemoteImageManagerResult:)];
+    
     PINRemoteImageManagerImageCompletion internalProgress = nil;
     if ([self updateWithProgressOnView:view] && processorKey.length <= 0 && processor == nil) {
         internalProgress = ^(PINRemoteImageManagerResult *result)
@@ -195,7 +200,13 @@
                     return;
                 }
                 if (result.image) {
-                    [view pin_updateUIWithImage:result.image animatedImage:nil];
+                    if (updateWithFullResult) {
+                        [view pin_updateUIWithRemoteImageManagerResult:result];
+                    }
+                    else {
+                        [view pin_updateUIWithImage:result.image animatedImage:nil];                        
+                    }
+
                 }
             };
             if ([NSThread isMainThread]) {
@@ -224,7 +235,12 @@
                 return;
             }
             
-            [view pin_updateUIWithImage:result.image animatedImage:result.animatedImage];
+            if (updateWithFullResult) {
+                [view pin_updateUIWithRemoteImageManagerResult:result];
+            }
+            else {
+                [view pin_updateUIWithImage:result.image animatedImage:result.animatedImage];
+            }
             
             if (completion) {
                 completion(result);
@@ -243,7 +259,7 @@
     if (urls.count > 1) {
         downloadImageOperationUUID = [[PINRemoteImageManager sharedImageManager] downloadImageWithURLs:urls
                                                                                                options:options
-                                                                                              progress:internalProgress
+                                                                                         progressImage:internalProgress
                                                                                             completion:internalCompletion];
     } else if (processorKey.length > 0 && processor) {
         downloadImageOperationUUID = [[PINRemoteImageManager sharedImageManager] downloadImageWithURL:urls[0]
@@ -254,7 +270,7 @@
     } else {
         downloadImageOperationUUID = [[PINRemoteImageManager sharedImageManager] downloadImageWithURL:urls[0]
                                                                                               options:options
-                                                                                             progress:internalProgress
+                                                                                        progressImage:internalProgress
                                                                                            completion:internalCompletion];
     }
     

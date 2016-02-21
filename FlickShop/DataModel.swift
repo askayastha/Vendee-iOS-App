@@ -67,7 +67,7 @@ class DataModel {
                 let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
                 favoriteProducts = unarchiver.decodeObjectForKey("FavoriteProducts") as! NSMutableOrderedSet
                 unarchiver.finishDecoding()
-//                sortProducts()
+                sortProducts()
             }
         }
     }
@@ -96,9 +96,9 @@ class DataModel {
             let obj2 = rhs as! Product
             
             if obj1.favoritedDate < obj2.favoritedDate {
-                return .OrderedAscending
-            } else if obj1.favoritedDate > obj2.favoritedDate {
                 return .OrderedDescending
+            } else if obj1.favoritedDate > obj2.favoritedDate {
+                return .OrderedAscending
             }
             return .OrderedSame
         }

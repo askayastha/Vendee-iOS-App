@@ -187,14 +187,6 @@ class FlickViewController: UICollectionViewController {
     }
 }
 
-extension FlickViewController: SFSafariViewControllerDelegate {
-    
-    @available(iOS 9.0, *)
-    func safariViewControllerDidFinish(controller: SFSafariViewController) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-}
-
 extension FlickViewController {
     
     override func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -214,6 +206,16 @@ extension FlickViewController: FlickPageCellDelegate {
             guard !dataModel.favoriteProductIds.contains(product.id!) else { return }
             dataModel.favoriteProducts.addObject(product)
             dataModel.favoriteProductIds.insert(product.id!)
+            
+            // Show HUD
+            let favoritesHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
+            favoritesHUD.labelText = "Favorited on Vendee"
+            favoritesHUD.labelFont = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+            favoritesHUD.mode = .CustomView
+            favoritesHUD.minShowTime = 1.5
+            favoritesHUD.margin = 10.0
+            favoritesHUD.userInteractionEnabled = false
+            MBProgressHUD.hideHUDForView(view, animated: true)
             
         case .Unselected:
             guard dataModel.favoriteProductIds.contains(product.id!) else { return }

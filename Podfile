@@ -5,7 +5,7 @@ use_frameworks!
 
 target 'FlickShop' do
     pod 'Alamofire', '3.2.0'
-    pod 'MBProgressHUD'
+    pod 'MBProgressHUD', '0.9.2'
     pod 'Ono'
     pod 'SwiftyJSON', '~> 2.0'
     pod 'PINRemoteImage'

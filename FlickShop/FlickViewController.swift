@@ -139,7 +139,7 @@ class FlickViewController: UICollectionViewController {
 
         if !loadingHUDPresent {
             let loadingHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
-            loadingHUD.labelText = "Loading..."
+//            loadingHUD.color = UIColor(white: 0.5, alpha: 0.8)
             loadingHUD.userInteractionEnabled = false
         }
         

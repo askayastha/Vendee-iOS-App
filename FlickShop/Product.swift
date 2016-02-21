@@ -38,6 +38,8 @@ class Product: NSObject, NSCoding {
     
     var categories: [String]!
     
+    var favoritedDate: NSDate!
+    
     init(data: JSON) {
         self.id = String(data["id"].int)
         self.buyURL = data["clickUrl"].string
@@ -115,6 +117,8 @@ class Product: NSObject, NSCoding {
         
         categories = aDecoder.decodeObjectForKey("Categories") as? [String]
         
+        favoritedDate = aDecoder.decodeObjectForKey("FavoritedDate") as? NSDate
+        
         super.init()
     }
     
@@ -145,5 +149,7 @@ class Product: NSObject, NSCoding {
         aCoder.encodeObject(sizes, forKey: "Sizes")
         
         aCoder.encodeObject(categories, forKey: "Categories")
+        
+        aCoder.encodeObject(favoritedDate, forKey: "FavoritedDate")
     }
 }

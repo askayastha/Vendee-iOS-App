@@ -29,7 +29,6 @@ class PhotoScout {
     
     func populatePhotoSizesFromIndex(index: Int, withLimit limit: Int, completion: (Bool, Int) -> ()) {
         var count = 0
-        var retryCount = 0
         let lastIndex = index + limit
         
         func populatePhotoSizeForProduct(product: Product) {
@@ -37,16 +36,8 @@ class PhotoScout {
                 
                 if let unwrappedError = error {
                     print(unwrappedError.code)
-                    
-                    if retryCount < 1 {
-                        print("Retry getting small image size.")
-                        retryCount++
-                        populatePhotoSizeForProduct(product)
-                    } else {
-                        print("Retry failed. Moving on to completion.")
-                        dispatch_async(dispatch_get_main_queue()) {
-                            completion(false, lastIndex)
-                        }
+                    dispatch_async(dispatch_get_main_queue()) {
+                        completion(false, index)
                     }
                     
                 } else {

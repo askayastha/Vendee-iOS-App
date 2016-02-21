@@ -14,6 +14,22 @@ struct CustomNotifications {
     static let FilterDidClearNotification = "FilterDidClear"
     static let DataModelDidChangeNotification = "DataModelDidChange"
     static let NetworkDidChangeToReachableNotification = "NetworkDidChangeToReachable"
+    
+    static func filterDidChangeNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
+    
+    static func filterDidClearNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidClearNotification, object: nil)
+    }
+    
+    static func dataModelDidChangeNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.DataModelDidChangeNotification, object: nil)
+    }
+    
+    static func networkDidChangeToReachableNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
+    }
 }
 
 struct NumericConstants {

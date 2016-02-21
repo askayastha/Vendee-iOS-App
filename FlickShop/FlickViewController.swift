@@ -96,7 +96,7 @@ class FlickViewController: UICollectionViewController {
         // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
-        cell.favorited = dataModel.favoriteProductIds.contains(product.id) ? true : false
+        cell.favorited = dataModel.containsProductId(product.id) ? true : false
         cell.scrollViewHeightConstraint.constant = getImageViewHeight()
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
@@ -143,7 +143,7 @@ class FlickViewController: UICollectionViewController {
 
         if !loadingHUDPresent {
             let loadingHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
-//            loadingHUD.color = UIColor(white: 0.5, alpha: 0.8)
+            loadingHUD.color = UIColor(white: 0.2, alpha: 0.7)
             loadingHUD.userInteractionEnabled = false
         }
         
@@ -207,30 +207,22 @@ extension FlickViewController: FlickPageCellDelegate {
     func favoriteState(state: FavoriteState, forProduct product: Product) {
         switch state {
         case .Selected:
-            guard !dataModel.favoriteProductIds.contains(product.id!) else { return }
-            dataModel.favoriteProducts.addObject(product)
-            dataModel.favoriteProductIds.insert(product.id!)
+            dataModel.addFavoriteProduct(product)
             
             // Show HUD
-            let favoritesHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
-            favoritesHUD.labelText = "Favorited on Vendee"
-            favoritesHUD.labelFont = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
-            favoritesHUD.mode = .CustomView
-            favoritesHUD.minShowTime = 1.5
-            favoritesHUD.margin = 10.0
-            favoritesHUD.userInteractionEnabled = false
+            let favoritedHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
+            favoritedHUD.labelText = "Favorited on Vendee"
+            favoritedHUD.labelFont = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+            favoritedHUD.mode = .CustomView
+            favoritedHUD.color = UIColor(white: 0.2, alpha: 0.7)
+            favoritedHUD.minShowTime = 1.5
+            favoritedHUD.margin = 10.0
+            favoritedHUD.userInteractionEnabled = false
             MBProgressHUD.hideHUDForView(view, animated: true)
             
         case .Unselected:
-            guard dataModel.favoriteProductIds.contains(product.id!) else { return }
-            dataModel.favoriteProducts.removeObject(product)
-            dataModel.favoriteProductIds.remove(product.id!)
-        }
-        dataModel.saveProducts()
-        dataModelDidChangeNotification()
-        
-        print(dataModel.favoriteProducts)
-        print(dataModel.favoriteProductIds)
+            dataModel.removeFavoriteProduct(product)
+        }        
     }
     
     func openItemInStoreWithProduct(product: Product) {

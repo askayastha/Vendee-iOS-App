@@ -116,7 +116,7 @@ class FavoritesViewController: UICollectionViewController {
             strongSelf.productCount += populateLimit
             let fromIndex = lastIndex - populateLimit
             let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
-            print(NSThread.currentThread().description)
+            
             strongSelf.collectionView!.performBatchUpdates({
                 print("READY FOR INSERTS: \(lastIndex)")
                 strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)

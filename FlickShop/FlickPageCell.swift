@@ -190,8 +190,8 @@ class FlickPageCell: UICollectionViewCell {
         if favorited {
             favoriteButton.setImage(UIImage(named: "favorite_selected"), forState: .Normal)
         }
-        brandNameLabel.text = product!.brandName ?? "\u{2014}"
-        unbrandedNameLabel.text = product!.unbrandedName
+        brandNameLabel.text = product.brandName ?? "\u{2014}"
+        unbrandedNameLabel.text = product.unbrandedName
         var discountText = "0% Off"
         
         if let salePrice = product.salePrice {
@@ -199,7 +199,7 @@ class FlickPageCell: UICollectionViewCell {
             discountText = "\(Int(discount))% Off"
         }
         buyButton.setTitle(discountText, forState: .Normal)
-        print("PRODUCT ID: \(product!.id)")
+        print("PRODUCT ID: \(product.id!)")
         // Setup page control
         pageControl.currentPage = currentPage
         pageControl.numberOfPages = product.largeImageURLs!.count

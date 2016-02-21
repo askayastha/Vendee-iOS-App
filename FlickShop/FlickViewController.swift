@@ -120,14 +120,18 @@ class FlickViewController: UICollectionViewController {
                 }
             }
         }
-        
-        if moreRequests && (search.lastItem - indexPath.item == 1) && search.lastItem < 1000 {
-            print("New request")
-            requestDataFromShopStyleForCategory(productCategory)
-        }
-        print("Page \(indexPath.item)")
     
         return cell
+    }
+    
+    // MARK: UICollectionViewDelegate
+    
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        print("Item \(indexPath.item)")
+        if moreRequests && search.lastItem - indexPath.item == 1 {
+            print("##### WILL DISPLAY CELL: \(indexPath.item) - NEW REQUEST ######")
+            requestDataFromShopStyleForCategory(productCategory)
+        }
     }
     
     

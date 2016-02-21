@@ -279,35 +279,24 @@ extension BrowseViewController {
             }
         }
         
-        if search.lastItem - indexPath.item == 5 && search.lastItem < 1000 {
-            print("New request")
-            requestDataFromShopStyleForCategory(productCategory)
-        }
-        
         return cell
     }
-    
     
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
 //        return UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
 //    }
     
-//    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-//        //        performSegueWithIdentifier("FlickCollectionViewController", sender: indexPath)
-//        let feedVC = storyboard!.instantiateViewControllerWithIdentifier("FlickCollectionViewController") as? FlickCollectionViewController
-//        
-//        if let controller = feedVC {
-//            controller.productCategory = productCategory
-//            controller.indexPath  = indexPath
-//            controller.search = search
-//            navigationController?.pushViewController(controller, animated: true)
-//        }
-//    }
-    
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         performSegueWithIdentifier("FlickCategory", sender: indexPath)
     }
-}
+    
+    override func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        print("Item \(indexPath.item)")
+        if search.lastItem - indexPath.item == 5 {
+            print("##### WILL DISPLAY CELL: \(indexPath.item) - NEW REQUEST ######")
+            requestDataFromShopStyleForCategory(productCategory)
+        }
+    }}
 
 extension BrowseViewController: TwoColumnLayoutDelegate {
     

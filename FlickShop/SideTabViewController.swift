@@ -34,6 +34,11 @@ class SideTabViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        // Need to enable scroll for 3.5" screen (iPhone 4S and before) due to limited screen height
+        if ScreenConstants.height == 480 {
+            tableView.scrollEnabled = true
+        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 

@@ -12,11 +12,26 @@ class CategoryFilterViewController: UITableViewController {
     
     var requestingData = false
     var productCategory: String?
+    var once_token: dispatch_once_t = 0
     
     var displayCategories: [String]!
     var tappedCategories: [String]!
     var categoriesIdDict: [String: String]!
     var categorySearch: CategorySearch!
+    
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
+        return spinner
+    }()
+    
+    private func hideSpinner() {
+        if self.spinner.isAnimating() {
+            self.spinner.stopAnimating()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +47,14 @@ class CategoryFilterViewController: UITableViewController {
         
         print(displayCategories)
         print(tappedCategories)
+        
+        // Spinner setup
+        tableView.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            spinner.centerXAnchor.constraintEqualToAnchor(tableView.centerXAnchor),
+            spinner.centerYAnchor.constraintEqualToAnchor(tableView.centerYAnchor)
+            ])
         
         // Request display categories for the first load
         if displayCategories.count == 0 {
@@ -215,10 +238,12 @@ class CategoryFilterViewController: UITableViewController {
                         print("Request Count: \(strongSelf.categorySearch.retryCount)")
                     } else {
                         strongSelf.categorySearch.resetRetryCount()
+                        strongSelf.hideSpinner()
                         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     }
                     
                 } else {
+                    strongSelf.hideSpinner()
                     strongSelf.requestingData = false
                     print("Product count: \(lastItem)")
                     

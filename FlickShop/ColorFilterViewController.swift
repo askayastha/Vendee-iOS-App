@@ -11,22 +11,22 @@ import Foundation
 
 class ColorFilterViewController: UITableViewController {
     
-//    let colorsDict = [
-//        "Red": "c7",
-//        "Orange": "c3",
-//        "Yellow": "c4",
-//        "Green": "c13",
-//        "Blue": "c10",
-//        "Purple": "c8",
-//        "Pink": "c17",
-//        "Black": "c16",
-//        "White": "c15",
-//        "Gray": "c14",
-//        "Beige": "c20",
-//        "Brown": "c1",
-//        "Gold": "c18",
-//        "Silver": "c19"
-//    ]
+    let colorHexDict: OrderedDictionary<String, String> = [
+        ("Red", "#DA0000"),
+        ("Orange", "#E58200"),
+        ("Yellow", "#DFD03B"),
+        ("Green", "#009C1C"),
+        ("Blue", "#40289A"),
+        ("Purple", "#A601A9"),
+        ("Pink", "#E11683"),
+        ("Black", "#000000"),
+        ("White", "#FFFFFF"),
+        ("Gray", "#565656"),
+        ("Beige", "#C1A76F"),
+        ("Brown", "#76481E"),
+        ("Gold", "#FFC900"),
+        ("Silver", "#CCCCCC")
+    ]
     
     let colorsDict: OrderedDictionary<String, String> = [
         ("Red", "c7"),
@@ -77,10 +77,19 @@ class ColorFilterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath)
         
-        cell.textLabel?.text = colorsDict.orderedKeys[indexPath.row]
+        let colorView = cell.viewWithTag(2000)
+        let colorLabel = cell.viewWithTag(2001) as? UILabel
+        let colorHexString = colorHexDict.orderedValues[indexPath.row]
+        
+        if colorHexString == "#FFFFFF" {
+            colorView?.layer.borderColor = UIColor.blackColor().CGColor
+            colorView?.layer.borderWidth = 1.0
+        }
+        colorView?.backgroundColor = UIColor(hexString: colorHexString)
+        colorLabel?.text = colorsDict.orderedKeys[indexPath.row]
         
         // Visually checkmark the selected colors.
-        if selectedColors.keys.contains((cell.textLabel?.text)!) {
+        if selectedColors.keys.contains(colorsDict.orderedKeys[indexPath.row]) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
@@ -93,7 +102,7 @@ class ColorFilterViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        let colorName = (cell?.textLabel?.text)!
+        let colorName = colorsDict.orderedKeys[indexPath.row]
         
         // Keep track of the colors
         if !selectedColors.keys.contains(colorName) {
@@ -123,3 +132,4 @@ class ColorFilterViewController: UITableViewController {
     }
 
 }
+	

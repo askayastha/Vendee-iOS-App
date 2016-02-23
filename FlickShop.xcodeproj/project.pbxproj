@@ -56,6 +56,8 @@
 		75A31E471BDFBAAE006FD010 /* FlickShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E461BDFBAAE006FD010 /* FlickShopTests.swift */; };
 		75A31E521BDFBAAE006FD010 /* FlickShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */; };
 		75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */; };
+		75AD0B4C1C7C777A00CD5C85 /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */; };
+		75AD0B501C7C7E0A00CD5C85 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */; };
 		75B455EE1C58FAEB00424B21 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455ED1C58FAEB00424B21 /* GradientView.swift */; };
 		75B455F21C58FB5B00424B21 /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */; };
 		75B455F41C58FB7F00424B21 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */; };
@@ -184,6 +186,8 @@
 		75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickShopUITests.swift; sourceTree = "<group>"; };
 		75A31E531BDFBAAE006FD010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CustomSFSafariViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHEXColors.swift; sourceTree = "<group>"; };
+		75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		75B455ED1C58FAEB00424B21 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GradientView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FadeOutAnimationController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DimmingPresentationController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -488,6 +492,7 @@
 		75F12D211BE0AB7700258874 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */,
 				75F12CE31BE0A24100258874 /* Functions.swift */,
 				75F12CE51BE0A24100258874 /* UIImage+BlendEffects.swift */,
 				75F12CE61BE0A24100258874 /* UIImage+ImageEffects.h */,
@@ -532,6 +537,7 @@
 				751E9F251C11AF96007C990C /* FloatingButton.swift */,
 				7546CB2D1C4A884D000C9635 /* InfoButton.swift */,
 				75B455ED1C58FAEB00424B21 /* GradientView.swift */,
+				75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -827,6 +833,7 @@
 				75B455FA1C59012600424B21 /* SlideOutAnimationController.swift in Sources */,
 				751E9F261C11AF96007C990C /* FloatingButton.swift in Sources */,
 				756848681C75DD1700D85E67 /* ScoutOperation.swift in Sources */,
+				75AD0B501C7C7E0A00CD5C85 /* ColorView.swift in Sources */,
 				75EEE39F1C6F53CA00C507FC /* AboutViewController.swift in Sources */,
 				75F12CEA1BE0A24100258874 /* Functions.swift in Sources */,
 				75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */,
@@ -841,6 +848,7 @@
 				75B455F41C58FB7F00424B21 /* DimmingPresentationController.swift in Sources */,
 				750D8E1C1C0647AC00D728F0 /* SortFilterViewController.swift in Sources */,
 				75019BFC1C6D0A8200B4CDBD /* MoreViewController.swift in Sources */,
+				75AD0B4C1C7C777A00CD5C85 /* SwiftHEXColors.swift in Sources */,
 				758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */,
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
 				752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */,

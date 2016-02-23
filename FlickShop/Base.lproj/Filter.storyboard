@@ -415,21 +415,34 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorCell" textLabel="Avq-VU-hXm" style="IBUITableViewCellStyleDefault" id="Vq7-AI-Ond">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ColorCell" id="Vq7-AI-Ond">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vq7-AI-Ond" id="wp0-uk-Oel">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Avq-VU-hXm">
-                                            <rect key="frame" x="15" y="0.0" width="570" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view tag="2000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orS-bD-xkB" customClass="ColorView" customModule="FlickShop" customModuleProvider="target">
+                                            <rect key="frame" x="15" y="10" width="50" height="25"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="3AQ-Ka-zaC"/>
+                                                <constraint firstAttribute="width" constant="50" id="Mwb-ZW-70Q"/>
+                                            </constraints>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iT2-UR-Ljn">
+                                            <rect key="frame" x="80" y="13" width="31" height="17"/>
                                             <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="14"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iT2-UR-Ljn" firstAttribute="leading" secondItem="orS-bD-xkB" secondAttribute="trailing" constant="15" id="5sH-tv-3br"/>
+                                        <constraint firstItem="orS-bD-xkB" firstAttribute="centerY" secondItem="wp0-uk-Oel" secondAttribute="centerY" id="DUC-K9-r8t"/>
+                                        <constraint firstItem="iT2-UR-Ljn" firstAttribute="centerY" secondItem="wp0-uk-Oel" secondAttribute="centerY" id="ZYf-uS-6J6"/>
+                                        <constraint firstItem="orS-bD-xkB" firstAttribute="leading" secondItem="wp0-uk-Oel" secondAttribute="leading" constant="15" id="yXf-cg-8ki"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>

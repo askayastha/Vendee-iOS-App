@@ -197,7 +197,7 @@ extension BrandFilterViewController: UITableViewDelegate {
         appDelegate.filter.filterParams["brand"] = selectedBrands
         
         // Refresh Side Tab
-        filterDidChangeNotification()
+        CustomNotifications.filterDidChangeNotification()
     }
 }
 

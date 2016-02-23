@@ -164,7 +164,7 @@ class DiscountFilterViewController: UITableViewController {
         appDelegate.filter.filterParams["offer"] = selectedOffers
         
         // Refresh Side Tab
-        filterDidChangeNotification()
+        CustomNotifications.filterDidChangeNotification()
     }
     
     override func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -90,7 +90,7 @@ class PriceFilterViewController: UITableViewController {
         appDelegate.filter.filterParams["price"] = selectedPrices
         
         // Refresh Side Tab
-        filterDidChangeNotification()
+        CustomNotifications.filterDidChangeNotification()
     }
     
     deinit {

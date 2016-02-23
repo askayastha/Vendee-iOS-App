@@ -118,7 +118,7 @@ class CategoryFilterViewController: UITableViewController {
         print(tappedCategories)
         
         // Refresh Side Tab
-        filterDidChangeNotification()
+        CustomNotifications.filterDidChangeNotification()
     }
     
     private func getSubcategoriesForCategoryName(categoryName: String) -> [String] {

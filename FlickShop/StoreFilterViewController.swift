@@ -197,7 +197,7 @@ extension StoreFilterViewController: UITableViewDelegate {
         appDelegate.filter.filterParams["store"] = selectedStores
         
         // Refresh Side Tab
-        filterDidChangeNotification()
+        CustomNotifications.filterDidChangeNotification()
     }
 }
 

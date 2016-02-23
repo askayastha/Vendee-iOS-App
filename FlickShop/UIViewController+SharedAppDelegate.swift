@@ -13,20 +13,4 @@ extension UIViewController {
     var appDelegate: AppDelegate {
         return UIApplication.sharedApplication().delegate as! AppDelegate
     }
-    
-    func filterDidChangeNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
-    }
-    
-    func filterDidClearNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidClearNotification, object: nil)
-    }
-    
-    func dataModelDidChangeNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.DataModelDidChangeNotification, object: nil)
-    }
-    
-    func networkDidChangeToReachableNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
-    }
 }

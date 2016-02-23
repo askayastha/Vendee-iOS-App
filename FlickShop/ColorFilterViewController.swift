@@ -114,7 +114,7 @@ class ColorFilterViewController: UITableViewController {
         appDelegate.filter.filterParams["color"] = selectedColors
         
         // Refresh Side Tab
-        filterDidChangeNotification()
+        CustomNotifications.filterDidChangeNotification()
     }
     
     func refreshTable() {

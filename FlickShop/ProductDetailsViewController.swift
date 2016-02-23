@@ -21,6 +21,14 @@ class ProductDetailsViewController: UITableViewController {
     var product: Product!
     var brands: [Brand]!
     
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
+        return spinner
+    }()
+    
     enum DocumentType {
         case PlainText
         case HtmlText
@@ -48,13 +56,29 @@ class ProductDetailsViewController: UITableViewController {
         
         setupView()
         
+        // Spinner setup
+        collectionView.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            spinner.centerXAnchor.constraintEqualToAnchor(collectionView.centerXAnchor),
+            spinner.centerYAnchor.constraintEqualToAnchor(collectionView.centerYAnchor)
+            ])
+        
         print("SIMILAR REQUESTS")
-        requestDataFromShopStyleForCategory(product.categories?.first)
+        requestDataFromShopStyleForCategory(product.categoryIds?.first)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: - Helper methods
+    
+    private func hideSpinner() {
+        if self.spinner.isAnimating() {
+            self.spinner.stopAnimating()
+        }
     }
     
     private func convertText(text: String?, usingFont font: UIFont, forDocumentType docType: DocumentType) -> NSAttributedString? {
@@ -131,41 +155,41 @@ class ProductDetailsViewController: UITableViewController {
         collectionView!.contentInset = UIEdgeInsets(top: 4, left: 10, bottom: 4, right: 10)
     }
     
-    private func requestDataFromShopStyleForCategory(category: String!) {
-        
-        if requestingData {
-            return
-        }
+    private func requestDataFromShopStyleForCategory(category: String!) {        
+        if requestingData { return }
+        guard let category = category else { return }
         
         requestingData = true
-        
-        if let category = category {
-            search.parseShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, description, lastItem in
-                
-                guard let strongSelf = self else { return }
-                
+        search.parseShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, description, lastItem in
+            
+            guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
+            
+            if !success {
                 if strongSelf.search.retryCount < NumericConstants.retryLimit {
-                    if !success {
-                        strongSelf.requestingData = false
-                        strongSelf.requestDataFromShopStyleForCategory(category)
-                        strongSelf.search.incrementRetryCount()
-                        print("Request Failed. Trying again...")
-                        print("Request Count: \(strongSelf.search.retryCount)")
-                        TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
-                        
-                    } else {
-                        strongSelf.requestingData = false
-                        print("Product Count: \(lastItem)")
-                        
-                        let indexPaths = (0..<lastItem).map { NSIndexPath(forItem: $0, inSection: 0) }
-                        
-                        strongSelf.collectionView!.performBatchUpdates({
-                            print("READY FOR INSERTS")
-                            strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
-                            }, completion: nil
-                        )
-                    }
+                    strongSelf.requestDataFromShopStyleForCategory(category)
+                    strongSelf.search.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.search.retryCount)")
+                } else {
+                    strongSelf.search.resetRetryCount()
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    strongSelf.hideSpinner()
+                    TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+                    TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                 }
+                
+            } else {
+                strongSelf.hideSpinner()
+                print("Product Count: \(lastItem)")
+                
+                let indexPaths = (0..<lastItem).map { NSIndexPath(forItem: $0, inSection: 0) }
+                
+                strongSelf.collectionView!.performBatchUpdates({
+                    print("READY FOR INSERTS")
+                    strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
+                    }, completion: nil
+                )
             }
         }
     }
@@ -195,7 +219,7 @@ extension ProductDetailsViewController: UICollectionViewDataSource, UICollection
         let flickVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
         
         if let controller = flickVC {
-            controller.productCategory = product.categories?.first
+            controller.productCategory = product.categoryIds?.first
             controller.indexPath  = indexPath
             controller.search = search
             controller.brands = brands
@@ -231,11 +255,12 @@ extension ProductDetailsViewController {
         label.textColor = UIColor(red: 32/255, green: 49/255, blue: 67/255, alpha: 1.0)
         cell?.contentView.addSubview(label)
         
-        if section == 0 {
+        switch section {
+        case 0:
             label.text = "Product Description"
-        } else if section == 1 {
+        case 1:
             label.text = "Similar Products"
-        } else {
+        default:
             label.text = ""
         }
         

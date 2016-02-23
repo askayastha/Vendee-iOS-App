@@ -12,6 +12,7 @@ import MBProgressHUD
 import SafariServices
 import AVFoundation
 import TSMessages
+import SwiftyJSON
 
 //struct FlickViewConstants {
 //    static var width = UIScreen.mainScreen().bounds.width
@@ -101,21 +102,32 @@ class FlickViewController: UICollectionViewController {
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
         
-        cell.brandImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
-        cell.brandImageView.layer.borderWidth = 0.5
-        cell.brandImageView.layer.cornerRadius = 5.0
-        cell.brandImageView.layer.masksToBounds = true
+        cell.headerImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
+        cell.headerImageView.layer.borderWidth = 0.5
+        cell.headerImageView.layer.cornerRadius = 5.0
+        cell.headerImageView.layer.masksToBounds = true
                 
         cell.product = product
         cell.delegate = self
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            if let brandName = product.brandName {
+        // Update header image view
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            if let brand = product.brand {
+                let brandName = JSON(brand)["name"].string
                 let brandImageURL = self.brands.filter {$0.nickname == brandName}.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = brandImageURL {
-                        cell.brandImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
+                        cell.headerImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
+                    }
+                }
+            } else if let retailer = product.retailer {
+                let retailerName = JSON(retailer)["name"].string
+                let retailerImageURL = self.brands.filter {$0.nickname == retailerName}.first?.picURL
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    if let imageURL = retailerImageURL {
+                        cell.headerImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
                     }
                 }
             }
@@ -151,26 +163,25 @@ class FlickViewController: UICollectionViewController {
         search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
             
             guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
             print("Products count: \(lastItem)")
             if !success {
                 if strongSelf.search.retryCount < NumericConstants.retryLimit {
-                    strongSelf.requestingData = false
                     strongSelf.requestDataFromShopStyleForCategory(category)
                     strongSelf.search.incrementRetryCount()
                     print("Request Failed. Trying again...")
                     print("Request Count: \(strongSelf.search.retryCount)")
                     
                 } else {
-                    strongSelf.requestingData = false
                     strongSelf.search.resetRetryCount()
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
                     strongSelf.loadingHUDPresent = false
+                    TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                 }
                 
             } else {
-                strongSelf.requestingData = false
                 strongSelf.collectionView!.reloadData()
                 MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
                 strongSelf.loadingHUDPresent = false
@@ -226,8 +237,8 @@ extension FlickViewController: FlickPageCellDelegate {
     }
     
     func openItemInStoreWithProduct(product: Product) {
-        guard let buyURL = product.buyURL else { return }
-        guard let url = NSURL(string: buyURL) else { return }
+        guard let clickURL = product.clickURL else { return }
+        guard let url = NSURL(string: clickURL) else { return }
         
         indexPath = collectionView!.indexPathsForVisibleItems().first
             
@@ -247,7 +258,7 @@ extension FlickViewController: FlickPageCellDelegate {
         if let controller = detailsVC {
             controller.product = search.products.objectAtIndex(indexPath!.row) as! Product
             controller.brands = brands
-            print("Categories: \(controller.product.categories)")
+            print("Categories: \(controller.product.categoryIds)")
             
             navigationController?.pushViewController(controller, animated: true)
         }

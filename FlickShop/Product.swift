@@ -10,53 +10,79 @@ import UIKit
 import SwiftyJSON
 
 class Product: NSObject, NSCoding {
-    
+    // ShopStyle Properties
     var id: String!
-    var productDescription: String!
-    
-    var buyURL: String!
-    
-    var tinyImageURLs: [String]!
-    var smallImageURLs: [String]!
-    var largeImageURLs: [String]!
-    
-    var tinyImageSize: CGSize!
-    var smallImageSize: CGSize!
-    
     var name: String!
     var brandedName: String!
     var unbrandedName: String!
-    var brandName: String!
-    
+    var currency: String!
     var price: Float!
     var salePrice: Float!
     var formattedPrice: String!
     var formattedSalePrice: String!
+    var inStock: Bool!
+    var stock: NSDictionary!
+    var retailer: NSDictionary!
+    var brand: NSDictionary!
+    var locale: String!
+    var productDescription: String!
+    var clickURL: String!
+    var pageURL: String!
+    var image: NSDictionary!
+    var alternateImages: NSDictionary!
+    var colors: NSDictionary!
+    var sizes: NSDictionary!
+    var categories: NSDictionary!
+    var extractDate: String!
+    var badges: NSDictionary!
+    var seeMoreLabel: String!
+    var seeMoreURL: String!
+    var preOwned: Bool!
+    var rental: Bool!
     
-    var colors: [String]!
-    var sizes: [String]!
-    
-    var categories: [String]!
-    
+    // Custom Properties
+    var tinyImageURLs: [String]!
+    var smallImageURLs: [String]!
+    var largeImageURLs: [String]!
+    var tinyImageSize: CGSize!
+    var smallImageSize: CGSize!
+    var categoryIds: [String]!
     var favoritedDate: NSDate!
     
     init(data: JSON) {
+        // ShopStyle Properties
         self.id = String(data["id"].int)
-        self.buyURL = data["clickUrl"].string
         self.name = data["name"].string
         self.brandedName = data["brandedName"].string
         self.unbrandedName = data["unbrandedName"].string
-        self.brandName = data["brand"]["name"].string
+        self.currency = data["currency"].string
         self.price = data["price"].float
         self.salePrice = data["salePrice"].float
         self.formattedPrice = data["priceLabel"].string
         self.formattedSalePrice = data["salePriceLabel"].string
+        self.inStock = data["inStock"].bool
+        self.retailer = data["retailer"].dictionaryObject
+        self.brand = data["brand"].dictionaryObject
+        self.locale = data["locale"].string
         self.productDescription = data["description"].string
+        self.clickURL = data["clickUrl"].string
+        self.pageURL = data["pageUrl"].string
+        self.image = data["image"].dictionaryObject
+        self.alternateImages = data["alternateImages"].dictionaryObject
+        self.colors = data["colors"].dictionaryObject
+        self.sizes = data["sizes"].dictionaryObject
+        self.categories = data["categories"].dictionaryObject
+        self.extractDate = data["extractDate"].string
+        self.badges = data["badges"].dictionaryObject
+        self.seeMoreLabel = data["seeMoreLabel"].string
+        self.preOwned = data["preOwned"].bool
+        self.rental = data["rental"].bool
         
+        // Custom Properties
         if let categoriesArray = data["categories"].array {
-            categories = [String]()
+            categoryIds = [String]()
             for category in categoriesArray {
-                categories.append(category["id"].stringValue)
+                categoryIds.append(category["id"].stringValue)
             }
         }
         
@@ -90,66 +116,86 @@ class Product: NSObject, NSCoding {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        // ShopStyle Properties
         id = aDecoder.decodeObjectForKey("Id") as? String
-        productDescription = aDecoder.decodeObjectForKey("ProductDescription") as? String
-        
-        buyURL = aDecoder.decodeObjectForKey("BuyURL") as? String
-        
-        tinyImageURLs = aDecoder.decodeObjectForKey("TinyImageURLs") as? [String]
-        smallImageURLs = aDecoder.decodeObjectForKey("SmallImageURLs") as? [String]
-        largeImageURLs = aDecoder.decodeObjectForKey("LargeImageURLs") as? [String]
-        
-        tinyImageSize = aDecoder.decodeObjectForKey("TinyImageSize") as? CGSize
-        smallImageSize = aDecoder.decodeObjectForKey("SmallImageSize") as? CGSize
-        
         name = aDecoder.decodeObjectForKey("Name") as? String
         brandedName = aDecoder.decodeObjectForKey("BrandedName") as? String
         unbrandedName = aDecoder.decodeObjectForKey("UnbrandedName") as? String
-        brandName = aDecoder.decodeObjectForKey("BrandName") as? String
-        
+        currency = aDecoder.decodeObjectForKey("Currency") as? String
         price = aDecoder.decodeFloatForKey("Price")
         salePrice = aDecoder.decodeFloatForKey("SalePrice")
         formattedPrice = aDecoder.decodeObjectForKey("FormattedPrice") as? String
         formattedSalePrice = aDecoder.decodeObjectForKey("FormattedSalePrice") as? String
+        inStock = aDecoder.decodeBoolForKey("InStock")
+        stock = aDecoder.decodeObjectForKey("Stock") as? NSDictionary
+        retailer = aDecoder.decodeObjectForKey("Retailer") as? NSDictionary
+        brand = aDecoder.decodeObjectForKey("Brand") as? NSDictionary
+        locale = aDecoder.decodeObjectForKey("Locale") as? String
+        productDescription = aDecoder.decodeObjectForKey("ProductDescription") as? String
+        clickURL = aDecoder.decodeObjectForKey("ClickURL") as? String
+        pageURL = aDecoder.decodeObjectForKey("PageURL") as? String
+        image = aDecoder.decodeObjectForKey("Image") as? NSDictionary
+        alternateImages = aDecoder.decodeObjectForKey("AlternateImages") as? NSDictionary
+        colors = aDecoder.decodeObjectForKey("Colors") as? NSDictionary
+        sizes = aDecoder.decodeObjectForKey("Sizes") as? NSDictionary
+        categories = aDecoder.decodeObjectForKey("Categories") as? NSDictionary
+        extractDate = aDecoder.decodeObjectForKey("ExtractDate") as? String
+        badges = aDecoder.decodeObjectForKey("Badges") as? NSDictionary
+        seeMoreLabel = aDecoder.decodeObjectForKey("SeeMoreLabel") as? String
+        seeMoreURL = aDecoder.decodeObjectForKey("SeeMoreURL") as? String
+        preOwned = aDecoder.decodeBoolForKey("PreOwned")
+        rental = aDecoder.decodeBoolForKey("Rental")
         
-        colors = aDecoder.decodeObjectForKey("Colors") as? [String]
-        sizes = aDecoder.decodeObjectForKey("Sizes") as? [String]
-        
-        categories = aDecoder.decodeObjectForKey("Categories") as? [String]
-        
+        // Custom Properties
+        tinyImageURLs = aDecoder.decodeObjectForKey("TinyImageURLs") as? [String]
+        smallImageURLs = aDecoder.decodeObjectForKey("SmallImageURLs") as? [String]
+        largeImageURLs = aDecoder.decodeObjectForKey("LargeImageURLs") as? [String]
+        tinyImageSize = aDecoder.decodeObjectForKey("TinyImageSize") as? CGSize
+        smallImageSize = aDecoder.decodeObjectForKey("SmallImageSize") as? CGSize
+        categoryIds = aDecoder.decodeObjectForKey("CategoryIds") as? [String]
         favoritedDate = aDecoder.decodeObjectForKey("FavoritedDate") as? NSDate
         
         super.init()
     }
     
     func encodeWithCoder(aCoder: NSCoder) {
+        // ShopStyle Properties
         aCoder.encodeObject(id, forKey: "Id")
-        aCoder.encodeObject(productDescription, forKey: "ProductDescription")
-        
-        aCoder.encodeObject(buyURL, forKey: "BuyURL")
-        
-        aCoder.encodeObject(tinyImageURLs, forKey: "TinyImageURLs")
-        aCoder.encodeObject(smallImageURLs, forKey: "SmallImageURLs")
-        aCoder.encodeObject(largeImageURLs, forKey: "LargeImageURLs")
-        
-        aCoder.encodeObject(tinyImageSize as? AnyObject, forKey: "TinyImageSize")
-        aCoder.encodeObject(smallImageSize as? AnyObject, forKey: "SmallImageSize")
-        
         aCoder.encodeObject(name, forKey: "Name")
         aCoder.encodeObject(brandedName, forKey: "BrandedName")
         aCoder.encodeObject(unbrandedName, forKey: "UnbrandedName")
-        aCoder.encodeObject(brandName, forKey: "BrandName")
-        
-        aCoder.encodeFloat(price!, forKey: "Price")
-        aCoder.encodeFloat(salePrice!, forKey: "SalePrice")
+        aCoder.encodeObject(currency, forKey: "Currency")
+        aCoder.encodeFloat(price, forKey: "Price")
+        aCoder.encodeFloat(salePrice, forKey: "SalePrice")
         aCoder.encodeObject(formattedPrice, forKey: "FormattedPrice")
         aCoder.encodeObject(formattedSalePrice, forKey: "FormattedSalePrice")
-        
+        aCoder.encodeBool(inStock, forKey: "InStock")
+        aCoder.encodeObject(stock, forKey: "Stock")
+        aCoder.encodeObject(retailer, forKey: "Retailer")
+        aCoder.encodeObject(brand, forKey: "Brand")
+        aCoder.encodeObject(locale, forKey: "Locale")
+        aCoder.encodeObject(productDescription, forKey: "ProductDescription")
+        aCoder.encodeObject(clickURL, forKey: "ClickURL")
+        aCoder.encodeObject(pageURL, forKey: "PageURL")
+        aCoder.encodeObject(image, forKey: "Image")
+        aCoder.encodeObject(alternateImages, forKey: "AlternateImages")
         aCoder.encodeObject(colors, forKey: "Colors")
         aCoder.encodeObject(sizes, forKey: "Sizes")
-        
         aCoder.encodeObject(categories, forKey: "Categories")
+        aCoder.encodeObject(extractDate, forKey: "ExtractDate")
+        aCoder.encodeObject(badges, forKey: "Badges")
+        aCoder.encodeObject(seeMoreLabel, forKey: "SeeMoreLabel")
+        aCoder.encodeObject(seeMoreURL, forKey: "SeeMoreURL")
+        aCoder.encodeBool(preOwned, forKey: "PreOwned")
+        aCoder.encodeBool(rental, forKey: "Rental")
         
+        // Custom Properties
+        aCoder.encodeObject(tinyImageURLs, forKey: "TinyImageURLs")
+        aCoder.encodeObject(smallImageURLs, forKey: "SmallImageURLs")
+        aCoder.encodeObject(largeImageURLs, forKey: "LargeImageURLs")
+        aCoder.encodeObject(tinyImageSize as? AnyObject, forKey: "TinyImageSize")
+        aCoder.encodeObject(smallImageSize as? AnyObject, forKey: "SmallImageSize")
+        aCoder.encodeObject(categoryIds, forKey: "CategoryIds")
         aCoder.encodeObject(favoritedDate, forKey: "FavoritedDate")
     }
 }

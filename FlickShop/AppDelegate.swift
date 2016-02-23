@@ -31,9 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             switch status {
             case .NotReachable:
+                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                 TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
                 
             case .Reachable(_):
+                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                 TSMessage.showNotificationWithTitle("Network Reachable", subtitle: "Network is reachable. Post reachability notification.", type: .Success)
                 NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
                 
@@ -74,7 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let productURL = userActivity.webpageURL!
             
             if !presentURL(productURL) {
-                TSMessage.showNotificationWithTitle("Error", subtitle: "Something wrong .", type: .Warning)
+                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+                TSMessage.showNotificationWithTitle("Error", subtitle: "URL not valid.", type: .Warning)
             }
         }
         
@@ -132,6 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 } else {
                     search.resetRetryCount()
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                 }
                 

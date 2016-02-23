@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 import PINRemoteImage
 
 class SimilarProductCell: UICollectionViewCell {
@@ -15,53 +16,46 @@ class SimilarProductCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var brandImageView: UIImageView!
-    @IBOutlet weak var brandNameLabel: UILabel!
+    @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
     
-    var spinner: UIActivityIndicatorView!
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        spinner.center = CGPoint(x: 130 / 2, y: 50 + (150/2))
+        spinner.startAnimating()
+        
+        return spinner
+    }()
     
-    var product: Product? {
+    var product: Product! {
         didSet {
-            if let product = product {
-                brandNameLabel.text = product.brandName ?? product.brandedName
-                
-                if let salePrice = product.salePrice {
-                    let discount = (product.price! - salePrice) * 100 / product.price!
-                    discountLabel.text = "\(Int(discount))% Off"
-                } else {
-                    discountLabel.text = "0% Off"
-                }
-                
-                // imageView.pin_updateWithProgress = true
-                imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs!.first!)!) { _ in
-                    self.spinner.stopAnimating()
-                }
-                
-            }
+            updateUI()
         }
     }
     
-    //    override init(frame: CGRect) {
-    //        super.init(frame: frame)
-    //
-    //        print("I AM HERE")
-    //    }
+    private func updateUI() {
+        // Update header labels
+        if let brand = product.brand {
+            headerTitleLabel.text = JSON(brand)["name"].string
+        } else if let retailer = product.retailer {
+            headerTitleLabel.text = JSON(retailer)["name"].string
+        }
+        
+        if let salePrice = product.salePrice {
+            let discount = (product.price! - salePrice) * 100 / product.price!
+            discountLabel.text = "\(Int(discount))% Off"
+        } else {
+            discountLabel.text = "0% Off"
+        }        
+        imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs!.first!)!) { _ in
+            self.spinner.stopAnimating()
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
         print("CELL INITIALIZATION")
-//        layer.cornerRadius = 5.0
-//        layer.masksToBounds = true
         
-//        layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
-//        // layer.borderColor = UIColor.lightGrayColor().CGColor
-//        layer.borderWidth = 0.5
-        
-        spinner = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
-        spinner.hidesWhenStopped = true
-        spinner.center = CGPoint(x: 130 / 2, y: 50 + (150/2))
         contentView.addSubview(spinner)
     }
     
@@ -69,7 +63,6 @@ class SimilarProductCell: UICollectionViewCell {
         super.prepareForReuse()
         
         imageView.image = nil
-//        brandImageView.image = nil
         spinner.startAnimating()
     }
     

@@ -85,14 +85,14 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="yYe-fU-sgW">
                                                             <rect key="frame" x="40" y="0.0" width="130" height="35"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUC-JL-z7m">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="63" height="18"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUC-JL-z7m">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="18"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-vr-jtR">
-                                                                    <rect key="frame" x="0.0" y="18" width="44" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dzc-vr-jtR">
+                                                                    <rect key="frame" x="0.0" y="18" width="37" height="17"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.96078431372549022" green="0.16862745098039217" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -139,9 +139,9 @@
                                 </constraints>
                                 <size key="customSize" width="180" height="200"/>
                                 <connections>
-                                    <outlet property="brandImageView" destination="Mes-me-XzM" id="dwF-ws-4jI"/>
-                                    <outlet property="brandNameLabel" destination="PUC-JL-z7m" id="p2r-aS-8Iv"/>
                                     <outlet property="discountLabel" destination="dzc-vr-jtR" id="S62-xJ-cRh"/>
+                                    <outlet property="headerImageView" destination="Mes-me-XzM" id="hb3-E7-GL9"/>
+                                    <outlet property="headerTitleLabel" destination="PUC-JL-z7m" id="N0M-cC-cVV"/>
                                     <outlet property="imageView" destination="uT7-ew-HmC" id="05K-EI-QWL"/>
                                     <outlet property="imageViewHeightLayoutConstraint" destination="AHJ-wJ-5pM" id="kSm-iN-XDK"/>
                                     <outlet property="topImageViewLineSeparatorHeightConstraint" destination="A9C-WV-od3" id="fDz-Ho-WxE"/>
@@ -616,7 +616,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
                                                 <rect key="frame" x="17" y="27" width="76" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="18"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -803,14 +803,14 @@
                                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="-5" translatesAutoresizingMaskIntoConstraints="NO" id="lpM-Tg-Qqx">
                                                                                 <rect key="frame" x="5" y="5" width="170" height="40"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LA-pz-ww4">
-                                                                                        <rect key="frame" x="54" y="0.0" width="63" height="23"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LA-pz-ww4">
+                                                                                        <rect key="frame" x="73" y="0.0" width="24" height="23"/>
                                                                                         <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="12"/>
                                                                                         <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <nil key="highlightedColor"/>
                                                                                     </label>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WzM-EC-tku">
-                                                                                        <rect key="frame" x="63" y="18" width="44" height="22"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WzM-EC-tku">
+                                                                                        <rect key="frame" x="67" y="18" width="37" height="22"/>
                                                                                         <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
                                                                                         <color key="textColor" red="0.96078431372549022" green="0.16862745098039217" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                                         <nil key="highlightedColor"/>
@@ -868,8 +868,8 @@
                                                             </constraints>
                                                             <size key="customSize" width="180" height="200"/>
                                                             <connections>
-                                                                <outlet property="brandNameLabel" destination="6LA-pz-ww4" id="aIj-U4-rda"/>
                                                                 <outlet property="discountLabel" destination="WzM-EC-tku" id="Y1x-bc-gTw"/>
+                                                                <outlet property="headerTitleLabel" destination="6LA-pz-ww4" id="dtw-mo-q7K"/>
                                                                 <outlet property="imageView" destination="cTo-s6-ZPA" id="oyl-1l-1jd"/>
                                                                 <outlet property="imageViewHeightLayoutConstraint" destination="MVI-54-NiO" id="1Sb-mP-fTg"/>
                                                                 <outlet property="topImageViewLineSeparatorHeightConstraint" destination="HUs-4J-43y" id="gUH-q4-c58"/>
@@ -1022,14 +1022,14 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="noL-c7-WAg">
                                                             <rect key="frame" x="40" y="0.0" width="130" height="35"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-Re-uEz">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="63" height="18"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-Re-uEz">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="24" height="18"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEl-iS-JW9">
-                                                                    <rect key="frame" x="0.0" y="18" width="44" height="17"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEl-iS-JW9">
+                                                                    <rect key="frame" x="0.0" y="18" width="37" height="17"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.96078431369999995" green="0.16862745100000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1076,9 +1076,9 @@
                                 </constraints>
                                 <size key="customSize" width="180" height="200"/>
                                 <connections>
-                                    <outlet property="brandImageView" destination="fY3-3w-D56" id="gjJ-sn-iHf"/>
-                                    <outlet property="brandNameLabel" destination="6Ta-Re-uEz" id="v2k-lP-2IG"/>
                                     <outlet property="discountLabel" destination="jEl-iS-JW9" id="PK0-rW-nec"/>
+                                    <outlet property="headerImageView" destination="fY3-3w-D56" id="yKr-x6-0s6"/>
+                                    <outlet property="headerTitleLabel" destination="6Ta-Re-uEz" id="drq-AD-cKH"/>
                                     <outlet property="imageView" destination="Q9b-sK-hC1" id="mq8-vh-qrv"/>
                                     <outlet property="imageViewHeightLayoutConstraint" destination="P3W-3i-2Bl" id="sIx-hi-BtY"/>
                                     <outlet property="topImageViewLineSeparatorHeightConstraint" destination="A51-sK-NgO" id="fgQ-DB-LLn"/>

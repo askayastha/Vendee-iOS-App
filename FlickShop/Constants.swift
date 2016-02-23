@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+struct Files {
+    static let TSDesignFileName = "TSMessagesCustomDesign.json"
+}
+
 struct CustomNotifications {
     static let FilterDidChangeNotification = "FilterDidChange"
     static let FilterDidClearNotification = "FilterDidClear"

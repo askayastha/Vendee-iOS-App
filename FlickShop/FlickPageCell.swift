@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 protocol FlickPageCellDelegate: class {
     func openItemInStoreWithProduct(product: Product)
@@ -29,15 +30,14 @@ class FlickPageCell: UICollectionViewCell {
         }
     }
     
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var headerTitleLabel: UILabel!
+    @IBOutlet weak var headerSubtitleLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    @IBOutlet weak var brandNameLabel: UILabel!
-    @IBOutlet weak var brandImageView: UIImageView!
-    @IBOutlet weak var unbrandedNameLabel: UILabel!
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
-//    @IBOutlet weak var topLikesCommentsViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var favoriteButton: UIButton!
     
@@ -91,7 +91,7 @@ class FlickPageCell: UICollectionViewCell {
     }
     
     override func awakeFromNib() {
-        print("Yay. Awoke from Nib.")
+        print("awakeFromNib")
         super.awakeFromNib()
         
         buyButton.layer.cornerRadius = 5.0
@@ -100,15 +100,16 @@ class FlickPageCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        print("Yay. I am getting reused.")
+        print("prepareForReuse")
         
         spinners.removeAll()
         imageViews.removeAll()
         scrollView.delegate = nil
         scrollView.subviews.forEach { $0.removeFromSuperview() }
         scrollView.setContentOffset(CGPointMake(0.0, 0.0), animated: false)
-        brandImageView.image = nil
-        unbrandedNameLabel.text = nil
+        headerImageView.image = nil
+        headerTitleLabel.text = nil
+        headerSubtitleLabel.text = nil
         favorited = false
     }
     
@@ -186,32 +187,45 @@ class FlickPageCell: UICollectionViewCell {
     }
     
     private func updateUI() {
-        print("##### Updating UI #####")
+        
+        // Update header labels
+        if let brand = product.brand {
+            headerTitleLabel.text = JSON(brand)["name"].string
+        } else if let retailer = product.retailer {
+            headerTitleLabel.text = JSON(retailer)["name"].string
+        }
+        headerSubtitleLabel.text = product.unbrandedName
+        
+        // Update favorite button
         if favorited {
             favoriteButton.setImage(UIImage(named: "favorite_selected"), forState: .Normal)
         }
-        brandNameLabel.text = product.brandName ?? "\u{2014}"
-        unbrandedNameLabel.text = product.unbrandedName
-        var discountText = "0% Off"
         
+        // Update buy button
+        var discountText = "0% Off"
         if let salePrice = product.salePrice {
             let discount = (product.price! - salePrice) * 100 / product.price!
             discountText = "\(Int(discount))% Off"
         }
         buyButton.setTitle(discountText, forState: .Normal)
-        print("PRODUCT ID: \(product.id!)")
-        // Setup page control
+        
+        // Update page control
         pageControl.currentPage = currentPage
         pageControl.numberOfPages = product.largeImageURLs!.count
         
+        // Reset spinners and image views
         for _ in 0..<product.largeImageURLs!.count {
             spinners.append(nil)
             imageViews.append(nil)
         }
+        
+        // Update scroll view
         scrollView.contentSize = CGSizeMake(
             scrollViewBounds.size.width * CGFloat(pageControl.numberOfPages),
             scrollViewBounds.size.height
         )
+        
+        // Load scroll pages
         loadVisiblePages()
         scrollView.delegate = self  // Delegate set here to prevent unwanted scrolling method calls.
     }

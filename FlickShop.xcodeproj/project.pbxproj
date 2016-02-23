@@ -58,6 +58,7 @@
 		75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */; };
 		75AD0B4C1C7C777A00CD5C85 /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */; };
 		75AD0B501C7C7E0A00CD5C85 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */; };
+		75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */; };
 		75B455EE1C58FAEB00424B21 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455ED1C58FAEB00424B21 /* GradientView.swift */; };
 		75B455F21C58FB5B00424B21 /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */; };
 		75B455F41C58FB7F00424B21 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */; };
@@ -188,6 +189,7 @@
 		75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CustomSFSafariViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHEXColors.swift; sourceTree = "<group>"; };
 		75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesCustomDesign.json; sourceTree = "<group>"; };
 		75B455ED1C58FAEB00424B21 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GradientView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FadeOutAnimationController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DimmingPresentationController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -522,6 +524,7 @@
 				75F12CFD1BE0A35900258874 /* ProximaNova-Reg.ttf */,
 				75F12CFE1BE0A35900258874 /* ProximaNova-Sbold.ttf */,
 				75F12CFC1BE0A35900258874 /* ProximaNova-Bold.ttf */,
+				75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -727,6 +730,7 @@
 				756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */,
 				75F12D0F1BE0A35900258874 /* ProximaNova-Bold.ttf in Resources */,
 				756E15B21C7213D20046CCBA /* FaktFlipboard-SemiBold.otf in Resources */,
+				75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */,
 				75F12D101BE0A35900258874 /* ProximaNova-Reg.ttf in Resources */,
 				75F12D181BE0A46000258874 /* Main.storyboard in Resources */,
 				75BE17551C04DB88007E0A59 /* Shopstyle_Stores.plist in Resources */,

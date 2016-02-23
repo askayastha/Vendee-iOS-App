@@ -8,53 +8,39 @@
 
 import UIKit
 import Alamofire
-import PINRemoteImage
+import SwiftyJSON
 
 class CustomPhotoCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var imageViewHeightLayoutConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var brandImageView: UIImageView!
-    @IBOutlet weak var brandNameLabel: UILabel!
+    @IBOutlet weak var headerImageView: UIImageView!
+    @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
     
-    var product: Product? {
+    var product: Product! {
         didSet {
-            if let product = product {
-                brandNameLabel.text = product.brandName ?? product.brandedName
-                
-//                if let salePrice = product.formattedSalePrice {
-//                    priceLabel.attributedText = NSAttributedString(
-//                        string: product.formattedPrice ?? "",
-//                        attributes: [ NSStrikethroughStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue ]
-//                    )
-//                    salePriceLabel.text = salePrice
-//                    
-//                } else {
-//                    priceLabel.text = ""
-//                    salePriceLabel.text = product.formattedPrice ?? ""
-//                }
-                
-                var discountText = "0% Off"
-                
-                if let salePrice = product.salePrice {
-                    let discount = (product.price! - salePrice) * 100 / product.price!
-                    discountText = "\(Int(discount))% Off"
-                }
-                discountLabel.text = discountText
-                
-                imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs!.first!)!)
-                
-            }
+            updateUI()
         }
     }
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        
-//        print("I AM HERE")
-//    }
+    private func updateUI() {
+        // Update header labels
+        if let brand = product.brand {
+            headerTitleLabel.text = JSON(brand)["name"].string
+        } else if let retailer = product.retailer {
+            headerTitleLabel.text = JSON(retailer)["name"].string
+        }
+        
+        var discountText = "0% Off"
+        if let salePrice = product.salePrice {
+            let discount = (product.price! - salePrice) * 100 / product.price!
+            discountText = "\(Int(discount))% Off"
+        }
+        discountLabel.text = discountText
+        imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs!.first!)!)
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -68,18 +54,11 @@ class CustomPhotoCell: UICollectionViewCell {
         layer.borderWidth = 0.5
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//        layer.cornerRadius = 5.0
-//        layer.masksToBounds = true
-//    }
-    
     override func prepareForReuse() {
         super.prepareForReuse()
         
         imageView.image = nil
-        brandImageView.image = nil
+        headerImageView.image = nil
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {

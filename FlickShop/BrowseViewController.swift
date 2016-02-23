@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AVFoundation
 import TSMessages
+import SwiftyJSON
 
 struct BrowseViewCellIdentifiers {
     static let customProductCell = "CustomPhotoCell"
@@ -130,6 +131,7 @@ class BrowseViewController: UICollectionViewController {
             populatePhotosFromIndex(productCount)
         } else if !appDelegate.networkManager!.isReachable {
             hideSpinner?()
+            TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
             TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
         } else {
             hideSpinner?()
@@ -181,29 +183,28 @@ class BrowseViewController: UICollectionViewController {
         search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
             
             guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
             print("Products count: \(lastItem)")
             if !success {
                 if strongSelf.search.retryCount < NumericConstants.retryLimit {
-                    strongSelf.requestingData = false
                     strongSelf.requestDataFromShopStyleForCategory(category)
                     strongSelf.search.incrementRetryCount()
                     print("Request Failed. Trying again...")
                     print("Request Count: \(strongSelf.search.retryCount)")
                     
                 } else {
-                    strongSelf.requestingData = false
                     strongSelf.search.resetRetryCount()
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     strongSelf.hideSpinner?()
+                    TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                 }
                 
-            } else {
-                strongSelf.requestingData = false
-                
+            } else {                
                 if lastItem > 0 {
                     strongSelf.populatePhotosFromIndex(strongSelf.productCount)
                 } else {
+                    TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("No results found.", type: .Warning)
                 }
     
@@ -260,20 +261,30 @@ extension BrowseViewController {
         // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
-        cell.brandImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
-        cell.brandImageView.layer.borderWidth = 0.5
-        cell.brandImageView.layer.cornerRadius = 5.0
-        cell.brandImageView.layer.masksToBounds = true
+        cell.headerImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
+        cell.headerImageView.layer.borderWidth = 0.5
+        cell.headerImageView.layer.cornerRadius = 5.0
+        cell.headerImageView.layer.masksToBounds = true
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.product = product
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-            if let brandName = product.brandName {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            if let brand = product.brand {
+                let brandName = JSON(brand)["name"].string
                 let brandImageURL = self.brands.filter {$0.nickname == brandName}.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = brandImageURL {
-                        cell.brandImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
+                        cell.headerImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
+                    }
+                }
+            } else if let retailer = product.retailer {
+                let retailerName = JSON(retailer)["name"].string
+                let retailerImageURL = self.brands.filter {$0.nickname == retailerName}.first?.picURL
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    if let imageURL = retailerImageURL {
+                        cell.headerImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
                     }
                 }
             }

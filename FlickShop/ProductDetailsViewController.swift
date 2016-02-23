@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import AVFoundation
 import TSMessages
+import SwiftyJSON
 
 class ProductDetailsViewController: UITableViewController {
     
@@ -20,6 +21,7 @@ class ProductDetailsViewController: UITableViewController {
     weak var delegate: ScrollEventsDelegate?
     var product: Product!
     var brands: [Brand]!
+    var categoryIds: [String]!
     
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
@@ -65,7 +67,11 @@ class ProductDetailsViewController: UITableViewController {
             ])
         
         print("SIMILAR REQUESTS")
-        requestDataFromShopStyleForCategory(product.categoryIds?.first)
+        if let categories = product.categories {
+            categoryIds = JSON(categories).arrayValue.map { $0["id"].stringValue }
+            print("CATEGORIES: \(categoryIds)")
+            requestDataFromShopStyleForCategory(categoryIds.first)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -219,7 +225,7 @@ extension ProductDetailsViewController: UICollectionViewDataSource, UICollection
         let flickVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
         
         if let controller = flickVC {
-            controller.productCategory = product.categoryIds?.first
+            controller.productCategory = categoryIds?.first
             controller.indexPath  = indexPath
             controller.search = search
             controller.brands = brands

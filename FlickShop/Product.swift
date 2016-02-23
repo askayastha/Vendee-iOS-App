@@ -21,7 +21,7 @@ class Product: NSObject, NSCoding {
     var formattedPrice: String!
     var formattedSalePrice: String!
     var inStock: Bool!
-    var stock: NSDictionary!
+    var stock: [AnyObject]!
     var retailer: NSDictionary!
     var brand: NSDictionary!
     var locale: String!
@@ -29,12 +29,12 @@ class Product: NSObject, NSCoding {
     var clickURL: String!
     var pageURL: String!
     var image: NSDictionary!
-    var alternateImages: NSDictionary!
-    var colors: NSDictionary!
-    var sizes: NSDictionary!
-    var categories: NSDictionary!
+    var alternateImages: [AnyObject]!
+    var colors: [AnyObject]!
+    var sizes: [AnyObject]!
+    var categories: [AnyObject]!
     var extractDate: String!
-    var badges: NSDictionary!
+    var badges: [AnyObject]!
     var seeMoreLabel: String!
     var seeMoreURL: String!
     var preOwned: Bool!
@@ -46,7 +46,6 @@ class Product: NSObject, NSCoding {
     var largeImageURLs: [String]!
     var tinyImageSize: CGSize!
     var smallImageSize: CGSize!
-    var categoryIds: [String]!
     var favoritedDate: NSDate!
     
     init(data: JSON) {
@@ -68,35 +67,28 @@ class Product: NSObject, NSCoding {
         self.clickURL = data["clickUrl"].string
         self.pageURL = data["pageUrl"].string
         self.image = data["image"].dictionaryObject
-        self.alternateImages = data["alternateImages"].dictionaryObject
-        self.colors = data["colors"].dictionaryObject
-        self.sizes = data["sizes"].dictionaryObject
-        self.categories = data["categories"].dictionaryObject
+        self.alternateImages = data["alternateImages"].arrayObject
+        self.colors = data["colors"].arrayObject
+        self.sizes = data["sizes"].arrayObject
+        self.categories = data["categories"].arrayObject
         self.extractDate = data["extractDate"].string
-        self.badges = data["badges"].dictionaryObject
+        self.badges = data["badges"].arrayObject
         self.seeMoreLabel = data["seeMoreLabel"].string
         self.preOwned = data["preOwned"].bool
         self.rental = data["rental"].bool
         
         // Custom Properties
-        if let categoriesArray = data["categories"].array {
-            categoryIds = [String]()
-            for category in categoriesArray {
-                categoryIds.append(category["id"].stringValue)
-            }
-        }
+        tinyImageURLs = [String]()
+        smallImageURLs = [String]()
+        largeImageURLs = [String]()
         
+        // First URL
+        tinyImageURLs.append(data["image"]["sizes"]["IPhoneSmall"]["url"].stringValue)
+        smallImageURLs.append(data["image"]["sizes"]["IPhone"]["url"].stringValue)
+        largeImageURLs.append(data["image"]["sizes"]["Original"]["url"].stringValue)
+        
+        // Alternate URLs
         if let alternateImages = data["alternateImages"].array {
-            tinyImageURLs = [String]()
-            smallImageURLs = [String]()
-            largeImageURLs = [String]()
-            
-            // First URL
-            tinyImageURLs.append(data["image"]["sizes"]["IPhoneSmall"]["url"].stringValue)
-            smallImageURLs.append(data["image"]["sizes"]["IPhone"]["url"].stringValue)
-            largeImageURLs.append(data["image"]["sizes"]["Original"]["url"].stringValue)
-            
-            // Alternate URLs
             for alternateImage in alternateImages {
                 let tinyImageURL = alternateImage["sizes"]["IPhoneSmall"]["url"].stringValue
                 let smallImageURL = alternateImage["sizes"]["IPhone"]["url"].stringValue
@@ -127,7 +119,7 @@ class Product: NSObject, NSCoding {
         formattedPrice = aDecoder.decodeObjectForKey("FormattedPrice") as? String
         formattedSalePrice = aDecoder.decodeObjectForKey("FormattedSalePrice") as? String
         inStock = aDecoder.decodeBoolForKey("InStock")
-        stock = aDecoder.decodeObjectForKey("Stock") as? NSDictionary
+        stock = aDecoder.decodeObjectForKey("Stock") as? [AnyObject]
         retailer = aDecoder.decodeObjectForKey("Retailer") as? NSDictionary
         brand = aDecoder.decodeObjectForKey("Brand") as? NSDictionary
         locale = aDecoder.decodeObjectForKey("Locale") as? String
@@ -135,12 +127,12 @@ class Product: NSObject, NSCoding {
         clickURL = aDecoder.decodeObjectForKey("ClickURL") as? String
         pageURL = aDecoder.decodeObjectForKey("PageURL") as? String
         image = aDecoder.decodeObjectForKey("Image") as? NSDictionary
-        alternateImages = aDecoder.decodeObjectForKey("AlternateImages") as? NSDictionary
-        colors = aDecoder.decodeObjectForKey("Colors") as? NSDictionary
-        sizes = aDecoder.decodeObjectForKey("Sizes") as? NSDictionary
-        categories = aDecoder.decodeObjectForKey("Categories") as? NSDictionary
+        alternateImages = aDecoder.decodeObjectForKey("AlternateImages") as? [AnyObject]
+        colors = aDecoder.decodeObjectForKey("Colors") as? [AnyObject]
+        sizes = aDecoder.decodeObjectForKey("Sizes") as? [AnyObject]
+        categories = aDecoder.decodeObjectForKey("Categories") as? [AnyObject]
         extractDate = aDecoder.decodeObjectForKey("ExtractDate") as? String
-        badges = aDecoder.decodeObjectForKey("Badges") as? NSDictionary
+        badges = aDecoder.decodeObjectForKey("Badges") as? [AnyObject]
         seeMoreLabel = aDecoder.decodeObjectForKey("SeeMoreLabel") as? String
         seeMoreURL = aDecoder.decodeObjectForKey("SeeMoreURL") as? String
         preOwned = aDecoder.decodeBoolForKey("PreOwned")
@@ -152,7 +144,6 @@ class Product: NSObject, NSCoding {
         largeImageURLs = aDecoder.decodeObjectForKey("LargeImageURLs") as? [String]
         tinyImageSize = aDecoder.decodeObjectForKey("TinyImageSize") as? CGSize
         smallImageSize = aDecoder.decodeObjectForKey("SmallImageSize") as? CGSize
-        categoryIds = aDecoder.decodeObjectForKey("CategoryIds") as? [String]
         favoritedDate = aDecoder.decodeObjectForKey("FavoritedDate") as? NSDate
         
         super.init()
@@ -195,7 +186,6 @@ class Product: NSObject, NSCoding {
         aCoder.encodeObject(largeImageURLs, forKey: "LargeImageURLs")
         aCoder.encodeObject(tinyImageSize as? AnyObject, forKey: "TinyImageSize")
         aCoder.encodeObject(smallImageSize as? AnyObject, forKey: "SmallImageSize")
-        aCoder.encodeObject(categoryIds, forKey: "CategoryIds")
         aCoder.encodeObject(favoritedDate, forKey: "FavoritedDate")
     }
 }

@@ -16,7 +16,7 @@ struct Files {
 struct CustomNotifications {
     static let FilterDidChangeNotification = "FilterDidChange"
     static let FilterDidClearNotification = "FilterDidClear"
-    static let DataModelDidChangeNotification = "DataModelDidChange"
+    static let FavoriteModelDidChangeNotification = "FavoriteModelDidChange"
     static let NetworkDidChangeToReachableNotification = "NetworkDidChangeToReachable"
     
     static func filterDidChangeNotification() {
@@ -28,7 +28,7 @@ struct CustomNotifications {
     }
     
     static func dataModelDidChangeNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.DataModelDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FavoriteModelDidChangeNotification, object: nil)
     }
     
     static func networkDidChangeToReachableNotification() {

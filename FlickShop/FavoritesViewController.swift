@@ -19,22 +19,22 @@ class FavoritesViewController: UICollectionViewController {
     
     var hideSpinner: (()->())?
     var brands = Brand.allBrands()
-    var dataModel: DataModel!
+    var favoriteModel: FavoriteModel!
     var search: Search!
     var scout: PhotoScout!
     
     deinit {
         print("Deallocating FavoritesViewController !!!!!!!!!!!!!!!")
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.DataModelDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FavoriteModelDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataModel", name: CustomNotifications.DataModelDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshDataModel", name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshFavoriteModel", name: CustomNotifications.FavoriteModelDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshFavoriteModel", name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
         
         setupView()
     }
@@ -49,7 +49,7 @@ class FavoritesViewController: UICollectionViewController {
             populatingData = false
             productCount = 0
             
-            let favoriteProductsCopy = dataModel.favoriteProducts.mutableCopy() as! NSMutableOrderedSet
+            let favoriteProductsCopy = favoriteModel.favoriteProducts.mutableCopy() as! NSMutableOrderedSet
             search = Search(products: favoriteProductsCopy)
             scout = PhotoScout(products: favoriteProductsCopy)
             
@@ -82,8 +82,8 @@ class FavoritesViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func refreshDataModel() {
-        print("Favorite Products: \(dataModel.favoriteProducts)")
+    func refreshFavoriteModel() {
+        print("Favorite Products: \(favoriteModel.favoriteProducts)")
         
         // Mark data model as dirty
         dataModelChanged = true
@@ -192,7 +192,7 @@ extension FavoritesViewController {
             controller.search = search
             controller.indexPath = indexPath
             controller.brands = brands
-            controller.dataModel = dataModel
+            controller.favoriteModel = favoriteModel
             controller.hidesBottomBarWhenPushed = true
             
             navigationController?.pushViewController(controller, animated: true)

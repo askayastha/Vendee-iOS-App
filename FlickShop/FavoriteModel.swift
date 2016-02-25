@@ -1,5 +1,5 @@
 //
-//  DataModel.swift
+//  FavoriteModel.swift
 //  Vendee
 //
 //  Created by Ashish Kayastha on 2/9/16.
@@ -16,7 +16,7 @@ func >(lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.compare(rhs) == .OrderedDescending
 }
 
-class DataModel {
+class FavoriteModel {
     
     private(set) var favoriteProducts = NSMutableOrderedSet()
     

@@ -57,6 +57,7 @@
 		75A31E521BDFBAAE006FD010 /* FlickShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */; };
 		75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */; };
 		75AC84D91C7F7B03004B8FD7 /* CategoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AC84D81C7F7B03004B8FD7 /* CategoryInfo.swift */; };
+		75AC84DB1C7F90E6004B8FD7 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AC84DA1C7F90E6004B8FD7 /* CloudKit.framework */; };
 		75AD0B4C1C7C777A00CD5C85 /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */; };
 		75AD0B501C7C7E0A00CD5C85 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */; };
 		75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */; };
@@ -189,6 +190,7 @@
 		75A31E531BDFBAAE006FD010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CustomSFSafariViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75AC84D81C7F7B03004B8FD7 /* CategoryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryInfo.swift; sourceTree = "<group>"; };
+		75AC84DA1C7F90E6004B8FD7 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHEXColors.swift; sourceTree = "<group>"; };
 		75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesCustomDesign.json; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9467AA39D88A2E86E1AD25CE /* Pods_FlickShop.framework in Frameworks */,
+				75AC84DB1C7F90E6004B8FD7 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +588,7 @@
 		7AA5E59AD30AA3D38AC2E840 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				75AC84DA1C7F90E6004B8FD7 /* CloudKit.framework */,
 				03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */,
 			);
 			name = Frameworks;
@@ -673,6 +677,9 @@
 						DevelopmentTeam = X7ULP599YE;
 						SystemCapabilities = {
 							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+							com.apple.iCloud = {
 								enabled = 1;
 							};
 						};
@@ -1044,10 +1051,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FlickShop/FlickShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FlickShop/FlickShop-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1061,10 +1070,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FlickShop/FlickShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FlickShop/FlickShop-Bridging-Header.h";
 			};
 			name = Release;

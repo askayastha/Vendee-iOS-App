@@ -56,6 +56,7 @@
 		75A31E471BDFBAAE006FD010 /* FlickShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E461BDFBAAE006FD010 /* FlickShopTests.swift */; };
 		75A31E521BDFBAAE006FD010 /* FlickShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */; };
 		75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */; };
+		75AC84D91C7F7B03004B8FD7 /* CategoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AC84D81C7F7B03004B8FD7 /* CategoryInfo.swift */; };
 		75AD0B4C1C7C777A00CD5C85 /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */; };
 		75AD0B501C7C7E0A00CD5C85 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */; };
 		75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */; };
@@ -187,6 +188,7 @@
 		75A31E511BDFBAAE006FD010 /* FlickShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickShopUITests.swift; sourceTree = "<group>"; };
 		75A31E531BDFBAAE006FD010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CustomSFSafariViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		75AC84D81C7F7B03004B8FD7 /* CategoryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryInfo.swift; sourceTree = "<group>"; };
 		75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHEXColors.swift; sourceTree = "<group>"; };
 		75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesCustomDesign.json; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				75F12CFA1BE0A35900258874 /* Product.swift */,
+				75AC84D81C7F7B03004B8FD7 /* CategoryInfo.swift */,
 				75F12CE21BE0A24100258874 /* Category.swift */,
 				75F12CE41BE0A24100258874 /* Search.swift */,
 				75DD48D81C0735A100C4C34D /* CategorySearch.swift */,
@@ -857,6 +860,7 @@
 				758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */,
 				753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */,
 				752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */,
+				75AC84D91C7F7B03004B8FD7 /* CategoryInfo.swift in Sources */,
 				75F72C741C565E1300D21E50 /* SubjectActivityItem.swift in Sources */,
 				752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */,
 				75F12D131BE0A35900258874 /* TwoColumnLayout.swift in Sources */,

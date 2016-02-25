@@ -115,7 +115,7 @@ class Search {
                         print("----------Got results!----------")
                         
                         let jsonData = JSON(response.result.value!)
-                        self.populateProducts(jsonData)
+                        self.populateProducts(data: jsonData)
                         self.state = .Success
                         print("Request successful")
                         
@@ -136,7 +136,8 @@ class Search {
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
                         print("----------Got results!----------")
                         
-                        self.populateProducts(JSON(response.result.value!))
+                        let jsonData = JSON(response.result.value!)
+                        self.populateProducts(data: jsonData)
                         self.state = .Success
                         print("Request successful")
                         
@@ -203,11 +204,9 @@ class Search {
         return "&\(finalFilterParams)"
     }
     
-    private func populateProducts(json: JSON) {
-        if let products = json["products"].array {
-            for jsonData in products {
-                self.products.addObject(Product(data: jsonData))
-            }
+    private func populateProducts(data data: JSON) {
+        if let productsArray = data["products"].array {
+            products.addObjectsFromArray(productsArray.map { Product(data: $0) })
         }
     }
 }

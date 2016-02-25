@@ -29,7 +29,7 @@ class BrowseViewController: UICollectionViewController {
     var scout: PhotoScout
     var brands = Brand.allBrands()
     var productCategory: String!
-    var favoriteModel: FavoriteModel!
+    var favoritesModel: FavoritesModel!
     
     deinit {
         print("Deallocating BrowseViewController !!!!!!!!!!!!!!!")
@@ -91,7 +91,7 @@ class BrowseViewController: UICollectionViewController {
             controller.indexPath = indexPath
             controller.brands = brands
             controller.productCategory = productCategory
-            controller.favoriteModel = favoriteModel
+            controller.favoritesModel = favoritesModel
             controller.hidesBottomBarWhenPushed = true
         }
     }
@@ -127,7 +127,7 @@ class BrowseViewController: UICollectionViewController {
     
     func populateData() {
         print("Browse PopulateData Count: \(productCount)")
-        if favoriteModel.favoriteProducts.count > 0 && appDelegate.networkManager!.isReachable {
+        if favoritesModel.favoriteProducts.count > 0 && appDelegate.networkManager!.isReachable {
             populatePhotosFromIndex(productCount)
         } else if !appDelegate.networkManager!.isReachable {
             hideSpinner?()

@@ -13,7 +13,7 @@ class ContainerBrowseViewController: UIViewController {
     var productCategory: String!
     var didScrollCount: Int = 0
     var buttonsHidden = false
-    var favoriteModel: FavoriteModel!
+    var favoritesModel: FavoritesModel!
     
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
@@ -71,7 +71,7 @@ class ContainerBrowseViewController: UIViewController {
             
             browseViewController?.delegate = self
             browseViewController?.productCategory = productCategory
-            browseViewController?.favoriteModel = favoriteModel
+            browseViewController?.favoritesModel = favoritesModel
             browseViewController?.hideSpinner = { [unowned self] in
                 if self.spinner.isAnimating() {
                     self.spinner.stopAnimating()

@@ -1,5 +1,5 @@
 //
-//  FavoriteModel.swift
+//  FavoritesModel.swift
 //  Vendee
 //
 //  Created by Ashish Kayastha on 2/9/16.
@@ -16,7 +16,7 @@ func >(lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.compare(rhs) == .OrderedDescending
 }
 
-class FavoriteModel {
+class FavoritesModel {
     
     private(set) var favoriteProducts = NSMutableOrderedSet()
     

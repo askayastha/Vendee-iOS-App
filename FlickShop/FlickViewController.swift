@@ -39,7 +39,7 @@ class FlickViewController: UICollectionViewController {
     weak var delegate: ScrollEventsDelegate?
     let transition = PopAnimationController()
     var selectedImage: UIImageView?
-    var favoriteModel: FavoriteModel!
+    var favoritesModel: FavoritesModel!
     
     struct FlickViewCellIdentifiers {
         static let flickPageCell = "FlickPageCell"
@@ -97,7 +97,7 @@ class FlickViewController: UICollectionViewController {
         // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
-        cell.favorited = favoriteModel.containsProductId(product.id) ? true : false
+        cell.favorited = favoritesModel.containsProductId(product.id) ? true : false
         cell.scrollViewHeightConstraint.constant = getImageViewHeight()
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
@@ -218,7 +218,7 @@ extension FlickViewController: FlickPageCellDelegate {
     func favoriteState(state: FavoriteState, forProduct product: Product) {
         switch state {
         case .Selected:
-            favoriteModel.addFavoriteProduct(product)
+            favoritesModel.addFavoriteProduct(product)
             
             // Show HUD
             let favoritedHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
@@ -232,7 +232,7 @@ extension FlickViewController: FlickPageCellDelegate {
             MBProgressHUD.hideHUDForView(view, animated: true)
             
         case .Unselected:
-            favoriteModel.removeFavoriteProduct(product)
+            favoritesModel.removeFavoriteProduct(product)
         }        
     }
     

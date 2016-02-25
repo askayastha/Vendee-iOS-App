@@ -16,7 +16,7 @@ class ContainerFlickViewController: UIViewController {
     var productCategory: String!
     var didScrollCount: Int = 0
     var flickViewController: FlickViewController?
-    var favoriteModel: FavoriteModel!
+    var favoritesModel: FavoritesModel!
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var infoButton: UIButton!
@@ -68,7 +68,7 @@ class ContainerFlickViewController: UIViewController {
             flickViewController?.indexPath = indexPath
             flickViewController?.brands = brands
             flickViewController?.productCategory = productCategory
-            flickViewController?.favoriteModel = favoriteModel
+            flickViewController?.favoritesModel = favoritesModel
         }
     }
 

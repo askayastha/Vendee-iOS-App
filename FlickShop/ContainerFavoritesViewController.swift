@@ -10,7 +10,7 @@ import UIKit
 
 class ContainerFavoritesViewController: UIViewController {
     
-    var favoriteModel: FavoriteModel!
+    var favoritesModel: FavoritesModel!
     
     @IBOutlet weak var messageLabel: UILabel!
     
@@ -39,8 +39,8 @@ class ContainerFavoritesViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         print("ContainerFavoritesViewControllerWillAppear")
-        print("FavoriteProducts Count: \(favoriteModel.favoriteProducts.count)")
-        if favoriteModel.favoriteProducts.count == 0 {
+        print("FavoriteProducts Count: \(favoritesModel.favoriteProducts.count)")
+        if favoritesModel.favoriteProducts.count == 0 {
             spinner.stopAnimating()
             messageLabel.hidden = false
         } else {
@@ -59,10 +59,10 @@ class ContainerFavoritesViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "EmbedBrowseFavorites" {
-            let favoriteProductsCopy = favoriteModel.favoriteProducts.mutableCopy() as! NSMutableOrderedSet
+            let favoriteProductsCopy = favoritesModel.favoriteProducts.mutableCopy() as! NSMutableOrderedSet
             
             let favoritesViewController = segue.destinationViewController as? FavoritesViewController
-            favoritesViewController?.favoriteModel = favoriteModel
+            favoritesViewController?.favoritesModel = favoritesModel
             favoritesViewController?.search = Search(products: favoriteProductsCopy)
             favoritesViewController?.scout = PhotoScout(products: favoriteProductsCopy)
             favoritesViewController?.hideSpinner = { [unowned self] in

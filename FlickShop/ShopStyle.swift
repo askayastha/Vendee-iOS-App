@@ -15,15 +15,15 @@ struct ShopStyle {
         static let baseURLString = "https://api.shopstyle.com/api/v2"
         static let APIKey = "uid4529-31475977-85"
         
-        case PopularProducts(Int, Int, String)
+        case PopularResults(Int, Int, String)
         case Categories(String)
-        case FilteredProducts(Int, Int, String, String?)
+        case FilteredResults(Int, Int, String, String?)
         case Product(String)
         
         var URLRequest: NSMutableURLRequest {
             //            let (path: String, parameters: [String: AnyObject]) = {
             //                switch self {
-            //                    case .PopularProducts (let offset):
+            //                    case .PopularResults (let offset):
             //
             //                        let params = ["pid": Router.APIKey, "cat": "womens-clothes", "offset": "\(offset)"]
             //                        return ("/products", params)
@@ -32,13 +32,13 @@ struct ShopStyle {
             
             let path: String = {
                 switch self {
-                case .PopularProducts(_):
+                case .PopularResults(_):
                     return "products"
                     
                 case .Categories(_):
                     return "categories"
                     
-                case .FilteredProducts(_):
+                case .FilteredResults(_):
                     return "products"
                     
                 case .Product(let id):
@@ -48,7 +48,7 @@ struct ShopStyle {
             
             let parameters: [String: AnyObject] = {
                 switch self {
-                case .PopularProducts (let offset, let limit, let category):
+                case .PopularResults (let offset, let limit, let category):
                     let params = [
                         "pid": Router.APIKey,
                         "cat": category,
@@ -66,7 +66,7 @@ struct ShopStyle {
                     ]
                     return params
                     
-                case .FilteredProducts (let offset, let limit, let category, let sort):
+                case .FilteredResults (let offset, let limit, let category, let sort):
                     var params = [
                         "pid": Router.APIKey,
                         "cat": category,

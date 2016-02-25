@@ -103,7 +103,7 @@ class Search {
             let sort = appDelegate.filter.sort.count > 0 ? appDelegate.filter.sort.values.first : nil
             
             // New request URL for filter
-            var requestURL = ShopStyle.Router.FilteredProducts(itemOffset, limit, category, sort).URLRequest.URLString
+            var requestURL = ShopStyle.Router.FilteredResults(itemOffset, limit, category, sort).URLRequest.URLString
             requestURL.appendContentsOf(getFilterParams())
             
             print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
@@ -130,7 +130,7 @@ class Search {
             }
             
         } else {
-            dataRequest = Alamofire.request(ShopStyle.Router.PopularProducts(itemOffset, limit, category)).validate().responseJSON() { response in
+            dataRequest = Alamofire.request(ShopStyle.Router.PopularResults(itemOffset, limit, category)).validate().responseJSON() { response in
                 
                 if response.result.isSuccess {
                     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {

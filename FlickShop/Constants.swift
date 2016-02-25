@@ -27,7 +27,7 @@ struct CustomNotifications {
         NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidClearNotification, object: nil)
     }
     
-    static func dataModelDidChangeNotification() {
+    static func favoritesModelDidChangeNotification() {
         NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FavoritesModelDidChangeNotification, object: nil)
     }
     

@@ -38,7 +38,7 @@ class FavoritesModel {
             product.favoritedDate = NSDate()
             favoriteProducts.insertObject(product, atIndex: 0)
             saveProducts()
-            CustomNotifications.dataModelDidChangeNotification()
+            CustomNotifications.favoritesModelDidChangeNotification()
         }
     }
     
@@ -48,7 +48,7 @@ class FavoritesModel {
             print("Remove item at index: \(index!)")
             favoriteProducts.removeObjectAtIndex(index!)
             saveProducts()
-            CustomNotifications.dataModelDidChangeNotification()
+            CustomNotifications.favoritesModelDidChangeNotification()
         }
     }
     

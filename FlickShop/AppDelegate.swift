@@ -146,7 +146,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if let controller = flickVC {
                     controller.search = search
-                    controller.brands = Brand.allBrands()
                     controller.favoritesModel = self.favoritesModel
                     controller.hidesBottomBarWhenPushed = true
                     let tabBarController = self.window!.rootViewController as! UITabBarController

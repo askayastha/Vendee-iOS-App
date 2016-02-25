@@ -17,10 +17,11 @@ class ProductDetailsViewController: UITableViewController {
     private(set) var requestingData = false
     private(set) var productDetailsHeight: CGFloat = 0
     
-    let search = Search()    
+    let search = Search()
+    var brands = BrandsModel.sharedInstance().brands
     weak var delegate: ScrollEventsDelegate?
     var product: Product!
-    var brands: [Brand]!
+    
     var categoryIds: [String]!
     
     lazy private var spinner: UIActivityIndicatorView = {
@@ -228,7 +229,6 @@ extension ProductDetailsViewController: UICollectionViewDataSource, UICollection
             controller.productCategory = categoryIds?.first
             controller.indexPath  = indexPath
             controller.search = search
-            controller.brands = brands
             navigationController?.pushViewController(controller, animated: true)
         }
     }

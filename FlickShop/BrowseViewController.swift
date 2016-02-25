@@ -26,8 +26,8 @@ class BrowseViewController: UICollectionViewController {
     
     weak var delegate: SwipeDelegate?
     var search = Search()
+    var brands = BrandsModel.sharedInstance().brands
     var scout: PhotoScout
-    var brands = Brand.allBrands()
     var productCategory: String!
     var favoritesModel: FavoritesModel!
     
@@ -89,7 +89,6 @@ class BrowseViewController: UICollectionViewController {
             
             controller.search = search
             controller.indexPath = indexPath
-            controller.brands = brands
             controller.productCategory = productCategory
             controller.favoritesModel = favoritesModel
             controller.hidesBottomBarWhenPushed = true

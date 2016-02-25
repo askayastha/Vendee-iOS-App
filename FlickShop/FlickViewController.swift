@@ -33,7 +33,7 @@ class FlickViewController: UICollectionViewController {
     }
     
     var search: Search!
-    var brands: [Brand]!
+    var brands = BrandsModel.sharedInstance().brands
     var indexPath: NSIndexPath?
     var productCategory: String!
     weak var delegate: ScrollEventsDelegate?
@@ -257,7 +257,6 @@ extension FlickViewController: FlickPageCellDelegate {
         
         if let controller = detailsVC {
             controller.product = search.products.objectAtIndex(indexPath!.row) as! Product
-            controller.brands = brands
             
             navigationController?.pushViewController(controller, animated: true)
         }

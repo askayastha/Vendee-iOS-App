@@ -1,12 +1,24 @@
 //
-//  Brands.swift
+//  BrandsModel.swift
 //  Vendee
 //
-//  Created by Ashish Kayastha on 10/8/15.
-//  Copyright © 2015 Ashish Kayastha. All rights reserved.
+//  Created by Ashish Kayastha on 2/25/16.
+//  Copyright © 2016 Ashish Kayastha. All rights reserved.
 //
 
 import Foundation
+
+class BrandsModel {
+    
+    class func sharedInstance() -> BrandsModel {
+        return modelSingletonGlobal
+    }
+    
+    var brands: [Brand] = Brand.allBrands()
+}
+
+let modelSingletonGlobal = BrandsModel()
+
 
 class Brand {
     

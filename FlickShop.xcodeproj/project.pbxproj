@@ -78,7 +78,6 @@
 		75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */; };
 		75EEE39D1C6F510900C507FC /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EEE39B1C6F510900C507FC /* More.storyboard */; };
 		75EEE39F1C6F53CA00C507FC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */; };
-		75F12CE81BE0A24100258874 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE11BE0A24100258874 /* Brand.swift */; };
 		75F12CE91BE0A24100258874 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE21BE0A24100258874 /* Category.swift */; };
 		75F12CEA1BE0A24100258874 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE31BE0A24100258874 /* Functions.swift */; };
 		75F12CEB1BE0A24100258874 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE41BE0A24100258874 /* Search.swift */; };
@@ -107,6 +106,7 @@
 		75F12D181BE0A46000258874 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75F12D161BE0A46000258874 /* Main.storyboard */; };
 		75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F12D191BE0A54D00258874 /* Categories.xcassets */; };
 		75F72C741C565E1300D21E50 /* SubjectActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F72C731C565E1300D21E50 /* SubjectActivityItem.swift */; };
+		75F780D61C7F612300CD074A /* BrandsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F780D51C7F612300CD074A /* BrandsModel.swift */; };
 		9467AA39D88A2E86E1AD25CE /* Pods_FlickShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */; };
 /* End PBXBuildFile section */
 
@@ -210,7 +210,6 @@
 		75EEE39C1C6F510900C507FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/More.storyboard; sourceTree = "<group>"; };
 		75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AboutViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickShop-Bridging-Header.h"; sourceTree = "<group>"; };
-		75F12CE11BE0A24100258874 /* Brand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Brand.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12CE21BE0A24100258874 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Category.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12CE31BE0A24100258874 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Functions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12CE41BE0A24100258874 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Search.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -240,6 +239,7 @@
 		75F12D171BE0A46000258874 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		75F12D191BE0A54D00258874 /* Categories.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Categories.xcassets; sourceTree = "<group>"; };
 		75F72C731C565E1300D21E50 /* SubjectActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SubjectActivityItem.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		75F780D51C7F612300CD074A /* BrandsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsModel.swift; sourceTree = "<group>"; };
 		983955C99D9E0C495F28783E /* Pods-FlickShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -478,15 +478,15 @@
 			isa = PBXGroup;
 			children = (
 				75F12CFA1BE0A35900258874 /* Product.swift */,
-				75F12CE11BE0A24100258874 /* Brand.swift */,
 				75F12CE21BE0A24100258874 /* Category.swift */,
 				75F12CE41BE0A24100258874 /* Search.swift */,
 				75DD48D81C0735A100C4C34D /* CategorySearch.swift */,
 				7551D3451C134A040088D32B /* Constants.swift */,
 				75DD7F3B1C19F45300BDB0A3 /* Filter.swift */,
 				75149F3D1C1B088700A2A57C /* ShopStyle.swift */,
-				75409E1F1C6A572A00E5C282 /* FavoritesModel.swift */,
 				755F62FD1C770AA7003BA832 /* PhotoScout.swift */,
+				75F780D51C7F612300CD074A /* BrandsModel.swift */,
+				75409E1F1C6A572A00E5C282 /* FavoritesModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -817,6 +817,7 @@
 				75F12D0C1BE0A35900258874 /* HomeViewController.swift in Sources */,
 				7522B0CA1C044BBD0055C9A6 /* StoreFilterViewController.swift in Sources */,
 				756848671C75DD1700D85E67 /* ImageScout.swift in Sources */,
+				75F780D61C7F612300CD074A /* BrandsModel.swift in Sources */,
 				75F12D011BE0A35900258874 /* AppDelegate.swift in Sources */,
 				75F12D081BE0A35900258874 /* FlickViewController.swift in Sources */,
 				75F12D121BE0A35900258874 /* RoundedCornersView.swift in Sources */,
@@ -860,7 +861,6 @@
 				752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */,
 				75F12D131BE0A35900258874 /* TwoColumnLayout.swift in Sources */,
 				753AEA5A1BFF8BA10016B655 /* CategoryFilterViewController.swift in Sources */,
-				75F12CE81BE0A24100258874 /* Brand.swift in Sources */,
 				7541FECE1C3E720B005CEB11 /* PhotosViewController.swift in Sources */,
 				75F12CEB1BE0A24100258874 /* Search.swift in Sources */,
 				75F12CED1BE0A24100258874 /* UIImage+ImageEffects.m in Sources */,

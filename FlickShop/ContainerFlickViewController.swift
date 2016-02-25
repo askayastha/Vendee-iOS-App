@@ -12,7 +12,6 @@ class ContainerFlickViewController: UIViewController {
     
     var search: Search!
     var indexPath: NSIndexPath?
-    var brands: [Brand]!
     var productCategory: String!
     var didScrollCount: Int = 0
     var flickViewController: FlickViewController?
@@ -66,7 +65,6 @@ class ContainerFlickViewController: UIViewController {
             flickViewController?.delegate = self
             flickViewController?.search = search
             flickViewController?.indexPath = indexPath
-            flickViewController?.brands = brands
             flickViewController?.productCategory = productCategory
             flickViewController?.favoritesModel = favoritesModel
         }

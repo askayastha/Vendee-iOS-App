@@ -12,7 +12,6 @@ class ContainerProductDetailsViewController: UIViewController {
     
     var productCategory: String!
     var product: Product!
-    var brands: [Brand]!
     var productDetailsVC: ProductDetailsViewController?
     var didScrollCount: Int = 0
     
@@ -45,7 +44,6 @@ class ContainerProductDetailsViewController: UIViewController {
             productDetailsVC = segue.destinationViewController as? ProductDetailsViewController
             productDetailsVC?.delegate = self
             productDetailsVC?.product = product
-            productDetailsVC?.brands = brands
         }
     }
 

@@ -18,9 +18,9 @@ class FavoritesViewController: UICollectionViewController {
     private(set) var populatingData = false
     
     var hideSpinner: (()->())?
-    var brands = Brand.allBrands()
-    var favoritesModel: FavoritesModel!
     var search: Search!
+    var brands = BrandsModel.sharedInstance().brands
+    var favoritesModel: FavoritesModel!
     var scout: PhotoScout!
     
     deinit {
@@ -191,7 +191,6 @@ extension FavoritesViewController {
         if let controller = flickVC {
             controller.search = search
             controller.indexPath = indexPath
-            controller.brands = brands
             controller.favoritesModel = favoritesModel
             controller.hidesBottomBarWhenPushed = true
             

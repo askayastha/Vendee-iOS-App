@@ -39,7 +39,6 @@ class FlickViewController: UICollectionViewController {
     weak var delegate: ScrollEventsDelegate?
     let transition = PopAnimationController()
     var selectedImage: UIImageView?
-    var favoritesModel: FavoritesModel!
     
     struct FlickViewCellIdentifiers {
         static let flickPageCell = "FlickPageCell"
@@ -97,7 +96,7 @@ class FlickViewController: UICollectionViewController {
         // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
-        cell.favorited = favoritesModel.containsProductId(product.id) ? true : false
+        cell.favorited = FavoritesModel.sharedInstance().containsProductId(product.id) ? true : false
         cell.scrollViewHeightConstraint.constant = getImageViewHeight()
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
@@ -114,7 +113,7 @@ class FlickViewController: UICollectionViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             if let brand = product.brand {
                 let brandName = JSON(brand)["name"].string
-                let brandImageURL = self.brands.filter {$0.nickname == brandName}.first?.picURL
+                let brandImageURL = self.brands.filter { $0.nickname == brandName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = brandImageURL {
@@ -123,7 +122,7 @@ class FlickViewController: UICollectionViewController {
                 }
             } else if let retailer = product.retailer {
                 let retailerName = JSON(retailer)["name"].string
-                let retailerImageURL = self.brands.filter {$0.nickname == retailerName}.first?.picURL
+                let retailerImageURL = self.brands.filter { $0.nickname == retailerName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = retailerImageURL {
@@ -218,7 +217,7 @@ extension FlickViewController: FlickPageCellDelegate {
     func favoriteState(state: FavoriteState, forProduct product: Product) {
         switch state {
         case .Selected:
-            favoritesModel.addFavoriteProduct(product)
+            FavoritesModel.sharedInstance().addFavoriteProduct(product)
             
             // Show HUD
             let favoritedHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
@@ -232,7 +231,7 @@ extension FlickViewController: FlickPageCellDelegate {
             MBProgressHUD.hideHUDForView(view, animated: true)
             
         case .Unselected:
-            favoritesModel.removeFavoriteProduct(product)
+            FavoritesModel.sharedInstance().removeFavoriteProduct(product)
         }        
     }
     

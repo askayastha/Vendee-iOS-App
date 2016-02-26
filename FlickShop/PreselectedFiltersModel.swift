@@ -17,13 +17,13 @@ class PreselectedFiltersModel {
         return preselectedFiltersModelSingleton
     }
     
-    var filters = [PreselectedFilter]()
-    
-    let container : CKContainer
-    let publicDB : CKDatabase
+    private(set) var filters: [PreselectedFilter]
+    private let container : CKContainer
+    private let publicDB : CKDatabase
     
     // This prevents others from using the default initializer for this class.
     private init() {
+        filters = [PreselectedFilter]()
         container = CKContainer.defaultContainer()
         publicDB = container.publicCloudDatabase
     }

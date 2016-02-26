@@ -1,13 +1,28 @@
 //
-//  Category.swift
-//  Vendee
+//  CategoriesModel.swift
+//  FlickShop
 //
-//  Created by Ashish Kayastha on 10/23/15.
-//  Copyright © 2015 Ashish Kayastha. All rights reserved.
+//  Created by Ashish Kayastha on 2/26/16.
+//  Copyright © 2016 Ashish Kayastha. All rights reserved.
 //
 
 import Foundation
 import UIKit
+
+private let categoriesModelSingleton = CategoriesModel()
+
+class CategoriesModel {
+    
+    class func sharedInstance() -> CategoriesModel {
+        return categoriesModelSingleton
+    }
+    
+    var categories: [Category]
+    
+    private init() {
+        categories = Category.allCategories()
+    }
+}
 
 class Category {
     

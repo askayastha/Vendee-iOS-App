@@ -19,8 +19,7 @@ class FavoritesViewController: UICollectionViewController {
     
     var hideSpinner: (()->())?
     var search: Search!
-    var brands = BrandsModel.sharedInstance().brands
-    var favoritesModel: FavoritesModel!
+    let brands = BrandsModel.sharedInstance().brands
     var scout: PhotoScout!
     
     deinit {
@@ -49,7 +48,7 @@ class FavoritesViewController: UICollectionViewController {
             populatingData = false
             productCount = 0
             
-            let favoriteProductsCopy = favoritesModel.favoriteProducts.mutableCopy() as! NSMutableOrderedSet
+            let favoriteProductsCopy = FavoritesModel.sharedInstance().favoriteProducts.mutableCopy() as! NSMutableOrderedSet
             search = Search(products: favoriteProductsCopy)
             scout = PhotoScout(products: favoriteProductsCopy)
             
@@ -83,7 +82,7 @@ class FavoritesViewController: UICollectionViewController {
     }
     
     func refreshFavoritesModel() {
-        print("Favorite Products: \(favoritesModel.favoriteProducts)")
+        print("Favorite Products: \(FavoritesModel.sharedInstance().favoriteProducts)")
         
         // Mark data model as dirty
         dataModelChanged = true
@@ -163,7 +162,7 @@ extension FavoritesViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             if let brand = product.brand {
                 let brandName = JSON(brand)["name"].string
-                let brandImageURL = self.brands.filter {$0.nickname == brandName}.first?.picURL
+                let brandImageURL = self.brands.filter { $0.nickname == brandName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = brandImageURL {
@@ -172,7 +171,7 @@ extension FavoritesViewController {
                 }
             } else if let retailer = product.retailer {
                 let retailerName = JSON(retailer)["name"].string
-                let retailerImageURL = self.brands.filter {$0.nickname == retailerName}.first?.picURL
+                let retailerImageURL = self.brands.filter { $0.nickname == retailerName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = retailerImageURL {
@@ -191,7 +190,6 @@ extension FavoritesViewController {
         if let controller = flickVC {
             controller.search = search
             controller.indexPath = indexPath
-            controller.favoritesModel = favoritesModel
             controller.hidesBottomBarWhenPushed = true
             
             navigationController?.pushViewController(controller, animated: true)

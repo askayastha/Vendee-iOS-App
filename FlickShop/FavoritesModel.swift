@@ -16,11 +16,18 @@ func >(lhs: NSDate, rhs: NSDate) -> Bool {
     return lhs.compare(rhs) == .OrderedDescending
 }
 
+private let favoritesModelSingleton = FavoritesModel()
+
 class FavoritesModel {
     
-    private(set) var favoriteProducts = NSMutableOrderedSet()
+    class func sharedInstance() -> FavoritesModel {
+        return favoritesModelSingleton
+    }
     
-    init() {
+    private(set) var favoriteProducts: NSMutableOrderedSet
+    
+    private init() {
+        favoriteProducts = NSMutableOrderedSet()
         loadProducts()
     }
     

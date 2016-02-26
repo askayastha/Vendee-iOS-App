@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let filter = Filter()
-    let favoritesModel = FavoritesModel()
     let networkManager = NetworkReachabilityManager(host: "api.shopstyle.com")
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -148,7 +147,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if let controller = flickVC {
                     controller.search = search
-                    controller.favoritesModel = self.favoritesModel
                     controller.hidesBottomBarWhenPushed = true
                     let tabBarController = self.window!.rootViewController as! UITabBarController
                     
@@ -179,13 +177,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let tabBarControllers = tabBarController.viewControllers {
             var navigationController = tabBarControllers[0] as! UINavigationController
             navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
-            let homeVC = navigationController.viewControllers[0] as! HomeViewController
-            homeVC.favoritesModel = favoritesModel
             
             navigationController = tabBarControllers[1] as! UINavigationController
             navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
-            let favoritesVC = navigationController.viewControllers[0] as! ContainerFavoritesViewController
-            favoritesVC.favoritesModel = favoritesModel
             
             navigationController = tabBarControllers[2] as! UINavigationController
             navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)

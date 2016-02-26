@@ -16,9 +16,11 @@ class BrandsModel {
         return brandsModelSingleton
     }
     
-    private init() { }
+    var brands: [Brand]
     
-    var brands: [Brand] = Brand.allBrands()
+    private init() {
+        brands = Brand.allBrands()
+    }
 }
 
 

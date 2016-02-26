@@ -26,10 +26,9 @@ class BrowseViewController: UICollectionViewController {
     
     weak var delegate: SwipeDelegate?
     var search = Search()
-    var brands = BrandsModel.sharedInstance().brands
+    let brands = BrandsModel.sharedInstance().brands
     var scout: PhotoScout
     var productCategory: String!
-    var favoritesModel: FavoritesModel!
     
     deinit {
         print("Deallocating BrowseViewController !!!!!!!!!!!!!!!")
@@ -55,9 +54,8 @@ class BrowseViewController: UICollectionViewController {
         super.viewWillAppear(animated)
         print("BrowseViewControllerWillAppear")
         
-        if !requestingData {
-            populateData()
-        }
+        // Prevent data population when a request is in progress
+        if !requestingData { populateData() }
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,7 +88,6 @@ class BrowseViewController: UICollectionViewController {
             controller.search = search
             controller.indexPath = indexPath
             controller.productCategory = productCategory
-            controller.favoritesModel = favoritesModel
             controller.hidesBottomBarWhenPushed = true
         }
     }
@@ -126,7 +123,7 @@ class BrowseViewController: UICollectionViewController {
     
     func populateData() {
         print("Browse PopulateData Count: \(productCount)")
-        if favoritesModel.favoriteProducts.count > 0 && appDelegate.networkManager!.isReachable {
+        if search.products.count > 0 && appDelegate.networkManager!.isReachable {
             populatePhotosFromIndex(productCount)
         } else if !appDelegate.networkManager!.isReachable {
             hideSpinner?()
@@ -270,7 +267,7 @@ extension BrowseViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             if let brand = product.brand {
                 let brandName = JSON(brand)["name"].string
-                let brandImageURL = self.brands.filter {$0.nickname == brandName}.first?.picURL
+                let brandImageURL = self.brands.filter { $0.nickname == brandName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = brandImageURL {
@@ -279,7 +276,7 @@ extension BrowseViewController {
                 }
             } else if let retailer = product.retailer {
                 let retailerName = JSON(retailer)["name"].string
-                let retailerImageURL = self.brands.filter {$0.nickname == retailerName}.first?.picURL
+                let retailerImageURL = self.brands.filter { $0.nickname == retailerName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = retailerImageURL {

@@ -12,8 +12,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var categories = Category.allCategories()
-    var favoritesModel: FavoritesModel!
+    let categories = CategoriesModel.sharedInstance().categories
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +38,6 @@ class HomeViewController: UIViewController {
             let indexPath = sender as! NSIndexPath
             
             controller.productCategory = categories[indexPath.item].keyword
-            controller.favoritesModel = favoritesModel
         }
     }
 

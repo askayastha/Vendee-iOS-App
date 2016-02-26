@@ -70,8 +70,11 @@ class ContainerBrowseViewController: UIViewController {
             
             browseViewController?.delegate = self
             browseViewController?.productCategory = productCategory
-            browseViewController?.hideSpinner = { [unowned self] in
-                if self.spinner.isAnimating() {
+            
+            browseViewController?.animateSpinner = { [unowned self] animate in
+                if animate {
+                    self.spinner.startAnimating()
+                } else {
                     self.spinner.stopAnimating()
                 }
             }

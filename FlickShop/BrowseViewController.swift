@@ -22,7 +22,8 @@ class BrowseViewController: UICollectionViewController {
     private(set) var populatingData = false
     private(set) var productCount = 0
     
-    var hideSpinner: (()->())?
+//    var hideSpinner: (()->())?
+    var animateSpinner: ((Bool)->())?
     
     weak var delegate: SwipeDelegate?
     var search = Search()
@@ -77,6 +78,7 @@ class BrowseViewController: UICollectionViewController {
             layout.reset()
         }
         collectionView!.reloadData()
+        animateSpinner?(true)
         requestDataFromShopStyleForCategory(productCategory)
     }
     
@@ -126,11 +128,11 @@ class BrowseViewController: UICollectionViewController {
         if search.products.count > 0 && appDelegate.networkManager!.isReachable {
             populatePhotosFromIndex(productCount)
         } else if !appDelegate.networkManager!.isReachable {
-            hideSpinner?()
+            animateSpinner?(false)
             TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
             TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
         } else {
-            hideSpinner?()
+            animateSpinner?(false)
         }
     }
     
@@ -144,7 +146,7 @@ class BrowseViewController: UICollectionViewController {
             guard let strongSelf = self else { return }
             guard success else {
                 print("GUARDING SUCCESS")
-                strongSelf.hideSpinner?()
+                strongSelf.animateSpinner?(false)
                 strongSelf.populatingData = false
                 strongSelf.populatePhotosFromIndex(lastIndex)
                 return
@@ -158,7 +160,7 @@ class BrowseViewController: UICollectionViewController {
                 strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
                 }, completion: { success in
                     strongSelf.populatingData = false
-                    strongSelf.hideSpinner?()
+                    strongSelf.animateSpinner?(false)
                     
                     if success && lastIndex != strongSelf.search.lastItem {
                         strongSelf.populatePhotosFromIndex(lastIndex)
@@ -191,7 +193,7 @@ class BrowseViewController: UICollectionViewController {
                     
                 } else {
                     strongSelf.search.resetRetryCount()
-                    strongSelf.hideSpinner?()
+                    strongSelf.animateSpinner?(false)
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)

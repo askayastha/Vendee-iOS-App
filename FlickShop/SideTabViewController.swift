@@ -25,6 +25,7 @@ class SideTabViewController: UITableViewController {
         ("Color", "tab_color"),
         ("Sort", "tab_sort")
     ]
+    let filtersModel = FiltersModel.sharedInstance()
     
     weak var delegate: SideTabDelegate?
 
@@ -90,18 +91,18 @@ class SideTabViewController: UITableViewController {
         
         switch filter {
             case "category":
-                let displayCategories = appDelegate.filter.category["displayCategories"] as! [String]
-                let tappedCategories = appDelegate.filter.category["tappedCategories"] as! [String]
-                let categoryName = appDelegate.filter.productCategory?.componentsSeparatedByString(":").first
+                let displayCategories = filtersModel.category["displayCategories"] as! [String]
+                let tappedCategories = filtersModel.category["tappedCategories"] as! [String]
+                let categoryName = filtersModel.productCategory?.componentsSeparatedByString(":").first
                 filterSelected = !(categoryName == tappedCategories.last || displayCategories.count == 0)
             case "sort":
-                    filterSelected = appDelegate.filter.sort.count > 0
+                    filterSelected = filtersModel.sort.count > 0
             case "brand", "store", "color", "price":
-                let codes = appDelegate.filter.filterParams[filter] as! [String: String]
+                let codes = filtersModel.filterParams[filter] as! [String: String]
                     filterSelected = codes.count > 0
             case "discount":
-                let discountCode = appDelegate.filter.filterParams[filter] as! [String: String]
-                let offerCodes = appDelegate.filter.filterParams["offer"] as! [String: String]
+                let discountCode = filtersModel.filterParams[filter] as! [String: String]
+                let offerCodes = filtersModel.filterParams["offer"] as! [String: String]
                 filterSelected = discountCode.count > 0 || offerCodes.count > 0
             default:
                 filterSelected = false

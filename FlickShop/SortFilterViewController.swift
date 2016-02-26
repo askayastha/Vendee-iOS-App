@@ -16,6 +16,7 @@ class SortFilterViewController: UITableViewController {
         ("Lowest Price", "PriceLoHi"),
         ("Highest Price", "PriceHiLo")
     ]
+    let filtersModel = FiltersModel.sharedInstance()
     
     var selectedSort: [String: String]!
 
@@ -24,7 +25,7 @@ class SortFilterViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
         
-        selectedSort = appDelegate.filter.sort
+        selectedSort = filtersModel.sort
     }
     
     deinit {
@@ -80,7 +81,7 @@ class SortFilterViewController: UITableViewController {
         print(selectedSort)
         
         // Filter Stuff
-        appDelegate.filter.sort = selectedSort
+        filtersModel.sort = selectedSort
         
         // Refresh Side Tab
         CustomNotifications.filterDidChangeNotification()

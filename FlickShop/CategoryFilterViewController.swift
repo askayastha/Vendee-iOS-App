@@ -10,14 +10,15 @@ import UIKit
 
 class CategoryFilterViewController: UITableViewController {
     
-    var requestingData = false
-    var productCategory: String?
-    var once_token: dispatch_once_t = 0
+    private var requestingData = false
     
+    var productCategory: String!
     var displayCategories: [String]!
     var tappedCategories: [String]!
     var categoriesIdDict: [String: String]!
     var categorySearch: CategorySearch!
+    
+    let filtersModel = FiltersModel.sharedInstance()
     
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
@@ -28,8 +29,8 @@ class CategoryFilterViewController: UITableViewController {
     }()
     
     private func hideSpinner() {
-        if self.spinner.isAnimating() {
-            self.spinner.stopAnimating()
+        if spinner.isAnimating() {
+            spinner.stopAnimating()
         }
     }
 
@@ -38,12 +39,11 @@ class CategoryFilterViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
         
-        productCategory = appDelegate.filter.productCategory
-        
-        categorySearch = appDelegate.filter.category["categorySearch"] as! CategorySearch
-        displayCategories = appDelegate.filter.category["displayCategories"] as! [String]
-        tappedCategories = appDelegate.filter.category["tappedCategories"] as! [String]
-        categoriesIdDict = appDelegate.filter.category["categoriesIdDict"] as! [String: String]
+        productCategory = filtersModel.productCategory
+        categorySearch = filtersModel.category["categorySearch"] as! CategorySearch
+        displayCategories = filtersModel.category["displayCategories"] as! [String]
+        tappedCategories = filtersModel.category["tappedCategories"] as! [String]
+        categoriesIdDict = filtersModel.category["categoriesIdDict"] as! [String: String]
         
         print(displayCategories)
         print(tappedCategories)
@@ -59,6 +59,8 @@ class CategoryFilterViewController: UITableViewController {
         // Request display categories for the first load
         if displayCategories.count == 0 {
             requestCategoryFromShopStyle()
+        } else {
+            hideSpinner()
         }
     }
     
@@ -135,8 +137,8 @@ class CategoryFilterViewController: UITableViewController {
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         // Filter Stuff
-        appDelegate.filter.category["displayCategories"] = displayCategories
-        appDelegate.filter.category["tappedCategories"] = tappedCategories
+        filtersModel.category["displayCategories"] = displayCategories
+        filtersModel.category["tappedCategories"] = tappedCategories
         
         print(tappedCategories)
         
@@ -218,56 +220,52 @@ class CategoryFilterViewController: UITableViewController {
     }
 
     private func requestCategoryFromShopStyle() {
-        if requestingData {
-            return
-        }
-        requestingData = true
+        if requestingData { return }
         
-        if let productCategory = productCategory {
-            let categoryId = productCategory.componentsSeparatedByString(":").last!
+        requestingData = true
+        guard let productCategory = productCategory else { return }
+        
+        let categoryId = productCategory.componentsSeparatedByString(":").last!
+        
+        categorySearch.parseShopStyleForCategory(categoryId) { [weak self] success, description, lastItem in
+            guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
             
-            categorySearch.parseShopStyleForCategory(categoryId) { [weak self] success, description, lastItem in
-                guard let strongSelf = self else { return }
-                
-                if !success {
-                    if strongSelf.categorySearch.retryCount < NumericConstants.retryLimit {
-                        strongSelf.requestingData = false
-                        strongSelf.requestCategoryFromShopStyle()
-                        strongSelf.categorySearch.incrementRetryCount()
-                        print("Request Failed. Trying again...")
-                        print("Request Count: \(strongSelf.categorySearch.retryCount)")
-                    } else {
-                        strongSelf.categorySearch.resetRetryCount()
-                        strongSelf.hideSpinner()
-                        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    }
-                    
+            if !success {
+                if strongSelf.categorySearch.retryCount < NumericConstants.retryLimit {
+                    strongSelf.requestCategoryFromShopStyle()
+                    strongSelf.categorySearch.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.categorySearch.retryCount)")
                 } else {
+                    strongSelf.categorySearch.resetRetryCount()
                     strongSelf.hideSpinner()
-                    strongSelf.requestingData = false
-                    print("Product count: \(lastItem)")
-                    
-                    let rootCategory = strongSelf.categorySearch.categories.objectAtIndex(0) as! CategoryInfo
-                    strongSelf.tappedCategories.append(rootCategory.shortName!)
-                    
-                    for item in strongSelf.categorySearch.categories {
-                        let category = item as! CategoryInfo
-                        
-                        if category.id == categoryId || category.parentId == categoryId {
-                            strongSelf.displayCategories.append(category.shortName!)
-                        }
-                        
-                        // Make of dictionary of [Category: CategoryID]
-                        strongSelf.categoriesIdDict[category.shortName!] = category.id!
-                    }
-                    // Save for filter stuff
-                    strongSelf.appDelegate.filter.category["categorySearch"] = strongSelf.categorySearch
-                    strongSelf.appDelegate.filter.category["displayCategories"] = strongSelf.displayCategories
-                    strongSelf.appDelegate.filter.category["tappedCategories"] = strongSelf.tappedCategories
-                    strongSelf.appDelegate.filter.category["categoriesIdDict"] = strongSelf.categoriesIdDict
-                    
-                    strongSelf.tableView.reloadData()
                 }
+                
+            } else {
+                strongSelf.hideSpinner()
+                print("Product count: \(lastItem)")
+                
+                let rootCategory = strongSelf.categorySearch.categories.objectAtIndex(0) as! CategoryInfo
+                strongSelf.tappedCategories.append(rootCategory.shortName!)
+                
+                for item in strongSelf.categorySearch.categories {
+                    let category = item as! CategoryInfo
+                    
+                    if category.id == categoryId || category.parentId == categoryId {
+                        strongSelf.displayCategories.append(category.shortName!)
+                    }
+                    
+                    // Make of dictionary of [Category: CategoryID]
+                    strongSelf.categoriesIdDict[category.shortName!] = category.id!
+                }
+                // Save for filter stuff
+                strongSelf.filtersModel.category["categorySearch"] = strongSelf.categorySearch
+                strongSelf.filtersModel.category["displayCategories"] = strongSelf.displayCategories
+                strongSelf.filtersModel.category["tappedCategories"] = strongSelf.tappedCategories
+                strongSelf.filtersModel.category["categoriesIdDict"] = strongSelf.categoriesIdDict
+                
+                strongSelf.tableView.reloadData()
             }
         }
     }

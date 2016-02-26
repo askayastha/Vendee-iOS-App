@@ -67,13 +67,13 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let categoryName = categories[indexPath.item].name
         let categoryId = categories[indexPath.item].keyword
-        let oldCategoryName = appDelegate.filter.productCategory?.componentsSeparatedByString(":").first!
+        let oldCategoryName = FiltersModel.sharedInstance().productCategory?.componentsSeparatedByString(":").first!
         
         if categoryName != oldCategoryName {
-            appDelegate.filter.resetFilters()
+            FiltersModel.sharedInstance().resetFilters()
         }
         
-        appDelegate.filter.productCategory = "\(categoryName):\(categoryId)"
+        FiltersModel.sharedInstance().productCategory = "\(categoryName):\(categoryId)"
         
         performSegueWithIdentifier("BrowseCategory", sender: indexPath)
     }

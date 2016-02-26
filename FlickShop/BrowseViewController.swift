@@ -181,6 +181,7 @@ class BrowseViewController: UICollectionViewController {
             guard let strongSelf = self else { return }
             strongSelf.requestingData = false
             print("Products count: \(lastItem)")
+            
             if !success {
                 if strongSelf.search.retryCount < NumericConstants.retryLimit {
                     strongSelf.requestDataFromShopStyleForCategory(category)
@@ -190,8 +191,8 @@ class BrowseViewController: UICollectionViewController {
                     
                 } else {
                     strongSelf.search.resetRetryCount()
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     strongSelf.hideSpinner?()
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                 }

@@ -21,6 +21,8 @@ class Search {
         case Failed
     }
     
+    let filtersModel = FiltersModel.sharedInstance()
+    
     private(set) var dataRequest: Alamofire.Request?
     private(set) var state: State = .Idle
     private(set) var products: NSMutableOrderedSet
@@ -29,9 +31,7 @@ class Search {
     var lastItem: Int {
         return products.count
     }
-    
     var filteredSearch = false
-    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
     deinit {
         print("SEARCH DEALLOCATING !!!!!")
@@ -99,7 +99,7 @@ class Search {
             }
             
             // Get sort code for filter
-            let sort = appDelegate.filter.sort.count > 0 ? appDelegate.filter.sort.values.first : nil
+            let sort = filtersModel.sort.count > 0 ? filtersModel.sort.values.first : nil
             
             // New request URL for filter
             var requestURL = ShopStyle.Router.FilteredResults(itemOffset, limit, category, sort).URLRequest.URLString
@@ -156,8 +156,8 @@ class Search {
 //    }
     
     func getFilterCategory() -> String? {
-        let tappedCategories = appDelegate.filter.category["tappedCategories"] as! [String]
-        let categoriesIdDict = appDelegate.filter.category["categoriesIdDict"] as! [String: String]
+        let tappedCategories = filtersModel.category["tappedCategories"] as! [String]
+        let categoriesIdDict = filtersModel.category["categoriesIdDict"] as! [String: String]
         var categoryId: String?
         
         if let category = tappedCategories.last {
@@ -170,7 +170,7 @@ class Search {
     func getFilterParams() -> String {
         var filterParams = [String]()
         
-        for filtersObj in [AnyObject](appDelegate.filter.filterParams.values) {
+        for filtersObj in [AnyObject](filtersModel.filterParams.values) {
             let filters = filtersObj as! [String: String]
             for code in [String](filters.values) {
                 filterParams.append("fl=\(code)")

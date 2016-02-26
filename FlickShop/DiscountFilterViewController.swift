@@ -45,11 +45,11 @@ class DiscountFilterViewController: UITableViewController {
         ("Special Offer", "o1"),
         ("Coupon Code", "o2")
     ]
+    let filtersModel = FiltersModel.sharedInstance()
     
     var saleCode: String?
     var selectedDiscount: [String: String]!
     var selectedOffers: [String: String]!
-    
     var keys = [String]()
     
     @IBOutlet weak var discountLabel: UILabel!
@@ -68,8 +68,8 @@ class DiscountFilterViewController: UITableViewController {
         discountSlider.stepValueContinuously = true
         discountSlider.upperHandleHidden = true
         
-        selectedDiscount = appDelegate.filter.filterParams["discount"] as! [String: String]
-        selectedOffers = appDelegate.filter.filterParams["offer"] as! [String: String]
+        selectedDiscount = filtersModel.filterParams["discount"] as! [String: String]
+        selectedOffers = filtersModel.filterParams["offer"] as! [String: String]
         
         // Setup previous values
         if let discountKey = selectedDiscount.keys.first {
@@ -111,7 +111,7 @@ class DiscountFilterViewController: UITableViewController {
             selectedDiscount.removeAll()
         }
         print(selectedDiscount)
-        appDelegate.filter.filterParams["discount"] = selectedDiscount
+        filtersModel.filterParams["discount"] = selectedDiscount
         
         // Refresh Side Tab
         NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
@@ -161,7 +161,7 @@ class DiscountFilterViewController: UITableViewController {
         print(selectedOffers)
         
         // Filter Stuff
-        appDelegate.filter.filterParams["offer"] = selectedOffers
+        filtersModel.filterParams["offer"] = selectedOffers
         
         // Refresh Side Tab
         CustomNotifications.filterDidChangeNotification()

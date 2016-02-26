@@ -10,13 +10,15 @@ import UIKit
 
 class BrandFilterViewController: UIViewController {
     
+    var searching = false
+    
     var brands: [String: [NSDictionary]]!
     var keys: [String]!
     var filteredBrands = [String]()
     var searchController: UISearchController!
-    var searching = false
-    
     var selectedBrands: [String: String]!
+    
+    let filtersModel = FiltersModel.sharedInstance()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -50,7 +52,7 @@ class BrandFilterViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         
-        selectedBrands = appDelegate.filter.filterParams["brand"] as! [String: String]
+        selectedBrands = filtersModel.filterParams["brand"] as! [String: String]
     }
     
     deinit {
@@ -194,7 +196,7 @@ extension BrandFilterViewController: UITableViewDelegate {
         
         print(selectedBrands)
         
-        appDelegate.filter.filterParams["brand"] = selectedBrands
+        filtersModel.filterParams["brand"] = selectedBrands
         
         // Refresh Side Tab
         CustomNotifications.filterDidChangeNotification()

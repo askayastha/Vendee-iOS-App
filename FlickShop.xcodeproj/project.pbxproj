@@ -76,7 +76,7 @@
 		75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */; };
 		75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48D81C0735A100C4C34D /* CategorySearch.swift */; };
 		75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */; };
-		75DD7F3C1C19F45300BDB0A3 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD7F3B1C19F45300BDB0A3 /* Filter.swift */; };
+		75DD7F3C1C19F45300BDB0A3 /* FiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD7F3B1C19F45300BDB0A3 /* FiltersModel.swift */; };
 		75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DF28D61BE3DD31000B30F6 /* CategoriesLayout.swift */; };
 		75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */; };
 		75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */; };
@@ -211,7 +211,7 @@
 		75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerBrowseViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75DD48D81C0735A100C4C34D /* CategorySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategorySearch.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIViewController+SharedAppDelegate.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		75DD7F3B1C19F45300BDB0A3 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Filter.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		75DD7F3B1C19F45300BDB0A3 /* FiltersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FiltersModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75DF28D61BE3DD31000B30F6 /* CategoriesLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoriesLayout.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-Book-Bas.otf"; sourceTree = "<group>"; };
 		75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-BookItal-Bas.otf"; sourceTree = "<group>"; };
@@ -486,19 +486,19 @@
 		75F12D201BE0AB4A00258874 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				75149F3D1C1B088700A2A57C /* ShopStyle.swift */,
 				75F12CFA1BE0A35900258874 /* Product.swift */,
 				75AC84D81C7F7B03004B8FD7 /* CategoryInfo.swift */,
 				75F12CE41BE0A24100258874 /* Search.swift */,
 				75DD48D81C0735A100C4C34D /* CategorySearch.swift */,
 				7551D3451C134A040088D32B /* Constants.swift */,
-				75DD7F3B1C19F45300BDB0A3 /* Filter.swift */,
-				75149F3D1C1B088700A2A57C /* ShopStyle.swift */,
+				75AC84E21C7F9653004B8FD7 /* PreselectedFilter.swift */,
 				755F62FD1C770AA7003BA832 /* PhotoScout.swift */,
 				752998331C80B9F900CBA61A /* CategoriesModel.swift */,
 				75F780D51C7F612300CD074A /* BrandsModel.swift */,
 				75409E1F1C6A572A00E5C282 /* FavoritesModel.swift */,
+				75DD7F3B1C19F45300BDB0A3 /* FiltersModel.swift */,
 				75AC84DC1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift */,
-				75AC84E21C7F9653004B8FD7 /* PreselectedFilter.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -851,7 +851,7 @@
 				75F12D061BE0A35900258874 /* CustomLayoutAttributes.swift in Sources */,
 				75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */,
 				750D8E1A1C06423C00D728F0 /* OrderedDictionary.swift in Sources */,
-				75DD7F3C1C19F45300BDB0A3 /* Filter.swift in Sources */,
+				75DD7F3C1C19F45300BDB0A3 /* FiltersModel.swift in Sources */,
 				75409E201C6A572A00E5C282 /* FavoritesModel.swift in Sources */,
 				75DF28D71BE3DD32000B30F6 /* CategoriesLayout.swift in Sources */,
 				75B455FA1C59012600424B21 /* SlideOutAnimationController.swift in Sources */,

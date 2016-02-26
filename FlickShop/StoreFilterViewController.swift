@@ -10,13 +10,15 @@ import UIKit
 
 class StoreFilterViewController: UIViewController {
     
+    var searching = false
+    
     var stores: [String: [NSDictionary]]!
     var keys: [String]!
     var filteredStores = [String]()
     var searchController: UISearchController!
-    var searching = false
-    
     var selectedStores: [String: String]!
+    
+    let filtersModel = FiltersModel.sharedInstance()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -50,7 +52,7 @@ class StoreFilterViewController: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         
-        selectedStores = appDelegate.filter.filterParams["store"] as! [String: String]
+        selectedStores = filtersModel.filterParams["store"] as! [String: String]
     }
     
     deinit {
@@ -194,7 +196,7 @@ extension StoreFilterViewController: UITableViewDelegate {
         
         print(selectedStores)
         
-        appDelegate.filter.filterParams["store"] = selectedStores
+        filtersModel.filterParams["store"] = selectedStores
         
         // Refresh Side Tab
         CustomNotifications.filterDidChangeNotification()

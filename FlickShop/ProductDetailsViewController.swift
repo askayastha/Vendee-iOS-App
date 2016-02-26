@@ -83,8 +83,8 @@ class ProductDetailsViewController: UITableViewController {
     // MARK: - Helper methods
     
     private func hideSpinner() {
-        if self.spinner.isAnimating() {
-            self.spinner.stopAnimating()
+        if spinner.isAnimating() {
+            spinner.stopAnimating()
         }
     }
     

@@ -30,7 +30,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     }
     
     @IBAction func reset() {
-        appDelegate.filter.resetFilters()
+        FiltersModel.sharedInstance().resetFilters()
         
         // Refresh side tab
         CustomNotifications.filterDidChangeNotification()

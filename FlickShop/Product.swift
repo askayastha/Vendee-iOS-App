@@ -113,8 +113,8 @@ class Product: NSObject, NSCoding {
         brandedName = aDecoder.decodeObjectForKey("BrandedName") as? String
         unbrandedName = aDecoder.decodeObjectForKey("UnbrandedName") as? String
         currency = aDecoder.decodeObjectForKey("Currency") as? String
-        price = aDecoder.decodeFloatForKey("Price")
-        salePrice = aDecoder.decodeFloatForKey("SalePrice")
+        price = aDecoder.decodeObjectForKey("Price") as? Float
+        salePrice = aDecoder.decodeObjectForKey("SalePrice") as? Float
         formattedPrice = aDecoder.decodeObjectForKey("FormattedPrice") as? String
         formattedSalePrice = aDecoder.decodeObjectForKey("FormattedSalePrice") as? String
         inStock = aDecoder.decodeBoolForKey("InStock")

@@ -6,8 +6,6 @@
 //  Copyright © 2015 Ashish Kayastha. All rights reserved.
 //
 
-import Foundation
-
 class Filter {
     
     var productCategory: String?

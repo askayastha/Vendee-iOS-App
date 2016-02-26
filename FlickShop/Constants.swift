@@ -13,6 +13,10 @@ struct Files {
     static let TSDesignFileName = "TSMessagesCustomDesign.json"
 }
 
+struct CKRecordTypes {
+    static let PreselectedFilter = "PreselectedFilter"
+}
+
 struct CustomNotifications {
     static let FilterDidChangeNotification = "FilterDidChange"
     static let FilterDidClearNotification = "FilterDidClear"

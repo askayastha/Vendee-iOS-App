@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 import Alamofire
 import SwiftyJSON
 
@@ -110,44 +109,24 @@ class Search {
             print(requestURL)
             
             dataRequest = Alamofire.request(.GET, requestURL).validate().responseJSON() { response in
-                if response.result.isSuccess {
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                        print("----------Got results!----------")
-                        
-                        let jsonData = JSON(response.result.value!)
-                        self.populateProducts(data: jsonData)
-                        self.state = .Success
-                        print("Request successful")
-                        
-                        dispatch_async(dispatch_get_main_queue()) {
-                            completion(true, response.result.description, self.lastItem)
-                        }
-                    }
-                } else {
-                    self.state = .Failed
-                    completion(false, response.result.error!.localizedDescription, self.lastItem)
-                }
+                self.handleResponse(response, withCompletion: completion)
             }
             
         } else {
-            dataRequest = Alamofire.request(ShopStyle.Router.PopularResults(itemOffset, limit, category)).validate().responseJSON() { response in
+            if let filterParams = PreselectedFiltersModel.sharedInstance().getFilterParamsForCategory(category) {
+                var requestURL = ShopStyle.Router.PreselectedResults(itemOffset, limit, category).URLRequest.URLString
                 
-                if response.result.isSuccess {
-                    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                        print("----------Got results!----------")
-                        
-                        let jsonData = JSON(response.result.value!)
-                        self.populateProducts(data: jsonData)
-                        self.state = .Success
-                        print("Request successful")
-                        
-                        dispatch_async(dispatch_get_main_queue()) {
-                            completion(true, response.result.description, self.lastItem)
-                        }
-                    }
-                } else {
-                    self.state = .Failed
-                    completion(false, response.result.error!.localizedDescription, self.lastItem)
+                requestURL.appendContentsOf("&" + filterParams)
+                print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+                print(requestURL)
+                
+                dataRequest = Alamofire.request(.GET, requestURL).validate().responseJSON() { response in
+                    self.handleResponse(response, withCompletion: completion)
+                }
+                
+            } else {
+                dataRequest = Alamofire.request(ShopStyle.Router.PopularResults(itemOffset, limit, category)).validate().responseJSON() { response in
+                    self.handleResponse(response, withCompletion: completion)
                 }
             }
         }
@@ -207,6 +186,26 @@ class Search {
     private func populateProducts(data data: JSON) {
         if let productsArray = data["products"].array {
             products.addObjectsFromArray(productsArray.map { Product(data: $0) })
+        }
+    }
+    
+    private func handleResponse(response: Response<AnyObject, NSError>, withCompletion completion: SearchComplete) {
+        if response.result.isSuccess {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+                print("----------Got results!----------")
+                
+                let jsonData = JSON(response.result.value!)
+                self.populateProducts(data: jsonData)
+                self.state = .Success
+                print("Request successful")
+                
+                dispatch_async(dispatch_get_main_queue()) {
+                    completion(true, response.result.description, self.lastItem)
+                }
+            }
+        } else {
+            self.state = .Failed
+            completion(false, response.result.error!.localizedDescription, self.lastItem)
         }
     }
 }

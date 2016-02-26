@@ -58,6 +58,8 @@
 		75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */; };
 		75AC84D91C7F7B03004B8FD7 /* CategoryInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AC84D81C7F7B03004B8FD7 /* CategoryInfo.swift */; };
 		75AC84DB1C7F90E6004B8FD7 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75AC84DA1C7F90E6004B8FD7 /* CloudKit.framework */; };
+		75AC84DD1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AC84DC1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift */; };
+		75AC84E31C7F9653004B8FD7 /* PreselectedFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AC84E21C7F9653004B8FD7 /* PreselectedFilter.swift */; };
 		75AD0B4C1C7C777A00CD5C85 /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */; };
 		75AD0B501C7C7E0A00CD5C85 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */; };
 		75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */; };
@@ -191,6 +193,8 @@
 		75A6A3051C10C200008647CB /* CustomSFSafariViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CustomSFSafariViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75AC84D81C7F7B03004B8FD7 /* CategoryInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryInfo.swift; sourceTree = "<group>"; };
 		75AC84DA1C7F90E6004B8FD7 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		75AC84DC1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreselectedFiltersModel.swift; sourceTree = "<group>"; };
+		75AC84E21C7F9653004B8FD7 /* PreselectedFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreselectedFilter.swift; sourceTree = "<group>"; };
 		75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHEXColors.swift; sourceTree = "<group>"; };
 		75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesCustomDesign.json; sourceTree = "<group>"; };
@@ -493,6 +497,8 @@
 				755F62FD1C770AA7003BA832 /* PhotoScout.swift */,
 				75F780D51C7F612300CD074A /* BrandsModel.swift */,
 				75409E1F1C6A572A00E5C282 /* FavoritesModel.swift */,
+				75AC84DC1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift */,
+				75AC84E21C7F9653004B8FD7 /* PreselectedFilter.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -826,6 +832,7 @@
 				75F12D051BE0A35900258874 /* CategoryCell.swift in Sources */,
 				75F12D0C1BE0A35900258874 /* HomeViewController.swift in Sources */,
 				7522B0CA1C044BBD0055C9A6 /* StoreFilterViewController.swift in Sources */,
+				75AC84DD1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift in Sources */,
 				756848671C75DD1700D85E67 /* ImageScout.swift in Sources */,
 				75F780D61C7F612300CD074A /* BrandsModel.swift in Sources */,
 				75F12D011BE0A35900258874 /* AppDelegate.swift in Sources */,
@@ -833,6 +840,7 @@
 				75F12D121BE0A35900258874 /* RoundedCornersView.swift in Sources */,
 				75B455F61C58FB9B00424B21 /* BounceAnimationController.swift in Sources */,
 				756848691C75DD1700D85E67 /* SessionDelegate.swift in Sources */,
+				75AC84E31C7F9653004B8FD7 /* PreselectedFilter.swift in Sources */,
 				7546CB221C4A5A0E000C9635 /* SimilarProductCell.swift in Sources */,
 				750D8E141C0617BA00D728F0 /* PriceFilterViewController.swift in Sources */,
 				75414D761C51465400C2E3FE /* WebViewController.swift in Sources */,

@@ -6,7 +6,6 @@
 //  Copyright © 2015 Ashish Kayastha. All rights reserved.
 //
 
-import Foundation
 import Alamofire
 
 struct ShopStyle {

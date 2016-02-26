@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeNavBar()
         customizeTabBar()
         
+        PreselectedFiltersModel.sharedInstance().loadPreselectedFilters()
+        
         networkManager?.listener = { status in
             print("Network Status Changed: \(status)")
             

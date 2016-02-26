@@ -6,7 +6,6 @@
 //  Copyright © 2016 Ashish Kayastha. All rights reserved.
 //
 
-import UIKit
 import SwiftyJSON
 
 class CategoryInfo: NSObject, NSCoding {

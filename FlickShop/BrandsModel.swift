@@ -8,16 +8,18 @@
 
 import Foundation
 
+private let brandsModelSingleton = BrandsModel()
+
 class BrandsModel {
     
     class func sharedInstance() -> BrandsModel {
-        return modelSingletonGlobal
+        return brandsModelSingleton
     }
+    
+    private init() { }
     
     var brands: [Brand] = Brand.allBrands()
 }
-
-let modelSingletonGlobal = BrandsModel()
 
 
 class Brand {

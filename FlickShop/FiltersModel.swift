@@ -14,19 +14,20 @@ class FiltersModel {
         return filtersModelSingleton
     }
     
+    var filtersAvailable: Bool
     var productCategory: String?
     var category: [String: AnyObject]
     var filterParams: [String: AnyObject]
     var sort: [String: String]
     
     private init() {
+        filtersAvailable = false
         category = [
             "categorySearch": CategorySearch(),
             "displayCategories": [String](),
             "tappedCategories": [String](),
             "categoriesIdDict": [String: String]()
         ]
-        
         filterParams = [
             "brand": [String: String](),
             "store": [String: String](),
@@ -35,12 +36,12 @@ class FiltersModel {
             "offer": [String: String](),
             "color": [String: String]()
         ]
-        
         sort = [String: String]()
     }
     
     func resetFilters() {
         print("FILTERS CLEARED !!!")
+        
         category = [
             "categorySearch": CategorySearch(),
             "displayCategories": [String](),

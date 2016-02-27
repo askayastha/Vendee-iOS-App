@@ -54,6 +54,11 @@ class DiscountFilterViewController: UITableViewController {
     
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var discountSlider: NMRangeSlider!
+    
+    deinit {
+        print("DiscountFilterViewController Deallocating !!!")
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,10 +87,6 @@ class DiscountFilterViewController: UITableViewController {
         } else {
             discountSlider.lowerValue = Float(minValue)
         }
-    }
-    
-    deinit {
-        print("DiscountFilterViewController Deallocating !!!")
     }
     
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {

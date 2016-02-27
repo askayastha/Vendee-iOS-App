@@ -28,6 +28,10 @@ class SideTabViewController: UITableViewController {
     let filtersModel = FiltersModel.sharedInstance()
     
     weak var delegate: SideTabDelegate?
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

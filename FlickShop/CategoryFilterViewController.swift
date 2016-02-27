@@ -33,6 +33,11 @@ class CategoryFilterViewController: UITableViewController {
             spinner.stopAnimating()
         }
     }
+    
+    deinit {
+        print("CategoryFilterViewController Deallocating !!!")
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidClearNotification, object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,10 +67,6 @@ class CategoryFilterViewController: UITableViewController {
         } else {
             hideSpinner()
         }
-    }
-    
-    deinit {
-        print("CategoryFilterViewController Deallocating !!!")
     }
 
     override func didReceiveMemoryWarning() {

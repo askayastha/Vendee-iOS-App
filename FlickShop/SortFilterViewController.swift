@@ -19,6 +19,11 @@ class SortFilterViewController: UITableViewController {
     let filtersModel = FiltersModel.sharedInstance()
     
     var selectedSort: [String: String]!
+    
+    deinit {
+        print("SortFilterViewController Deallocating !!!")
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +31,6 @@ class SortFilterViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
         
         selectedSort = filtersModel.sort
-    }
-    
-    deinit {
-        print("SortFilterViewController Deallocating !!!")
     }
 
     override func didReceiveMemoryWarning() {

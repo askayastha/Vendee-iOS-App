@@ -22,6 +22,12 @@ class BrandFilterViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
+    
+    deinit {
+        print("BrandFilterViewController Deallocating !!!")
+        searchController.active = false
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,11 +59,6 @@ class BrandFilterViewController: UIViewController {
         searchController.delegate = self
         
         selectedBrands = filtersModel.filterParams["brand"] as! [String: String]
-    }
-    
-    deinit {
-        print("BrandFilterViewController Deallocating !!!")
-        searchController.active = false
     }
     
     override func viewWillLayoutSubviews() {

@@ -31,7 +31,6 @@ class Search {
     var lastItem: Int {
         return products.count
     }
-    var filteredSearch = false
     
     deinit {
         print("SEARCH DEALLOCATING !!!!!")
@@ -92,7 +91,7 @@ class Search {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading
         
-        if filteredSearch {
+        if filtersModel.filtersAvailable {
             // Get category code for filter
             if let filterCategory = getFilterCategory() {
                 category = filterCategory

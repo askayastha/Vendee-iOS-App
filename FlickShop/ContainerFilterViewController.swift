@@ -11,13 +11,24 @@ import UIKit
 class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
     @IBOutlet weak var navigationBar: UINavigationBar!
+    @IBOutlet weak var clearAllButton: UIBarButtonItem!
+    
     var containerVC: ContainerViewController?
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         navigationBar.barTintColor = UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 1.0)
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(CustomNotifications.FilterDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
+            self.clearAllButton.enabled = true
+            FiltersModel.sharedInstance().filtersAvailable = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -37,6 +48,9 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         
         // Refresh any visible filter view controllers
         CustomNotifications.filterDidClearNotification()
+        
+        clearAllButton.enabled = false
+        FiltersModel.sharedInstance().filtersAvailable = false
     }
 
     // MARK: - Navigation

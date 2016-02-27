@@ -27,6 +27,11 @@ class PriceFilterViewController: UITableViewController {
     @IBOutlet weak var minPriceLabel: UILabel!
     @IBOutlet weak var maxPriceLabel: UILabel!
     @IBOutlet weak var priceRangeSlider: NMRangeSlider!
+    
+    deinit {
+        print("PriceFilterViewController Deallocating !!!")
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,10 +97,6 @@ class PriceFilterViewController: UITableViewController {
         
         // Refresh Side Tab
         CustomNotifications.filterDidChangeNotification()
-    }
-    
-    deinit {
-        print("PriceFilterViewController Deallocating !!!")
     }
 
     override func didReceiveMemoryWarning() {

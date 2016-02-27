@@ -66,7 +66,6 @@ class BrowseViewController: UICollectionViewController {
     
     @IBAction func unwindFilterApply(segue: UIStoryboardSegue) {
         search.resetSearch()
-        search.filteredSearch = true
         productCount = 0
         
         scout.cancelled = true
@@ -203,6 +202,8 @@ class BrowseViewController: UICollectionViewController {
                 if lastItem > 0 {
                     strongSelf.populatePhotosFromIndex(strongSelf.productCount)
                 } else {
+                    strongSelf.animateSpinner?(false)
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("No results found.", type: .Warning)
                 }

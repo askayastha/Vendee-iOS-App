@@ -26,21 +26,20 @@ class ContainerWebViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     
     deinit {
-        print("Deallocating FlickViewController !!!!!!!!!!!!!!!")
+        print("Deallocating ContainerWebViewController !!!!!!!!!!!!!!!")
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Spinner setup
-        spinner.center = CGPoint(x: view.center.x, y: view.center.y)
         view.addSubview(spinner)
         
-//        spinner.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activateConstraints([
-//            spinner.centerXAnchor.constraintEqualToAnchor(webView.centerXAnchor),
-//            spinner.centerYAnchor.constraintEqualToAnchor(webView.centerYAnchor)
-//            ])
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            spinner.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor),
+            spinner.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor)
+            ])
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -73,22 +72,20 @@ class ContainerWebViewController: UIViewController {
             webViewController?.webpageURL = webpageURL
             webViewController?.product = product
             webViewController?.delegate = self
-            webViewController?.animateSpinner = { [weak self] animate in
-                guard let strongSelf = self else { return }
+            webViewController?.animateSpinner = { [unowned self] animate in
                 if animate {
-                    strongSelf.spinner.startAnimating()
+                    self.spinner.startAnimating()
                 } else {
-                    strongSelf.spinner.stopAnimating()
+                    self.spinner.stopAnimating()
                 }
             }
-            webViewController?.showPopup = { [weak self] in
-                guard let strongSelf = self else { return }
-                guard strongSelf.showPopup else { return }
+            webViewController?.showPopup = { [unowned self] in
+                guard self.showPopup else { return }
                 
-                if let priceDetailsVC = strongSelf.storyboard!.instantiateViewControllerWithIdentifier("PriceDetailsViewController") as? PriceDetailsViewController {
-                    priceDetailsVC.product = strongSelf.product
-                    strongSelf.presentViewController(priceDetailsVC, animated: true, completion: nil)
-                    strongSelf.showPopup = false
+                if let priceDetailsVC = self.storyboard!.instantiateViewControllerWithIdentifier("PriceDetailsViewController") as? PriceDetailsViewController {
+                    priceDetailsVC.product = self.product
+                    self.presentViewController(priceDetailsVC, animated: true, completion: nil)
+                    self.showPopup = false
                 }
             }
         }

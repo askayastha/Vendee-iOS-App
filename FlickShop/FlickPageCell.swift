@@ -325,7 +325,6 @@ extension FlickPageCell: UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         // Load the pages that are now on screen
-        print("scrollViewDidScroll")
         loadVisiblePages()
     }
 }

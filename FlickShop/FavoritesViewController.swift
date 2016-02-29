@@ -194,29 +194,34 @@ extension FavoritesViewController {
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FavoritesViewCellIdentifiers.headerCell, forIndexPath: indexPath)
-        cell.subviews.forEach { $0.removeFromSuperview() }
         
-        let titleLabel = UILabel()
-        titleLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
-        titleLabel.textColor = UIColor(hexString: "#353535")
-        titleLabel.text = "Favorites"
-        titleLabel.textAlignment = .Center
+        // Reuse views
+        if cell.subviews.count == 0 {
+            let titleLabel = UILabel()
+            titleLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+            titleLabel.textColor = UIColor(hexString: "#353535")
+            titleLabel.text = "Favorites"
+            titleLabel.textAlignment = .Center
+            
+            let itemsCountLabel = UILabel()
+            itemsCountLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 12.0)!
+            itemsCountLabel.textColor = UIColor(hexString: "#353535")
+            itemsCountLabel.textAlignment = .Center
+            
+            let headerView = UIStackView(arrangedSubviews: [titleLabel, itemsCountLabel])
+            headerView.axis = .Vertical
+            cell.addSubview(headerView)
+            
+            headerView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
+                headerView.centerXAnchor.constraintEqualToAnchor(cell.centerXAnchor),
+                headerView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor)
+                ])
+        }
         
-        let itemsCountLabel = UILabel()
-        itemsCountLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 12.0)!
-        itemsCountLabel.textColor = UIColor(hexString: "#353535")
+        let headerView = cell.subviews[0] as! UIStackView
+        let itemsCountLabel = headerView.arrangedSubviews[1] as! UILabel
         itemsCountLabel.text = "\(search.lastItem) Items"
-        itemsCountLabel.textAlignment = .Center
-        
-        let headerView = UIStackView(arrangedSubviews: [titleLabel, itemsCountLabel])
-        headerView.axis = .Vertical
-        cell.addSubview(headerView)
-        
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([
-            headerView.centerXAnchor.constraintEqualToAnchor(cell.centerXAnchor),
-            headerView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor)
-            ])
         
         return cell
     }

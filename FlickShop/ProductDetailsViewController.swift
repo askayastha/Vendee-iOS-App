@@ -264,46 +264,44 @@ extension ProductDetailsViewController {
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(ProductDetailsViewCellIdentifiers.headerCell)
-        
         cell?.backgroundView = UIView()
         cell?.backgroundView?.backgroundColor = UIColor.whiteColor()
         
-        let label = UILabel()
-        label.font = UIFont(name: "Whitney-Semibold", size: 16.0)!
-        label.textColor = UIColor(red: 32/255, green: 49/255, blue: 67/255, alpha: 1.0)
-        cell?.contentView.addSubview(label)
-        
-        switch section {
-        case 0:
-            label.text = "Product Description"
-        case 1:
-            label.text = "Similar Products"
-        default:
-            label.text = ""
+        // Reuse views
+        if cell?.contentView.subviews.count == 0 {
+            let sectionLabel = UILabel()
+            sectionLabel.font = UIFont(name: "Whitney-Semibold", size: 16.0)!
+            sectionLabel.textColor = UIColor(red: 32/255, green: 49/255, blue: 67/255, alpha: 1.0)
+            cell?.contentView.addSubview(sectionLabel)
+            
+            sectionLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "H:|-15-[label]-15-|",
+                    options: [],
+                    metrics: nil,
+                    views: ["label" : sectionLabel]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[label]|",
+                    options: [],
+                    metrics: nil,
+                    views: ["label": sectionLabel])
+                ].flatten().map{$0})
+            
+            let separatorLine = UIView(frame: CGRect(x: 15, y: tableView.sectionHeaderHeight, width: view.frame.size.width - 15, height: 0.5))
+            separatorLine.backgroundColor = UIColor(red: 201/255, green: 198/255, blue: 204/255, alpha: 1.0)
+            cell?.contentView.addSubview(separatorLine)
         }
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-//        cell?.contentView.addConstraints([
-//            NSLayoutConstraint(item: label, attribute: .Leading, relatedBy: .Equal, toItem: cell?.contentView, attribute: .Leading, multiplier: 1, constant: 15),
-//            NSLayoutConstraint(item: label, attribute: .Trailing, relatedBy: .Equal, toItem: cell?.contentView, attribute: .Trailing, multiplier: 1, constant: 15),
-//            NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: cell?.contentView, attribute: .CenterY, multiplier: 1, constant: 0)
-//            ])
-        NSLayoutConstraint.activateConstraints([
-            NSLayoutConstraint.constraintsWithVisualFormat(
-                "H:|-15-[label]-15-|",
-                options: [],
-                metrics: nil,
-                views: ["label" : label]),
-            NSLayoutConstraint.constraintsWithVisualFormat(
-                "V:|[label]|",
-                options: [],
-                metrics: nil,
-                views: ["label": label])
-            ].flatten().map{$0})
-        
-        let separatorLine = UIView(frame: CGRect(x: 15, y: tableView.sectionHeaderHeight, width: view.frame.size.width - 15, height: 0.5))
-        separatorLine.backgroundColor = UIColor(red: 201/255, green: 198/255, blue: 204/255, alpha: 1.0)
-        cell?.contentView.addSubview(separatorLine)
+        let sectionLabel = cell?.contentView.subviews[0] as! UILabel
+        switch section {
+        case 0:
+            sectionLabel.text = "Product Description"
+        case 1:
+            sectionLabel.text = "Similar Products"
+        default:
+            sectionLabel.text = ""
+        }
         
         return cell
     }

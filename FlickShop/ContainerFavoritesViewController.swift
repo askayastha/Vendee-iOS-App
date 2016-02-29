@@ -30,8 +30,13 @@ class ContainerFavoritesViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         // Spinner setup
-        spinner.center = CGPoint(x: view.center.x, y: view.center.y)
         view.addSubview(spinner)
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            spinner.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor),
+            spinner.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor)
+            ])
     }
     
     override func viewWillAppear(animated: Bool) {

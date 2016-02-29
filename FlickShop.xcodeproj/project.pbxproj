@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		75019BFC1C6D0A8200B4CDBD /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */; };
+		750CA62A1C847ABB00A73F7A /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 750CA6281C847ABB00A73F7A /* Favorites.storyboard */; };
 		750D8E141C0617BA00D728F0 /* PriceFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E131C0617BA00D728F0 /* PriceFilterViewController.swift */; };
 		750D8E161C06221900D728F0 /* DiscountFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */; };
 		750D8E181C06336900D728F0 /* ColorFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E171C06336900D728F0 /* ColorFilterViewController.swift */; };
@@ -136,6 +137,7 @@
 		4DD496926D078ABA0D4796DA /* Pods-FlickShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.release.xcconfig"; sourceTree = "<group>"; };
 		75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MoreViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750564681C6744F80060A400 /* FlickShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlickShop.entitlements; sourceTree = "<group>"; };
+		750CA6291C847ABB00A73F7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Favorites.storyboard; sourceTree = "<group>"; };
 		750D8E131C0617BA00D728F0 /* PriceFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PriceFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DiscountFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750D8E171C06336900D728F0 /* ColorFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ColorFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -574,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				75F12D161BE0A46000258874 /* Main.storyboard */,
+				750CA6281C847ABB00A73F7A /* Favorites.storyboard */,
 				75EEE39B1C6F510900C507FC /* More.storyboard */,
 				757D57AA1C56816D00F64907 /* Filter.storyboard */,
 				75F12CF81BE0A35900258874 /* FlickPageCell.xib */,
@@ -745,6 +748,7 @@
 				75BE17531C04DAA4007E0A59 /* Shopstyle_Brands.plist in Resources */,
 				756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */,
 				75F12D0F1BE0A35900258874 /* ProximaNova-Bold.ttf in Resources */,
+				750CA62A1C847ABB00A73F7A /* Favorites.storyboard in Resources */,
 				756E15B21C7213D20046CCBA /* FaktFlipboard-SemiBold.otf in Resources */,
 				75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */,
 				75F12D101BE0A35900258874 /* ProximaNova-Reg.ttf in Resources */,
@@ -935,6 +939,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		750CA6281C847ABB00A73F7A /* Favorites.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				750CA6291C847ABB00A73F7A /* Base */,
+			);
+			name = Favorites.storyboard;
+			sourceTree = "<group>";
+		};
 		757D57AA1C56816D00F64907 /* Filter.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

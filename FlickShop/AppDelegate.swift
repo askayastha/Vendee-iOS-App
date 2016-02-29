@@ -192,7 +192,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navAppearance.backIndicatorImage = backImage
         navAppearance.backIndicatorTransitionMaskImage = backImage
         navAppearance.titleTextAttributes = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!,
+            NSForegroundColorAttributeName: UIColor(hexString: "#353535")!
         ]
         navAppearance.tintColor = UIColor.blackColor()
         

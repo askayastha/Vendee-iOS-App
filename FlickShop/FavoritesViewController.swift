@@ -22,6 +22,11 @@ class FavoritesViewController: UICollectionViewController {
     let brands = BrandsModel.sharedInstance().brands
     var scout: PhotoScout!
     
+    struct FavoritesViewCellIdentifiers {
+        static let customProductCell = "CustomPhotoCell"
+        static let headerCell = "HeaderCell"
+    }
+    
     deinit {
         print("Deallocating FavoritesViewController !!!!!!!!!!!!!!!")
         
@@ -90,11 +95,14 @@ class FavoritesViewController: UICollectionViewController {
     
     private func setupView() {
         
+        collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: FavoritesViewCellIdentifiers.headerCell)
+        
         collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)
         // collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
             layout.delegate = self
+            layout.headerReferenceSize = CGSize(width: collectionView!.bounds.size.width, height: 50)
         }
     }
     
@@ -147,7 +155,7 @@ extension FavoritesViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(BrowseViewCellIdentifiers.customProductCell, forIndexPath: indexPath) as! CustomPhotoCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(FavoritesViewCellIdentifiers.customProductCell, forIndexPath: indexPath) as! CustomPhotoCell
         
         // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
@@ -184,8 +192,38 @@ extension FavoritesViewController {
         return cell
     }
     
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FavoritesViewCellIdentifiers.headerCell, forIndexPath: indexPath)
+        cell.subviews.forEach { $0.removeFromSuperview() }
+        
+        let titleLabel = UILabel()
+        titleLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+        titleLabel.textColor = UIColor(hexString: "#353535")
+        titleLabel.text = "Favorites"
+        titleLabel.textAlignment = .Center
+        
+        let itemsCountLabel = UILabel()
+        itemsCountLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 12.0)!
+        itemsCountLabel.textColor = UIColor(hexString: "#353535")
+        itemsCountLabel.text = "\(search.lastItem) Items"
+        itemsCountLabel.textAlignment = .Center
+        
+        let headerView = UIStackView(arrangedSubviews: [titleLabel, itemsCountLabel])
+        headerView.axis = .Vertical
+        cell.addSubview(headerView)
+        
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            headerView.centerXAnchor.constraintEqualToAnchor(cell.centerXAnchor),
+            headerView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor)
+            ])
+        
+        return cell
+    }
+    
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        let flickVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let flickVC = mainStoryboard.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
         
         if let controller = flickVC {
             controller.search = search

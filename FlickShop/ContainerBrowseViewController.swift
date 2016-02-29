@@ -79,8 +79,18 @@ class ContainerBrowseViewController: UIViewController {
             browseViewController?.animateSpinner = { [unowned self] animate in
                 if animate {
                     self.spinner.startAnimating()
+                    UIView.animateWithDuration(0.3, animations: {
+                        self.spinner.transform = CGAffineTransformIdentity
+                        self.spinner.alpha = 1.0
+                        }, completion: nil)
+                    
                 } else {
-                    self.spinner.stopAnimating()
+                    UIView.animateWithDuration(0.3, animations: {
+                        self.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                        self.spinner.alpha = 0.0
+                        }, completion: { _ in
+                            self.spinner.stopAnimating()
+                    })
                 }
             }
         }

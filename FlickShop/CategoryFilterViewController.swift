@@ -28,9 +28,21 @@ class CategoryFilterViewController: UITableViewController {
         return spinner
     }()
     
-    private func hideSpinner() {
-        if spinner.isAnimating() {
-            spinner.stopAnimating()
+    private func animateSpinner(animate: Bool) {
+        if animate {
+            self.spinner.startAnimating()
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformIdentity
+                self.spinner.alpha = 1.0
+                }, completion: nil)
+            
+        } else {
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                self.spinner.alpha = 0.0
+                }, completion: { _ in
+                    self.spinner.stopAnimating()
+            })
         }
     }
     
@@ -65,7 +77,7 @@ class CategoryFilterViewController: UITableViewController {
         if displayCategories.count == 0 {
             requestCategoryFromShopStyle()
         } else {
-            hideSpinner()
+            animateSpinner(false)
         }
     }
 
@@ -240,11 +252,11 @@ class CategoryFilterViewController: UITableViewController {
                     print("Request Count: \(strongSelf.categorySearch.retryCount)")
                 } else {
                     strongSelf.categorySearch.resetRetryCount()
-                    strongSelf.hideSpinner()
+                    strongSelf.animateSpinner(false)
                 }
                 
             } else {
-                strongSelf.hideSpinner()
+                strongSelf.animateSpinner(false)
                 print("Product count: \(lastItem)")
                 
                 let rootCategory = strongSelf.categorySearch.categories.objectAtIndex(0) as! CategoryInfo

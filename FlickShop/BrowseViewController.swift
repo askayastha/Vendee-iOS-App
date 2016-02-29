@@ -22,9 +22,7 @@ class BrowseViewController: UICollectionViewController {
     private(set) var populatingData = false
     private(set) var productCount = 0
     
-//    var hideSpinner: (()->())?
     var animateSpinner: ((Bool)->())?
-    
     weak var delegate: SwipeDelegate?
     var search = Search()
     let brands = BrandsModel.sharedInstance().brands

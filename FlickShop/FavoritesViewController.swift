@@ -17,7 +17,7 @@ class FavoritesViewController: UICollectionViewController {
     private(set) var dataModelChanged = false
     private(set) var populatingData = false
     
-    var hideSpinner: (()->())?
+    var animateSpinner: ((Bool)->())?
     var search: Search!
     let brands = BrandsModel.sharedInstance().brands
     var scout: PhotoScout!
@@ -67,12 +67,12 @@ class FavoritesViewController: UICollectionViewController {
             populatePhotosFromIndex(productCount)
             
         } else if !appDelegate.networkManager!.isReachable {
-            hideSpinner?()
+            animateSpinner?(false)
             TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
             TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
             
         } else {
-            hideSpinner?()
+            animateSpinner?(false)
         }
     }
     
@@ -109,7 +109,7 @@ class FavoritesViewController: UICollectionViewController {
             guard let strongSelf = self else { return }
             guard success else {
                 print("GUARDING SUCCESS")
-                strongSelf.hideSpinner?()
+                strongSelf.animateSpinner?(false)
                 strongSelf.populatingData = false
                 strongSelf.populatePhotosFromIndex(lastIndex)
                 return
@@ -123,7 +123,7 @@ class FavoritesViewController: UICollectionViewController {
                 strongSelf.collectionView!.insertItemsAtIndexPaths(indexPaths)
                 }, completion: { success in
                     strongSelf.populatingData = false
-                    strongSelf.hideSpinner?()
+                    strongSelf.animateSpinner?(false)
                     
                     if success && lastIndex != strongSelf.search.lastItem {
                         strongSelf.populatePhotosFromIndex(lastIndex)

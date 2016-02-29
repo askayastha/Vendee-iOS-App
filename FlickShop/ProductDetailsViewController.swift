@@ -82,9 +82,21 @@ class ProductDetailsViewController: UITableViewController {
     
     // MARK: - Helper methods
     
-    private func hideSpinner() {
-        if spinner.isAnimating() {
-            spinner.stopAnimating()
+    private func animateSpinner(animate: Bool) {
+        if animate {
+            self.spinner.startAnimating()
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformIdentity
+                self.spinner.alpha = 1.0
+                }, completion: nil)
+            
+        } else {
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                self.spinner.alpha = 0.0
+                }, completion: { _ in
+                    self.spinner.stopAnimating()
+            })
         }
     }
     
@@ -181,13 +193,13 @@ class ProductDetailsViewController: UITableViewController {
                 } else {
                     strongSelf.search.resetRetryCount()
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    strongSelf.hideSpinner()
+                    strongSelf.animateSpinner(false)
                     TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
                 }
                 
             } else {
-                strongSelf.hideSpinner()
+                strongSelf.animateSpinner(false)
                 print("Product Count: \(lastItem)")
                 
                 let indexPaths = (0..<lastItem).map { NSIndexPath(forItem: $0, inSection: 0) }

@@ -122,7 +122,7 @@ class BrowseViewController: UICollectionViewController {
     
     func populateData() {
         print("Browse PopulateData Count: \(productCount)")
-        if search.products.count > 0 && appDelegate.networkManager!.isReachable {
+        if search.lastItem - productCount > 0 && appDelegate.networkManager!.isReachable {
             populatePhotosFromIndex(productCount)
         } else if !appDelegate.networkManager!.isReachable {
             animateSpinner?(false)

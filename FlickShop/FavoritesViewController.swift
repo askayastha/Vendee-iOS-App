@@ -68,7 +68,7 @@ class FavoritesViewController: UICollectionViewController {
     
     func populateData() {
         print("PopulateData Count: \(search.products.count)")
-        if search.products.count > 0 && appDelegate.networkManager!.isReachable {
+        if search.lastItem - productCount > 0 && appDelegate.networkManager!.isReachable {
             populatePhotosFromIndex(productCount)
             
         } else if !appDelegate.networkManager!.isReachable {

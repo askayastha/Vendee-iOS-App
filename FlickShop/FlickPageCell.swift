@@ -71,12 +71,6 @@ class FlickPageCell: UICollectionViewCell {
         return blurView
     }()
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        
-//        print("I AM HERE")
-//    }
-    
     required init?(coder aDecoder: NSCoder) {
         imageViews = [UIImageView?]()
         spinners = [UIActivityIndicatorView?]()
@@ -187,7 +181,7 @@ class FlickPageCell: UICollectionViewCell {
     }
     
     private func updateUI() {
-        
+        print("Product ID: \(product.id)")
         // Update header labels
         if let brand = product.brand {
             headerTitleLabel.text = JSON(brand)["name"].string

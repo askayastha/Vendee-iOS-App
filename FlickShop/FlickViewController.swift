@@ -279,19 +279,6 @@ extension FlickViewController: FlickPageCellDelegate {
         presentViewController(activityVC, animated: true, completion: nil)
     }
     
-//    func openPhotosViewerForProduct(product: Product, onPage page: Int) {
-//        indexPath = collectionView!.indexPathsForVisibleItems().first
-//        let photosVC = storyboard!.instantiateViewControllerWithIdentifier("PhotosViewController") as? PhotosViewController
-//        
-//        if let controller = photosVC {
-//            controller.imageURLs = product.largeImageURLs
-//            controller.tinyImageURLs = product.tinyImageURLs
-//            controller.page = page
-//            controller.transitioningDelegate = self
-//            presentViewController(controller, animated: true, completion: nil)
-//        }
-//    }
-    
     func openPhotosViewerForProduct(product: Product, andImageView imageView: UIImageView, onPage page: Int) {
         guard let _ = imageView.image else { return }
         

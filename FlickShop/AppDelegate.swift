@@ -112,9 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else if let queryItems = components.queryItems {
             for item in queryItems {
                 if item.name == "id" {
-                    if let valueString = item.value {
-                        return valueString
-                    }
+                    if let valueString = item.value { return valueString }
                 }
             }
         }

@@ -87,9 +87,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func presentURL(url: NSURL) -> Bool {
         if let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: true), let host = components.host, let path = components.path {
             switch host {
-                case "www.vendeeapp.com":
+                case "vendeeapp.com":
                     switch path {
-                    case "/product":
+                    case "/item":
                         if let productId = findProductId(components) {
                             print("Product Id: \(productId)")
                             requestDataForProductId(productId, forSearch: Search())

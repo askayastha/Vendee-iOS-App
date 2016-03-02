@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import DeviceKit
 
 class MoreViewController: UITableViewController {
 
@@ -71,7 +72,7 @@ class MoreViewController: UITableViewController {
     
     // MARK: Helper methods
     private func shareTheApp() {
-        let url = "https://www.vendeeapp.com/"
+        let url = "https://vendeeapp.com/"
         let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found")
         let promoText = "Try the Vendee Fashion Discovery App!"
         
@@ -85,15 +86,23 @@ class MoreViewController: UITableViewController {
     }
     
     private func sendSupportEmailWithSubject(subject: String) {
+        var messageBody: String {
+            let dictionary = NSBundle.mainBundle().infoDictionary!
+            let version = dictionary["CFBundleShortVersionString"] as! String
+            let build = dictionary["CFBundleVersion"] as! String
+            let device = Device()
+            return "\n\n\nVersion: \(version) (\(build))\niOS: \(device.systemVersion)\nModel: \(device)"
+        }
+        
         if MFMailComposeViewController.canSendMail() {
             let controller = MFMailComposeViewController()
             controller.setSubject(subject)
-            controller.setToRecipients(["vendeeapp.dev@gmail.com"])
+            controller.setMessageBody(messageBody, isHTML: false)
+            controller.setToRecipients(["vendeefashion.ios@gmail.com"])
             controller.mailComposeDelegate = self
             self.presentViewController(controller, animated: true, completion: nil)
         }
     }
-
 }
 
 extension MoreViewController: MFMailComposeViewControllerDelegate {

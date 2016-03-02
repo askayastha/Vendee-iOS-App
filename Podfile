@@ -11,6 +11,7 @@ target 'FlickShop' do
     pod 'PINRemoteImage', '2.0'
     pod 'NMRangeSlider', :git => 'https://github.com/chanil1218/NMRangeSlider.git', :commit => 'c89890c'
     pod 'TSMessages'
+    pod 'DeviceKit', '0.3.0'
 end
 
 target 'FlickShopTests' do

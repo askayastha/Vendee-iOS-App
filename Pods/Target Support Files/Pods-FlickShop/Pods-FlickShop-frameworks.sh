@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FlickShop/Alamofire.framework"
+  install_framework "Pods-FlickShop/DeviceKit.framework"
   install_framework "Pods-FlickShop/FLAnimatedImage.framework"
   install_framework "Pods-FlickShop/HexColors.framework"
   install_framework "Pods-FlickShop/MBProgressHUD.framework"
@@ -97,6 +98,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FlickShop/Alamofire.framework"
+  install_framework "Pods-FlickShop/DeviceKit.framework"
   install_framework "Pods-FlickShop/FLAnimatedImage.framework"
   install_framework "Pods-FlickShop/HexColors.framework"
   install_framework "Pods-FlickShop/MBProgressHUD.framework"

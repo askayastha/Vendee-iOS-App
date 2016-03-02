@@ -21,7 +21,8 @@ class AboutViewController: UIViewController {
         "SwiftyJSON by Ruoyu Fu",
         "PINRemoteImage by Pinterest, Inc.",
         "NMRangeSlider by Null Monkey Pty. Ltd.",
-        "TSMessages by  Felix Krause"
+        "TSMessages by  Felix Krause",
+        "DeviceKit by Dennis Weissmann"
     ]
 
     override func viewDidLoad() {

@@ -72,10 +72,24 @@ class PriceDetailsViewController: UIViewController {
         discountLabel.text = discountText
         
         // Dismiss tap gesture setup
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("close"))
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "close:")
         tapRecognizer.cancelsTouchesInView = false
         tapRecognizer.delegate = self
         view.addGestureRecognizer(tapRecognizer)
+        
+        // Swipe gesture setup
+        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "close:")
+        tapRecognizer.cancelsTouchesInView = false
+        swipeUpRecognizer.delegate = self
+        swipeUpRecognizer.direction = .Up
+        
+        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "close:")
+        tapRecognizer.cancelsTouchesInView = false
+        swipeDownRecognizer.delegate = self
+        swipeDownRecognizer.direction = .Down
+        
+        view.addGestureRecognizer(swipeUpRecognizer)
+        view.addGestureRecognizer(swipeDownRecognizer)
     }
 
 }
@@ -100,12 +114,16 @@ extension PriceDetailsViewController: UIViewControllerTransitioningDelegate {
 }
 
 extension PriceDetailsViewController: UIGestureRecognizerDelegate {
-    func close() {
+    func close(tapGestureRecognizer: UIGestureRecognizer) {
         dismissAnimationStyle = .Slide
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
         return (touch.view === self.view)
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

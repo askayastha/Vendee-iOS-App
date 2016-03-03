@@ -146,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     controller.search = search
                     controller.hidesBottomBarWhenPushed = true
                     let tabBarController = self.window!.rootViewController as! UITabBarController
+                    tabBarController.selectedIndex = 0
                     
                     if let tabBarControllers = tabBarController.viewControllers, let navigationController = tabBarControllers[0] as? UINavigationController {
                         

@@ -61,6 +61,12 @@ class BrandFilterViewController: UIViewController {
         selectedBrands = filtersModel.filterParams["brand"] as! [String: String]
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Brand Filter View")
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         

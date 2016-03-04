@@ -26,6 +26,12 @@ class ContainerProductDetailsViewController: UIViewController {
 
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Product Details View")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -59,6 +59,12 @@ class ColorFilterViewController: UITableViewController {
         
         selectedColors = filtersModel.filterParams["color"] as! [String: String]
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Color Filter View")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

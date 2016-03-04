@@ -89,6 +89,12 @@ class DiscountFilterViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Discount Filter View")
+    }
+    
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {
         let index = Int(sender.lowerValue)
         

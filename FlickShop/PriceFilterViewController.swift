@@ -98,6 +98,12 @@ class PriceFilterViewController: UITableViewController {
         // Refresh Side Tab
         CustomNotifications.filterDidChangeNotification()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Price Filter View")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

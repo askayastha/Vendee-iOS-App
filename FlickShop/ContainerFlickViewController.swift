@@ -33,6 +33,8 @@ class ContainerFlickViewController: UIViewController {
         super.viewWillAppear(animated)
         view.layoutIfNeeded()
         
+        Google.sendAnalyticsForScreenView("Flick View")
+        
         didScrollCount = 0
         backButton.alpha = 1.0
 //        backButton.adjustsImageWhenHighlighted = false

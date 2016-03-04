@@ -80,6 +80,12 @@ class CategoryFilterViewController: UITableViewController {
             animateSpinner(false)
         }
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Category Filter View")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

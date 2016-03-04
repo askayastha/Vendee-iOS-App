@@ -40,6 +40,16 @@ struct CustomNotifications {
     }
 }
 
+struct Google {
+    static func sendAnalyticsForScreenView(view: String) {
+        let tracker = GAI.sharedInstance().defaultTracker
+        tracker.set(kGAIScreenName, value: view)
+        
+        let builder = GAIDictionaryBuilder.createScreenView()
+        tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+}
+
 struct NumericConstants {
     static let requestLimit = 10
     static let retryLimit = 5

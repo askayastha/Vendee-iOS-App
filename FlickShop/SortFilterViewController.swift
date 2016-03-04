@@ -32,6 +32,12 @@ class SortFilterViewController: UITableViewController {
         
         selectedSort = filtersModel.sort
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Sort Filter View")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

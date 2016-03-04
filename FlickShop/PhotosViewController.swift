@@ -57,6 +57,12 @@ class PhotosViewController: UIViewController {
         positionImagesInPhotoScrubber()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Photos View")
+    }
+    
     override func viewDidLayoutSubviews() {
         print("viewDidLayoutSubviews")
             didSetup = true

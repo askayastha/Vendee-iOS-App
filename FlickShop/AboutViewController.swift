@@ -33,6 +33,12 @@ class AboutViewController: UIViewController {
         copyrightLabel.text = "© 2016 Ashish Kayastha"
         thirdPartyLibrariesLabel.text = thirdPartyLibraries.joinWithSeparator("\n")
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("About View")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

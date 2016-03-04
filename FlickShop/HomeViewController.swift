@@ -22,6 +22,12 @@ class HomeViewController: UIViewController {
         
         collectionView.decelerationRate = UIScrollViewDecelerationRateFast
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Home View")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

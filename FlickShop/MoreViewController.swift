@@ -18,6 +18,12 @@ class MoreViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("More View")
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

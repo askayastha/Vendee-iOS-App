@@ -23,27 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TSMessage.setDelegate(self)
         customizeNavBar()
         customizeTabBar()
+        configureNetworkManager()
+        configureGoogleAnalytics()
         
         PreselectedFiltersModel.sharedInstance().loadPreselectedFilters()
         
-        networkManager?.listener = { status in
-            print("Network Status Changed: \(status)")
-            
-            switch status {
-            case .NotReachable:
-                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
-                TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
-                
-            case .Reachable(_):
-                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
-                TSMessage.showNotificationWithTitle("Network Reachable", subtitle: "Network is reachable. Post reachability notification.", type: .Success)
-                NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
-                
-            default:
-                break
-            }
-        }
-        networkManager?.startListening()
+        
         
         return true
     }
@@ -199,6 +184,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let barButtonAppearance = UIBarButtonItem.appearance()
         barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
         barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Compact)
+    }
+    
+    private func configureNetworkManager() {
+        networkManager?.listener = { status in
+            print("Network Status Changed: \(status)")
+            
+            switch status {
+            case .NotReachable:
+                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+                TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
+                
+            case .Reachable(_):
+                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+                TSMessage.showNotificationWithTitle("Network Reachable", subtitle: "Network is reachable. Post reachability notification.", type: .Success)
+                NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
+                
+            default:
+                break
+            }
+        }
+        networkManager?.startListening()
+    }
+    
+    private func configureGoogleAnalytics() {
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        // Optional: configure GAI options.
+        let gai = GAI.sharedInstance()
+        gai.trackUncaughtExceptions = true  // report uncaught exceptions
+        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
     }
 
 }

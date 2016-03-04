@@ -61,6 +61,12 @@ class StoreFilterViewController: UIViewController {
         selectedStores = filtersModel.filterParams["store"] as! [String: String]
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        Google.sendAnalyticsForScreenView("Store Filter View")
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         

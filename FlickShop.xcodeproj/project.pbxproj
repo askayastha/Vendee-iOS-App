@@ -82,6 +82,7 @@
 		75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */; };
 		75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */; };
 		75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */; };
+		75EC0E721C8896EA008C162B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75EC0E711C8896EA008C162B /* GoogleService-Info.plist */; };
 		75EEE39D1C6F510900C507FC /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EEE39B1C6F510900C507FC /* More.storyboard */; };
 		75EEE39F1C6F53CA00C507FC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */; };
 		75F12CEA1BE0A24100258874 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE31BE0A24100258874 /* Functions.swift */; };
@@ -218,6 +219,7 @@
 		75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-Book-Bas.otf"; sourceTree = "<group>"; };
 		75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-BookItal-Bas.otf"; sourceTree = "<group>"; };
 		75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-Semibold-Bas.otf"; sourceTree = "<group>"; };
+		75EC0E711C8896EA008C162B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75EEE39C1C6F510900C507FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/More.storyboard; sourceTree = "<group>"; };
 		75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AboutViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickShop-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 		75F12D271BE0AC8100258874 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				75EC0E711C8896EA008C162B /* GoogleService-Info.plist */,
 				7559FA301C65017500177064 /* Brands.plist */,
 				75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */,
 				75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */,
@@ -734,6 +737,7 @@
 				75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */,
 				757D57AC1C56816D00F64907 /* Filter.storyboard in Resources */,
 				75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */,
+				75EC0E721C8896EA008C162B /* GoogleService-Info.plist in Resources */,
 				753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */,
 				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
 				753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */,
@@ -1072,6 +1076,7 @@
 				CODE_SIGN_ENTITLEMENTS = FlickShop/FlickShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;
@@ -1091,6 +1096,7 @@
 				CODE_SIGN_ENTITLEMENTS = FlickShop/FlickShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;

@@ -102,7 +102,7 @@ class PriceFilterViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.trackScreenForName("Price Filter View")
+        GoogleAnalytics.trackScreenForName("Price Filter View")
     }
 
     override func didReceiveMemoryWarning() {

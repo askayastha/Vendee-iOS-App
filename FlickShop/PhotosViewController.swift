@@ -60,7 +60,7 @@ class PhotosViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.trackScreenForName("Photos View")
+        GoogleAnalytics.trackScreenForName("Photos View")
     }
     
     override func viewDidLayoutSubviews() {

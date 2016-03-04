@@ -25,10 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeTabBar()
         configureNetworkManager()
         configureGoogleAnalytics()
-        
         PreselectedFiltersModel.sharedInstance().loadPreselectedFilters()
-        
-        
         
         return true
     }

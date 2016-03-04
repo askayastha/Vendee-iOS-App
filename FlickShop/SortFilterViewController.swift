@@ -36,7 +36,7 @@ class SortFilterViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.trackScreenForName("Sort Filter View")
+        GoogleAnalytics.trackScreenForName("Sort Filter View")
     }
 
     override func didReceiveMemoryWarning() {

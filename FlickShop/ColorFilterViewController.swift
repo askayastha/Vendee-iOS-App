@@ -63,7 +63,7 @@ class ColorFilterViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.trackScreenForName("Color Filter View")
+        GoogleAnalytics.trackScreenForName("Color Filter View")
     }
 
     override func didReceiveMemoryWarning() {

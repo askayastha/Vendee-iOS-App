@@ -45,7 +45,7 @@ class ContainerWebViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.trackScreenForName("Web View")
+        GoogleAnalytics.trackScreenForName("Web View")
     }
     
     override func viewDidAppear(animated: Bool) {

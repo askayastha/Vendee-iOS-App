@@ -32,7 +32,7 @@ class ContainerBrowseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Google.trackScreenForName("Browse View")
+        GoogleAnalytics.trackScreenForName("Browse View")
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         // Spinner setup

@@ -40,13 +40,19 @@ struct CustomNotifications {
     }
 }
 
-struct Google {
+struct GoogleAnalytics {
     static func trackScreenForName(name: String) {
         let tracker = GAI.sharedInstance().defaultTracker
         tracker.set(kGAIScreenName, value: name)
         
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])
+    }
+    
+    static func trackEventWithCategory(category: String!, action: String!, label: String!, value: NSNumber!) {
+        let tracker = GAI.sharedInstance().defaultTracker
+        let event = GAIDictionaryBuilder.createEventWithCategory(category, action: action, label: label, value: value)
+        tracker.send(event.build() as [NSObject : AnyObject])
     }
 }
 

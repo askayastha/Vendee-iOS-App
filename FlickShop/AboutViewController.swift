@@ -37,7 +37,7 @@ class AboutViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.trackScreenForName("About View")
+        GoogleAnalytics.trackScreenForName("About View")
     }
 
     override func didReceiveMemoryWarning() {

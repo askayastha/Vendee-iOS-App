@@ -42,7 +42,7 @@ class ContainerFavoritesViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.trackScreenForName("Favorites View")
+        GoogleAnalytics.trackScreenForName("Favorites View")
         print("FavoriteProducts Count: \(FavoritesModel.sharedInstance().favoriteProducts.count)")
         if FavoritesModel.sharedInstance().favoriteProducts.count == 0 {
             spinner.stopAnimating()

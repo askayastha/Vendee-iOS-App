@@ -64,7 +64,7 @@ class BrandFilterViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.sendAnalyticsForScreenView("Brand Filter View")
+        Google.trackScreenForName("Brand Filter View")
     }
     
     override func viewWillLayoutSubviews() {

@@ -33,7 +33,7 @@ class ContainerFlickViewController: UIViewController {
         super.viewWillAppear(animated)
         view.layoutIfNeeded()
         
-        Google.sendAnalyticsForScreenView("Flick View")
+        Google.trackScreenForName("Flick View")
         
         didScrollCount = 0
         backButton.alpha = 1.0

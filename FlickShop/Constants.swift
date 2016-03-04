@@ -41,9 +41,9 @@ struct CustomNotifications {
 }
 
 struct Google {
-    static func sendAnalyticsForScreenView(view: String) {
+    static func trackScreenForName(name: String) {
         let tracker = GAI.sharedInstance().defaultTracker
-        tracker.set(kGAIScreenName, value: view)
+        tracker.set(kGAIScreenName, value: name)
         
         let builder = GAIDictionaryBuilder.createScreenView()
         tracker.send(builder.build() as [NSObject : AnyObject])

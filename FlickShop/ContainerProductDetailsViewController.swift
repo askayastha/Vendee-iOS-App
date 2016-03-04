@@ -30,7 +30,7 @@ class ContainerProductDetailsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.sendAnalyticsForScreenView("Product Details View")
+        Google.trackScreenForName("Product Details View")
     }
 
     override func didReceiveMemoryWarning() {

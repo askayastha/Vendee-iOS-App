@@ -84,7 +84,7 @@ class CategoryFilterViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.sendAnalyticsForScreenView("Category Filter View")
+        Google.trackScreenForName("Category Filter View")
     }
 
     override func didReceiveMemoryWarning() {

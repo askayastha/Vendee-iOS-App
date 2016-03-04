@@ -64,7 +64,7 @@ class StoreFilterViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.sendAnalyticsForScreenView("Store Filter View")
+        Google.trackScreenForName("Store Filter View")
     }
     
     override func viewWillLayoutSubviews() {

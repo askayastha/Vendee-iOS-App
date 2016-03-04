@@ -26,7 +26,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.sendAnalyticsForScreenView("Home View")
+        Google.trackScreenForName("Home View")
     }
 
     override func didReceiveMemoryWarning() {

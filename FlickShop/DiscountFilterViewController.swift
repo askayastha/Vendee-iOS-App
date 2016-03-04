@@ -92,7 +92,7 @@ class DiscountFilterViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.sendAnalyticsForScreenView("Discount Filter View")
+        Google.trackScreenForName("Discount Filter View")
     }
     
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {

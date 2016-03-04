@@ -41,7 +41,7 @@ class PriceDetailsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.sendAnalyticsForScreenView("Price Details View")
+        Google.trackScreenForName("Price Details View")
     }
 
     override func didReceiveMemoryWarning() {

@@ -22,7 +22,7 @@ class MoreViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        Google.sendAnalyticsForScreenView("More View")
+        Google.trackScreenForName("More View")
     }
 
     override func didReceiveMemoryWarning() {

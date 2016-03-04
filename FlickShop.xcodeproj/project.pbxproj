@@ -184,7 +184,7 @@
 		757D57AB1C56816D00F64907 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Filter.storyboard; sourceTree = "<group>"; };
 		7587C7BA1C5B806100E99A6B /* PopAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PopAnimationController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		758EB6CA1C579C50007ECD91 /* SwipeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SwipeDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		75A31E2E1BDFBAAD006FD010 /* FlickShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75A31E2E1BDFBAAD006FD010 /* Vendee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vendee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75A31E381BDFBAAE006FD010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		75A31E3B1BDFBAAE006FD010 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		75A31E3D1BDFBAAE006FD010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -313,7 +313,7 @@
 		75A31E2F1BDFBAAD006FD010 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				75A31E2E1BDFBAAD006FD010 /* FlickShop.app */,
+				75A31E2E1BDFBAAD006FD010 /* Vendee.app */,
 				75A31E421BDFBAAE006FD010 /* FlickShopTests.xctest */,
 				75A31E4D1BDFBAAE006FD010 /* FlickShopUITests.xctest */,
 			);
@@ -635,7 +635,7 @@
 			);
 			name = FlickShop;
 			productName = FlickShop;
-			productReference = 75A31E2E1BDFBAAD006FD010 /* FlickShop.app */;
+			productReference = 75A31E2E1BDFBAAD006FD010 /* Vendee.app */;
 			productType = "com.apple.product-type.application";
 		};
 		75A31E411BDFBAAE006FD010 /* FlickShopTests */ = {
@@ -1080,7 +1080,7 @@
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Vendee;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FlickShop/FlickShop-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1100,7 +1100,7 @@
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Vendee;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "FlickShop/FlickShop-Bridging-Header.h";
 			};

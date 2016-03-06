@@ -8,6 +8,7 @@
 
 import UIKit
 import NMRangeSlider
+import Crashlytics
 
 class PriceFilterViewController: UITableViewController {
     
@@ -103,6 +104,7 @@ class PriceFilterViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Price Filter View")
+        Answers.logCustomEventWithName("Price Filter View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {

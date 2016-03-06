@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
@@ -38,6 +39,10 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
     @IBAction func done() {
         dismissViewControllerAnimated(true, completion: nil)
+        
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Close", value: nil)
+        Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Close"])
     }
     
     @IBAction func reset() {
@@ -51,6 +56,10 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         
         clearAllButton.enabled = false
         FiltersModel.sharedInstance().filtersAvailable = false
+        
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Clear All", value: nil)
+        Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Clear All"])
     }
 
     // MARK: - Navigation

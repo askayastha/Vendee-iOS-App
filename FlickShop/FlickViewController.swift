@@ -13,6 +13,7 @@ import SafariServices
 import AVFoundation
 import TSMessages
 import SwiftyJSON
+import Crashlytics
 
 //struct FlickViewConstants {
 //    static var width = UIScreen.mainScreen().bounds.width
@@ -143,6 +144,9 @@ class FlickViewController: UICollectionViewController {
             print("##### WILL DISPLAY CELL: \(indexPath.item) - NEW REQUEST ######")
             requestDataFromShopStyleForCategory(productCategory)
         }
+        
+        // Log custom events
+        Answers.logCustomEventWithName("Flicked Product", customAttributes: ["Cell": indexPath.item])
     }
     
     
@@ -230,14 +234,27 @@ extension FlickViewController: FlickPageCellDelegate {
             favoritedHUD.userInteractionEnabled = false
             MBProgressHUD.hideHUDForView(view, animated: true)
             
+            // Log custom events
+            var attributes = getAttributesForProduct(product)
+            attributes["State"] = "Selected"
+            Answers.logCustomEventWithName("Tapped Favorites", customAttributes: attributes)
+            
         case .Unselected:
             FavoritesModel.sharedInstance().removeFavoriteProduct(product)
+            
+            // Log custom events
+            var attributes = getAttributesForProduct(product)
+            attributes["State"] = "Unselected"
+            Answers.logCustomEventWithName("Tapped Favorites", customAttributes: attributes)
         }        
     }
     
     func openItemInStoreWithProduct(product: Product) {
         guard let clickURL = product.clickURL else { return }
         guard let url = NSURL(string: clickURL) else { return }
+        
+        // Log custom events
+        Answers.logCustomEventWithName("Tapped Buy", customAttributes: getAttributesForProduct(product))
         
         indexPath = collectionView!.indexPathsForVisibleItems().first
             
@@ -251,17 +268,25 @@ extension FlickViewController: FlickPageCellDelegate {
     }
     
     func openDetailsForProduct() {
+        let product = search.products.objectAtIndex(indexPath!.row) as! Product
+        
+        // Log custom events
+        Answers.logCustomEventWithName("Tapped Info", customAttributes: getAttributesForProduct(product))
+        
         indexPath = collectionView!.indexPathsForVisibleItems().first
         let detailsVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerProductDetailsViewController") as? ContainerProductDetailsViewController
         
         if let controller = detailsVC {
-            controller.product = search.products.objectAtIndex(indexPath!.row) as! Product
+            controller.product = product
             
             navigationController?.pushViewController(controller, animated: true)
         }
     }
     
     func openActivityViewForProduct(product: Product, andImage image: UIImage?) {
+        // Log custom events
+        Answers.logCustomEventWithName("Tapped Share", customAttributes: getAttributesForProduct(product))
+        
         indexPath = collectionView!.indexPathsForVisibleItems().first
         
         let url = "https://vendeeapp.com/item?id=\(product.id)"
@@ -281,6 +306,9 @@ extension FlickViewController: FlickPageCellDelegate {
     
     func openPhotosViewerForProduct(product: Product, andImageView imageView: UIImageView, onPage page: Int) {
         guard let _ = imageView.image else { return }
+        
+        // Log custom events
+        Answers.logCustomEventWithName("Tapped Photo", customAttributes: getAttributesForProduct(product))
         
         selectedImage = imageView
         indexPath = collectionView!.indexPathsForVisibleItems().first

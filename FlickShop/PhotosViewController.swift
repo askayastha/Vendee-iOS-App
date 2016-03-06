@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class PhotosViewController: UIViewController {
     
@@ -55,12 +56,10 @@ class PhotosViewController: UIViewController {
         pageViewController?.setViewControllers([viewControllerAtIndex(page)!], direction: .Forward, animated: false, completion: nil)
         
         positionImagesInPhotoScrubber()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
+        // Log screen views
         GoogleAnalytics.trackScreenForName("Photos View")
+        Answers.logCustomEventWithName("Photos View", customAttributes: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -121,6 +120,10 @@ class PhotosViewController: UIViewController {
             pageViewController?.setViewControllers([viewControllerAtIndex(page)!], direction: direction , animated: true, completion: nil)
             selectedPage = page
         }
+        
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Photo Scrubber", label: "Page", value: page)
+        Answers.logCustomEventWithName("Tapped Photo Scrubber", customAttributes: ["Page": page])
     }
     
     func viewControllerAtIndex(index: Int) -> PhotoViewController? {

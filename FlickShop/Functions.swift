@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import Dispatch
+import SwiftyJSON
+import Crashlytics
 
 func afterDelay(seconds: Double, closure: () -> ()) {
     let when = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
@@ -26,17 +28,55 @@ func fixFrame(var frame: CGRect) -> CGRect {
     return frame
 }
 
-//    func showError() {
-//        let alert = UIAlertController(title: "Whoops...", message: "There was an error. Please try again.", preferredStyle: .Alert)
-//        let retryAction = UIAlertAction(title: "Retry", style: .Default, handler: { _ in
-//            print("Failed Request. Trying again.")
-//            self.requestData()
-//        })
-//
-//        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-//
-//        alert.addAction(retryAction)
-//        alert.addAction(OKAction)
-//
-//        presentViewController(alert, animated: true, completion: nil)
-//    }
+func getCategoryForProduct(product: Product) -> String? {
+    guard let categories = product.categories else { return nil }
+    
+    let categoryIds = JSON(categories).arrayValue.map { $0["name"].stringValue }
+    return categoryIds.first
+}
+
+func getBrandForProduct(product: Product) -> String? {
+    guard let brand = product.brand else { return nil }
+    
+    return JSON(brand)["name"].string
+}
+
+func getRetailerForProduct(product: Product) -> String? {
+    guard let retailer = product.retailer else { return nil }
+    
+    return JSON(retailer)["name"].string
+}
+
+func getAttributesForProduct(product: Product) -> [String: String] {
+    let attributes: [String: String] = [
+        "ProductID": product.id,
+        "Category": getCategoryForProduct(product) ?? "Unknown",
+        "Brand": getBrandForProduct(product) ?? "Unknown",
+        "Retailer": getRetailerForProduct(product) ?? "Unknown"
+    ]
+    
+    return attributes
+}
+
+func logEventsForFilter() {
+    Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Apply"])
+    let filtersModel = FiltersModel.sharedInstance()
+    
+    // Log applied category filter
+    let tappedCategories = filtersModel.category["tappedCategories"] as! [String]
+    if let category = tappedCategories.last {
+        Answers.logCustomEventWithName("Applied Filters", customAttributes: ["Category": category])
+    }
+    
+    // Log other applied filters
+    for (filter, params) in filtersModel.filterParams {
+        for paramName in (params as! [String: String]).keys {
+            Answers.logCustomEventWithName("Applied Filters", customAttributes: [filter.capitalizedString: paramName])
+        }
+    }
+    
+    // Log sort filter
+    if let sort = filtersModel.sort.keys.first {
+        Answers.logCustomEventWithName("Applied Filters", customAttributes: ["Sort": sort])
+    }
+}

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class PriceDetailsViewController: UIViewController {
     
@@ -36,12 +37,10 @@ class PriceDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         setupView()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
+        // Log screen views
         GoogleAnalytics.trackScreenForName("Price Details View")
+        Answers.logCustomEventWithName("Price Details View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {

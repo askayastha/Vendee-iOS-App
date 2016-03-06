@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ContainerProductDetailsViewController: UIViewController {
     
@@ -25,12 +26,10 @@ class ContainerProductDetailsViewController: UIViewController {
         super.viewDidLoad()
 
         navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
+        // Log screen views
         GoogleAnalytics.trackScreenForName("Product Details View")
+        Answers.logCustomEventWithName("Product Details View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {

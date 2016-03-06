@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class StoreFilterViewController: UIViewController {
     
@@ -65,6 +66,7 @@ class StoreFilterViewController: UIViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Store Filter View")
+        Answers.logCustomEventWithName("Store Filter View", customAttributes: nil)
     }
     
     override func viewWillLayoutSubviews() {

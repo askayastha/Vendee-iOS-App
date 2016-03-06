@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ContainerFlickViewController: UIViewController {
     
@@ -27,19 +28,19 @@ class ContainerFlickViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        // Log screen views
+        GoogleAnalytics.trackScreenForName("Flick View")
+        Answers.logCustomEventWithName("Flick View", customAttributes: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         view.layoutIfNeeded()
         
-        GoogleAnalytics.trackScreenForName("Flick View")
-        
         didScrollCount = 0
         backButton.alpha = 1.0
-//        backButton.adjustsImageWhenHighlighted = false
         infoButton.alpha = 1.0
-//        infoButton.adjustsImageWhenHighlighted = false
     }
     
     override func didReceiveMemoryWarning() {

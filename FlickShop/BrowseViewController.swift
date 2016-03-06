@@ -11,6 +11,7 @@ import Alamofire
 import AVFoundation
 import TSMessages
 import SwiftyJSON
+import Crashlytics
 
 struct BrowseViewCellIdentifiers {
     static let customProductCell = "CustomPhotoCell"
@@ -63,6 +64,8 @@ class BrowseViewController: UICollectionViewController {
     }
     
     @IBAction func unwindFilterApply(segue: UIStoryboardSegue) {
+        logEventsForFilter()
+        
         search.resetSearch()
         productCount = 0
         
@@ -258,6 +261,12 @@ extension BrowseViewController {
 //    }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let product = search.products.objectAtIndex(indexPath.item) as! Product
+        
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Product", label: product.id, value: nil)
+        Answers.logCustomEventWithName("Tapped Product", customAttributes: getAttributesForProduct(product))
+        
         performSegueWithIdentifier("FlickCategory", sender: indexPath)
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import NMRangeSlider
+import Crashlytics
 
 class DiscountFilterViewController: UITableViewController {
     
@@ -93,6 +94,7 @@ class DiscountFilterViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Discount Filter View")
+        Answers.logCustomEventWithName("Discount Filter View", customAttributes: nil)
     }
     
     @IBAction func sliderValueChanged(sender: NMRangeSlider) {

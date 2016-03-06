@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class HomeViewController: UIViewController {
     
@@ -27,6 +28,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Home View")
+        Answers.logCustomEventWithName("Home View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -79,55 +81,13 @@ extension HomeViewController: UICollectionViewDelegate {
             FiltersModel.sharedInstance().resetFilters()
         }
         
+        // Log custom events
         FiltersModel.sharedInstance().productCategory = "\(categoryName):\(categoryId)"
-        GoogleAnalytics.trackEventWithCategory("ui_action", action: "category_tapped", label: categoryName, value: nil)
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Category", label: categoryName, value: nil)
+        Answers.logCustomEventWithName("Tapped Category", customAttributes: ["Category": categoryName])
         
         performSegueWithIdentifier("BrowseCategory", sender: indexPath)
     }
-    
-//    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        let dragOffset = layout.itemSize.width + layout.minimumLineSpacing
-//        
-//        var offset = targetContentOffset.memory
-//        let featuredItemIndex = max(0, Int(collectionView.contentOffset.x / dragOffset))
-//        let itemIndex = round((offset.x + scrollView.contentInset.left) / dragOffset)
-//        
-//        print("\nCollectionView Offset: \(collectionView.contentOffset.x)")
-//        print("Featured Index: \(featuredItemIndex)")
-//        print("Index: \(itemIndex)")
-//        print("Velocity: \(velocity)")
-//        
-//        var xOffset = itemIndex * dragOffset
-////        var nextItemIndex = featuredItemIndex
-//        
-//        if velocity.x > 0.0 {
-//            xOffset = CGFloat(featuredItemIndex + 1) * dragOffset
-////            backgroundImageView.image = categories[featuredItemIndex + 1].picture
-////            nextItemIndex = min(categories.count - 1, featuredItemIndex + 1)
-//            
-//        } else if velocity.x < -0.0 {
-//            xOffset = CGFloat(featuredItemIndex) * dragOffset
-////            backgroundImageView.image = categories[featuredItemIndex].picture
-//        }
-//        
-////        UIView.transitionWithView(backgroundImageView, duration: 0.3, options: .TransitionCrossDissolve, animations: {
-////            self.backgroundImageView.image = self.categories[nextItemIndex].picture
-////            }, completion: nil)
-//        
-//        offset = CGPoint(x: xOffset, y: 0)
-//        
-//        targetContentOffset.memory = offset
-//    }
-    
-//    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-//        
-//        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-//        
-//        let horizontalInset = (collectionView.bounds.width - layout.itemSize.width) / 2
-//        return UIEdgeInsets(top: 0, left: horizontalInset, bottom: 0, right: horizontalInset)
-//    }
 }
 
 extension HomeViewController: UIGestureRecognizerDelegate {

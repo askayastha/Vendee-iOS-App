@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class BrandFilterViewController: UIViewController {
     
@@ -65,6 +66,7 @@ class BrandFilterViewController: UIViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Brand Filter View")
+        Answers.logCustomEventWithName("Brand Filter View", customAttributes: nil)
     }
     
     override func viewWillLayoutSubviews() {

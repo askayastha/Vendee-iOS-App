@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 protocol SideTabDelegate: class {
     func showTab(identifier: String)
@@ -116,8 +117,14 @@ class SideTabViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let filter = sideTabsDict.orderedKeys[indexPath.row]
         let identifier = "Embed\(sideTabsDict.orderedKeys[indexPath.row])"
         print("Filter Type: \(identifier)")
+        
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter", label: filter, value: nil)
+        Answers.logCustomEventWithName("Tapped Filter", customAttributes: ["Filter": filter])
+        
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let textLabel = cell?.viewWithTag(1001) as? UILabel
         

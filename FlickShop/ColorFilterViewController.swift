@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Crashlytics
 
 class ColorFilterViewController: UITableViewController {
     
@@ -64,6 +65,7 @@ class ColorFilterViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Color Filter View")
+        Answers.logCustomEventWithName("Color Filter View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {

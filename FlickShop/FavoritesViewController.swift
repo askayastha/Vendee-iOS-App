@@ -10,6 +10,7 @@ import UIKit
 import AVFoundation
 import TSMessages
 import SwiftyJSON
+import Crashlytics
 
 class FavoritesViewController: UICollectionViewController {
     
@@ -227,6 +228,11 @@ extension FavoritesViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let product = search.products.objectAtIndex(indexPath.item) as! Product
+        
+        // Log custom events
+        Answers.logCustomEventWithName("Tapped Favorite Product", customAttributes: getAttributesForProduct(product))
+        
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let flickVC = mainStoryboard.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
         

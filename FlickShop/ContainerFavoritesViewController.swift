@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ContainerFavoritesViewController: UIViewController {
     
@@ -42,7 +43,6 @@ class ContainerFavoritesViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        GoogleAnalytics.trackScreenForName("Favorites View")
         print("FavoriteProducts Count: \(FavoritesModel.sharedInstance().favoriteProducts.count)")
         if FavoritesModel.sharedInstance().favoriteProducts.count == 0 {
             spinner.stopAnimating()
@@ -50,6 +50,9 @@ class ContainerFavoritesViewController: UIViewController {
         } else {
             messageLabel.hidden = true
         }
+        
+        GoogleAnalytics.trackScreenForName("Favorites View")
+        Answers.logCustomEventWithName("Favorites View", customAttributes: nil)
     }
     
     override func didReceiveMemoryWarning() {

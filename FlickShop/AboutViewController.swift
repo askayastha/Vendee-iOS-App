@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class AboutViewController: UIViewController {
     
@@ -38,6 +39,7 @@ class AboutViewController: UIViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("About View")
+        Answers.logCustomEventWithName("About View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {

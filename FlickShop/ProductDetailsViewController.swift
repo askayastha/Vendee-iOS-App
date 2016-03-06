@@ -11,6 +11,7 @@ import Alamofire
 import AVFoundation
 import TSMessages
 import SwiftyJSON
+import Crashlytics
 
 class ProductDetailsViewController: UITableViewController {
     
@@ -234,6 +235,11 @@ extension ProductDetailsViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let product = search.products.objectAtIndex(indexPath.item) as! Product
+        
+        // Log custom events
+        Answers.logCustomEventWithName("Tapped Similar Product", customAttributes: getAttributesForProduct(product))
+        
         print("CollectionViewDidSelectItemAtIndexPath")
         let flickVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerFlickViewController") as? ContainerFlickViewController
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ContainerBrowseViewController: UIViewController {
     
@@ -32,7 +33,6 @@ class ContainerBrowseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        GoogleAnalytics.trackScreenForName("Browse View")
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         // Spinner setup
@@ -43,6 +43,10 @@ class ContainerBrowseViewController: UIViewController {
             spinner.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor),
             spinner.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor)
             ])
+        
+        // Log screen views
+        GoogleAnalytics.trackScreenForName("Browse View")
+        Answers.logCustomEventWithName("Browse View", customAttributes: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class ContainerWebViewController: UIViewController {
     
@@ -40,12 +41,10 @@ class ContainerWebViewController: UIViewController {
             spinner.centerXAnchor.constraintEqualToAnchor(view.centerXAnchor),
             spinner.centerYAnchor.constraintEqualToAnchor(view.centerYAnchor)
             ])
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
         
+        // Log screen views
         GoogleAnalytics.trackScreenForName("Web View")
+        Answers.logCustomEventWithName("Web View", customAttributes: nil)
     }
     
     override func viewDidAppear(animated: Bool) {

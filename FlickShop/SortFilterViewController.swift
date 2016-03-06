@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class SortFilterViewController: UITableViewController {
     
@@ -37,6 +38,7 @@ class SortFilterViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Sort Filter View")
+        Answers.logCustomEventWithName("Sort Filter View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {

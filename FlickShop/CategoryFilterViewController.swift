@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Crashlytics
 
 class CategoryFilterViewController: UITableViewController {
     
@@ -85,6 +86,7 @@ class CategoryFilterViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Category Filter View")
+        Answers.logCustomEventWithName("Category Filter View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {

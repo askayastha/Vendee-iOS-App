@@ -9,6 +9,7 @@
 import UIKit
 import MessageUI
 import DeviceKit
+import Crashlytics
 
 class MoreViewController: UITableViewController {
 
@@ -23,6 +24,7 @@ class MoreViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("More View")
+        Answers.logCustomEventWithName("More View", customAttributes: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,19 +49,38 @@ class MoreViewController: UITableViewController {
 
         // Send Feedback
         case (0, 0):
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Send feedback'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped General Feedback", customAttributes: nil)
+            
             sendSupportEmailWithSubject("General Feedback")
-        
+            
         // Report a Problem
         case (0, 1):
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Report a problem'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped Report a Problem", customAttributes: nil)
+            
             sendSupportEmailWithSubject("Something Isn't Working")
         
         // Rate this app
         case (1, 0):
-            break
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Rate this app'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Rate this app'", customAttributes: nil)
         
         // Share this app
         case (1, 1):
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Share this app'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Share this app'", customAttributes: nil)
+            
             shareTheApp()
+            
+        case (2, 0):
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'About'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'About'", customAttributes: nil)
             
         default:
             break

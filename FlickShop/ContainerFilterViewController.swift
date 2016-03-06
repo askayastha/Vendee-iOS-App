@@ -26,6 +26,10 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         // Do any additional setup after loading the view.
         navigationBar.barTintColor = UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 1.0)
         
+        if FiltersModel.sharedInstance().filtersAvailable {
+            clearAllButton.enabled = true
+        }
+        
         NSNotificationCenter.defaultCenter().addObserverForName(CustomNotifications.FilterDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
             self.clearAllButton.enabled = true
             FiltersModel.sharedInstance().filtersAvailable = true

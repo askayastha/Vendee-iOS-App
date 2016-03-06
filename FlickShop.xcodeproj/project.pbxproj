@@ -628,6 +628,7 @@
 				75A31E2C1BDFBAAD006FD010 /* Resources */,
 				A702265E556F3070392D1455 /* Embed Pods Frameworks */,
 				0A408396A32343216C68F9A0 /* Copy Pods Resources */,
+				75BC4DE51C8C59E400B69F36 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -796,6 +797,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		75BC4DE51C8C59E400B69F36 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 78c0322fa1be27a719065a0974271ab2f1a51d9a 512712d4d5fc5efe5d007769e103aa0fbbc63da363136059e083b1a1b668c12d";
 		};
 		A702265E556F3070392D1455 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

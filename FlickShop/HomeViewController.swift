@@ -80,6 +80,7 @@ extension HomeViewController: UICollectionViewDelegate {
         }
         
         FiltersModel.sharedInstance().productCategory = "\(categoryName):\(categoryId)"
+        GoogleAnalytics.trackEventWithCategory("ui_action", action: "category_tapped", label: categoryName, value: nil)
         
         performSegueWithIdentifier("BrowseCategory", sender: indexPath)
     }

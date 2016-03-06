@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import TSMessages
+import Fabric
+import Crashlytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeTabBar()
         configureNetworkManager()
         configureGoogleAnalytics()
+        configureFabric()
         PreselectedFiltersModel.sharedInstance().loadPreselectedFilters()
         
         return true
@@ -213,7 +216,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Optional: configure GAI options.
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true  // report uncaught exceptions
-        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+//        gai.logger.logLevel = GAILogLevel.Verbose  // remove before app release
+    }
+    
+    private func configureFabric() {
+        Fabric.with([Crashlytics.self])
     }
 
 }

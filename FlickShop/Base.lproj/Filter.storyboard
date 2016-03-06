@@ -26,7 +26,7 @@
         <!--Container Filter View Controller-->
         <scene sceneID="6KW-Aa-9Yl">
             <objects>
-                <viewController id="Ww8-fr-eeY" customClass="ContainerFilterViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Ww8-fr-eeY" customClass="ContainerFilterViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bts-FB-U2j"/>
                         <viewControllerLayoutGuide type="bottom" id="p2b-Fa-uQL"/>
@@ -121,7 +121,7 @@
         <!--Price Filter View Controller-->
         <scene sceneID="ogy-EG-cmv">
             <objects>
-                <tableViewController id="DLi-TP-Pnr" customClass="PriceFilterViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="DLi-TP-Pnr" customClass="PriceFilterViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wx6-ba-DPZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -201,7 +201,7 @@
         <!--Discount Filter View Controller-->
         <scene sceneID="ihI-7a-PjC">
             <objects>
-                <tableViewController id="f58-Lj-fDo" customClass="DiscountFilterViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="f58-Lj-fDo" customClass="DiscountFilterViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="iPu-dS-Bd8">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -373,7 +373,7 @@
         <!--Sort Filter View Controller-->
         <scene sceneID="x2x-oS-bKt">
             <objects>
-                <tableViewController id="d5e-1i-MQJ" customClass="SortFilterViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="d5e-1i-MQJ" customClass="SortFilterViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ubY-QH-cdS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -410,7 +410,7 @@
         <!--Color Filter View Controller-->
         <scene sceneID="nJO-ht-ll9">
             <objects>
-                <tableViewController id="g3E-gQ-l2c" customClass="ColorFilterViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="g3E-gQ-l2c" customClass="ColorFilterViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="2kA-Ef-myW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,7 +423,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view tag="2000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orS-bD-xkB" customClass="ColorView" customModule="FlickShop" customModuleProvider="target">
+                                        <view tag="2000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orS-bD-xkB" customClass="ColorView" customModule="Vendee" customModuleProvider="target">
                                             <rect key="frame" x="15" y="10" width="50" height="25"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -460,7 +460,7 @@
         <!--Side Tab View Controller-->
         <scene sceneID="kJP-fF-xlr">
             <objects>
-                <tableViewController id="UzN-SE-ahE" customClass="SideTabViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="UzN-SE-ahE" customClass="SideTabViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WQp-E3-rhI">
                         <rect key="frame" x="0.0" y="0.0" width="90" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -530,7 +530,7 @@
         <!--Container View Controller-->
         <scene sceneID="W8f-2O-nC8">
             <objects>
-                <viewController id="ocQ-uL-OFl" customClass="ContainerViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ocQ-uL-OFl" customClass="ContainerViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ufa-dR-r5X"/>
                         <viewControllerLayoutGuide type="bottom" id="XB0-uj-YJd"/>
@@ -541,13 +541,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="B4Z-sS-IAz" kind="custom" identifier="EmbedCategory" customClass="SwitchSegue" customModule="FlickShop" id="ani-KO-1c7"/>
-                        <segue destination="MUS-a8-CMo" kind="custom" identifier="EmbedBrand" customClass="SwitchSegue" customModule="FlickShop" id="A8u-rE-MBQ"/>
-                        <segue destination="DWP-hV-5Di" kind="custom" identifier="EmbedStore" customClass="SwitchSegue" customModule="FlickShop" id="9UM-SS-uqB"/>
-                        <segue destination="DLi-TP-Pnr" kind="custom" identifier="EmbedPrice" customClass="SwitchSegue" customModule="FlickShop" id="VHa-4i-AXX"/>
-                        <segue destination="f58-Lj-fDo" kind="custom" identifier="EmbedDiscount" customClass="SwitchSegue" customModule="FlickShop" id="39D-TR-QPC"/>
-                        <segue destination="g3E-gQ-l2c" kind="custom" identifier="EmbedColor" customClass="SwitchSegue" customModule="FlickShop" id="omJ-Tc-h66"/>
-                        <segue destination="d5e-1i-MQJ" kind="custom" identifier="EmbedSort" customClass="SwitchSegue" customModule="FlickShop" id="40g-wq-6uK"/>
+                        <segue destination="B4Z-sS-IAz" kind="custom" identifier="EmbedCategory" customClass="SwitchSegue" customModule="Vendee" id="ani-KO-1c7"/>
+                        <segue destination="MUS-a8-CMo" kind="custom" identifier="EmbedBrand" customClass="SwitchSegue" customModule="Vendee" id="A8u-rE-MBQ"/>
+                        <segue destination="DWP-hV-5Di" kind="custom" identifier="EmbedStore" customClass="SwitchSegue" customModule="Vendee" id="9UM-SS-uqB"/>
+                        <segue destination="DLi-TP-Pnr" kind="custom" identifier="EmbedPrice" customClass="SwitchSegue" customModule="Vendee" id="VHa-4i-AXX"/>
+                        <segue destination="f58-Lj-fDo" kind="custom" identifier="EmbedDiscount" customClass="SwitchSegue" customModule="Vendee" id="39D-TR-QPC"/>
+                        <segue destination="g3E-gQ-l2c" kind="custom" identifier="EmbedColor" customClass="SwitchSegue" customModule="Vendee" id="omJ-Tc-h66"/>
+                        <segue destination="d5e-1i-MQJ" kind="custom" identifier="EmbedSort" customClass="SwitchSegue" customModule="Vendee" id="40g-wq-6uK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ufy-YX-T0f" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -557,7 +557,7 @@
         <!--Store Filter View Controller-->
         <scene sceneID="o2l-go-S6r">
             <objects>
-                <viewController id="DWP-hV-5Di" customClass="StoreFilterViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DWP-hV-5Di" customClass="StoreFilterViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xfb-J7-iFn"/>
                         <viewControllerLayoutGuide type="bottom" id="mp5-oY-JO1"/>
@@ -624,7 +624,7 @@
         <!--Brand Filter View Controller-->
         <scene sceneID="3I0-ij-oXf">
             <objects>
-                <viewController id="MUS-a8-CMo" customClass="BrandFilterViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MUS-a8-CMo" customClass="BrandFilterViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bdM-Az-Nle"/>
                         <viewControllerLayoutGuide type="bottom" id="hvJ-jZ-uPS"/>
@@ -691,7 +691,7 @@
         <!--Category Filter View Controller-->
         <scene sceneID="AWW-MB-h05">
             <objects>
-                <tableViewController id="B4Z-sS-IAz" customClass="CategoryFilterViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="B4Z-sS-IAz" customClass="CategoryFilterViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZoX-pK-vgP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

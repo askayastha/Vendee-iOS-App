@@ -13,6 +13,8 @@ target 'FlickShop' do
     pod 'TSMessages'
     pod 'DeviceKit', '0.3.0'
     pod 'Google/Analytics'
+    pod 'Fabric'
+    pod 'Crashlytics'
 end
 
 target 'FlickShopTests' do

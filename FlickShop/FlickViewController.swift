@@ -53,7 +53,7 @@ class FlickViewController: UICollectionViewController {
     }
     
     deinit {
-        print("Deallocating FlickViewController !!!!!!!!!!!!!!!")
+        print("Deallocating FlickViewController!")
     }
 
     override func viewDidLoad() {

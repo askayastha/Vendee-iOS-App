@@ -220,6 +220,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func configureFabric() {
+        // Register Crashlytics and Answers with Fabric.
         Fabric.with([Crashlytics.self])
     }
 

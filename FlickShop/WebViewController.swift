@@ -42,7 +42,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.removeObserver(self, forKeyPath: "title")
         webView.stopLoading()
         
-        print("Deallocating WebViewController !!!!!!!!!!!!!!!")
+        print("Deallocating WebViewController!")
     }
 
     override func viewDidLoad() {

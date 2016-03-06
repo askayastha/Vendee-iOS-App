@@ -21,7 +21,7 @@ class ContainerFavoritesViewController: UIViewController {
     }()
     
     deinit {
-        print("Deallocating ContainerFavoritesViewController !!!!!!!!!!!!!!!")
+        print("Deallocating ContainerFavoritesViewController!")
     }
     
     override func viewDidLoad() {

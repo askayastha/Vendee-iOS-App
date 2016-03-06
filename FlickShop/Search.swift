@@ -65,12 +65,10 @@ class Search {
         dataRequest = Alamofire.request(ShopStyle.Router.Product(productId)).validate().responseJSON() { response in
             if response.result.isSuccess {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                    print("----------Got results!----------")
-                    
+                    print("----------Request successful----------")
                     let jsonData = JSON(response.result.value!)
                     self.products.addObject(Product(data: jsonData))
                     self.state = .Success
-                    print("Request successful")
                     
                     dispatch_async(dispatch_get_main_queue()) {
                         completion(true, response.result.description, self.lastItem)
@@ -131,29 +129,6 @@ class Search {
         }
     }
     
-//    func populatePhotoSizeForIndexPath(indexPath: NSIndexPath, completion: (Bool) -> ()) {
-//        var success = false
-//        let product = products.objectAtIndex(indexPath.item) as! Product
-//        
-//        scout.scoutImageWithURI(product.smallImageURLs!.first!) { error, size, type in
-//            if let unwrappedError = error {
-//                print("ImageScout Error: \(unwrappedError.code)")
-//                
-//                // Retry if error
-//                self.populatePhotoSizeForIndexPath(indexPath, completion: completion)
-//                
-//            } else {
-//                product.smallImageSize = CGSize(width: size.width, height: size.height)
-//                print("\(indexPath.item)*****\(CGSize(width: size.width, height: size.height))")
-//                
-//                success = true
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    completion(success)
-//                }
-//            }
-//        }
-//    }
-    
     func getFilterCategory() -> String? {
         let tappedCategories = filtersModel.category["tappedCategories"] as! [String]
         let categoriesIdDict = filtersModel.category["categoriesIdDict"] as! [String: String]
@@ -189,22 +164,22 @@ class Search {
     }
     
     private func handleResponse(response: Response<AnyObject, NSError>, withCompletion completion: SearchComplete) {
-        if response.result.isSuccess {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
-                print("----------Got results!----------")
-                
-                let jsonData = JSON(response.result.value!)
-                self.populateProducts(data: jsonData)
-                self.state = .Success
-                print("Request successful")
-                
-                dispatch_async(dispatch_get_main_queue()) {
-                    completion(true, response.result.description, self.lastItem)
-                }
-            }
-        } else {
+        guard response.result.isSuccess else {
+            print("Error while requesting data: \(response.result.error)")
             self.state = .Failed
             completion(false, response.result.error!.localizedDescription, self.lastItem)
+            return
+        }
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
+            print("----------Request successful----------")
+            let jsonData = JSON(response.result.value!)
+            self.populateProducts(data: jsonData)
+            self.state = .Success
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                completion(true, response.result.description, self.lastItem)
+            }
         }
     }
 }

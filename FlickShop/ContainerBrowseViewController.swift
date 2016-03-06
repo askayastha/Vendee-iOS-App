@@ -26,7 +26,7 @@ class ContainerBrowseViewController: UIViewController {
     @IBOutlet weak var filterButton: FloatingButton!
     
     deinit {
-        print("Deallocating ContainerBrowseViewController !!!!!!!!!!!!!!!")
+        print("Deallocating ContainerBrowseViewController!")
     }
     
     override func viewDidLoad() {

@@ -26,7 +26,7 @@ class ContainerWebViewController: UIViewController {
     @IBOutlet weak var backButton: UIButton!
     
     deinit {
-        print("Deallocating ContainerWebViewController !!!!!!!!!!!!!!!")
+        print("Deallocating ContainerWebViewController!")
     }
 
     override func viewDidLoad() {

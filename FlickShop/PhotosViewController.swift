@@ -36,7 +36,7 @@ class PhotosViewController: UIViewController {
     }
     
     deinit {
-        print("Deallocating PhotosViewController !!!!!!!!!!!!!!!")
+        print("Deallocating PhotosViewController!")
     }
     
     @IBAction func closeButton() {

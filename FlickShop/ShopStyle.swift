@@ -21,35 +21,7 @@ struct ShopStyle {
         case Product(String)
         
         var URLRequest: NSMutableURLRequest {
-//            let (path: String, parameters: [String: AnyObject]) = {
-//                switch self {
-//                    case .PopularResults (let offset):
-//
-//                        let params = ["pid": Router.APIKey, "cat": "womens-clothes", "offset": "\(offset)"]
-//                        return ("/products", params)
-//                }
-//            }()
-            
-            let path: String = {
-                switch self {
-                case .PreselectedResults(_):
-                    return "products"
-                    
-                case .PopularResults(_):
-                    return "products"
-                    
-                case .Categories(_):
-                    return "categories"
-                    
-                case .FilteredResults(_):
-                    return "products"
-                    
-                case .Product(let id):
-                    return "products/\(id)"
-                }
-            }()
-            
-            let parameters: [String: AnyObject] = {
+            let result: (path: String, parameters: [String: AnyObject]) = {
                 switch self {
                 case .PreselectedResults(let offset, let limit, let category):
                     let params = [
@@ -58,7 +30,7 @@ struct ShopStyle {
                         "offset": "\(offset)",
                         "limit": "\(limit)"
                     ]
-                    return params
+                    return ("/products", params)
                     
                 case .PopularResults (let offset, let limit, let category):
                     let params = [
@@ -69,14 +41,14 @@ struct ShopStyle {
                         "fl": "d100",
                         "sort": "Popular"
                     ]
-                    return params
+                    return ("/products", params)
                     
                 case .Categories (let category):
                     let params = [
                         "pid": Router.APIKey,
                         "cat": category
                     ]
-                    return params
+                    return ("/categories", params)
                     
                 case .FilteredResults (let offset, let limit, let category, let sort):
                     var params = [
@@ -90,21 +62,21 @@ struct ShopStyle {
                         params["sort"] = "\(sort)"
                     }
                     
-                    return params
+                    return ("/products", params)
                     
-                case .Product(_):
+                case .Product(let id):
                     let params = [
                         "pid": Router.APIKey
                     ]
-                    return params
+                    return ("/products/\(id)", params)
                 }
             }()
             
             let URL = NSURL(string: Router.baseURLString)
-            let URLRequest = NSURLRequest(URL: URL!.URLByAppendingPathComponent(path))
+            let URLRequest = NSURLRequest(URL: URL!.URLByAppendingPathComponent(result.path))
             let encoding = Alamofire.ParameterEncoding.URL
             
-            return encoding.encode(URLRequest, parameters: parameters).0
+            return encoding.encode(URLRequest, parameters: result.parameters).0
         }
     }
     

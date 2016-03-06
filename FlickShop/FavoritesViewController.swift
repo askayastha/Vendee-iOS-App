@@ -28,7 +28,7 @@ class FavoritesViewController: UICollectionViewController {
     }
     
     deinit {
-        print("Deallocating FavoritesViewController !!!!!!!!!!!!!!!")
+        print("Deallocating FavoritesViewController!")
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FavoritesModelDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)

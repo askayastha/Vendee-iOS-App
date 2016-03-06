@@ -48,7 +48,7 @@ class ProductDetailsViewController: UITableViewController {
     @IBOutlet weak var titleHeight: NSLayoutConstraint!
     
     deinit {
-        print("Deallocating ProductDetailsViewController !!!!!!!!!!!!!!!")
+        print("Deallocating ProductDetailsViewController!")
     }
     
     override func viewDidLoad() {

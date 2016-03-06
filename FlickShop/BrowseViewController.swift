@@ -30,7 +30,7 @@ class BrowseViewController: UICollectionViewController {
     var productCategory: String!
     
     deinit {
-        print("Deallocating BrowseViewController !!!!!!!!!!!!!!!")
+        print("Deallocating BrowseViewController!")
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
     }
@@ -94,11 +94,6 @@ class BrowseViewController: UICollectionViewController {
     // MARK: - Helper methods
     
     private func setupView() {
-//        spinner.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activateConstraints([
-//            spinner.centerXAnchor.constraintEqualToAnchor(collectionView!.centerXAnchor),
-//            spinner.centerYAnchor.constraintEqualToAnchor(collectionView!.centerYAnchor)
-//            ])
         
         // Swipe gesture setup
         let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
@@ -205,42 +200,9 @@ class BrowseViewController: UICollectionViewController {
                     TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("No results found.", type: .Warning)
                 }
-    
-                // Algorithm 2
-//                    for var i = lastItem - limit; i < lastItem; i++ {
-//                        let indexPath = NSIndexPath(forItem: i, inSection: 0)
-//
-//                        strongSelf.search.populatePhotoSizeForIndexPath(indexPath) { success in
-//                            if success {
-//                                let newIndexPath = NSIndexPath(forItem: strongSelf.productCount, inSection: 0)
-//                                strongSelf.productCount++
-//                                
-//                                strongSelf.collectionView!.insertItemsAtIndexPaths([newIndexPath])
-//                                print("INSERT SUCCESSFULL")
-//
-////                                    strongSelf.collectionView!.performBatchUpdates({
-////                                        strongSelf.collectionView!.insertItemsAtIndexPaths([newIndexPath])
-////                                        }, completion: { success in
-////                                            print("INSERT SUCCESSFUL")
-////                                    })
-//                            }
-//                        }
-//                    }
-    
             }
         }
     }
-    
-    //    override func scrollViewDidScroll(scrollView: UIScrollView) {
-    //        // Populate more photos when the scrollbar indicator is at 80%
-    //        if scrollView.contentOffset.y + view.frame.size.height > scrollView.contentSize.height * 0.8 {
-    //            print("New request")
-    //            requestDataFromShopStyleForCategory(productCategory)
-    //            print("ScrollView ContentOffset: \(scrollView.contentOffset.y)")
-    //            print("ScrollView View Height: \(view.frame.size.height)")
-    //            print("ScrollView ContentSize: \(scrollView.contentSize.height)")
-    //        }
-    //    }
 }
 
 extension BrowseViewController {

@@ -16,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickPageCell" id="cT6-e4-j9m" customClass="FlickPageCell" customModule="FlickShop" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FlickPageCell" id="cT6-e4-j9m" customClass="FlickPageCell" customModule="Vendee" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -40,7 +40,7 @@
                                     <action selector="pageChanged:" destination="cT6-e4-j9m" eventType="valueChanged" id="wcK-vR-CLI"/>
                                 </connections>
                             </pageControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-aY-FKA" customClass="InfoButton" customModule="FlickShop" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-aY-FKA" customClass="InfoButton" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="549" y="362" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="9K1-3O-sai"/>
@@ -100,8 +100,7 @@
                                             <constraint firstAttribute="width" constant="40" id="SsU-uA-2Mp"/>
                                             <constraint firstAttribute="height" constant="40" id="rwO-3J-Dzu"/>
                                         </constraints>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="4"/>
-                                        <state key="normal" image="share"/>
+                                        <state key="normal" image="share_action"/>
                                         <connections>
                                             <action selector="actionButtonTapped:" destination="cT6-e4-j9m" eventType="touchUpInside" id="4ns-NR-LBv"/>
                                         </connections>
@@ -244,7 +243,7 @@
     <resources>
         <image name="favorite" width="16" height="16"/>
         <image name="info" width="32" height="32"/>
-        <image name="share" width="16" height="21"/>
+        <image name="share_action" width="17" height="17"/>
         <image name="shop" width="16" height="16"/>
     </resources>
 </document>

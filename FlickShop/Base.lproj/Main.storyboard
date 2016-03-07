@@ -617,7 +617,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
                                                 <rect key="frame" x="17" y="27" width="76" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="18"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>

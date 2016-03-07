@@ -23,28 +23,6 @@ class CategoryCell: UICollectionViewCell {
         }
     }
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
-//    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        
-//        layer.borderWidth = 1.0
-//        layer.borderColor = UIColor(red: 238/255, green: 232/255, blue: 240/255, alpha: 1.0).CGColor
-//        layer.cornerRadius = 5.0
-//        layer.masksToBounds = true
-        
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-//        layer.borderWidth = 3.0
-//        layer.borderColor = UIColor(red: 238/255, green: 232/255, blue: 240/255, alpha: 1.0).CGColor
-//        layer.cornerRadius = 5.0
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         

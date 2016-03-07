@@ -24,7 +24,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationBar.barTintColor = UIColor(red: 231/255, green: 231/255, blue: 231/255, alpha: 1.0)
+        navigationBar.barTintColor = UIColor(hexString: "#E7E7E7")
         
         if FiltersModel.sharedInstance().filtersAvailable {
             clearAllButton.enabled = true
@@ -34,6 +34,10 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
             self.clearAllButton.enabled = true
             FiltersModel.sharedInstance().filtersAvailable = true
         }
+        
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Open", value: nil)
+        Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Open"])
     }
 
     override func didReceiveMemoryWarning() {

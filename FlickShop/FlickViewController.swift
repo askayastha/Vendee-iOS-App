@@ -70,7 +70,6 @@ class FlickViewController: UICollectionViewController {
         collectionView!.backgroundColor = UIColor.lightGrayColor()
 //        collectionView!.backgroundColor = UIColor(red: 96/255, green: 99/255, blue: 104/255, alpha: 1.0)
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
-//        collectionView!.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,7 +85,6 @@ class FlickViewController: UICollectionViewController {
 
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("YESYESYES: \(search.products.count)")
         return search.products.count
     }
 
@@ -102,7 +100,7 @@ class FlickViewController: UICollectionViewController {
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
         
-        cell.headerImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
+        cell.headerImageView.layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
         cell.headerImageView.layer.borderWidth = 0.5
         cell.headerImageView.layer.cornerRadius = 5.0
         cell.headerImageView.layer.masksToBounds = true

@@ -75,17 +75,15 @@ class FlickPageCell: UICollectionViewCell {
         imageViews = [UIImageView?]()
         spinners = [UIActivityIndicatorView?]()
         super.init(coder: aDecoder)
-        print("$$$$$$$$$$ FlickCell initialization $$$$$$$$$$")
 
         layer.borderWidth = 0.5
-        layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
+        layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
         
         blurView.frame = bounds
         contentView.addSubview(blurView)
     }
     
     override func awakeFromNib() {
-        print("awakeFromNib")
         super.awakeFromNib()
         
         buyButton.layer.cornerRadius = 5.0
@@ -94,7 +92,6 @@ class FlickPageCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        print("prepareForReuse")
         
         spinners.removeAll()
         imageViews.removeAll()

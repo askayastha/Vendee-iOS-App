@@ -49,7 +49,7 @@ func getRetailerForProduct(product: Product) -> String? {
 
 func getAttributesForProduct(product: Product) -> [String: String] {
     let attributes: [String: String] = [
-        "ProductID": product.id,
+        "Product ID": product.id,
         "Category": getCategoryForProduct(product) ?? "Unknown",
         "Brand": getBrandForProduct(product) ?? "Unknown",
         "Retailer": getRetailerForProduct(product) ?? "Unknown"

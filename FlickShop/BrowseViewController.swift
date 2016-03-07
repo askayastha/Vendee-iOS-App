@@ -224,7 +224,7 @@ extension BrowseViewController {
         // Configure the cell
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
-        cell.headerImageView.layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
+        cell.headerImageView.layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
         cell.headerImageView.layer.borderWidth = 0.5
         cell.headerImageView.layer.cornerRadius = 5.0
         cell.headerImageView.layer.masksToBounds = true

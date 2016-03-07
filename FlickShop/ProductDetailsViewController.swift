@@ -273,7 +273,7 @@ extension ProductDetailsViewController {
         if cell?.contentView.subviews.count == 0 {
             let sectionLabel = UILabel()
             sectionLabel.font = UIFont(name: "Whitney-Semibold", size: 16.0)!
-            sectionLabel.textColor = UIColor(red: 32/255, green: 49/255, blue: 67/255, alpha: 1.0)
+            sectionLabel.textColor = UIColor(hexString: "#203143")
             cell?.contentView.addSubview(sectionLabel)
             
             sectionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -291,7 +291,8 @@ extension ProductDetailsViewController {
                 ].flatten().map{$0})
             
             let separatorLine = UIView(frame: CGRect(x: 15, y: tableView.sectionHeaderHeight, width: view.frame.size.width - 15, height: 0.5))
-            separatorLine.backgroundColor = UIColor(red: 201/255, green: 198/255, blue: 204/255, alpha: 1.0)
+//            separatorLine.backgroundColor = UIColor(red: 201/255, green: 198/255, blue: 204/255, alpha: 1.0)
+            separatorLine.backgroundColor = tableView.separatorColor
             cell?.contentView.addSubview(separatorLine)
         }
         

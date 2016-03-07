@@ -30,11 +30,11 @@
         <!--Flick View Controller-->
         <scene sceneID="fjI-E5-msJ">
             <objects>
-                <collectionViewController id="Bcp-Tw-j0d" customClass="FlickViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Bcp-Tw-j0d" customClass="FlickViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="5tc-ML-J6a">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewLayout key="collectionViewLayout" id="hxX-lh-ejd" customClass="FlickLayout" customModule="FlickShop" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="hxX-lh-ejd" customClass="FlickLayout" customModule="Vendee" customModuleProvider="target"/>
                         <cells/>
                         <connections>
                             <outlet property="dataSource" destination="Bcp-Tw-j0d" id="xUm-hj-KRh"/>
@@ -50,14 +50,14 @@
         <!--Browse View Controller-->
         <scene sceneID="jqT-FE-aVe">
             <objects>
-                <collectionViewController id="pbY-Vl-Rc6" customClass="BrowseViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="pbY-Vl-Rc6" customClass="BrowseViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Opb-gN-DTa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewLayout key="collectionViewLayout" id="hcE-dL-QCK" customClass="TwoColumnLayout" customModule="FlickShop" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="hcE-dL-QCK" customClass="TwoColumnLayout" customModule="Vendee" customModuleProvider="target"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomPhotoCell" id="h5m-xe-LuL" customClass="CustomPhotoCell" customModule="FlickShop" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomPhotoCell" id="h5m-xe-LuL" customClass="CustomPhotoCell" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -160,7 +160,7 @@
         <!--Home View Controller-->
         <scene sceneID="hvG-bX-WWv">
             <objects>
-                <viewController id="oOk-Qq-Cmu" customClass="HomeViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oOk-Qq-Cmu" customClass="HomeViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vyc-B6-TSI"/>
                         <viewControllerLayoutGuide type="bottom" id="qLF-Xf-M4m"/>
@@ -181,9 +181,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="5x4-wk-MdE"/>
                                 </constraints>
-                                <collectionViewLayout key="collectionViewLayout" id="2j0-qF-FgQ" customClass="CategoriesLayout" customModule="FlickShop" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="2j0-qF-FgQ" customClass="CategoriesLayout" customModule="Vendee" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="0Pg-ao-87c" customClass="CategoryCell" customModule="FlickShop" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="0Pg-ao-87c" customClass="CategoryCell" customModule="Vendee" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="270"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -261,7 +261,7 @@
         <!--Container Browse View Controller-->
         <scene sceneID="E7p-Ik-vsv">
             <objects>
-                <viewController id="JWt-4Q-eEb" customClass="ContainerBrowseViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="JWt-4Q-eEb" customClass="ContainerBrowseViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nOY-es-QsK"/>
                         <viewControllerLayoutGuide type="bottom" id="8FM-Ej-N27"/>
@@ -276,7 +276,7 @@
                                     <segue destination="pbY-Vl-Rc6" kind="embed" identifier="EmbedBrowseCategory" id="3WX-yO-dGa"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeJ-vF-gtW" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeJ-vF-gtW" customClass="FloatingButton" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="547" y="77" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="GFJ-Ph-ooS"/>
@@ -293,7 +293,7 @@
                                     <segue destination="KKF-np-WFL" kind="presentation" identifier="FilterCategory" id="KnE-Iu-msR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrD-ya-esb" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrD-ya-esb" customClass="FloatingButton" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="13" y="77" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="eqz-Ou-x2k"/>
@@ -341,7 +341,7 @@
         <!--Container Flick View Controller-->
         <scene sceneID="PC5-3v-OKl">
             <objects>
-                <viewController storyboardIdentifier="ContainerFlickViewController" id="cMP-WJ-9Fx" customClass="ContainerFlickViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContainerFlickViewController" id="cMP-WJ-9Fx" customClass="ContainerFlickViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kgV-s6-rGT"/>
                         <viewControllerLayoutGuide type="bottom" id="TyM-hC-HwU"/>
@@ -356,7 +356,7 @@
                                     <segue destination="Bcp-Tw-j0d" kind="embed" identifier="EmbedFlickCategory" id="YW5-tk-jo7"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cV7-QJ-cnS" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cV7-QJ-cnS" customClass="FloatingButton" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="15" y="75" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="c0q-dd-5lk"/>
@@ -373,7 +373,7 @@
                                     <action selector="backButtonTapped:" destination="cMP-WJ-9Fx" eventType="touchUpInside" id="Ttf-Fd-u2H"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAm-tQ-wCl" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RAm-tQ-wCl" customClass="FloatingButton" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="545" y="75" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="qfb-aw-VD1"/>
@@ -461,7 +461,7 @@
         <!--Container Product Details View Controller-->
         <scene sceneID="sOi-Ev-1dl">
             <objects>
-                <viewController storyboardIdentifier="ContainerProductDetailsViewController" id="Dvh-ok-7KF" customClass="ContainerProductDetailsViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContainerProductDetailsViewController" id="Dvh-ok-7KF" customClass="ContainerProductDetailsViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KgA-X6-sHa"/>
                         <viewControllerLayoutGuide type="bottom" id="hnV-M4-0Ph"/>
@@ -476,7 +476,7 @@
                                     <segue destination="Vhy-UI-L4B" kind="embed" identifier="EmbedDetails" id="Mp0-Pr-sHw"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79t-Dz-0Cn" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79t-Dz-0Cn" customClass="FloatingButton" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="15" y="35" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gUz-n6-HlC"/>
@@ -512,7 +512,7 @@
         <!--Container Web View Controller-->
         <scene sceneID="xjw-Yw-8ux">
             <objects>
-                <viewController storyboardIdentifier="ContainerWebViewController" id="w6J-uA-JXD" customClass="ContainerWebViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContainerWebViewController" id="w6J-uA-JXD" customClass="ContainerWebViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p18-fy-VfW"/>
                         <viewControllerLayoutGuide type="bottom" id="YNH-lY-DfX"/>
@@ -527,7 +527,7 @@
                                     <segue destination="idb-ik-Vq9" kind="embed" identifier="EmbedWebView" id="3Uk-BH-C6a"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sig-g5-O9W" customClass="FloatingButton" customModule="FlickShop" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sig-g5-O9W" customClass="FloatingButton" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="15" y="35" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="iey-tK-qTR"/>
@@ -566,7 +566,7 @@
         <!--Price Details View Controller-->
         <scene sceneID="8Q8-eH-DoZ">
             <objects>
-                <viewController storyboardIdentifier="PriceDetailsViewController" id="gPj-xt-wAc" customClass="PriceDetailsViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PriceDetailsViewController" id="gPj-xt-wAc" customClass="PriceDetailsViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IMY-Fq-zWK"/>
                         <viewControllerLayoutGuide type="bottom" id="NlS-qG-cpd"/>
@@ -591,19 +591,19 @@
                                             <constraint firstAttribute="height" constant="1" id="qV9-qw-pUu"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XV4-Us-wa8">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XV4-Us-wa8">
                                         <rect key="frame" x="66" y="40" width="109" height="49"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-TH-Kr5">
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-TH-Kr5">
                                                 <rect key="frame" x="0.0" y="0.0" width="109" height="22"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$5.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owN-i7-WdS">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$5.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="owN-i7-WdS">
                                                         <rect key="frame" x="0.0" y="0.0" width="44" height="22"/>
                                                         <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="18"/>
                                                         <color key="textColor" red="0.96078431372549022" green="0.16862745098039217" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$20.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtA-bZ-B7G">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$20.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtA-bZ-B7G">
                                                         <rect key="frame" x="54" y="0.0" width="55" height="22"/>
                                                         <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="18"/>
                                                         <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
@@ -611,8 +611,8 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
-                                                <rect key="frame" x="16" y="27" width="76" height="22"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
+                                                <rect key="frame" x="17" y="27" width="76" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="18"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -654,7 +654,7 @@
         <!--Web View Controller-->
         <scene sceneID="pyz-6X-Jrb">
             <objects>
-                <viewController id="idb-ik-Vq9" customClass="WebViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="idb-ik-Vq9" customClass="WebViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1jm-2G-zBb"/>
                         <viewControllerLayoutGuide type="bottom" id="Phn-PV-gZf"/>
@@ -722,7 +722,7 @@
         <!--Product Details View Controller-->
         <scene sceneID="e56-01-raO">
             <objects>
-                <tableViewController id="Vhy-UI-L4B" customClass="ProductDetailsViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Vhy-UI-L4B" customClass="ProductDetailsViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nbh-K0-8b0">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -785,7 +785,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimilarProductCell" id="8Zl-AI-bu9" customClass="SimilarProductCell" customModule="FlickShop" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimilarProductCell" id="8Zl-AI-bu9" customClass="SimilarProductCell" customModule="Vendee" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="5" width="180" height="200"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -907,7 +907,7 @@
         <!--Photos View Controller-->
         <scene sceneID="mSV-zf-rH3">
             <objects>
-                <viewController storyboardIdentifier="PhotosViewController" id="gWZ-H3-uYh" customClass="PhotosViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PhotosViewController" id="gWZ-H3-uYh" customClass="PhotosViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3aC-jr-uuK"/>
                         <viewControllerLayoutGuide type="bottom" id="3te-q3-Dmq"/>

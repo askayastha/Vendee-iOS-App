@@ -19,14 +19,14 @@
         <!--Favorites View Controller-->
         <scene sceneID="iII-yb-oOm">
             <objects>
-                <collectionViewController id="wEd-nf-eK0" customClass="FavoritesViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="wEd-nf-eK0" customClass="FavoritesViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="LMA-fO-TYD">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90588235289999997" green="0.90588235289999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewLayout key="collectionViewLayout" id="kFE-N4-VOB" customClass="TwoColumnLayout" customModule="FlickShop" customModuleProvider="target"/>
+                        <collectionViewLayout key="collectionViewLayout" id="kFE-N4-VOB" customClass="TwoColumnLayout" customModule="Vendee" customModuleProvider="target"/>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomPhotoCell" id="Z4d-mz-9qo" customClass="CustomPhotoCell" customModule="FlickShop" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CustomPhotoCell" id="Z4d-mz-9qo" customClass="CustomPhotoCell" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -49,13 +49,13 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="noL-c7-WAg">
                                                             <rect key="frame" x="40" y="0.0" width="130" height="35"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-Re-uEz">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ta-Re-uEz">
                                                                     <rect key="frame" x="0.0" y="0.0" width="24" height="18"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Semibold" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEl-iS-JW9">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0% Off" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEl-iS-JW9">
                                                                     <rect key="frame" x="0.0" y="18" width="37" height="17"/>
                                                                     <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="12"/>
                                                                     <color key="textColor" red="0.52941176470588236" green="0.0" blue="0.85098039215686272" alpha="1" colorSpace="calibratedRGB"/>
@@ -126,7 +126,7 @@
         <!--Container Favorites View Controller-->
         <scene sceneID="ZOg-h6-3vh">
             <objects>
-                <viewController id="bwy-Op-ZY7" customClass="ContainerFavoritesViewController" customModule="FlickShop" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bwy-Op-ZY7" customClass="ContainerFavoritesViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="urr-Gl-ol4"/>
                         <viewControllerLayoutGuide type="bottom" id="FN7-iU-VtK"/>

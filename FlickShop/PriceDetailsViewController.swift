@@ -11,21 +11,20 @@ import Crashlytics
 
 class PriceDetailsViewController: UIViewController {
     
-    var product: Product!
+    enum AnimationStyle {
+        case Slide
+        case Fade
+    }
     
     @IBOutlet weak var popupView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var salePriceLabel: UILabel!
     @IBOutlet weak var discountLabel: UILabel!
     
-    var isPopUp = false
+    private(set) var isPopUp = false
+    private(set) var dismissAnimationStyle = AnimationStyle.Fade
     
-    enum AnimationStyle {
-        case Slide
-        case Fade
-    }
-    
-    var dismissAnimationStyle = AnimationStyle.Fade
+    var product: Product!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,7 +39,7 @@ class PriceDetailsViewController: UIViewController {
         
         // Log screen views
         GoogleAnalytics.trackScreenForName("Price Details View")
-        Answers.logCustomEventWithName("Price Details View", customAttributes: nil)
+        Answers.logCustomEventWithName("Price Details View", customAttributes: getAttributesForProduct(product))
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +49,6 @@ class PriceDetailsViewController: UIViewController {
     
     private func setupView() {
         // View setup
-        view.tintColor = UIColor(red: 20/255, green: 160/255, blue: 160/255, alpha: 1)
         view.backgroundColor = UIColor.clearColor()
         
         // Popup setup

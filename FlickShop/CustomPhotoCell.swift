@@ -45,13 +45,10 @@ class CustomPhotoCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        print("CELL INITIALIZATION")
+        layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
+        layer.borderWidth = 0.5
         layer.cornerRadius = 5.0
         layer.masksToBounds = true
-        
-        layer.borderColor = UIColor(red: 223/255, green: 223/255, blue: 223/255, alpha: 1.0).CGColor
-//        layer.borderColor = UIColor.lightGrayColor().CGColor
-        layer.borderWidth = 0.5
     }
     
     override func prepareForReuse() {
@@ -59,6 +56,8 @@ class CustomPhotoCell: UICollectionViewCell {
         
         imageView.image = nil
         headerImageView.image = nil
+        headerTitleLabel.text = nil
+        discountLabel.text = nil
     }
     
     override func applyLayoutAttributes(layoutAttributes: UICollectionViewLayoutAttributes) {

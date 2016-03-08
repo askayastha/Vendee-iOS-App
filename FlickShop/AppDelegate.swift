@@ -179,7 +179,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#353535")!
         ]
-        navAppearance.tintColor = UIColor.blackColor()
+        navAppearance.tintColor = UIColor(hexString: "#353535")
         
         let barButtonAppearance = UIBarButtonItem.appearance()
         barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)

@@ -58,6 +58,12 @@ class ContainerBrowseViewController: UIViewController {
             backButton.transform = CGAffineTransformIdentity
             filterButton.transform = CGAffineTransformIdentity
         }
+        
+        if FiltersModel.sharedInstance().filtersAvailable {
+            filterButton.setImage(UIImage(named: "filter_selected"), forState: .Normal)
+        } else {
+            filterButton.setImage(UIImage(named: "filter_medium_gray"), forState: .Normal)
+        }
     }
 
     override func didReceiveMemoryWarning() {

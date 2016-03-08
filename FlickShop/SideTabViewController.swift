@@ -78,7 +78,7 @@ class SideTabViewController: UITableViewController {
         
         if selectedFilter == textLabel?.text {
             cell.backgroundColor = UIColor.whiteColor()
-            textLabel?.textColor = UIColor(hexString: "#FFA800")
+            textLabel?.textColor = UIColor(hexString: "#00BFB0")
             imageView?.image = UIImage(named: sideTabsDict.orderedValues[indexPath.row] + "_selected")
         }
 

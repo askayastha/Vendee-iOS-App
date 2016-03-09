@@ -7,6 +7,7 @@
 //
 
 private let filtersModelSingleton = FiltersModel()
+private let filtersModelCopySingleton = FiltersModel()
 
 class FiltersModel {
     
@@ -14,7 +15,33 @@ class FiltersModel {
         return filtersModelSingleton
     }
     
+    class func sharedInstanceCopy() -> FiltersModel {
+        return filtersModelCopySingleton
+    }
+    
+    class func synchronizeFiltersModel() {
+        filtersModelCopySingleton.filtersApplied = filtersModelCopySingleton.filtersAvailable
+        filtersModelCopySingleton.filtersAvailable = false
+        
+        filtersModelSingleton.filtersAvailable = filtersModelCopySingleton.filtersAvailable
+        filtersModelSingleton.filtersApplied = filtersModelCopySingleton.filtersApplied
+        filtersModelSingleton.productCategory = filtersModelCopySingleton.productCategory
+        filtersModelSingleton.category = filtersModelCopySingleton.category
+        filtersModelSingleton.filterParams = filtersModelCopySingleton.filterParams
+        filtersModelSingleton.sort = filtersModelCopySingleton.sort
+    }
+    
+    class func revertFiltersModel() {
+        filtersModelCopySingleton.filtersAvailable = filtersModelSingleton.filtersAvailable
+        filtersModelCopySingleton.filtersApplied = filtersModelSingleton.filtersApplied
+        filtersModelCopySingleton.productCategory = filtersModelSingleton.productCategory
+        filtersModelCopySingleton.category = filtersModelSingleton.category
+        filtersModelCopySingleton.filterParams = filtersModelSingleton.filterParams
+        filtersModelCopySingleton.sort = filtersModelSingleton.sort
+    }
+    
     var filtersAvailable: Bool
+    var filtersApplied: Bool
     var productCategory: String?
     var category: [String: AnyObject]
     var filterParams: [String: AnyObject]
@@ -22,6 +49,7 @@ class FiltersModel {
     
     private init() {
         filtersAvailable = false
+        filtersApplied = false
         category = [
             "categorySearch": CategorySearch(),
             "displayCategories": [String](),

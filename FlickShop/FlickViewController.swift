@@ -27,8 +27,9 @@ protocol ScrollEventsDelegate: class {
 
 class FlickViewController: UICollectionViewController {
     
-    private var loadingHUDPresent = false
-    private var requestingData = false
+    private(set) var loadingHUDPresent = false
+    private(set) var requestingData = false
+    private(set) var flickCount = 0
     private var moreRequests: Bool {
         return productCategory != nil
     }
@@ -70,6 +71,13 @@ class FlickViewController: UICollectionViewController {
         collectionView!.backgroundColor = UIColor.lightGrayColor()
 //        collectionView!.backgroundColor = UIColor(red: 96/255, green: 99/255, blue: 104/255, alpha: 1.0)
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Log custom events
+        Answers.logCustomEventWithName("Flick Session", customAttributes: ["Count": flickCount])
     }
 
     override func didReceiveMemoryWarning() {
@@ -143,8 +151,7 @@ class FlickViewController: UICollectionViewController {
             requestDataFromShopStyleForCategory(productCategory)
         }
         
-        // Log custom events
-        Answers.logCustomEventWithName("Flicked Product", customAttributes: ["Cell": indexPath.item])
+        flickCount++
     }
     
     

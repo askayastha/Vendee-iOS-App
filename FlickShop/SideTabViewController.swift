@@ -26,7 +26,7 @@ class SideTabViewController: UITableViewController {
         ("Color", "tab_color"),
         ("Sort", "tab_sort")
     ]
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel = FiltersModel.sharedInstanceCopy()
     
     weak var delegate: SideTabDelegate?
     

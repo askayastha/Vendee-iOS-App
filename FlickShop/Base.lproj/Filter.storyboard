@@ -71,7 +71,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bMQ-tY-VMr"/>
-                                    <barButtonItem title="Apply" id="58M-M4-auz">
+                                    <barButtonItem enabled="NO" title="Apply" id="58M-M4-auz">
                                         <connections>
                                             <segue destination="8gG-tI-Tsf" kind="unwind" unwindAction="unwindFilterApply:" id="o06-3E-JU0"/>
                                         </connections>
@@ -109,6 +109,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="applyButton" destination="58M-M4-auz" id="T4m-ys-oD1"/>
                         <outlet property="clearAllButton" destination="okz-eN-O8K" id="TSq-17-NTw"/>
                         <outlet property="navigationBar" destination="tmF-cL-bVH" id="WjH-G0-4OF"/>
                     </connections>

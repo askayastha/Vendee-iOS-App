@@ -19,7 +19,7 @@ class CategoryFilterViewController: UITableViewController {
     var categoriesIdDict: [String: String]!
     var categorySearch: CategorySearch!
     
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel = FiltersModel.sharedInstanceCopy()
     
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
@@ -207,18 +207,21 @@ class CategoryFilterViewController: UITableViewController {
         
         // Repopulate original model
         let categoryId = productCategory?.componentsSeparatedByString(":").last!
-        let rootCategory = categorySearch.categories.objectAtIndex(0) as! CategoryInfo
-        tappedCategories.append(rootCategory.shortName!)
+        
+        if categorySearch.categories.count > 0 {
+            let rootCategory = categorySearch.categories.objectAtIndex(0) as! CategoryInfo
+            tappedCategories.append(rootCategory.shortName)
+        }
         
         for item in categorySearch.categories {
             let category = item as! CategoryInfo
             
             if category.id == categoryId || category.parentId == categoryId {
-                displayCategories.append(category.shortName!)
+                displayCategories.append(category.shortName)
             }
             
             // Make of dictionary of [Category: CategoryID]
-            categoriesIdDict[category.shortName!] = category.id!
+            categoriesIdDict[category.shortName] = category.id
         }
         let newCategoriesCount = displayCategories.count
         

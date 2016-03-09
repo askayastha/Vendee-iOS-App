@@ -19,7 +19,7 @@ class StoreFilterViewController: UIViewController {
     var searchController: UISearchController!
     var selectedStores: [String: String]!
     
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel = FiltersModel.sharedInstanceCopy()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!

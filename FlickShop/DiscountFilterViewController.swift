@@ -46,7 +46,7 @@ class DiscountFilterViewController: UITableViewController {
         ("Special Offer", "o1"),
         ("Coupon Code", "o2")
     ]
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel = FiltersModel.sharedInstanceCopy()
     
     var saleCode: String?
     var selectedDiscount: [String: String]!

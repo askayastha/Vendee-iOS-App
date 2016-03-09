@@ -20,7 +20,7 @@ class PriceFilterViewController: UITableViewController {
         "300", "350", "400", "500", "600", "700", "800", "900", "1000", "1250",
         "1500", "1750", "2000", "2250", "2500", "3000", "3500", "4000", "4500", "5000+"
     ]
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel = FiltersModel.sharedInstanceCopy()
     
     var priceRangeCode: String?
     var selectedPrices: [String: String]!

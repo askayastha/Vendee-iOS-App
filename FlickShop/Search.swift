@@ -89,7 +89,7 @@ class Search {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading
         
-        if filtersModel.filtersAvailable {
+        if filtersModel.filtersApplied {
             // Get category code for filter
             if let filterCategory = getFilterCategory() {
                 category = filterCategory

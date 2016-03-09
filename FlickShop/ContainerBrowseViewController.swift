@@ -59,7 +59,7 @@ class ContainerBrowseViewController: UIViewController {
             filterButton.transform = CGAffineTransformIdentity
         }
         
-        if FiltersModel.sharedInstance().filtersAvailable {
+        if FiltersModel.sharedInstance().filtersApplied {
             filterButton.setImage(UIImage(named: "filter_selected"), forState: .Normal)
         } else {
             filterButton.setImage(UIImage(named: "filter_medium_gray"), forState: .Normal)

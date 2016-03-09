@@ -44,7 +44,7 @@ class ColorFilterViewController: UITableViewController {
         ("Gold", "c18"),
         ("Silver", "c19")
     ]
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel = FiltersModel.sharedInstanceCopy()
     
     var selectedColors: [String: String]!
     

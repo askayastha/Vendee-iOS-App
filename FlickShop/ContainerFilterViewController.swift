@@ -13,10 +13,13 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var clearAllButton: UIBarButtonItem!
+    @IBOutlet weak var applyButton: UIBarButtonItem!
     
     var containerVC: ContainerViewController?
+    let filtersModel = FiltersModel.sharedInstanceCopy()
     
     deinit {
+        print("ContainerFilterViewController Deallocating !!!")
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 
@@ -26,18 +29,22 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         // Do any additional setup after loading the view.
         navigationBar.barTintColor = UIColor(hexString: "#E7E7E7")
         
-        if FiltersModel.sharedInstance().filtersAvailable {
-            clearAllButton.enabled = true
-        }
-        
-        NSNotificationCenter.defaultCenter().addObserverForName(CustomNotifications.FilterDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { _ in
-            self.clearAllButton.enabled = true
-            FiltersModel.sharedInstance().filtersAvailable = true
-        }
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshView", name: CustomNotifications.FilterDidChangeNotification, object: nil)
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Open", value: nil)
         Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Open"])
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if filtersModel.filtersApplied {
+            clearAllButton.enabled = true
+        }
+        if filtersModel.filtersAvailable {
+            applyButton.enabled = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,15 +53,29 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     }
     
     @IBAction func done() {
-        dismissViewControllerAnimated(true, completion: nil)
-        
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Close", value: nil)
         Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Close"])
+        
+        if filtersModel.filtersAvailable {
+            let alert = UIAlertController(title: "Vendee", message: "Are you sure you want to close without applying your filters?", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default) { _ in
+                FiltersModel.revertFiltersModel()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            presentViewController(alert, animated: true, completion: nil)
+            
+        } else {
+            dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     @IBAction func reset() {
-        FiltersModel.sharedInstance().resetFilters()
+        filtersModel.resetFilters()
         
         // Refresh side tab
         CustomNotifications.filterDidChangeNotification()
@@ -62,8 +83,9 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         // Refresh any visible filter view controllers
         CustomNotifications.filterDidClearNotification()
         
+        filtersModel.filtersAvailable = false
         clearAllButton.enabled = false
-        FiltersModel.sharedInstance().filtersAvailable = false
+        applyButton.enabled = true
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Clear All", value: nil)
@@ -83,6 +105,12 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
     func showTab(identifier: String) {
         containerVC?.switchViewControllerForIdentifier(identifier)
+    }
+    
+    func refreshView() {
+        filtersModel.filtersAvailable = true
+        clearAllButton.enabled = true
+        applyButton.enabled = true
     }
 
 }

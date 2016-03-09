@@ -17,7 +17,7 @@ class SortFilterViewController: UITableViewController {
         ("Lowest Price", "PriceLoHi"),
         ("Highest Price", "PriceHiLo")
     ]
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel = FiltersModel.sharedInstanceCopy()
     
     var selectedSort: [String: String]!
     

@@ -27,6 +27,7 @@ class BrowseViewController: UICollectionViewController {
     weak var delegate: SwipeDelegate?
     var search = Search()
     let brands = BrandsModel.sharedInstance().brands
+    let filtersModel = FiltersModel.sharedInstance()
     var scout: PhotoScout
     var productCategory: String!
     
@@ -66,6 +67,7 @@ class BrowseViewController: UICollectionViewController {
     @IBAction func unwindFilterApply(segue: UIStoryboardSegue) {
         logEventsForFilter()
         
+        FiltersModel.synchronizeFiltersModel()
         search.resetSearch()
         productCount = 0
         

@@ -11,18 +11,23 @@ import Crashlytics
 
 class BrandFilterViewController: UIViewController {
     
-    var searching = false
+    private(set) var searching = false
     
     var brands: [String: [NSDictionary]]!
     var keys: [String]!
     var filteredBrands = [String]()
     var searchController: UISearchController!
-    var selectedBrands: [String: String]!
+    var selectedBrands: [String: String]
     
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        selectedBrands = filtersModel.filterParams["brand"] as! [String: String]
+        super.init(coder: aDecoder)
+    }
     
     deinit {
         print("BrandFilterViewController Deallocating !!!")
@@ -58,8 +63,6 @@ class BrandFilterViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.delegate = self
-        
-        selectedBrands = filtersModel.filterParams["brand"] as! [String: String]
     }
     
     override func viewWillAppear(animated: Bool) {

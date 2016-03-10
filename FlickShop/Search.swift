@@ -34,14 +34,15 @@ class Search {
     
     deinit {
         print("SEARCH DEALLOCATING !!!!!")
-    }
-    
-    init(products: NSMutableOrderedSet) {
-        self.products = products
+        dataRequest?.cancel()
     }
     
     init() {
         products = NSMutableOrderedSet()
+    }
+    
+    init(products: NSMutableOrderedSet) {
+        self.products = products
     }
     
     func resetSearch() {

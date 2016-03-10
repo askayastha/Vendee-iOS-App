@@ -12,17 +12,6 @@ import Crashlytics
 
 class DiscountFilterViewController: UITableViewController {
     
-//    let discountsDict = [
-//        "Regular and Sale Items": "d",
-//        "10": "d0",
-//        "20": "d1",
-//        "30": "d2",
-//        "40": "d3",
-//        "50": "d4",
-//        "60": "d5",
-//        "70": "d6"
-//    ]
-    
     private let minValue = 0
     private let maxValue = 7
     
@@ -49,12 +38,18 @@ class DiscountFilterViewController: UITableViewController {
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
     var saleCode: String?
-    var selectedDiscount: [String: String]!
-    var selectedOffers: [String: String]!
+    var selectedDiscount: [String: String]
+    var selectedOffers: [String: String]
     var keys = [String]()
     
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var discountSlider: NMRangeSlider!
+    
+    required init?(coder aDecoder: NSCoder) {
+        selectedDiscount = filtersModel.filterParams["discount"] as! [String: String]
+        selectedOffers = filtersModel.filterParams["offer"] as! [String: String]
+        super.init(coder: aDecoder)
+    }
     
     deinit {
         print("DiscountFilterViewController Deallocating !!!")
@@ -73,9 +68,6 @@ class DiscountFilterViewController: UITableViewController {
         discountSlider.stepValue = 1
         discountSlider.stepValueContinuously = true
         discountSlider.upperHandleHidden = true
-        
-        selectedDiscount = filtersModel.filterParams["discount"] as! [String: String]
-        selectedOffers = filtersModel.filterParams["offer"] as! [String: String]
         
         // Setup previous values
         if let discountKey = selectedDiscount.keys.first {

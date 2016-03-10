@@ -79,10 +79,12 @@ extension HomeViewController: UICollectionViewDelegate {
         
         if categoryName != oldCategoryName {
             FiltersModel.sharedInstance().resetFilters()
+            FiltersModel.sharedInstanceCopy().resetFilters()
         }
+        FiltersModel.sharedInstance().productCategory = "\(categoryName):\(categoryId)"
+        FiltersModel.sharedInstanceCopy().productCategory = "\(categoryName):\(categoryId)"
         
         // Log custom events
-        FiltersModel.sharedInstance().productCategory = "\(categoryName):\(categoryId)"
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Category", label: categoryName, value: nil)
         Answers.logCustomEventWithName("Tapped Category", customAttributes: ["Category": categoryName])
         

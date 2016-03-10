@@ -21,6 +21,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     deinit {
         print("ContainerFilterViewController Deallocating !!!")
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidClearNotification, object: nil)
     }
 
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         navigationBar.barTintColor = UIColor(hexString: "#E7E7E7")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshView", name: CustomNotifications.FilterDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearView", name: CustomNotifications.FilterDidClearNotification, object: nil)
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Open", value: nil)
@@ -70,6 +72,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
             presentViewController(alert, animated: true, completion: nil)
             
         } else {
+            FiltersModel.revertFiltersModel()
             dismissViewControllerAnimated(true, completion: nil)
         }
     }
@@ -82,10 +85,6 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         
         // Refresh any visible filter view controllers
         CustomNotifications.filterDidClearNotification()
-        
-        filtersModel.filtersAvailable = false
-        clearAllButton.enabled = false
-        applyButton.enabled = true
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Clear All", value: nil)
@@ -110,6 +109,12 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     func refreshView() {
         filtersModel.filtersAvailable = true
         clearAllButton.enabled = true
+        applyButton.enabled = true
+    }
+    
+    func clearView() {
+        filtersModel.filtersAvailable = false
+        clearAllButton.enabled = false
         applyButton.enabled = true
     }
 

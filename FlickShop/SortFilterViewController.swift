@@ -19,7 +19,12 @@ class SortFilterViewController: UITableViewController {
     ]
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
-    var selectedSort: [String: String]!
+    var selectedSort: [String: String]
+    
+    required init?(coder aDecoder: NSCoder) {
+        selectedSort = filtersModel.sort
+        super.init(coder: aDecoder)
+    }
     
     deinit {
         print("SortFilterViewController Deallocating !!!")
@@ -30,8 +35,6 @@ class SortFilterViewController: UITableViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
-        
-        selectedSort = filtersModel.sort
     }
     
     override func viewWillAppear(animated: Bool) {

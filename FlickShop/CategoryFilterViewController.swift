@@ -14,10 +14,10 @@ class CategoryFilterViewController: UITableViewController {
     private var requestingData = false
     
     var productCategory: String!
-    var displayCategories: [String]!
-    var tappedCategories: [String]!
-    var categoriesIdDict: [String: String]!
-    var categorySearch: CategorySearch!
+    var displayCategories: [String]
+    var tappedCategories: [String]
+    var categoriesIdDict: [String: String]
+    var categorySearch: CategorySearch
     
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
@@ -47,6 +47,19 @@ class CategoryFilterViewController: UITableViewController {
         }
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        print("CategoryFilterViewController Initializing !!!")
+        productCategory = filtersModel.productCategory
+        categorySearch = CategorySearch(categories: filtersModel.category["categories"] as! NSMutableOrderedSet)
+        displayCategories = filtersModel.category["displayCategories"] as! [String]
+        tappedCategories = filtersModel.category["tappedCategories"] as! [String]
+        categoriesIdDict = filtersModel.category["categoriesIdDict"] as! [String: String]
+        
+        super.init(coder: aDecoder)
+//        print(displayCategories)
+//        print(tappedCategories)
+    }
+    
     deinit {
         print("CategoryFilterViewController Deallocating !!!")
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidClearNotification, object: nil)
@@ -56,15 +69,6 @@ class CategoryFilterViewController: UITableViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
-        
-        productCategory = filtersModel.productCategory
-        categorySearch = filtersModel.category["categorySearch"] as! CategorySearch
-        displayCategories = filtersModel.category["displayCategories"] as! [String]
-        tappedCategories = filtersModel.category["tappedCategories"] as! [String]
-        categoriesIdDict = filtersModel.category["categoriesIdDict"] as! [String: String]
-        
-        print(displayCategories)
-        print(tappedCategories)
         
         // Spinner setup
         tableView.addSubview(spinner)
@@ -284,7 +288,7 @@ class CategoryFilterViewController: UITableViewController {
                     strongSelf.categoriesIdDict[category.shortName!] = category.id!
                 }
                 // Save for filter stuff
-                strongSelf.filtersModel.category["categorySearch"] = strongSelf.categorySearch
+                strongSelf.filtersModel.category["categories"] = strongSelf.categorySearch.categories
                 strongSelf.filtersModel.category["displayCategories"] = strongSelf.displayCategories
                 strongSelf.filtersModel.category["tappedCategories"] = strongSelf.tappedCategories
                 strongSelf.filtersModel.category["categoriesIdDict"] = strongSelf.categoriesIdDict

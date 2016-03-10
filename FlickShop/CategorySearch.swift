@@ -19,8 +19,9 @@ class CategorySearch {
         case Failed
     }
     
+    private(set) var dataRequest: Alamofire.Request?
     private(set) var state: State = .Idle
-    private(set) var categories = NSMutableOrderedSet()
+    private(set) var categories: NSMutableOrderedSet
     private(set) var retryCount = 0
     
     var lastItem: Int {
@@ -29,10 +30,15 @@ class CategorySearch {
     
     deinit {
         print("CATEGORY SEARCH DEALLOCATING !!!!!")
+        dataRequest?.cancel()
     }
     
     init() {
         categories = NSMutableOrderedSet()
+    }
+    
+    init(categories: NSMutableOrderedSet) {
+        self.categories = categories
     }
     
     func incrementRetryCount() {
@@ -51,7 +57,7 @@ class CategorySearch {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading
         
-        Alamofire.request(ShopStyle.Router.Categories(category)).validate().responseJSON() {
+        dataRequest = Alamofire.request(ShopStyle.Router.Categories(category)).validate().responseJSON() {
             response in
             
             if response.result.isSuccess {
@@ -85,4 +91,3 @@ class CategorySearch {
         
     }
 }
-

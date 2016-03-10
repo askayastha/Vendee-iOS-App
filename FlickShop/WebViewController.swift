@@ -11,9 +11,10 @@ import WebKit
 
 class WebViewController: UIViewController, WKNavigationDelegate {
     
+    private var webView: WKWebView
+    
     var webpageURL: NSURL!
     var product: Product!
-    private var webView: WKWebView
     weak var delegate: SwipeDelegate?
     var animateSpinner: ((Bool)->())?
     var showPopup: (()->())?

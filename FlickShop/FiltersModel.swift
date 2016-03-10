@@ -51,7 +51,7 @@ class FiltersModel {
         filtersAvailable = false
         filtersApplied = false
         category = [
-            "categorySearch": CategorySearch(),
+            "categories": NSMutableOrderedSet(),
             "displayCategories": [String](),
             "tappedCategories": [String](),
             "categoriesIdDict": [String: String]()
@@ -71,7 +71,7 @@ class FiltersModel {
         print("FILTERS CLEARED !!!")
         
         category = [
-            "categorySearch": CategorySearch(),
+            "categories": NSMutableOrderedSet(),
             "displayCategories": [String](),
             "tappedCategories": [String](),
             "categoriesIdDict": [String: String]()

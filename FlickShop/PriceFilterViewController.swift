@@ -23,11 +23,16 @@ class PriceFilterViewController: UITableViewController {
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
     var priceRangeCode: String?
-    var selectedPrices: [String: String]!
+    var selectedPrices: [String: String]
     
     @IBOutlet weak var minPriceLabel: UILabel!
     @IBOutlet weak var maxPriceLabel: UILabel!
     @IBOutlet weak var priceRangeSlider: NMRangeSlider!
+    
+    required init?(coder aDecoder: NSCoder) {
+        selectedPrices = filtersModel.filterParams["price"] as! [String: String]
+        super.init(coder: aDecoder)
+    }
     
     deinit {
         print("PriceFilterViewController Deallocating !!!")
@@ -45,8 +50,6 @@ class PriceFilterViewController: UITableViewController {
         priceRangeSlider.minimumRange = 1
         priceRangeSlider.stepValue = 1
         priceRangeSlider.stepValueContinuously = true
-        
-        selectedPrices = filtersModel.filterParams["price"] as! [String: String]
         
         // Setup previous values
         if let priceKey = selectedPrices.keys.first {

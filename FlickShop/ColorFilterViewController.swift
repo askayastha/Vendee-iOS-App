@@ -46,7 +46,12 @@ class ColorFilterViewController: UITableViewController {
     ]
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
-    var selectedColors: [String: String]!
+    var selectedColors: [String: String]
+    
+    required init?(coder aDecoder: NSCoder) {
+        selectedColors = filtersModel.filterParams["color"] as! [String: String]
+        super.init(coder: aDecoder)
+    }
     
     deinit {
         print("ColorFilterViewController Deallocating !!!")
@@ -57,8 +62,6 @@ class ColorFilterViewController: UITableViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
-        
-        selectedColors = filtersModel.filterParams["color"] as! [String: String]
     }
     
     override func viewWillAppear(animated: Bool) {

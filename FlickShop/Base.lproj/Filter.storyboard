@@ -79,7 +79,6 @@
                                 </items>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="p2b-Fa-uQL" firstAttribute="top" secondItem="mSr-ir-ZrD" secondAttribute="bottom" id="0Yg-c0-KPz"/>
                             <constraint firstAttribute="trailing" secondItem="mSr-ir-ZrD" secondAttribute="trailing" id="APl-dN-Gqr"/>
@@ -112,6 +111,7 @@
                         <outlet property="applyButton" destination="58M-M4-auz" id="T4m-ys-oD1"/>
                         <outlet property="clearAllButton" destination="okz-eN-O8K" id="TSq-17-NTw"/>
                         <outlet property="navigationBar" destination="tmF-cL-bVH" id="WjH-G0-4OF"/>
+                        <outlet property="toolBar" destination="c6c-4u-yDe" id="iG7-WL-eWX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LLE-8R-2ou" userLabel="First Responder" sceneMemberID="firstResponder"/>

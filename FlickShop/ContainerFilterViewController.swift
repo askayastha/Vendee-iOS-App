@@ -14,6 +14,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var clearAllButton: UIBarButtonItem!
     @IBOutlet weak var applyButton: UIBarButtonItem!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     var containerVC: ContainerViewController?
     let filtersModel = FiltersModel.sharedInstanceCopy()
@@ -28,7 +29,21 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationBar.barTintColor = UIColor(hexString: "#E7E7E7")
+//        navigationBar.barTintColor = UIColor(hexString: "#E7E7E7")
+        view.backgroundColor = UIColor(hexString: "#F8F8F8")
+        navigationBar.barTintColor = UIColor(hexString: "#F8F8F8")
+        toolBar.barTintColor = UIColor(hexString: "#F8F8F8")
+        toolBar.tintColor = UIColor(hexString: "#353535")
+        
+        let normalTextAttributes: [String: AnyObject] = [
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!,
+        ]
+        let disabledTextAttributes: [String: AnyObject] = [
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!,
+        ]
+        
+        clearAllButton.setTitleTextAttributes(normalTextAttributes, forState: .Normal)
+        applyButton.setTitleTextAttributes(disabledTextAttributes, forState: .Disabled)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshView", name: CustomNotifications.FilterDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearView", name: CustomNotifications.FilterDidClearNotification, object: nil)

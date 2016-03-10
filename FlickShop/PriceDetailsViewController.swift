@@ -69,7 +69,7 @@ class PriceDetailsViewController: UIViewController {
         var discountText = "(0% Off)"
         
         if let salePrice = product.salePrice {
-            let discount = (product.price! - salePrice) * 100 / product.price!
+            let discount = (product.price - salePrice) * 100 / product.price
             discountText = "(\(Int(discount))% Off)"
         }
         discountLabel.text = discountText

@@ -47,12 +47,20 @@ func getRetailerForProduct(product: Product) -> String? {
     return JSON(retailer)["name"].string
 }
 
-func getAttributesForProduct(product: Product) -> [String: String] {
-    let attributes: [String: String] = [
+func getDiscountForProduct(product: Product) -> Int? {
+    guard let salePrice = product.salePrice else { return nil }
+    let discount = (product.price - salePrice) * 100 / product.price
+    
+    return Int(discount)
+}
+
+func getAttributesForProduct(product: Product) -> [String: AnyObject] {
+    let attributes: [String: AnyObject] = [
         "Product ID": product.id,
         "Category": getCategoryForProduct(product) ?? "Unknown",
         "Brand": getBrandForProduct(product) ?? "Unknown",
-        "Retailer": getRetailerForProduct(product) ?? "Unknown"
+        "Retailer": getRetailerForProduct(product) ?? "Unknown",
+        "Discount": getDiscountForProduct(product) ?? 0
     ]
     
     return attributes

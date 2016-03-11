@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TSMessage.setDelegate(self)
         customizeNavBar()
         customizeTabBar()
+        customizeSearchBar()
         configureNetworkManager()
         configureGoogleAnalytics()
         configureFabric()
@@ -176,14 +177,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navAppearance.backIndicatorImage = backImage
         navAppearance.backIndicatorTransitionMaskImage = backImage
         navAppearance.titleTextAttributes = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!,
-            NSForegroundColorAttributeName: UIColor(hexString: "#353535")!
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
         ]
         navAppearance.tintColor = UIColor(hexString: "#353535")
         
         let barButtonAppearance = UIBarButtonItem.appearance()
         barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
         barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Compact)
+    }
+    
+    private func customizeSearchBar() {
+        UISearchBar.appearance().tintColor = UIColor(hexString: "#353535")
+        let normalTextAttributes: [String: AnyObject] = [
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!
+        ]
+        UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).setTitleTextAttributes(normalTextAttributes, forState: .Normal)
     }
     
     private func configureNetworkManager() {
@@ -196,8 +204,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 TSMessage.showNotificationWithTitle("Network Error", subtitle: "Check your internet connection and try again later.", type: .Error)
                 
             case .Reachable(_):
-                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
-                TSMessage.showNotificationWithTitle("Network Reachable", subtitle: "Network is reachable. Post reachability notification.", type: .Success)
+//                TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+//                TSMessage.showNotificationWithTitle("Network Reachable", subtitle: "Network is reachable. Post reachability notification.", type: .Success)
                 NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
                 
             default:

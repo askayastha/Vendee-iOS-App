@@ -88,6 +88,7 @@ class FlickPageCell: UICollectionViewCell {
         
         buyButton.layer.cornerRadius = 5.0
         buyButton.layer.masksToBounds = true
+        buyButton.adjustsImageWhenHighlighted = false
     }
     
     override func prepareForReuse() {

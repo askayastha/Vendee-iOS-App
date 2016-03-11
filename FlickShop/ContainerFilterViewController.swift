@@ -36,14 +36,10 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         toolBar.tintColor = UIColor(hexString: "#353535")
         
         let normalTextAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!,
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!
         ]
-        let disabledTextAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!,
-        ]
-        
         clearAllButton.setTitleTextAttributes(normalTextAttributes, forState: .Normal)
-        applyButton.setTitleTextAttributes(disabledTextAttributes, forState: .Disabled)
+        applyButton.setTitleTextAttributes(normalTextAttributes, forState: .Normal)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshView", name: CustomNotifications.FilterDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearView", name: CustomNotifications.FilterDidClearNotification, object: nil)

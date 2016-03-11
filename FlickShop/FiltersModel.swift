@@ -70,6 +70,8 @@ class FiltersModel {
     func resetFilters() {
         print("FILTERS CLEARED !!!")
         
+        filtersAvailable = false
+        filtersApplied = false
         category = [
             "categories": NSMutableOrderedSet(),
             "displayCategories": [String](),

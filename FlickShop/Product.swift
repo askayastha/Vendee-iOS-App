@@ -50,9 +50,9 @@ class Product: NSObject, NSCoding {
     init(data: JSON) {
         // ShopStyle Properties
         self.id = String(data["id"].intValue)
-        self.name = data["name"].string
-        self.brandedName = data["brandedName"].string
-        self.unbrandedName = data["unbrandedName"].string
+        self.name = data["name"].string?.capitalizedString
+        self.brandedName = data["brandedName"].string?.capitalizedString
+        self.unbrandedName = data["unbrandedName"].string?.capitalizedString
         self.currency = data["currency"].string
         self.price = data["price"].float
         self.salePrice = data["salePrice"].float

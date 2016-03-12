@@ -69,7 +69,11 @@ class ProductDetailsViewController: UITableViewController {
             ])
         
         print("SIMILAR REQUESTS")
-        requestDataFromShopStyleForCategory(getCategoryForProduct(product))
+        if let categories = product.categories {
+            categoryIds = JSON(categories).arrayValue.map { $0["id"].stringValue }
+            print("CATEGORIES: \(categoryIds)")
+            requestDataFromShopStyleForCategory(categoryIds.first)
+        }
     }
 
     override func didReceiveMemoryWarning() {

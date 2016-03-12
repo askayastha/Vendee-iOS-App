@@ -184,20 +184,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1ZY-n6-ZMl">
                                 <rect key="frame" x="142" y="210" width="316" height="260"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="vendee_icon" translatesAutoresizingMaskIntoConstraints="NO" id="O79-y7-Dqo">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vendee_icon" translatesAutoresizingMaskIntoConstraints="NO" id="O79-y7-Dqo">
                                         <rect key="frame" x="128" y="0.0" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="BdQ-RJ-W7v"/>
                                             <constraint firstAttribute="height" constant="60" id="wQg-ok-hCH"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Vendee Fashion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubW-NL-0xT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vendee Fashion" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubW-NL-0xT">
                                         <rect key="frame" x="101" y="80" width="114" height="20"/>
                                         <fontDescription key="fontDescription" name="VikiKomet-Regular" family="Viki Komet" pointSize="16"/>
                                         <color key="textColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mRJ-fV-sOb">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mRJ-fV-sOb">
                                         <rect key="frame" x="62" y="120" width="192" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designed and developed by" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Bu-Sq-uVn">
@@ -214,7 +214,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-or-WIm">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aEM-or-WIm">
                                         <rect key="frame" x="86" y="180" width="144" height="40"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional design by" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Prl-1f-kMx">
@@ -231,7 +231,7 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="© 2016 Ashish Kayastha. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNj-ku-kFL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2016 Ashish Kayastha. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NNj-ku-kFL">
                                         <rect key="frame" x="0.0" y="240" width="316" height="20"/>
                                         <fontDescription key="fontDescription" name="VikiKomet-Regular" family="Viki Komet" pointSize="16"/>
                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -268,7 +268,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="No third party licenses." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-8H-phf">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="FaktFlipboard-Normal" family="Fakt Flipboard" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -279,7 +279,7 @@
                             <constraint firstAttribute="trailing" secondItem="BaR-8H-phf" secondAttribute="trailing" id="Ilx-wp-fQW"/>
                             <constraint firstItem="BaR-8H-phf" firstAttribute="leading" secondItem="u9z-kd-Ih4" secondAttribute="leading" id="RNG-gv-2Tm"/>
                             <constraint firstItem="BaR-8H-phf" firstAttribute="top" secondItem="iqH-JG-Dzy" secondAttribute="bottom" id="UrE-Yd-hyH"/>
-                            <constraint firstItem="AZl-xD-Isv" firstAttribute="top" secondItem="BaR-8H-phf" secondAttribute="bottom" id="yve-vH-z0b"/>
+                            <constraint firstItem="BaR-8H-phf" firstAttribute="height" secondItem="u9z-kd-Ih4" secondAttribute="height" constant="-64" id="jCf-7d-lNP"/>
                         </constraints>
                     </view>
                     <connections>

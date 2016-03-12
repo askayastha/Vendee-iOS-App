@@ -23,6 +23,8 @@ class MoreViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        setTabBarVisible(true, animated: true)
+        
         GoogleAnalytics.trackScreenForName("More View")
         Answers.logCustomEventWithName("More View", customAttributes: nil)
     }
@@ -92,16 +94,6 @@ class MoreViewController: UITableViewController {
         }
     }
     
-//    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-//        switch (indexPath.section, indexPath.row) {
-//        case (2, 1):
-//            return nil
-//            
-//        default:
-//            return indexPath
-//        }
-//    }
-    
     // MARK: Helper methods
     private func shareTheApp() {
         let url = "https://vendeeapp.com/"
@@ -131,6 +123,24 @@ class MoreViewController: UITableViewController {
             controller.mailComposeDelegate = self
             self.presentViewController(controller, animated: true, completion: nil)
         }
+    }
+    
+    private func setTabBarVisible(visible: Bool, animated: Bool) {
+        if isToolBarVisible() == visible { return }
+        
+        let tabBar = navigationController?.tabBarController?.tabBar
+        let frame = tabBar!.frame
+        let height = frame.size.height
+        let offsetY = visible ? -height : height
+        
+        UIView.animateWithDuration(animated ? 0.3 : 0.0) {
+            tabBar!.frame = CGRectOffset(frame, 0, offsetY)
+        }
+    }
+    
+    private func isToolBarVisible() -> Bool {
+        let tabBar = navigationController?.tabBarController?.tabBar
+        return tabBar!.frame.origin.y < CGRectGetMaxY(view.frame)
     }
 }
 

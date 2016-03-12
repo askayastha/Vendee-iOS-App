@@ -129,15 +129,15 @@
                                             <segue destination="wY8-e6-FxE" kind="show" id="Msu-Jx-QeN"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ZSP-E6-N9c" style="IBUITableViewCellStyleDefault" id="APH-sw-cqS">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ZSP-E6-N9c" style="IBUITableViewCellStyleDefault" id="APH-sw-cqS">
                                         <rect key="frame" x="0.0" y="436" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="APH-sw-cqS" id="FvZ-Ga-FP1">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZSP-E6-N9c">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Third party licenses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZSP-E6-N9c">
+                                                    <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="FaktFlipboard-Normal" family="Fakt Flipboard" pointSize="16"/>
                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -145,6 +145,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="aZu-tg-IYL" kind="show" id="fKo-ku-hmX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -256,6 +259,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s8L-jt-8Q3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1847" y="1672"/>
+        </scene>
+        <!--Licenses View Controller-->
+        <scene sceneID="ZGu-nG-5C2">
+            <objects>
+                <viewController id="aZu-tg-IYL" customClass="LicensesViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="iqH-JG-Dzy"/>
+                        <viewControllerLayoutGuide type="bottom" id="AZl-xD-Isv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u9z-kd-Ih4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sau-UQ-ROJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1847" y="2447"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b7g-SY-fmp">

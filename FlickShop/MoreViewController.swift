@@ -82,20 +82,25 @@ class MoreViewController: UITableViewController {
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'About'", label: nil, value: nil)
             Answers.logCustomEventWithName("Tapped 'About'", customAttributes: nil)
             
+        case (2, 1):
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Third party licenses'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Third party licenses'", customAttributes: nil)
+            
         default:
             break
         }
     }
     
-    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        switch (indexPath.section, indexPath.row) {
-        case (2, 1):
-            return nil
-            
-        default:
-            return indexPath
-        }
-    }
+//    override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+//        switch (indexPath.section, indexPath.row) {
+//        case (2, 1):
+//            return nil
+//            
+//        default:
+//            return indexPath
+//        }
+//    }
     
     // MARK: Helper methods
     private func shareTheApp() {

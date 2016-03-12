@@ -75,6 +75,7 @@
 		75BE17531C04DAA4007E0A59 /* Shopstyle_Brands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */; };
 		75BE17551C04DB88007E0A59 /* Shopstyle_Stores.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */; };
 		75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */; };
+		75C8ED901C943BA500ADED8C /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ED8F1C943BA500ADED8C /* LicensesViewController.swift */; };
 		75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48D81C0735A100C4C34D /* CategorySearch.swift */; };
 		75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */; };
 		75DD7F3C1C19F45300BDB0A3 /* FiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD7F3B1C19F45300BDB0A3 /* FiltersModel.swift */; };
@@ -212,6 +213,7 @@
 		75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shopstyle_Brands.plist; sourceTree = "<group>"; };
 		75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shopstyle_Stores.plist; sourceTree = "<group>"; };
 		75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerBrowseViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		75C8ED8F1C943BA500ADED8C /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		75DD48D81C0735A100C4C34D /* CategorySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategorySearch.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIViewController+SharedAppDelegate.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75DD7F3B1C19F45300BDB0A3 /* FiltersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FiltersModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -410,6 +412,7 @@
 			children = (
 				75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */,
 				75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */,
+				75C8ED8F1C943BA500ADED8C /* LicensesViewController.swift */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -863,6 +866,7 @@
 				75F12D121BE0A35900258874 /* RoundedCornersView.swift in Sources */,
 				75B455F61C58FB9B00424B21 /* BounceAnimationController.swift in Sources */,
 				756848691C75DD1700D85E67 /* SessionDelegate.swift in Sources */,
+				75C8ED901C943BA500ADED8C /* LicensesViewController.swift in Sources */,
 				75AC84E31C7F9653004B8FD7 /* PreselectedFilter.swift in Sources */,
 				7546CB221C4A5A0E000C9635 /* SimilarProductCell.swift in Sources */,
 				750D8E141C0617BA00D728F0 /* PriceFilterViewController.swift in Sources */,

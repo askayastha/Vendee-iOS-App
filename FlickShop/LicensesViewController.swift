@@ -7,14 +7,42 @@
 //
 
 import UIKit
+import Crashlytics
 
 class LicensesViewController: UIViewController {
+    
+    @IBOutlet weak var textView: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Third Party Licenses"
+        automaticallyAdjustsScrollViewInsets = false
+        
+        let path = NSBundle.mainBundle().pathForResource("licenses", ofType: "txt")!
+        let licensesText = try? String(contentsOfFile: path)
+        textView.text = licensesText
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        textView.scrollEnabled = false
+        
+        GoogleAnalytics.trackScreenForName("Licenses View")
+        Answers.logCustomEventWithName("Licenses View", customAttributes: nil)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        textView.scrollEnabled = true
+    }
+    
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        
+//        textView.scrollRangeToVisible(NSMakeRange(0, 0))
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

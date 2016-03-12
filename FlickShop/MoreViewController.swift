@@ -119,11 +119,8 @@ class MoreViewController: UITableViewController {
     
     private func sendSupportEmailWithSubject(subject: String) {
         var messageBody: String {
-            let dictionary = NSBundle.mainBundle().infoDictionary!
-            let version = dictionary["CFBundleShortVersionString"] as! String
-            let build = dictionary["CFBundleVersion"] as! String
             let device = Device()
-            return "\n\n\nVersion: \(version) (\(build))\niOS: \(device.systemVersion)\nModel: \(device)"
+            return "\n\n\nVersion: \(getAppVersionBuild())\niOS: \(device.systemVersion)\nModel: \(device)"
         }
         
         if MFMailComposeViewController.canSendMail() {

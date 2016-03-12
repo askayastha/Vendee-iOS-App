@@ -51,6 +51,10 @@
 		<string>FaktFlipboard-Medium.otf</string>
 		<string>FaktFlipboard-Normal.otf</string>
 		<string>FaktFlipboard-SemiBold.otf</string>
+		<string>VikiKomet-Bold.otf</string>
+		<string>VikiKomet-BoldItalic.otf</string>
+		<string>VikiKomet-Italic.otf</string>
+		<string>VikiKomet-Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

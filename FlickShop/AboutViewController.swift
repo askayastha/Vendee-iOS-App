@@ -13,7 +13,6 @@ class AboutViewController: UIViewController {
     
     @IBOutlet weak var appVersionLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
-    @IBOutlet weak var thirdPartyLibrariesLabel: UILabel!
     
     var thirdPartyLibraries = [
         "Alamofire by Alamofire Software Foundation",
@@ -30,9 +29,8 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         title = "About Vendee"
-        appVersionLabel.text = "Vendee 1.0"
-        copyrightLabel.text = "© 2016 Ashish Kayastha"
-        thirdPartyLibrariesLabel.text = thirdPartyLibraries.joinWithSeparator("\n")
+        appVersionLabel.text = "Vendee Fashion" + "\n" + "v\(getAppVersion())"
+        copyrightLabel.text = "© 2016 Ashish Kayastha.\nAll rights reserved."
     }
     
     override func viewWillAppear(animated: Bool) {

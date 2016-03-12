@@ -88,3 +88,18 @@ func logEventsForFilter() {
         Answers.logCustomEventWithName("Applied Filters", customAttributes: ["Sort": sort])
     }
 }
+
+func getAppVersionBuild() -> String {
+    let dictionary = NSBundle.mainBundle().infoDictionary!
+    let version = dictionary["CFBundleShortVersionString"] as! String
+    let build = dictionary["CFBundleVersion"] as! String
+    
+    return "\(version) (\(build))"
+}
+
+func getAppVersion() -> String {
+    let dictionary = NSBundle.mainBundle().infoDictionary!
+    let version = dictionary["CFBundleShortVersionString"] as! String
+    
+    return "\(version)"
+}

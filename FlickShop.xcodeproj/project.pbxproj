@@ -76,6 +76,11 @@
 		75BE17551C04DB88007E0A59 /* Shopstyle_Stores.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */; };
 		75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */; };
 		75C8ED901C943BA500ADED8C /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ED8F1C943BA500ADED8C /* LicensesViewController.swift */; };
+		75C8ED9A1C94625300ADED8C /* licenses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ED991C94625300ADED8C /* licenses.txt */; };
+		75C8ED9F1C947AC400ADED8C /* VikiKomet-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ED9B1C947AC400ADED8C /* VikiKomet-Bold.otf */; };
+		75C8EDA01C947AC400ADED8C /* VikiKomet-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ED9C1C947AC400ADED8C /* VikiKomet-BoldItalic.otf */; };
+		75C8EDA11C947AC400ADED8C /* VikiKomet-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ED9D1C947AC400ADED8C /* VikiKomet-Italic.otf */; };
+		75C8EDA21C947AC400ADED8C /* VikiKomet-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ED9E1C947AC400ADED8C /* VikiKomet-Regular.otf */; };
 		75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48D81C0735A100C4C34D /* CategorySearch.swift */; };
 		75DD48DB1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */; };
 		75DD7F3C1C19F45300BDB0A3 /* FiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD7F3B1C19F45300BDB0A3 /* FiltersModel.swift */; };
@@ -214,6 +219,11 @@
 		75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Shopstyle_Stores.plist; sourceTree = "<group>"; };
 		75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerBrowseViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75C8ED8F1C943BA500ADED8C /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
+		75C8ED991C94625300ADED8C /* licenses.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = licenses.txt; sourceTree = "<group>"; };
+		75C8ED9B1C947AC400ADED8C /* VikiKomet-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VikiKomet-Bold.otf"; sourceTree = "<group>"; };
+		75C8ED9C1C947AC400ADED8C /* VikiKomet-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VikiKomet-BoldItalic.otf"; sourceTree = "<group>"; };
+		75C8ED9D1C947AC400ADED8C /* VikiKomet-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VikiKomet-Italic.otf"; sourceTree = "<group>"; };
+		75C8ED9E1C947AC400ADED8C /* VikiKomet-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "VikiKomet-Regular.otf"; sourceTree = "<group>"; };
 		75DD48D81C0735A100C4C34D /* CategorySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategorySearch.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIViewController+SharedAppDelegate.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75DD7F3B1C19F45300BDB0A3 /* FiltersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FiltersModel.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -530,6 +540,10 @@
 			children = (
 				75A31E381BDFBAAE006FD010 /* Assets.xcassets */,
 				75F12D191BE0A54D00258874 /* Categories.xcassets */,
+				75C8ED9B1C947AC400ADED8C /* VikiKomet-Bold.otf */,
+				75C8ED9C1C947AC400ADED8C /* VikiKomet-BoldItalic.otf */,
+				75C8ED9D1C947AC400ADED8C /* VikiKomet-Italic.otf */,
+				75C8ED9E1C947AC400ADED8C /* VikiKomet-Regular.otf */,
 				756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */,
 				756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */,
 				756E15AD1C7213D20046CCBA /* FaktFlipboard-Normal.otf */,
@@ -567,6 +581,7 @@
 		75F12D271BE0AC8100258874 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				75C8ED991C94625300ADED8C /* licenses.txt */,
 				75EC0E711C8896EA008C162B /* GoogleService-Info.plist */,
 				7559FA301C65017500177064 /* Brands.plist */,
 				75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */,
@@ -743,20 +758,25 @@
 				75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */,
 				75EC0E721C8896EA008C162B /* GoogleService-Info.plist in Resources */,
 				753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */,
+				75C8EDA01C947AC400ADED8C /* VikiKomet-BoldItalic.otf in Resources */,
 				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
 				753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */,
 				75F12D041BE0A35900258874 /* Categories.plist in Resources */,
 				75F12D021BE0A35900258874 /* Brands_Backup.plist in Resources */,
 				75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */,
+				75C8EDA21C947AC400ADED8C /* VikiKomet-Regular.otf in Resources */,
+				75C8EDA11C947AC400ADED8C /* VikiKomet-Italic.otf in Resources */,
 				75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */,
 				75F12D0B1BE0A35900258874 /* FlickPageCell.xib in Resources */,
 				756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */,
 				7559FA311C65017500177064 /* Brands.plist in Resources */,
 				756E15B01C7213D20046CCBA /* FaktFlipboard-Medium.otf in Resources */,
 				75BE17531C04DAA4007E0A59 /* Shopstyle_Brands.plist in Resources */,
+				75C8ED9F1C947AC400ADED8C /* VikiKomet-Bold.otf in Resources */,
 				756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */,
 				75F12D0F1BE0A35900258874 /* ProximaNova-Bold.ttf in Resources */,
 				750CA62A1C847ABB00A73F7A /* Favorites.storyboard in Resources */,
+				75C8ED9A1C94625300ADED8C /* licenses.txt in Resources */,
 				756E15B21C7213D20046CCBA /* FaktFlipboard-SemiBold.otf in Resources */,
 				75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */,
 				75F12D101BE0A35900258874 /* ProximaNova-Reg.ttf in Resources */,

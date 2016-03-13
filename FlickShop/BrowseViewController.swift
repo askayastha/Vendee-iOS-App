@@ -112,8 +112,9 @@ class BrowseViewController: UICollectionViewController {
         collectionView!.addGestureRecognizer(swipeUpRecognizer)
         collectionView!.addGestureRecognizer(swipeDownRecognizer)
         
-        collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)
-        // collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        collectionView!.contentInset = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
+//        collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)
+//        collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
             layout.delegate = self

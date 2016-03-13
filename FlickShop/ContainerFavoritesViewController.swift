@@ -29,6 +29,7 @@ class ContainerFavoritesViewController: UIViewController {
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(true, animated: false)
+        automaticallyAdjustsScrollViewInsets = false
         
         // Spinner setup
         view.addSubview(spinner)

@@ -12,10 +12,11 @@ import Crashlytics
 class PhotosViewController: UIViewController {
     
     @IBOutlet weak var photoScrubbingScrollView: UIScrollView!
+    
+//    private(set) var didSetup = false
+    
     var pageViewController: UIPageViewController?
-    
     var tinyImageViews: [UIImageView]
-    
     var imageURLs: [String]!
     var tinyImageURLs: [String]!
     var page: Int!
@@ -27,7 +28,6 @@ class PhotosViewController: UIViewController {
             tinyImageViews[selectedPage].layer.borderWidth = 1.0
         }
     }
-    var didSetup = false
     
     required init?(coder aDecoder: NSCoder) {
         tinyImageViews = [UIImageView]()
@@ -52,9 +52,13 @@ class PhotosViewController: UIViewController {
         print("viewDidLoad")
         super.viewDidLoad()
         
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: "imageTapped:")
+        pageViewController?.view.addGestureRecognizer(tapRecognizer)
+        
         // Setup page view
         pageViewController?.setViewControllers([viewControllerAtIndex(page)!], direction: .Forward, animated: false, completion: nil)
         
+        photoScrubbingScrollView.backgroundColor = UIColor(white: 1.0, alpha: 0.95)
         positionImagesInPhotoScrubber()
         
         // Log screen views
@@ -64,9 +68,9 @@ class PhotosViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         print("viewDidLayoutSubviews")
-            didSetup = true
-            photoScrubbingScrollView.hidden = true
-            setPhotoScrubberVisible(false, animated: false)
+        
+        photoScrubbingScrollView.hidden = true
+        setPhotoScrubberVisible(false, animated: false)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -110,6 +114,10 @@ class PhotosViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func imageTapped(recognizer: UITapGestureRecognizer) {
+        setPhotoScrubberVisible(!isPhotoScrubberVisible(), animated: true)
+    }
+    
     func photoScrubberTapped(recognizer: UITapGestureRecognizer) {
         let page = recognizer.view!.tag
         let currentPage = selectedPage
@@ -150,7 +158,7 @@ class PhotosViewController: UIViewController {
     
     private func setPhotoScrubberVisible(visible: Bool, animated: Bool) {
         if isPhotoScrubberVisible() == visible { return }
-        print("HAHAHAHAHHA: \(photoScrubbingScrollView.frame)")
+        print("Frame: \(photoScrubbingScrollView.frame)")
         let frame = photoScrubbingScrollView.frame
         let height = frame.size.height
         let offsetY = visible ? -height : height
@@ -158,10 +166,10 @@ class PhotosViewController: UIViewController {
 //        UIView.animateWithDuration(animated ? 0.3 : 0.0) {
 //            self.photoScrubbingScrollView.frame = CGRectOffset(frame, 0, offsetY)
 //        }
-        UIView.animateWithDuration(animated ? 0.3 : 0.0, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
+        UIView.animateWithDuration(animated ? 0.5 : 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: [], animations: {
             self.photoScrubbingScrollView.frame = CGRectOffset(frame, 0, offsetY)
             }, completion: nil)
-        print("HAHAHAHAHHA: \(photoScrubbingScrollView.frame)")
+        print("Frame: \(photoScrubbingScrollView.frame)")
     }
     
     private func isPhotoScrubberVisible() -> Bool {

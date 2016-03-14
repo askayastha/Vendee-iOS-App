@@ -38,6 +38,8 @@ class PhotosViewController: UIViewController {
     
     deinit {
         print("Deallocating PhotosViewController!")
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.PhotosDidTapNotification, object: nil)
     }
     
     @IBAction func closeButton() {
@@ -52,8 +54,7 @@ class PhotosViewController: UIViewController {
         print("viewDidLoad")
         super.viewDidLoad()
         
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "imageTapped:")
-        pageViewController?.view.addGestureRecognizer(tapRecognizer)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "togglePhotoScrubberVisibility", name: CustomNotifications.PhotosDidTapNotification, object: nil)
         
         // Setup page view
         pageViewController?.setViewControllers([viewControllerAtIndex(page)!], direction: .Forward, animated: false, completion: nil)
@@ -114,7 +115,7 @@ class PhotosViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func imageTapped(recognizer: UITapGestureRecognizer) {
+    func togglePhotoScrubberVisibility() {
         setPhotoScrubberVisible(!isPhotoScrubberVisible(), animated: true)
     }
     

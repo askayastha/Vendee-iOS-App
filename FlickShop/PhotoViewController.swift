@@ -21,12 +21,16 @@ class PhotoViewController: UIViewController {
         zoomingScrollView = UIScrollView(frame: view.frame)
         zoomingScrollView.delegate = self
         
-        // Double TapGestureRecognizer setup
-        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
-        doubleTapRecognizer.numberOfTapsRequired = 2
-        doubleTapRecognizer.numberOfTouchesRequired = 1
+        // Setup gestures
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: "scrollViewTapped:")
+        zoomingScrollView.addGestureRecognizer(singleTapGesture)
         
-        zoomingScrollView.addGestureRecognizer(doubleTapRecognizer)
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
+        doubleTapGesture.numberOfTapsRequired = 2
+        doubleTapGesture.numberOfTouchesRequired = 1
+        zoomingScrollView.addGestureRecognizer(doubleTapGesture)
+        
+        singleTapGesture.requireGestureRecognizerToFail(doubleTapGesture)
         zoomableImageSetup()
     }
 
@@ -87,6 +91,10 @@ class PhotoViewController: UIViewController {
         let centerFrame = CGRect(x: 0.0, y: (zoomingScrollView.frame.size.height - newImageSize.height)/2, width: newImageSize.width, height: newImageSize.height)
         
         return centerFrame
+    }
+    
+    func scrollViewTapped(recognizer: UITapGestureRecognizer) {
+        CustomNotifications.photosDidTapNotification()
     }
     
     func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {

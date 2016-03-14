@@ -79,16 +79,16 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.loadRequest(NSURLRequest(URL: webpageURL))
         
         // Swipe gesture setup
-        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
-        swipeUpRecognizer.delegate = self
-        swipeUpRecognizer.direction = .Up
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
+        swipeUpGesture.delegate = self
+        swipeUpGesture.direction = .Up
         
-        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
-        swipeDownRecognizer.delegate = self
-        swipeDownRecognizer.direction = .Down
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
+        swipeDownGesture.delegate = self
+        swipeDownGesture.direction = .Down
         
-        webView.addGestureRecognizer(swipeUpRecognizer)
-        webView.addGestureRecognizer(swipeDownRecognizer)
+        webView.addGestureRecognizer(swipeUpGesture)
+        webView.addGestureRecognizer(swipeDownGesture)
     }
 
     override func didReceiveMemoryWarning() {

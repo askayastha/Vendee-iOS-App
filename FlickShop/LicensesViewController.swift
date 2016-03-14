@@ -24,16 +24,16 @@ class LicensesViewController: UIViewController {
         textView.text = licensesText
         
         // Swipe gesture setup
-        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
-        swipeUpRecognizer.delegate = self
-        swipeUpRecognizer.direction = .Up
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
+        swipeUpGesture.delegate = self
+        swipeUpGesture.direction = .Up
         
-        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
-        swipeDownRecognizer.delegate = self
-        swipeDownRecognizer.direction = .Down
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
+        swipeDownGesture.delegate = self
+        swipeDownGesture.direction = .Down
         
-        view.addGestureRecognizer(swipeUpRecognizer)
-        view.addGestureRecognizer(swipeDownRecognizer)
+        view.addGestureRecognizer(swipeUpGesture)
+        view.addGestureRecognizer(swipeDownGesture)
     }
     
     override func viewWillAppear(animated: Bool) {

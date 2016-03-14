@@ -22,21 +22,26 @@ struct CustomNotifications {
     static let FilterDidClearNotification = "FilterDidClear"
     static let FavoritesModelDidChangeNotification = "FavoritesModelDidChange"
     static let NetworkDidChangeToReachableNotification = "NetworkDidChangeToReachable"
+    static let PhotosDidTapNotification = "PhotosDidTapNotification"
     
     static func filterDidChangeNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(FilterDidChangeNotification, object: nil)
     }
     
     static func filterDidClearNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FilterDidClearNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(FilterDidClearNotification, object: nil)
     }
     
     static func favoritesModelDidChangeNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.FavoritesModelDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(FavoritesModelDidChangeNotification, object: nil)
     }
     
     static func networkDidChangeToReachableNotification() {
-        NSNotificationCenter.defaultCenter().postNotificationName(CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(NetworkDidChangeToReachableNotification, object: nil)
+    }
+    
+    static func photosDidTapNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(PhotosDidTapNotification, object: nil)
     }
 }
 

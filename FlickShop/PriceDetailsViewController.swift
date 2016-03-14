@@ -75,24 +75,24 @@ class PriceDetailsViewController: UIViewController {
         discountLabel.text = discountText
         
         // Dismiss tap gesture setup
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: "close:")
-        tapRecognizer.cancelsTouchesInView = false
-        tapRecognizer.delegate = self
-        view.addGestureRecognizer(tapRecognizer)
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: "close:")
+        singleTapGesture.cancelsTouchesInView = false
+        singleTapGesture.delegate = self
+        view.addGestureRecognizer(singleTapGesture)
         
         // Swipe gesture setup
-        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "close:")
-        tapRecognizer.cancelsTouchesInView = false
-        swipeUpRecognizer.delegate = self
-        swipeUpRecognizer.direction = .Up
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: "close:")
+        swipeUpGesture.cancelsTouchesInView = false
+        swipeUpGesture.delegate = self
+        swipeUpGesture.direction = .Up
         
-        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "close:")
-        tapRecognizer.cancelsTouchesInView = false
-        swipeDownRecognizer.delegate = self
-        swipeDownRecognizer.direction = .Down
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: "close:")
+        swipeDownGesture.cancelsTouchesInView = false
+        swipeDownGesture.delegate = self
+        swipeDownGesture.direction = .Down
         
-        view.addGestureRecognizer(swipeUpRecognizer)
-        view.addGestureRecognizer(swipeDownRecognizer)
+        view.addGestureRecognizer(swipeUpGesture)
+        view.addGestureRecognizer(swipeDownGesture)
     }
 
 }

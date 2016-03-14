@@ -101,16 +101,16 @@ class BrowseViewController: UICollectionViewController {
     private func setupView() {
         
         // Swipe gesture setup
-        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
-        swipeUpRecognizer.delegate = self
-        swipeUpRecognizer.direction = .Up
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
+        swipeUpGesture.delegate = self
+        swipeUpGesture.direction = .Up
         
-        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
-        swipeDownRecognizer.delegate = self
-        swipeDownRecognizer.direction = .Down
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
+        swipeDownGesture.delegate = self
+        swipeDownGesture.direction = .Down
         
-        collectionView!.addGestureRecognizer(swipeUpRecognizer)
-        collectionView!.addGestureRecognizer(swipeDownRecognizer)
+        collectionView!.addGestureRecognizer(swipeUpGesture)
+        collectionView!.addGestureRecognizer(swipeDownGesture)
         
         collectionView!.contentInset = UIEdgeInsets(top: 0, left: 4, bottom: 64, right: 4)
 //        collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)

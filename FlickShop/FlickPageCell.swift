@@ -252,9 +252,9 @@ class FlickPageCell: UICollectionViewCell {
                 spinner.stopAnimating()
             }
             
-            // TapGestureRecognizer setup
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
-            imageView.addGestureRecognizer(tapGestureRecognizer)
+            // Setup gestures
+            let singleTapGesture = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
+            imageView.addGestureRecognizer(singleTapGesture)
             
             scrollView.addSubview(imageView)
             imageViews[page] = imageView

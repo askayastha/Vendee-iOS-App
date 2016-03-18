@@ -112,6 +112,9 @@ class Search {
             
         } else {
             if let filterParams = PreselectedFiltersModel.sharedInstance().getFilterParamsForCategory(category) {
+                if filterParams.containsString("cat=") {
+                    category = ""
+                }
                 var requestURL = ShopStyle.Router.PreselectedResults(itemOffset, limit, category).URLRequest.URLString
                 
                 requestURL.appendContentsOf("&" + filterParams)

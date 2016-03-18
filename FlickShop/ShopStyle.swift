@@ -24,12 +24,16 @@ struct ShopStyle {
             let result: (path: String, parameters: [String: AnyObject]) = {
                 switch self {
                 case .PreselectedResults(let offset, let limit, let category):
-                    let params = [
+                    var params = [
                         "pid": Router.APIKey,
-                        "cat": category,
                         "offset": "\(offset)",
                         "limit": "\(limit)"
                     ]
+                    
+                    if !category.isEmpty {
+                        params["cat"] = category
+                    }
+                    
                     return ("/products", params)
                     
                 case .PopularResults (let offset, let limit, let category):
@@ -59,7 +63,7 @@ struct ShopStyle {
                     ]
                     
                     if let sort = sort {
-                        params["sort"] = "\(sort)"
+                        params["sort"] = sort
                     }
                     
                     return ("/products", params)

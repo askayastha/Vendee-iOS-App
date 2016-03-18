@@ -14,8 +14,8 @@ class PreselectedFilter: NSObject, NSCoding {
     var filterParams: String!
     
     init(record : CKRecord) {
-        self.category = record.objectForKey("Category") as! String
-        self.filterParams = record.objectForKey("FilterParams") as! String
+        self.category = record.objectForKey("Category") as? String
+        self.filterParams = record.objectForKey("FilterParams") as? String
     }
     
     required init?(coder aDecoder: NSCoder) {

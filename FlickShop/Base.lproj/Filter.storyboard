@@ -425,15 +425,15 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view tag="2000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orS-bD-xkB" customClass="ColorView" customModule="Vendee" customModuleProvider="target">
-                                            <rect key="frame" x="15" y="10" width="50" height="25"/>
+                                            <rect key="frame" x="15" y="10" width="25" height="25"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="3AQ-Ka-zaC"/>
-                                                <constraint firstAttribute="width" constant="50" id="Mwb-ZW-70Q"/>
+                                                <constraint firstAttribute="width" constant="25" id="Mwb-ZW-70Q"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="2001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iT2-UR-Ljn">
-                                            <rect key="frame" x="80" y="13" width="35" height="17"/>
+                                            <rect key="frame" x="55" y="13" width="35" height="17"/>
                                             <fontDescription key="fontDescription" name="FaktFlipboard-Normal" family="Fakt Flipboard" pointSize="14"/>
                                             <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>

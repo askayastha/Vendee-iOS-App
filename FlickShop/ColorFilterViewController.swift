@@ -90,11 +90,12 @@ class ColorFilterViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath)
         
         let colorView = cell.viewWithTag(2000)
+        colorView?.layer.cornerRadius = colorView!.bounds.size.width / 2
         let colorLabel = cell.viewWithTag(2001) as? UILabel
         let colorHexString = colorHexDict.orderedValues[indexPath.row]
         
         if colorHexString == "#FFFFFF" {
-            colorView?.layer.borderColor = UIColor.blackColor().CGColor
+            colorView?.layer.borderColor = UIColor.grayColor().CGColor
             colorView?.layer.borderWidth = 1.0
         }
         colorView?.backgroundColor = UIColor(hexString: colorHexString)

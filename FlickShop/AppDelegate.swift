@@ -20,11 +20,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let networkManager = NetworkReachabilityManager(host: "api.shopstyle.com")
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window!.layer.cornerRadius = 5.0
-        window!.layer.masksToBounds = true
         TSMessage.setDelegate(self)
+        customizeWindow()
         customizeNavBar()
         customizeTabBar()
+        customizeToolbar()
         customizeSearchBar()
         configureNetworkManager()
         configureGoogleAnalytics()
@@ -154,6 +154,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return rootViewController
     }
+    
+    private func customizeWindow() {
+        window!.layer.cornerRadius = 5.0
+        window!.layer.masksToBounds = true
+    }
 
     private func customizeTabBar() {
         let tabBarController = window!.rootViewController as! UITabBarController
@@ -170,6 +175,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             navigationController = tabBarControllers[2] as! UINavigationController
             navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
         }
+    }
+    
+    private func customizeToolbar() {
+        UIToolbar.appearance().translucent = false
+        UIToolbar.appearance().barTintColor = UIColor(hexString: "#F6F6F6")
     }
     
     private func customizeNavBar() {

@@ -612,7 +612,7 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(10% Off)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qu2-Dc-3Fj">
                                                 <rect key="frame" x="17" y="27" width="76" height="22"/>
                                                 <fontDescription key="fontDescription" name="Whitney-Book" family="Whitney" pointSize="18"/>
                                                 <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -665,7 +665,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPX-ZJ-4pa">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fET-c1-kgt">
@@ -701,7 +701,7 @@
                         <constraints>
                             <constraint firstItem="uPX-ZJ-4pa" firstAttribute="top" secondItem="1jm-2G-zBb" secondAttribute="bottom" id="34W-WK-fYy"/>
                             <constraint firstItem="uPX-ZJ-4pa" firstAttribute="leading" secondItem="v3y-lz-d8J" secondAttribute="leading" id="G7u-Qs-gSL"/>
-                            <constraint firstItem="Phn-PV-gZf" firstAttribute="top" secondItem="uPX-ZJ-4pa" secondAttribute="bottom" id="HHD-9J-brZ"/>
+                            <constraint firstItem="fET-c1-kgt" firstAttribute="top" secondItem="uPX-ZJ-4pa" secondAttribute="bottom" id="jlB-gT-pcC"/>
                             <constraint firstAttribute="trailing" secondItem="uPX-ZJ-4pa" secondAttribute="trailing" id="ldl-Pz-1Ft"/>
                             <constraint firstItem="fET-c1-kgt" firstAttribute="leading" secondItem="v3y-lz-d8J" secondAttribute="leading" id="nec-i0-4FW"/>
                             <constraint firstItem="Phn-PV-gZf" firstAttribute="top" secondItem="fET-c1-kgt" secondAttribute="bottom" id="o3x-OG-D5o"/>

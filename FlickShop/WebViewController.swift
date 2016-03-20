@@ -187,13 +187,13 @@ extension WebViewController: UIGestureRecognizerDelegate {
     func swipedUp(recognizer: UISwipeGestureRecognizer) {
         print("swipedUp")
         delegate?.swipedUp()
-        setToolBarVisible(false, animated: true)
+//        setToolBarVisible(false, animated: true)
     }
     
     func swipedDown(recognizer: UISwipeGestureRecognizer) {
         print("swipedDown")
         delegate?.swipedDown()
-        setToolBarVisible(true, animated: true)
+//        setToolBarVisible(true, animated: true)
     }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {

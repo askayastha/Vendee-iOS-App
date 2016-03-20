@@ -20,6 +20,7 @@ class SortFilterViewController: UITableViewController {
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
     var selectedSort: [String: String]
+    var selectedIndexPath: NSIndexPath!
     
     required init?(coder aDecoder: NSCoder) {
         selectedSort = filtersModel.sort
@@ -75,7 +76,15 @@ class SortFilterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+
+        if let indexPath = selectedIndexPath {
+            selectedSort.removeAll()
+            let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+            selectedCell?.accessoryType = .None
+        }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        selectedIndexPath = indexPath
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let sortName = (cell?.textLabel?.text)!
@@ -84,10 +93,6 @@ class SortFilterViewController: UITableViewController {
             selectedSort[sortName] = sortsDict[sortName]
             cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
             
-        } else {
-            selectedSort.removeAll()
-            cell?.setSelected(false, animated: false)
-            cell?.accessoryType = UITableViewCellAccessoryType.None
         }
         
         print(selectedSort)
@@ -99,11 +104,11 @@ class SortFilterViewController: UITableViewController {
         CustomNotifications.filterDidChangeNotification()
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
-        selectedSort.removeAll()
-        cell?.accessoryType = UITableViewCellAccessoryType.None
-    }
+//    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+//        let cell = tableView.cellForRowAtIndexPath(indexPath)
+//        selectedSort.removeAll()
+//        cell?.accessoryType = UITableViewCellAccessoryType.None
+//    }
     
     func refreshTable() {
         selectedSort.removeAll()

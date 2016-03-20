@@ -24,8 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeWindow()
         customizeNavBar()
         customizeTabBar()
-        customizeToolbar()
         customizeSearchBar()
+        customizeTableView()
         configureNetworkManager()
         configureGoogleAnalytics()
         configureFabric()
@@ -177,11 +177,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func customizeToolbar() {
-        UIToolbar.appearance().translucent = false
-        UIToolbar.appearance().barTintColor = UIColor(hexString: "#F6F6F6")
-    }
-    
     private func customizeNavBar() {
         let navAppearance = UINavigationBar.appearance()
         
@@ -204,6 +199,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!
         ]
         UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).setTitleTextAttributes(normalTextAttributes, forState: .Normal)
+    }
+    
+    private func customizeTableView() {
+        let colorView = UIView()
+        colorView.backgroundColor = UIColor(hexString: "#F5F5F5")
+        
+        UITableViewCell.appearance().selectedBackgroundView = colorView
     }
     
     private func configureNetworkManager() {

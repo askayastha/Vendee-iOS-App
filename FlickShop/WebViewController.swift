@@ -49,6 +49,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        toolBar.translucent = false
+        toolBar.barTintColor = UIColor(hexString: "#F6F6F6")
         backButton.enabled = false
         forwardButton.enabled = false
         

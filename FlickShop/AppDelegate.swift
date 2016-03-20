@@ -157,6 +157,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     private func customizeTabBar() {
         let tabBarController = window!.rootViewController as! UITabBarController
+        let tabBar = tabBarController.tabBar
+        tabBar.backgroundImage = UIImage.imageWithColor(UIColor(hexString: "#F6F6F6")!, andSize: CGSizeMake(tabBar.bounds.size.width, tabBar.bounds.size.height))
         
         if let tabBarControllers = tabBarController.viewControllers {
             var navigationController = tabBarControllers[0] as! UINavigationController

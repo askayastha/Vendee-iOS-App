@@ -16,6 +16,7 @@
 #import "PINRemoteImageManagerResult.h"
 #import "PINRemoteImageProcessorTask.h"
 #import "PINRemoteImageTask.h"
+#import "PINRemoteLock.h"
 #import "PINURLSessionManager.h"
 #import "FLAnimatedImageView+PINRemoteImage.h"
 

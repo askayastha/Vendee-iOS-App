@@ -4,11 +4,11 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'FlickShop' do
-    pod 'Alamofire', '3.2.0'
+    pod 'Alamofire', '3.2.1'
     pod 'MBProgressHUD', '0.9.2'
     pod 'Ono'
     pod 'SwiftyJSON', '~> 2.0'
-    pod 'PINRemoteImage', '2.0'
+    pod 'PINRemoteImage', '2.1.1'
     pod 'NMRangeSlider', :git => 'https://github.com/chanil1218/NMRangeSlider.git', :commit => 'c89890c'
     pod 'TSMessages'
     pod 'DeviceKit', '0.3.0'

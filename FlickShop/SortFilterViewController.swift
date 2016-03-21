@@ -35,6 +35,10 @@ class SortFilterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let key = selectedSort.keys.first {
+            selectedIndexPath = NSIndexPath(forRow: sortsDict.orderedKeys.indexOf(key)!, inSection: 0)
+        }
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
     }
     
@@ -66,10 +70,10 @@ class SortFilterViewController: UITableViewController {
         cell.textLabel?.text = sortsDict.orderedKeys[indexPath.row]
         
         // Visually checkmark the selected sort
-        if selectedSort.keys.contains((cell.textLabel?.text)!) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        if selectedSort.keys.contains(sortsDict.orderedKeys[indexPath.row]) {
+            cell.accessoryType = .Checkmark
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryType = .None
         }
         
         return cell

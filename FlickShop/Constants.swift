@@ -13,6 +13,11 @@ struct Files {
     static let TSDesignFileName = "TSMessagesCustomDesign.json"
 }
 
+struct App {
+    static let storeId = "1092199423"
+    static let storeURL = "https://itunes.apple.com/app/id\(storeId)"
+}
+
 struct CKRecordTypes {
     static let PreselectedFilter = "PreselectedFilter"
 }

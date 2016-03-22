@@ -70,6 +70,9 @@ class MoreViewController: UITableViewController {
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Rate this app'", label: nil, value: nil)
             Answers.logCustomEventWithName("Tapped 'Rate this app'", customAttributes: nil)
+            
+            let appStoreURL = NSURL(string: App.storeURL)!
+            UIApplication.sharedApplication().openURL(appStoreURL)
         
         // Share this app
         case (1, 1):

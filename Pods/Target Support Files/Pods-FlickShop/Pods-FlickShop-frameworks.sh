@@ -93,6 +93,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FlickShop/Ono.framework"
   install_framework "Pods-FlickShop/PINCache.framework"
   install_framework "Pods-FlickShop/PINRemoteImage.framework"
+  install_framework "Pods-FlickShop/SMPageControl.framework"
   install_framework "Pods-FlickShop/SwiftyJSON.framework"
   install_framework "Pods-FlickShop/TSMessages.framework"
 fi
@@ -106,6 +107,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FlickShop/Ono.framework"
   install_framework "Pods-FlickShop/PINCache.framework"
   install_framework "Pods-FlickShop/PINRemoteImage.framework"
+  install_framework "Pods-FlickShop/SMPageControl.framework"
   install_framework "Pods-FlickShop/SwiftyJSON.framework"
   install_framework "Pods-FlickShop/TSMessages.framework"
 fi

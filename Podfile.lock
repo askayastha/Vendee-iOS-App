@@ -33,6 +33,7 @@ PODS:
   - PINRemoteImage/FLAnimatedImage (2.1.1):
     - FLAnimatedImage (>= 1.0)
     - PINRemoteImage/Core
+  - SMPageControl (1.2)
   - SwiftyJSON (2.3.1)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
@@ -48,6 +49,7 @@ DEPENDENCIES:
     `c89890c`)
   - Ono
   - PINRemoteImage (= 2.1.1)
+  - SMPageControl
   - SwiftyJSON (~> 2.0)
   - TSMessages
 
@@ -79,6 +81,7 @@ SPEC CHECKSUMS:
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
   PINCache: 078426d356ab95ef875e9e62e5c35a2ea3333c28
   PINRemoteImage: 0c620b392a2a41a0a14f143107bbb0596f73dd23
+  SMPageControl: 922892813001cfaf059e86e6801f46a967e9ee29
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 

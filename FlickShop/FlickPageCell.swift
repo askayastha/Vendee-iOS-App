@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import SMPageControl
 
 protocol FlickPageCellDelegate: class {
     func openItemInStoreWithProduct(product: Product)
@@ -34,7 +35,7 @@ class FlickPageCell: UICollectionViewCell {
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var headerSubtitleLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var pageControl: SMPageControl!
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
@@ -85,6 +86,10 @@ class FlickPageCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        pageControl.currentPageIndicatorImage = UIImage(named: "current_page_dot")
+        pageControl.pageIndicatorImage = UIImage(named: "page_dot")
+        pageControl.hidesForSinglePage = true
         
         buyButton.layer.cornerRadius = 5.0
         buyButton.layer.masksToBounds = true

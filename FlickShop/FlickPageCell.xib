@@ -32,14 +32,16 @@
                                     <constraint firstAttribute="height" constant="388" id="T8r-Cs-Zva"/>
                                 </constraints>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="qk9-8k-TIY">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OAk-I2-aet" customClass="SMPageControl">
                                 <rect key="frame" x="0.0" y="371" width="600" height="37"/>
-                                <color key="pageIndicatorTintColor" white="0.33333333333333331" alpha="0.5034575591216216" colorSpace="calibratedWhite"/>
-                                <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="8oD-cm-Qw5"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="pageChanged:" destination="cT6-e4-j9m" eventType="valueChanged" id="wcK-vR-CLI"/>
+                                    <action selector="pageChanged:" destination="cT6-e4-j9m" eventType="valueChanged" id="nby-42-F2j"/>
                                 </connections>
-                            </pageControl>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZx-aY-FKA" customClass="InfoButton" customModule="Vendee" customModuleProvider="target">
                                 <rect key="frame" x="549" y="362" width="36" height="36"/>
                                 <constraints>
@@ -58,14 +60,14 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="KZx-aY-FKA" firstAttribute="leading" secondItem="vPW-YU-CQK" secondAttribute="leading" constant="15" id="2dt-2d-dJT"/>
+                            <constraint firstAttribute="bottom" secondItem="OAk-I2-aet" secondAttribute="bottom" id="3Ix-Yb-Nbb"/>
                             <constraint firstAttribute="trailing" secondItem="phq-mC-NVg" secondAttribute="trailing" id="Bd5-Mj-dwb"/>
+                            <constraint firstAttribute="trailing" secondItem="OAk-I2-aet" secondAttribute="trailing" id="H8w-uF-Ltc"/>
                             <constraint firstAttribute="bottom" secondItem="KZx-aY-FKA" secondAttribute="bottom" constant="10" id="JWS-ul-YX4"/>
-                            <constraint firstAttribute="bottom" secondItem="qk9-8k-TIY" secondAttribute="bottom" id="RTv-qv-WYJ"/>
                             <constraint firstItem="phq-mC-NVg" firstAttribute="leading" secondItem="vPW-YU-CQK" secondAttribute="leading" id="UfC-ov-OQC"/>
                             <constraint firstAttribute="trailing" secondItem="KZx-aY-FKA" secondAttribute="trailing" constant="15" id="bcm-vU-KKD"/>
-                            <constraint firstAttribute="trailing" secondItem="qk9-8k-TIY" secondAttribute="trailing" id="g1J-s0-7ik"/>
+                            <constraint firstItem="OAk-I2-aet" firstAttribute="leading" secondItem="vPW-YU-CQK" secondAttribute="leading" id="cYI-8q-aaE"/>
                             <constraint firstAttribute="bottom" secondItem="phq-mC-NVg" secondAttribute="bottom" constant="10" id="n3A-0A-yUj"/>
-                            <constraint firstItem="qk9-8k-TIY" firstAttribute="leading" secondItem="vPW-YU-CQK" secondAttribute="leading" id="slE-gq-xxb"/>
                             <constraint firstItem="phq-mC-NVg" firstAttribute="top" secondItem="vPW-YU-CQK" secondAttribute="top" constant="10" id="tBx-qn-40v"/>
                         </constraints>
                         <variation key="default">
@@ -232,7 +234,7 @@
                 <outlet property="headerImageView" destination="hmx-Nc-ciu" id="Epz-ys-aGo"/>
                 <outlet property="headerSubtitleLabel" destination="ytC-qz-kx0" id="ZaM-7S-gmc"/>
                 <outlet property="headerTitleLabel" destination="1Ep-HK-Feh" id="Bhw-6h-sHu"/>
-                <outlet property="pageControl" destination="qk9-8k-TIY" id="L8f-Sn-IgO"/>
+                <outlet property="pageControl" destination="OAk-I2-aet" id="Xi7-eb-VzY"/>
                 <outlet property="scrollView" destination="phq-mC-NVg" id="t1h-98-MO2"/>
                 <outlet property="scrollViewHeightConstraint" destination="T8r-Cs-Zva" id="Lif-6m-16A"/>
                 <outlet property="topImageViewLineSeparatorHeightConstraint" destination="fP0-GR-OIK" id="yD7-Zr-kgx"/>

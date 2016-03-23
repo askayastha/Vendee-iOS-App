@@ -75,18 +75,18 @@ class PriceDetailsViewController: UIViewController {
         discountLabel.text = discountText
         
         // Dismiss tap gesture setup
-        let singleTapGesture = UITapGestureRecognizer(target: self, action: "close:")
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(close(_:)))
         singleTapGesture.cancelsTouchesInView = false
         singleTapGesture.delegate = self
         view.addGestureRecognizer(singleTapGesture)
         
         // Swipe gesture setup
-        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: "close:")
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(close(_:)))
         swipeUpGesture.cancelsTouchesInView = false
         swipeUpGesture.delegate = self
         swipeUpGesture.direction = .Up
         
-        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: "close:")
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(close(_:)))
         swipeDownGesture.cancelsTouchesInView = false
         swipeDownGesture.delegate = self
         swipeDownGesture.direction = .Down

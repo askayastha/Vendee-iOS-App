@@ -76,7 +76,7 @@ class ContainerFlickViewController: UIViewController {
 extension ContainerFlickViewController: ScrollEventsDelegate {
     
     func didScroll() {
-        didScrollCount++
+        didScrollCount += 1
         
         if didScrollCount > 5 {
             UIView.animateWithDuration(0.3) {

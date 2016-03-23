@@ -39,7 +39,7 @@ class SortFilterViewController: UITableViewController {
             selectedIndexPath = NSIndexPath(forRow: sortsDict.orderedKeys.indexOf(key)!, inSection: 0)
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidClearNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -42,7 +42,7 @@ class CategorySearch {
     }
     
     func incrementRetryCount() {
-        retryCount++
+        retryCount += 1
     }
     
     func resetRetryCount() {

@@ -45,7 +45,7 @@ class SideTabViewController: UITableViewController {
             tableView.scrollEnabled = true
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshTable", name: CustomNotifications.FilterDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {

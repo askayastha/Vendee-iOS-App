@@ -44,7 +44,7 @@ class PhotoScout {
                     let imageSize = CGSize(width: size.width, height: size.height)
                     product.smallImageSize = imageSize
                     print("\(index + count)*****\(imageSize)")
-                    count++
+                    count += 1
                     
                     if count == limit && !self.cancelled {
                         dispatch_async(dispatch_get_main_queue()) {
@@ -55,12 +55,12 @@ class PhotoScout {
             }
         }
         
-        for var i = index; i < lastIndex; i++ {
+        for i in index..<lastIndex {
             guard i < products.count else { break }
             
             let product = products.objectAtIndex(i) as! Product
             if let _ = product.smallImageSize {
-                count++
+                count += 1
                 if count == limit && !self.cancelled {
                     dispatch_async(dispatch_get_main_queue()) {
                         completion(true, lastIndex)

@@ -53,7 +53,7 @@ class Search {
     }
     
     func incrementRetryCount() {
-        retryCount++
+        retryCount += 1
     }
     
     func resetRetryCount() {
@@ -83,7 +83,7 @@ class Search {
         }
     }
     
-    func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, var forCategory category: String, completion: SearchComplete) {
+    func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, forCategory category: String, completion: SearchComplete) {
         
         if state == .Loading { return }     // Do not request more data if a request is in process.
         
@@ -92,15 +92,14 @@ class Search {
         
         if filtersModel.filtersApplied {
             // Get category code for filter
-            if let filterCategory = getFilterCategory() {
-                category = filterCategory
-            }
+            var filterCategory = category
+            if let cat = getFilterCategory() { filterCategory = cat }
             
             // Get sort code for filter
             let sort = filtersModel.sort.count > 0 ? filtersModel.sort.values.first : nil
             
             // New request URL for filter
-            var requestURL = ShopStyle.Router.FilteredResults(itemOffset, limit, category, sort).URLRequest.URLString
+            var requestURL = ShopStyle.Router.FilteredResults(itemOffset, limit, filterCategory, sort).URLRequest.URLString
             requestURL.appendContentsOf(getFilterParams())
             
             print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
@@ -112,10 +111,10 @@ class Search {
             
         } else {
             if let filterParams = PreselectedFiltersModel.sharedInstance().getFilterParamsForCategory(category) {
-                if filterParams.containsString("cat=") {
-                    category = ""
-                }
-                var requestURL = ShopStyle.Router.PreselectedResults(itemOffset, limit, category).URLRequest.URLString
+                var filterCategory = category
+                if filterParams.containsString("cat=") { filterCategory = "" }
+                
+                var requestURL = ShopStyle.Router.PreselectedResults(itemOffset, limit, filterCategory).URLRequest.URLString
                 
                 requestURL.appendContentsOf("&" + filterParams)
                 print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")

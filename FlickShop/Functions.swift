@@ -17,15 +17,17 @@ func afterDelay(seconds: Double, closure: () -> ()) {
     dispatch_after(when, dispatch_get_main_queue(), closure)
 }
 
-func fixFrame(var frame: CGRect) -> CGRect {
+func fixFrame(frame: CGRect) -> CGRect {
     let headerView: CGFloat = 60.0
     let imageViewGap: CGFloat = 20.0
-    let actionView: CGFloat = 52.2
+    let actionView: CGFloat = 52.0
+    
+    var fixedFrame = frame
     if frame.size.width > ScreenConstants.width {
-        frame.size.width = ScreenConstants.width
-        frame.size.height = ScreenConstants.height - headerView - imageViewGap - actionView
+        fixedFrame.size.width = ScreenConstants.width
+        fixedFrame.size.height = ScreenConstants.height - headerView - imageViewGap - actionView
     }
-    return frame
+    return fixedFrame
 }
 
 func getCategoryForProduct(product: Product) -> String? {

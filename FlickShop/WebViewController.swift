@@ -81,11 +81,11 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.loadRequest(NSURLRequest(URL: webpageURL))
         
         // Swipe gesture setup
-        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: "swipedUp:")
+        let swipeUpGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipedUp(_:)))
         swipeUpGesture.delegate = self
         swipeUpGesture.direction = .Up
         
-        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: "swipedDown:")
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(swipedDown(_:)))
         swipeDownGesture.delegate = self
         swipeDownGesture.direction = .Down
         

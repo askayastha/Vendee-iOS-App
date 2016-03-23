@@ -92,7 +92,7 @@ class FavoritesModel {
         for favoriteProduct in favoriteProducts {
             let product = favoriteProduct as! Product
             if product.id == id { return index }
-            index++
+            index += 1
         }
         return nil
     }

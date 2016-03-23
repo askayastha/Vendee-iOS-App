@@ -54,7 +54,7 @@ class PhotosViewController: UIViewController {
         print("viewDidLoad")
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "togglePhotoScrubberVisibility", name: CustomNotifications.PhotosDidTapNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(togglePhotoScrubberVisibility), name: CustomNotifications.PhotosDidTapNotification, object: nil)
         
         // Setup page view
         pageViewController?.setViewControllers([viewControllerAtIndex(page)!], direction: .Forward, animated: false, completion: nil)
@@ -100,7 +100,7 @@ class PhotosViewController: UIViewController {
             tinyImageView.contentMode = .ScaleAspectFit
             tinyImageView.userInteractionEnabled = true
             tinyImageView.frame = scrubberFrame
-            tinyImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "photoScrubberTapped:"))
+            tinyImageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(photoScrubberTapped(_:))))
             tinyImageView.pin_setImageFromURL(NSURL(string: tinyImageURLs![page])!)
             photoScrubbingScrollView.addSubview(tinyImageView)
             
@@ -184,7 +184,7 @@ extension PhotosViewController: UIPageViewControllerDataSource {
         print("ViewController Before")
         if let photoVC = viewController as? PhotoViewController {
             var index: Int = photoVC.pageIndex
-            index--
+            index -= 1
             
             if index < 0 {
                 return nil
@@ -198,7 +198,7 @@ extension PhotosViewController: UIPageViewControllerDataSource {
         print("ViewController After")
         if let photoVC = viewController as? PhotoViewController {
             var index: Int = photoVC.pageIndex
-            index++
+            index += 1
             
             if index >= imageURLs.count {
                 return nil

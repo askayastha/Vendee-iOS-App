@@ -151,7 +151,7 @@ class FlickViewController: UICollectionViewController {
             requestDataFromShopStyleForCategory(productCategory)
         }
         
-        flickCount++
+        flickCount += 1
     }
     
     

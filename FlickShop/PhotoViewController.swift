@@ -22,10 +22,10 @@ class PhotoViewController: UIViewController {
         zoomingScrollView.delegate = self
         
         // Setup gestures
-        let singleTapGesture = UITapGestureRecognizer(target: self, action: "scrollViewTapped:")
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
         zoomingScrollView.addGestureRecognizer(singleTapGesture)
         
-        let doubleTapGesture = UITapGestureRecognizer(target: self, action: "scrollViewDoubleTapped:")
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(scrollViewDoubleTapped(_:)))
         doubleTapGesture.numberOfTapsRequired = 2
         doubleTapGesture.numberOfTouchesRequired = 1
         zoomingScrollView.addGestureRecognizer(doubleTapGesture)

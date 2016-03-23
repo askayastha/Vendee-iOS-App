@@ -225,7 +225,7 @@ public struct OrderedDictionary<Key: Hashable, Value>: CollectionType, ArrayLite
         var nextIndex = 0
         let lastIndex = self.count
         
-        return anyGenerator {
+        return AnyGenerator {
             guard nextIndex < lastIndex else { return nil }
             
             let nextKey = self._orderedKeys[nextIndex]
@@ -236,7 +236,7 @@ public struct OrderedDictionary<Key: Hashable, Value>: CollectionType, ArrayLite
             
             let element = (nextKey, nextValue)
             
-            nextIndex++
+            nextIndex += 1
             
             return element
         }

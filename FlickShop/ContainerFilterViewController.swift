@@ -41,8 +41,8 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         clearAllButton.setTitleTextAttributes(normalTextAttributes, forState: .Normal)
         applyButton.setTitleTextAttributes(normalTextAttributes, forState: .Normal)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshView", name: CustomNotifications.FilterDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "clearView", name: CustomNotifications.FilterDidClearNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshView), name: CustomNotifications.FilterDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(clearView), name: CustomNotifications.FilterDidClearNotification, object: nil)
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Open", value: nil)

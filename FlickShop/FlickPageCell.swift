@@ -258,7 +258,7 @@ class FlickPageCell: UICollectionViewCell {
             }
             
             // Setup gestures
-            let singleTapGesture = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
+            let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(imageViewTapped(_:)))
             imageView.addGestureRecognizer(singleTapGesture)
             
             scrollView.addSubview(imageView)
@@ -296,20 +296,25 @@ class FlickPageCell: UICollectionViewCell {
         let firstPage = currentPage - 1
         let lastPage = currentPage + 1
         
-        
-        // Purge anything before the first page
-        for var index = 0; index < firstPage; ++index {
-            purgePage(index)
+        // Guard against "fatal error: Can't form Range with end < start"
+        if firstPage > 0 {
+            // Purge anything before the first page
+            for index in 0..<firstPage {
+                purgePage(index)
+            }
         }
         
         // Load pages in our range
-        for var index = firstPage; index <= lastPage; ++index {
+        for index in firstPage...lastPage {
             loadPage(index)
         }
         
-        // Purge anything after the last page
-        for var index = lastPage + 1; index < pageControl.numberOfPages; ++index {
-            purgePage(index)
+        // Guard against "fatal error: Can't form Range with end < start"
+        if lastPage < pageControl.numberOfPages {
+            // Purge anything after the last page
+            for index in (lastPage + 1)..<pageControl.numberOfPages {
+                purgePage(index)
+            }
         }
     }
     

@@ -38,8 +38,8 @@ class FavoritesViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshFavoritesModel", name: CustomNotifications.FavoritesModelDidChangeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "refreshFavoritesModel", name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshFavoritesModel), name: CustomNotifications.FavoritesModelDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshFavoritesModel), name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
         
         setupView()
     }

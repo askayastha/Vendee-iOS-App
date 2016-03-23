@@ -12,7 +12,7 @@ target 'FlickShop' do
     pod 'NMRangeSlider', :git => 'https://github.com/chanil1218/NMRangeSlider.git', :commit => 'c89890c'
     pod 'TSMessages'
     pod 'SMPageControl'
-    pod 'DeviceKit', '0.3.0'
+    pod 'DeviceKit', '0.3.1'
     pod 'Google/Analytics'
     pod 'Fabric'
     pod 'Crashlytics'

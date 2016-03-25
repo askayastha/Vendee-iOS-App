@@ -4,7 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'FlickShop' do
-    pod 'Alamofire', '3.2.1'
+    pod 'Alamofire', '3.3.0'
     pod 'MBProgressHUD', '0.9.2'
     pod 'Ono'
     pod 'SwiftyJSON', '~> 2.0'

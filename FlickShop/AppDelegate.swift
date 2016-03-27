@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func presentURL(url: NSURL) -> Bool {
         if let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: true), let host = components.host, let path = components.path {
             switch host {
-                case "vendeeapp.com":
+            case "vendeeapp.com":
                     switch path {
                     case "/item":
                         if let productId = findProductId(components) {
@@ -82,6 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
                             return true
                         }
+                    
+                    case "":
+                        UIApplication.sharedApplication().openURL(url)
+                        return true
+                    
                     default:
                         return false
                 }
@@ -89,6 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 return false
             }
         }
+        
         return false
     }
     

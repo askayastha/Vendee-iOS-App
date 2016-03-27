@@ -112,6 +112,7 @@ class FavoritesViewController: UICollectionViewController {
         
         print("populatePhotosFromIndex")
         populatingData = true
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         let populateLimit = 1
         
         scout.populatePhotoSizesFromIndex(index, withLimit: populateLimit) { [weak self] success, lastIndex in

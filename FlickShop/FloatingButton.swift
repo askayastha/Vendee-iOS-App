@@ -1,5 +1,5 @@
 //
-//  BackButton.swift
+//  FloatingButton.swift
 //  Vendee
 //
 //  Created by Ashish Kayastha on 12/4/15.
@@ -33,6 +33,11 @@ class FloatingButton: UIButton {
             roundedRect: bounds,
             cornerRadius: bounds.size.width / 2
             ).CGPath
+        
+        // Add border
+        layer.cornerRadius = bounds.size.width / 2
+        layer.borderWidth = 1.0
+        layer.borderColor = UIColor(hexString: "#B9B9B9")?.CGColor
     }
     
     override var highlighted: Bool {

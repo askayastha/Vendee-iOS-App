@@ -139,6 +139,7 @@ class BrowseViewController: UICollectionViewController {
         
         print("populatePhotosFromIndex")
         populatingData = true
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
         scout.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, lastIndex in
             guard let strongSelf = self else { return }

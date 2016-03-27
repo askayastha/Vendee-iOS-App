@@ -12,20 +12,26 @@ import UIKit
 class FloatingButton: UIButton {
     
     let lightGrayTransparent = UIColor(hexString: "#F2F2F2")
-//    let darkGrayTransparent = UIColor(red: 85/255, green: 85/255, blue: 85/255, alpha: 1.0)
     let darkGrayTransparent = UIColor(white: 0.8, alpha: 1.0)
+    let borderColor = UIColor(hexString: "#B9B9B9")
 
-    @IBInspectable var fillColor: UIColor!
+    var fillColor: UIColor!
     
     override func drawRect(rect: CGRect) {
         let path = UIBezierPath(ovalInRect: rect)
         
         // Add fill
+        fillColor = lightGrayTransparent
         fillColor.setFill()
         path.fill()
         
+        // Add border
+        layer.cornerRadius = bounds.size.width / 2
+        layer.borderWidth = 1.0
+        layer.borderColor = borderColor?.CGColor
+        
         // Add shadow
-        layer.shadowColor = UIColor(hexString: "#B9B9B9")?.CGColor
+        layer.shadowColor = borderColor?.CGColor
         layer.shadowOffset = CGSizeMake(0, 0)
         layer.shadowOpacity = 1.0
         layer.shadowRadius = 6/7
@@ -34,10 +40,10 @@ class FloatingButton: UIButton {
             cornerRadius: bounds.size.width / 2
             ).CGPath
         
-        // Add border
-        layer.cornerRadius = bounds.size.width / 2
-        layer.borderWidth = 1.0
-        layer.borderColor = UIColor(hexString: "#B9B9B9")?.CGColor
+        // Add border shadow
+//        let shadowPathWidth: CGFloat = 1.0
+//        let layerAndShadowRadius = layer.cornerRadius
+//        layer.shadowPath = CGPathCreateCopyByStrokingPath(CGPathCreateWithRoundedRect(bounds, layerAndShadowRadius, layerAndShadowRadius, nil), nil, shadowPathWidth, .Round, .Bevel, 0.0)
     }
     
     override var highlighted: Bool {

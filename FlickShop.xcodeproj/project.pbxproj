@@ -31,6 +31,7 @@
 		75414D741C51462100C2E3FE /* ContainerWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75414D731C51462100C2E3FE /* ContainerWebViewController.swift */; };
 		75414D761C51465400C2E3FE /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75414D751C51465400C2E3FE /* WebViewController.swift */; };
 		7541FECE1C3E720B005CEB11 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */; };
+		7542AA891CA9E98900739643 /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7542AA871CA9E6C200739643 /* Pacifico.ttf */; };
 		7546CB1E1C4A447A000C9635 /* ContainerProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB1D1C4A447A000C9635 /* ContainerProductDetailsViewController.swift */; };
 		7546CB221C4A5A0E000C9635 /* SimilarProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB211C4A5A0E000C9635 /* SimilarProductCell.swift */; };
 		7546CB2E1C4A884D000C9635 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB2D1C4A884D000C9635 /* InfoButton.swift */; };
@@ -167,6 +168,7 @@
 		75414D731C51462100C2E3FE /* ContainerWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerWebViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75414D751C51465400C2E3FE /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = WebViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PhotosViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		7542AA871CA9E6C200739643 /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
 		7546CB1D1C4A447A000C9635 /* ContainerProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerProductDetailsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7546CB211C4A5A0E000C9635 /* SimilarProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SimilarProductCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7546CB2D1C4A884D000C9635 /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InfoButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -540,6 +542,7 @@
 			children = (
 				75A31E381BDFBAAE006FD010 /* Assets.xcassets */,
 				75F12D191BE0A54D00258874 /* Categories.xcassets */,
+				7542AA871CA9E6C200739643 /* Pacifico.ttf */,
 				75C8ED9B1C947AC400ADED8C /* VikiKomet-Bold.otf */,
 				75C8ED9C1C947AC400ADED8C /* VikiKomet-BoldItalic.otf */,
 				75C8ED9D1C947AC400ADED8C /* VikiKomet-Italic.otf */,
@@ -752,6 +755,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7542AA891CA9E98900739643 /* Pacifico.ttf in Resources */,
 				75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */,
 				75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */,
 				757D57AC1C56816D00F64907 /* Filter.storyboard in Resources */,

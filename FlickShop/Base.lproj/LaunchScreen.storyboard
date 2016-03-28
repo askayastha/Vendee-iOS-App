@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,18 +17,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vendee_icon" translatesAutoresizingMaskIntoConstraints="NO" id="ZYf-kp-xfH">
-                                <rect key="frame" x="270" y="270" width="60" height="60"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vendee_title" translatesAutoresizingMaskIntoConstraints="NO" id="ZYf-kp-xfH">
+                                <rect key="frame" x="200" y="280" width="200" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="HZ5-zZ-HTg"/>
-                                    <constraint firstAttribute="width" constant="60" id="M0o-eg-tCk"/>
+                                    <constraint firstAttribute="height" constant="40" id="HZ5-zZ-HTg"/>
+                                    <constraint firstAttribute="width" constant="200" id="M0o-eg-tCk"/>
                                 </constraints>
                             </imageView>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlj-Mb-4lU">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <items/>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="hlj-Mb-4lU" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="8Jf-Jc-CbG"/>
                             <constraint firstItem="ZYf-kp-xfH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Jtp-K0-Nmh"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="hlj-Mb-4lU" secondAttribute="bottom" id="P93-VJ-tHC"/>
                             <constraint firstItem="ZYf-kp-xfH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="VM6-Fb-WCL"/>
+                            <constraint firstAttribute="trailing" secondItem="hlj-Mb-4lU" secondAttribute="trailing" id="cQM-cN-hqa"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -38,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="vendee_icon" width="60" height="60"/>
+        <image name="vendee_title" width="200" height="40"/>
     </resources>
 </document>

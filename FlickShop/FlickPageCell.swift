@@ -91,7 +91,7 @@ class FlickPageCell: UICollectionViewCell {
         pageControl.pageIndicatorImage = UIImage(named: "page_dot")
         pageControl.hidesForSinglePage = true
         
-        buyButton.layer.cornerRadius = 5.0
+        buyButton.layer.cornerRadius = 18.0
         buyButton.layer.masksToBounds = true
         buyButton.adjustsImageWhenHighlighted = false
     }

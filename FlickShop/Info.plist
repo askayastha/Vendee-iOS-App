@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>16</string>
+	<string>17</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -55,6 +55,7 @@
 		<string>VikiKomet-BoldItalic.otf</string>
 		<string>VikiKomet-Italic.otf</string>
 		<string>VikiKomet-Regular.otf</string>
+		<string>Pacifico.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

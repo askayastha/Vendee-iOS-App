@@ -11,6 +11,7 @@ import Crashlytics
 
 class AboutViewController: UIViewController {
     
+    @IBOutlet weak var vendeeLogo: UIImageView!
     @IBOutlet weak var appVersionLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
     
@@ -29,7 +30,9 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         title = "About Vendee"
-        appVersionLabel.text = "Vendee Fashion" + "\n" + "v\(getAppVersion())"
+        vendeeLogo.layer.cornerRadius = 10.0
+        vendeeLogo.layer.masksToBounds = true
+        appVersionLabel.text = "Version \(getAppVersion())"
         copyrightLabel.text = "© 2016 Ashish Kayastha.\nAll rights reserved."
     }
     

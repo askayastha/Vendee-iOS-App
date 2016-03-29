@@ -94,7 +94,7 @@
 		75EEE39F1C6F53CA00C507FC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */; };
 		75F12CEA1BE0A24100258874 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE31BE0A24100258874 /* Functions.swift */; };
 		75F12CEB1BE0A24100258874 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE41BE0A24100258874 /* Search.swift */; };
-		75F12CEC1BE0A24100258874 /* UIImage+BlendEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE51BE0A24100258874 /* UIImage+BlendEffects.swift */; };
+		75F12CEC1BE0A24100258874 /* UIImage+Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE51BE0A24100258874 /* UIImage+Effects.swift */; };
 		75F12CED1BE0A24100258874 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE71BE0A24100258874 /* UIImage+ImageEffects.m */; };
 		75F12D011BE0A35900258874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CEE1BE0A35900258874 /* AppDelegate.swift */; };
 		75F12D021BE0A35900258874 /* Brands_Backup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75F12CEF1BE0A35900258874 /* Brands_Backup.plist */; };
@@ -239,7 +239,7 @@
 		75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickShop-Bridging-Header.h"; sourceTree = "<group>"; };
 		75F12CE31BE0A24100258874 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Functions.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12CE41BE0A24100258874 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Search.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		75F12CE51BE0A24100258874 /* UIImage+BlendEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIImage+BlendEffects.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		75F12CE51BE0A24100258874 /* UIImage+Effects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "UIImage+Effects.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12CE61BE0A24100258874 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		75F12CE71BE0A24100258874 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		75F12CEE1BE0A35900258874 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -527,7 +527,7 @@
 			children = (
 				75AD0B4B1C7C777A00CD5C85 /* SwiftHEXColors.swift */,
 				75F12CE31BE0A24100258874 /* Functions.swift */,
-				75F12CE51BE0A24100258874 /* UIImage+BlendEffects.swift */,
+				75F12CE51BE0A24100258874 /* UIImage+Effects.swift */,
 				75F12CE61BE0A24100258874 /* UIImage+ImageEffects.h */,
 				75F12CE71BE0A24100258874 /* UIImage+ImageEffects.m */,
 				75F12D141BE0A3B800258874 /* Alamofire+CustomResponse.swift */,
@@ -939,7 +939,7 @@
 				75B455FC1C59483700424B21 /* SlideInAnimationController.swift in Sources */,
 				75F12D031BE0A35900258874 /* BrowseViewController.swift in Sources */,
 				755F62FE1C770AA7003BA832 /* PhotoScout.swift in Sources */,
-				75F12CEC1BE0A24100258874 /* UIImage+BlendEffects.swift in Sources */,
+				75F12CEC1BE0A24100258874 /* UIImage+Effects.swift in Sources */,
 				75B455EE1C58FAEB00424B21 /* GradientView.swift in Sources */,
 				75B455F81C58FF5800424B21 /* PriceDetailsViewController.swift in Sources */,
 				756FC4E71C01B03F007AB0C5 /* ContainerViewController.swift in Sources */,

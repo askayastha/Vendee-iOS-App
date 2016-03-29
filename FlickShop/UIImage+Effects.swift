@@ -1,5 +1,5 @@
 //
-//  UIImage+BlendEffects.swift
+//  UIImage+Effects.swift
 //  Vendee
 //
 //  Created by Ashish Kayastha on 10/25/15.
@@ -50,5 +50,12 @@ extension UIImage {
         UIGraphicsEndImageContext()
         
         return image
+    }
+}
+
+extension UIImageView {
+    func tintImageColor(color: UIColor) {
+        self.image = self.image!.imageWithRenderingMode(.AlwaysTemplate)
+        self.tintColor = color
     }
 }

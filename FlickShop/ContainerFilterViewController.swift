@@ -32,7 +32,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
 //        navigationBar.barTintColor = UIColor(hexString: "#E7E7E7")
         view.backgroundColor = UIColor(hexString: "#F8F8F8")
         navigationBar.barTintColor = UIColor(hexString: "#F8F8F8")
-        toolBar.barTintColor = UIColor(hexString: "#F8F8F8")
+        toolBar.barTintColor = UIColor(hexString: "#F1F2F3")
         toolBar.tintColor = UIColor(hexString: "#353535")
         
         let normalTextAttributes: [String: AnyObject] = [
@@ -80,7 +80,9 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
             
             alert.addAction(okAction)
             alert.addAction(cancelAction)
+            
             presentViewController(alert, animated: true, completion: nil)
+            alert.view.tintColor = UIColor(hexString: "#7866B4")
             
         } else {
             FiltersModel.revertFiltersModel()

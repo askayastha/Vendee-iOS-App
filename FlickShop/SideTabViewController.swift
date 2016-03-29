@@ -45,6 +45,8 @@ class SideTabViewController: UITableViewController {
             tableView.scrollEnabled = true
         }
         
+        tableView.backgroundColor = UIColor(hexString: "#F1F2F3")
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidChangeNotification, object: nil)
     }
 
@@ -70,16 +72,17 @@ class SideTabViewController: UITableViewController {
         let textLabel = cell.viewWithTag(1001) as? UILabel
         let imageView = cell.viewWithTag(1002) as? UIImageView
 
-        cell.backgroundColor = UIColor(hexString: "#F8F8F8")
+        cell.backgroundColor = UIColor(hexString: "#F1F2F3")
         selectedImageView?.hidden = !isSelectedFilter(sideTabsDict.orderedKeys[indexPath.row])
-        textLabel?.text = sideTabsDict.orderedKeys[indexPath.row]
+        textLabel?.text = sideTabsDict.orderedKeys[indexPath.row].uppercaseString
         textLabel?.textColor = UIColor(hexString: "#4A4A4A")
         imageView?.image = UIImage(named: sideTabsDict.orderedValues[indexPath.row])
+        imageView?.tintImageColor(UIColor(hexString: "#4A4A4A")!)
         
-        if selectedFilter == textLabel?.text {
+        if selectedFilter.uppercaseString == textLabel?.text {
             cell.backgroundColor = UIColor.whiteColor()
             textLabel?.textColor = UIColor(hexString: "#7866B4")
-            imageView?.image = UIImage(named: sideTabsDict.orderedValues[indexPath.row] + "_selected")
+            imageView?.tintImageColor(UIColor(hexString: "#7866B4")!)
         }
 
         return cell
@@ -149,3 +152,4 @@ class SideTabViewController: UITableViewController {
     }
 
 }
+

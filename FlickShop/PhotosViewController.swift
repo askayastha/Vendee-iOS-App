@@ -24,8 +24,8 @@ class PhotosViewController: UIViewController {
         didSet {
             tinyImageViews[oldValue].layer.borderColor = UIColor.clearColor().CGColor
             tinyImageViews[oldValue].layer.borderWidth = 0.0
-            tinyImageViews[selectedPage].layer.borderColor = UIColor(hexString: "#00BFB0")?.CGColor
-            tinyImageViews[selectedPage].layer.borderWidth = 1.0
+            tinyImageViews[selectedPage].layer.borderColor = UIColor(hexString: "#7866B4")?.CGColor
+            tinyImageViews[selectedPage].layer.borderWidth = 2.0
         }
     }
     

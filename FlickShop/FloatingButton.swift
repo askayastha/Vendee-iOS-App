@@ -11,17 +11,16 @@ import UIKit
 @IBDesignable
 class FloatingButton: UIButton {
     
-    let lightGrayTransparent = UIColor(hexString: "#F2F2F2")
-    let darkGrayTransparent = UIColor(white: 0.8, alpha: 1.0)
+    var lightGray = UIColor(hexString: "#F2F2F2")
+    let darkGray = UIColor(white: 0.8, alpha: 1.0)
     let borderColor = UIColor(hexString: "#B9B9B9")
 
-    var fillColor: UIColor!
+    var fillColor: UIColor! = UIColor(hexString: "#F2F2F2")
     
     override func drawRect(rect: CGRect) {
         let path = UIBezierPath(ovalInRect: rect)
         
         // Add fill
-        fillColor = lightGrayTransparent
         fillColor.setFill()
         path.fill()
         
@@ -49,7 +48,7 @@ class FloatingButton: UIButton {
     override var highlighted: Bool {
         
         didSet {
-            fillColor = highlighted ? darkGrayTransparent : lightGrayTransparent
+            fillColor = highlighted ? darkGray : lightGray
             setNeedsDisplay()
         }
     }

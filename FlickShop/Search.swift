@@ -27,6 +27,7 @@ class Search {
     private(set) var state: State = .Idle
     private(set) var products: NSMutableOrderedSet
     private(set) var retryCount = 0
+    private(set) var totalItems = 0
     
     var lastItem: Int {
         return products.count
@@ -50,6 +51,7 @@ class Search {
         state = .Idle
         products.removeAllObjects()
         retryCount = 0
+        totalItems = 0
     }
     
     func incrementRetryCount() {
@@ -177,6 +179,10 @@ class Search {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
             print("----------Request successful----------")
             let jsonData = JSON(response.result.value!)
+            
+            self.totalItems = jsonData["metadata"]["total"].intValue
+            print("Total Items: \(self.totalItems)")
+            
             self.populateProducts(data: jsonData)
             self.state = .Success
             

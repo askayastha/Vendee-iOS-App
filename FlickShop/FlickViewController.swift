@@ -190,7 +190,9 @@ class FlickViewController: UICollectionViewController {
                 }
                 
             } else {
-                strongSelf.collectionView!.reloadData()
+                if strongSelf.search.lastItem != strongSelf.search.totalItems {
+                    strongSelf.collectionView!.reloadData()
+                }
                 MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
                 strongSelf.loadingHUDPresent = false
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false

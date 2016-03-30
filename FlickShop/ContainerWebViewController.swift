@@ -51,7 +51,7 @@ class ContainerWebViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // Start NSUserActivity
-        let activity = NSUserActivity(activityType: "com.ashish.flickshop.webview")
+        let activity = NSUserActivity(activityType: "com.ashish.vendee.webview")
         activity.title = "View Shopping URL"
         activity.webpageURL = webpageURL
         userActivity = activity

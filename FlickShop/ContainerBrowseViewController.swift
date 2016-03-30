@@ -61,9 +61,11 @@ class ContainerBrowseViewController: UIViewController {
         }
         
         if FiltersModel.sharedInstance().filtersApplied {
-            filterButton.imageView?.tintImageColor(UIColor(hexString: "#7866B4")!)
+            filterButton.setImage(UIImage(named: "filter_selected"), forState: .Normal)
+//            filterButton.imageView?.tintImageColor(UIColor(hexString: "#7866B4")!)
         } else {
-            filterButton.imageView?.tintImageColor(UIColor(hexString: "#696771")!)
+            filterButton.setImage(UIImage(named: "filter_medium_gray"), forState: .Normal)
+//            filterButton.imageView?.tintImageColor(UIColor(hexString: "#696771")!)
         }
     }
 

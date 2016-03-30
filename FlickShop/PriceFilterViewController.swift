@@ -14,6 +14,7 @@ class PriceFilterViewController: UITableViewController {
     
     private let minValue = 0
     private let maxValue = 29
+    private let priceCodeOffset = 20
     
     let prices = [
         "0", "10", "25", "50", "75", "100", "125", "150", "200", "250",
@@ -75,8 +76,10 @@ class PriceFilterViewController: UITableViewController {
         
         if minIndex == minValue && maxIndex == maxValue {
             priceRangeCode = nil
+        } else if maxIndex == maxValue {
+            priceRangeCode = "p\(minIndex + priceCodeOffset):\(maxIndex + priceCodeOffset)"     // p48:49
         } else {
-            priceRangeCode = "p\(minIndex + 20):\(maxIndex + 20)"
+            priceRangeCode = "p\(minIndex + priceCodeOffset):\(maxIndex + priceCodeOffset - 1)" // p20:20
         }
         updateUIForLowerValue(minIndex, andUpperValue: maxIndex)
         

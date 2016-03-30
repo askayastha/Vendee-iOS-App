@@ -8,6 +8,7 @@
 
 import Foundation
 import CloudKit
+import Crashlytics
 
 private let preselectedFiltersModelSingleton = PreselectedFiltersModel()
 
@@ -64,6 +65,10 @@ class PreselectedFiltersModel {
         publicDB.performQuery(query, inZoneWithID: nil) { results, error in
             if let error = error {
                 print("Error Loading: \(error)")
+                
+                // Log custom events
+                GoogleAnalytics.trackEventWithCategory("Error", action: "CloudKit Error", label: error.localizedDescription, value: nil)
+                Answers.logCustomEventWithName("CloudKit Error", customAttributes: ["Description": error.localizedDescription])
                 
             } else {
                 guard let results = results else { return }

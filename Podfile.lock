@@ -26,11 +26,11 @@ PODS:
   - NMRangeSlider (1.2.3)
   - Ono (1.2.2)
   - PINCache (2.2.2)
-  - PINRemoteImage (2.1.1):
-    - PINRemoteImage/FLAnimatedImage (= 2.1.1)
-  - PINRemoteImage/Core (2.1.1):
+  - PINRemoteImage (2.1.2):
+    - PINRemoteImage/FLAnimatedImage (= 2.1.2)
+  - PINRemoteImage/Core (2.1.2):
     - PINCache (>= 2.1)
-  - PINRemoteImage/FLAnimatedImage (2.1.1):
+  - PINRemoteImage/FLAnimatedImage (2.1.2):
     - FLAnimatedImage (>= 1.0)
     - PINRemoteImage/Core
   - SMPageControl (1.2)
@@ -48,7 +48,7 @@ DEPENDENCIES:
   - NMRangeSlider (from `https://github.com/chanil1218/NMRangeSlider.git`, commit
     `c89890c`)
   - Ono
-  - PINRemoteImage (= 2.1.1)
+  - PINRemoteImage (= 2.1.2)
   - SMPageControl
   - SwiftyJSON (~> 2.0)
   - TSMessages
@@ -80,7 +80,7 @@ SPEC CHECKSUMS:
   NMRangeSlider: b57dad1b1f1b5c18b4ecfc8856a20910152dfcf3
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
   PINCache: 078426d356ab95ef875e9e62e5c35a2ea3333c28
-  PINRemoteImage: 0c620b392a2a41a0a14f143107bbb0596f73dd23
+  PINRemoteImage: 2ce3f1fcc52f0360a3821f91f1a1bc653c5d2338
   SMPageControl: 922892813001cfaf059e86e6801f46a967e9ee29
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc

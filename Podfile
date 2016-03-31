@@ -8,7 +8,7 @@ target 'FlickShop' do
     pod 'MBProgressHUD', '0.9.2'
     pod 'Ono'
     pod 'SwiftyJSON', '~> 2.0'
-    pod 'PINRemoteImage', '2.1.1'
+    pod 'PINRemoteImage', '2.1.2'
     pod 'NMRangeSlider', :git => 'https://github.com/chanil1218/NMRangeSlider.git', :commit => 'c89890c'
     pod 'TSMessages'
     pod 'SMPageControl'

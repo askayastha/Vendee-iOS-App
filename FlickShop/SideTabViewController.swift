@@ -98,22 +98,27 @@ class SideTabViewController: UITableViewController {
         var filterSelected = false
         
         switch filter {
-            case "category":
-                let displayCategories = filtersModel.category["displayCategories"] as! [String]
-                let tappedCategories = filtersModel.category["tappedCategories"] as! [String]
-                let categoryName = filtersModel.productCategory?.componentsSeparatedByString(":").first
-                filterSelected = !(categoryName == tappedCategories.last || displayCategories.count == 0)
-            case "sort":
-                    filterSelected = filtersModel.sort.count > 0
-            case "brand", "store", "color", "price":
-                let codes = filtersModel.filterParams[filter] as! [String: String]
-                    filterSelected = codes.count > 0
-            case "discount":
-                let discountCode = filtersModel.filterParams[filter] as! [String: String]
-                let offerCodes = filtersModel.filterParams["offer"] as! [String: String]
-                filterSelected = discountCode.count > 0 || offerCodes.count > 0
-            default:
-                filterSelected = false
+        case "category":
+            let displayCategories = filtersModel.category["displayCategories"] as! [String]
+            let tappedCategories = filtersModel.category["tappedCategories"] as! [String]
+            let categoryName = filtersModel.productCategory?.componentsSeparatedByString(":").first
+            let tappedCategoryName = tappedCategories.last?.componentsSeparatedByString(":").first!
+            filterSelected = !(categoryName == tappedCategoryName || displayCategories.count == 0)
+            
+        case "sort":
+            filterSelected = filtersModel.sort.count > 0
+        
+        case "brand", "store", "color", "price":
+            let codes = filtersModel.filterParams[filter] as! [String: String]
+            filterSelected = codes.count > 0
+        
+        case "discount":
+            let discountCode = filtersModel.filterParams[filter] as! [String: String]
+            let offerCodes = filtersModel.filterParams["offer"] as! [String: String]
+            filterSelected = discountCode.count > 0 || offerCodes.count > 0
+        
+        default:
+            filterSelected = false
         }
         
         return filterSelected

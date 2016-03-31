@@ -111,10 +111,11 @@ class CategoryFilterViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
 
-        cell.textLabel?.text = displayCategories[indexPath.row]
+        let categoryShortName = displayCategories[indexPath.row].componentsSeparatedByString(":").first!
+        cell.textLabel?.text = categoryShortName
         
         // Visually checkmark the selected categories.
-        if tappedCategories.last == (cell.textLabel?.text)! {
+        if tappedCategories.last == displayCategories[indexPath.row] {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
@@ -124,6 +125,7 @@ class CategoryFilterViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         let categoryName = displayCategories[indexPath.row]    ; print(categoryName)
         
         // Reload the table with new data if the tapped category isn't the currently selected one.
@@ -158,7 +160,7 @@ class CategoryFilterViewController: UITableViewController {
         let selectedIndexPath = NSIndexPath(forRow: displayCategories.indexOf(categoryName)!, inSection: 0)
         
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath)
-        cell?.setSelected(true, animated: false)
+//        cell?.setSelected(true, animated: false)
         cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         // Filter Stuff
@@ -195,7 +197,7 @@ class CategoryFilterViewController: UITableViewController {
             let category = item as! CategoryInfo
             
             if category.parentId == categoryId {
-                subcategories.append(category.shortName!)
+                subcategories.append("\(category.shortName):\(category.name)")
             }
         }
         
@@ -214,18 +216,18 @@ class CategoryFilterViewController: UITableViewController {
         
         if categorySearch.categories.count > 0 {
             let rootCategory = categorySearch.categories.objectAtIndex(0) as! CategoryInfo
-            tappedCategories.append(rootCategory.shortName)
+            tappedCategories.append("\(rootCategory.shortName):\(rootCategory.name)")
         }
         
         for item in categorySearch.categories {
             let category = item as! CategoryInfo
             
             if category.id == categoryId || category.parentId == categoryId {
-                displayCategories.append(category.shortName)
+                displayCategories.append("\(category.shortName):\(category.name)")
             }
             
             // Make of dictionary of [Category: CategoryID]
-            categoriesIdDict[category.shortName] = category.id
+            categoriesIdDict["\(category.shortName):\(category.name)"] = category.id
         }
         let newCategoriesCount = displayCategories.count
         
@@ -275,17 +277,17 @@ class CategoryFilterViewController: UITableViewController {
                 print("Product count: \(lastItem)")
                 
                 let rootCategory = strongSelf.categorySearch.categories.objectAtIndex(0) as! CategoryInfo
-                strongSelf.tappedCategories.append(rootCategory.shortName!)
+                strongSelf.tappedCategories.append("\(rootCategory.shortName):\(rootCategory.name)")
                 
                 for item in strongSelf.categorySearch.categories {
                     let category = item as! CategoryInfo
                     
                     if category.id == categoryId || category.parentId == categoryId {
-                        strongSelf.displayCategories.append(category.shortName!)
+                        strongSelf.displayCategories.append("\(category.shortName):\(category.name)")
                     }
                     
                     // Make of dictionary of [Category: CategoryID]
-                    strongSelf.categoriesIdDict[category.shortName!] = category.id!
+                    strongSelf.categoriesIdDict["\(category.shortName):\(category.name)"] = category.id
                 }
                 // Save for filter stuff
                 strongSelf.filtersModel.category["categories"] = strongSelf.categorySearch.categories

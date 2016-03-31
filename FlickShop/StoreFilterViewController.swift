@@ -180,6 +180,7 @@ extension StoreFilterViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        searchController.searchBar.resignFirstResponder()
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let storeName = (cell?.textLabel?.text)!

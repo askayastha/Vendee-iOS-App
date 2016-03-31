@@ -180,6 +180,7 @@ extension BrandFilterViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        searchController.searchBar.resignFirstResponder()
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let brandName = (cell?.textLabel?.text)!

@@ -292,9 +292,9 @@ extension FlickViewController: FlickPageCellDelegate {
         indexPath = collectionView!.indexPathsForVisibleItems().first
         
         let url = "https://vendeeapp.com/item?id=\(product.id)"
-        let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found on Vendee")
+        let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found")
 //        let promoText = "Download Vendee app for free in the App Store."
-        let promoText = "I found this item on the Vendee app!"
+        let promoText = "Check out this item on Vendee!"
         
         var items = [AnyObject]()
         items.append(subjectActivityItem)

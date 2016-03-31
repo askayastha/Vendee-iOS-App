@@ -101,7 +101,7 @@ class MoreViewController: UITableViewController {
     private func shareTheApp() {
         let url = "https://vendeeapp.com/"
         let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found")
-        let promoText = "Try the Vendee Fashion Discovery App!"
+        let promoText = "Find all that's new in Fashion with Vendee!"
         
         var items = [AnyObject]()
         items.append(promoText)
@@ -110,6 +110,7 @@ class MoreViewController: UITableViewController {
         
         let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         presentViewController(activityVC, animated: true, completion: nil)
+        activityVC.view.tintColor = UIColor(hexString: "#7866B4")
     }
     
     private func sendSupportEmailWithSubject(subject: String) {
@@ -125,6 +126,7 @@ class MoreViewController: UITableViewController {
             controller.setToRecipients(["vendeefashion.ios@gmail.com"])
             controller.mailComposeDelegate = self
             self.presentViewController(controller, animated: true, completion: nil)
+            controller.view.tintColor = UIColor(hexString: "#7866B4")
         }
     }
     

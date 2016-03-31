@@ -73,6 +73,7 @@ class SideTabViewController: UITableViewController {
         let imageView = cell.viewWithTag(1002) as? UIImageView
 
         cell.backgroundColor = UIColor(hexString: "#F1F2F3")
+        selectedImageView?.tintImageColor(UIColor(hexString: "#4A4A4A")!)
         selectedImageView?.hidden = !isSelectedFilter(sideTabsDict.orderedKeys[indexPath.row])
         textLabel?.text = sideTabsDict.orderedKeys[indexPath.row].uppercaseString
         textLabel?.textColor = UIColor(hexString: "#4A4A4A")
@@ -83,6 +84,7 @@ class SideTabViewController: UITableViewController {
             cell.backgroundColor = UIColor.whiteColor()
             textLabel?.textColor = UIColor(hexString: "#7866B4")
             imageView?.tintImageColor(UIColor(hexString: "#7866B4")!)
+            selectedImageView?.tintImageColor(UIColor(hexString: "#7866B4")!)
         }
 
         return cell

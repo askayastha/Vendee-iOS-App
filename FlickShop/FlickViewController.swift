@@ -108,11 +108,6 @@ class FlickViewController: UICollectionViewController {
         cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
         cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
         
-        cell.headerImageView.layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
-        cell.headerImageView.layer.borderWidth = 0.5
-        cell.headerImageView.layer.cornerRadius = 5.0
-        cell.headerImageView.layer.masksToBounds = true
-                
         cell.product = product
         cell.delegate = self
         

@@ -24,13 +24,6 @@ enum FavoriteState {
 
 class FlickPageCell: UICollectionViewCell {
     
-    @IBInspectable var cornerRadius: CGFloat = 0 {
-        didSet {
-            layer.cornerRadius = cornerRadius
-            layer.masksToBounds = cornerRadius > 0
-        }
-    }
-    
     @IBOutlet weak var headerImageView: UIImageView!
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var headerSubtitleLabel: UILabel!
@@ -77,8 +70,10 @@ class FlickPageCell: UICollectionViewCell {
         spinners = [UIActivityIndicatorView?]()
         super.init(coder: aDecoder)
 
-        layer.borderWidth = 0.5
         layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
+        layer.borderWidth = 0.5
+        layer.cornerRadius = 5.0
+        layer.masksToBounds = true
         
         blurView.frame = bounds
         contentView.addSubview(blurView)
@@ -87,12 +82,16 @@ class FlickPageCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        headerImageView.layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
+        headerImageView.layer.borderWidth = 0.5
+        headerImageView.layer.cornerRadius = 5.0
+        headerImageView.layer.masksToBounds = true
+        
         pageControl.currentPageIndicatorImage = UIImage(named: "current_page_dot")
         pageControl.pageIndicatorImage = UIImage(named: "page_dot")
         pageControl.hidesForSinglePage = true
         
         buyButton.layer.cornerRadius = 18.0
-        buyButton.layer.masksToBounds = true
         buyButton.adjustsImageWhenHighlighted = false
     }
     

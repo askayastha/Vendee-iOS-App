@@ -51,6 +51,15 @@ class CustomPhotoCell: UICollectionViewCell {
         layer.masksToBounds = true
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        headerImageView.layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
+        headerImageView.layer.borderWidth = 0.5
+        headerImageView.layer.cornerRadius = 5.0
+        headerImageView.layer.masksToBounds = true
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         

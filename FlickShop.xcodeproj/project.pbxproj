@@ -97,7 +97,6 @@
 		75F12CEC1BE0A24100258874 /* UIImage+Effects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE51BE0A24100258874 /* UIImage+Effects.swift */; };
 		75F12CED1BE0A24100258874 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE71BE0A24100258874 /* UIImage+ImageEffects.m */; };
 		75F12D011BE0A35900258874 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CEE1BE0A35900258874 /* AppDelegate.swift */; };
-		75F12D021BE0A35900258874 /* Brands_Backup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75F12CEF1BE0A35900258874 /* Brands_Backup.plist */; };
 		75F12D031BE0A35900258874 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CF01BE0A35900258874 /* BrowseViewController.swift */; };
 		75F12D041BE0A35900258874 /* Categories.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75F12CF11BE0A35900258874 /* Categories.plist */; };
 		75F12D051BE0A35900258874 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CF21BE0A35900258874 /* CategoryCell.swift */; };
@@ -243,7 +242,6 @@
 		75F12CE61BE0A24100258874 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		75F12CE71BE0A24100258874 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		75F12CEE1BE0A35900258874 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		75F12CEF1BE0A35900258874 /* Brands_Backup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Brands_Backup.plist; sourceTree = "<group>"; };
 		75F12CF01BE0A35900258874 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = BrowseViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12CF11BE0A35900258874 /* Categories.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Categories.plist; sourceTree = "<group>"; };
 		75F12CF21BE0A35900258874 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoryCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -590,7 +588,6 @@
 				75BE17521C04DAA4007E0A59 /* Shopstyle_Brands.plist */,
 				75BE17541C04DB88007E0A59 /* Shopstyle_Stores.plist */,
 				75A31E3D1BDFBAAE006FD010 /* Info.plist */,
-				75F12CEF1BE0A35900258874 /* Brands_Backup.plist */,
 				75F12CF11BE0A35900258874 /* Categories.plist */,
 			);
 			name = "Supporting Files";
@@ -767,7 +764,6 @@
 				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
 				753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */,
 				75F12D041BE0A35900258874 /* Categories.plist in Resources */,
-				75F12D021BE0A35900258874 /* Brands_Backup.plist in Resources */,
 				75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */,
 				75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */,
 				75F12D0B1BE0A35900258874 /* FlickPageCell.xib in Resources */,

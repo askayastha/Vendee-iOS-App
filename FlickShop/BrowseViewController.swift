@@ -41,7 +41,7 @@ class BrowseViewController: UICollectionViewController {
     
     required init?(coder aDecoder: NSCoder) {
         search = Search()
-        scout = PhotoScout(products: search.products)
+        scout = PhotoScout(products: search.products, totalItems: search.totalItems)
         super.init(coder: aDecoder)
     }
     
@@ -75,7 +75,7 @@ class BrowseViewController: UICollectionViewController {
         
         scout.cancelled = true
         populatingData = false
-        scout = PhotoScout(products: search.products)
+        scout = PhotoScout(products: search.products, totalItems: 0)
         
         // Reset content size of the collection view
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
@@ -145,17 +145,16 @@ class BrowseViewController: UICollectionViewController {
         populatingData = true
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         
-        scout.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, lastIndex in
+        scout.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, fromIndex, lastIndex in
             guard let strongSelf = self else { return }
             guard success else {
                 print("GUARDING SUCCESS")
                 strongSelf.animateSpinner?(false)
                 strongSelf.populatingData = false
-                strongSelf.populatePhotosFromIndex(lastIndex)
+                strongSelf.populatePhotosFromIndex(fromIndex)
                 return
             }
-            strongSelf.productCount += NumericConstants.populateLimit
-            let fromIndex = lastIndex - NumericConstants.populateLimit
+            strongSelf.productCount += lastIndex - fromIndex
             let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
             
             strongSelf.collectionView!.performBatchUpdates({
@@ -208,6 +207,8 @@ class BrowseViewController: UICollectionViewController {
                 
             } else {
                 strongSelf.itemsCountLabel.text = "\(strongSelf.search.totalItems) Items"
+                strongSelf.scout.totalItems = strongSelf.search.totalItems
+                
                 if lastItem > 0 {
                     strongSelf.populatePhotosFromIndex(strongSelf.productCount)
                 } else {

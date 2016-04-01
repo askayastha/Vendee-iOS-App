@@ -71,7 +71,7 @@ class ContainerFavoritesViewController: UIViewController {
             
             let favoritesViewController = segue.destinationViewController as? FavoritesViewController
             favoritesViewController?.search = Search(products: favoriteProductsCopy)
-            favoritesViewController?.scout = PhotoScout(products: favoriteProductsCopy)
+            favoritesViewController?.scout = PhotoScout(products: favoriteProductsCopy, totalItems: favoriteProductsCopy.count)
             favoritesViewController?.animateSpinner = { [weak self] animate in
                 guard let strongSelf = self else { return }
                 if animate {

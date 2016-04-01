@@ -56,7 +56,7 @@ class FavoritesViewController: UICollectionViewController {
             
             let favoriteProductsCopy = FavoritesModel.sharedInstance().favoriteProducts.mutableCopy() as! NSMutableOrderedSet
             search = Search(products: favoriteProductsCopy)
-            scout = PhotoScout(products: favoriteProductsCopy)
+            scout = PhotoScout(products: favoriteProductsCopy, totalItems: favoriteProductsCopy.count)
             
             // Reset content size of the collection view
             if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
@@ -113,19 +113,17 @@ class FavoritesViewController: UICollectionViewController {
         print("populatePhotosFromIndex")
         populatingData = true
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        let populateLimit = 1
         
-        scout.populatePhotoSizesFromIndex(index, withLimit: populateLimit) { [weak self] success, lastIndex in
+        scout.populatePhotoSizesFromIndex(index, withLimit: NumericConstants.populateLimit) { [weak self] success, fromIndex, lastIndex in
             guard let strongSelf = self else { return }
             guard success else {
                 print("GUARDING SUCCESS")
                 strongSelf.animateSpinner?(false)
                 strongSelf.populatingData = false
-                strongSelf.populatePhotosFromIndex(lastIndex)
+                strongSelf.populatePhotosFromIndex(fromIndex)
                 return
             }
-            strongSelf.productCount += populateLimit
-            let fromIndex = lastIndex - populateLimit
+            strongSelf.productCount += lastIndex - fromIndex
             let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
             
             strongSelf.collectionView!.performBatchUpdates({

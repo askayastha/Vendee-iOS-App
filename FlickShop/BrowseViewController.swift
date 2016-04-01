@@ -13,10 +13,6 @@ import TSMessages
 import SwiftyJSON
 import Crashlytics
 
-struct BrowseViewCellIdentifiers {
-    static let customProductCell = "CustomPhotoCell"
-}
-
 class BrowseViewController: UICollectionViewController {
     
     private(set) var requestingData = false
@@ -30,6 +26,12 @@ class BrowseViewController: UICollectionViewController {
     let filtersModel = FiltersModel.sharedInstance()
     var scout: PhotoScout
     var productCategory: String!
+    var itemsCountLabel: UILabel!
+    
+    struct BrowseViewCellIdentifiers {
+        static let customProductCell = "CustomPhotoCell"
+        static let headerCell = "HeaderCell"
+    }
     
     deinit {
         print("Deallocating BrowseViewController!")
@@ -112,12 +114,14 @@ class BrowseViewController: UICollectionViewController {
         collectionView!.addGestureRecognizer(swipeUpGesture)
         collectionView!.addGestureRecognizer(swipeDownGesture)
         
+        collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: BrowseViewCellIdentifiers.headerCell)
         collectionView!.contentInset = UIEdgeInsets(top: 0, left: 4, bottom: 64, right: 4)
 //        collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)
 //        collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
             layout.delegate = self
+            layout.headerReferenceSize = CGSize(width: collectionView!.bounds.size.width, height: 50)
         }
     }
     
@@ -196,9 +200,14 @@ class BrowseViewController: UICollectionViewController {
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 
-            } else {                
+            } else {
+                strongSelf.itemsCountLabel.text = "\(strongSelf.search.totalItems) Items"
                 if lastItem > 0 {
                     strongSelf.populatePhotosFromIndex(strongSelf.productCount)
                 } else {
@@ -256,6 +265,40 @@ extension BrowseViewController {
         return cell
     }
     
+    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: BrowseViewCellIdentifiers.headerCell, forIndexPath: indexPath)
+        
+        // Reuse views
+        if cell.subviews.count == 0 {
+            let titleLabel = UILabel()
+            titleLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+            titleLabel.textColor = UIColor(hexString: "#353535")
+            titleLabel.text = FiltersModel.sharedInstance().productCategory?.componentsSeparatedByString(":").first!
+            titleLabel.textAlignment = .Center
+            
+            let itemsCountLabel = UILabel()
+            itemsCountLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 12.0)!
+            itemsCountLabel.textColor = UIColor(hexString: "#353535")
+            itemsCountLabel.textAlignment = .Center
+            
+            let headerView = UIStackView(arrangedSubviews: [titleLabel, itemsCountLabel])
+            headerView.axis = .Vertical
+            cell.addSubview(headerView)
+            
+            headerView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
+                headerView.centerXAnchor.constraintEqualToAnchor(cell.centerXAnchor),
+                headerView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor)
+                ])
+        }
+        
+        let headerView = cell.subviews[0] as! UIStackView
+        itemsCountLabel = headerView.arrangedSubviews[1] as! UILabel
+        itemsCountLabel.text = "\(search.totalItems) Items"
+        
+        return cell
+    }
+    
 //    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
 //        return UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
 //    }
@@ -264,8 +307,8 @@ extension BrowseViewController {
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
         // Log custom events
-        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Product", label: product.id, value: nil)
-        Answers.logCustomEventWithName("Tapped Product", customAttributes: getAttributesForProduct(product))
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Item", label: product.id, value: nil)
+        Answers.logCustomEventWithName("Tapped Item", customAttributes: getAttributesForProduct(product))
         
         performSegueWithIdentifier("FlickCategory", sender: indexPath)
     }

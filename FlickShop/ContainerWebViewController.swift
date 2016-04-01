@@ -77,11 +77,22 @@ class ContainerWebViewController: UIViewController {
             webViewController?.webpageURL = webpageURL
             webViewController?.product = product
             webViewController?.delegate = self
-            webViewController?.animateSpinner = { [unowned self] animate in
+            webViewController?.animateSpinner = { [weak self] animate in
+                guard let strongSelf = self else { return }
                 if animate {
-                    self.spinner.startAnimating()
+                    strongSelf.spinner.startAnimating()
+                    UIView.animateWithDuration(0.3, animations: {
+                        strongSelf.spinner.transform = CGAffineTransformIdentity
+                        strongSelf.spinner.alpha = 1.0
+                        }, completion: nil)
+                    
                 } else {
-                    self.spinner.stopAnimating()
+                    UIView.animateWithDuration(0.3, animations: {
+                        strongSelf.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                        strongSelf.spinner.alpha = 0.0
+                        }, completion: { _ in
+                            strongSelf.spinner.stopAnimating()
+                    })
                 }
             }
             webViewController?.showPopup = { [unowned self] in

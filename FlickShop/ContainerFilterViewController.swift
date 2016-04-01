@@ -45,8 +45,8 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(clearView), name: CustomNotifications.FilterDidClearNotification, object: nil)
         
         // Log custom events
-        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Open", value: nil)
-        Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Open"])
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter", label: nil, value: nil)
+        Answers.logCustomEventWithName("Tapped Filter", customAttributes: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -67,8 +67,8 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
     @IBAction func done() {
         // Log custom events
-        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Close", value: nil)
-        Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Close"])
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Action Button", label: "Close", value: nil)
+        Answers.logCustomEventWithName("Tapped Filter Action Button", customAttributes: ["Button": "Close"])
         
         if filtersModel.filtersAvailable {
             let alert = UIAlertController(title: "Vendee", message: "Are you sure you want to close without applying your filters?", preferredStyle: .Alert)
@@ -100,8 +100,8 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         CustomNotifications.filterDidClearNotification()
         
         // Log custom events
-        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Button", label: "Clear All", value: nil)
-        Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Clear All"])
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Action Button", label: "Clear All", value: nil)
+        Answers.logCustomEventWithName("Tapped Filter Action Button", customAttributes: ["Button": "Clear All"])
     }
 
     // MARK: - Navigation

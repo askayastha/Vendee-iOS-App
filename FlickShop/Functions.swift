@@ -69,7 +69,8 @@ func getAttributesForProduct(product: Product) -> [String: AnyObject] {
 }
 
 func logEventsForFilter() {
-    Answers.logCustomEventWithName("Tapped Filter Button", customAttributes: ["Button": "Apply"])
+    GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Action Button", label: "Apply", value: nil)
+    Answers.logCustomEventWithName("Tapped Filter Action Button", customAttributes: ["Button": "Apply"])
     let filtersModel = FiltersModel.sharedInstance()
     
     // Log applied category filter

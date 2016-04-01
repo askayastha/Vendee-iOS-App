@@ -49,7 +49,6 @@
                                     <constraint firstAttribute="height" constant="36" id="nvD-Az-2W4"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                <state key="normal" image="info"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
                                         <color key="value" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="0.5" colorSpace="calibratedRGB"/>
@@ -244,7 +243,6 @@
     </objects>
     <resources>
         <image name="favorite" width="16" height="16"/>
-        <image name="info" width="60" height="60"/>
         <image name="share_action" width="17" height="17"/>
         <image name="shop" width="16" height="16"/>
     </resources>

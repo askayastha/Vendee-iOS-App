@@ -72,20 +72,21 @@ class ContainerFavoritesViewController: UIViewController {
             let favoritesViewController = segue.destinationViewController as? FavoritesViewController
             favoritesViewController?.search = Search(products: favoriteProductsCopy)
             favoritesViewController?.scout = PhotoScout(products: favoriteProductsCopy)
-            favoritesViewController?.animateSpinner = { [unowned self] animate in
+            favoritesViewController?.animateSpinner = { [weak self] animate in
+                guard let strongSelf = self else { return }
                 if animate {
-                    self.spinner.startAnimating()
+                    strongSelf.spinner.startAnimating()
                     UIView.animateWithDuration(0.3, animations: {
-                        self.spinner.transform = CGAffineTransformIdentity
-                        self.spinner.alpha = 1.0
+                        strongSelf.spinner.transform = CGAffineTransformIdentity
+                        strongSelf.spinner.alpha = 1.0
                         }, completion: nil)
                     
                 } else {
                     UIView.animateWithDuration(0.3, animations: {
-                        self.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
-                        self.spinner.alpha = 0.0
+                        strongSelf.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                        strongSelf.spinner.alpha = 0.0
                         }, completion: { _ in
-                            self.spinner.stopAnimating()
+                            strongSelf.spinner.stopAnimating()
                     })
                 }
             }

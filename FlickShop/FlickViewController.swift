@@ -117,8 +117,8 @@ class FlickViewController: UICollectionViewController {
                 let brandName = JSON(brand)["name"].string
                 let brandImageURL = self.brands.filter { $0.nickname == brandName }.first?.picURL
                 
-                dispatch_async(dispatch_get_main_queue()) {
-                    if let imageURL = brandImageURL {
+                if let imageURL = brandImageURL {
+                    dispatch_async(dispatch_get_main_queue()) {
                         cell.headerImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
                     }
                 }
@@ -126,8 +126,8 @@ class FlickViewController: UICollectionViewController {
                 let retailerName = JSON(retailer)["name"].string
                 let retailerImageURL = self.brands.filter { $0.nickname == retailerName }.first?.picURL
                 
-                dispatch_async(dispatch_get_main_queue()) {
-                    if let imageURL = retailerImageURL {
+                if let imageURL = retailerImageURL {
+                    dispatch_async(dispatch_get_main_queue()) {
                         cell.headerImageView.pin_setImageFromURL(NSURL(string: imageURL)!)
                     }
                 }
@@ -182,6 +182,10 @@ class FlickViewController: UICollectionViewController {
                     strongSelf.loadingHUDPresent = false
                     TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 
             } else {

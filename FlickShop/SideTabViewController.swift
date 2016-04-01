@@ -132,8 +132,8 @@ class SideTabViewController: UITableViewController {
         print("Filter Type: \(identifier)")
         
         // Log custom events
-        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter", label: filter, value: nil)
-        Answers.logCustomEventWithName("Tapped Filter", customAttributes: ["Filter": filter])
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Tab", label: filter, value: nil)
+        Answers.logCustomEventWithName("Tapped Filter Tab", customAttributes: ["Filter Tab": filter])
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let textLabel = cell?.viewWithTag(1001) as? UILabel

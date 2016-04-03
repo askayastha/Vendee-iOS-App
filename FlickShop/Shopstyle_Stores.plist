@@ -12,9 +12,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>193</string>
+			<string>1959</string>
 			<key>name</key>
-			<string>7 For All Mankind</string>
+			<string>3.1 Phillip Lim</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -24,13 +24,127 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1959</string>
+			<string>193</string>
 			<key>name</key>
-			<string>3.1 Phillip Lim</string>
+			<string>7 For All Mankind</string>
 		</dict>
 	</array>
 	<key>A</key>
 	<array>
+		<dict>
+			<key>id</key>
+			<string>80</string>
+			<key>name</key>
+			<string>A Pea in the Pod</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1731</string>
+			<key>name</key>
+			<string>aerie</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>40</string>
+			<key>name</key>
+			<string>Aeropostale</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>805</string>
+			<key>name</key>
+			<string>AG Jeans</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>341</string>
+			<key>name</key>
+			<string>Agent Provocateur</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1933</string>
+			<key>name</key>
+			<string>AHAlife</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2390</string>
+			<key>name</key>
+			<string>Ahava</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1681</string>
+			<key>name</key>
+			<string>Alex and Ani</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1262</string>
+			<key>name</key>
+			<string>AlexandAlexa</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>494</string>
+			<key>name</key>
+			<string>Alexander McQueen</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1103</string>
+			<key>name</key>
+			<string>Alexander Wang</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2196</string>
+			<key>name</key>
+			<string>Alexis Bittar</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>864</string>
+			<key>name</key>
+			<string>alice + olivia</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>383</string>
+			<key>name</key>
+			<string>Alloy Apparel</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>801</string>
+			<key>name</key>
+			<string>AllSaints</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1993</string>
+			<key>name</key>
+			<string>Alternative</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1222</string>
+			<key>name</key>
+			<string>Amara</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>41</string>
+			<key>name</key>
+			<string>American Eagle</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2285</string>
+			<key>name</key>
+			<string>Andrew Marc</string>
+		</dict>
 		<dict>
 			<key>id</key>
 			<string>4</string>
@@ -45,147 +159,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>40</string>
-			<key>name</key>
-			<string>Aeropostale</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>41</string>
-			<key>name</key>
-			<string>American Eagle</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>80</string>
-			<key>name</key>
-			<string>A Pea in the Pod</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>108</string>
-			<key>name</key>
-			<string>Asos</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>113</string>
-			<key>name</key>
-			<string>Avon</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>341</string>
-			<key>name</key>
-			<string>Agent Provocateur</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>383</string>
-			<key>name</key>
-			<string>Alloy Apparel</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>457</string>
-			<key>name</key>
-			<string>Athleta</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>494</string>
-			<key>name</key>
-			<string>Alexander McQueen</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>801</string>
-			<key>name</key>
-			<string>AllSaints</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>805</string>
-			<key>name</key>
-			<string>AG Jeans</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>864</string>
-			<key>name</key>
-			<string>alice + olivia</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>928</string>
-			<key>name</key>
-			<string>Avenue</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1103</string>
-			<key>name</key>
-			<string>Alexander Wang</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1222</string>
-			<key>name</key>
-			<string>Amara</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1262</string>
-			<key>name</key>
-			<string>AlexandAlexa</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1479</string>
-			<key>name</key>
-			<string>armani.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1659</string>
-			<key>name</key>
-			<string>Avenue32</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1681</string>
-			<key>name</key>
-			<string>Alex and Ani</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1731</string>
-			<key>name</key>
-			<string>aerie</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1903</string>
-			<key>name</key>
-			<string>Azalea</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1933</string>
-			<key>name</key>
-			<string>AHAlife</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1993</string>
-			<key>name</key>
-			<string>Alternative</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>1995</string>
 			<key>name</key>
 			<string>Antonioli</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2437</string>
+			<key>name</key>
+			<string>Apple</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -195,42 +177,90 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>1479</string>
+			<key>name</key>
+			<string>armani.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>108</string>
+			<key>name</key>
+			<string>Asos</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>457</string>
+			<key>name</key>
+			<string>Athleta</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>1997</string>
 			<key>name</key>
 			<string>Austin Reed</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2196</string>
+			<string>928</string>
 			<key>name</key>
-			<string>Alexis Bittar</string>
+			<string>Avenue</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2285</string>
+			<string>1659</string>
 			<key>name</key>
-			<string>Andrew Marc</string>
+			<string>Avenue32</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2390</string>
+			<string>113</string>
 			<key>name</key>
-			<string>Ahava</string>
+			<string>Avon</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2437</string>
+			<string>1903</string>
 			<key>name</key>
-			<string>Apple</string>
+			<string>Azalea</string>
 		</dict>
 	</array>
 	<key>B</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>8</string>
+			<string>2210</string>
 			<key>name</key>
-			<string>Bloomingdale's</string>
+			<string>Bailey 44</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1787</string>
+			<key>name</key>
+			<string>BALENCIAGA</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1962</string>
+			<key>name</key>
+			<string>Bally</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>54</string>
+			<key>name</key>
+			<string>Banana Republic</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2318</string>
+			<key>name</key>
+			<string>Bandier</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>390</string>
+			<key>name</key>
+			<string>Bare Necessities</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -240,15 +270,33 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>10</string>
+			<string>1538</string>
 			<key>name</key>
-			<string>Bergdorf Goodman</string>
+			<string>Barneys Warehouse</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>19</string>
+			<string>1138</string>
 			<key>name</key>
-			<string>Bluefly</string>
+			<string>BaubleBar</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>357</string>
+			<key>name</key>
+			<string>BCBGMAXAZRIA</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>132</string>
+			<key>name</key>
+			<string>Beauty.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2190</string>
+			<key>name</key>
+			<string>BeautyCounter</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -258,9 +306,123 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>54</string>
+			<string>161</string>
 			<key>name</key>
-			<string>Banana Republic</string>
+			<string>Bed Bath &amp; Beyond</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2342</string>
+			<key>name</key>
+			<string>Bella Bag</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1751</string>
+			<key>name</key>
+			<string>Belle &amp; Clive</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1632</string>
+			<key>name</key>
+			<string>Belstaff</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>571</string>
+			<key>name</key>
+			<string>Ben Sherman</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>336</string>
+			<key>name</key>
+			<string>Benefit</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>10</string>
+			<key>name</key>
+			<string>Bergdorf Goodman</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>324</string>
+			<key>name</key>
+			<string>Betsey Johnson</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1798</string>
+			<key>name</key>
+			<string>BHLDN</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2168</string>
+			<key>name</key>
+			<string>Black Halo</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2393</string>
+			<key>name</key>
+			<string>Blade + Blue</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>358</string>
+			<key>name</key>
+			<string>Bliss</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>8</string>
+			<key>name</key>
+			<string>Bloomingdale's</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>643</string>
+			<key>name</key>
+			<string>Blue &amp; Cream</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>19</string>
+			<key>name</key>
+			<string>Bluefly</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>573</string>
+			<key>name</key>
+			<string>Bobbi Brown</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>250</string>
+			<key>name</key>
+			<string>Boden</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>468</string>
+			<key>name</key>
+			<string>Bonobos</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1745</string>
+			<key>name</key>
+			<string>BooHoo</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>337</string>
+			<key>name</key>
+			<string>Boutique to You</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -276,141 +438,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>132</string>
-			<key>name</key>
-			<string>Beauty.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>161</string>
-			<key>name</key>
-			<string>Bed Bath &amp; Beyond</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>250</string>
-			<key>name</key>
-			<string>Boden</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>285</string>
-			<key>name</key>
-			<string>Burberry</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>324</string>
-			<key>name</key>
-			<string>Betsey Johnson</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>336</string>
-			<key>name</key>
-			<string>Benefit</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>337</string>
-			<key>name</key>
-			<string>Boutique to You</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>357</string>
-			<key>name</key>
-			<string>BCBGMAXAZRIA</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>358</string>
-			<key>name</key>
-			<string>Bliss</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>390</string>
-			<key>name</key>
-			<string>Bare Necessities</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>468</string>
-			<key>name</key>
-			<string>Bonobos</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>571</string>
-			<key>name</key>
-			<string>Ben Sherman</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>573</string>
-			<key>name</key>
-			<string>Bobbi Brown</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>643</string>
-			<key>name</key>
-			<string>Blue &amp; Cream</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>894</string>
 			<key>name</key>
 			<string>Buffalo David Bitton</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1138</string>
+			<string>285</string>
 			<key>name</key>
-			<string>BaubleBar</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1538</string>
-			<key>name</key>
-			<string>Barneys Warehouse</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1632</string>
-			<key>name</key>
-			<string>Belstaff</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1745</string>
-			<key>name</key>
-			<string>BooHoo</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1751</string>
-			<key>name</key>
-			<string>Belle &amp; Clive</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1787</string>
-			<key>name</key>
-			<string>BALENCIAGA</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1798</string>
-			<key>name</key>
-			<string>BHLDN</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1962</string>
-			<key>name</key>
-			<string>Bally</string>
+			<string>Burberry</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -424,164 +460,14 @@
 			<key>name</key>
 			<string>BySymphony</string>
 		</dict>
-		<dict>
-			<key>id</key>
-			<string>2168</string>
-			<key>name</key>
-			<string>Black Halo</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2190</string>
-			<key>name</key>
-			<string>BeautyCounter</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2210</string>
-			<key>name</key>
-			<string>Bailey 44</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2318</string>
-			<key>name</key>
-			<string>Bandier</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2342</string>
-			<key>name</key>
-			<string>Bella Bag</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2393</string>
-			<key>name</key>
-			<string>Blade + Blue</string>
-		</dict>
 	</array>
 	<key>C</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>47</string>
-			<key>name</key>
-			<string>Coach</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>51</string>
-			<key>name</key>
-			<string>Chico's</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>70</string>
-			<key>name</key>
-			<string>CoutureCandy</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>86</string>
-			<key>name</key>
-			<string>Children's Place</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>141</string>
-			<key>name</key>
-			<string>Crate &amp; Barrel</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>152</string>
-			<key>name</key>
-			<string>CB2</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>183</string>
-			<key>name</key>
-			<string>Clinique</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>244</string>
-			<key>name</key>
-			<string>Coggles.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>300</string>
-			<key>name</key>
-			<string>Charlotte Russe</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>364</string>
 			<key>name</key>
 			<string>Calvin Klein</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>722</string>
-			<key>name</key>
-			<string>Charm &amp; Chain</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1125</string>
-			<key>name</key>
-			<string>CUBAVERA</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1276</string>
-			<key>name</key>
-			<string>Club Monaco</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1551</string>
-			<key>name</key>
-			<string>Cosabella</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1605</string>
-			<key>name</key>
-			<string>CASA.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1639</string>
-			<key>name</key>
-			<string>Cynthia Rowley</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1807</string>
-			<key>name</key>
-			<string>Cost Plus World Market</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1839</string>
-			<key>name</key>
-			<string>Century 21</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1897</string>
-			<key>name</key>
-			<string>Charlotte Tilbury</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2181</string>
-			<key>name</key>
-			<string>Charles David</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -591,9 +477,63 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>1605</string>
+			<key>name</key>
+			<string>CASA.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>152</string>
+			<key>name</key>
+			<string>CB2</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1839</string>
+			<key>name</key>
+			<string>Century 21</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2181</string>
+			<key>name</key>
+			<string>Charles David</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>300</string>
+			<key>name</key>
+			<string>Charlotte Russe</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1897</string>
+			<key>name</key>
+			<string>Charlotte Tilbury</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>722</string>
+			<key>name</key>
+			<string>Charm &amp; Chain</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>2271</string>
 			<key>name</key>
 			<string>Charming charlie</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>51</string>
+			<key>name</key>
+			<string>Chico's</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>86</string>
+			<key>name</key>
+			<string>Children's Place</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -601,44 +541,74 @@
 			<key>name</key>
 			<string>Clarks</string>
 		</dict>
+		<dict>
+			<key>id</key>
+			<string>183</string>
+			<key>name</key>
+			<string>Clinique</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1276</string>
+			<key>name</key>
+			<string>Club Monaco</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>47</string>
+			<key>name</key>
+			<string>Coach</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>244</string>
+			<key>name</key>
+			<string>Coggles.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1551</string>
+			<key>name</key>
+			<string>Cosabella</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1807</string>
+			<key>name</key>
+			<string>Cost Plus World Market</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>70</string>
+			<key>name</key>
+			<string>CoutureCandy</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>141</string>
+			<key>name</key>
+			<string>Crate &amp; Barrel</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1125</string>
+			<key>name</key>
+			<string>CUBAVERA</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1639</string>
+			<key>name</key>
+			<string>Cynthia Rowley</string>
+		</dict>
 	</array>
 	<key>D</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>11</string>
+			<string>1898</string>
 			<key>name</key>
-			<string>Dillard's</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>46</string>
-			<key>name</key>
-			<string>DKNY</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>75</string>
-			<key>name</key>
-			<string>Designs by Stephene</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>84</string>
-			<key>name</key>
-			<string>DVF.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>154</string>
-			<key>name</key>
-			<string>Design Within Reach</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>163</string>
-			<key>name</key>
-			<string>drugstore.com</string>
+			<string>Derek Lam</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -648,9 +618,21 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>433</string>
+			<string>953</string>
 			<key>name</key>
-			<string>Diesel</string>
+			<string>DERMSTORE</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>154</string>
+			<key>name</key>
+			<string>Design Within Reach</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>75</string>
+			<key>name</key>
+			<string>Designs by Stephene</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -660,21 +642,45 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>759</string>
-			<key>name</key>
-			<string>Dooney &amp; Bourke</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>953</string>
-			<key>name</key>
-			<string>DERMSTORE</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>955</string>
 			<key>name</key>
 			<string>diapers.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>433</string>
+			<key>name</key>
+			<string>Diesel</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>11</string>
+			<key>name</key>
+			<string>Dillard's</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1302</string>
+			<key>name</key>
+			<string>Disney Store</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2176</string>
+			<key>name</key>
+			<string>DITTO</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2320</string>
+			<key>name</key>
+			<string>DJ Premium</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>46</string>
+			<key>name</key>
+			<string>DKNY</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -684,9 +690,21 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1302</string>
+			<string>2239</string>
 			<key>name</key>
-			<string>Disney Store</string>
+			<string>domino</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>759</string>
+			<key>name</key>
+			<string>Dooney &amp; Bourke</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1936</string>
+			<key>name</key>
+			<string>Dormify</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -702,39 +720,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1898</string>
+			<string>2240</string>
 			<key>name</key>
-			<string>Derek Lam</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1936</string>
-			<key>name</key>
-			<string>Dormify</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1937</string>
-			<key>name</key>
-			<string>Dynamite</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1965</string>
-			<key>name</key>
-			<string>Dune London</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2105</string>
-			<key>name</key>
-			<string>DSTLD</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2176</string>
-			<key>name</key>
-			<string>DITTO</string>
+			<string>Draper James</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -744,15 +732,27 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2239</string>
+			<string>163</string>
 			<key>name</key>
-			<string>domino</string>
+			<string>drugstore.com</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2240</string>
+			<string>2105</string>
 			<key>name</key>
-			<string>Draper James</string>
+			<string>DSTLD</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1965</string>
+			<key>name</key>
+			<string>Dune London</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>84</string>
+			<key>name</key>
+			<string>DVF.com</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -762,48 +762,18 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2320</string>
+			<string>1937</string>
 			<key>name</key>
-			<string>DJ Premium</string>
+			<string>Dynamite</string>
 		</dict>
 	</array>
 	<key>E</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>17</string>
+			<string>1691</string>
 			<key>name</key>
-			<string>Eddie Bauer</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>83</string>
-			<key>name</key>
-			<string>eDressMe</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>99</string>
-			<key>name</key>
-			<string>Elizabeth Charles</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>309</string>
-			<key>name</key>
-			<string>Express</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>412</string>
-			<key>name</key>
-			<string>Ella Moss</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>708</string>
-			<key>name</key>
-			<string>Ethan Allen</string>
+			<string>East Dane</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -813,21 +783,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1355</string>
+			<string>2344</string>
 			<key>name</key>
-			<string>Elie Tahari</string>
+			<string>eBay Pre-Owned</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1652</string>
+			<string>17</string>
 			<key>name</key>
-			<string>Everlane</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1691</string>
-			<key>name</key>
-			<string>East Dane</string>
+			<string>Eddie Bauer</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -837,21 +801,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1840</string>
+			<string>83</string>
 			<key>name</key>
-			<string>Emerson Fry</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2001</string>
-			<key>name</key>
-			<string>ELOQUII</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2074</string>
-			<key>name</key>
-			<string>Ernest Alexander</string>
+			<string>eDressMe</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -861,9 +813,51 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2344</string>
+			<string>1355</string>
 			<key>name</key>
-			<string>eBay Pre-Owned</string>
+			<string>Elie Tahari</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>99</string>
+			<key>name</key>
+			<string>Elizabeth Charles</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>412</string>
+			<key>name</key>
+			<string>Ella Moss</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2001</string>
+			<key>name</key>
+			<string>ELOQUII</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1840</string>
+			<key>name</key>
+			<string>Emerson Fry</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2074</string>
+			<key>name</key>
+			<string>Ernest Alexander</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>708</string>
+			<key>name</key>
+			<string>Ethan Allen</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1652</string>
+			<key>name</key>
+			<string>Everlane</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -871,20 +865,62 @@
 			<key>name</key>
 			<string>Expedia</string>
 		</dict>
+		<dict>
+			<key>id</key>
+			<string>309</string>
+			<key>name</key>
+			<string>Express</string>
+		</dict>
 	</array>
 	<key>F</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>26</string>
+			<string>63</string>
 			<key>name</key>
-			<string>French Connection</string>
+			<string>Famous Footwear</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>31</string>
+			<string>344</string>
 			<key>name</key>
-			<string>Free People</string>
+			<string>Farfetch</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2406</string>
+			<key>name</key>
+			<string>Fashion to Figure</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>577</string>
+			<key>name</key>
+			<string>Fat Face</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>970</string>
+			<key>name</key>
+			<string>Finish Line</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>270</string>
+			<key>name</key>
+			<string>Folica.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>88</string>
+			<key>name</key>
+			<string>Footcandy</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>718</string>
+			<key>name</key>
+			<string>Footnotesonline</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -894,15 +930,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>63</string>
+			<string>574</string>
 			<key>name</key>
-			<string>Famous Footwear</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>88</string>
-			<key>name</key>
-			<string>Footcandy</string>
+			<string>Forward By Elyse Walker</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -918,39 +948,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>270</string>
+			<string>2198</string>
 			<key>name</key>
-			<string>Folica.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>344</string>
-			<key>name</key>
-			<string>Farfetch</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>574</string>
-			<key>name</key>
-			<string>Forward By Elyse Walker</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>577</string>
-			<key>name</key>
-			<string>Fat Face</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>718</string>
-			<key>name</key>
-			<string>Footnotesonline</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>970</string>
-			<key>name</key>
-			<string>Finish Line</string>
+			<string>Frank &amp; Oak</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -960,19 +960,25 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2198</string>
+			<string>31</string>
 			<key>name</key>
-			<string>Frank &amp; Oak</string>
+			<string>Free People</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2406</string>
+			<string>26</string>
 			<key>name</key>
-			<string>Fashion to Figure</string>
+			<string>French Connection</string>
 		</dict>
 	</array>
 	<key>G</key>
 	<array>
+		<dict>
+			<key>id</key>
+			<string>165</string>
+			<key>name</key>
+			<string>Gaiam</string>
+		</dict>
 		<dict>
 			<key>id</key>
 			<string>13</string>
@@ -981,15 +987,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>35</string>
+			<string>2136</string>
 			<key>name</key>
-			<string>GUESS</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>165</string>
-			<key>name</key>
-			<string>Gaiam</string>
+			<string>Garage</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -999,15 +999,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>232</string>
+			<string>1906</string>
 			<key>name</key>
-			<string>Giorgio Armani Beauty</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1340</string>
-			<key>name</key>
-			<string>Gucci</string>
+			<string>GiGi New York</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1017,36 +1011,48 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>232</string>
+			<key>name</key>
+			<string>Giorgio Armani Beauty</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>1539</string>
 			<key>name</key>
 			<string>Gorjana</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1906</string>
+			<string>1340</string>
 			<key>name</key>
-			<string>GiGi New York</string>
+			<string>Gucci</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2136</string>
+			<string>35</string>
 			<key>name</key>
-			<string>Garage</string>
+			<string>GUESS</string>
 		</dict>
 	</array>
 	<key>H</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>142</string>
+			<string>1689</string>
 			<key>name</key>
-			<string>Horchow</string>
+			<string>H&amp;M</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>317</string>
+			<string>2002</string>
 			<key>name</key>
-			<string>Home Depot</string>
+			<string>Haggar</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2138</string>
+			<key>name</key>
+			<string>Halston Heritage</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1056,39 +1062,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>788</string>
-			<key>name</key>
-			<string>HUGO BOSS</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>808</string>
-			<key>name</key>
-			<string>Hudson</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>922</string>
-			<key>name</key>
-			<string>HSN</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>978</string>
 			<key>name</key>
 			<string>HauteLook</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>980</string>
-			<key>name</key>
-			<string>Home Decorators Collection</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1236</string>
-			<key>name</key>
-			<string>House of Harlow</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1104,15 +1080,45 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1689</string>
+			<string>980</string>
 			<key>name</key>
-			<string>H&amp;M</string>
+			<string>Home Decorators Collection</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2002</string>
+			<string>317</string>
 			<key>name</key>
-			<string>Haggar</string>
+			<string>Home Depot</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>142</string>
+			<key>name</key>
+			<string>Horchow</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1236</string>
+			<key>name</key>
+			<string>House of Harlow</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>922</string>
+			<key>name</key>
+			<string>HSN</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>808</string>
+			<key>name</key>
+			<string>Hudson</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>788</string>
+			<key>name</key>
+			<string>HUGO BOSS</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1128,12 +1134,6 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2138</string>
-			<key>name</key>
-			<string>Halston Heritage</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>2186</string>
 			<key>name</key>
 			<string>HYPEBEAST</string>
@@ -1143,21 +1143,9 @@
 	<array>
 		<dict>
 			<key>id</key>
-			<string>23</string>
-			<key>name</key>
-			<string>Intermix</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>55</string>
 			<key>name</key>
 			<string>Ice.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>282</string>
-			<key>name</key>
-			<string>Isabella Oliver</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1165,51 +1153,21 @@
 			<key>name</key>
 			<string>Ily Couture</string>
 		</dict>
+		<dict>
+			<key>id</key>
+			<string>23</string>
+			<key>name</key>
+			<string>Intermix</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>282</string>
+			<key>name</key>
+			<string>Isabella Oliver</string>
+		</dict>
 	</array>
 	<key>J</key>
 	<array>
-		<dict>
-			<key>id</key>
-			<string>5</string>
-			<key>name</key>
-			<string>J.Crew</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>87</string>
-			<key>name</key>
-			<string>Johnston &amp; Murphy</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>90</string>
-			<key>name</key>
-			<string>Jos. A. Bank</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>150</string>
-			<key>name</key>
-			<string>JCPenney</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>308</string>
-			<key>name</key>
-			<string>James Perse</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>434</string>
-			<key>name</key>
-			<string>Juicy Couture</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>591</string>
-			<key>name</key>
-			<string>John Varvatos</string>
-		</dict>
 		<dict>
 			<key>id</key>
 			<string>791</string>
@@ -1218,9 +1176,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1057</string>
+			<string>2305</string>
 			<key>name</key>
-			<string>John Hardy</string>
+			<string>J CASHMERE</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>5</string>
+			<key>name</key>
+			<string>J.Crew</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1236,9 +1200,33 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>2356</string>
+			<key>name</key>
+			<string>Jack Wills</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>1785</string>
 			<key>name</key>
 			<string>JackThreads</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>308</string>
+			<key>name</key>
+			<string>James Perse</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>150</string>
+			<key>name</key>
+			<string>JCPenney</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2380</string>
+			<key>name</key>
+			<string>Jenny Bird</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1260,33 +1248,27 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>1057</string>
+			<key>name</key>
+			<string>John Hardy</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>591</string>
+			<key>name</key>
+			<string>John Varvatos</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>87</string>
+			<key>name</key>
+			<string>Johnston &amp; Murphy</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>2032</string>
 			<key>name</key>
 			<string>Jonathan Adler</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2139</string>
-			<key>name</key>
-			<string>Junk Food Clothing</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2305</string>
-			<key>name</key>
-			<string>J CASHMERE</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2356</string>
-			<key>name</key>
-			<string>Jack Wills</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2380</string>
-			<key>name</key>
-			<string>Jenny Bird</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1294,38 +1276,26 @@
 			<key>name</key>
 			<string>Journelle</string>
 		</dict>
+		<dict>
+			<key>id</key>
+			<string>434</string>
+			<key>name</key>
+			<string>Juicy Couture</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2139</string>
+			<key>name</key>
+			<string>Junk Food Clothing</string>
+		</dict>
 	</array>
 	<key>K</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>48</string>
-			<key>name</key>
-			<string>Kenneth Cole</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>133</string>
-			<key>name</key>
-			<string>Kohl's</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>184</string>
-			<key>name</key>
-			<string>Kiehl's</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>210</string>
 			<key>name</key>
 			<string>Karen Millen</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>369</string>
-			<key>name</key>
-			<string>Kirna Zabete</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1335,33 +1305,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1588</string>
-			<key>name</key>
-			<string>Kule</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1696</string>
-			<key>name</key>
-			<string>Kelly Wearstler</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>1891</string>
 			<key>name</key>
 			<string>Kaufmann Mercantile</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2004</string>
-			<key>name</key>
-			<string>Kendra Scott</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2019</string>
-			<key>name</key>
-			<string>Komarov</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1371,9 +1317,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2332</string>
+			<string>1696</string>
 			<key>name</key>
-			<string>Kerastase</string>
+			<string>Kelly Wearstler</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1381,152 +1327,62 @@
 			<key>name</key>
 			<string>Kelsi Dagger Brooklyn</string>
 		</dict>
+		<dict>
+			<key>id</key>
+			<string>2004</string>
+			<key>name</key>
+			<string>Kendra Scott</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>48</string>
+			<key>name</key>
+			<string>Kenneth Cole</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2332</string>
+			<key>name</key>
+			<string>Kerastase</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>184</string>
+			<key>name</key>
+			<string>Kiehl's</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>369</string>
+			<key>name</key>
+			<string>Kirna Zabete</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>133</string>
+			<key>name</key>
+			<string>Kohl's</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2019</string>
+			<key>name</key>
+			<string>Komarov</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1588</string>
+			<key>name</key>
+			<string>Kule</string>
+		</dict>
 	</array>
 	<key>L</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>15</string>
-			<key>name</key>
-			<string>Lane Bryant</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>39</string>
-			<key>name</key>
-			<string>LOFT</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>94</string>
-			<key>name</key>
-			<string>La Garçonne</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>338</string>
 			<key>name</key>
 			<string>L'Occitane</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>413</string>
-			<key>name</key>
-			<string>Lord &amp; Taylor</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>554</string>
-			<key>name</key>
-			<string>Loeffler Randall</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>572</string>
-			<key>name</key>
-			<string>Lab Series</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>581</string>
-			<key>name</key>
-			<string>Lori's Shoes</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>597</string>
-			<key>name</key>
-			<string>Lilly Pulitzer</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>631</string>
-			<key>name</key>
-			<string>Lucy</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>750</string>
-			<key>name</key>
-			<string>Last Call by Neiman Marcus</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>865</string>
-			<key>name</key>
-			<string>La Perla</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>990</string>
-			<key>name</key>
-			<string>Lands' End</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>992</string>
-			<key>name</key>
-			<string>Levi's</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>994</string>
-			<key>name</key>
-			<string>LUISAVIAROMA</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1268</string>
-			<key>name</key>
-			<string>Lanvin</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1481</string>
-			<key>name</key>
-			<string>Little Circus</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1697</string>
-			<key>name</key>
-			<string>Lululemon</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1857</string>
-			<key>name</key>
-			<string>Lane Crawford</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1881</string>
-			<key>name</key>
-			<string>Loom Decor</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1929</string>
-			<key>name</key>
-			<string>Lulu &amp; Georgia</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1971</string>
-			<key>name</key>
-			<string>LUXE | DH</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2005</string>
-			<key>name</key>
-			<string>Lulu Guinness</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2287</string>
-			<key>name</key>
-			<string>Ledbury</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1536,72 +1392,156 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>94</string>
+			<key>name</key>
+			<string>La Garçonne</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>865</string>
+			<key>name</key>
+			<string>La Perla</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>572</string>
+			<key>name</key>
+			<string>Lab Series</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>990</string>
+			<key>name</key>
+			<string>Lands' End</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>15</string>
+			<key>name</key>
+			<string>Lane Bryant</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1857</string>
+			<key>name</key>
+			<string>Lane Crawford</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1268</string>
+			<key>name</key>
+			<string>Lanvin</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>750</string>
+			<key>name</key>
+			<string>Last Call by Neiman Marcus</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2287</string>
+			<key>name</key>
+			<string>Ledbury</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>992</string>
+			<key>name</key>
+			<string>Levi's</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>597</string>
+			<key>name</key>
+			<string>Lilly Pulitzer</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1481</string>
+			<key>name</key>
+			<string>Little Circus</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>554</string>
+			<key>name</key>
+			<string>Loeffler Randall</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>39</string>
+			<key>name</key>
+			<string>LOFT</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1881</string>
+			<key>name</key>
+			<string>Loom Decor</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>413</string>
+			<key>name</key>
+			<string>Lord &amp; Taylor</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>581</string>
+			<key>name</key>
+			<string>Lori's Shoes</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>631</string>
+			<key>name</key>
+			<string>Lucy</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>994</string>
+			<key>name</key>
+			<string>LUISAVIAROMA</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1929</string>
+			<key>name</key>
+			<string>Lulu &amp; Georgia</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>2430</string>
 			<key>name</key>
 			<string>Lulu Frost</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2005</string>
+			<key>name</key>
+			<string>Lulu Guinness</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1697</string>
+			<key>name</key>
+			<string>Lululemon</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1971</string>
+			<key>name</key>
+			<string>LUXE | DH</string>
 		</dict>
 	</array>
 	<key>M</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>2</string>
+			<string>2051</string>
 			<key>name</key>
-			<string>Macy's</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>62</string>
-			<key>name</key>
-			<string>Max Studio</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>89</string>
-			<key>name</key>
-			<string>MADISONLOSANGELES.COM</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>117</string>
-			<key>name</key>
-			<string>Marciano</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>130</string>
-			<key>name</key>
-			<string>Michael Kors</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>157</string>
-			<key>name</key>
-			<string>Mikasa</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>205</string>
-			<key>name</key>
-			<string>MANGO</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>326</string>
-			<key>name</key>
-			<string>Marissa Collections</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>352</string>
-			<key>name</key>
-			<string>Max &amp; Chloe</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>435</string>
-			<key>name</key>
-			<string>mytheresa</string>
+			<string>M.Gemi</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1611,9 +1551,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>666</string>
+			<string>2</string>
 			<key>name</key>
-			<string>ModCloth</string>
+			<string>Macy's</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2262</string>
+			<key>name</key>
+			<string>Madda Fella</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1623,75 +1569,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>721</string>
+			<string>89</string>
 			<key>name</key>
-			<string>Milly</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>895</string>
-			<key>name</key>
-			<string>MR PORTER</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1246</string>
-			<key>name</key>
-			<string>Marc Jacobs</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1375</string>
-			<key>name</key>
-			<string>MATCHESFASHION.COM</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1376</string>
-			<key>name</key>
-			<string>METROPARK</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1402</string>
-			<key>name</key>
-			<string>MODA OPERANDI</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1707</string>
-			<key>name</key>
-			<string>Mark &amp; Graham</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1767</string>
-			<key>name</key>
-			<string>Menlook</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1852</string>
-			<key>name</key>
-			<string>Missguided</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1887</string>
-			<key>name</key>
-			<string>Marie-Chantal</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1896</string>
-			<key>name</key>
-			<string>Marmot</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1923</string>
-			<key>name</key>
-			<string>MyHabit</string>
+			<string>MADISONLOSANGELES.COM</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1701,39 +1581,63 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1974</string>
+			<string>205</string>
 			<key>name</key>
-			<string>MZ WALLACE</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1987</string>
-			<key>name</key>
-			<string>meli melo</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2006</string>
-			<key>name</key>
-			<string>Murad</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2051</string>
-			<key>name</key>
-			<string>M.Gemi</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2109</string>
-			<key>name</key>
-			<string>Maurices</string>
+			<string>MANGO</string>
 		</dict>
 		<dict>
 			<key>id</key>
 			<string>2140</string>
 			<key>name</key>
 			<string>Mara Hoffman</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2243</string>
+			<key>name</key>
+			<string>marc b</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1246</string>
+			<key>name</key>
+			<string>Marc Jacobs</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>117</string>
+			<key>name</key>
+			<string>Marciano</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1887</string>
+			<key>name</key>
+			<string>Marie-Chantal</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>326</string>
+			<key>name</key>
+			<string>Marissa Collections</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1707</string>
+			<key>name</key>
+			<string>Mark &amp; Graham</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1896</string>
+			<key>name</key>
+			<string>Marmot</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1375</string>
+			<key>name</key>
+			<string>MATCHESFASHION.COM</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1749,21 +1653,27 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2243</string>
+			<string>2109</string>
 			<key>name</key>
-			<string>marc b</string>
+			<string>Maurices</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2244</string>
+			<string>352</string>
 			<key>name</key>
-			<string>Monsoon</string>
+			<string>Max &amp; Chloe</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2262</string>
+			<string>62</string>
 			<key>name</key>
-			<string>Madda Fella</string>
+			<string>Max Studio</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1987</string>
+			<key>name</key>
+			<string>meli melo</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1773,9 +1683,75 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>1767</string>
+			<key>name</key>
+			<string>Menlook</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1376</string>
+			<key>name</key>
+			<string>METROPARK</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>130</string>
+			<key>name</key>
+			<string>Michael Kors</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>157</string>
+			<key>name</key>
+			<string>Mikasa</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>721</string>
+			<key>name</key>
+			<string>Milly</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2401</string>
+			<key>name</key>
+			<string>Minted</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1852</string>
+			<key>name</key>
+			<string>Missguided</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1402</string>
+			<key>name</key>
+			<string>MODA OPERANDI</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>666</string>
+			<key>name</key>
+			<string>ModCloth</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2244</string>
+			<key>name</key>
+			<string>Monsoon</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>2354</string>
 			<key>name</key>
 			<string>MOTHER Denim</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>895</string>
+			<key>name</key>
+			<string>MR PORTER</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1785,18 +1761,78 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2401</string>
+			<string>2006</string>
 			<key>name</key>
-			<string>Minted</string>
+			<string>Murad</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1923</string>
+			<key>name</key>
+			<string>MyHabit</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>435</string>
+			<key>name</key>
+			<string>mytheresa</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1974</string>
+			<key>name</key>
+			<string>MZ WALLACE</string>
 		</dict>
 	</array>
 	<key>N</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>1</string>
+			<string>2007</string>
 			<key>name</key>
-			<string>Nordstrom</string>
+			<string>Nambe</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1054</string>
+			<key>name</key>
+			<string>Nancy Meyer</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>613</string>
+			<key>name</key>
+			<string>NARS Cosmetics</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1426</string>
+			<key>name</key>
+			<string>Nasty Gal</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>449</string>
+			<key>name</key>
+			<string>Natori</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>999</string>
+			<key>name</key>
+			<string>Nautica</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2025</string>
+			<key>name</key>
+			<string>navabi</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1058</string>
+			<key>name</key>
+			<string>Need Supply Co.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1818,9 +1854,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>78</string>
+			<string>423</string>
 			<key>name</key>
-			<string>Nine West</string>
+			<string>Nicole Miller</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1830,51 +1866,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>423</string>
+			<string>78</string>
 			<key>name</key>
-			<string>Nicole Miller</string>
+			<string>Nine West</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>449</string>
+			<string>1</string>
 			<key>name</key>
-			<string>Natori</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>613</string>
-			<key>name</key>
-			<string>NARS Cosmetics</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>999</string>
-			<key>name</key>
-			<string>Nautica</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1054</string>
-			<key>name</key>
-			<string>Nancy Meyer</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1058</string>
-			<key>name</key>
-			<string>Need Supply Co.</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1426</string>
-			<key>name</key>
-			<string>Nasty Gal</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1542</string>
-			<key>name</key>
-			<string>NYDJ</string>
+			<string>Nordstrom</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1884,24 +1884,72 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2007</string>
+			<string>1542</string>
 			<key>name</key>
-			<string>Nambe</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2025</string>
-			<key>name</key>
-			<string>navabi</string>
+			<string>NYDJ</string>
 		</dict>
 	</array>
 	<key>O</key>
 	<array>
 		<dict>
 			<key>id</key>
+			<string>2037</string>
+			<key>name</key>
+			<string>Oasis</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1861</string>
+			<key>name</key>
+			<string>Of A Kind</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1720</string>
+			<key>name</key>
+			<string>Off 5th</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1894</string>
+			<key>name</key>
+			<string>oki-ni</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>61</string>
 			<key>name</key>
 			<string>Old Navy</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1543</string>
+			<key>name</key>
+			<string>One Kings Lane</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2245</string>
+			<key>name</key>
+			<string>One Kings Lane Vintage</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1271</string>
+			<key>name</key>
+			<string>Onlineshoes</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1107</string>
+			<key>name</key>
+			<string>Original Penguin</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>187</string>
+			<key>name</key>
+			<string>Origins</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1911,9 +1959,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>187</string>
+			<string>2410</string>
 			<key>name</key>
-			<string>Origins</string>
+			<string>OSEA Malibu</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1078</string>
+			<key>name</key>
+			<string>OshKosh B'Gosh</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -1927,69 +1981,75 @@
 			<key>name</key>
 			<string>Overstock</string>
 		</dict>
-		<dict>
-			<key>id</key>
-			<string>1078</string>
-			<key>name</key>
-			<string>OshKosh B'Gosh</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1107</string>
-			<key>name</key>
-			<string>Original Penguin</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1271</string>
-			<key>name</key>
-			<string>Onlineshoes</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1543</string>
-			<key>name</key>
-			<string>One Kings Lane</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1720</string>
-			<key>name</key>
-			<string>Off 5th</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1861</string>
-			<key>name</key>
-			<string>Of A Kind</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1894</string>
-			<key>name</key>
-			<string>oki-ni</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2037</string>
-			<key>name</key>
-			<string>Oasis</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2245</string>
-			<key>name</key>
-			<string>One Kings Lane Vintage</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2410</string>
-			<key>name</key>
-			<string>OSEA Malibu</string>
-		</dict>
 	</array>
 	<key>P</key>
 	<array>
+		<dict>
+			<key>id</key>
+			<string>120</string>
+			<key>name</key>
+			<string>PacSun</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>552</string>
+			<key>name</key>
+			<string>Paige Denim</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2043</string>
+			<key>name</key>
+			<string>Parker</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1006</string>
+			<key>name</key>
+			<string>Patagonia</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2161</string>
+			<key>name</key>
+			<string>Paul Smith</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>145</string>
+			<key>name</key>
+			<string>PBteen</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2307</string>
+			<key>name</key>
+			<string>Peace Love World</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2411</string>
+			<key>name</key>
+			<string>Peony &amp; Me</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1128</string>
+			<key>name</key>
+			<string>Perry Ellis</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>737</string>
+			<key>name</key>
+			<string>Petit Bateau</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1975</string>
+			<key>name</key>
+			<string>Pier 1 Imports</string>
+		</dict>
 		<dict>
 			<key>id</key>
 			<string>91</string>
@@ -1998,15 +2058,27 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>106</string>
+			<string>644</string>
 			<key>name</key>
-			<string>Puma</string>
+			<string>Planet Blue</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>120</string>
+			<string>2360</string>
 			<key>name</key>
-			<string>PacSun</string>
+			<string>Plukka</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2018</string>
+			<key>name</key>
+			<string>Plum Pretty Sugar</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1789</string>
+			<key>name</key>
+			<string>Poppin</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2022,9 +2094,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>145</string>
+			<string>2376</string>
 			<key>name</key>
-			<string>PBteen</string>
+			<string>Pour La Victoire</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2034,93 +2106,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>552</string>
-			<key>name</key>
-			<string>Paige Denim</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>644</string>
-			<key>name</key>
-			<string>Planet Blue</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>737</string>
-			<key>name</key>
-			<string>Petit Bateau</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>789</string>
 			<key>name</key>
 			<string>Proenza Schouler</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1006</string>
+			<string>106</string>
 			<key>name</key>
-			<string>Patagonia</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1128</string>
-			<key>name</key>
-			<string>Perry Ellis</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1789</string>
-			<key>name</key>
-			<string>Poppin</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1975</string>
-			<key>name</key>
-			<string>Pier 1 Imports</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2018</string>
-			<key>name</key>
-			<string>Plum Pretty Sugar</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2043</string>
-			<key>name</key>
-			<string>Parker</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2161</string>
-			<key>name</key>
-			<string>Paul Smith</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2307</string>
-			<key>name</key>
-			<string>Peace Love World</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2360</string>
-			<key>name</key>
-			<string>Plukka</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2376</string>
-			<key>name</key>
-			<string>Pour La Victoire</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2411</string>
-			<key>name</key>
-			<string>Peony &amp; Me</string>
+			<string>Puma</string>
 		</dict>
 	</array>
 	<key>Q</key>
@@ -2142,39 +2136,9 @@
 	<array>
 		<dict>
 			<key>id</key>
-			<string>52</string>
+			<string>1619</string>
 			<key>name</key>
-			<string>Ralph Lauren</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>68</string>
-			<key>name</key>
-			<string>Ron Herman</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>105</string>
-			<key>name</key>
-			<string>Revolve Clothing</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>158</string>
-			<key>name</key>
-			<string>Rooms To Go</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>617</string>
-			<key>name</key>
-			<string>Reebok</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>717</string>
-			<key>name</key>
-			<string>Rebecca Minkoff</string>
+			<string>Rachel Pally</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2184,15 +2148,21 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>807</string>
+			<string>2155</string>
 			<key>name</key>
-			<string>RONROBINSON.com</string>
+			<string>Ragdoll LA</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>846</string>
+			<string>52</string>
 			<key>name</key>
-			<string>Reiss</string>
+			<string>Ralph Lauren</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>717</string>
+			<key>name</key>
+			<string>Rebecca Minkoff</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2202,33 +2172,21 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1619</string>
+			<string>617</string>
 			<key>name</key>
-			<string>Rachel Pally</string>
+			<string>Reebok</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1793</string>
+			<string>2382</string>
 			<key>name</key>
-			<string>Romwe</string>
+			<string>Reformation</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1841</string>
+			<string>846</string>
 			<key>name</key>
-			<string>River Island</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1917</string>
-			<key>name</key>
-			<string>Runway2Street</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2155</string>
-			<key>name</key>
-			<string>Ragdoll LA</string>
+			<string>Reiss</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2238,48 +2196,60 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2382</string>
+			<string>105</string>
 			<key>name</key>
-			<string>Reformation</string>
+			<string>Revolve Clothing</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1841</string>
+			<key>name</key>
+			<string>River Island</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1793</string>
+			<key>name</key>
+			<string>Romwe</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>68</string>
+			<key>name</key>
+			<string>Ron Herman</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>807</string>
+			<key>name</key>
+			<string>RONROBINSON.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>158</string>
+			<key>name</key>
+			<string>Rooms To Go</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1917</string>
+			<key>name</key>
+			<string>Runway2Street</string>
 		</dict>
 	</array>
 	<key>S</key>
 	<array>
 		<dict>
 			<key>id</key>
+			<string>2020</string>
+			<key>name</key>
+			<string>Sachin &amp; Babi</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>7</string>
 			<key>name</key>
 			<string>Saks Fifth Avenue</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>21</string>
-			<key>name</key>
-			<string>shopbop.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>64</string>
-			<key>name</key>
-			<string>Sephora</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>96</string>
-			<key>name</key>
-			<string>Scoop NYC</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>138</string>
-			<key>name</key>
-			<string>Steve Madden</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>159</string>
-			<key>name</key>
-			<string>Sur La Table</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2289,63 +2259,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>190</string>
+			<string>2009</string>
 			<key>name</key>
-			<string>SpaceNK</string>
+			<string>Sam Edelman</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>192</string>
+			<string>2412</string>
 			<key>name</key>
-			<string>Smallflower</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>194</string>
-			<key>name</key>
-			<string>Singer22</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>224</string>
-			<key>name</key>
-			<string>Shu Uemura</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>252</string>
-			<key>name</key>
-			<string>Soma Intimates</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>306</string>
-			<key>name</key>
-			<string>SSENSE</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>314</string>
-			<key>name</key>
-			<string>Swarovski</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>322</string>
-			<key>name</key>
-			<string>STYLEBOP.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>362</string>
-			<key>name</key>
-			<string>Smashbox</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>410</string>
-			<key>name</key>
-			<string>Splendid</string>
+			<string>Sandro</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2355,9 +2277,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>684</string>
+			<string>96</string>
 			<key>name</key>
-			<string>Sorel</string>
+			<string>Scoop NYC</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2111</string>
+			<key>name</key>
+			<string>Scotch &amp; Soda</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2367,21 +2295,21 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>64</string>
+			<key>name</key>
+			<string>Sephora</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>855</string>
 			<key>name</key>
 			<string>Serena and Lily</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>913</string>
+			<string>2179</string>
 			<key>name</key>
-			<string>Stuart Weitzman</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>963</string>
-			<key>name</key>
-			<string>shoes.com</string>
+			<string>Shabby Apple</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2397,33 +2325,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1018</string>
+			<string>1616</string>
 			<key>name</key>
-			<string>Sierra Trading Post</string>
+			<string>shoescribe.com</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1019</string>
+			<string>21</string>
 			<key>name</key>
-			<string>SKECHERS</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1021</string>
-			<key>name</key>
-			<string>Solstice Sunglasses</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1084</string>
-			<key>name</key>
-			<string>SwimSpot</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1272</string>
-			<key>name</key>
-			<string>Stride Rite</string>
+			<string>shopbop.com</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2433,105 +2343,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1470</string>
-			<key>name</key>
-			<string>Steven Alan</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1563</string>
-			<key>name</key>
-			<string>stella &amp; dot</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1585</string>
-			<key>name</key>
-			<string>Sole Society</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1616</string>
-			<key>name</key>
-			<string>shoescribe.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1658</string>
-			<key>name</key>
-			<string>Stellamccartney.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1889</string>
-			<key>name</key>
-			<string>Splits59</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1947</string>
-			<key>name</key>
-			<string>Stutterheim</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1988</string>
-			<key>name</key>
-			<string>Sigma Beauty</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2009</string>
-			<key>name</key>
-			<string>Sam Edelman</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>2010</string>
 			<key>name</key>
 			<string>Show Me Your Mumu</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2012</string>
+			<string>224</string>
 			<key>name</key>
-			<string>Superdry</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2020</string>
-			<key>name</key>
-			<string>Sachin &amp; Babi</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2111</string>
-			<key>name</key>
-			<string>Scotch &amp; Soda</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2112</string>
-			<key>name</key>
-			<string>SOIA &amp; KYO</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2179</string>
-			<key>name</key>
-			<string>Shabby Apple</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2249</string>
-			<key>name</key>
-			<string>Smallable</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2294</string>
-			<key>name</key>
-			<string>Simply Be</string>
+			<string>Shu Uemura</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2541,15 +2361,81 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2398</string>
+			<string>1018</string>
 			<key>name</key>
-			<string>Sperry</string>
+			<string>Sierra Trading Post</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2412</string>
+			<string>1988</string>
 			<key>name</key>
-			<string>Sandro</string>
+			<string>Sigma Beauty</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2294</string>
+			<key>name</key>
+			<string>Simply Be</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>194</string>
+			<key>name</key>
+			<string>Singer22</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1019</string>
+			<key>name</key>
+			<string>SKECHERS</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2249</string>
+			<key>name</key>
+			<string>Smallable</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>192</string>
+			<key>name</key>
+			<string>Smallflower</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>362</string>
+			<key>name</key>
+			<string>Smashbox</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2112</string>
+			<key>name</key>
+			<string>SOIA &amp; KYO</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1585</string>
+			<key>name</key>
+			<string>Sole Society</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1021</string>
+			<key>name</key>
+			<string>Solstice Sunglasses</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>252</string>
+			<key>name</key>
+			<string>Soma Intimates</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>684</string>
+			<key>name</key>
+			<string>Sorel</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2557,15 +2443,111 @@
 			<key>name</key>
 			<string>South Moon Under</string>
 		</dict>
+		<dict>
+			<key>id</key>
+			<string>190</string>
+			<key>name</key>
+			<string>SpaceNK</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2398</string>
+			<key>name</key>
+			<string>Sperry</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>410</string>
+			<key>name</key>
+			<string>Splendid</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1889</string>
+			<key>name</key>
+			<string>Splits59</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>306</string>
+			<key>name</key>
+			<string>SSENSE</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1563</string>
+			<key>name</key>
+			<string>stella &amp; dot</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1658</string>
+			<key>name</key>
+			<string>Stellamccartney.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>138</string>
+			<key>name</key>
+			<string>Steve Madden</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1470</string>
+			<key>name</key>
+			<string>Steven Alan</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1272</string>
+			<key>name</key>
+			<string>Stride Rite</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>913</string>
+			<key>name</key>
+			<string>Stuart Weitzman</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1947</string>
+			<key>name</key>
+			<string>Stutterheim</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>322</string>
+			<key>name</key>
+			<string>STYLEBOP.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2012</string>
+			<key>name</key>
+			<string>Superdry</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>159</string>
+			<key>name</key>
+			<string>Sur La Table</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>314</string>
+			<key>name</key>
+			<string>Swarovski</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1084</string>
+			<key>name</key>
+			<string>SwimSpot</string>
+		</dict>
 	</array>
 	<key>T</key>
 	<array>
-		<dict>
-			<key>id</key>
-			<string>3</string>
-			<key>name</key>
-			<string>Target</string>
-		</dict>
 		<dict>
 			<key>id</key>
 			<string>16</string>
@@ -2574,141 +2556,15 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>43</string>
+			<string>2328</string>
 			<key>name</key>
-			<string>Tilly's</string>
+			<string>Tamara Mellon</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>181</string>
+			<string>3</string>
 			<key>name</key>
-			<string>The Land of Nod</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>182</string>
-			<key>name</key>
-			<string>The Body Shop</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>299</string>
-			<key>name</key>
-			<string>Tory Burch</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>378</string>
-			<key>name</key>
-			<string>Thomas Pink</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>408</string>
-			<key>name</key>
-			<string>Topman</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>421</string>
-			<key>name</key>
-			<string>True Religion</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>427</string>
-			<key>name</key>
-			<string>The Outnet</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>431</string>
-			<key>name</key>
-			<string>Torrid</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>483</string>
-			<key>name</key>
-			<string>Topshop</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>586</string>
-			<key>name</key>
-			<string>The Limited</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>736</string>
-			<key>name</key>
-			<string>Theory</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>777</string>
-			<key>name</key>
-			<string>Trina Turk</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>857</string>
-			<key>name</key>
-			<string>TOMS Shoes</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>917</string>
-			<key>name</key>
-			<string>The Trend Boutique</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1060</string>
-			<key>name</key>
-			<string>Tibi</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1484</string>
-			<key>name</key>
-			<string>thecorner.com</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1777</string>
-			<key>name</key>
-			<string>Terrain</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1809</string>
-			<key>name</key>
-			<string>The Dreslyn</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1862</string>
-			<key>name</key>
-			<string>TheRealReal</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1872</string>
-			<key>name</key>
-			<string>Tronc Company</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1901</string>
-			<key>name</key>
-			<string>The Honest Company</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1930</string>
-			<key>name</key>
-			<string>True&amp;Co.</string>
+			<string>Target</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2718,21 +2574,39 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2013</string>
+			<string>2323</string>
 			<key>name</key>
-			<string>The Well Appointed House</string>
+			<string>TEMPTU</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2021</string>
+			<string>1777</string>
 			<key>name</key>
-			<string>The Tie Bar</string>
+			<string>Terrain</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2083</string>
+			<string>182</string>
 			<key>name</key>
-			<string>Tommy John</string>
+			<string>The Body Shop</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1809</string>
+			<key>name</key>
+			<string>The Dreslyn</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2250</string>
+			<key>name</key>
+			<string>The Frye Company</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1901</string>
+			<key>name</key>
+			<string>The Honest Company</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2742,9 +2616,87 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2102</string>
+			<string>181</string>
 			<key>name</key>
-			<string>Twillory</string>
+			<string>The Land of Nod</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>586</string>
+			<key>name</key>
+			<string>The Limited</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>427</string>
+			<key>name</key>
+			<string>The Outnet</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2021</string>
+			<key>name</key>
+			<string>The Tie Bar</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>917</string>
+			<key>name</key>
+			<string>The Trend Boutique</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2013</string>
+			<key>name</key>
+			<string>The Well Appointed House</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1484</string>
+			<key>name</key>
+			<string>thecorner.com</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>736</string>
+			<key>name</key>
+			<string>Theory</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1862</string>
+			<key>name</key>
+			<string>TheRealReal</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>378</string>
+			<key>name</key>
+			<string>Thomas Pink</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1060</string>
+			<key>name</key>
+			<string>Tibi</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>43</string>
+			<key>name</key>
+			<string>Tilly's</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2432</string>
+			<key>name</key>
+			<string>TJ Maxx</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2386</string>
+			<key>name</key>
+			<string>TM Lewin</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2760,21 +2712,63 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2250</string>
+			<string>2083</string>
 			<key>name</key>
-			<string>The Frye Company</string>
+			<string>Tommy John</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2323</string>
+			<string>857</string>
 			<key>name</key>
-			<string>TEMPTU</string>
+			<string>TOMS Shoes</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2328</string>
+			<string>408</string>
 			<key>name</key>
-			<string>Tamara Mellon</string>
+			<string>Topman</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>483</string>
+			<key>name</key>
+			<string>Topshop</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>431</string>
+			<key>name</key>
+			<string>Torrid</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>299</string>
+			<key>name</key>
+			<string>Tory Burch</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>777</string>
+			<key>name</key>
+			<string>Trina Turk</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1872</string>
+			<key>name</key>
+			<string>Tronc Company</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>421</string>
+			<key>name</key>
+			<string>True Religion</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1930</string>
+			<key>name</key>
+			<string>True&amp;Co.</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2784,9 +2778,9 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2386</string>
+			<string>2415</string>
 			<key>name</key>
-			<string>TM Lewin</string>
+			<string>Tula</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2808,54 +2802,18 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>2432</string>
+			<string>2102</string>
 			<key>name</key>
-			<string>TJ Maxx</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2415</string>
-			<key>name</key>
-			<string>Tula</string>
+			<string>Twillory</string>
 		</dict>
 	</array>
 	<key>U</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>29</string>
-			<key>name</key>
-			<string>Urban Outfitters</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>470</string>
 			<key>name</key>
 			<string>UGG Australia</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1034</string>
-			<key>name</key>
-			<string>Under Armour</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1690</string>
-			<key>name</key>
-			<string>Uniqlo</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1931</string>
-			<key>name</key>
-			<string>UncommonGoods</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>2015</string>
-			<key>name</key>
-			<string>Uniform Wares</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2865,36 +2823,48 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>1931</string>
+			<key>name</key>
+			<string>UncommonGoods</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1034</string>
+			<key>name</key>
+			<string>Under Armour</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2015</string>
+			<key>name</key>
+			<string>Uniform Wares</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>2367</string>
 			<key>name</key>
 			<string>UNIONBAY</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1690</string>
+			<key>name</key>
+			<string>Uniqlo</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>29</string>
+			<key>name</key>
+			<string>Urban Outfitters</string>
 		</dict>
 	</array>
 	<key>V</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>832</string>
-			<key>name</key>
-			<string>Vince Camuto</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>1035</string>
 			<key>name</key>
 			<string>Vans</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1545</string>
-			<key>name</key>
-			<string>Vera Bradley</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1909</string>
-			<key>name</key>
-			<string>Vince</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2904,9 +2874,33 @@
 		</dict>
 		<dict>
 			<key>id</key>
+			<string>1545</string>
+			<key>name</key>
+			<string>Vera Bradley</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>2403</string>
+			<key>name</key>
+			<string>Veronica Beard</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>2195</string>
 			<key>name</key>
 			<string>Vestiaire Collective</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1909</string>
+			<key>name</key>
+			<string>Vince</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>832</string>
+			<key>name</key>
+			<string>Vince Camuto</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2920,44 +2914,20 @@
 			<key>name</key>
 			<string>Vix Paula Hermanny</string>
 		</dict>
-		<dict>
-			<key>id</key>
-			<string>2403</string>
-			<key>name</key>
-			<string>Veronica Beard</string>
-		</dict>
 	</array>
 	<key>W</key>
 	<array>
 		<dict>
 			<key>id</key>
-			<string>50</string>
+			<string>1954</string>
 			<key>name</key>
-			<string>White House Black Market</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>148</string>
-			<key>name</key>
-			<string>west elm</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>149</string>
-			<key>name</key>
-			<string>Williams-Sonoma</string>
+			<string>W concept</string>
 		</dict>
 		<dict>
 			<key>id</key>
 			<string>302</string>
 			<key>name</key>
 			<string>Walgreens</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>556</string>
-			<key>name</key>
-			<string>White + Warren</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -2979,25 +2949,37 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1954</string>
-			<key>name</key>
-			<string>W concept</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>1989</string>
 			<key>name</key>
 			<string>Welcome Stranger</string>
 		</dict>
+		<dict>
+			<key>id</key>
+			<string>148</string>
+			<key>name</key>
+			<string>west elm</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>556</string>
+			<key>name</key>
+			<string>White + Warren</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>50</string>
+			<key>name</key>
+			<string>White House Black Market</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>149</string>
+			<key>name</key>
+			<string>Williams-Sonoma</string>
+		</dict>
 	</array>
 	<key>Y</key>
 	<array>
-		<dict>
-			<key>id</key>
-			<string>25</string>
-			<key>name</key>
-			<string>yoox.com</string>
-		</dict>
 		<dict>
 			<key>id</key>
 			<string>247</string>
@@ -3009,6 +2991,12 @@
 			<string>283</string>
 			<key>name</key>
 			<string>Ylighting</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>25</string>
+			<key>name</key>
+			<string>yoox.com</string>
 		</dict>
 		<dict>
 			<key>id</key>
@@ -3027,6 +3015,24 @@
 	<array>
 		<dict>
 			<key>id</key>
+			<string>1523</string>
+			<key>name</key>
+			<string>Zadig &amp; Voltaire</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1882</string>
+			<key>name</key>
+			<string>Zady</string>
+		</dict>
+		<dict>
+			<key>id</key>
+			<string>1039</string>
+			<key>name</key>
+			<string>Zales</string>
+		</dict>
+		<dict>
+			<key>id</key>
 			<string>53</string>
 			<key>name</key>
 			<string>Zappos</string>
@@ -3039,39 +3045,21 @@
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>492</string>
-			<key>name</key>
-			<string>Zoe</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1039</string>
-			<key>name</key>
-			<string>Zales</string>
-		</dict>
-		<dict>
-			<key>id</key>
-			<string>1523</string>
-			<key>name</key>
-			<string>Zadig &amp; Voltaire</string>
-		</dict>
-		<dict>
-			<key>id</key>
 			<string>1546</string>
 			<key>name</key>
 			<string>Zobha</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1837</string>
+			<string>492</string>
 			<key>name</key>
-			<string>Zulily</string>
+			<string>Zoe</string>
 		</dict>
 		<dict>
 			<key>id</key>
-			<string>1882</string>
+			<string>1837</string>
 			<key>name</key>
-			<string>Zady</string>
+			<string>Zulily</string>
 		</dict>
 	</array>
 </dict>

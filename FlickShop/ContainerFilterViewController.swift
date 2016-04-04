@@ -34,6 +34,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         navigationBar.barTintColor = UIColor(hexString: "#F8F8F8")
         toolBar.barTintColor = UIColor(hexString: "#F1F2F3")
         toolBar.tintColor = UIColor(hexString: "#353535")
+        toolBar.clipsToBounds = true
         
         let normalTextAttributes: [String: AnyObject] = [
             NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!

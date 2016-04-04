@@ -9,20 +9,52 @@
 import UIKit
 import Crashlytics
 
+struct FilterViewCellIdentifiers {
+    static let headerCell = "HeaderCell"
+}
+
 class BrandFilterViewController: UIViewController {
     
     private(set) var searching = false
+    private(set) var requestingData = false
     
-    var brands: [String: [NSDictionary]]!
+//    var brands: [String: [NSDictionary]]!
     var keys: [String]!
     var filteredBrands = [String]()
     var searchController: UISearchController!
     var selectedBrands: [String: String]
+    var brandSearch = BrandSearch()
     
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
+    
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
+        return spinner
+    }()
+    
+    private func animateSpinner(animate: Bool) {
+        if animate {
+            self.spinner.startAnimating()
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformIdentity
+                self.spinner.alpha = 1.0
+                }, completion: nil)
+            
+        } else {
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                self.spinner.alpha = 0.0
+                }, completion: { _ in
+                    self.spinner.stopAnimating()
+            })
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         selectedBrands = filtersModel.filterParams["brand"] as! [String: String]
@@ -37,32 +69,10 @@ class BrandFilterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
         
-        tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-
-        if let URL = NSBundle.mainBundle().URLForResource("Shopstyle_Brands", withExtension: "plist") {
-            if let brandsFromPlist = NSDictionary(contentsOfURL: URL) {
-                brands = brandsFromPlist as! [String: [NSDictionary]]
-                keys = (brandsFromPlist.allKeys as! [String]).sort()
-            }
-        }
-        
-        searchController = UISearchController(searchResultsController: nil)
-        
-        let searchBar = searchController.searchBar
-        searchBar.placeholder = "Search"
-//        searchBar.sizeToFit()
-        
-//        tableView.tableHeaderView = searchBar
-        headerView.addSubview(searchBar)
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        searchController.delegate = self
+        requestDataFromShopStyle()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -82,21 +92,47 @@ class BrandFilterViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    private func setupView() {
+        
+        // Spinner setup
+        tableView.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            spinner.centerXAnchor.constraintEqualToAnchor(tableView.centerXAnchor),
+            spinner.centerYAnchor.constraintEqualToAnchor(tableView.centerYAnchor, constant: -44)
+            ])
+        
+        // Table view setup
+        tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: FilterViewCellIdentifiers.headerCell)
+        tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+        searchController = UISearchController(searchResultsController: nil)
+        
+        let searchBar = searchController.searchBar
+        searchBar.placeholder = "Search"
+        searchBar.barTintColor = UIColor(hexString: "#F1F2F3")
+        searchBar.layer.borderWidth = 1.0
+        searchBar.layer.borderColor = UIColor(hexString: "#F1F2F3")?.CGColor
+        
+        headerView.addSubview(searchBar)
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+    }
 }
 
 // MARK: - Table view data source
 extension BrandFilterViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return searching && !isKeywordEmpty() ? 1 : keys.count
+        return searching && !isKeywordEmpty() ? 1 : brandSearch.brands.keys.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let key = keys[section]
-        let brandSection = brands[key]!
+        let brandsList = brandSearch.brands[key]!
         
-        return searching && !isKeywordEmpty() ? filteredBrands.count : brandSection.count
+        return searching && !isKeywordEmpty() ? filteredBrands.count : brandsList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -107,7 +143,7 @@ extension BrandFilterViewController: UITableViewDataSource {
             
         } else {
             let key = keys[indexPath.section]
-            let brandSection = brands[key]!
+            let brandSection = brandSearch.brands[key]!
             
             cell.textLabel?.text = brandSection[indexPath.row]["name"] as? String
         }
@@ -129,12 +165,51 @@ extension BrandFilterViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return searching && !isKeywordEmpty() ? nil : keys[section]
-    }
-    
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return searching && !isKeywordEmpty() ? nil : keys
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(FilterViewCellIdentifiers.headerCell)
+        cell?.backgroundView = UIView()
+        
+        if searching && !isKeywordEmpty() {
+            cell?.backgroundView?.backgroundColor = UIColor.clearColor()
+            return cell
+        }
+        
+        cell?.backgroundView?.backgroundColor = UIColor(hexString: "#F1F2F3")
+        
+        // Reuse views
+        if cell?.contentView.subviews.count == 0 {
+            let sectionLabel = UILabel()
+            sectionLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 14.0)!
+            sectionLabel.textColor = UIColor.lightGrayColor()
+            cell?.contentView.addSubview(sectionLabel)
+            
+            sectionLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "H:|-15-[label]-15-|",
+                    options: [],
+                    metrics: nil,
+                    views: ["label" : sectionLabel]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[label]|",
+                    options: [],
+                    metrics: nil,
+                    views: ["label": sectionLabel])
+                ].flatten().map{$0})
+        }
+        
+        let sectionLabel = cell?.contentView.subviews[0] as! UILabel
+        
+        let section = keys[section]
+        let sectionTitle = "\(section) (\(brandSearch.brands[section]!.count) BRANDS)"
+        sectionLabel.text = sectionTitle
+        
+        return cell
     }
     
     // MARK: - Helper Methods
@@ -148,16 +223,16 @@ extension BrandFilterViewController: UITableViewDataSource {
     private func getCodeForBrandName(brandName: String) -> String? {
         let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
         
-        var firstChar = String(brandName.characters.first!).uppercaseString
+        var key = String(brandName.characters.first!).uppercaseString
         var brandCode: String?
         
-        if !alphabets.contains(firstChar) {
-            firstChar = "#"
+        if !alphabets.contains(key) {
+            key = "#"
         }
         
-        let brandSection = brands[firstChar]!
+        let brandsList = brandSearch.brands[key]!
         
-        for brand in brandSection {
+        for brand in brandsList {
             if brandName == brand["name"] as! String {
                 let brandId = brand["id"] as! String
                 brandCode = "b\(brandId)"
@@ -172,6 +247,37 @@ extension BrandFilterViewController: UITableViewDataSource {
         selectedBrands.removeAll()
         searchController.active = false
         tableView.reloadData()
+    }
+    
+    private func requestDataFromShopStyle() {
+        if requestingData { return }
+        requestingData = true
+        
+        brandSearch.requestShopStyleBrands { [weak self] success, description, lastItem in
+            guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
+            
+            if !success {
+                if strongSelf.brandSearch.retryCount < NumericConstants.retryLimit {
+                    strongSelf.requestDataFromShopStyle()
+                    strongSelf.brandSearch.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.brandSearch.retryCount)")
+                } else {
+                    strongSelf.brandSearch.resetRetryCount()
+                    strongSelf.animateSpinner(false)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
+                }
+                
+            } else {
+                strongSelf.keys = [String](strongSelf.brandSearch.brands.keys).sort()
+                strongSelf.animateSpinner(false)
+                strongSelf.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -229,8 +335,8 @@ extension BrandFilterViewController: UISearchResultsUpdating {
                 return range != nil
             }
             
-            for key in keys {
-                let brandsForKey = brands[key]!
+            keys?.forEach {
+                let brandsForKey = brandSearch.brands[$0]!
                 var brandsList = [String]()
                 
                 for dictionary in brandsForKey {
@@ -240,11 +346,12 @@ extension BrandFilterViewController: UISearchResultsUpdating {
                 
                 let matches = brandsList.filter(filter)
                 filteredBrands += matches
-                
             }
         }
         
-        tableView.reloadData()
+        if let _ = keys {
+            tableView.reloadData()
+        }
     }
 }
 

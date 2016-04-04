@@ -12,17 +12,45 @@ import Crashlytics
 class StoreFilterViewController: UIViewController {
     
     private(set) var searching = false
+    private(set) var requestingData = false
     
-    var stores: [String: [NSDictionary]]!
+//    var stores: [String: [NSDictionary]]!
     var keys: [String]!
     var filteredStores = [String]()
     var searchController: UISearchController!
     var selectedStores: [String: String]
+    var storeSearch = StoreSearch()
     
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
+    
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
+        return spinner
+    }()
+    
+    private func animateSpinner(animate: Bool) {
+        if animate {
+            self.spinner.startAnimating()
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformIdentity
+                self.spinner.alpha = 1.0
+                }, completion: nil)
+            
+        } else {
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                self.spinner.alpha = 0.0
+                }, completion: { _ in
+                    self.spinner.stopAnimating()
+            })
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         selectedStores = filtersModel.filterParams["store"] as! [String: String]
@@ -38,31 +66,9 @@ class StoreFilterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
         
-        tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
-        
-        if let URL = NSBundle.mainBundle().URLForResource("Shopstyle_Stores", withExtension: "plist") {
-            if let storesFromPlist = NSDictionary(contentsOfURL: URL) {
-                stores = storesFromPlist as! [String: [NSDictionary]]
-                keys = (storesFromPlist.allKeys as! [String]).sort()
-            }
-        }
-        
-        searchController = UISearchController(searchResultsController: nil)
-        
-        let searchBar = searchController.searchBar
-        searchBar.placeholder = "Search"
-        //        searchBar.sizeToFit()
-        
-        //        tableView.tableHeaderView = searchBar
-        headerView.addSubview(searchBar)
-        searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
-        searchController.delegate = self
+        requestDataFromShopStyle()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,20 +89,46 @@ class StoreFilterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    private func setupView() {
+        
+        // Spinner setup
+        tableView.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            spinner.centerXAnchor.constraintEqualToAnchor(tableView.centerXAnchor),
+            spinner.centerYAnchor.constraintEqualToAnchor(tableView.centerYAnchor, constant: -44)
+            ])
+        
+        // Table view setup
+        tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: FilterViewCellIdentifiers.headerCell)
+        tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+        searchController = UISearchController(searchResultsController: nil)
+        
+        let searchBar = searchController.searchBar
+        searchBar.placeholder = "Search"
+        searchBar.barTintColor = UIColor(hexString: "#F1F2F3")
+        searchBar.layer.borderWidth = 1.0
+        searchBar.layer.borderColor = UIColor(hexString: "#F1F2F3")?.CGColor
+        
+        headerView.addSubview(searchBar)
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+    }
 }
 
 // MARK: - Table view data source
 extension StoreFilterViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return searching && !isKeywordEmpty() ? 1 : keys.count
+        return searching && !isKeywordEmpty() ? 1 : storeSearch.stores.keys.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let key = keys[section]
-        let storeSection = stores[key]!
+        let storesList = storeSearch.stores[key]!
         
-        return searching && !isKeywordEmpty() ? filteredStores.count : storeSection.count
+        return searching && !isKeywordEmpty() ? filteredStores.count : storesList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -107,7 +139,7 @@ extension StoreFilterViewController: UITableViewDataSource {
             
         } else {
             let key = keys[indexPath.section]
-            let storeSection = stores[key]!
+            let storeSection = storeSearch.stores[key]!
             
             cell.textLabel?.text = storeSection[indexPath.row]["name"] as? String
         }
@@ -129,12 +161,51 @@ extension StoreFilterViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return searching && !isKeywordEmpty() ? nil : keys[section]
-    }
-    
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return searching && !isKeywordEmpty() ? nil : keys
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(FilterViewCellIdentifiers.headerCell)
+        cell?.backgroundView = UIView()
+        
+        if searching && !isKeywordEmpty() {
+            cell?.backgroundView?.backgroundColor = UIColor.clearColor()
+            return cell
+        }
+        
+        cell?.backgroundView?.backgroundColor = UIColor(hexString: "#F1F2F3")
+        
+        // Reuse views
+        if cell?.contentView.subviews.count == 0 {
+            let sectionLabel = UILabel()
+            sectionLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 14.0)!
+            sectionLabel.textColor = UIColor.lightGrayColor()
+            cell?.contentView.addSubview(sectionLabel)
+            
+            sectionLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "H:|-15-[label]-15-|",
+                    options: [],
+                    metrics: nil,
+                    views: ["label" : sectionLabel]),
+                NSLayoutConstraint.constraintsWithVisualFormat(
+                    "V:|[label]|",
+                    options: [],
+                    metrics: nil,
+                    views: ["label": sectionLabel])
+                ].flatten().map{$0})
+        }
+        
+        let sectionLabel = cell?.contentView.subviews[0] as! UILabel
+        
+        let section = keys[section]
+        let sectionTitle = "\(section) (\(storeSearch.stores[section]!.count) STORES)"
+        sectionLabel.text = sectionTitle
+        
+        return cell
     }
     
     // MARK: - Helper Methods
@@ -148,16 +219,16 @@ extension StoreFilterViewController: UITableViewDataSource {
     private func getCodeForStoreName(storeName: String) -> String? {
         let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
         
-        var firstChar = String(storeName.characters.first!).uppercaseString
+        var key = String(storeName.characters.first!).uppercaseString
         var storeCode: String?
         
-        if !alphabets.contains(firstChar) {
-            firstChar = "#"
+        if !alphabets.contains(key) {
+            key = "#"
         }
         
-        let storeSection = stores[firstChar]!
+        let storesList = storeSearch.stores[key]!
         
-        for store in storeSection {
+        for store in storesList {
             if storeName == store["name"] as! String {
                 let storeId = store["id"] as! String
                 storeCode = "r\(storeId)"
@@ -172,6 +243,37 @@ extension StoreFilterViewController: UITableViewDataSource {
         selectedStores.removeAll()
         searchController.active = false
         tableView.reloadData()
+    }
+    
+    private func requestDataFromShopStyle() {
+        if requestingData { return }
+        requestingData = true
+        
+        storeSearch.requestShopStyleStores { [weak self] success, description, lastItem in
+            guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
+            
+            if !success {
+                if strongSelf.storeSearch.retryCount < NumericConstants.retryLimit {
+                    strongSelf.requestDataFromShopStyle()
+                    strongSelf.storeSearch.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.storeSearch.retryCount)")
+                } else {
+                    strongSelf.storeSearch.resetRetryCount()
+                    strongSelf.animateSpinner(false)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
+                }
+                
+            } else {
+                strongSelf.keys = [String](strongSelf.storeSearch.stores.keys).sort()
+                strongSelf.animateSpinner(false)
+                strongSelf.tableView.reloadData()
+            }
+        }
     }
 }
 
@@ -229,8 +331,8 @@ extension StoreFilterViewController: UISearchResultsUpdating {
                 return range != nil
             }
             
-            for key in keys {
-                let storesForKey = stores[key]!
+            keys?.forEach {
+                let storesForKey = storeSearch.stores[$0]!
                 var storesList = [String]()
                 
                 for dictionary in storesForKey {
@@ -240,11 +342,12 @@ extension StoreFilterViewController: UISearchResultsUpdating {
                 
                 let matches = storesList.filter(filter)
                 filteredStores += matches
-                
             }
         }
         
-        tableView.reloadData()
+        if let _ = keys {
+            tableView.reloadData()
+        }
     }
 }
 

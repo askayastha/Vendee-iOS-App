@@ -12,6 +12,8 @@ import Crashlytics
 
 class ColorFilterViewController: UITableViewController {
     
+    private(set) var requestingData = false
+    
     let colorHexDict: OrderedDictionary<String, String> = [
         ("Red", "#DA0000"),
         ("Orange", "#E58200"),
@@ -28,25 +30,36 @@ class ColorFilterViewController: UITableViewController {
         ("Gold", "#FFC900"),
         ("Silver", "#CCCCCC")
     ]
-    let colorsDict: OrderedDictionary<String, String> = [
-        ("Red", "c7"),
-        ("Orange", "c3"),
-        ("Yellow", "c4"),
-        ("Green", "c13"),
-        ("Blue", "c10"),
-        ("Purple", "c8"),
-        ("Pink", "c17"),
-        ("Black", "c16"),
-        ("White", "c15"),
-        ("Gray", "c14"),
-        ("Beige", "c20"),
-        ("Brown", "c1"),
-        ("Gold", "c18"),
-        ("Silver", "c19")
-    ]
     let filtersModel = FiltersModel.sharedInstanceCopy()
     
+    var colorSearch = ColorSearch()
     var selectedColors: [String: String]
+    
+    lazy private var spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.color = UIColor(white: 0.1, alpha: 0.5)
+        spinner.startAnimating()
+        
+        return spinner
+    }()
+    
+    private func animateSpinner(animate: Bool) {
+        if animate {
+            self.spinner.startAnimating()
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformIdentity
+                self.spinner.alpha = 1.0
+                }, completion: nil)
+            
+        } else {
+            UIView.animateWithDuration(0.3, animations: {
+                self.spinner.transform = CGAffineTransformMakeScale(0.1, 0.1)
+                self.spinner.alpha = 0.0
+                }, completion: { _ in
+                    self.spinner.stopAnimating()
+            })
+        }
+    }
     
     required init?(coder aDecoder: NSCoder) {
         selectedColors = filtersModel.filterParams["color"] as! [String: String]
@@ -62,6 +75,22 @@ class ColorFilterViewController: UITableViewController {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
+        
+        // Spinner setup
+        tableView.addSubview(spinner)
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([
+            spinner.centerXAnchor.constraintEqualToAnchor(tableView.centerXAnchor),
+            spinner.centerYAnchor.constraintEqualToAnchor(tableView.centerYAnchor)
+            ])
+        
+        // Request colors for the first load
+//        if displayCategories.count == 0 {
+//            requestDataFromShopStyle()
+//        } else {
+//            animateSpinner(false)
+//        }
+        requestDataFromShopStyle()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -83,7 +112,7 @@ class ColorFilterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return colorsDict.count
+        return colorSearch.colors.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -91,18 +120,23 @@ class ColorFilterViewController: UITableViewController {
         
         let colorView = cell.viewWithTag(2000)
         colorView?.layer.cornerRadius = colorView!.bounds.size.width / 2
-        let colorLabel = cell.viewWithTag(2001) as? UILabel
-        let colorHexString = colorHexDict.orderedValues[indexPath.row]
         
-        if colorHexString == "#FFFFFF" {
-            colorView?.layer.borderColor = UIColor.grayColor().CGColor
-            colorView?.layer.borderWidth = 1.0
+        let colorLabel = cell.viewWithTag(2001) as? UILabel
+        let color = colorSearch.colors.objectAtIndex(indexPath.row) as! Color
+        
+        // Configure the cell
+        if let colorHexString = colorHexDict[color.name] {
+            if colorHexString == "#FFFFFF" {
+                colorView?.layer.borderColor = UIColor.grayColor().CGColor
+                colorView?.layer.borderWidth = 1.0
+            }
+            colorView?.backgroundColor = UIColor(hexString: colorHexString)
         }
-        colorView?.backgroundColor = UIColor(hexString: colorHexString)
-        colorLabel?.text = colorsDict.orderedKeys[indexPath.row]
+        
+        colorLabel?.text = color.name
         
         // Visually checkmark the selected colors.
-        if selectedColors.keys.contains(colorsDict.orderedKeys[indexPath.row]) {
+        if selectedColors.keys.contains(color.name) {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = UITableViewCellAccessoryType.None
@@ -115,17 +149,16 @@ class ColorFilterViewController: UITableViewController {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-        let colorName = colorsDict.orderedKeys[indexPath.row]
+        let color = colorSearch.colors.objectAtIndex(indexPath.row) as! Color
         
         // Keep track of the colors
-        if !selectedColors.keys.contains(colorName) {
-            if let colorCode = colorsDict[colorName] {
-                selectedColors[colorName] = colorCode
-                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-            }
+        if !selectedColors.keys.contains(color.name) {
+            let colorCode = "c\(color.id)"
+            selectedColors[color.name] = colorCode
+            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
             
         } else {
-            if let _ = selectedColors.removeValueForKey(colorName) {
+            if let _ = selectedColors.removeValueForKey(color.name) {
                 cell?.accessoryType = UITableViewCellAccessoryType.None
             }
         }
@@ -143,6 +176,34 @@ class ColorFilterViewController: UITableViewController {
         selectedColors.removeAll()
         tableView.reloadData()
     }
-
+    
+    private func requestDataFromShopStyle() {
+        if requestingData { return }
+        requestingData = true
+        
+        colorSearch.requestShopStyleColors { [weak self] success, description, lastItem in
+            guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
+            
+            if !success {
+                if strongSelf.colorSearch.retryCount < NumericConstants.retryLimit {
+                    strongSelf.requestDataFromShopStyle()
+                    strongSelf.colorSearch.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.colorSearch.retryCount)")
+                } else {
+                    strongSelf.colorSearch.resetRetryCount()
+                    strongSelf.animateSpinner(false)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
+                }
+                
+            } else {
+                strongSelf.animateSpinner(false)
+                strongSelf.tableView.reloadData()
+            }
+        }
+    }
 }
-	

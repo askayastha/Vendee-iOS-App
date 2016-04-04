@@ -197,14 +197,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let barButtonAppearance = UIBarButtonItem.appearance()
         barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)
         barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Compact)
+        
+//        navAppearance.setBackgroundImage(UIImage(), forBarPosition: .Any, barMetrics: .Default)
+//        navAppearance.shadowImage = UIImage()
     }
     
     private func customizeSearchBar() {
         UISearchBar.appearance().tintColor = UIColor(hexString: "#353535")
         let normalTextAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 14.0)!,
+            NSForegroundColorAttributeName: UIColor(hexString: "#353535")!
         ]
         UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).setTitleTextAttributes(normalTextAttributes, forState: .Normal)
+        UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).defaultTextAttributes = normalTextAttributes
     }
     
     private func customizeTableView() {

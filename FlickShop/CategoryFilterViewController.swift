@@ -11,7 +11,7 @@ import Crashlytics
 
 class CategoryFilterViewController: UITableViewController {
     
-    private var requestingData = false
+    private(set) var requestingData = false
     
     var productCategory: String!
     var displayCategories: [String]
@@ -270,6 +270,10 @@ class CategoryFilterViewController: UITableViewController {
                 } else {
                     strongSelf.categorySearch.resetRetryCount()
                     strongSelf.animateSpinner(false)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 
             } else {

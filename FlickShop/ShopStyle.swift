@@ -16,9 +16,12 @@ struct ShopStyle {
         
         case PreselectedResults(Int, Int, String)
         case PopularResults(Int, Int, String)
-        case Categories(String)
         case FilteredResults(Int, Int, String, String?)
         case Product(String)
+        case Categories(String)
+        case Brands
+        case Stores
+        case Colors
         
         var URLRequest: NSMutableURLRequest {
             let result: (path: String, parameters: [String: AnyObject]) = {
@@ -47,13 +50,6 @@ struct ShopStyle {
                     ]
                     return ("/products", params)
                     
-                case .Categories (let category):
-                    let params = [
-                        "pid": Router.APIKey,
-                        "cat": category
-                    ]
-                    return ("/categories", params)
-                    
                 case .FilteredResults (let offset, let limit, let category, let sort):
                     var params = [
                         "pid": Router.APIKey,
@@ -73,6 +69,31 @@ struct ShopStyle {
                         "pid": Router.APIKey
                     ]
                     return ("/products/\(id)", params)
+                    
+                case .Categories (let category):
+                    let params = [
+                        "pid": Router.APIKey,
+                        "cat": category
+                    ]
+                    return ("/categories", params)
+                    
+                case .Brands:
+                    let params = [
+                        "pid": Router.APIKey
+                    ]
+                    return ("/brands", params)
+                    
+                case .Stores:
+                    let params = [
+                        "pid": Router.APIKey
+                    ]
+                    return ("/retailers", params)
+                    
+                case .Colors:
+                    let params = [
+                        "pid": Router.APIKey
+                    ]
+                    return ("/colors", params)
                 }
             }()
             

@@ -54,6 +54,12 @@ class StoreSearch {
             return
         }
         
+        if let _ = ShopStyleStoresModel.sharedInstance().stores {
+            stores = ShopStyleStoresModel.sharedInstance().stores
+            completion(true, "Stores loaded from cache.", self.lastItem)
+            return
+        }
+        
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading
         
@@ -83,7 +89,7 @@ class StoreSearch {
     }
     
     private func populateStores(data data: JSON) {
-        guard let storesArray = data["stores"].array else { return }
+        guard let storesArray = data["retailers"].array else { return }
         let alphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".characters.map { String($0) }
         
         var storesList = storesArray.map {

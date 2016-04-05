@@ -72,6 +72,7 @@ class BrandFilterViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
         
+        setupView()
         requestDataFromShopStyle()
     }
     
@@ -143,9 +144,9 @@ extension BrandFilterViewController: UITableViewDataSource {
             
         } else {
             let key = keys[indexPath.section]
-            let brandSection = brandSearch.brands[key]!
+            let brandsList = brandSearch.brands[key]!
             
-            cell.textLabel?.text = brandSection[indexPath.row]["name"] as? String
+            cell.textLabel?.text = brandsList[indexPath.row]["name"] as? String
         }
         
         // Visually checkmark the selected brands.

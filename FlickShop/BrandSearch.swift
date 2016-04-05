@@ -54,6 +54,12 @@ class BrandSearch {
             return
         }
         
+        if let _ = ShopStyleBrandsModel.sharedInstance().brands {
+            brands = ShopStyleBrandsModel.sharedInstance().brands
+            completion(true, "Brands loaded from cache.", self.lastItem)
+            return
+        }
+        
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading
         
@@ -106,5 +112,8 @@ class BrandSearch {
                 brands[key]?.append($0)
             }
         }
+        
+        ShopStyleBrandsModel.sharedInstance().brands = brands
+        ShopStyleBrandsModel.sharedInstance().saveBrands()
     }
 }

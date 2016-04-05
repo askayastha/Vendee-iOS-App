@@ -68,6 +68,7 @@ class StoreFilterViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
         
+        setupView()
         requestDataFromShopStyle()
     }
     
@@ -139,9 +140,9 @@ extension StoreFilterViewController: UITableViewDataSource {
             
         } else {
             let key = keys[indexPath.section]
-            let storeSection = storeSearch.stores[key]!
+            let storesList = storeSearch.stores[key]!
             
-            cell.textLabel?.text = storeSection[indexPath.row]["name"] as? String
+            cell.textLabel?.text = storesList[indexPath.row]["name"] as? String
         }
         
         // Visually checkmark the selected stores.

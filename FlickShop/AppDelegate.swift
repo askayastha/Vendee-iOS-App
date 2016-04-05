@@ -11,6 +11,7 @@ import Alamofire
 import TSMessages
 import Fabric
 import Crashlytics
+import iRate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     let networkManager = NetworkReachabilityManager(host: "api.shopstyle.com")
+    
+    override class func initialize() -> Void {
+//        iRate.sharedInstance().previewMode = true
+        iRate.sharedInstance().messageTitle = "Vendee Feedback"
+        iRate.sharedInstance().message = "Love the app? Give us 5 stars!"
+        iRate.sharedInstance().rateButtonLabel = "Sure! ⭐️⭐️⭐️⭐️⭐️"
+        iRate.sharedInstance().remindButtonLabel = "Remind me later"
+        iRate.sharedInstance().cancelButtonLabel = "No thanks"
+        iRate.sharedInstance().daysUntilPrompt = 1
+        iRate.sharedInstance().usesUntilPrompt = 5
+        iRate.sharedInstance().remindPeriod = 1
+        iRate.sharedInstance().useAllAvailableLanguages = false
+        iRate.sharedInstance().promptForNewVersionIfUserRated = true
+        iRate.sharedInstance().onlyPromptIfLatestVersion = false
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         TSMessage.setDelegate(self)
@@ -266,5 +282,32 @@ extension AppDelegate: TSMessageViewProtocol {
     
     func customizeMessageView(messageView: TSMessageView!) {
         messageView.alpha = 0.8
+    }
+}
+
+extension AppDelegate: iRateDelegate {
+    
+    func iRateDidPromptForRating() {
+        // Log custom events
+        GoogleAnalytics.trackScreenForName("Rate Prompt")
+        Answers.logCustomEventWithName("Rate Prompt", customAttributes: nil)
+    }
+    
+    func iRateUserDidAttemptToRateApp() {
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Rate Action Button", label: "Sure!", value: nil)
+        Answers.logCustomEventWithName("Tapped Rate Action Button", customAttributes: ["Button": "Sure!"])
+    }
+    
+    func iRateUserDidDeclineToRateApp() {
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Rate Action Button", label: "No thanks", value: nil)
+        Answers.logCustomEventWithName("Tapped Rate Action Button", customAttributes: ["Button": "No thanks"])
+    }
+    
+    func iRateUserDidRequestReminderToRateApp() {
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Rate Action Button", label: "Remind me later", value: nil)
+        Answers.logCustomEventWithName("Tapped Rate Action Button", customAttributes: ["Button": "Remind me later"])
     }
 }

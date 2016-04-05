@@ -96,6 +96,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FlickShop/SMPageControl.framework"
   install_framework "Pods-FlickShop/SwiftyJSON.framework"
   install_framework "Pods-FlickShop/TSMessages.framework"
+  install_framework "Pods-FlickShop/iRate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FlickShop/Alamofire.framework"
@@ -110,4 +111,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FlickShop/SMPageControl.framework"
   install_framework "Pods-FlickShop/SwiftyJSON.framework"
   install_framework "Pods-FlickShop/TSMessages.framework"
+  install_framework "Pods-FlickShop/iRate.framework"
 fi

@@ -10,6 +10,7 @@ import UIKit
 import MessageUI
 import DeviceKit
 import Crashlytics
+import iRate
 
 class MoreViewController: UITableViewController {
 

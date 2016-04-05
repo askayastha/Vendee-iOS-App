@@ -16,6 +16,7 @@ target 'FlickShop' do
     pod 'Google/Analytics'
     pod 'Fabric'
     pod 'Crashlytics'
+    pod 'iRate'
 end
 
 target 'FlickShopTests' do

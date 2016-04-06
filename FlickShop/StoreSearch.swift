@@ -112,5 +112,8 @@ class StoreSearch {
                 stores[key]?.append($0)
             }
         }
+        
+        ShopStyleStoresModel.sharedInstance().stores = stores
+        ShopStyleStoresModel.sharedInstance().saveStores()
     }
 }

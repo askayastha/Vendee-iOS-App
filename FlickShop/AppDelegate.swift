@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         iRate.sharedInstance().remindPeriod = 1
         iRate.sharedInstance().useAllAvailableLanguages = false
         iRate.sharedInstance().promptForNewVersionIfUserRated = true
-        iRate.sharedInstance().onlyPromptIfLatestVersion = false
+        iRate.sharedInstance().onlyPromptIfLatestVersion = true
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

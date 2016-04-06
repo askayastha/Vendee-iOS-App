@@ -133,7 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func requestDataForProductId(productId: String, forSearch search: Search) {
         
-        search.parseShopStyleForProductId(productId) { success, description, _ in
+        search.requestShopStyleProductId(productId) { success, description, _ in
             if !success {
                 if search.retryCount < NumericConstants.retryLimit {
                     print("Request Failed. Trying again...")

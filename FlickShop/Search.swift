@@ -62,7 +62,7 @@ class Search {
         retryCount = 0
     }
     
-    func parseShopStyleForProductId(productId: String, completion: SearchComplete) {
+    func requestShopStyleProductId(productId: String, completion: SearchComplete) {
         if state == .Loading { return }     // Do not request more data if a request is in process.
         
         dataRequest = Alamofire.request(ShopStyle.Router.Product(productId)).validate().responseJSON() { response in
@@ -85,7 +85,7 @@ class Search {
         }
     }
     
-    func parseShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, forCategory category: String, completion: SearchComplete) {
+    func requestShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, forCategory category: String, completion: SearchComplete) {
         
         if state == .Loading { return }     // Do not request more data if a request is in process.
         

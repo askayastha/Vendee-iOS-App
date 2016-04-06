@@ -180,7 +180,7 @@ class ProductDetailsViewController: UITableViewController {
         guard let category = category else { return }
         
         requestingData = true
-        search.parseShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, description, lastItem in
+        search.requestShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, description, lastItem in
             
             guard let strongSelf = self else { return }
             strongSelf.requestingData = false

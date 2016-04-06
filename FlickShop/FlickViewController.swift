@@ -163,7 +163,7 @@ class FlickViewController: UICollectionViewController {
         }
         
         requestingData = true
-        search.parseShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
+        search.requestShopStyleForItemOffset(search.lastItem, withLimit: NumericConstants.requestLimit, forCategory: category) { [weak self] success, description, lastItem in
             
             guard let strongSelf = self else { return }
             strongSelf.requestingData = false

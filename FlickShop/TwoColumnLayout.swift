@@ -50,8 +50,8 @@ class TwoColumnLayout: UICollectionViewLayout {
     let bottomPadding: CGFloat = 3.0
     
     // This is an array to cache the calculated attributes. When you call prepareLayout(), you'll calculate the attributes for all items and add them to the cache. When the collection view later requests the layout attributes, you can be efficient and query the cache instead of recalculating them every time.
-    private var itemCache = [TwoColumnLayoutAttributes]()
-    private var headerCache = [TwoColumnLayoutAttributes]()
+    private var itemAttributesCache = [TwoColumnLayoutAttributes]()
+    private var headerAttributesCache = [TwoColumnLayoutAttributes]()
     
     // This declares two properties to store the content size. contentHeight is incremented as photos are added, and contentWidth is calculated based on the collection view width and its content inset.
     private var contentHeight: CGFloat = 0.0
@@ -62,18 +62,18 @@ class TwoColumnLayout: UICollectionViewLayout {
     }
     
     override func prepareLayout() {
-        headerCache.removeAll(keepCapacity: false)
-        itemCache.removeAll(keepCapacity: false)
+        headerAttributesCache.removeAll(keepCapacity: false)
+        itemAttributesCache.removeAll(keepCapacity: false)
         
-        if headerCache.isEmpty {
+        if headerAttributesCache.isEmpty {
             let indexPath = NSIndexPath(forItem: 0, inSection: 0)
             let layoutAttributes = TwoColumnLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withIndexPath: indexPath)
             layoutAttributes.frame = CGRect(x: 0, y: 0, width: headerReferenceSize.width, height: headerReferenceSize.height)
-            headerCache.append(layoutAttributes)
+            headerAttributesCache.append(layoutAttributes)
         }
         
         // You only calculate the layout attributes if cache is empty.
-        if itemCache.isEmpty {
+        if itemAttributesCache.isEmpty {
             // This declares and fills the xOffset array with the x-coordinate for every column based on the column widths. The yOffset array tracks the y-position for every column. You initialize each value in yOffset to 0, since this is the offset of the first item in each column.
             let columnWidth = contentWidth / CGFloat(numberOfColumns)
             var xOffset = [CGFloat]()
@@ -102,7 +102,7 @@ class TwoColumnLayout: UICollectionViewLayout {
                 let attributes = TwoColumnLayoutAttributes(forCellWithIndexPath: indexPath)
                 attributes.photoHeight = photoHeight
                 attributes.frame = insetFrame
-                itemCache.append(attributes)
+                itemAttributesCache.append(attributes)
                 
                 // This expands contentHeight to account for the frame of the newly calculated item. It then advances the yOffset for the current column based on the frame. Finally, it advances the column so that the next item will be placed in the next column.
                 contentHeight = max(contentHeight, CGRectGetMaxY(frame))
@@ -126,26 +126,26 @@ class TwoColumnLayout: UICollectionViewLayout {
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [UICollectionViewLayoutAttributes]()
         
-        for attributes in headerCache {
-            if CGRectIntersectsRect(attributes.frame, rect) {
-                layoutAttributes.append(attributes)
+        headerAttributesCache.forEach {
+            if CGRectIntersectsRect($0.frame, rect) {
+                layoutAttributes.append($0)
             }
         }
-        for attributes in itemCache {
-            if CGRectIntersectsRect(attributes.frame, rect) {
-                layoutAttributes.append(attributes)
+        itemAttributesCache.forEach {
+            if CGRectIntersectsRect($0.frame, rect) {
+                layoutAttributes.append($0)
             }
         }
         return layoutAttributes
     }
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        return itemCache[indexPath.item]
+        return itemAttributesCache[indexPath.item]
     }
     
     override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
         if indexPath.section == 0 {
-            return headerCache[indexPath.item]
+            return headerAttributesCache[indexPath.item]
         }
         return nil
     }

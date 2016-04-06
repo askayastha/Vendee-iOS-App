@@ -118,7 +118,7 @@ class Search {
                 
                 var requestURL = ShopStyle.Router.PreselectedResults(itemOffset, limit, filterCategory).URLRequest.URLString
                 
-                requestURL.appendContentsOf("&" + filterParams)
+                requestURL.appendContentsOf("&\(filterParams)")
                 print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
                 print(requestURL)
                 
@@ -149,17 +149,14 @@ class Search {
     func getFilterParams() -> String {
         var filterParams = [String]()
         
-        for filtersObj in [AnyObject](filtersModel.filterParams.values) {
-            let filters = filtersObj as! [String: String]
-            for code in [String](filters.values) {
-                filterParams.append("fl=\(code)")
+        [AnyObject](filtersModel.filterParams.values).forEach {
+            let filters = $0 as! [String: String]
+            [String](filters.values).forEach {
+                filterParams.append("fl=\($0)")
             }
         }
         
-        let finalFilterParams = filterParams.joinWithSeparator("&")
-        
-        // finalFilterParams = initialfilterParams.substringFromIndex(initialfilterParams.startIndex.advancedBy(3))    ; print(finalFilterParams)
-        return "&\(finalFilterParams)"
+        return "&\(filterParams.joinWithSeparator("&"))"
     }
     
     private func populateProducts(data data: JSON) {

@@ -30,8 +30,8 @@ class Category {
         var categories = [Category]()
         if let URL = NSBundle.mainBundle().URLForResource("Categories", withExtension: "plist") {
             if let categoriesFromPlist = NSArray(contentsOfURL: URL) {
-                for dictionary in categoriesFromPlist {
-                    let category = Category(dictionary: dictionary as! NSDictionary)
+                categoriesFromPlist.forEach {
+                    let category = Category(dictionary: $0 as! NSDictionary)
                     categories.append(category)
                 }
             }

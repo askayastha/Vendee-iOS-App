@@ -193,8 +193,8 @@ class CategoryFilterViewController: UITableViewController {
         
         subcategories.appendContentsOf(tappedCategories)
         
-        for item in categorySearch.categories {
-            let category = item as! CategoryInfo
+        categorySearch.categories.forEach {
+            let category = $0 as! CategoryInfo
             
             if category.parentId == categoryId {
                 subcategories.append("\(category.shortName):\(category.name)")
@@ -219,8 +219,8 @@ class CategoryFilterViewController: UITableViewController {
             tappedCategories.append("\(rootCategory.shortName):\(rootCategory.name)")
         }
         
-        for item in categorySearch.categories {
-            let category = item as! CategoryInfo
+        categorySearch.categories.forEach {
+            let category = $0 as! CategoryInfo
             
             if category.id == categoryId || category.parentId == categoryId {
                 displayCategories.append("\(category.shortName):\(category.name)")
@@ -283,8 +283,8 @@ class CategoryFilterViewController: UITableViewController {
                 let rootCategory = strongSelf.categorySearch.categories.objectAtIndex(0) as! CategoryInfo
                 strongSelf.tappedCategories.append("\(rootCategory.shortName):\(rootCategory.name)")
                 
-                for item in strongSelf.categorySearch.categories {
-                    let category = item as! CategoryInfo
+                strongSelf.categorySearch.categories.forEach {
+                    let category = $0 as! CategoryInfo
                     
                     if category.id == categoryId || category.parentId == categoryId {
                         strongSelf.displayCategories.append("\(category.shortName):\(category.name)")
@@ -293,6 +293,7 @@ class CategoryFilterViewController: UITableViewController {
                     // Make of dictionary of [Category: CategoryID]
                     strongSelf.categoriesIdDict["\(category.shortName):\(category.name)"] = category.id
                 }
+                
                 // Save for filter stuff
                 strongSelf.filtersModel.category["categories"] = strongSelf.categorySearch.categories
                 strongSelf.filtersModel.category["displayCategories"] = strongSelf.displayCategories

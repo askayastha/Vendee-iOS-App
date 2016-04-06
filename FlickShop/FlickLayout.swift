@@ -25,7 +25,7 @@ class FlickLayout: UICollectionViewLayout {
     /* The amount the user needs to scroll before the featured cell changes */
     let dragOffset: CGFloat = FlickLayoutConstants.Cell.featuredHeight - FlickLayoutConstants.Cell.standardHeight
   
-    var cache = [CustomLayoutAttributes]()
+    var itemAttributesCache = [CustomLayoutAttributes]()
   
     /* Returns the item index of the currently featured cell */
     var featuredItemIndex: Int {
@@ -73,7 +73,7 @@ class FlickLayout: UICollectionViewLayout {
   
   override func prepareLayout() {
 //    println("yOffset: \(collectionView!.contentOffset.y)")
-    cache.removeAll(keepCapacity: false)
+    itemAttributesCache.removeAll(keepCapacity: false)
     
     let standardHeight = FlickLayoutConstants.Cell.standardHeight
     let featuredHeight = FlickLayoutConstants.Cell.featuredHeight
@@ -131,7 +131,7 @@ class FlickLayout: UICollectionViewLayout {
         // Lastly, the loop sets some common elements for each cell, including creating the right frame based upon the if condition above, setting the attributes to what was just calculated, and updating the cache values. The very last step is to update y so that it's at the bottom of the last calculated cell, so you can move down the list of cells efficiently.
         frame = CGRect(x: 0, y: y, width: width, height: height)
         attributes.frame = frame
-        cache.append(attributes)
+        itemAttributesCache.append(attributes)
         y = CGRectGetMaxY(frame)
     }
     
@@ -141,16 +141,16 @@ class FlickLayout: UICollectionViewLayout {
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         var layoutAttributes = [CustomLayoutAttributes]()
         
-        for attributes in cache {
-            if CGRectIntersectsRect(attributes.frame, rect) {
-                layoutAttributes.append(attributes)
+        itemAttributesCache.forEach {
+            if CGRectIntersectsRect($0.frame, rect) {
+                layoutAttributes.append($0)
             }
         }
         return layoutAttributes
     }
     
     override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        let layoutAttributes = cache[indexPath.item]
+        let layoutAttributes = itemAttributesCache[indexPath.item]
         
         return layoutAttributes
     }

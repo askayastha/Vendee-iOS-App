@@ -40,8 +40,8 @@ class CategoriesLayout: UICollectionViewFlowLayout {
         var attributesCopy = [UICollectionViewLayoutAttributes]()
         
         //2
-        for itemAttributes in attributes {
-            let itemAttributesCopy = itemAttributes.copy() as! UICollectionViewLayoutAttributes
+        attributes.forEach {
+            let itemAttributesCopy = $0.copy() as! UICollectionViewLayoutAttributes
             //3
             let frame = itemAttributesCopy.frame
             //4

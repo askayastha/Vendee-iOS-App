@@ -177,6 +177,8 @@ extension BrandFilterViewController: UITableViewDataSource {
         
         if searching && !isKeywordEmpty() {
             cell?.backgroundView?.backgroundColor = UIColor.clearColor()
+            let sectionLabel = cell?.contentView.subviews[0] as! UILabel
+            sectionLabel.text = ""
             return cell
         }
         
@@ -206,8 +208,8 @@ extension BrandFilterViewController: UITableViewDataSource {
         
         let sectionLabel = cell?.contentView.subviews[0] as! UILabel
         
-        let section = keys[section]
-        let sectionTitle = "\(section) (\(brandSearch.brands[section]!.count) BRANDS)"
+        let sectionKey = keys[section]
+        let sectionTitle = "\(sectionKey) (\(brandSearch.brands[sectionKey]!.count) BRANDS)"
         sectionLabel.text = sectionTitle
         
         return cell

@@ -173,6 +173,8 @@ extension StoreFilterViewController: UITableViewDataSource {
         
         if searching && !isKeywordEmpty() {
             cell?.backgroundView?.backgroundColor = UIColor.clearColor()
+            let sectionLabel = cell?.contentView.subviews[0] as! UILabel
+            sectionLabel.text = ""
             return cell
         }
         
@@ -202,8 +204,8 @@ extension StoreFilterViewController: UITableViewDataSource {
         
         let sectionLabel = cell?.contentView.subviews[0] as! UILabel
         
-        let section = keys[section]
-        let sectionTitle = "\(section) (\(storeSearch.stores[section]!.count) STORES)"
+        let sectionKey = keys[section]
+        let sectionTitle = "\(sectionKey) (\(storeSearch.stores[sectionKey]!.count) STORES)"
         sectionLabel.text = sectionTitle
         
         return cell

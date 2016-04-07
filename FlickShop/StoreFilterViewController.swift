@@ -284,7 +284,13 @@ extension StoreFilterViewController: UITableViewDataSource {
                 }
                 
             } else {
-                strongSelf.keys = [String](strongSelf.storeSearch.stores.keys).sort()
+                // Sort section keys and change the order of section "#"
+                var sectionKeys = [String](strongSelf.storeSearch.stores.keys).sort()
+                if sectionKeys.first == "#" {
+                    sectionKeys.append(sectionKeys.removeFirst())
+                }
+                
+                strongSelf.keys = sectionKeys
                 strongSelf.indexBar.delegate = self
                 strongSelf.animateSpinner(false)
                 strongSelf.tableView.reloadData()

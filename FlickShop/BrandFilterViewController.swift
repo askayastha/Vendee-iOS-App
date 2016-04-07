@@ -288,7 +288,13 @@ extension BrandFilterViewController: UITableViewDataSource {
                 }
                 
             } else {
-                strongSelf.keys = [String](strongSelf.brandSearch.brands.keys).sort()
+                // Sort section keys and change the order of section "#"
+                var sectionKeys = [String](strongSelf.brandSearch.brands.keys).sort()
+                if sectionKeys.first == "#" {
+                    sectionKeys.append(sectionKeys.removeFirst())
+                }
+                
+                strongSelf.keys = sectionKeys
                 strongSelf.indexBar.delegate = self
                 strongSelf.animateSpinner(false)
                 strongSelf.tableView.reloadData()

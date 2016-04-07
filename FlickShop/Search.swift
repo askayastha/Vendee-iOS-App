@@ -65,6 +65,9 @@ class Search {
     func requestShopStyleProductId(productId: String, completion: SearchComplete) {
         if state == .Loading { return }     // Do not request more data if a request is in process.
         
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        state = .Loading
+        
         dataRequest = Alamofire.request(ShopStyle.Router.Product(productId)).validate().responseJSON() { response in
             if response.result.isSuccess {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0)) {
@@ -86,7 +89,6 @@ class Search {
     }
     
     func requestShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, forCategory category: String, completion: SearchComplete) {
-        
         if state == .Loading { return }     // Do not request more data if a request is in process.
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true

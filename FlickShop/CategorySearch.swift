@@ -50,9 +50,7 @@ class CategorySearch {
     }
     
     func parseShopStyleForCategory(category: String, completion: SearchComplete) {
-        if state == .Loading { // Do not request more data if a request is in process.
-            return
-        }
+        if state == .Loading { return }     // Do not request more data if a request is in process.
         
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading

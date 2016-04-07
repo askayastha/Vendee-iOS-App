@@ -136,16 +136,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         search.requestShopStyleProductId(productId) { success, description, _ in
             if !success {
                 if search.retryCount < NumericConstants.retryLimit {
-                    print("Request Failed. Trying again...")
                     self.requestDataForProductId(productId, forSearch: search)
-                    print("Request Count: \(search.retryCount)")
                     search.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(search.retryCount)")
                     
                 } else {
                     search.resetRetryCount()
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
                     TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 
             } else {

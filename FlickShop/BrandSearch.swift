@@ -50,9 +50,7 @@ class BrandSearch {
     }
     
     func requestShopStyleBrands(completion: SearchComplete) {
-        if state == .Loading { // Do not request more data if a request is in process.
-            return
-        }
+        if state == .Loading { return }     // Do not request more data if a request is in process.
         
         if let _ = ShopStyleBrandsModel.sharedInstance().brands {
             brands = ShopStyleBrandsModel.sharedInstance().brands
@@ -60,7 +58,6 @@ class BrandSearch {
             return
         }
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading
         
         dataRequest = Alamofire.request(ShopStyle.Router.Brands).validate().responseJSON() {

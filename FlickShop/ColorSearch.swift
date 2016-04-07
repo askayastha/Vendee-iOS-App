@@ -50,11 +50,14 @@ class ColorSearch {
     }
     
     func requestShopStyleColors(completion: SearchComplete) {
-        if state == .Loading { // Do not request more data if a request is in process.
+        if state == .Loading { return }     // Do not request more data if a request is in process.
+        
+        if let _ = ShopStyleColorsModel.sharedInstance().colors {
+            colors = ShopStyleColorsModel.sharedInstance().colors
+            completion(true, "Colors loaded from cache.", self.lastItem)
             return
         }
         
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         state = .Loading
         
         dataRequest = Alamofire.request(ShopStyle.Router.Colors).validate().responseJSON() {
@@ -87,6 +90,8 @@ class ColorSearch {
             colors.addObjectsFromArray(colorsArray.map { Color(data: $0) })
         }
         
+        ShopStyleColorsModel.sharedInstance().colors = colors
+        ShopStyleColorsModel.sharedInstance().saveColors()
     }
 }
 

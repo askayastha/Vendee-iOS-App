@@ -17,6 +17,7 @@ target 'FlickShop' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'iRate'
+    pod 'GDIIndexBar'
 end
 
 target 'FlickShopTests' do

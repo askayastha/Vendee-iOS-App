@@ -37,11 +37,11 @@
 		7541FECE1C3E720B005CEB11 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */; };
 		7542AA891CA9E98900739643 /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7542AA871CA9E6C200739643 /* Pacifico.ttf */; };
 		754682DB1CB67BD0000A86EB /* ShopStyleColorsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754682DA1CB67BD0000A86EB /* ShopStyleColorsModel.swift */; };
+		754682DD1CB68EC5000A86EB /* Brands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 754682DC1CB68EC5000A86EB /* Brands.plist */; };
 		7546CB1E1C4A447A000C9635 /* ContainerProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB1D1C4A447A000C9635 /* ContainerProductDetailsViewController.swift */; };
 		7546CB221C4A5A0E000C9635 /* SimilarProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB211C4A5A0E000C9635 /* SimilarProductCell.swift */; };
 		7546CB2E1C4A884D000C9635 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7546CB2D1C4A884D000C9635 /* InfoButton.swift */; };
 		7551D3461C134A040088D32B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7551D3451C134A040088D32B /* Constants.swift */; };
-		7559FA311C65017500177064 /* Brands.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7559FA301C65017500177064 /* Brands.plist */; };
 		755F62FE1C770AA7003BA832 /* PhotoScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755F62FD1C770AA7003BA832 /* PhotoScout.swift */; };
 		756264AF1C6C85A000149516 /* ContainerFavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */; };
 		756264B31C6C860700149516 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756264B21C6C860700149516 /* FavoritesViewController.swift */; };
@@ -176,11 +176,11 @@
 		7541FECD1C3E720B005CEB11 /* PhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PhotosViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7542AA871CA9E6C200739643 /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
 		754682DA1CB67BD0000A86EB /* ShopStyleColorsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopStyleColorsModel.swift; sourceTree = "<group>"; };
+		754682DC1CB68EC5000A86EB /* Brands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Brands.plist; sourceTree = "<group>"; };
 		7546CB1D1C4A447A000C9635 /* ContainerProductDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerProductDetailsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7546CB211C4A5A0E000C9635 /* SimilarProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SimilarProductCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7546CB2D1C4A884D000C9635 /* InfoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = InfoButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7551D3451C134A040088D32B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Constants.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		7559FA301C65017500177064 /* Brands.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Brands.plist; sourceTree = "<group>"; };
 		755F62FD1C770AA7003BA832 /* PhotoScout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoScout.swift; sourceTree = "<group>"; };
 		756264AE1C6C85A000149516 /* ContainerFavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerFavoritesViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		756264B21C6C860700149516 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FavoritesViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -593,11 +593,11 @@
 		75F12D271BE0AC8100258874 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				75C8ED991C94625300ADED8C /* licenses.txt */,
 				75EC0E711C8896EA008C162B /* GoogleService-Info.plist */,
-				7559FA301C65017500177064 /* Brands.plist */,
 				75A31E3D1BDFBAAE006FD010 /* Info.plist */,
 				75F12CF11BE0A35900258874 /* Categories.plist */,
+				754682DC1CB68EC5000A86EB /* Brands.plist */,
+				75C8ED991C94625300ADED8C /* licenses.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -761,6 +761,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754682DD1CB68EC5000A86EB /* Brands.plist in Resources */,
 				7542AA891CA9E98900739643 /* Pacifico.ttf in Resources */,
 				75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */,
 				75391EF71CAAD0C200BA9CE4 /* Diogenes-BlackItalic.otf in Resources */,
@@ -778,7 +779,6 @@
 				75F12D0B1BE0A35900258874 /* FlickPageCell.xib in Resources */,
 				75391EF81CAAD0C200BA9CE4 /* Diogenes-Regular.otf in Resources */,
 				756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */,
-				7559FA311C65017500177064 /* Brands.plist in Resources */,
 				756E15B01C7213D20046CCBA /* FaktFlipboard-Medium.otf in Resources */,
 				756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */,
 				75F12D0F1BE0A35900258874 /* ProximaNova-Bold.ttf in Resources */,

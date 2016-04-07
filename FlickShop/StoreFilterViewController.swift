@@ -8,7 +8,6 @@
 
 import UIKit
 import Crashlytics
-import GDIIndexBar
 
 class StoreFilterViewController: UIViewController {
     
@@ -17,7 +16,6 @@ class StoreFilterViewController: UIViewController {
     
 //    var stores: [String: [NSDictionary]]!
     var keys: [String]!
-    var indexBar: GDIIndexBar!
     var filteredStores = [String]()
     var searchController: UISearchController!
     var selectedStores: [String: String]
@@ -106,6 +104,11 @@ class StoreFilterViewController: UIViewController {
         tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: FilterViewCellIdentifiers.headerCell)
         tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
         tableView.showsVerticalScrollIndicator = false
+        tableView.sectionIndexBackgroundColor = UIColor.clearColor()
+        tableView.sectionIndexTrackingBackgroundColor = UIColor.clearColor()
+        tableView.sectionIndexColor = UIColor.lightGrayColor()
+        
+        // SearchController setup
         searchController = UISearchController(searchResultsController: nil)
         
         let searchBar = searchController.searchBar
@@ -118,13 +121,6 @@ class StoreFilterViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchResultsUpdater = self
         searchController.delegate = self
-        
-        // Custom IndexBar setup
-        indexBar = GDIIndexBar(tableView: tableView)
-        indexBar.textColor = UIColor.lightGrayColor()
-        indexBar.textFont = UIFont(name: "Menlo-Bold", size: 11.0)
-        indexBar.barBackgroundWidth = 0
-        view.addSubview(indexBar)
     }
 }
 
@@ -173,9 +169,7 @@ extension StoreFilterViewController: UITableViewDataSource {
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
-        indexBar.hidden = searching && !isKeywordEmpty()
-        
-        return nil
+        return searching && !isKeywordEmpty() ? nil : keys
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -195,7 +189,7 @@ extension StoreFilterViewController: UITableViewDataSource {
         // Reuse views
         if cell?.contentView.subviews.count == 0 {
             let sectionLabel = UILabel()
-            sectionLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 14.0)!
+            sectionLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 14.0)!
             sectionLabel.textColor = UIColor.lightGrayColor()
             cell?.contentView.addSubview(sectionLabel)
             
@@ -291,7 +285,6 @@ extension StoreFilterViewController: UITableViewDataSource {
                 }
                 
                 strongSelf.keys = sectionKeys
-                strongSelf.indexBar.delegate = self
                 strongSelf.animateSpinner(false)
                 strongSelf.tableView.reloadData()
             }
@@ -381,21 +374,5 @@ extension StoreFilterViewController: UISearchControllerDelegate {
     
     func willDismissSearchController(searchController: UISearchController) {
         searching = false
-    }
-}
-
-extension StoreFilterViewController: GDIIndexBarDelegate {
-    
-    func numberOfIndexesForIndexBar(indexBar: GDIIndexBar!) -> UInt {
-        return UInt(keys.count)
-    }
-    
-    func stringForIndex(index: UInt) -> String! {
-        return keys[Int(index)]
-    }
-    
-    func indexBar(indexBar: GDIIndexBar!, didSelectIndex index: UInt) {
-        let indexPath = NSIndexPath(forRow: 0, inSection: Int(index))
-        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
     }
 }

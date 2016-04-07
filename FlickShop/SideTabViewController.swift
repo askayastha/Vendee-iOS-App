@@ -91,7 +91,7 @@ class SideTabViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 64.0
+        return 66.0
     }
     
     func isSelectedFilter(filter: String) -> Bool {

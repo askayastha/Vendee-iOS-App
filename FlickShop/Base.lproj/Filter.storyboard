@@ -469,14 +469,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SideTabCell" rowHeight="64" id="6dy-h1-2kK">
-                                <rect key="frame" x="0.0" y="28" width="90" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SideTabCell" rowHeight="66" id="6dy-h1-2kK">
+                                <rect key="frame" x="0.0" y="28" width="90" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6dy-h1-2kK" id="WT2-C1-GOu">
-                                    <rect key="frame" x="0.0" y="0.0" width="90" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circular_check" translatesAutoresizingMaskIntoConstraints="NO" id="4xp-Ou-QgE">
+                                        <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="circular_check" translatesAutoresizingMaskIntoConstraints="NO" id="4xp-Ou-QgE">
                                             <rect key="frame" x="8" y="26" width="12" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="12" id="IEz-Pf-6UQ"/>

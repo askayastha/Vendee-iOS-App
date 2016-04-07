@@ -203,9 +203,9 @@ class FlickViewController: UICollectionViewController {
         print("CollectionView Height: \(collectionView!.bounds.size.height)")
         print("Screen Height: \(ScreenConstants.height)")
         
-        let headerView: CGFloat = 60.0
-        let imageViewGap: CGFloat = 20.0
-        let actionView: CGFloat = 52.2
+        let headerView: CGFloat = 60
+        let imageViewGap: CGFloat = 20
+        let actionView: CGFloat = 52
         
         return ScreenConstants.height - headerView - imageViewGap - actionView
     }

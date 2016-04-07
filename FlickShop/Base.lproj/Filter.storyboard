@@ -464,7 +464,7 @@
         <scene sceneID="kJP-fF-xlr">
             <objects>
                 <tableViewController id="UzN-SE-ahE" customClass="SideTabViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WQp-E3-rhI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WQp-E3-rhI">
                         <rect key="frame" x="0.0" y="0.0" width="90" height="492"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -476,46 +476,38 @@
                                     <rect key="frame" x="0.0" y="0.0" width="90" height="66"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="circular_check" translatesAutoresizingMaskIntoConstraints="NO" id="4xp-Ou-QgE">
-                                            <rect key="frame" x="8" y="26" width="12" height="12"/>
+                                        <imageView userInteractionEnabled="NO" tag="1000" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circular_check" translatesAutoresizingMaskIntoConstraints="NO" id="4xp-Ou-QgE">
+                                            <rect key="frame" x="8" y="27" width="12" height="12"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="12" id="IEz-Pf-6UQ"/>
                                                 <constraint firstAttribute="height" constant="12" id="VBN-BX-cv9"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" tag="1002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bAq-0d-z97">
-                                            <rect key="frame" x="33" y="10" width="24" height="24"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="24" id="7cQ-qv-U3T"/>
-                                                <constraint firstAttribute="width" constant="24" id="aKI-yp-2Y6"/>
-                                            </constraints>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-M7-I32">
-                                            <rect key="frame" x="32" y="40" width="27" height="12"/>
-                                            <fontDescription key="fontDescription" name="FaktFlipboard-SemiBold" family="Fakt Flipboard" pointSize="10"/>
-                                            <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="p5D-Er-Ll4">
+                                            <rect key="frame" x="32" y="12" width="27" height="42"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bAq-0d-z97">
+                                                    <rect key="frame" x="2" y="0.0" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="Dyz-Lo-lOf"/>
+                                                        <constraint firstAttribute="width" constant="24" id="Fwm-eh-w0N"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-M7-I32">
+                                                    <rect key="frame" x="0.0" y="30" width="27" height="12"/>
+                                                    <fontDescription key="fontDescription" name="FaktFlipboard-SemiBold" family="Fakt Flipboard" pointSize="10"/>
+                                                    <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="bAq-0d-z97" firstAttribute="top" secondItem="WT2-C1-GOu" secondAttribute="top" constant="10" id="3Zf-bG-Pbd"/>
-                                        <constraint firstItem="12Y-M7-I32" firstAttribute="centerY" secondItem="WT2-C1-GOu" secondAttribute="centerY" id="8NC-8g-IV7"/>
-                                        <constraint firstItem="12Y-M7-I32" firstAttribute="top" secondItem="bAq-0d-z97" secondAttribute="bottom" constant="6" id="9vg-Ak-6pd"/>
-                                        <constraint firstAttribute="trailing" secondItem="12Y-M7-I32" secondAttribute="trailing" constant="15" id="T8D-mk-E7J"/>
-                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="12Y-M7-I32" secondAttribute="bottom" constant="10" id="ULC-AD-mwp"/>
+                                        <constraint firstItem="p5D-Er-Ll4" firstAttribute="centerY" secondItem="WT2-C1-GOu" secondAttribute="centerY" id="5VS-0K-ISY"/>
+                                        <constraint firstItem="p5D-Er-Ll4" firstAttribute="centerX" secondItem="WT2-C1-GOu" secondAttribute="centerX" id="QDC-Vr-EZC"/>
                                         <constraint firstItem="4xp-Ou-QgE" firstAttribute="centerY" secondItem="WT2-C1-GOu" secondAttribute="centerY" id="d9i-Zg-NUb"/>
-                                        <constraint firstItem="bAq-0d-z97" firstAttribute="centerX" secondItem="WT2-C1-GOu" secondAttribute="centerX" id="ert-hK-Fo6"/>
                                         <constraint firstItem="4xp-Ou-QgE" firstAttribute="leading" secondItem="WT2-C1-GOu" secondAttribute="leading" constant="8" id="g5w-r0-9LH"/>
-                                        <constraint firstItem="12Y-M7-I32" firstAttribute="centerX" secondItem="WT2-C1-GOu" secondAttribute="centerX" id="iiu-nC-MgQ"/>
-                                        <constraint firstItem="12Y-M7-I32" firstAttribute="leading" secondItem="4xp-Ou-QgE" secondAttribute="trailing" constant="8" id="ukH-qZ-7wK"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="8NC-8g-IV7"/>
-                                            <exclude reference="T8D-mk-E7J"/>
-                                            <exclude reference="ukH-qZ-7wK"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>

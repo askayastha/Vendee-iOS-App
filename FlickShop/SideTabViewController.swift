@@ -36,9 +36,6 @@ class SideTabViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         // Need to enable scroll for 3.5" screens (iPhone 4S and before) due to limited screen height
         if ScreenConstants.height == 480 {
@@ -46,6 +43,7 @@ class SideTabViewController: UITableViewController {
         }
         
         tableView.backgroundColor = UIColor(hexString: "#F1F2F3")
+        tableView.showsVerticalScrollIndicator = false
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidChangeNotification, object: nil)
     }
@@ -91,7 +89,14 @@ class SideTabViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 66.0
+        let statusBar: CGFloat = 20
+        let navBar: CGFloat = 44
+        let toolBar: CGFloat = 44
+        
+        let rowHeight = (ScreenConstants.height - statusBar - navBar - toolBar) / CGFloat(sideTabsDict.count)
+        let defaultHeight = (580 - statusBar - navBar - toolBar) / CGFloat(sideTabsDict.count)
+        
+        return rowHeight < 65 ? defaultHeight : rowHeight
     }
     
     func isSelectedFilter(filter: String) -> Bool {
@@ -145,18 +150,9 @@ class SideTabViewController: UITableViewController {
         selectedFilter = (textLabel?.text)!
         tableView.reloadData()
     }
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
     
     func refreshTable() {
         tableView.reloadData()
     }
-
 }
 

@@ -176,14 +176,6 @@ extension StoreFilterViewController: UITableViewDataSource {
         
         let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(FilterViewCellIdentifiers.headerCell)
         cell?.backgroundView = UIView()
-        
-        if searching && !isKeywordEmpty() {
-            cell?.backgroundView?.backgroundColor = UIColor.clearColor()
-            let sectionLabel = cell?.contentView.subviews[0] as! UILabel
-            sectionLabel.text = ""
-            return cell
-        }
-        
         cell?.backgroundView?.backgroundColor = UIColor(hexString: "#F1F2F3")
         
         // Reuse views
@@ -213,6 +205,10 @@ extension StoreFilterViewController: UITableViewDataSource {
         let sectionKey = keys[section]
         let sectionTitle = "\(sectionKey) (\(storeSearch.stores[sectionKey]!.count) STORES)"
         sectionLabel.text = sectionTitle
+        
+        if searching && !isKeywordEmpty() {
+            sectionLabel.text = "BEST MATCHES"
+        }
         
         return cell
     }

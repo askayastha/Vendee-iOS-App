@@ -180,14 +180,6 @@ extension BrandFilterViewController: UITableViewDataSource {
 
         let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(FilterViewCellIdentifiers.headerCell)
         cell?.backgroundView = UIView()
-        
-        if searching && !isKeywordEmpty() {
-            cell?.backgroundView?.backgroundColor = UIColor.clearColor()
-            let sectionLabel = cell?.contentView.subviews[0] as! UILabel
-            sectionLabel.text = ""
-            return cell
-        }
-        
         cell?.backgroundView?.backgroundColor = UIColor(hexString: "#F1F2F3")
         
         // Reuse views
@@ -217,6 +209,10 @@ extension BrandFilterViewController: UITableViewDataSource {
         let sectionKey = keys[section]
         let sectionTitle = "\(sectionKey) (\(brandSearch.brands[sectionKey]!.count) BRANDS)"
         sectionLabel.text = sectionTitle
+        
+        if searching && !isKeywordEmpty() {
+            sectionLabel.text = "BEST MATCHES"
+        }
         
         return cell
     }

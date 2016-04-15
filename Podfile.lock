@@ -1,56 +1,56 @@
 PODS:
-  - Alamofire (3.3.0)
+  - Alamofire (3.3.1)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
-  - DeviceKit (0.3.1)
-  - Fabric (1.6.6)
+  - DeviceKit (0.3.2)
+  - Fabric (1.6.7)
   - FLAnimatedImage (1.0.12)
-  - Google/Analytics (1.3.2):
+  - Google/Analytics (2.0.4):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
-  - Google/Core (1.3.2):
+  - Google/Core (2.0.4):
     - GoogleInterchangeUtilities (~> 1.0)
     - GoogleNetworkingUtilities (~> 1.0)
     - GoogleSymbolUtilities (~> 1.0)
     - GoogleUtilities (~> 1.1)
   - GoogleAnalytics (3.14.0)
-  - GoogleInterchangeUtilities (1.1.0):
+  - GoogleInterchangeUtilities (1.2.0):
     - GoogleSymbolUtilities (~> 1.0)
-  - GoogleNetworkingUtilities (1.0.0):
+  - GoogleNetworkingUtilities (1.2.0):
     - GoogleSymbolUtilities (~> 1.0)
-  - GoogleSymbolUtilities (1.0.3)
-  - GoogleUtilities (1.1.0):
-    - GoogleSymbolUtilities (~> 1.0.0)
+  - GoogleSymbolUtilities (1.1.0)
+  - GoogleUtilities (1.3.0):
+    - GoogleSymbolUtilities (~> 1.0)
   - HexColors (2.2.1)
   - iRate (1.11.4)
   - MBProgressHUD (0.9.2)
   - NMRangeSlider (1.2.3)
   - Ono (1.2.2)
   - PINCache (2.2.2)
-  - PINRemoteImage (2.1.2):
-    - PINRemoteImage/FLAnimatedImage (= 2.1.2)
-  - PINRemoteImage/Core (2.1.2):
+  - PINRemoteImage (2.1.3):
+    - PINRemoteImage/FLAnimatedImage (= 2.1.3)
+  - PINRemoteImage/Core (2.1.3):
     - PINCache (>= 2.1)
-  - PINRemoteImage/FLAnimatedImage (2.1.2):
+  - PINRemoteImage/FLAnimatedImage (2.1.3):
     - FLAnimatedImage (>= 1.0)
     - PINRemoteImage/Core
   - SMPageControl (1.2)
-  - SwiftyJSON (2.3.1)
+  - SwiftyJSON (2.3.2)
   - TSMessages (0.9.12):
     - HexColors (~> 2.2.0)
 
 DEPENDENCIES:
-  - Alamofire (= 3.3.0)
+  - Alamofire (~> 3.0)
   - Crashlytics
-  - DeviceKit (= 0.3.1)
+  - DeviceKit (~> 0.3)
   - Fabric
   - Google/Analytics
   - iRate
-  - MBProgressHUD (= 0.9.2)
+  - MBProgressHUD (~> 0.9)
   - NMRangeSlider (from `https://github.com/chanil1218/NMRangeSlider.git`, commit
     `c89890c`)
   - Ono
-  - PINRemoteImage (= 2.1.2)
+  - PINRemoteImage (~> 2.0)
   - SMPageControl
   - SwiftyJSON (~> 2.0)
   - TSMessages
@@ -66,26 +66,26 @@ CHECKOUT OPTIONS:
     :git: https://github.com/chanil1218/NMRangeSlider.git
 
 SPEC CHECKSUMS:
-  Alamofire: 9054db4a1b1ca9e363223183e01cea380159a27c
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
-  DeviceKit: eb8909d941cee4dc7f6cc5b1b40a41da523a197d
-  Fabric: 1abc1e59f11fa39ede6f690ef7309d8563e3ec59
+  DeviceKit: 79182140c0aa8daaf4f4b3920e0b079f5fa9db79
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  Google: 97618e118111b998cce1d8dd1bd98b82301d72db
+  Google: d0932824c5b97c96be489aa6f4e8cd6c294d637d
   GoogleAnalytics: 9be1afdb8deeac4bb5f13ca7f7d3b9db2a1f43dc
-  GoogleInterchangeUtilities: d7f7174176fbcf9710f696f1acebad4dbd98ac03
-  GoogleNetworkingUtilities: 292992ab31b7b4ba32809a0e8b40e324cdfb2c0c
-  GoogleSymbolUtilities: 82ad9f93d3615244b3f4ce440f5ab2515e8b4f56
-  GoogleUtilities: 8ed9134debe11719097881711464752900668f10
+  GoogleInterchangeUtilities: 427382e42d8a340038bec37c6fdfd316e14b5fa2
+  GoogleNetworkingUtilities: ec1e9911aca811eb18b7144394fee6168b607785
+  GoogleSymbolUtilities: eb3965ea12710569c7b80db198a39e39b18613f7
+  GoogleUtilities: 5c653f7df2eedf0ce0efdfe5afe4f831f375fd7a
   HexColors: abfd172e329dab59888614ccba6f216cec59289d
   iRate: 599ed07c854e0695f3c605d1b2a64c67d912acb7
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   NMRangeSlider: b57dad1b1f1b5c18b4ecfc8856a20910152dfcf3
   Ono: 80b1c686777d3f6d5d5ce6fcac8a74afef4ca197
   PINCache: 078426d356ab95ef875e9e62e5c35a2ea3333c28
-  PINRemoteImage: 2ce3f1fcc52f0360a3821f91f1a1bc653c5d2338
+  PINRemoteImage: b8fb531016f3603016dd105a6139bf36c92b4316
   SMPageControl: 922892813001cfaf059e86e6801f46a967e9ee29
-  SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
 
 COCOAPODS: 0.39.0

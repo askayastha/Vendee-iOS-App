@@ -18,7 +18,7 @@
 
 ## Requirements
 
-- iOS 8.0+ / tvOS 9.0+
+- iOS 8.0+ / tvOS 9.0+ (linking against iOS 9.3 and tvOS 9.2 required)
 - Xcode 7.3+
 
 ## Installation
@@ -30,13 +30,13 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-pod 'DeviceKit', '~> 0.3.1'
+pod 'DeviceKit', '~> 0.3.2'
 ```
 
 ### Carthage
 
 ```ogdl
-github "dennisweissmann/DeviceKit" ~> 0.3.1
+github "dennisweissmann/DeviceKit" ~> 0.3.2
 ```
 
 ### Manually

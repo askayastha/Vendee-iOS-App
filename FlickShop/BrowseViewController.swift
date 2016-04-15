@@ -308,8 +308,8 @@ extension BrowseViewController {
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
         // Log custom events
-        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Item", label: product.id, value: nil)
-        Answers.logCustomEventWithName("Tapped Item", customAttributes: getAttributesForProduct(product))
+        GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Product", label: product.id, value: nil)
+        Answers.logCustomEventWithName("Tapped Product", customAttributes: getAttributesForProduct(product))
         
         performSegueWithIdentifier("FlickCategory", sender: indexPath)
     }

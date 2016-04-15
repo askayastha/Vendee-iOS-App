@@ -82,6 +82,7 @@ class FlickPageCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        headerImageView.backgroundColor = UIColor(hexString: "#F2F2F2")
         headerImageView.layer.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
         headerImageView.layer.borderWidth = 0.5
         headerImageView.layer.cornerRadius = 5.0

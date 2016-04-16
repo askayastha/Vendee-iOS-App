@@ -44,6 +44,7 @@ class TwoColumnLayout: UICollectionViewLayout {
     var numberOfColumns = 2
     var cellPadding: CGFloat = 4.0
     var headerReferenceSize = CGSize(width: 0, height: 0)
+    var footerReferenceSize = CGSize(width: 0, height: 0)
     
     let brandPriceHeight: CGFloat = 35.0
     let verticalPadding: CGFloat = 5.0
@@ -52,6 +53,7 @@ class TwoColumnLayout: UICollectionViewLayout {
     // This is an array to cache the calculated attributes. When you call prepareLayout(), you'll calculate the attributes for all items and add them to the cache. When the collection view later requests the layout attributes, you can be efficient and query the cache instead of recalculating them every time.
     private var itemAttributesCache = [TwoColumnLayoutAttributes]()
     private var headerAttributesCache = [TwoColumnLayoutAttributes]()
+    private var footerAttributesCache = [TwoColumnLayoutAttributes]()
     
     // This declares two properties to store the content size. contentHeight is incremented as photos are added, and contentWidth is calculated based on the collection view width and its content inset.
     private var contentHeight: CGFloat = 0.0
@@ -62,7 +64,6 @@ class TwoColumnLayout: UICollectionViewLayout {
     }
     
     override func prepareLayout() {
-        headerAttributesCache.removeAll(keepCapacity: false)
         itemAttributesCache.removeAll(keepCapacity: false)
         
         if headerAttributesCache.isEmpty {
@@ -70,6 +71,13 @@ class TwoColumnLayout: UICollectionViewLayout {
             let layoutAttributes = TwoColumnLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withIndexPath: indexPath)
             layoutAttributes.frame = CGRect(x: 0, y: 0, width: headerReferenceSize.width, height: headerReferenceSize.height)
             headerAttributesCache.append(layoutAttributes)
+        }
+        
+        if footerAttributesCache.isEmpty {
+            let indexPath = NSIndexPath(forItem: 0, inSection: 0)
+            let layoutAttributes = TwoColumnLayoutAttributes(forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withIndexPath: indexPath)
+            layoutAttributes.zIndex = 1024
+            footerAttributesCache.append(layoutAttributes)
         }
         
         // You only calculate the layout attributes if cache is empty.
@@ -120,7 +128,7 @@ class TwoColumnLayout: UICollectionViewLayout {
     }
     
     override func collectionViewContentSize() -> CGSize {
-        return CGSize(width: contentWidth, height: contentHeight)
+        return CGSize(width: contentWidth, height: contentHeight + footerReferenceSize.height)
     }
     
     override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
@@ -136,6 +144,13 @@ class TwoColumnLayout: UICollectionViewLayout {
                 layoutAttributes.append($0)
             }
         }
+        footerAttributesCache.forEach {
+            if CGRectIntersectsRect($0.frame, rect) {
+                $0.frame = CGRect(x: 0, y: contentHeight, width: footerReferenceSize.width, height: footerReferenceSize.height)
+                layoutAttributes.append($0)
+            }
+        }
+        
         return layoutAttributes
     }
     
@@ -144,8 +159,11 @@ class TwoColumnLayout: UICollectionViewLayout {
     }
     
     override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        if indexPath.section == 0 {
+        if elementKind == UICollectionElementKindSectionHeader {
             return headerAttributesCache[indexPath.item]
+        
+        } else if elementKind == UICollectionElementKindSectionFooter {
+            return footerAttributesCache[indexPath.item]
         }
         return nil
     }

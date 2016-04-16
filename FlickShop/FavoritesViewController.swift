@@ -11,6 +11,7 @@ import AVFoundation
 import TSMessages
 import SwiftyJSON
 import Crashlytics
+import NVActivityIndicatorView
 
 class FavoritesViewController: UICollectionViewController {
     
@@ -22,10 +23,12 @@ class FavoritesViewController: UICollectionViewController {
     var search: Search!
     let brands = BrandsModel.sharedInstance().brands
     var scout: PhotoScout!
+    var loadMoreIndicator: NVActivityIndicatorView!
     
     struct FavoritesViewCellIdentifiers {
         static let customProductCell = "CustomPhotoCell"
         static let headerCell = "HeaderCell"
+        static let footerCell = "FooterCell"
     }
     
     deinit {
@@ -97,13 +100,13 @@ class FavoritesViewController: UICollectionViewController {
     private func setupView() {
         
         collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: FavoritesViewCellIdentifiers.headerCell)
+        collectionView!.registerClass(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: FavoritesViewCellIdentifiers.footerCell)
         collectionView!.contentInset = UIEdgeInsets(top: 0, left: 4, bottom: 64, right: 4)
-//        collectionView!.contentInset = UIEdgeInsets(top: -16, left: 4, bottom: 4, right: 4)
-//        collectionView!.contentInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         
         if let layout = collectionView!.collectionViewLayout as? TwoColumnLayout {
             layout.delegate = self
             layout.headerReferenceSize = CGSize(width: collectionView!.bounds.size.width, height: 50)
+            layout.footerReferenceSize = CGSize(width: collectionView!.bounds.size.width, height: 50)
         }
     }
     
@@ -125,6 +128,7 @@ class FavoritesViewController: UICollectionViewController {
             }
             strongSelf.productCount += lastIndex - fromIndex
             let indexPaths = (fromIndex..<lastIndex).map { NSIndexPath(forItem: $0, inSection: 0) }
+            strongSelf.loadMoreIndicator.stopAnimation()
             
             strongSelf.collectionView!.performBatchUpdates({
                 print("READY FOR INSERTS: \(lastIndex)")
@@ -189,37 +193,64 @@ extension FavoritesViewController {
     }
     
     override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
-        let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FavoritesViewCellIdentifiers.headerCell, forIndexPath: indexPath)
         
-        // Reuse views
-        if cell.subviews.count == 0 {
-            let titleLabel = UILabel()
-            titleLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
-            titleLabel.textColor = UIColor(hexString: "#353535")
-            titleLabel.text = "Favorites"
-            titleLabel.textAlignment = .Center
+        if kind == UICollectionElementKindSectionHeader {
+            let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FavoritesViewCellIdentifiers.headerCell, forIndexPath: indexPath)
             
-            let itemsCountLabel = UILabel()
-            itemsCountLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 12.0)!
-            itemsCountLabel.textColor = UIColor(hexString: "#353535")
-            itemsCountLabel.textAlignment = .Center
+            // Reuse views
+            if cell.subviews.count == 0 {
+                let titleLabel = UILabel()
+                titleLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+                titleLabel.textColor = UIColor(hexString: "#353535")
+                titleLabel.text = "Favorites"
+                titleLabel.textAlignment = .Center
+                
+                let itemsCountLabel = UILabel()
+                itemsCountLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 12.0)!
+                itemsCountLabel.textColor = UIColor(hexString: "#353535")
+                itemsCountLabel.textAlignment = .Center
+                
+                let headerView = UIStackView(arrangedSubviews: [titleLabel, itemsCountLabel])
+                headerView.axis = .Vertical
+                cell.addSubview(headerView)
+                
+                headerView.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activateConstraints([
+                    headerView.centerXAnchor.constraintEqualToAnchor(cell.centerXAnchor),
+                    headerView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor)
+                    ])
+            }
             
-            let headerView = UIStackView(arrangedSubviews: [titleLabel, itemsCountLabel])
-            headerView.axis = .Vertical
-            cell.addSubview(headerView)
+            let headerView = cell.subviews[0] as! UIStackView
+            let itemsCountLabel = headerView.arrangedSubviews[1] as! UILabel
+            itemsCountLabel.text = "\(search.lastItem) Items"
             
-            headerView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activateConstraints([
-                headerView.centerXAnchor.constraintEqualToAnchor(cell.centerXAnchor),
-                headerView.centerYAnchor.constraintEqualToAnchor(cell.centerYAnchor)
-                ])
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FavoritesViewCellIdentifiers.footerCell, forIndexPath: indexPath)
+            
+            // Reuse views
+            if cell.subviews.count == 0 {
+                let spinnerSize = CGFloat(26)
+                let frame = CGRect(x: (collectionView.bounds.size.width - spinnerSize) / 2, y: (50 - spinnerSize) / 2, width: spinnerSize, height: spinnerSize)
+                loadMoreIndicator = NVActivityIndicatorView(frame: frame, type: .BallPulse, color: UIColor(white: 0.1, alpha: 0.5))
+                loadMoreIndicator.hidesWhenStopped = true
+                
+                cell.addSubview(loadMoreIndicator)
+                return cell
+            }
+            
+            // Don't show load more indicator when all the items are loaded.
+            if productCount == scout.totalItems {
+                if let layout = collectionView.collectionViewLayout as? TwoColumnLayout {
+                    layout.footerReferenceSize = CGSize(width: 0, height: 0)
+                }
+            } else {
+                loadMoreIndicator.startAnimation()
+            }
+            
+            return cell
         }
-        
-        let headerView = cell.subviews[0] as! UIStackView
-        let itemsCountLabel = headerView.arrangedSubviews[1] as! UILabel
-        itemsCountLabel.text = "\(search.lastItem) Items"
-        
-        return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

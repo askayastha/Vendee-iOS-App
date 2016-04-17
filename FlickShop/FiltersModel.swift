@@ -27,6 +27,7 @@ class FiltersModel {
         filtersModelSingleton.filtersApplied = filtersModelCopySingleton.filtersApplied
         filtersModelSingleton.productCategory = filtersModelCopySingleton.productCategory
         filtersModelSingleton.category = filtersModelCopySingleton.category
+        filtersModelSingleton.categories = filtersModelCopySingleton.categories.mutableCopy() as! NSMutableOrderedSet
         filtersModelSingleton.filterParams = filtersModelCopySingleton.filterParams
         filtersModelSingleton.sort = filtersModelCopySingleton.sort
     }
@@ -36,6 +37,7 @@ class FiltersModel {
         filtersModelCopySingleton.filtersApplied = filtersModelSingleton.filtersApplied
         filtersModelCopySingleton.productCategory = filtersModelSingleton.productCategory
         filtersModelCopySingleton.category = filtersModelSingleton.category
+        filtersModelCopySingleton.categories = filtersModelSingleton.categories.mutableCopy() as! NSMutableOrderedSet
         filtersModelCopySingleton.filterParams = filtersModelSingleton.filterParams
         filtersModelCopySingleton.sort = filtersModelSingleton.sort
     }
@@ -44,6 +46,7 @@ class FiltersModel {
     var filtersApplied: Bool
     var productCategory: String?
     var category: [String: AnyObject]
+    var categories: NSMutableOrderedSet
     var filterParams: [String: AnyObject]
     var sort: [String: String]
     
@@ -51,11 +54,11 @@ class FiltersModel {
         filtersAvailable = false
         filtersApplied = false
         category = [
-            "categories": NSMutableOrderedSet(),
             "displayCategories": [String](),
             "tappedCategories": [String](),
             "categoriesIdDict": [String: String]()
         ]
+        categories = NSMutableOrderedSet()
         filterParams = [
             "brand": [String: String](),
             "store": [String: String](),
@@ -73,11 +76,11 @@ class FiltersModel {
         filtersAvailable = false
         filtersApplied = false
         category = [
-            "categories": NSMutableOrderedSet(),
             "displayCategories": [String](),
             "tappedCategories": [String](),
             "categoriesIdDict": [String: String]()
         ]
+        categories = NSMutableOrderedSet()
         filterParams = [
             "brand": [String: String](),
             "store": [String: String](),

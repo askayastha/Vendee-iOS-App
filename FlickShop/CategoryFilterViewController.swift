@@ -50,7 +50,7 @@ class CategoryFilterViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         print("CategoryFilterViewController Initializing !!!")
         productCategory = filtersModel.productCategory
-        categorySearch = CategorySearch(categories: filtersModel.category["categories"] as! NSMutableOrderedSet)
+        categorySearch = CategorySearch(categories: filtersModel.categories)
         displayCategories = filtersModel.category["displayCategories"] as! [String]
         tappedCategories = filtersModel.category["tappedCategories"] as! [String]
         categoriesIdDict = filtersModel.category["categoriesIdDict"] as! [String: String]
@@ -295,7 +295,6 @@ class CategoryFilterViewController: UITableViewController {
                 }
                 
                 // Save for filter stuff
-                strongSelf.filtersModel.category["categories"] = strongSelf.categorySearch.categories
                 strongSelf.filtersModel.category["displayCategories"] = strongSelf.displayCategories
                 strongSelf.filtersModel.category["tappedCategories"] = strongSelf.tappedCategories
                 strongSelf.filtersModel.category["categoriesIdDict"] = strongSelf.categoriesIdDict

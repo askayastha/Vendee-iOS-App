@@ -229,6 +229,7 @@
             <connections>
                 <outlet property="bottomImageViewLineSeparatorHeightConstraint" destination="aXd-fT-cAZ" id="28a-1t-fUJ"/>
                 <outlet property="buyButton" destination="lcZ-MO-zbK" id="LfP-kS-LpW"/>
+                <outlet property="buyButtonWidthConstraint" destination="7T0-HE-4qA" id="dMV-bm-So3"/>
                 <outlet property="favoriteButton" destination="5Zk-y2-8lJ" id="GVD-Mf-Gme"/>
                 <outlet property="headerImageView" destination="hmx-Nc-ciu" id="Epz-ys-aGo"/>
                 <outlet property="headerSubtitleLabel" destination="ytC-qz-kx0" id="ZaM-7S-gmc"/>

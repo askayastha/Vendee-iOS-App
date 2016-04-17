@@ -33,13 +33,13 @@ class CustomPhotoCell: UICollectionViewCell {
             headerTitleLabel.text = JSON(retailer)["name"].string
         }
         
-        var discountText = "0% Off"
+        var discountText = product.inStock! ? "In Stock" : "Out of Stock"
         if let salePrice = product.salePrice {
-            let discount = (product.price! - salePrice) * 100 / product.price!
+            let discount = (product.price - salePrice) * 100 / product.price
             discountText = "\(Int(discount))% Off"
         }
         discountLabel.text = discountText
-        imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs!.first!)!)
+        imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs.first!)!)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,6 +59,8 @@ class CustomPhotoCell: UICollectionViewCell {
         headerImageView.layer.borderWidth = 0.5
         headerImageView.layer.cornerRadius = 5.0
         headerImageView.layer.masksToBounds = true
+        
+        topImageViewLineSeparatorHeightConstraint.constant = 0.5
     }
     
     override func prepareForReuse() {

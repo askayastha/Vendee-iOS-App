@@ -29,11 +29,14 @@ class FlickPageCell: UICollectionViewCell {
     @IBOutlet weak var headerSubtitleLabel: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: SMPageControl!
+    
+    @IBOutlet weak var buyButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
+    
     @IBOutlet weak var scrollViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var topImageViewLineSeparatorHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var buyButton: UIButton!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var buyButtonWidthConstraint: NSLayoutConstraint!
     
     weak var delegate: FlickPageCellDelegate?
     var imageViews: [UIImageView?]
@@ -87,6 +90,9 @@ class FlickPageCell: UICollectionViewCell {
         headerImageView.layer.borderWidth = 0.5
         headerImageView.layer.cornerRadius = 5.0
         headerImageView.layer.masksToBounds = true
+        
+        bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
+        topImageViewLineSeparatorHeightConstraint.constant = 0.5
         
         pageControl.currentPageIndicatorImage = UIImage(named: "current_page_dot")
         pageControl.pageIndicatorImage = UIImage(named: "page_dot")
@@ -199,19 +205,23 @@ class FlickPageCell: UICollectionViewCell {
         }
         
         // Update buy button
-        var discountText = "0% Off"
+        var discountText = product.inStock! ? "In Stock" : "Out of Stock"
         if let salePrice = product.salePrice {
-            let discount = (product.price! - salePrice) * 100 / product.price!
+            let discount = (product.price - salePrice) * 100 / product.price
             discountText = "\(Int(discount))% Off"
+        } else {
+            if discountText == "Out of Stock" {
+                buyButtonWidthConstraint.constant = 150
+            }
         }
         buyButton.setTitle(discountText, forState: .Normal)
         
         // Update page control
         pageControl.currentPage = currentPage
-        pageControl.numberOfPages = product.largeImageURLs!.count
+        pageControl.numberOfPages = product.largeImageURLs.count
         
         // Reset spinners and image views
-        for _ in 0..<product.largeImageURLs!.count {
+        for _ in 0..<product.largeImageURLs.count {
             spinners.append(nil)
             imageViews.append(nil)
         }
@@ -253,7 +263,7 @@ class FlickPageCell: UICollectionViewCell {
             imageView.contentMode = .ScaleAspectFit
             imageView.userInteractionEnabled = true
             imageView.frame = frame
-            imageView.pin_setImageFromURL(NSURL(string: product.largeImageURLs![page])!) { _ in
+            imageView.pin_setImageFromURL(NSURL(string: product.largeImageURLs[page])!) { _ in
                 spinner.stopAnimating()
             }
             

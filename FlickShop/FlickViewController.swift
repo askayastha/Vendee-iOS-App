@@ -105,9 +105,6 @@ class FlickViewController: UICollectionViewController {
         
         cell.favorited = FavoritesModel.sharedInstance().containsProductId(product.id) ? true : false
         cell.scrollViewHeightConstraint.constant = getImageViewHeight()
-        cell.bottomImageViewLineSeparatorHeightConstraint.constant = 0.5
-        cell.topImageViewLineSeparatorHeightConstraint.constant = 0.5
-        
         cell.product = product
         cell.delegate = self
         
@@ -199,7 +196,7 @@ class FlickViewController: UICollectionViewController {
         }
     }
     
-    private func getImageViewHeight() -> CGFloat {
+    func getImageViewHeight() -> CGFloat {
         print("CollectionView Height: \(collectionView!.bounds.size.height)")
         print("Screen Height: \(ScreenConstants.height)")
         

@@ -310,7 +310,7 @@ extension BrowseViewController {
             
             // Reuse views
             if cell.subviews.count == 0 {
-                let spinnerSize = CGFloat(26)
+                let spinnerSize = CGFloat(24)
                 let frame = CGRect(x: (collectionView.bounds.size.width - spinnerSize) / 2, y: (50 - spinnerSize) / 2, width: spinnerSize, height: spinnerSize)
                 loadMoreIndicator = NVActivityIndicatorView(frame: frame, type: .BallPulse, color: UIColor(white: 0.1, alpha: 0.5))
                 loadMoreIndicator.hidesWhenStopped = true

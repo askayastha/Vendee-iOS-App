@@ -32,7 +32,7 @@ class AboutViewController: UIViewController {
         title = "About Vendee"
         vendeeLogo.layer.cornerRadius = 10.0
         vendeeLogo.layer.masksToBounds = true
-        appVersionLabel.text = "Version \(getAppVersion())"
+        appVersionLabel.text = "Vendee \(getAppVersion())"
         copyrightLabel.text = "© 2016 Ashish Kayastha.\nAll rights reserved."
     }
     

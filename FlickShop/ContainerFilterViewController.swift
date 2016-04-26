@@ -83,7 +83,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
             alert.addAction(cancelAction)
             
             presentViewController(alert, animated: true, completion: nil)
-            alert.view.tintColor = UIColor(hexString: "#7866B4")
+            alert.view.tintColor = UIColor.vendeeColor()
             
         } else {
             FiltersModel.revertFiltersModel()

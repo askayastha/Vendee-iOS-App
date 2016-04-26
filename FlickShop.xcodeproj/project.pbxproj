@@ -83,6 +83,7 @@
 		75B455FC1C59483700424B21 /* SlideInAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455FB1C59483700424B21 /* SlideInAnimationController.swift */; };
 		75C316BA1BEE973800E7A34E /* ContainerBrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */; };
 		75C58CE71CB400BA0093EF45 /* ShopStyleStoresModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C58CE61CB400BA0093EF45 /* ShopStyleStoresModel.swift */; };
+		75C7B3D91CCFE5F800DAD48F /* ColorConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C7B3D81CCFE5F800DAD48F /* ColorConstants.swift */; };
 		75C8ED901C943BA500ADED8C /* LicensesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C8ED8F1C943BA500ADED8C /* LicensesViewController.swift */; };
 		75C8ED9A1C94625300ADED8C /* licenses.txt in Resources */ = {isa = PBXBuildFile; fileRef = 75C8ED991C94625300ADED8C /* licenses.txt */; };
 		75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75DD48D81C0735A100C4C34D /* CategorySearch.swift */; };
@@ -229,6 +230,7 @@
 		75B455FB1C59483700424B21 /* SlideInAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SlideInAnimationController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75C316B91BEE973800E7A34E /* ContainerBrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerBrowseViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75C58CE61CB400BA0093EF45 /* ShopStyleStoresModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopStyleStoresModel.swift; sourceTree = "<group>"; };
+		75C7B3D81CCFE5F800DAD48F /* ColorConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorConstants.swift; sourceTree = "<group>"; };
 		75C8ED8F1C943BA500ADED8C /* LicensesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LicensesViewController.swift; sourceTree = "<group>"; };
 		75C8ED991C94625300ADED8C /* licenses.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = licenses.txt; sourceTree = "<group>"; };
 		75DD48D81C0735A100C4C34D /* CategorySearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategorySearch.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -517,7 +519,6 @@
 				758848BD1CB2681E00583ABA /* BrandSearch.swift */,
 				758848BF1CB268C700583ABA /* StoreSearch.swift */,
 				758848C11CB2692B00583ABA /* ColorSearch.swift */,
-				7551D3451C134A040088D32B /* Constants.swift */,
 				755F62FD1C770AA7003BA832 /* PhotoScout.swift */,
 				752998331C80B9F900CBA61A /* CategoriesModel.swift */,
 				75F780D51C7F612300CD074A /* BrandsModel.swift */,
@@ -534,6 +535,7 @@
 		75F12D211BE0AB7700258874 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7551D3451C134A040088D32B /* Constants.swift */,
 				758848C51CB27DED00583ABA /* SwiftHEXColors.swift */,
 				758848C31CB27DBE00583ABA /* OrderedDictionary.swift */,
 				75F12CE31BE0A24100258874 /* Functions.swift */,
@@ -542,6 +544,7 @@
 				75F12CE71BE0A24100258874 /* UIImage+ImageEffects.m */,
 				75F12D141BE0A3B800258874 /* Alamofire+CustomResponse.swift */,
 				75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */,
+				75C7B3D81CCFE5F800DAD48F /* ColorConstants.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -902,6 +905,7 @@
 				75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */,
 				750D8E161C06221900D728F0 /* DiscountFilterViewController.swift in Sources */,
 				75149F3E1C1B088700A2A57C /* ShopStyle.swift in Sources */,
+				75C7B3D91CCFE5F800DAD48F /* ColorConstants.swift in Sources */,
 				75F12D061BE0A35900258874 /* CustomLayoutAttributes.swift in Sources */,
 				75A6A3061C10C200008647CB /* CustomSFSafariViewController.swift in Sources */,
 				758848C61CB27DED00583ABA /* SwiftHEXColors.swift in Sources */,

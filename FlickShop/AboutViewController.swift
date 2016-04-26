@@ -39,9 +39,9 @@ class AboutViewController: UIViewController {
         copyrightLabel.text = "© 2016 Ashish Kayastha.\nAll rights reserved."
         
         appLinkLabel.linkAttributes = [
-            kCTForegroundColorAttributeName: UIColor(hexString: "#585AA7")!,
+            kCTForegroundColorAttributeName: UIColor.vendeeColor(),
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
-            NSUnderlineColorAttributeName: UIColor(hexString: "#585AA7")!
+            NSUnderlineColorAttributeName: UIColor.vendeeColor()
         ]
         appLinkLabel.activeLinkAttributes = [
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
@@ -50,9 +50,9 @@ class AboutViewController: UIViewController {
         appLinkLabel.delegate = self
         
         supportLinkLabel.linkAttributes = [
-            kCTForegroundColorAttributeName: UIColor(hexString: "#585AA7")!,
+            kCTForegroundColorAttributeName: UIColor.vendeeColor(),
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
-            NSUnderlineColorAttributeName: UIColor(hexString: "#585AA7")!
+            NSUnderlineColorAttributeName: UIColor.vendeeColor()
         ]
         supportLinkLabel.activeLinkAttributes = [
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue

@@ -111,7 +111,7 @@ class MoreViewController: UITableViewController {
         
         let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         presentViewController(activityVC, animated: true, completion: nil)
-        activityVC.view.tintColor = UIColor(hexString: "#7866B4")
+        activityVC.view.tintColor = UIColor.vendeeColor()
     }
     
     private func sendSupportEmailWithSubject(subject: String) {
@@ -127,7 +127,7 @@ class MoreViewController: UITableViewController {
             controller.setToRecipients(["vendeefashion.ios@gmail.com"])
             controller.mailComposeDelegate = self
             self.presentViewController(controller, animated: true, completion: nil)
-            controller.view.tintColor = UIColor(hexString: "#7866B4")
+            controller.view.tintColor = UIColor.vendeeColor()
         }
     }
     

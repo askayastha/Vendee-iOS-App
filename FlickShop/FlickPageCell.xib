@@ -113,7 +113,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcZ-MO-zbK">
                                 <rect key="frame" x="465" y="8" width="120" height="36"/>
-                                <color key="backgroundColor" red="0.47058823529411764" green="0.40000000000000002" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.34509803921568627" green="0.3529411764705882" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="7T0-HE-4qA"/>
                                     <constraint firstAttribute="height" constant="36" id="kqw-RE-T1V"/>

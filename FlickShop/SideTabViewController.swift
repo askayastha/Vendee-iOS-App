@@ -80,9 +80,9 @@ class SideTabViewController: UITableViewController {
         
         if selectedFilter.uppercaseString == textLabel?.text {
             cell.backgroundColor = UIColor.whiteColor()
-            textLabel?.textColor = UIColor(hexString: "#7866B4")
-            imageView?.tintImageColor(UIColor(hexString: "#7866B4")!)
-            selectedImageView?.tintImageColor(UIColor(hexString: "#7866B4")!)
+            textLabel?.textColor = UIColor.vendeeColor()
+            imageView?.tintImageColor(UIColor.vendeeColor())
+            selectedImageView?.tintImageColor(UIColor.vendeeColor())
         }
 
         return cell

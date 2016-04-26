@@ -18,10 +18,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vendee_title" translatesAutoresizingMaskIntoConstraints="NO" id="ZYf-kp-xfH">
-                                <rect key="frame" x="200" y="280" width="200" height="40"/>
+                                <rect key="frame" x="250" y="280" width="100" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="HZ5-zZ-HTg"/>
-                                    <constraint firstAttribute="width" constant="200" id="M0o-eg-tCk"/>
+                                    <constraint firstAttribute="width" constant="100" id="M0o-eg-tCk"/>
                                 </constraints>
                             </imageView>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlj-Mb-4lU">
@@ -46,6 +46,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="vendee_title" width="200" height="40"/>
+        <image name="vendee_title" width="100" height="40"/>
     </resources>
 </document>

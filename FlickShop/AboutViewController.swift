@@ -8,12 +8,15 @@
 
 import UIKit
 import Crashlytics
+import TTTAttributedLabel
 
 class AboutViewController: UIViewController {
     
     @IBOutlet weak var vendeeLogo: UIImageView!
     @IBOutlet weak var appVersionLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
+    @IBOutlet weak var appLinkLabel: TTTAttributedLabel!
+    @IBOutlet weak var supportLinkLabel: TTTAttributedLabel!
     
     var thirdPartyLibraries = [
         "Alamofire by Alamofire Software Foundation",
@@ -34,6 +37,28 @@ class AboutViewController: UIViewController {
         vendeeLogo.layer.masksToBounds = true
         appVersionLabel.text = "Vendee \(getAppVersion())"
         copyrightLabel.text = "© 2016 Ashish Kayastha.\nAll rights reserved."
+        
+        appLinkLabel.linkAttributes = [
+            kCTForegroundColorAttributeName: UIColor(hexString: "#585AA7")!,
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
+            NSUnderlineColorAttributeName: UIColor(hexString: "#585AA7")!
+        ]
+        appLinkLabel.activeLinkAttributes = [
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
+        ]
+        appLinkLabel.addLinkToURL(NSURL(string: "http://vendeeapp.com/")!, withRange: NSMakeRange(0, appLinkLabel.text!.characters.count))
+        appLinkLabel.delegate = self
+        
+        supportLinkLabel.linkAttributes = [
+            kCTForegroundColorAttributeName: UIColor(hexString: "#585AA7")!,
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue,
+            NSUnderlineColorAttributeName: UIColor(hexString: "#585AA7")!
+        ]
+        supportLinkLabel.activeLinkAttributes = [
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
+        ]
+        supportLinkLabel.addLinkToURL(NSURL(string: "http://thedesignmonk.com/")!, withRange: NSMakeRange(0, supportLinkLabel.text!.characters.count))
+        supportLinkLabel.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,16 +72,12 @@ class AboutViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
+}
+
+extension AboutViewController: TTTAttributedLabelDelegate {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func attributedLabel(label: TTTAttributedLabel!, didSelectLinkWithURL url: NSURL!) {
+        UIApplication.sharedApplication().openURL(url)
     }
-    */
-
 }

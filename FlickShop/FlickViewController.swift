@@ -257,7 +257,7 @@ extension FlickViewController: FlickPageCellDelegate {
         guard let url = NSURL(string: clickURL) else { return }
         
         // Log custom events
-        Answers.logCustomEventWithName("Tapped Buy", customAttributes: getAttributesForProduct(product))
+        Answers.logCustomEventWithName("Tapped Shop", customAttributes: getAttributesForProduct(product))
         
         indexPath = collectionView!.indexPathsForVisibleItems().first
             

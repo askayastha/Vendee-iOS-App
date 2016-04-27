@@ -25,6 +25,8 @@
             <string>FaktFlipboard-Normal</string>
             <string>FaktFlipboard-Normal</string>
             <string>FaktFlipboard-Normal</string>
+            <string>FaktFlipboard-Normal</string>
+            <string>FaktFlipboard-Normal</string>
         </mutableArray>
         <mutableArray key="Pacifico.ttf">
             <string>Pacifico-Regular</string>
@@ -156,6 +158,26 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="aZu-tg-IYL" kind="show" id="fKo-ku-hmX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="QVg-Aq-CJd" style="IBUITableViewCellStyleDefault" id="v4M-Ut-bp6">
+                                        <rect key="frame" x="0.0" y="480" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v4M-Ut-bp6" id="1YD-gq-L9X">
+                                            <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QVg-Aq-CJd">
+                                                    <rect key="frame" x="15" y="0.0" width="550" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="FaktFlipboard-Normal" family="Fakt Flipboard" pointSize="16"/>
+                                                    <color key="textColor" red="0.2901960784" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="kL9-JV-S8I" kind="show" id="uFO-I7-sXH"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -304,10 +326,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="No third party licenses." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-8H-phf">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Third party licenses" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BaR-8H-phf">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="FaktFlipboard-Normal" family="Fakt Flipboard" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="FaktFlipboard-Normal" family="Fakt Flipboard" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -326,6 +348,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sau-UQ-ROJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1847" y="2447"/>
+        </scene>
+        <!--Privacy Policy View Controller-->
+        <scene sceneID="Oae-Lg-68M">
+            <objects>
+                <viewController id="kL9-JV-S8I" customClass="PrivacyPolicyViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D4w-Ng-Yrq"/>
+                        <viewControllerLayoutGuide type="bottom" id="dgr-ij-8IR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sDn-Ma-evt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Privacy Policy" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g10-6w-ruv">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="FaktFlipboard-Normal" family="Fakt Flipboard" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="g10-6w-ruv" firstAttribute="leading" secondItem="sDn-Ma-evt" secondAttribute="leading" id="FKx-yX-YSi"/>
+                            <constraint firstAttribute="trailing" secondItem="g10-6w-ruv" secondAttribute="trailing" id="fcG-MF-jJr"/>
+                            <constraint firstItem="g10-6w-ruv" firstAttribute="top" secondItem="D4w-Ng-Yrq" secondAttribute="bottom" id="lCs-Hl-5jB"/>
+                            <constraint firstItem="dgr-ij-8IR" firstAttribute="top" secondItem="g10-6w-ruv" secondAttribute="bottom" id="tUB-Bb-ysk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="g10-6w-ruv" id="f9h-Jx-tf5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QSM-ik-b7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1847" y="3150"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="b7g-SY-fmp">

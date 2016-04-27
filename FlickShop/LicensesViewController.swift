@@ -39,6 +39,9 @@ class LicensesViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         textView.scrollEnabled = false
+        textView.selectable = false
+        textView.editable = false
+        textView.textContainerInset = UIEdgeInsetsMake(15, 15, 15, 15)
         
         GoogleAnalytics.trackScreenForName("Licenses View")
         Answers.logCustomEventWithName("Licenses View", customAttributes: nil)

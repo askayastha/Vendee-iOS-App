@@ -74,6 +74,8 @@
 		75AC84DD1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AC84DC1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift */; };
 		75AD0B501C7C7E0A00CD5C85 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */; };
 		75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */ = {isa = PBXBuildFile; fileRef = 75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */; };
+		75B449DF1CD1557A00489ED4 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B449DE1CD1557A00489ED4 /* PrivacyPolicyViewController.swift */; };
+		75B449E11CD1565500489ED4 /* privacy_policy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 75B449E01CD1565500489ED4 /* privacy_policy.txt */; };
 		75B455EE1C58FAEB00424B21 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455ED1C58FAEB00424B21 /* GradientView.swift */; };
 		75B455F21C58FB5B00424B21 /* FadeOutAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */; };
 		75B455F41C58FB7F00424B21 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */; };
@@ -221,6 +223,8 @@
 		75AC84DC1C7F94DD004B8FD7 /* PreselectedFiltersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreselectedFiltersModel.swift; sourceTree = "<group>"; };
 		75AD0B4F1C7C7E0A00CD5C85 /* ColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
 		75B205C91C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TSMessagesCustomDesign.json; sourceTree = "<group>"; };
+		75B449DE1CD1557A00489ED4 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		75B449E01CD1565500489ED4 /* privacy_policy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = privacy_policy.txt; sourceTree = "<group>"; };
 		75B455ED1C58FAEB00424B21 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GradientView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75B455F11C58FB5B00424B21 /* FadeOutAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FadeOutAnimationController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75B455F31C58FB7F00424B21 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DimmingPresentationController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -431,6 +435,7 @@
 				75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */,
 				75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */,
 				75C8ED8F1C943BA500ADED8C /* LicensesViewController.swift */,
+				75B449DE1CD1557A00489ED4 /* PrivacyPolicyViewController.swift */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -601,6 +606,7 @@
 				75F12CF11BE0A35900258874 /* Categories.plist */,
 				754682DC1CB68EC5000A86EB /* Brands.plist */,
 				75C8ED991C94625300ADED8C /* licenses.txt */,
+				75B449E01CD1565500489ED4 /* privacy_policy.txt */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -766,6 +772,7 @@
 			files = (
 				754682DD1CB68EC5000A86EB /* Brands.plist in Resources */,
 				7542AA891CA9E98900739643 /* Pacifico.ttf in Resources */,
+				75B449E11CD1565500489ED4 /* privacy_policy.txt in Resources */,
 				75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */,
 				75391EF71CAAD0C200BA9CE4 /* Diogenes-BlackItalic.otf in Resources */,
 				75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */,
@@ -956,6 +963,7 @@
 				756FC4E71C01B03F007AB0C5 /* ContainerViewController.swift in Sources */,
 				7546CB2E1C4A884D000C9635 /* InfoButton.swift in Sources */,
 				75F12D071BE0A35900258874 /* CustomPhotoCell.swift in Sources */,
+				75B449DF1CD1557A00489ED4 /* PrivacyPolicyViewController.swift in Sources */,
 				75F12D0D1BE0A35900258874 /* Product.swift in Sources */,
 				750D8E181C06336900D728F0 /* ColorFilterViewController.swift in Sources */,
 				753AEA561BFF8B490016B655 /* ContainerFilterViewController.swift in Sources */,

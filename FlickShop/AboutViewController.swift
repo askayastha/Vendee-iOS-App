@@ -12,6 +12,7 @@ import TTTAttributedLabel
 
 class AboutViewController: UIViewController {
     
+    @IBOutlet weak var creditsView: UIStackView!
     @IBOutlet weak var vendeeLogo: UIImageView!
     @IBOutlet weak var appVersionLabel: UILabel!
     @IBOutlet weak var copyrightLabel: UILabel!
@@ -33,9 +34,15 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         title = "About Vendee"
+        
+        // Need to change the UIStackView spacing for iPhone 4S and before due to limited screen height
+        if ScreenConstants.height == 480 {
+            creditsView.spacing = 10.0
+        }
+        
         vendeeLogo.layer.cornerRadius = 10.0
         vendeeLogo.layer.masksToBounds = true
-        appVersionLabel.text = "Vendee \(getAppVersion())"
+        appVersionLabel.text = "Version \(getAppVersion())"
         copyrightLabel.text = "© 2016 Ashish Kayastha.\nAll rights reserved."
         
         appLinkLabel.linkAttributes = [

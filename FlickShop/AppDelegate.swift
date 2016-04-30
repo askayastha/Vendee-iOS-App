@@ -210,12 +210,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navAppearance = UINavigationBar.appearance()
         
         let backImage = UIImage(named: "nav_back_arrow")
+        navAppearance.tintColor = UIColor(hexString: "#353535")
         navAppearance.backIndicatorImage = backImage
         navAppearance.backIndicatorTransitionMaskImage = backImage
         navAppearance.titleTextAttributes = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!,
+            NSForegroundColorAttributeName: UIColor(hexString: "#353535")!
         ]
-        navAppearance.tintColor = UIColor(hexString: "#353535")
         
         let barButtonAppearance = UIBarButtonItem.appearance()
         barButtonAppearance.setBackButtonTitlePositionAdjustment(UIOffsetMake(0, -60), forBarMetrics: .Default)

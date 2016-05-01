@@ -21,10 +21,6 @@
 		752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */; };
 		752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B9C4F1C42C831000CE855 /* PhotoViewController.swift */; };
 		752BDD581C523021007F76BF /* hideForwarding.js in Resources */ = {isa = PBXBuildFile; fileRef = 752BDD571C523021007F76BF /* hideForwarding.js */; };
-		75391EF61CAAD0C200BA9CE4 /* Diogenes-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75391EF21CAAD0C200BA9CE4 /* Diogenes-Black.otf */; };
-		75391EF71CAAD0C200BA9CE4 /* Diogenes-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75391EF31CAAD0C200BA9CE4 /* Diogenes-BlackItalic.otf */; };
-		75391EF81CAAD0C200BA9CE4 /* Diogenes-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75391EF41CAAD0C200BA9CE4 /* Diogenes-Regular.otf */; };
-		75391EF91CAAD0C200BA9CE4 /* Diogenes-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75391EF51CAAD0C200BA9CE4 /* Diogenes-RegularItalic.otf */; };
 		753AEA561BFF8B490016B655 /* ContainerFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA551BFF8B490016B655 /* ContainerFilterViewController.swift */; };
 		753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA571BFF8B820016B655 /* SideTabViewController.swift */; };
 		753AEA5A1BFF8BA10016B655 /* CategoryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA591BFF8BA10016B655 /* CategoryFilterViewController.swift */; };
@@ -165,10 +161,6 @@
 		752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerFlickViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		752B9C4F1C42C831000CE855 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PhotoViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		752BDD571C523021007F76BF /* hideForwarding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = hideForwarding.js; sourceTree = "<group>"; };
-		75391EF21CAAD0C200BA9CE4 /* Diogenes-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Diogenes-Black.otf"; sourceTree = "<group>"; };
-		75391EF31CAAD0C200BA9CE4 /* Diogenes-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Diogenes-BlackItalic.otf"; sourceTree = "<group>"; };
-		75391EF41CAAD0C200BA9CE4 /* Diogenes-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Diogenes-Regular.otf"; sourceTree = "<group>"; };
-		75391EF51CAAD0C200BA9CE4 /* Diogenes-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Diogenes-RegularItalic.otf"; sourceTree = "<group>"; };
 		753AEA551BFF8B490016B655 /* ContainerFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		753AEA571BFF8B820016B655 /* SideTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SideTabViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		753AEA591BFF8BA10016B655 /* CategoryFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoryFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -565,10 +557,6 @@
 				75F12D191BE0A54D00258874 /* Categories.xcassets */,
 				756D59F11CD68B0800B2A85D /* CircularSpUI-Bold.otf */,
 				756D59F21CD68B0800B2A85D /* CircularSpUI-Book.otf */,
-				75391EF21CAAD0C200BA9CE4 /* Diogenes-Black.otf */,
-				75391EF31CAAD0C200BA9CE4 /* Diogenes-BlackItalic.otf */,
-				75391EF41CAAD0C200BA9CE4 /* Diogenes-Regular.otf */,
-				75391EF51CAAD0C200BA9CE4 /* Diogenes-RegularItalic.otf */,
 				7542AA871CA9E6C200739643 /* Pacifico.ttf */,
 				756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */,
 				756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */,
@@ -780,12 +768,10 @@
 				7542AA891CA9E98900739643 /* Pacifico.ttf in Resources */,
 				75B449E11CD1565500489ED4 /* privacy_policy.txt in Resources */,
 				75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */,
-				75391EF71CAAD0C200BA9CE4 /* Diogenes-BlackItalic.otf in Resources */,
 				75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */,
 				757D57AC1C56816D00F64907 /* Filter.storyboard in Resources */,
 				75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */,
 				75EC0E721C8896EA008C162B /* GoogleService-Info.plist in Resources */,
-				75391EF91CAAD0C200BA9CE4 /* Diogenes-RegularItalic.otf in Resources */,
 				753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */,
 				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
 				756D59F31CD68B0800B2A85D /* CircularSpUI-Bold.otf in Resources */,
@@ -795,13 +781,11 @@
 				75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */,
 				756D59F41CD68B0800B2A85D /* CircularSpUI-Book.otf in Resources */,
 				75F12D0B1BE0A35900258874 /* FlickPageCell.xib in Resources */,
-				75391EF81CAAD0C200BA9CE4 /* Diogenes-Regular.otf in Resources */,
 				756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */,
 				756E15B01C7213D20046CCBA /* FaktFlipboard-Medium.otf in Resources */,
 				756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */,
 				75F12D0F1BE0A35900258874 /* ProximaNova-Bold.ttf in Resources */,
 				750CA62A1C847ABB00A73F7A /* Favorites.storyboard in Resources */,
-				75391EF61CAAD0C200BA9CE4 /* Diogenes-Black.otf in Resources */,
 				75C8ED9A1C94625300ADED8C /* licenses.txt in Resources */,
 				756E15B21C7213D20046CCBA /* FaktFlipboard-SemiBold.otf in Resources */,
 				75B205CA1C7CB70D00EEA0D8 /* TSMessagesCustomDesign.json in Resources */,

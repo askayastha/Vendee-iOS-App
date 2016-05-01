@@ -12,7 +12,7 @@ struct ShopStyle {
     
     enum Router: URLRequestConvertible {
         static let baseURLString = "https://api.shopstyle.com/api/v2"
-        static let APIKey = "uid4529-31475977-85"
+        static let APIKey = "uid8281-33138659-94"
         
         case PreselectedResults(Int, Int, String)
         case PopularResults(Int, Int, String)

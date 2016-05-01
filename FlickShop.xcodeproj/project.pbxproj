@@ -49,6 +49,8 @@
 		756848671C75DD1700D85E67 /* ImageScout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756848631C75DD1700D85E67 /* ImageScout.swift */; };
 		756848681C75DD1700D85E67 /* ScoutOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756848641C75DD1700D85E67 /* ScoutOperation.swift */; };
 		756848691C75DD1700D85E67 /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 756848651C75DD1700D85E67 /* SessionDelegate.swift */; };
+		756D59F31CD68B0800B2A85D /* CircularSpUI-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756D59F11CD68B0800B2A85D /* CircularSpUI-Bold.otf */; };
+		756D59F41CD68B0800B2A85D /* CircularSpUI-Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756D59F21CD68B0800B2A85D /* CircularSpUI-Book.otf */; };
 		756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */; };
 		756E15B01C7213D20046CCBA /* FaktFlipboard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */; };
 		756E15B11C7213D20046CCBA /* FaktFlipboard-Normal.otf in Resources */ = {isa = PBXBuildFile; fileRef = 756E15AD1C7213D20046CCBA /* FaktFlipboard-Normal.otf */; };
@@ -192,6 +194,8 @@
 		756848631C75DD1700D85E67 /* ImageScout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageScout.swift; sourceTree = "<group>"; };
 		756848641C75DD1700D85E67 /* ScoutOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoutOperation.swift; sourceTree = "<group>"; };
 		756848651C75DD1700D85E67 /* SessionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDelegate.swift; sourceTree = "<group>"; };
+		756D59F11CD68B0800B2A85D /* CircularSpUI-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularSpUI-Bold.otf"; sourceTree = "<group>"; };
+		756D59F21CD68B0800B2A85D /* CircularSpUI-Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CircularSpUI-Book.otf"; sourceTree = "<group>"; };
 		756E15AB1C7213D20046CCBA /* FaktFlipboard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Light.otf"; sourceTree = "<group>"; };
 		756E15AC1C7213D20046CCBA /* FaktFlipboard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Medium.otf"; sourceTree = "<group>"; };
 		756E15AD1C7213D20046CCBA /* FaktFlipboard-Normal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FaktFlipboard-Normal.otf"; sourceTree = "<group>"; };
@@ -559,6 +563,8 @@
 			children = (
 				75A31E381BDFBAAE006FD010 /* Assets.xcassets */,
 				75F12D191BE0A54D00258874 /* Categories.xcassets */,
+				756D59F11CD68B0800B2A85D /* CircularSpUI-Bold.otf */,
+				756D59F21CD68B0800B2A85D /* CircularSpUI-Book.otf */,
 				75391EF21CAAD0C200BA9CE4 /* Diogenes-Black.otf */,
 				75391EF31CAAD0C200BA9CE4 /* Diogenes-BlackItalic.otf */,
 				75391EF41CAAD0C200BA9CE4 /* Diogenes-Regular.otf */,
@@ -782,10 +788,12 @@
 				75391EF91CAAD0C200BA9CE4 /* Diogenes-RegularItalic.otf in Resources */,
 				753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */,
 				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
+				756D59F31CD68B0800B2A85D /* CircularSpUI-Bold.otf in Resources */,
 				753E2BB61BE2A433000F374A /* Quicksand-Light.ttf in Resources */,
 				75F12D041BE0A35900258874 /* Categories.plist in Resources */,
 				75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */,
 				75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */,
+				756D59F41CD68B0800B2A85D /* CircularSpUI-Book.otf in Resources */,
 				75F12D0B1BE0A35900258874 /* FlickPageCell.xib in Resources */,
 				75391EF81CAAD0C200BA9CE4 /* Diogenes-Regular.otf in Resources */,
 				756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */,

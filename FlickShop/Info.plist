@@ -19,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>29</string>
+	<string>30</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -56,6 +56,8 @@
 		<string>Diogenes-BlackItalic.otf</string>
 		<string>Diogenes-Regular.otf</string>
 		<string>Diogenes-RegularItalic.otf</string>
+		<string>CircularSpUI-Bold.otf</string>
+		<string>CircularSpUI-Book.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

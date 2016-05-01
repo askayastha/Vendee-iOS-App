@@ -53,7 +53,7 @@ class AboutViewController: UIViewController {
         appLinkLabel.activeLinkAttributes = [
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
         ]
-        appLinkLabel.addLinkToURL(NSURL(string: "http://vendeeapp.com/")!, withRange: NSMakeRange(0, appLinkLabel.text!.characters.count))
+        appLinkLabel.addLinkToURL(NSURL(string: "http://vendeeapp.com")!, withRange: NSMakeRange(0, appLinkLabel.text!.characters.count))
         appLinkLabel.delegate = self
         
         supportLinkLabel.linkAttributes = [
@@ -64,7 +64,7 @@ class AboutViewController: UIViewController {
         supportLinkLabel.activeLinkAttributes = [
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleNone.rawValue
         ]
-        supportLinkLabel.addLinkToURL(NSURL(string: "http://thedesignmonk.com/")!, withRange: NSMakeRange(0, supportLinkLabel.text!.characters.count))
+        supportLinkLabel.addLinkToURL(NSURL(string: "http://thedesignmonk.com")!, withRange: NSMakeRange(0, supportLinkLabel.text!.characters.count))
         supportLinkLabel.delegate = self
     }
     

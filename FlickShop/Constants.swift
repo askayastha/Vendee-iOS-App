@@ -15,7 +15,7 @@ struct Files {
 
 struct App {
     static let storeId = "1092199423"
-    static let storeURL = "https://itunes.apple.com/app/id\(storeId)"
+    static let storeURL = "https://itunes.apple.com/us/app/vendee-fashion/id1092199423?ls=1&mt=8"
 }
 
 struct CKRecordTypes {

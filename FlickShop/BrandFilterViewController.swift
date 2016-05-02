@@ -185,7 +185,7 @@ extension BrandFilterViewController: UITableViewDataSource {
         // Reuse views
         if cell?.contentView.subviews.count == 0 {
             let sectionLabel = UILabel()
-            sectionLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 14.0)!
+            sectionLabel.font = UIFont(name: "CircularSPUI-Bold", size: 14.0)!
             sectionLabel.textColor = UIColor.lightGrayColor()
             cell?.contentView.addSubview(sectionLabel)
             

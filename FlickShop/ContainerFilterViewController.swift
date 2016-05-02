@@ -37,7 +37,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         toolBar.clipsToBounds = true
         
         let normalTextAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 16.0)!
+            NSFontAttributeName: UIFont(name: "CircularSPUI-Book", size: 16.0)!
         ]
         clearAllButton.setTitleTextAttributes(normalTextAttributes, forState: .Normal)
         applyButton.setTitleTextAttributes(normalTextAttributes, forState: .Normal)

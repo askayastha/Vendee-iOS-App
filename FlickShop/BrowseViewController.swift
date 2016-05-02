@@ -278,18 +278,19 @@ extension BrowseViewController {
             // Reuse views
             if cell.subviews.count == 0 {
                 let titleLabel = UILabel()
-                titleLabel.font = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+                titleLabel.font = UIFont(name: "CircularSPUI-Bold", size: 16.0)!
                 titleLabel.textColor = UIColor(hexString: "#353535")
                 titleLabel.text = FiltersModel.sharedInstance().productCategory?.componentsSeparatedByString(":").first!
                 titleLabel.textAlignment = .Center
                 
                 let itemsCountLabel = UILabel()
-                itemsCountLabel.font = UIFont(name: "FaktFlipboard-Normal", size: 12.0)!
+                itemsCountLabel.font = UIFont(name: "CircularSPUI-Book", size: 12.0)!
                 itemsCountLabel.textColor = UIColor(hexString: "#353535")
                 itemsCountLabel.textAlignment = .Center
                 
                 let headerView = UIStackView(arrangedSubviews: [titleLabel, itemsCountLabel])
                 headerView.axis = .Vertical
+                headerView.spacing = -2.0
                 cell.addSubview(headerView)
                 
                 headerView.translatesAutoresizingMaskIntoConstraints = false

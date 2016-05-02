@@ -229,7 +229,7 @@ extension FlickViewController: FlickPageCellDelegate {
             // Show HUD
             let favoritedHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
             favoritedHUD.labelText = "Favorited on Vendee"
-            favoritedHUD.labelFont = UIFont(name: "FaktFlipboard-Medium", size: 16.0)!
+            favoritedHUD.labelFont = UIFont(name: "CircularSPUI-Bold", size: 16.0)!
             favoritedHUD.mode = .CustomView
             favoritedHUD.color = UIColor(white: 0.2, alpha: 0.7)
             favoritedHUD.minShowTime = 1.5

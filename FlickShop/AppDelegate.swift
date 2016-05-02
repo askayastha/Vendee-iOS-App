@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         iRate.sharedInstance().rateButtonLabel = "Sure! ⭐️⭐️⭐️⭐️⭐️"
         iRate.sharedInstance().remindButtonLabel = "Remind me later"
         iRate.sharedInstance().cancelButtonLabel = "No thanks"
-        iRate.sharedInstance().daysUntilPrompt = 1
+        iRate.sharedInstance().daysUntilPrompt = 5
         iRate.sharedInstance().usesUntilPrompt = 5
         iRate.sharedInstance().remindPeriod = 1
         iRate.sharedInstance().useAllAvailableLanguages = false
@@ -214,7 +214,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navAppearance.backIndicatorImage = backImage
         navAppearance.backIndicatorTransitionMaskImage = backImage
         navAppearance.titleTextAttributes = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Medium", size: 16.0)!,
+            NSFontAttributeName: UIFont(name: "CircularSpUI-Bold", size: 16.0)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#353535")!
         ]
         
@@ -229,7 +229,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func customizeSearchBar() {
         UISearchBar.appearance().tintColor = UIColor(hexString: "#353535")
         let normalTextAttributes: [String: AnyObject] = [
-            NSFontAttributeName: UIFont(name: "FaktFlipboard-Normal", size: 14.0)!,
+            NSFontAttributeName: UIFont(name: "CircularSPUI-Book", size: 14.0)!,
             NSForegroundColorAttributeName: UIColor(hexString: "#353535")!
         ]
         UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).setTitleTextAttributes(normalTextAttributes, forState: .Normal)

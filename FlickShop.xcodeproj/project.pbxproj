@@ -1132,6 +1132,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FABRIC_API_KEY = dcdbc8fcdea7c38b31e402a4d24d367c06e13c29;
+				GA_TRACKING_ID = "UA-74683859-1";
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;
@@ -1153,6 +1154,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FABRIC_API_KEY = ad93d890ac0f42e4f19e7ae43a92e8237af9e528;
+				GA_TRACKING_ID = "UA-77249051-1";
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;

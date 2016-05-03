@@ -841,7 +841,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" 7fa35a34aa37f26a6899d03e7f267a7ae5f7df2c 341fcdee7796ce2872676f9f93ede8873cc943764ee87e0b01e98d0920e22877";
+			shellScript = "debugConfig=\"Debug\"\nreleaseConfig=\"Release\"\n\nif [ \"$debugConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Fabric (Debug)\"\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} a17798a2bafac9fbe34d58b7be60fc5ae2967f19cb7f1cce317601da7564a597\nelif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Fabric (Release)\"\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} 5931175b3a91282249bf1824d2cb33f9b3bce16da94253774abc0c93ca47aed3\nfi";
 		};
 		A702265E556F3070392D1455 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1131,6 +1131,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
+				FABRIC_API_KEY = dcdbc8fcdea7c38b31e402a4d24d367c06e13c29;
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;
@@ -1151,6 +1152,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
+				FABRIC_API_KEY = ad93d890ac0f42e4f19e7ae43a92e8237af9e528;
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.askayastha.Vendee;

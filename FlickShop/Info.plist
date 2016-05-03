@@ -23,7 +23,7 @@
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
-		<string>7fa35a34aa37f26a6899d03e7f267a7ae5f7df2c</string>
+		<string>$(FABRIC_API_KEY)</string>
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

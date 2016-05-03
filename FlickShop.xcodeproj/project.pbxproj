@@ -537,6 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				7551D3451C134A040088D32B /* Constants.swift */,
+				75C7B3D81CCFE5F800DAD48F /* ColorConstants.swift */,
 				758848C51CB27DED00583ABA /* SwiftHEXColors.swift */,
 				758848C31CB27DBE00583ABA /* OrderedDictionary.swift */,
 				75F12CE31BE0A24100258874 /* Functions.swift */,
@@ -545,7 +546,6 @@
 				75F12CE71BE0A24100258874 /* UIImage+ImageEffects.m */,
 				75F12D141BE0A3B800258874 /* Alamofire+CustomResponse.swift */,
 				75DD48DA1C074A6C00C4C34D /* UIViewController+SharedAppDelegate.swift */,
-				75C7B3D81CCFE5F800DAD48F /* ColorConstants.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";

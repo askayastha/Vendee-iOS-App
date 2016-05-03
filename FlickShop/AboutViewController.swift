@@ -37,10 +37,10 @@ class AboutViewController: UIViewController {
         
         // Need to change the UIStackView spacing for iPhone 4S and before due to limited screen height
         if ScreenConstants.height == 480 {
-            creditsView.spacing = 10.0
+            creditsView.spacing = 6.0
         }
         
-        vendeeLogo.layer.cornerRadius = 10.0
+        vendeeLogo.layer.cornerRadius = 12.0
         vendeeLogo.layer.masksToBounds = true
         appVersionLabel.text = "Version \(getAppVersion())"
         copyrightLabel.text = "© 2016 Ashish Kayastha.\nAll rights reserved."

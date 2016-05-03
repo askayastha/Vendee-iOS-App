@@ -110,8 +110,8 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     }
     
     @IBAction func actionButtonPressed(sender: UIBarButtonItem) {
-        let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found on Vendee")
-        let promoText = "Love this! What do you think? @vendeefashion"
+        let subjectActivityItem = SubjectActivityItem(subject: "Vendee: \(product.name)")
+        let promoText = "Look at what I found on the Vendee app!"
         
         var items = [AnyObject]()
         items.append(subjectActivityItem)

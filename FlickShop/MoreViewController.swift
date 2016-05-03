@@ -103,11 +103,13 @@ class MoreViewController: UITableViewController {
         let url = "https://vendeeapp.com/"
         let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found")
         let promoText = "Find all that's new in Fashion with Vendee!"
+        let secondaryPromoText = "Get the app for free in the App Store."
         
         var items = [AnyObject]()
         items.append(promoText)
         items.append(url)
         items.append(subjectActivityItem)
+        items.append(secondaryPromoText)
         
         let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         presentViewController(activityVC, animated: true, completion: nil)

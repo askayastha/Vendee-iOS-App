@@ -589,15 +589,15 @@
                                         <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eng-rD-uFe">
-                                        <rect key="frame" x="0.0" y="34" width="240" height="1"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eng-rD-uFe">
+                                        <rect key="frame" x="0.0" y="39" width="240" height="1"/>
                                         <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="qV9-qw-pUu"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XV4-Us-wa8">
-                                        <rect key="frame" x="66" y="40" width="118" height="57"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="XV4-Us-wa8">
+                                        <rect key="frame" x="61" y="45" width="118" height="57"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-TH-Kr5">
                                                 <rect key="frame" x="0.0" y="0.0" width="118" height="26"/>
@@ -687,7 +687,7 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="dW3-9H-pTM"/>
-                                    <barButtonItem image="bar_share_action" id="7YV-Hl-da7">
+                                    <barButtonItem image="share_action" id="7YV-Hl-da7">
                                         <connections>
                                             <action selector="actionButtonPressed:" destination="idb-ik-Vq9" id="78V-RR-PHN"/>
                                         </connections>
@@ -1015,11 +1015,11 @@
         <image name="bar_back" width="16" height="16"/>
         <image name="bar_forward" width="16" height="16"/>
         <image name="bar_reload" width="16" height="18"/>
-        <image name="bar_share_action" width="17" height="21"/>
         <image name="bar_stop" width="16" height="16"/>
         <image name="filter_medium_gray" width="16" height="16"/>
         <image name="find" width="23" height="23"/>
         <image name="find_selected" width="23" height="23"/>
+        <image name="share_action" width="17" height="17"/>
     </resources>
     <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
 </document>

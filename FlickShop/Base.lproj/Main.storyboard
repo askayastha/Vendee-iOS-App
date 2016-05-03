@@ -1014,7 +1014,7 @@
         <image name="back_arrow_medium_gray" width="16" height="16"/>
         <image name="bar_back" width="16" height="16"/>
         <image name="bar_forward" width="16" height="16"/>
-        <image name="bar_reload" width="16" height="18"/>
+        <image name="bar_reload" width="17" height="18"/>
         <image name="bar_stop" width="16" height="16"/>
         <image name="filter_medium_gray" width="16" height="16"/>
         <image name="find" width="23" height="23"/>

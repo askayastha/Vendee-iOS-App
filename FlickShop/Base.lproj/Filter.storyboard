@@ -56,7 +56,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Filter" id="05D-n8-wGs">
-                                        <barButtonItem key="rightBarButtonItem" image="bar_stop" id="ikb-uC-3iL">
+                                        <barButtonItem key="rightBarButtonItem" image="close" id="ikb-uC-3iL">
                                             <connections>
                                                 <action selector="done" destination="Ww8-fr-eeY" id="nwW-zh-weo"/>
                                             </connections>
@@ -493,7 +493,7 @@
                                                         <constraint firstAttribute="width" constant="24" id="Fwm-eh-w0N"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-M7-I32">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12Y-M7-I32">
                                                     <rect key="frame" x="0.0" y="30" width="26" height="15"/>
                                                     <fontDescription key="fontDescription" name="CircularSpUI-Bold" family="Circular Sp UI" pointSize="10"/>
                                                     <color key="textColor" red="0.29019607843137252" green="0.29019607843137252" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
@@ -723,8 +723,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bar_stop" width="16" height="16"/>
         <image name="circular_check" width="12" height="12"/>
+        <image name="close" width="16" height="16"/>
     </resources>
     <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
 </document>

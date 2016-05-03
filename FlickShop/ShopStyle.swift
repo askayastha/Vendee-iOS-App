@@ -45,7 +45,7 @@ struct ShopStyle {
                         "cat": category,
                         "offset": "\(offset)",
                         "limit": "\(limit)",
-                        "fl": "d100",
+                        "fl": "d101",
                         "sort": "Popular"
                     ]
                     return ("/products", params)

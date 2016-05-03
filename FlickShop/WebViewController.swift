@@ -8,10 +8,13 @@
 
 import UIKit
 import WebKit
+import TSMessages
+import Crashlytics
 
 class WebViewController: UIViewController, WKNavigationDelegate {
     
-    private var webView: WKWebView
+    private(set) var webView: WKWebView
+    private(set) var stopLoading = false
     
     var webpageURL: NSURL!
     var product: Product!
@@ -121,9 +124,12 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     
     @IBAction func reloadButtonPressed(sender: UIBarButtonItem) {
         if webView.loading {
+            stopLoading = true
             webView.stopLoading()
             animateSpinner?(false)
+            
         } else {
+            stopLoading = false
             webView.loadRequest(NSURLRequest(URL: webpageURL))
             animateSpinner?(true)
         }
@@ -158,11 +164,17 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     }
     
     func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
-        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-        presentViewController(alert, animated: true, completion: nil)
         
-        animateSpinner?(false)
+        if !stopLoading {
+            TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+            TSMessage.showNotificationWithTitle("Network Error", subtitle: error.localizedDescription, type: .Error)
+            
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: error.localizedDescription, value: nil)
+            Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": error.localizedDescription])
+            
+            animateSpinner?(false)
+        }
     }
     
     // MARK: - Helper methods

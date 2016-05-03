@@ -6,7 +6,6 @@ use_frameworks!
 target 'FlickShop' do
     pod 'Alamofire', '~> 3.0'
     pod 'MBProgressHUD', '~> 0.9'
-    pod 'Ono'
     pod 'SwiftyJSON', '~> 2.0'
     pod 'PINRemoteImage', '~> 2.0'
     pod 'NMRangeSlider', :git => 'https://github.com/chanil1218/NMRangeSlider.git', :commit => 'c89890c'

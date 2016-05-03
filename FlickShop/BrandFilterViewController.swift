@@ -144,6 +144,7 @@ extension BrandFilterViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BrandCell", forIndexPath: indexPath)
+        cell.tintColor = UIColor.vendeeColor()
         
         if searching && !isKeywordEmpty() {
             cell.textLabel?.text = filteredBrands[indexPath.row]

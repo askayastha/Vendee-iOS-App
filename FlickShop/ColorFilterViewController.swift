@@ -117,6 +117,7 @@ class ColorFilterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ColorCell", forIndexPath: indexPath)
+        cell.tintColor = UIColor.vendeeColor()
         
         let colorView = cell.viewWithTag(2000)
         colorView?.layer.cornerRadius = colorView!.bounds.size.width / 2

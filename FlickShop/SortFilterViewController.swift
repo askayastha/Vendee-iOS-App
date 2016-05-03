@@ -66,7 +66,7 @@ class SortFilterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SortCell", forIndexPath: indexPath)
-        
+        cell.tintColor = UIColor.vendeeColor()
         cell.textLabel?.text = sortsDict.orderedKeys[indexPath.row]
         
         // Visually checkmark the selected sort

@@ -46,6 +46,7 @@ class PriceFilterViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
 
         // Prices setup
+        priceRangeSlider.tintColor = UIColor.vendeeColor()
         priceRangeSlider.minimumValue = Float(minValue)
         priceRangeSlider.maximumValue = Float(maxValue)
         priceRangeSlider.minimumRange = 1

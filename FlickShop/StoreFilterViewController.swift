@@ -140,6 +140,7 @@ extension StoreFilterViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StoreCell", forIndexPath: indexPath)
+        cell.tintColor = UIColor.vendeeColor()
         
         if searching && !isKeywordEmpty() {
             cell.textLabel?.text = filteredStores[indexPath.row]

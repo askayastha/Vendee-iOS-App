@@ -110,6 +110,7 @@ class CategoryFilterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
+        cell.tintColor = UIColor.vendeeColor()
 
         let categoryShortName = displayCategories[indexPath.row].componentsSeparatedByString(":").first!
         cell.textLabel?.text = categoryShortName

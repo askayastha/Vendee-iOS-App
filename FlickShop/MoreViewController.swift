@@ -53,45 +53,53 @@ class MoreViewController: UITableViewController {
         // Send Feedback
         case (0, 0):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Send feedback'", label: nil, value: nil)
-            Answers.logCustomEventWithName("Tapped General Feedback", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Send Feedback'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Send Feedback'", customAttributes: nil)
             
             sendSupportEmailWithSubject("General Feedback")
             
         // Report a Problem
         case (0, 1):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Report a problem'", label: nil, value: nil)
-            Answers.logCustomEventWithName("Tapped Report a Problem", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Report a Problem'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Report a Problem'", customAttributes: nil)
             
             sendSupportEmailWithSubject("Something Isn't Working")
         
-        // Rate this app
+        // Rate Vendee
         case (1, 0):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Rate this app'", label: nil, value: nil)
-            Answers.logCustomEventWithName("Tapped 'Rate this app'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Rate Vendee'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Rate Vendee'", customAttributes: nil)
             
             let appStoreURL = NSURL(string: App.storeURL)!
             UIApplication.sharedApplication().openURL(appStoreURL)
         
-        // Share this app
+        // Tell a Friend
         case (1, 1):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Share this app'", label: nil, value: nil)
-            Answers.logCustomEventWithName("Tapped 'Share this app'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Tell a Friend'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Tell a Friend'", customAttributes: nil)
             
             shareTheApp()
             
+        // About Vendee
         case (2, 0):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'About'", label: nil, value: nil)
-            Answers.logCustomEventWithName("Tapped 'About'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'About Vendee'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'About Vendee'", customAttributes: nil)
             
+        // Third Party Licenses
         case (2, 1):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Third party licenses'", label: nil, value: nil)
-            Answers.logCustomEventWithName("Tapped 'Third party licenses'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Third Party Licenses'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Third Party Licenses'", customAttributes: nil)
+            
+        // Privacy Policy
+        case (2, 2):
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Privacy Policy'", label: nil, value: nil)
+            Answers.logCustomEventWithName("Tapped 'Privacy Policy'", customAttributes: nil)
             
         default:
             break
@@ -100,7 +108,7 @@ class MoreViewController: UITableViewController {
     
     // MARK: Helper methods
     private func shareTheApp() {
-        let url = "https://vendeeapp.com/"
+        let url = "https://vendeeapp.com"
         let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found")
         let promoText = "Find all that's new in Fashion with Vendee!"
         let secondaryPromoText = "Get the app for free in the App Store."

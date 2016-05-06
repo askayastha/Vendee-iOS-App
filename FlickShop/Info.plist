@@ -34,7 +34,7 @@
 	</dict>
 	<key>NSUserActivityTypes</key>
 	<array>
-		<string>com.ashish.vendee.webview</string>
+		<string>com.askayastha.vendee.webview</string>
 	</array>
 	<key>UIAppFonts</key>
 	<array>

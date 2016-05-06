@@ -659,6 +659,7 @@
 				A702265E556F3070392D1455 /* Embed Pods Frameworks */,
 				0A408396A32343216C68F9A0 /* Copy Pods Resources */,
 				75BC4DE51C8C59E400B69F36 /* ShellScript */,
+				7530C3421CDCF0BF00728837 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -829,6 +830,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7530C3421CDCF0BF00728837 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/libexec/PlistBuddy -c \"Set :TRACKING_ID ${GA_TRACKING_ID}\" $BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app/GoogleService-Info.plist";
 		};
 		75BC4DE51C8C59E400B69F36 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

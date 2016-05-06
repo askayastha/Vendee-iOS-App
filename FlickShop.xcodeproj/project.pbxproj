@@ -658,8 +658,9 @@
 				75A31E2C1BDFBAAD006FD010 /* Resources */,
 				A702265E556F3070392D1455 /* Embed Pods Frameworks */,
 				0A408396A32343216C68F9A0 /* Copy Pods Resources */,
-				75BC4DE51C8C59E400B69F36 /* ShellScript */,
-				7530C3421CDCF0BF00728837 /* ShellScript */,
+				75BC4DE51C8C59E400B69F36 /* Run Fabric */,
+				7530C3421CDCF0BF00728837 /* Set GA Tracking ID */,
+				75E74CE81CDD112400817964 /* Increment Build Number */,
 			);
 			buildRules = (
 			);
@@ -831,31 +832,47 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7530C3421CDCF0BF00728837 /* ShellScript */ = {
+		7530C3421CDCF0BF00728837 /* Set GA Tracking ID */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Set GA Tracking ID";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "/usr/libexec/PlistBuddy -c \"Set :TRACKING_ID ${GA_TRACKING_ID}\" $BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app/GoogleService-Info.plist";
+			shellScript = "/usr/libexec/PlistBuddy -c \"Set :TRACKING_ID ${GA_TRACKING_ID}\" ${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist";
 		};
-		75BC4DE51C8C59E400B69F36 /* ShellScript */ = {
+		75BC4DE51C8C59E400B69F36 /* Run Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Fabric";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "debugConfig=\"Debug\"\nreleaseConfig=\"Release\"\n\nif [ \"$debugConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Fabric (Debug)\"\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} a17798a2bafac9fbe34d58b7be60fc5ae2967f19cb7f1cce317601da7564a597\nelif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\necho \"Running Fabric (Release)\"\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} 5931175b3a91282249bf1824d2cb33f9b3bce16da94253774abc0c93ca47aed3\nfi";
+		};
+		75E74CE81CDD112400817964 /* Increment Build Number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Increment Build Number";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
 		A702265E556F3070392D1455 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

@@ -17,7 +17,7 @@ target 'FlickShop' do
     pod 'Crashlytics'
     pod 'iRate'
     pod 'NVActivityIndicatorView'
-    pod 'TTTAttributedLabel', '~> 1.0'
+    pod 'TTTAttributedLabel', '~> 2.0'
 end
 
 target 'FlickShopTests' do

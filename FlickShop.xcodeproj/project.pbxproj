@@ -14,6 +14,7 @@
 		750D8E161C06221900D728F0 /* DiscountFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */; };
 		750D8E181C06336900D728F0 /* ColorFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E171C06336900D728F0 /* ColorFilterViewController.swift */; };
 		750D8E1C1C0647AC00D728F0 /* SortFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750D8E1B1C0647AC00D728F0 /* SortFilterViewController.swift */; };
+		751378381CE7C30F0056A256 /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751378371CE7C30F0056A256 /* OrderedDictionary.swift */; };
 		75149F3E1C1B088700A2A57C /* ShopStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75149F3D1C1B088700A2A57C /* ShopStyle.swift */; };
 		751E9F261C11AF96007C990C /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751E9F251C11AF96007C990C /* FloatingButton.swift */; };
 		7522B0CA1C044BBD0055C9A6 /* StoreFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7522B0C91C044BBD0055C9A6 /* StoreFilterViewController.swift */; };
@@ -59,7 +60,6 @@
 		758848BE1CB2681E00583ABA /* BrandSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758848BD1CB2681E00583ABA /* BrandSearch.swift */; };
 		758848C01CB268C700583ABA /* StoreSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758848BF1CB268C700583ABA /* StoreSearch.swift */; };
 		758848C21CB2692B00583ABA /* ColorSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758848C11CB2692B00583ABA /* ColorSearch.swift */; };
-		758848C41CB27DBE00583ABA /* OrderedDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758848C31CB27DBE00583ABA /* OrderedDictionary.swift */; };
 		758848C61CB27DED00583ABA /* SwiftHEXColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758848C51CB27DED00583ABA /* SwiftHEXColors.swift */; };
 		758EB6CB1C579C50007ECD91 /* SwipeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 758EB6CA1C579C50007ECD91 /* SwipeDelegate.swift */; };
 		75A31E391BDFBAAE006FD010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75A31E381BDFBAAE006FD010 /* Assets.xcassets */; };
@@ -154,6 +154,7 @@
 		750D8E151C06221900D728F0 /* DiscountFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DiscountFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750D8E171C06336900D728F0 /* ColorFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ColorFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750D8E1B1C0647AC00D728F0 /* SortFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SortFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		751378371CE7C30F0056A256 /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		75149F3D1C1B088700A2A57C /* ShopStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ShopStyle.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		751E9F251C11AF96007C990C /* FloatingButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = FloatingButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		7522B0C91C044BBD0055C9A6 /* StoreFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = StoreFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -200,7 +201,6 @@
 		758848BD1CB2681E00583ABA /* BrandSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandSearch.swift; sourceTree = "<group>"; };
 		758848BF1CB268C700583ABA /* StoreSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreSearch.swift; sourceTree = "<group>"; };
 		758848C11CB2692B00583ABA /* ColorSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSearch.swift; sourceTree = "<group>"; };
-		758848C31CB27DBE00583ABA /* OrderedDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderedDictionary.swift; sourceTree = "<group>"; };
 		758848C51CB27DED00583ABA /* SwiftHEXColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftHEXColors.swift; sourceTree = "<group>"; };
 		758EB6CA1C579C50007ECD91 /* SwipeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SwipeDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75A31E2E1BDFBAAD006FD010 /* Vendee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vendee.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -539,7 +539,7 @@
 				7551D3451C134A040088D32B /* Constants.swift */,
 				75C7B3D81CCFE5F800DAD48F /* ColorConstants.swift */,
 				758848C51CB27DED00583ABA /* SwiftHEXColors.swift */,
-				758848C31CB27DBE00583ABA /* OrderedDictionary.swift */,
+				751378371CE7C30F0056A256 /* OrderedDictionary.swift */,
 				75F12CE31BE0A24100258874 /* Functions.swift */,
 				75F12CE51BE0A24100258874 /* UIImage+Effects.swift */,
 				75F12CE61BE0A24100258874 /* UIImage+ImageEffects.h */,
@@ -934,6 +934,7 @@
 				75414D761C51465400C2E3FE /* WebViewController.swift in Sources */,
 				75DD48D91C0735A200C4C34D /* CategorySearch.swift in Sources */,
 				750D8E161C06221900D728F0 /* DiscountFilterViewController.swift in Sources */,
+				751378381CE7C30F0056A256 /* OrderedDictionary.swift in Sources */,
 				75149F3E1C1B088700A2A57C /* ShopStyle.swift in Sources */,
 				75C7B3D91CCFE5F800DAD48F /* ColorConstants.swift in Sources */,
 				75F12D061BE0A35900258874 /* CustomLayoutAttributes.swift in Sources */,
@@ -968,7 +969,6 @@
 				75AC84D91C7F7B03004B8FD7 /* CategoryInfo.swift in Sources */,
 				75F72C741C565E1300D21E50 /* SubjectActivityItem.swift in Sources */,
 				752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */,
-				758848C41CB27DBE00583ABA /* OrderedDictionary.swift in Sources */,
 				75F12D131BE0A35900258874 /* TwoColumnLayout.swift in Sources */,
 				753AEA5A1BFF8BA10016B655 /* CategoryFilterViewController.swift in Sources */,
 				7541FECE1C3E720B005CEB11 /* PhotosViewController.swift in Sources */,

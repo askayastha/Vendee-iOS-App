@@ -16,7 +16,7 @@ install_framework()
     local source="$1"
   fi
 
-  local destination="${CONFIGURATION_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
+  local destination="${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}"
 
   if [ -L "${source}" ]; then
       echo "Symlinked..."
@@ -59,8 +59,8 @@ code_sign_if_enabled() {
   if [ -n "${EXPANDED_CODE_SIGN_IDENTITY}" -a "${CODE_SIGNING_REQUIRED}" != "NO" -a "${CODE_SIGNING_ALLOWED}" != "NO" ]; then
     # Use the current code_sign_identitiy
     echo "Code Signing $1 with Identity ${EXPANDED_CODE_SIGN_IDENTITY_NAME}"
-    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements \"$1\""
-    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} --preserve-metadata=identifier,entitlements "$1"
+    echo "/usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements \"$1\""
+    /usr/bin/codesign --force --sign ${EXPANDED_CODE_SIGN_IDENTITY} ${OTHER_CODE_SIGN_FLAGS} --preserve-metadata=identifier,entitlements "$1"
   fi
 }
 
@@ -84,34 +84,34 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-FlickShop/Alamofire.framework"
-  install_framework "Pods-FlickShop/DeviceKit.framework"
-  install_framework "Pods-FlickShop/FLAnimatedImage.framework"
-  install_framework "Pods-FlickShop/HexColors.framework"
-  install_framework "Pods-FlickShop/MBProgressHUD.framework"
-  install_framework "Pods-FlickShop/NMRangeSlider.framework"
-  install_framework "Pods-FlickShop/NVActivityIndicatorView.framework"
-  install_framework "Pods-FlickShop/PINCache.framework"
-  install_framework "Pods-FlickShop/PINRemoteImage.framework"
-  install_framework "Pods-FlickShop/SMPageControl.framework"
-  install_framework "Pods-FlickShop/SwiftyJSON.framework"
-  install_framework "Pods-FlickShop/TSMessages.framework"
-  install_framework "Pods-FlickShop/TTTAttributedLabel.framework"
-  install_framework "Pods-FlickShop/iRate.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/DeviceKit/DeviceKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HexColors/HexColors.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NMRangeSlider/NMRangeSlider.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NVActivityIndicatorView/NVActivityIndicatorView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PINCache/PINCache.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PINRemoteImage/PINRemoteImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SMPageControl/SMPageControl.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TSMessages/TSMessages.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iRate/iRate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-FlickShop/Alamofire.framework"
-  install_framework "Pods-FlickShop/DeviceKit.framework"
-  install_framework "Pods-FlickShop/FLAnimatedImage.framework"
-  install_framework "Pods-FlickShop/HexColors.framework"
-  install_framework "Pods-FlickShop/MBProgressHUD.framework"
-  install_framework "Pods-FlickShop/NMRangeSlider.framework"
-  install_framework "Pods-FlickShop/NVActivityIndicatorView.framework"
-  install_framework "Pods-FlickShop/PINCache.framework"
-  install_framework "Pods-FlickShop/PINRemoteImage.framework"
-  install_framework "Pods-FlickShop/SMPageControl.framework"
-  install_framework "Pods-FlickShop/SwiftyJSON.framework"
-  install_framework "Pods-FlickShop/TSMessages.framework"
-  install_framework "Pods-FlickShop/TTTAttributedLabel.framework"
-  install_framework "Pods-FlickShop/iRate.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/DeviceKit/DeviceKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/FLAnimatedImage/FLAnimatedImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/HexColors/HexColors.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/MBProgressHUD/MBProgressHUD.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NMRangeSlider/NMRangeSlider.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/NVActivityIndicatorView/NVActivityIndicatorView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PINCache/PINCache.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/PINRemoteImage/PINRemoteImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SMPageControl/SMPageControl.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TSMessages/TSMessages.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/TTTAttributedLabel/TTTAttributedLabel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/iRate/iRate.framework"
 fi

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01C37D9CA61831916B3826F5 /* Pods_FlickShopUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E6BEC731638FE3F76BECD1 /* Pods_FlickShopUITests.framework */; };
+		67BA0B38556B4EED3BB264F0 /* Pods_FlickShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A72CBB7AF25D843DD293F2 /* Pods_FlickShop.framework */; };
 		75019BFC1C6D0A8200B4CDBD /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */; };
 		750283CD1CB2E79A005D5FDF /* ShopStyleBrandsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 750283CC1CB2E79A005D5FDF /* ShopStyleBrandsModel.swift */; };
 		750CA62A1C847ABB00A73F7A /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 750CA6281C847ABB00A73F7A /* Favorites.storyboard */; };
@@ -123,7 +125,7 @@
 		75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F12D191BE0A54D00258874 /* Categories.xcassets */; };
 		75F72C741C565E1300D21E50 /* SubjectActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F72C731C565E1300D21E50 /* SubjectActivityItem.swift */; };
 		75F780D61C7F612300CD074A /* BrandsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F780D51C7F612300CD074A /* BrandsModel.swift */; };
-		9467AA39D88A2E86E1AD25CE /* Pods_FlickShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */; };
+		AADE62CE090E177E2D3CD044 /* Pods_FlickShopTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F94CA4B7E3DDD9978E93E243 /* Pods_FlickShopTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -144,8 +146,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DD496926D078ABA0D4796DA /* Pods-FlickShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.release.xcconfig"; sourceTree = "<group>"; };
+		0B9B6E6478BCEB5831254ED1 /* Pods-FlickShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.debug.xcconfig"; sourceTree = "<group>"; };
+		23E6BEC731638FE3F76BECD1 /* Pods_FlickShopUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickShopUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75019BFB1C6D0A8200B4CDBD /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = MoreViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		750283CC1CB2E79A005D5FDF /* ShopStyleBrandsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopStyleBrandsModel.swift; sourceTree = "<group>"; };
 		750564681C6744F80060A400 /* FlickShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FlickShop.entitlements; sourceTree = "<group>"; };
@@ -272,7 +274,13 @@
 		75F12D191BE0A54D00258874 /* Categories.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Categories.xcassets; sourceTree = "<group>"; };
 		75F72C731C565E1300D21E50 /* SubjectActivityItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SubjectActivityItem.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F780D51C7F612300CD074A /* BrandsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrandsModel.swift; sourceTree = "<group>"; };
-		983955C99D9E0C495F28783E /* Pods-FlickShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.debug.xcconfig"; sourceTree = "<group>"; };
+		9D27A612A85BE5496DF4B4D1 /* Pods-FlickShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShop.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop.release.xcconfig"; sourceTree = "<group>"; };
+		BE4BA14AFE7E47D3F09282A0 /* Pods-FlickShopTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShopTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShopTests/Pods-FlickShopTests.release.xcconfig"; sourceTree = "<group>"; };
+		C8A72CBB7AF25D843DD293F2 /* Pods_FlickShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5229BCCEE41A748545B5B4A /* Pods-FlickShopTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShopTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShopTests/Pods-FlickShopTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F09B9A9BF7201F38781AD9E2 /* Pods-FlickShopUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShopUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShopUITests/Pods-FlickShopUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F5B968A69D592446A712DE75 /* Pods-FlickShopUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FlickShopUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FlickShopUITests/Pods-FlickShopUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F94CA4B7E3DDD9978E93E243 /* Pods_FlickShopTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FlickShopTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,8 +288,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9467AA39D88A2E86E1AD25CE /* Pods_FlickShop.framework in Frameworks */,
 				75AC84DB1C7F90E6004B8FD7 /* CloudKit.framework in Frameworks */,
+				67BA0B38556B4EED3BB264F0 /* Pods_FlickShop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +297,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AADE62CE090E177E2D3CD044 /* Pods_FlickShopTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +305,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01C37D9CA61831916B3826F5 /* Pods_FlickShopUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,8 +335,8 @@
 				75A31E451BDFBAAE006FD010 /* FlickShopTests */,
 				75A31E501BDFBAAE006FD010 /* FlickShopUITests */,
 				75A31E2F1BDFBAAD006FD010 /* Products */,
-				ACBA88F6CE970AF1468234DF /* Pods */,
 				7AA5E59AD30AA3D38AC2E840 /* Frameworks */,
+				862ED02B0A3F75293E45ABE2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -631,16 +641,22 @@
 			isa = PBXGroup;
 			children = (
 				75AC84DA1C7F90E6004B8FD7 /* CloudKit.framework */,
-				03C93C788A5B7B32C470137C /* Pods_FlickShop.framework */,
+				C8A72CBB7AF25D843DD293F2 /* Pods_FlickShop.framework */,
+				F94CA4B7E3DDD9978E93E243 /* Pods_FlickShopTests.framework */,
+				23E6BEC731638FE3F76BECD1 /* Pods_FlickShopUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ACBA88F6CE970AF1468234DF /* Pods */ = {
+		862ED02B0A3F75293E45ABE2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				983955C99D9E0C495F28783E /* Pods-FlickShop.debug.xcconfig */,
-				4DD496926D078ABA0D4796DA /* Pods-FlickShop.release.xcconfig */,
+				0B9B6E6478BCEB5831254ED1 /* Pods-FlickShop.debug.xcconfig */,
+				9D27A612A85BE5496DF4B4D1 /* Pods-FlickShop.release.xcconfig */,
+				E5229BCCEE41A748545B5B4A /* Pods-FlickShopTests.debug.xcconfig */,
+				BE4BA14AFE7E47D3F09282A0 /* Pods-FlickShopTests.release.xcconfig */,
+				F09B9A9BF7201F38781AD9E2 /* Pods-FlickShopUITests.debug.xcconfig */,
+				F5B968A69D592446A712DE75 /* Pods-FlickShopUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -652,15 +668,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75A31E561BDFBAAE006FD010 /* Build configuration list for PBXNativeTarget "FlickShop" */;
 			buildPhases = (
-				DDB59AB6F24CB934F78BE5CC /* Check Pods Manifest.lock */,
+				5566A0A49ED516E6BE0D77F1 /* 📦 Check Pods Manifest.lock */,
 				75A31E2A1BDFBAAD006FD010 /* Sources */,
 				75A31E2B1BDFBAAD006FD010 /* Frameworks */,
 				75A31E2C1BDFBAAD006FD010 /* Resources */,
-				A702265E556F3070392D1455 /* Embed Pods Frameworks */,
-				0A408396A32343216C68F9A0 /* Copy Pods Resources */,
 				75BC4DE51C8C59E400B69F36 /* Run Fabric */,
 				7530C3421CDCF0BF00728837 /* Set GA Tracking ID */,
 				75E74CE81CDD112400817964 /* Increment Build Number */,
+				B6F8931557FC9DD5C20CE6DA /* 📦 Embed Pods Frameworks */,
+				11AD6CE690008665F03CEDC2 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -675,9 +691,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75A31E591BDFBAAE006FD010 /* Build configuration list for PBXNativeTarget "FlickShopTests" */;
 			buildPhases = (
+				2A9277128C556223BDF80C79 /* 📦 Check Pods Manifest.lock */,
 				75A31E3E1BDFBAAE006FD010 /* Sources */,
 				75A31E3F1BDFBAAE006FD010 /* Frameworks */,
 				75A31E401BDFBAAE006FD010 /* Resources */,
+				6FE03F352ED8508E0A9C1DA9 /* 📦 Embed Pods Frameworks */,
+				B81591843F16C41D795AC58E /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -693,9 +712,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75A31E5C1BDFBAAE006FD010 /* Build configuration list for PBXNativeTarget "FlickShopUITests" */;
 			buildPhases = (
+				49C6AF4670A91A342601A3A9 /* 📦 Check Pods Manifest.lock */,
 				75A31E491BDFBAAE006FD010 /* Sources */,
 				75A31E4A1BDFBAAE006FD010 /* Frameworks */,
 				75A31E4B1BDFBAAE006FD010 /* Resources */,
+				175293C7F0DDA920372E6BF3 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -817,19 +838,94 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A408396A32343216C68F9A0 /* Copy Pods Resources */ = {
+		11AD6CE690008665F03CEDC2 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		175293C7F0DDA920372E6BF3 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickShopUITests/Pods-FlickShopUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2A9277128C556223BDF80C79 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		49C6AF4670A91A342601A3A9 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5566A0A49ED516E6BE0D77F1 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6FE03F352ED8508E0A9C1DA9 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickShopTests/Pods-FlickShopTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7530C3421CDCF0BF00728837 /* Set GA Tracking ID */ = {
@@ -874,14 +970,14 @@
 			shellPath = /bin/sh;
 			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"";
 		};
-		A702265E556F3070392D1455 /* Embed Pods Frameworks */ = {
+		B6F8931557FC9DD5C20CE6DA /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -889,19 +985,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickShop/Pods-FlickShop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DDB59AB6F24CB934F78BE5CC /* Check Pods Manifest.lock */ = {
+		B81591843F16C41D795AC58E /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FlickShopTests/Pods-FlickShopTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1154,7 +1250,7 @@
 		};
 		75A31E571BDFBAAE006FD010 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 983955C99D9E0C495F28783E /* Pods-FlickShop.debug.xcconfig */;
+			baseConfigurationReference = 0B9B6E6478BCEB5831254ED1 /* Pods-FlickShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1176,7 +1272,7 @@
 		};
 		75A31E581BDFBAAE006FD010 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DD496926D078ABA0D4796DA /* Pods-FlickShop.release.xcconfig */;
+			baseConfigurationReference = 9D27A612A85BE5496DF4B4D1 /* Pods-FlickShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1197,6 +1293,7 @@
 		};
 		75A31E5A1BDFBAAE006FD010 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5229BCCEE41A748545B5B4A /* Pods-FlickShopTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FlickShopTests/Info.plist;
@@ -1209,6 +1306,7 @@
 		};
 		75A31E5B1BDFBAAE006FD010 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE4BA14AFE7E47D3F09282A0 /* Pods-FlickShopTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = FlickShopTests/Info.plist;
@@ -1221,6 +1319,7 @@
 		};
 		75A31E5D1BDFBAAE006FD010 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F09B9A9BF7201F38781AD9E2 /* Pods-FlickShopUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FlickShopUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1233,6 +1332,7 @@
 		};
 		75A31E5E1BDFBAAE006FD010 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5B968A69D592446A712DE75 /* Pods-FlickShopUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = FlickShopUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

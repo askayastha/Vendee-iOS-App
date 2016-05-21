@@ -106,7 +106,7 @@ class Search {
             var requestURL = ShopStyle.Router.FilteredResults(itemOffset, limit, filterCategory, sort).URLRequest.URLString
             requestURL.appendContentsOf(getFilterParams())
             
-            print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+            print("----- Request 1 -----")
             print(requestURL)
             
             dataRequest = Alamofire.request(.GET, requestURL).validate().responseJSON() { response in
@@ -121,7 +121,7 @@ class Search {
                 var requestURL = ShopStyle.Router.PreselectedResults(itemOffset, limit, filterCategory).URLRequest.URLString
                 
                 requestURL.appendContentsOf("&\(filterParams)")
-                print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
+                print("----- Request 2 -----")
                 print(requestURL)
                 
                 dataRequest = Alamofire.request(.GET, requestURL).validate().responseJSON() { response in
@@ -129,10 +129,29 @@ class Search {
                 }
                 
             } else {
+                let requestURL = ShopStyle.Router.PopularResults(itemOffset, limit, category).URLRequest.URLString
+                print("----- Request 3 -----")
+                print(requestURL)
+                
                 dataRequest = Alamofire.request(ShopStyle.Router.PopularResults(itemOffset, limit, category)).validate().responseJSON() { response in
                     self.handleResponse(response, withCompletion: completion)
                 }
             }
+        }
+    }
+    
+    func similarRequestShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, forCategory category: String, completion: SearchComplete) {
+        if state == .Loading { return }     // Do not request more data if a request is in process.
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        state = .Loading
+        
+        let requestURL = ShopStyle.Router.PopularResults(itemOffset, limit, category).URLRequest.URLString
+        print("----- Request 4 -----")
+        print(requestURL)
+        
+        dataRequest = Alamofire.request(ShopStyle.Router.PopularResults(itemOffset, limit, category)).validate().responseJSON() { response in
+            self.handleResponse(response, withCompletion: completion)
         }
     }
     

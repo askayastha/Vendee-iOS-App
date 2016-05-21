@@ -54,9 +54,6 @@ class ProductDetailsViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         setupView()
         
@@ -67,13 +64,6 @@ class ProductDetailsViewController: UITableViewController {
             spinner.centerXAnchor.constraintEqualToAnchor(collectionView.centerXAnchor),
             spinner.centerYAnchor.constraintEqualToAnchor(collectionView.centerYAnchor)
             ])
-        
-        print("SIMILAR REQUESTS")
-        if let categories = product.categories {
-            categoryIds = JSON(categories).arrayValue.map { $0["id"].stringValue }
-            print("CATEGORIES: \(categoryIds)")
-            requestDataFromShopStyleForCategory(categoryIds.first)
-        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -180,7 +170,7 @@ class ProductDetailsViewController: UITableViewController {
         guard let category = category else { return }
         
         requestingData = true
-        search.requestShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, description, lastItem in
+        search.similarRequestShopStyleForItemOffset(search.lastItem, withLimit: 15, forCategory: category) { [weak self] success, description, lastItem in
             
             guard let strongSelf = self else { return }
             strongSelf.requestingData = false
@@ -266,6 +256,17 @@ extension ProductDetailsViewController {
         }
         
         return 44.0
+    }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 1 {
+            print("SIMILAR REQUESTS")
+            if let categories = product.categories {
+                categoryIds = JSON(categories).arrayValue.map { $0["id"].stringValue }
+                print("CATEGORIES: \(categoryIds)")
+                requestDataFromShopStyleForCategory(categoryIds.first)
+            }
+        }
     }
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

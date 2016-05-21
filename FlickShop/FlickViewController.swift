@@ -271,12 +271,12 @@ extension FlickViewController: FlickPageCellDelegate {
     }
     
     func openDetailsForProduct() {
+        indexPath = collectionView!.indexPathsForVisibleItems().first
         let product = search.products.objectAtIndex(indexPath!.row) as! Product
         
         // Log custom events
         Answers.logCustomEventWithName("Tapped Info", customAttributes: getAttributesForProduct(product))
         
-        indexPath = collectionView!.indexPathsForVisibleItems().first
         let detailsVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerProductDetailsViewController") as? ContainerProductDetailsViewController
         
         if let controller = detailsVC {

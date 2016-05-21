@@ -208,7 +208,7 @@ class FlickPageCell: UICollectionViewCell {
         var discountText = product.inStock! ? "In Stock" : "Out of Stock"
         if let salePrice = product.salePrice {
             let discount = (product.price - salePrice) * 100 / product.price
-            discountText = "\(Int(discount))% Off"
+            discountText = "\(Int(round(discount)))% Off"
         } else {
             if discountText == "Out of Stock" {
                 buyButtonWidthConstraint.constant = 150

@@ -41,12 +41,12 @@ class SimilarProductCell: UICollectionViewCell {
             headerTitleLabel.text = JSON(retailer)["name"].string
         }
         
+        var discountText = product.inStock! ? "In Stock" : "Out of Stock"
         if let salePrice = product.salePrice {
-            let discount = (product.price! - salePrice) * 100 / product.price!
-            discountLabel.text = "\(Int(discount))% Off"
-        } else {
-            discountLabel.text = "0% Off"
-        }        
+            let discount = (product.price - salePrice) * 100 / product.price
+            discountText = "\(Int(round(discount)))% Off"
+        }
+        discountLabel.text = discountText
         imageView.pin_setImageFromURL(NSURL(string: product.smallImageURLs!.first!)!) { _ in
             self.spinner.stopAnimating()
         }

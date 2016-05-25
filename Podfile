@@ -18,6 +18,10 @@ target 'FlickShop' do
     pod 'iRate'
     pod 'NVActivityIndicatorView'
     pod 'TTTAttributedLabel', '~> 2.0'
+    pod 'Bolts'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKShareKit'
+    pod 'FBSDKLoginKit'
 end
 
 target 'FlickShopTests' do

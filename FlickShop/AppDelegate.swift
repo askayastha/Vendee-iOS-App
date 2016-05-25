@@ -11,6 +11,7 @@ import Alamofire
 import TSMessages
 import Fabric
 import Crashlytics
+import FBSDKCoreKit
 import iRate
 
 @UIApplicationMain
@@ -44,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeTableView()
         configureNetworkManager()
         configureGoogleAnalytics()
+        configureFacebookAnalytics(application, didFinishLaunchingWithOptions: launchOptions)
         configureFabric()
         PreselectedFiltersModel.sharedInstance().loadPreselectedFilters()
         
@@ -69,10 +71,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        FBSDKAppEvents.activateApp()
     }
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
     
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
@@ -274,6 +282,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let gai = GAI.sharedInstance()
         gai.trackUncaughtExceptions = true
 //        gai.logger.logLevel = GAILogLevel.Verbose
+    }
+    
+    private func configureFacebookAnalytics(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) {
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     private func configureFabric() {

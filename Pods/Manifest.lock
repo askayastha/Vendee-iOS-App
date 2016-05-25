@@ -1,9 +1,21 @@
 PODS:
   - Alamofire (3.4.0)
+  - Bolts (1.7.0):
+    - Bolts/AppLinks (= 1.7.0)
+    - Bolts/Tasks (= 1.7.0)
+  - Bolts/AppLinks (1.7.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.7.0)
   - Crashlytics (3.7.0):
     - Fabric (~> 1.6.3)
   - DeviceKit (0.3.2)
   - Fabric (1.6.7)
+  - FBSDKCoreKit (4.12.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.12.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.12.0):
+    - FBSDKCoreKit
   - FirebaseAnalytics (3.2.0):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -43,9 +55,13 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
+  - Bolts
   - Crashlytics
   - DeviceKit (~> 0.3)
   - Fabric
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Google/Analytics
   - iRate
   - MBProgressHUD (~> 0.9)
@@ -69,9 +85,13 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: c19a627cefd6a95f840401c49ab1f124e07f54ee
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   Crashlytics: c3a2333dea9e2733d2777f730910321fc9e25c0d
   DeviceKit: 79182140c0aa8daaf4f4b3920e0b079f5fa9db79
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  FBSDKCoreKit: 6e56d5a2a64a755ad4efb5dbeee8f82fb1b99775
+  FBSDKLoginKit: 03f68a8d48c2c8bb81d7eb8097973d483543e1f6
+  FBSDKShareKit: df1491f064cffc8ebcc3fc8b71be94cc190c728e
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
@@ -92,6 +112,6 @@ SPEC CHECKSUMS:
   TSMessages: c8cc7b80f2a833af533872cd02010cac061532cc
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: f0feb9f1941d50995b9a282073d215171e20d114
+PODFILE CHECKSUM: d606078c6554952f531193389ee3798221226985
 
 COCOAPODS: 1.0.0

@@ -25,6 +25,7 @@ struct CKRecordTypes {
 struct CustomNotifications {
     static let FilterDidChangeNotification = "FilterDidChange"
     static let FilterDidClearNotification = "FilterDidClear"
+    static let FilterDidApplyNotification = "FilterDidApply"
     static let FavoritesModelDidChangeNotification = "FavoritesModelDidChange"
     static let NetworkDidChangeToReachableNotification = "NetworkDidChangeToReachable"
     static let PhotosDidTapNotification = "PhotosDidTapNotification"
@@ -35,6 +36,10 @@ struct CustomNotifications {
     
     static func filterDidClearNotification() {
         NSNotificationCenter.defaultCenter().postNotificationName(FilterDidClearNotification, object: nil)
+    }
+    
+    static func filterDidApplyNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(FilterDidApplyNotification, object: nil)
     }
     
     static func favoritesModelDidChangeNotification() {

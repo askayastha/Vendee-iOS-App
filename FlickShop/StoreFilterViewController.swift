@@ -59,14 +59,17 @@ class StoreFilterViewController: UIViewController {
     
     deinit {
         print("StoreFilterViewController Deallocating !!!")
-        searchController.active = false
+        deactivateSearchBar()
+        
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidApplyNotification, object: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deactivateSearchBar), name: CustomNotifications.FilterDidApplyNotification, object: nil)
         
         setupView()
         requestDataFromShopStyle()
@@ -154,9 +157,13 @@ extension StoreFilterViewController: UITableViewDataSource {
         
         // Visually checkmark the selected stores.
         if selectedStores.keys.contains((cell.textLabel?.text)!) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+            checkmark.tintImageColor(UIColor.vendeeColor())
+            cell.accessoryView = checkmark
+            
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryView = nil
+            cell.accessoryType = .None
         }
         
         //        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
@@ -247,8 +254,12 @@ extension StoreFilterViewController: UITableViewDataSource {
     
     func refreshTable() {
         selectedStores.removeAll()
-        searchController.active = false
+        deactivateSearchBar()
         tableView.reloadData()
+    }
+    
+    func deactivateSearchBar() {
+        searchController.active = false
     }
     
     private func requestDataFromShopStyle() {
@@ -312,12 +323,15 @@ extension StoreFilterViewController: UITableViewDelegate {
         if !selectedStores.keys.contains(storeName) {
             if let storeCode = getCodeForStoreName(storeName) {
                 selectedStores[storeName] = storeCode
-                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+                let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+                checkmark.tintImageColor(UIColor.vendeeColor())
+                cell?.accessoryView = checkmark
             }
             
         } else {
             if let _ = selectedStores.removeValueForKey(storeName) {
-                cell?.accessoryType = UITableViewCellAccessoryType.None
+                cell?.accessoryView = nil
+                cell?.accessoryType = .None
             }
         }
         

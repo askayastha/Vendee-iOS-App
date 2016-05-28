@@ -13,6 +13,7 @@ class SortFilterViewController: UITableViewController {
     
     let sortsDict: OrderedDictionary<String, String> = [
         ("Most Popular", "Popular"),
+        ("Most Favorites", "Favorite"),
         ("Newest", "Recency"),
         ("Lowest Price", "PriceLoHi"),
         ("Highest Price", "PriceHiLo")
@@ -71,8 +72,12 @@ class SortFilterViewController: UITableViewController {
         
         // Visually checkmark the selected sort
         if selectedSort.keys.contains(sortsDict.orderedKeys[indexPath.row]) {
-            cell.accessoryType = .Checkmark
+            let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+            checkmark.tintImageColor(UIColor.vendeeColor())
+            cell.accessoryView = checkmark
+            
         } else {
+            cell.accessoryView = nil
             cell.accessoryType = .None
         }
         
@@ -84,6 +89,7 @@ class SortFilterViewController: UITableViewController {
         if let indexPath = selectedIndexPath {
             selectedSort.removeAll()
             let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+            selectedCell?.accessoryView = nil
             selectedCell?.accessoryType = .None
         }
         
@@ -95,8 +101,9 @@ class SortFilterViewController: UITableViewController {
         
         if !selectedSort.keys.contains(sortName) {
             selectedSort[sortName] = sortsDict[sortName]
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
-            
+            let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+            checkmark.tintImageColor(UIColor.vendeeColor())
+            cell?.accessoryView = checkmark
         }
         
         print(selectedSort)
@@ -111,7 +118,7 @@ class SortFilterViewController: UITableViewController {
 //    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
 //        let cell = tableView.cellForRowAtIndexPath(indexPath)
 //        selectedSort.removeAll()
-//        cell?.accessoryType = UITableViewCellAccessoryType.None
+//        cell?.accessoryType = .None
 //    }
     
     func refreshTable() {

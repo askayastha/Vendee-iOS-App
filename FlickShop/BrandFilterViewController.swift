@@ -63,14 +63,17 @@ class BrandFilterViewController: UIViewController {
     
     deinit {
         print("BrandFilterViewController Deallocating !!!")
-        searchController.active = false
+        deactivateSearchBar()
+        
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidApplyNotification, object: nil)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deactivateSearchBar), name: CustomNotifications.FilterDidApplyNotification, object: nil)
         
         setupView()
         requestDataFromShopStyle()
@@ -144,7 +147,7 @@ extension BrandFilterViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BrandCell", forIndexPath: indexPath)
-        cell.tintColor = UIColor.vendeeColor()
+//        cell.tintColor = UIColor.vendeeColor()
         
         if searching && !isKeywordEmpty() {
             cell.textLabel?.text = filteredBrands[indexPath.row]
@@ -158,9 +161,13 @@ extension BrandFilterViewController: UITableViewDataSource {
         
         // Visually checkmark the selected brands.
         if selectedBrands.keys.contains((cell.textLabel?.text)!) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+            checkmark.tintImageColor(UIColor.vendeeColor())
+            cell.accessoryView = checkmark
+            
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryView = nil
+            cell.accessoryType = .None
         }
         
 //        if let selectedIndexPaths = tableView.indexPathsForSelectedRows {
@@ -251,8 +258,12 @@ extension BrandFilterViewController: UITableViewDataSource {
     
     func refreshTable() {
         selectedBrands.removeAll()
-        searchController.active = false
+        deactivateSearchBar()
         tableView.reloadData()
+    }
+    
+    func deactivateSearchBar() {
+        searchController.active = false
     }
     
     private func requestDataFromShopStyle() {
@@ -316,12 +327,15 @@ extension BrandFilterViewController: UITableViewDelegate {
         if !selectedBrands.keys.contains(brandName) {
             if let brandCode = getCodeForBrandName(brandName) {
                 selectedBrands[brandName] = brandCode
-                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+                let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+                checkmark.tintImageColor(UIColor.vendeeColor())
+                cell?.accessoryView = checkmark
             }
             
         } else {
             if let _ = selectedBrands.removeValueForKey(brandName) {
-                cell?.accessoryType = UITableViewCellAccessoryType.None
+                cell?.accessoryView = nil
+                cell?.accessoryType = .None
             }
         }
         

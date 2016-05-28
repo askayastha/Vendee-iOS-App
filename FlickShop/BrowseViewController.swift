@@ -70,6 +70,7 @@ class BrowseViewController: UICollectionViewController {
     }
     
     @IBAction func unwindFilterApply(segue: UIStoryboardSegue) {
+        CustomNotifications.filterDidApplyNotification()
         logEventsForFilter()
         
         FiltersModel.synchronizeFiltersModel()

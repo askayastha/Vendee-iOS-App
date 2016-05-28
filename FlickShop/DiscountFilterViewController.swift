@@ -132,9 +132,13 @@ class DiscountFilterViewController: UITableViewController {
         
         // Visually checkmark the selected offers.
         if !skipHighlightRows.contains(indexPath.row) && selectedOffers.keys.contains((cell.textLabel?.text)!) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+            checkmark.tintImageColor(UIColor.vendeeColor())
+            cell.accessoryView = checkmark
+            
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryView = nil
+            cell.accessoryType = .None
         }
         
         return cell
@@ -152,12 +156,15 @@ class DiscountFilterViewController: UITableViewController {
         if !selectedOffers.keys.contains(offerName) {
             if let offerCode = offersDict[offerName] {
                 selectedOffers[offerName] = offerCode
-                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+                let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+                checkmark.tintImageColor(UIColor.vendeeColor())
+                cell?.accessoryView = checkmark
             }
             
         } else {
             if let _ = selectedOffers.removeValueForKey(offerName) {
-                cell?.accessoryType = UITableViewCellAccessoryType.None
+                cell?.accessoryView = nil
+                cell?.accessoryType = .None
             }
         }
         

@@ -138,9 +138,13 @@ class ColorFilterViewController: UITableViewController {
         
         // Visually checkmark the selected colors.
         if selectedColors.keys.contains(color.name) {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+            checkmark.tintImageColor(UIColor.vendeeColor())
+            cell.accessoryView = checkmark
+            
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryView = nil
+            cell.accessoryType = .None
         }
         
         return cell
@@ -156,11 +160,14 @@ class ColorFilterViewController: UITableViewController {
         if !selectedColors.keys.contains(color.name) {
             let colorCode = "c\(color.id)"
             selectedColors[color.name] = colorCode
-            cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+            checkmark.tintImageColor(UIColor.vendeeColor())
+            cell?.accessoryView = checkmark
             
         } else {
             if let _ = selectedColors.removeValueForKey(color.name) {
-                cell?.accessoryType = UITableViewCellAccessoryType.None
+                cell?.accessoryView = nil
+                cell?.accessoryType = .None
             }
         }
         

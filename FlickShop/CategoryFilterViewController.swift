@@ -110,16 +110,20 @@ class CategoryFilterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell", forIndexPath: indexPath)
-        cell.tintColor = UIColor.vendeeColor()
+//        cell.tintColor = UIColor.vendeeColor()
 
         let categoryShortName = displayCategories[indexPath.row].componentsSeparatedByString(":").first!
         cell.textLabel?.text = categoryShortName
         
         // Visually checkmark the selected categories.
         if tappedCategories.last == displayCategories[indexPath.row] {
-            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+            let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+            checkmark.tintImageColor(UIColor.vendeeColor())
+            cell.accessoryView = checkmark
+            
         } else {
-            cell.accessoryType = UITableViewCellAccessoryType.None
+            cell.accessoryView = nil
+            cell.accessoryType = .None
         }
 
         return cell
@@ -162,7 +166,9 @@ class CategoryFilterViewController: UITableViewController {
         
         let cell = tableView.cellForRowAtIndexPath(selectedIndexPath)
 //        cell?.setSelected(true, animated: false)
-        cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+        let checkmark = UIImageView(image: UIImage(named: "selection_checkmark"))
+        checkmark.tintImageColor(UIColor.vendeeColor())
+        cell?.accessoryView = checkmark
         
         // Filter Stuff
         filtersModel.category["displayCategories"] = displayCategories

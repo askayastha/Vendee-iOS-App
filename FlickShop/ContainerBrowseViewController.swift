@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class ContainerBrowseViewController: UIViewController {
     
@@ -47,6 +48,7 @@ class ContainerBrowseViewController: UIViewController {
         
         // Log screen views
         GoogleAnalytics.trackScreenForName("Browse View")
+        FIRAnalytics.logEventWithName("Browse_View", parameters: nil)
         Answers.logCustomEventWithName("Browse View", customAttributes: nil)
     }
     

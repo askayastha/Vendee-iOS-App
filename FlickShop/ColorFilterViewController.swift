@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Crashlytics
+import FirebaseAnalytics
 
 class ColorFilterViewController: UITableViewController {
     
@@ -97,6 +98,7 @@ class ColorFilterViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Color Filter View")
+        FIRAnalytics.logEventWithName("Color_Filter_View", parameters: nil)
         Answers.logCustomEventWithName("Color Filter View", customAttributes: nil)
     }
 
@@ -205,6 +207,7 @@ class ColorFilterViewController: UITableViewController {
                     
                     // Log custom events
                     GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
                     Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 

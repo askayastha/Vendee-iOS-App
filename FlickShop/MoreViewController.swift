@@ -10,6 +10,7 @@ import UIKit
 import MessageUI
 import DeviceKit
 import Crashlytics
+import FirebaseAnalytics
 import iRate
 
 class MoreViewController: UITableViewController {
@@ -27,6 +28,7 @@ class MoreViewController: UITableViewController {
         setTabBarVisible(true, animated: true)
         
         GoogleAnalytics.trackScreenForName("More View")
+        FIRAnalytics.logEventWithName("More_View", parameters: nil)
         Answers.logCustomEventWithName("More View", customAttributes: nil)
     }
 
@@ -54,6 +56,7 @@ class MoreViewController: UITableViewController {
         case (0, 0):
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Send Feedback'", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_'Send_Feedback'", parameters: nil)
             Answers.logCustomEventWithName("Tapped 'Send Feedback'", customAttributes: nil)
             
             sendSupportEmailWithSubject("General Feedback")
@@ -62,6 +65,7 @@ class MoreViewController: UITableViewController {
         case (0, 1):
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Report a Problem'", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_'Report_a_Problem'", parameters: nil)
             Answers.logCustomEventWithName("Tapped 'Report a Problem'", customAttributes: nil)
             
             sendSupportEmailWithSubject("Something Isn't Working")
@@ -70,6 +74,7 @@ class MoreViewController: UITableViewController {
         case (1, 0):
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Rate Vendee'", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_'Rate_Vendee'", parameters: nil)
             Answers.logCustomEventWithName("Tapped 'Rate Vendee'", customAttributes: nil)
             
             let appStoreURL = NSURL(string: App.storeURL)!
@@ -79,6 +84,7 @@ class MoreViewController: UITableViewController {
         case (1, 1):
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Tell a Friend'", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_'Tell_a_Friend'", parameters: nil)
             Answers.logCustomEventWithName("Tapped 'Tell a Friend'", customAttributes: nil)
             
             shareTheApp()
@@ -87,18 +93,21 @@ class MoreViewController: UITableViewController {
         case (2, 0):
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'About Vendee'", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_'About_Vendee'", parameters: nil)
             Answers.logCustomEventWithName("Tapped 'About Vendee'", customAttributes: nil)
             
         // Third Party Licenses
         case (2, 1):
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Third Party Licenses'", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_'Third_Party_Licenses'", parameters: nil)
             Answers.logCustomEventWithName("Tapped 'Third Party Licenses'", customAttributes: nil)
             
         // Privacy Policy
         case (2, 2):
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Privacy Policy'", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_'Privacy_Policy'", parameters: nil)
             Answers.logCustomEventWithName("Tapped 'Privacy Policy'", customAttributes: nil)
             
         default:
@@ -108,7 +117,7 @@ class MoreViewController: UITableViewController {
     
     // MARK: Helper methods
     private func shareTheApp() {
-        let url = "https://vendeeapp.com"
+        let url = "http://vendeeapp.com"
         let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found")
         let promoText = "Find all that's new in Fashion with Vendee!"
         let secondaryPromoText = "Get the app for free in the App Store."

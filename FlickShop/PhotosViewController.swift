@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class PhotosViewController: UIViewController {
     
@@ -64,6 +65,7 @@ class PhotosViewController: UIViewController {
         
         // Log screen views
         GoogleAnalytics.trackScreenForName("Photos View")
+        FIRAnalytics.logEventWithName("Photos_View", parameters: nil)
         Answers.logCustomEventWithName("Photos View", customAttributes: nil)
     }
     
@@ -132,6 +134,7 @@ class PhotosViewController: UIViewController {
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Photo Scrubber", label: "Page", value: page)
+        FIRAnalytics.logEventWithName("Tapped_Photo_Scrubber", parameters: ["Page": page])
         Answers.logCustomEventWithName("Tapped Photo Scrubber", customAttributes: ["Page": page])
     }
     

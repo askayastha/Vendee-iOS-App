@@ -11,6 +11,7 @@ import AVFoundation
 import TSMessages
 import SwiftyJSON
 import Crashlytics
+import FirebaseAnalytics
 import NVActivityIndicatorView
 
 class FavoritesViewController: UICollectionViewController {
@@ -256,6 +257,7 @@ extension FavoritesViewController {
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
         // Log custom events
+        FIRAnalytics.logEventWithName("Tapped_Favorite_Product", parameters: getAttributesForProduct(product) as? [String: NSObject])
         Answers.logCustomEventWithName("Tapped Favorite Product", customAttributes: getAttributesForProduct(product))
         
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)

@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class PrivacyPolicyViewController: UIViewController {
     
@@ -32,6 +33,7 @@ class PrivacyPolicyViewController: UIViewController {
         textView.textContainerInset = UIEdgeInsetsMake(15, 15, 15, 15)
         
         GoogleAnalytics.trackScreenForName("Privacy Policy View")
+        FIRAnalytics.logEventWithName("Privacy_Policy_View", parameters: nil)
         Answers.logCustomEventWithName("Privacy Policy View", customAttributes: nil)
     }
     

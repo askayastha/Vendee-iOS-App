@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class ContainerFavoritesViewController: UIViewController {
     
@@ -53,6 +54,7 @@ class ContainerFavoritesViewController: UIViewController {
         }
         
         GoogleAnalytics.trackScreenForName("Favorites View")
+        FIRAnalytics.logEventWithName("Favorites_View", parameters: nil)
         Answers.logCustomEventWithName("Favorites View", customAttributes: nil)
     }
     

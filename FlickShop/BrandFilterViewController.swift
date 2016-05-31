@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 struct FilterViewCellIdentifiers {
     static let headerCell = "HeaderCell"
@@ -83,6 +84,7 @@ class BrandFilterViewController: UIViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Brand Filter View")
+        FIRAnalytics.logEventWithName("Brand_Filter_View", parameters: nil)
         Answers.logCustomEventWithName("Brand Filter View", customAttributes: nil)
     }
     
@@ -286,6 +288,7 @@ extension BrandFilterViewController: UITableViewDataSource {
                     
                     // Log custom events
                     GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
                     Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 

@@ -11,6 +11,7 @@ import UIKit
 import Dispatch
 import SwiftyJSON
 import Crashlytics
+import FirebaseAnalytics
 
 func afterDelay(seconds: Double, closure: () -> ()) {
     let when = dispatch_time(DISPATCH_TIME_NOW, Int64(seconds * Double(NSEC_PER_SEC)))
@@ -70,24 +71,28 @@ func getAttributesForProduct(product: Product) -> [String: AnyObject] {
 
 func logEventsForFilter() {
     GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Action Button", label: "Apply", value: nil)
+    FIRAnalytics.logEventWithName("Tapped_Filter_Action_Button", parameters: ["Button": "Apply"])
     Answers.logCustomEventWithName("Tapped Filter Action Button", customAttributes: ["Button": "Apply"])
     let filtersModel = FiltersModel.sharedInstance()
     
     // Log applied category filter
     let tappedCategories = filtersModel.category["tappedCategories"] as! [String]
     if let category = tappedCategories.last {
+        FIRAnalytics.logEventWithName("Applied_Filters", parameters: ["Category": category])
         Answers.logCustomEventWithName("Applied Filters", customAttributes: ["Category": category])
     }
     
     // Log other applied filters
     for (filter, params) in filtersModel.filterParams {
         for paramName in (params as! [String: String]).keys {
+            FIRAnalytics.logEventWithName("Applied_Filters", parameters: [filter.capitalizedString: paramName])
             Answers.logCustomEventWithName("Applied Filters", customAttributes: [filter.capitalizedString: paramName])
         }
     }
     
     // Log sort filter
     if let sort = filtersModel.sort.keys.first {
+        FIRAnalytics.logEventWithName("Applied_Filters", parameters: ["Sort": sort])
         Answers.logCustomEventWithName("Applied Filters", customAttributes: ["Sort": sort])
     }
 }

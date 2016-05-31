@@ -24,6 +24,7 @@
 		752B71161BFCF2EE00DB14E7 /* ContainerFlickViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */; };
 		752B9C501C42C831000CE855 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752B9C4F1C42C831000CE855 /* PhotoViewController.swift */; };
 		752BDD581C523021007F76BF /* hideForwarding.js in Resources */ = {isa = PBXBuildFile; fileRef = 752BDD571C523021007F76BF /* hideForwarding.js */; };
+		753846911CFDCBCB000365EA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 753846901CFDCBCB000365EA /* GoogleService-Info.plist */; };
 		753AEA561BFF8B490016B655 /* ContainerFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA551BFF8B490016B655 /* ContainerFilterViewController.swift */; };
 		753AEA581BFF8B820016B655 /* SideTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA571BFF8B820016B655 /* SideTabViewController.swift */; };
 		753AEA5A1BFF8BA10016B655 /* CategoryFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 753AEA591BFF8BA10016B655 /* CategoryFilterViewController.swift */; };
@@ -95,7 +96,6 @@
 		75E0DD601C3D89E70036A249 /* Whitney-Book-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */; };
 		75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */; };
 		75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */ = {isa = PBXBuildFile; fileRef = 75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */; };
-		75EC0E721C8896EA008C162B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75EC0E711C8896EA008C162B /* GoogleService-Info.plist */; };
 		75EEE39D1C6F510900C507FC /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75EEE39B1C6F510900C507FC /* More.storyboard */; };
 		75EEE39F1C6F53CA00C507FC /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */; };
 		75F12CEA1BE0A24100258874 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F12CE31BE0A24100258874 /* Functions.swift */; };
@@ -164,6 +164,7 @@
 		752B71151BFCF2EE00DB14E7 /* ContainerFlickViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerFlickViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		752B9C4F1C42C831000CE855 /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PhotoViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		752BDD571C523021007F76BF /* hideForwarding.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = hideForwarding.js; sourceTree = "<group>"; };
+		753846901CFDCBCB000365EA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		753AEA551BFF8B490016B655 /* ContainerFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ContainerFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		753AEA571BFF8B820016B655 /* SideTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SideTabViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		753AEA591BFF8BA10016B655 /* CategoryFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoryFilterViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -242,7 +243,6 @@
 		75E0DD5D1C3D89690036A249 /* Whitney-Book-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-Book-Bas.otf"; sourceTree = "<group>"; };
 		75E0DD5E1C3D89690036A249 /* Whitney-BookItal-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-BookItal-Bas.otf"; sourceTree = "<group>"; };
 		75E0DD5F1C3D89690036A249 /* Whitney-Semibold-Bas.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Whitney-Semibold-Bas.otf"; sourceTree = "<group>"; };
-		75EC0E711C8896EA008C162B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		75EEE39C1C6F510900C507FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/More.storyboard; sourceTree = "<group>"; };
 		75EEE39E1C6F53CA00C507FC /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AboutViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		75F12C271BE09CCA00258874 /* FlickShop-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlickShop-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -605,7 +605,7 @@
 		75F12D271BE0AC8100258874 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				75EC0E711C8896EA008C162B /* GoogleService-Info.plist */,
+				753846901CFDCBCB000365EA /* GoogleService-Info.plist */,
 				75A31E3D1BDFBAAE006FD010 /* Info.plist */,
 				75F12CF11BE0A35900258874 /* Categories.plist */,
 				754682DC1CB68EC5000A86EB /* Brands.plist */,
@@ -794,7 +794,6 @@
 				75E0DD611C3D89E70036A249 /* Whitney-BookItal-Bas.otf in Resources */,
 				757D57AC1C56816D00F64907 /* Filter.storyboard in Resources */,
 				75E0DD621C3D89E70036A249 /* Whitney-Semibold-Bas.otf in Resources */,
-				75EC0E721C8896EA008C162B /* GoogleService-Info.plist in Resources */,
 				753E2BB81BE2A44B000F374A /* Quicksand-Bold.ttf in Resources */,
 				753E2BB71BE2A43D000F374A /* Quicksand-Regular.ttf in Resources */,
 				756D59F31CD68B0800B2A85D /* CircularSpUI-Bold.otf in Resources */,
@@ -803,6 +802,7 @@
 				75A31E3C1BDFBAAE006FD010 /* LaunchScreen.storyboard in Resources */,
 				75F12D1A1BE0A54D00258874 /* Categories.xcassets in Resources */,
 				756D59F41CD68B0800B2A85D /* CircularSpUI-Book.otf in Resources */,
+				753846911CFDCBCB000365EA /* GoogleService-Info.plist in Resources */,
 				75F12D0B1BE0A35900258874 /* FlickPageCell.xib in Resources */,
 				756E15AF1C7213D20046CCBA /* FaktFlipboard-Light.otf in Resources */,
 				756E15B01C7213D20046CCBA /* FaktFlipboard-Medium.otf in Resources */,
@@ -1259,6 +1259,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FABRIC_API_KEY = dcdbc8fcdea7c38b31e402a4d24d367c06e13c29;
+				FACEBOOK_APP_ID = 1618407261810479;
 				GA_TRACKING_ID = "UA-74683859-1";
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1281,6 +1282,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = YES;
 				FABRIC_API_KEY = ad93d890ac0f42e4f19e7ae43a92e8237af9e528;
+				FACEBOOK_APP_ID = 1616891928628679;
 				GA_TRACKING_ID = "UA-77249051-1";
 				INFOPLIST_FILE = FlickShop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

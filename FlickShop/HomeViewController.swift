@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class HomeViewController: UIViewController {
     
@@ -28,6 +29,7 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Home View")
+        FIRAnalytics.logEventWithName("Home_View", parameters: nil)
         Answers.logCustomEventWithName("Home View", customAttributes: nil)
     }
 
@@ -86,6 +88,7 @@ extension HomeViewController: UICollectionViewDelegate {
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Category", label: categoryName, value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Category", parameters: ["Category": categoryName])
         Answers.logCustomEventWithName("Tapped Category", customAttributes: ["Category": categoryName])
         
         performSegueWithIdentifier("BrowseCategory", sender: indexPath)

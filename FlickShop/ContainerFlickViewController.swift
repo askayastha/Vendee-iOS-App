@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class ContainerFlickViewController: UIViewController {
     
@@ -31,6 +32,7 @@ class ContainerFlickViewController: UIViewController {
         
         // Log screen views
         GoogleAnalytics.trackScreenForName("Flick View")
+        FIRAnalytics.logEventWithName("Flick_View", parameters: nil)
         Answers.logCustomEventWithName("Flick View", customAttributes: nil)
     }
     

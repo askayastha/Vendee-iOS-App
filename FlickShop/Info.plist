@@ -25,19 +25,19 @@
 		<key>APIKey</key>
 		<string>$(FABRIC_API_KEY)</string>
 	</dict>
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>fb1616891928628679</string>
-            </array>
-        </dict>
-    </array>
-    <key>FacebookAppID</key>
-    <string>1616891928628679</string>
-    <key>FacebookDisplayName</key>
-    <string>Vendee</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1616891928628679</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>$(FACEBOOK_APP_ID)</string>
+	<key>FacebookDisplayName</key>
+	<string>Vendee</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>

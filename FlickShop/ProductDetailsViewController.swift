@@ -12,6 +12,7 @@ import AVFoundation
 import TSMessages
 import SwiftyJSON
 import Crashlytics
+import FirebaseAnalytics
 
 class ProductDetailsViewController: UITableViewController {
     
@@ -228,6 +229,7 @@ extension ProductDetailsViewController: UICollectionViewDataSource, UICollection
         let product = search.products.objectAtIndex(indexPath.item) as! Product
         
         // Log custom events
+        FIRAnalytics.logEventWithName("Tapped_Similar_Product", parameters: getAttributesForProduct(product) as? [String: NSObject])
         Answers.logCustomEventWithName("Tapped Similar Product", customAttributes: getAttributesForProduct(product))
         
         print("CollectionViewDidSelectItemAtIndexPath")

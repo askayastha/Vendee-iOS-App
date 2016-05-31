@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class StoreFilterViewController: UIViewController {
     
@@ -79,6 +80,7 @@ class StoreFilterViewController: UIViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Store Filter View")
+        FIRAnalytics.logEventWithName("Store_Filter_View", parameters: nil)
         Answers.logCustomEventWithName("Store Filter View", customAttributes: nil)
     }
     
@@ -282,6 +284,7 @@ extension StoreFilterViewController: UITableViewDataSource {
                     
                     // Log custom events
                     GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
                     Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 

@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 import TTTAttributedLabel
 
 class AboutViewController: UIViewController {
@@ -72,6 +73,7 @@ class AboutViewController: UIViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("About View")
+        FIRAnalytics.logEventWithName("About_View", parameters: nil)
         Answers.logCustomEventWithName("About View", customAttributes: nil)
     }
 

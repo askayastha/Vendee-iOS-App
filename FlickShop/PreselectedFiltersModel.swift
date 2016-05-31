@@ -9,6 +9,7 @@
 import Foundation
 import CloudKit
 import Crashlytics
+import FirebaseAnalytics
 
 private let preselectedFiltersModelSingleton = PreselectedFiltersModel()
 
@@ -68,6 +69,7 @@ class PreselectedFiltersModel {
                 
                 // Log custom events
                 GoogleAnalytics.trackEventWithCategory("Error", action: "CloudKit Error", label: error.localizedDescription, value: nil)
+                FIRAnalytics.logEventWithName("CloudKit_Error", parameters: ["Description": error.localizedDescription])
                 Answers.logCustomEventWithName("CloudKit Error", customAttributes: ["Description": error.localizedDescription])
                 
             } else {

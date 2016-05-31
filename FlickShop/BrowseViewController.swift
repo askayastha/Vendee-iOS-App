@@ -12,6 +12,7 @@ import AVFoundation
 import TSMessages
 import SwiftyJSON
 import Crashlytics
+import FirebaseAnalytics
 import NVActivityIndicatorView
 
 class BrowseViewController: UICollectionViewController {
@@ -209,6 +210,7 @@ class BrowseViewController: UICollectionViewController {
                     
                     // Log custom events
                     GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
                     Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 
@@ -343,6 +345,7 @@ extension BrowseViewController {
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Product", label: product.id, value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Product", parameters: getAttributesForProduct(product) as? [String: NSObject])
         Answers.logCustomEventWithName("Tapped Product", customAttributes: getAttributesForProduct(product))
         
         performSegueWithIdentifier("FlickCategory", sender: indexPath)

@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class SortFilterViewController: UITableViewController {
     
@@ -47,6 +48,7 @@ class SortFilterViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Sort Filter View")
+        FIRAnalytics.logEventWithName("Sort_Filter_View", parameters: nil)
         Answers.logCustomEventWithName("Sort Filter View", customAttributes: nil)
     }
 

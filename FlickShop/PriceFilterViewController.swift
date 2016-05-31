@@ -9,6 +9,7 @@
 import UIKit
 import NMRangeSlider
 import Crashlytics
+import FirebaseAnalytics
 
 class PriceFilterViewController: UITableViewController {
     
@@ -111,6 +112,7 @@ class PriceFilterViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         GoogleAnalytics.trackScreenForName("Price Filter View")
+        FIRAnalytics.logEventWithName("Price_Filter_View", parameters: nil)
         Answers.logCustomEventWithName("Price Filter View", customAttributes: nil)
     }
 

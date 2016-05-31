@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class ContainerFilterViewController: UIViewController, SideTabDelegate {
     
@@ -47,6 +48,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter", label: nil, value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Filter", parameters: nil)
         Answers.logCustomEventWithName("Tapped Filter", customAttributes: nil)
     }
     
@@ -69,6 +71,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     @IBAction func done() {
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Action Button", label: "Close", value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Filter_Action_Button", parameters: ["Button": "Close"])
         Answers.logCustomEventWithName("Tapped Filter Action Button", customAttributes: ["Button": "Close"])
         
         if filtersModel.filtersAvailable {
@@ -102,6 +105,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Action Button", label: "Clear All", value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Filter_Action_Button", parameters: ["Button": "Clear All"])
         Answers.logCustomEventWithName("Tapped Filter Action Button", customAttributes: ["Button": "Clear All"])
     }
 

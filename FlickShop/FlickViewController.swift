@@ -14,6 +14,7 @@ import AVFoundation
 import TSMessages
 import SwiftyJSON
 import Crashlytics
+import FirebaseAnalytics
 
 //struct FlickViewConstants {
 //    static var width = UIScreen.mainScreen().bounds.width
@@ -77,6 +78,7 @@ class FlickViewController: UICollectionViewController {
         super.viewWillDisappear(animated)
         
         // Log custom events
+        FIRAnalytics.logEventWithName("Flick_Session", parameters: ["Count": flickCount])
         Answers.logCustomEventWithName("Flick Session", customAttributes: ["Count": flickCount])
     }
 
@@ -182,6 +184,7 @@ class FlickViewController: UICollectionViewController {
                     
                     // Log custom events
                     GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
                     Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 
@@ -240,6 +243,7 @@ extension FlickViewController: FlickPageCellDelegate {
             // Log custom events
             var attributes = getAttributesForProduct(product)
             attributes["State"] = "Selected"
+            FIRAnalytics.logEventWithName("Tapped_Favorites", parameters: attributes as? [String: NSObject])
             Answers.logCustomEventWithName("Tapped Favorites", customAttributes: attributes)
             
         case .Unselected:
@@ -248,6 +252,7 @@ extension FlickViewController: FlickPageCellDelegate {
             // Log custom events
             var attributes = getAttributesForProduct(product)
             attributes["State"] = "Unselected"
+            FIRAnalytics.logEventWithName("Tapped_Favorites", parameters: attributes as? [String: NSObject])
             Answers.logCustomEventWithName("Tapped Favorites", customAttributes: attributes)
         }        
     }
@@ -257,6 +262,7 @@ extension FlickViewController: FlickPageCellDelegate {
         guard let url = NSURL(string: clickURL) else { return }
         
         // Log custom events
+        FIRAnalytics.logEventWithName("Tapped_Shop", parameters: getAttributesForProduct(product) as? [String: NSObject])
         Answers.logCustomEventWithName("Tapped Shop", customAttributes: getAttributesForProduct(product))
         
         indexPath = collectionView!.indexPathsForVisibleItems().first
@@ -275,6 +281,7 @@ extension FlickViewController: FlickPageCellDelegate {
         let product = search.products.objectAtIndex(indexPath!.row) as! Product
         
         // Log custom events
+        FIRAnalytics.logEventWithName("Tapped_Info", parameters: getAttributesForProduct(product) as? [String: NSObject])
         Answers.logCustomEventWithName("Tapped Info", customAttributes: getAttributesForProduct(product))
         
         let detailsVC = storyboard!.instantiateViewControllerWithIdentifier("ContainerProductDetailsViewController") as? ContainerProductDetailsViewController
@@ -288,6 +295,7 @@ extension FlickViewController: FlickPageCellDelegate {
     
     func openActivityViewForProduct(product: Product, andImage image: UIImage?) {
         // Log custom events
+        FIRAnalytics.logEventWithName("Tapped_Share", parameters: getAttributesForProduct(product) as? [String: NSObject])
         Answers.logCustomEventWithName("Tapped Share", customAttributes: getAttributesForProduct(product))
         
         indexPath = collectionView!.indexPathsForVisibleItems().first
@@ -311,6 +319,7 @@ extension FlickViewController: FlickPageCellDelegate {
         guard let _ = imageView.image else { return }
         
         // Log custom events
+        FIRAnalytics.logEventWithName("Tapped_Photo", parameters: getAttributesForProduct(product) as? [String: NSObject])
         Answers.logCustomEventWithName("Tapped Photo", customAttributes: getAttributesForProduct(product))
         
         selectedImage = imageView

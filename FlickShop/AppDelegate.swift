@@ -11,6 +11,7 @@ import Alamofire
 import TSMessages
 import Fabric
 import Crashlytics
+import FirebaseAnalytics
 import FBSDKCoreKit
 import iRate
 
@@ -45,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customizeTableView()
         configureNetworkManager()
         configureGoogleAnalytics()
+        configureFirebaseAnalytics()
         configureFacebookAnalytics(application, didFinishLaunchingWithOptions: launchOptions)
         configureFabric()
         PreselectedFiltersModel.sharedInstance().loadPreselectedFilters()
@@ -157,6 +159,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     // Log custom events
                     GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
                     Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
                 }
                 
@@ -284,6 +287,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        gai.logger.logLevel = GAILogLevel.Verbose
     }
     
+    private func configureFirebaseAnalytics() {
+        FIRApp.configure()
+    }
+    
     private func configureFacebookAnalytics(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
     }
@@ -307,24 +314,28 @@ extension AppDelegate: iRateDelegate {
     func iRateDidPromptForRating() {
         // Log custom events
         GoogleAnalytics.trackScreenForName("Rate Prompt")
+        FIRAnalytics.logEventWithName("Rate_Prompt", parameters: nil)
         Answers.logCustomEventWithName("Rate Prompt", customAttributes: nil)
     }
     
     func iRateUserDidAttemptToRateApp() {
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Rate Action Button", label: "Sure!", value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Rate_Action_Button", parameters: ["Button": "Sure!"])
         Answers.logCustomEventWithName("Tapped Rate Action Button", customAttributes: ["Button": "Sure!"])
     }
     
     func iRateUserDidDeclineToRateApp() {
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Rate Action Button", label: "No thanks", value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Rate_Action_Button", parameters: ["Button": "No thanks"])
         Answers.logCustomEventWithName("Tapped Rate Action Button", customAttributes: ["Button": "No thanks"])
     }
     
     func iRateUserDidRequestReminderToRateApp() {
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Rate Action Button", label: "Remind me later", value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Rate_Action_Button", parameters: ["Button": "Remind me later"])
         Answers.logCustomEventWithName("Tapped Rate Action Button", customAttributes: ["Button": "Remind me later"])
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class PriceDetailsViewController: UIViewController {
     
@@ -39,6 +40,7 @@ class PriceDetailsViewController: UIViewController {
         
         // Log screen views
         GoogleAnalytics.trackScreenForName("Price Details View")
+        FIRAnalytics.logEventWithName("Price_Details_View", parameters: getAttributesForProduct(product) as? [String: NSObject])
         Answers.logCustomEventWithName("Price Details View", customAttributes: getAttributesForProduct(product))
     }
 

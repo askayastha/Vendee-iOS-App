@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 class LicensesViewController: UIViewController {
     
@@ -44,6 +45,7 @@ class LicensesViewController: UIViewController {
         textView.textContainerInset = UIEdgeInsetsMake(15, 15, 15, 15)
         
         GoogleAnalytics.trackScreenForName("Licenses View")
+        FIRAnalytics.logEventWithName("Licenses_View", parameters: nil)
         Answers.logCustomEventWithName("Licenses View", customAttributes: nil)
     }
     

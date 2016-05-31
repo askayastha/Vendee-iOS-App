@@ -8,6 +8,7 @@
 
 import UIKit
 import Crashlytics
+import FirebaseAnalytics
 
 protocol SideTabDelegate: class {
     func showTab(identifier: String)
@@ -138,6 +139,7 @@ class SideTabViewController: UITableViewController {
         
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Tab", label: filter, value: nil)
+        FIRAnalytics.logEventWithName("Tapped_Filter_Tab", parameters: ["Filter Tab": filter])
         Answers.logCustomEventWithName("Tapped Filter Tab", customAttributes: ["Filter Tab": filter])
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)

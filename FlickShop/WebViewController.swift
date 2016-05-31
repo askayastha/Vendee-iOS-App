@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import TSMessages
 import Crashlytics
+import FirebaseAnalytics
 
 class WebViewController: UIViewController, WKNavigationDelegate {
     
@@ -171,6 +172,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
             
             // Log custom events
             GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: error.localizedDescription, value: nil)
+            FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
             Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": error.localizedDescription])
             
             animateSpinner?(false)

@@ -31,13 +31,21 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb1616891928628679</string>
+				<string>vendee</string>
 			</array>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
-	<string>$(FACEBOOK_APP_ID)</string>
+	<string>1616891928628679</string>
 	<key>FacebookDisplayName</key>
 	<string>Vendee</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSRequiresIPhoneOS</key>

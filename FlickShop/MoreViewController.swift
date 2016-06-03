@@ -11,6 +11,7 @@ import MessageUI
 import DeviceKit
 import Crashlytics
 import FirebaseAnalytics
+import FBSDKShareKit
 import iRate
 
 class MoreViewController: UITableViewController {
@@ -55,27 +56,27 @@ class MoreViewController: UITableViewController {
         // Send Feedback
         case (0, 0):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Send Feedback'", label: nil, value: nil)
-            FIRAnalytics.logEventWithName("Tapped_'Send_Feedback'", parameters: nil)
-            Answers.logCustomEventWithName("Tapped 'Send Feedback'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped More - Send Feedback", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_More_Send_Feedback", parameters: nil)
+            Answers.logCustomEventWithName("Tapped More - Send Feedback", customAttributes: nil)
             
             sendSupportEmailWithSubject("General Feedback")
             
         // Report a Problem
         case (0, 1):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Report a Problem'", label: nil, value: nil)
-            FIRAnalytics.logEventWithName("Tapped_'Report_a_Problem'", parameters: nil)
-            Answers.logCustomEventWithName("Tapped 'Report a Problem'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped More - Report a Problem", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_More_Report_a_Problem", parameters: nil)
+            Answers.logCustomEventWithName("Tapped More - Report a Problem", customAttributes: nil)
             
-            sendSupportEmailWithSubject("Something Isn't Working")
+            sendSupportEmailWithSubject("Something Isnt Working")
         
         // Rate Vendee
         case (1, 0):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Rate Vendee'", label: nil, value: nil)
-            FIRAnalytics.logEventWithName("Tapped_'Rate_Vendee'", parameters: nil)
-            Answers.logCustomEventWithName("Tapped 'Rate Vendee'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped More - Rate Vendee", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_More_Rate_Vendee", parameters: nil)
+            Answers.logCustomEventWithName("Tapped More - Rate Vendee", customAttributes: nil)
             
             let appStoreURL = NSURL(string: App.storeURL)!
             UIApplication.sharedApplication().openURL(appStoreURL)
@@ -83,32 +84,45 @@ class MoreViewController: UITableViewController {
         // Tell a Friend
         case (1, 1):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Tell a Friend'", label: nil, value: nil)
-            FIRAnalytics.logEventWithName("Tapped_'Tell_a_Friend'", parameters: nil)
-            Answers.logCustomEventWithName("Tapped 'Tell a Friend'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped More - Tell a Friend", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_More_Tell_a_Friend", parameters: nil)
+            Answers.logCustomEventWithName("Tapped More - Tell a Friend", customAttributes: nil)
             
             shareTheApp()
+            
+        // Invite Facebook Friends
+        case (1, 2):
+            // Log custom events
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped More - Invite Facebook Friends", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Invite_Facebook_Friends", parameters: nil)
+            Answers.logCustomEventWithName("Tapped More - Invite Facebook Friends", customAttributes: nil)
+            
+            let content = FBSDKAppInviteContent()
+            content.appLinkURL = NSURL(string: "https://fb.me/1621627331488472")
+            content.appInvitePreviewImageURL = NSURL(string: "http://vendeeapp.com/img/app_invite_ad.jpg")
+            
+            FBSDKAppInviteDialog.showFromViewController(self, withContent: content, delegate: self)
             
         // About Vendee
         case (2, 0):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'About Vendee'", label: nil, value: nil)
-            FIRAnalytics.logEventWithName("Tapped_'About_Vendee'", parameters: nil)
-            Answers.logCustomEventWithName("Tapped 'About Vendee'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped More - About Vendee", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_More_About_Vendee", parameters: nil)
+            Answers.logCustomEventWithName("Tapped More - About Vendee", customAttributes: nil)
             
         // Third Party Licenses
         case (2, 1):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Third Party Licenses'", label: nil, value: nil)
-            FIRAnalytics.logEventWithName("Tapped_'Third_Party_Licenses'", parameters: nil)
-            Answers.logCustomEventWithName("Tapped 'Third Party Licenses'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped More - Third Party Licenses", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_More_Third_Party_Licenses", parameters: nil)
+            Answers.logCustomEventWithName("Tapped More - Third Party Licenses", customAttributes: nil)
             
         // Privacy Policy
         case (2, 2):
             // Log custom events
-            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped 'Privacy Policy'", label: nil, value: nil)
-            FIRAnalytics.logEventWithName("Tapped_'Privacy_Policy'", parameters: nil)
-            Answers.logCustomEventWithName("Tapped 'Privacy Policy'", customAttributes: nil)
+            GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped More - Privacy Policy", label: nil, value: nil)
+            FIRAnalytics.logEventWithName("Tapped_More_Privacy_Policy", parameters: nil)
+            Answers.logCustomEventWithName("Tapped More - Privacy Policy", customAttributes: nil)
             
         default:
             break
@@ -119,7 +133,7 @@ class MoreViewController: UITableViewController {
     private func shareTheApp() {
         let url = "http://vendeeapp.com"
         let subjectActivityItem = SubjectActivityItem(subject: "Look at what I found")
-        let promoText = "Find all that's new in Fashion with Vendee!"
+        let promoText = "Find all thats new in Fashion with Vendee!"
         let secondaryPromoText = "Get the app for free in the App Store."
         
         var items = [AnyObject]()
@@ -172,5 +186,21 @@ class MoreViewController: UITableViewController {
 extension MoreViewController: MFMailComposeViewControllerDelegate {
     func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+extension MoreViewController: FBSDKAppInviteDialogDelegate {
+    
+    func appInviteDialog(appInviteDialog: FBSDKAppInviteDialog!, didCompleteWithResults results: [NSObject : AnyObject]!) {
+        print("App Invite Success")
+    }
+    
+    func appInviteDialog(appInviteDialog: FBSDKAppInviteDialog!, didFailWithError error: NSError!) {
+        print("App Invite Failed: \(error.localizedDescription)")
+        
+        // Log custom events
+        GoogleAnalytics.trackEventWithCategory("Error", action: "Facebook Error", label: error.localizedDescription, value: nil)
+        FIRAnalytics.logEventWithName("Facebook_Error", parameters: ["Description": error.localizedDescription])
+        Answers.logCustomEventWithName("Facebook Error", customAttributes: ["Description": error.localizedDescription])
     }
 }

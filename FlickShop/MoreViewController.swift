@@ -98,8 +98,8 @@ class MoreViewController: UITableViewController {
             Answers.logCustomEventWithName("Tapped More - Invite Facebook Friends", customAttributes: nil)
             
             let content = FBSDKAppInviteContent()
-            content.appLinkURL = NSURL(string: "https://fb.me/1621627331488472")
-            content.appInvitePreviewImageURL = NSURL(string: "http://vendeeapp.com/img/app_invite_ad.jpg")
+            content.appLinkURL = NSURL(string: App.appLinkURL)
+            content.appInvitePreviewImageURL = NSURL(string: App.appInvitePreviewImageURL)
             
             FBSDKAppInviteDialog.showFromViewController(self, withContent: content, delegate: self)
             

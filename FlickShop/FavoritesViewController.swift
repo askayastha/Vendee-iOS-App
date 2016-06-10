@@ -226,6 +226,7 @@ extension FavoritesViewController {
             itemsCountLabel.text = "\(search.lastItem) Items"
             
             return cell
+            
         } else {
             let cell = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: FavoritesViewCellIdentifiers.footerCell, forIndexPath: indexPath)
             

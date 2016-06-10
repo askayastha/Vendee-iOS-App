@@ -50,7 +50,7 @@ class FiltersModel {
     var filterParams: [String: AnyObject]
     var sort: [String: String]
     
-    private init() {
+    init() {
         filtersAvailable = false
         filtersApplied = false
         category = [

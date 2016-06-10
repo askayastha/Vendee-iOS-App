@@ -1,5 +1,5 @@
 //
-//  FlickCollectionViewController.swift
+//  FlickViewController.swift
 //  Vendee
 //
 //  Created by Ashish Kayastha on 9/12/15.
@@ -32,13 +32,14 @@ class FlickViewController: UICollectionViewController {
     private(set) var requestingData = false
     private(set) var flickCount = 0
     private var moreRequests: Bool {
-        return productCategory != nil
+        return productCategory != nil || searchText != nil
     }
     
     var search: Search!
     var brands = BrandsModel.sharedInstance().brands
     var indexPath: NSIndexPath?
     var productCategory: String!
+    var searchText: String!
     weak var delegate: ScrollEventsDelegate?
     let transition = PopAnimationController()
     var selectedImage: UIImageView?
@@ -142,7 +143,7 @@ class FlickViewController: UICollectionViewController {
         print("Item \(indexPath.item)")
         if moreRequests && search.lastItem - indexPath.item == 1 {
             print("##### WILL DISPLAY CELL: \(indexPath.item) - NEW REQUEST ######")
-            requestDataFromShopStyleForCategory(productCategory)
+            requestData()
         }
         
         flickCount += 1
@@ -150,6 +151,61 @@ class FlickViewController: UICollectionViewController {
     
     
     // MARK: - Helper Methods
+    
+    private func requestData() {
+        if let searchText = searchText {
+            requestDataFromShopStyleForText(searchText)
+        } else {
+            requestDataFromShopStyleForCategory(productCategory)
+        }
+    }
+    
+    private func requestDataFromShopStyleForText(text: String) {
+        if requestingData { return }
+        
+        if !loadingHUDPresent {
+            let loadingHUD = MBProgressHUD.showHUDAddedTo(view, animated: true)
+            loadingHUD.color = UIColor(white: 0.2, alpha: 0.7)
+            loadingHUD.userInteractionEnabled = false
+        }
+        
+        requestingData = true
+        search.requestShopStyleForText(text, andItemOffset: search.lastItem, withLimit: NumericConstants.requestLimit) { [weak self] success, description, lastItem in
+            
+            guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
+            print("Products count: \(lastItem)")
+            if !success {
+                if strongSelf.search.retryCount < NumericConstants.retryLimit {
+                    strongSelf.requestDataFromShopStyleForText(text)
+                    strongSelf.search.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.search.retryCount)")
+                    
+                } else {
+                    strongSelf.search.resetRetryCount()
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
+                    strongSelf.loadingHUDPresent = false
+                    TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+                    TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
+                }
+                
+            } else {
+                if strongSelf.search.lastItem != strongSelf.search.totalItems {
+                    strongSelf.collectionView!.reloadData()
+                }
+                MBProgressHUD.hideAllHUDsForView(strongSelf.view, animated: true)
+                strongSelf.loadingHUDPresent = false
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            }
+        }
+    }
     
     private func requestDataFromShopStyleForCategory(category: String) {
         

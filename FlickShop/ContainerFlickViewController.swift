@@ -15,6 +15,7 @@ class ContainerFlickViewController: UIViewController {
     var search: Search!
     var indexPath: NSIndexPath?
     var productCategory: String!
+    var searchText: String!
     var didScrollCount: Int = 0
     var flickViewController: FlickViewController?
     
@@ -70,6 +71,7 @@ class ContainerFlickViewController: UIViewController {
             flickViewController?.search = search
             flickViewController?.indexPath = indexPath
             flickViewController?.productCategory = productCategory
+            flickViewController?.searchText = searchText
         }
     }
 

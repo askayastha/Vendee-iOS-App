@@ -19,13 +19,15 @@ class SortFilterViewController: UITableViewController {
         ("Lowest Price", "PriceLoHi"),
         ("Highest Price", "PriceHiLo")
     ]
-    let filtersModel = FiltersModel.sharedInstanceCopy()
+    let filtersModel: FiltersModel
     
     var selectedSort: [String: String]
     var selectedIndexPath: NSIndexPath!
     
     required init?(coder aDecoder: NSCoder) {
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstanceCopy() : FiltersModel.sharedInstanceCopy()
         selectedSort = filtersModel.sort
+        
         super.init(coder: aDecoder)
     }
     

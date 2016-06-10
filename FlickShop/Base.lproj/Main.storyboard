@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Qve-Rf-WiX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Qve-Rf-WiX">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -265,7 +264,7 @@
         <!--Container Browse View Controller-->
         <scene sceneID="E7p-Ik-vsv">
             <objects>
-                <viewController id="JWt-4Q-eEb" customClass="ContainerBrowseViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContainerBrowseViewController" id="JWt-4Q-eEb" customClass="ContainerBrowseViewController" customModule="Vendee" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nOY-es-QsK"/>
                         <viewControllerLayoutGuide type="bottom" id="8FM-Ej-N27"/>
@@ -432,6 +431,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="lHe-g2-7e4" kind="relationship" relationship="viewControllers" id="4CW-Vv-DYm"/>
+                        <segue destination="Ip7-ZH-2P7" kind="relationship" relationship="viewControllers" id="gca-Jt-67G"/>
                         <segue destination="zn0-AH-wuK" kind="relationship" relationship="viewControllers" id="v2e-pV-win"/>
                         <segue destination="sNw-UJ-We6" kind="relationship" relationship="viewControllers" id="BhW-M0-Lwb"/>
                     </connections>
@@ -444,7 +444,7 @@
         <scene sceneID="B42-Jw-IU7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lHe-g2-7e4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="find" selectedImage="find_selected" id="frY-Uh-7xK"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" selectedImage="home_selected" id="frY-Uh-7xK"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q6R-QQ-dZi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -987,7 +987,7 @@
                 <viewControllerPlaceholder storyboardName="Filter" id="KKF-np-WFL" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m9h-iI-ioX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1953" y="1497"/>
+            <point key="canvasLocation" x="2765" y="1497"/>
         </scene>
         <!--More-->
         <scene sceneID="r6r-fa-h6G">
@@ -997,7 +997,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1R-mA-Iwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="60.5" y="1191"/>
+            <point key="canvasLocation" x="406.5" y="1096"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="eOf-lo-0fT">
@@ -1009,6 +1009,16 @@
             </objects>
             <point key="canvasLocation" x="419" y="905"/>
         </scene>
+        <!--Search-->
+        <scene sceneID="kPH-hs-42c">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="Ip7-ZH-2P7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="A61-Dd-hiN"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HL8-rJ-Cl5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="412.5" y="708"/>
+        </scene>
     </scenes>
     <resources>
         <image name="back_arrow_medium_gray" width="16" height="16"/>
@@ -1016,9 +1026,9 @@
         <image name="bar_forward" width="16" height="16"/>
         <image name="bar_reload" width="17" height="18"/>
         <image name="bar_stop" width="16" height="16"/>
-        <image name="filter_medium_gray" width="16" height="16"/>
-        <image name="find" width="23" height="23"/>
-        <image name="find_selected" width="23" height="23"/>
+        <image name="filter_medium_gray" width="18" height="18"/>
+        <image name="home" width="24" height="24"/>
+        <image name="home_selected" width="24" height="24"/>
         <image name="share_action" width="17" height="17"/>
     </resources>
     <color key="tintColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>

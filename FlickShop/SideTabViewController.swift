@@ -27,12 +27,18 @@ class SideTabViewController: UITableViewController {
         ("Color", "tab_color"),
         ("Sort", "tab_sort")
     ]
-    let filtersModel = FiltersModel.sharedInstanceCopy()
+    let filtersModel: FiltersModel
     
     weak var delegate: SideTabDelegate?
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstanceCopy() : FiltersModel.sharedInstanceCopy()
+        
+        super.init(coder: aDecoder)
     }
 
     override func viewDidLoad() {

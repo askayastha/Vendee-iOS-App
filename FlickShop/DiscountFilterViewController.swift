@@ -36,7 +36,7 @@ class DiscountFilterViewController: UITableViewController {
         ("Special Offer", "o1"),
         ("Coupon Code", "o2")
     ]
-    let filtersModel = FiltersModel.sharedInstanceCopy()
+    let filtersModel: FiltersModel
     
     var saleCode: String?
     var selectedDiscount: [String: String]
@@ -47,8 +47,10 @@ class DiscountFilterViewController: UITableViewController {
     @IBOutlet weak var discountSlider: NMRangeSlider!
     
     required init?(coder aDecoder: NSCoder) {
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstanceCopy() : FiltersModel.sharedInstanceCopy()
         selectedDiscount = filtersModel.filterParams["discount"] as! [String: String]
         selectedOffers = filtersModel.filterParams["offer"] as! [String: String]
+        
         super.init(coder: aDecoder)
     }
     

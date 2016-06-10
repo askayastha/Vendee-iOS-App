@@ -18,12 +18,18 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     @IBOutlet weak var toolBar: UIToolbar!
     
     var containerVC: ContainerViewController?
-    let filtersModel = FiltersModel.sharedInstanceCopy()
+    let filtersModel: FiltersModel
     
     deinit {
         print("ContainerFilterViewController Deallocating !!!")
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidChangeNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: CustomNotifications.FilterDidClearNotification, object: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstanceCopy() : FiltersModel.sharedInstanceCopy()
+        
+        super.init(coder: aDecoder)
     }
 
     override func viewDidLoad() {
@@ -69,6 +75,8 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
     }
     
     @IBAction func done() {
+        CustomNotifications.filterWillCloseNotification()
+        
         // Log custom events
         GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Action Button", label: "Close", value: nil)
         FIRAnalytics.logEventWithName("Tapped_Filter_Action_Button", parameters: ["Button": "Close"])
@@ -77,7 +85,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
         if filtersModel.filtersAvailable {
             let alert = UIAlertController(title: "Vendee", message: "Are you sure you want to close without applying your filters?", preferredStyle: .Alert)
             let okAction = UIAlertAction(title: "OK", style: .Default) { _ in
-                FiltersModel.revertFiltersModel()
+                (App.selectedTab == .Search) ? SearchFiltersModel.revertFiltersModel() : FiltersModel.revertFiltersModel()
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
@@ -89,7 +97,7 @@ class ContainerFilterViewController: UIViewController, SideTabDelegate {
             alert.view.tintColor = UIColor.vendeeColor()
             
         } else {
-            FiltersModel.revertFiltersModel()
+            (App.selectedTab == .Search) ? SearchFiltersModel.revertFiltersModel() : FiltersModel.revertFiltersModel()
             dismissViewControllerAnimated(true, completion: nil)
         }
     }

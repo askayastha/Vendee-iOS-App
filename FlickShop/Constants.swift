@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 
+enum VendeeTab: Int {
+    case Home = 0
+    case Search = 1
+    case Favorites = 2
+    case More = 3
+}
+
 struct Files {
     static let TSDesignFileName = "TSMessagesCustomDesign.json"
 }
@@ -16,16 +23,21 @@ struct Files {
 struct App {
     static let storeId = "1092199423"
     static let storeURL = "https://itunes.apple.com/us/app/vendee-find-out-all-thats/id1092199423?ls=1&mt=8"
+    static let appLinkURL = "https://fb.me/1625617571089448"
+    static let appInvitePreviewImageURL = "http://vendeeapp.com/img/app_invite_ad.jpg"
+    static var selectedTab = VendeeTab.Home
 }
 
 struct CKRecordTypes {
     static let PreselectedFilter = "PreselectedFilter"
+    static let TopSearch = "TopSearch"
 }
 
 struct CustomNotifications {
     static let FilterDidChangeNotification = "FilterDidChange"
     static let FilterDidClearNotification = "FilterDidClear"
     static let FilterDidApplyNotification = "FilterDidApply"
+    static let FilterWillCloseNotification = "FilterWillClose"
     static let FavoritesModelDidChangeNotification = "FavoritesModelDidChange"
     static let NetworkDidChangeToReachableNotification = "NetworkDidChangeToReachable"
     static let PhotosDidTapNotification = "PhotosDidTapNotification"
@@ -40,6 +52,10 @@ struct CustomNotifications {
     
     static func filterDidApplyNotification() {
         NSNotificationCenter.defaultCenter().postNotificationName(FilterDidApplyNotification, object: nil)
+    }
+    
+    static func filterWillCloseNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(FilterWillCloseNotification, object: nil)
     }
     
     static func favoritesModelDidChangeNotification() {

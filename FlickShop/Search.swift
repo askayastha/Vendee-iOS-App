@@ -21,11 +21,11 @@ class Search {
         case Failed
     }
     
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel: FiltersModel
     
     private(set) var dataRequest: Alamofire.Request?
     private(set) var state: State = .Idle
-    private(set) var products: NSMutableOrderedSet
+    private(set) var products = NSMutableOrderedSet()
     private(set) var retryCount = 0
     private(set) var totalItems = 0
     
@@ -39,10 +39,11 @@ class Search {
     }
     
     init() {
-        products = NSMutableOrderedSet()
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstance() : FiltersModel.sharedInstance()
     }
     
-    init(products: NSMutableOrderedSet) {
+    convenience init(products: NSMutableOrderedSet) {
+        self.init()
         self.products = products
     }
     
@@ -88,6 +89,42 @@ class Search {
         }
     }
     
+    func requestShopStyleForText(text: String, andItemOffset itemOffset: Int, withLimit limit: Int, completion: SearchComplete) {
+        if state == .Loading { return }     // Do not request more data if a request is in process.
+        
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        state = .Loading
+        
+        if filtersModel.filtersApplied {
+            // Get category code for filter
+            var filterCategory = "women"
+            if let cat = getFilterCategory() { filterCategory = cat }
+            
+            // Get sort code for filter
+            let sort = filtersModel.sort.count > 0 ? filtersModel.sort.values.first : nil
+            
+            // New request URL for filter
+            var requestURL = ShopStyle.Router.FilteredResults(text, itemOffset, limit, filterCategory, sort).URLRequest.URLString
+            requestURL.appendContentsOf(getFilterParams())
+            
+            print("----- Request 1 -----")
+            print(requestURL)
+            
+            dataRequest = Alamofire.request(.GET, requestURL).validate().responseJSON() { response in
+                self.handleResponse(response, withCompletion: completion)
+            }
+            
+        } else {
+            let requestURL = ShopStyle.Router.SearchTextResults(text, itemOffset, limit).URLRequest.URLString
+            print("----- Request 2 -----")
+            print(requestURL)
+            
+            dataRequest = Alamofire.request(ShopStyle.Router.SearchTextResults(text, itemOffset, limit)).validate().responseJSON() { response in
+                self.handleResponse(response, withCompletion: completion)
+            }
+        }
+    }
+    
     func requestShopStyleForItemOffset(itemOffset: Int, withLimit limit: Int, forCategory category: String, completion: SearchComplete) {
         if state == .Loading { return }     // Do not request more data if a request is in process.
         
@@ -103,10 +140,10 @@ class Search {
             let sort = filtersModel.sort.count > 0 ? filtersModel.sort.values.first : nil
             
             // New request URL for filter
-            var requestURL = ShopStyle.Router.FilteredResults(itemOffset, limit, filterCategory, sort).URLRequest.URLString
+            var requestURL = ShopStyle.Router.FilteredResults(nil, itemOffset, limit, filterCategory, sort).URLRequest.URLString
             requestURL.appendContentsOf(getFilterParams())
             
-            print("----- Request 1 -----")
+            print("----- Request 3 -----")
             print(requestURL)
             
             dataRequest = Alamofire.request(.GET, requestURL).validate().responseJSON() { response in
@@ -121,7 +158,7 @@ class Search {
                 var requestURL = ShopStyle.Router.PreselectedResults(itemOffset, limit, filterCategory).URLRequest.URLString
                 
                 requestURL.appendContentsOf("&\(filterParams)")
-                print("----- Request 2 -----")
+                print("----- Request 4 -----")
                 print(requestURL)
                 
                 dataRequest = Alamofire.request(.GET, requestURL).validate().responseJSON() { response in
@@ -130,7 +167,7 @@ class Search {
                 
             } else {
                 let requestURL = ShopStyle.Router.PopularResults(itemOffset, limit, category).URLRequest.URLString
-                print("----- Request 3 -----")
+                print("----- Request 5 -----")
                 print(requestURL)
                 
                 dataRequest = Alamofire.request(ShopStyle.Router.PopularResults(itemOffset, limit, category)).validate().responseJSON() { response in
@@ -147,7 +184,7 @@ class Search {
         state = .Loading
         
         let requestURL = ShopStyle.Router.PopularResults(itemOffset, limit, category).URLRequest.URLString
-        print("----- Request 4 -----")
+        print("----- Request 6 -----")
         print(requestURL)
         
         dataRequest = Alamofire.request(ShopStyle.Router.PopularResults(itemOffset, limit, category)).validate().responseJSON() { response in

@@ -31,7 +31,7 @@ class ColorFilterViewController: UITableViewController {
         ("Gold", "#FFC900"),
         ("Silver", "#CCCCCC")
     ]
-    let filtersModel = FiltersModel.sharedInstanceCopy()
+    let filtersModel: FiltersModel
     
     var colorSearch = ColorSearch()
     var selectedColors: [String: String]
@@ -63,7 +63,9 @@ class ColorFilterViewController: UITableViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstanceCopy() : FiltersModel.sharedInstanceCopy()
         selectedColors = filtersModel.filterParams["color"] as! [String: String]
+        
         super.init(coder: aDecoder)
     }
     

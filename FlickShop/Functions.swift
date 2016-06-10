@@ -73,7 +73,7 @@ func logEventsForFilter() {
     GoogleAnalytics.trackEventWithCategory("UI Action", action: "Tapped Filter Action Button", label: "Apply", value: nil)
     FIRAnalytics.logEventWithName("Tapped_Filter_Action_Button", parameters: ["Button": "Apply"])
     Answers.logCustomEventWithName("Tapped Filter Action Button", customAttributes: ["Button": "Apply"])
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstance() : FiltersModel.sharedInstance()
     
     // Log applied category filter
     let tappedCategories = filtersModel.category["tappedCategories"] as! [String]

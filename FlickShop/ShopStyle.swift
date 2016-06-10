@@ -16,7 +16,8 @@ struct ShopStyle {
         
         case PreselectedResults(Int, Int, String)
         case PopularResults(Int, Int, String)
-        case FilteredResults(Int, Int, String, String?)
+        case FilteredResults(String?, Int, Int, String, String?)
+        case SearchTextResults(String, Int, Int)
         case Product(String)
         case Categories(String)
         case Brands
@@ -49,7 +50,7 @@ struct ShopStyle {
                     ]
                     return ("/products", params)
                     
-                case .FilteredResults (let offset, let limit, let category, let sort):
+                case .FilteredResults (let text, let offset, let limit, let category, let sort):
                     var params = [
                         "pid": Router.APIKey,
                         "cat": category,
@@ -57,10 +58,25 @@ struct ShopStyle {
                         "limit": "\(limit)"
                     ]
                     
+                    if let text = text {
+                        params["fts"] = text
+                    }
+                    
                     if let sort = sort {
                         params["sort"] = sort
                     }
                     
+                    return ("/products", params)
+                    
+                case .SearchTextResults (let text, let offset, let limit):
+                    let params = [
+                        "pid": Router.APIKey,
+                        "cat": "women",
+                        "fts": text,
+                        "offset": "\(offset)",
+                        "limit": "\(limit)",
+                        "sort": "Popular"
+                    ]
                     return ("/products", params)
                     
                 case .Product(let id):

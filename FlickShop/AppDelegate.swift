@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureFacebookAnalytics(application, didFinishLaunchingWithOptions: launchOptions)
         configureFabric()
         PreselectedFiltersModel.sharedInstance().loadPreselectedFilters()
+        TopSearchesModel.sharedInstance().loadTopSearches()
         
         return true
     }
@@ -214,7 +215,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             navigationController = tabBarControllers[2] as! UINavigationController
             navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
+            
+            navigationController = tabBarControllers[3] as! UINavigationController
+            navigationController.tabBarItem.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0)
         }
+        
+        tabBarController.delegate = self
     }
     
     private func customizeNavBar() {
@@ -306,6 +312,13 @@ extension AppDelegate: TSMessageViewProtocol {
     
     func customizeMessageView(messageView: TSMessageView!) {
         messageView.alpha = 0.8
+    }
+}
+
+extension AppDelegate: UITabBarControllerDelegate {
+    
+    func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
+        App.selectedTab = VendeeTab(rawValue: tabBarController.selectedIndex)!
     }
 }
 

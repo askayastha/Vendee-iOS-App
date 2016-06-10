@@ -20,7 +20,7 @@ class CategoryFilterViewController: UITableViewController {
     var categoriesIdDict: [String: String]
     var categorySearch: CategorySearch
     
-    let filtersModel = FiltersModel.sharedInstanceCopy()
+    let filtersModel: FiltersModel
     
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
@@ -50,6 +50,7 @@ class CategoryFilterViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         print("CategoryFilterViewController Initializing !!!")
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstanceCopy() : FiltersModel.sharedInstanceCopy()
         productCategory = filtersModel.productCategory
         categorySearch = CategorySearch(categories: filtersModel.categories)
         displayCategories = filtersModel.category["displayCategories"] as! [String]

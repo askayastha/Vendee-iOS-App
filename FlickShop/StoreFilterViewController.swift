@@ -22,7 +22,7 @@ class StoreFilterViewController: UIViewController {
     var selectedStores: [String: String]
     var storeSearch = StoreSearch()
     
-    let filtersModel = FiltersModel.sharedInstanceCopy()
+    let filtersModel: FiltersModel
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -54,7 +54,9 @@ class StoreFilterViewController: UIViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstanceCopy() : FiltersModel.sharedInstanceCopy()
         selectedStores = filtersModel.filterParams["store"] as! [String: String]
+        
         super.init(coder: aDecoder)
     }
     
@@ -71,6 +73,7 @@ class StoreFilterViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(refreshTable), name: CustomNotifications.FilterDidClearNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deactivateSearchBar), name: CustomNotifications.FilterDidApplyNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(deactivateSearchBar), name: CustomNotifications.FilterWillCloseNotification, object: nil)
         
         setupView()
         requestDataFromShopStyle()
@@ -308,7 +311,7 @@ extension StoreFilterViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        searchController.searchBar.resignFirstResponder()
+//        searchController.searchBar.resignFirstResponder()
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let storeName = (cell?.textLabel?.text)!

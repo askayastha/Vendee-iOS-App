@@ -13,8 +13,11 @@ import FirebaseAnalytics
 class ContainerBrowseViewController: UIViewController {
     
     var productCategory: String!
+    var searchText: String!
     var didScrollCount: Int = 0
     var buttonsHidden = false
+    
+    let filtersModel: FiltersModel
     
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
@@ -29,6 +32,12 @@ class ContainerBrowseViewController: UIViewController {
     
     deinit {
         print("Deallocating ContainerBrowseViewController!")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstance() : FiltersModel.sharedInstance()
+        
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
@@ -62,7 +71,7 @@ class ContainerBrowseViewController: UIViewController {
             filterButton.transform = CGAffineTransformIdentity
         }
         
-        if FiltersModel.sharedInstance().filtersApplied {
+        if filtersModel.filtersApplied {
             filterButton.setImage(UIImage(named: "filter_selected"), forState: .Normal)
 //            filterButton.imageView?.tintImageColor(UIColor.vendeeColor())
         } else {
@@ -91,6 +100,7 @@ class ContainerBrowseViewController: UIViewController {
             
             browseViewController?.delegate = self
             browseViewController?.productCategory = productCategory
+            browseViewController?.searchText = searchText
             
             browseViewController?.animateSpinner = { [weak self] animate in
                 guard let strongSelf = self else { return }

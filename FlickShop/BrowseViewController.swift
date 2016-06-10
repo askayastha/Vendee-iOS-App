@@ -1,5 +1,5 @@
 //
-//  BrowseCollectionViewController.swift
+//  BrowseViewController.swift
 //  Vendee
 //
 //  Created by Ashish Kayastha on 10/23/15.
@@ -21,13 +21,15 @@ class BrowseViewController: UICollectionViewController {
     private(set) var populatingData = false
     private(set) var productCount = 0
     
-    var animateSpinner: ((Bool)->())?
-    weak var delegate: SwipeDelegate?
-    var search = Search()
     let brands = BrandsModel.sharedInstance().brands
-    let filtersModel = FiltersModel.sharedInstance()
+    let filtersModel: FiltersModel
+    
+    weak var delegate: SwipeDelegate?
+    var animateSpinner: ((Bool)->())?
+    var search = Search()
     var scout: PhotoScout
     var productCategory: String!
+    var searchText: String!
     var itemsCountLabel: UILabel!
     var loadMoreIndicator: NVActivityIndicatorView!
     
@@ -44,6 +46,7 @@ class BrowseViewController: UICollectionViewController {
     }
     
     required init?(coder aDecoder: NSCoder) {
+        filtersModel = (App.selectedTab == .Search) ? SearchFiltersModel.sharedInstance() : FiltersModel.sharedInstance()
         search = Search()
         scout = PhotoScout(products: search.products, totalItems: search.totalItems)
         super.init(coder: aDecoder)
@@ -54,7 +57,7 @@ class BrowseViewController: UICollectionViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(populateData), name: CustomNotifications.NetworkDidChangeToReachableNotification, object: nil)
         setupView()
-        requestDataFromShopStyleForCategory(productCategory)
+        requestData()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -74,7 +77,7 @@ class BrowseViewController: UICollectionViewController {
         CustomNotifications.filterDidApplyNotification()
         logEventsForFilter()
         
-        FiltersModel.synchronizeFiltersModel()
+        (App.selectedTab == .Search) ? SearchFiltersModel.synchronizeFiltersModel() : FiltersModel.synchronizeFiltersModel()
         search.resetSearch()
         productCount = 0
         
@@ -88,7 +91,7 @@ class BrowseViewController: UICollectionViewController {
         }
         collectionView!.reloadData()
         animateSpinner?(true)
-        requestDataFromShopStyleForCategory(productCategory)
+        requestData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -99,6 +102,7 @@ class BrowseViewController: UICollectionViewController {
             controller.search = search
             controller.indexPath = indexPath
             controller.productCategory = productCategory
+            controller.searchText = searchText
             controller.hidesBottomBarWhenPushed = true
         }
     }
@@ -180,6 +184,61 @@ class BrowseViewController: UICollectionViewController {
                     print("INSERTS SUCCESSFUL")
                     
             })
+        }
+    }
+    
+    private func requestData() {
+        if let searchText = searchText {
+            requestDataFromShopStyleForText(searchText)
+        } else {
+            requestDataFromShopStyleForCategory(productCategory)
+        }
+    }
+    
+    private func requestDataFromShopStyleForText(text: String!) {
+        if requestingData { return }
+        guard let text = text else { return }
+        
+        requestingData = true
+        search.requestShopStyleForText(text, andItemOffset: search.lastItem, withLimit: NumericConstants.requestLimit) { [weak self] success, description, lastItem in
+            
+            guard let strongSelf = self else { return }
+            strongSelf.requestingData = false
+            print("Products count: \(lastItem)")
+            
+            if !success {
+                if strongSelf.search.retryCount < NumericConstants.retryLimit {
+                    strongSelf.requestDataFromShopStyleForText(text)
+                    strongSelf.search.incrementRetryCount()
+                    print("Request Failed. Trying again...")
+                    print("Request Count: \(strongSelf.search.retryCount)")
+                    
+                } else {
+                    strongSelf.search.resetRetryCount()
+                    strongSelf.animateSpinner?(false)
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+                    TSMessage.showNotificationWithTitle("Network Error", subtitle: description, type: .Error)
+                    
+                    // Log custom events
+                    GoogleAnalytics.trackEventWithCategory("Error", action: "Network Error", label: description, value: nil)
+                    FIRAnalytics.logEventWithName("Network_Error", parameters: ["Description": description])
+                    Answers.logCustomEventWithName("Network Error", customAttributes: ["Description": description])
+                }
+                
+            } else {
+                strongSelf.itemsCountLabel.text = "\(strongSelf.search.totalItems) Items"
+                strongSelf.scout.totalItems = strongSelf.search.totalItems
+                
+                if lastItem > 0 {
+                    strongSelf.populatePhotosFromIndex(strongSelf.productCount)
+                } else {
+                    strongSelf.animateSpinner?(false)
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    TSMessage.addCustomDesignFromFileWithName(Files.TSDesignFileName)
+                    TSMessage.showNotificationWithTitle("No results found.", type: .Warning)
+                }
+            }
         }
     }
     
@@ -283,8 +342,13 @@ extension BrowseViewController {
                 let titleLabel = UILabel()
                 titleLabel.font = UIFont(name: "CircularSPUI-Bold", size: 16.0)!
                 titleLabel.textColor = UIColor(hexString: "#353535")
-                titleLabel.text = FiltersModel.sharedInstance().productCategory?.componentsSeparatedByString(":").first!
                 titleLabel.textAlignment = .Center
+                
+                if let searchText = searchText {
+                    titleLabel.text = searchText
+                } else {
+                    titleLabel.text = filtersModel.productCategory?.componentsSeparatedByString(":").first!
+                }
                 
                 let itemsCountLabel = UILabel()
                 itemsCountLabel.font = UIFont(name: "CircularSPUI-Book", size: 12.0)!
@@ -355,7 +419,7 @@ extension BrowseViewController {
         print("Item \(indexPath.item)")
         if search.lastItem - indexPath.item == 5 {
             print("##### WILL DISPLAY CELL: \(indexPath.item) - NEW REQUEST ######")
-            requestDataFromShopStyleForCategory(productCategory)
+            requestData()
         }
     }}
 

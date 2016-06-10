@@ -15,16 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.5</string>
+	<string>1.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>Fabric</key>
-	<dict>
-		<key>APIKey</key>
-		<string>$(FABRIC_API_KEY)</string>
-	</dict>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -35,10 +28,19 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>$(FABRIC_API_KEY)</string>
+	</dict>
 	<key>FacebookAppID</key>
 	<string>1616891928628679</string>
 	<key>FacebookDisplayName</key>
 	<string>Vendee</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -46,8 +48,6 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -77,6 +77,10 @@
 		<string>Pacifico.ttf</string>
 		<string>CircularSpUI-Bold.otf</string>
 		<string>CircularSpUI-Book.otf</string>
+		<string>FunctionPro-Book.otf</string>
+		<string>FunctionPro-BookOblique.otf</string>
+		<string>FunctionPro-Demi.otf</string>
+		<string>FunctionPro-Medium.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

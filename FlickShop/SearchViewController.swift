@@ -67,9 +67,9 @@ class SearchViewController: UIViewController {
         let borderWidth = CGFloat(1)
         
         separator.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
-        separator.frame = CGRect(x: 0, y: headerView.frame.size.height - borderWidth, width: headerView.frame.size.width, height: borderWidth)
+        separator.frame = CGRect(x: 0, y: searchBar.frame.size.height - borderWidth, width: searchBar.frame.size.width, height: borderWidth)
         separator.borderWidth = borderWidth
-        headerView.layer.addSublayer(separator)
+        searchBar.layer.addSublayer(separator)
     }
 }
 
@@ -115,6 +115,7 @@ extension SearchViewController: UITableViewDelegate {
         
         if let controller = browseVC {
             controller.searchText = topSearchText
+            searchController.active = false
             resetSearchFilters()
             
             // Log custom events

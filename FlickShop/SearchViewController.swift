@@ -14,7 +14,6 @@ class SearchViewController: UIViewController {
     
     struct SearchViewCellIdentifiers {
         static let topSearchCell = "TopSearchCell"
-        static let headerCell = "HeaderCell"
     }
     
     @IBOutlet weak var headerView: UIView!
@@ -53,16 +52,23 @@ class SearchViewController: UIViewController {
         searchBar.delegate = self
         searchBar.placeholder = "Search everything on Vendee"
         searchBar.barTintColor = UIColor.whiteColor()
-        searchBar.layer.borderWidth = 1.0
-        searchBar.layer.borderColor = UIColor.whiteColor().CGColor
+//        searchBar.layer.borderWidth = 1.0
+//        searchBar.layer.borderColor = UIColor.whiteColor().CGColor
         
         UITextField.appearanceWhenContainedInInstancesOfClasses([UISearchBar.self]).backgroundColor = UIColor(hexString: "#F1F2F3")
         
         headerView.addSubview(searchBar)
         searchController.dimsBackgroundDuringPresentation = false
         
-        // TableView setup
-        tableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: SearchViewCellIdentifiers.headerCell)
+        // Header Separator setup
+        let separator = CALayer()
+        let borderWidth = CGFloat(1)
+        
+        separator.borderColor = UIColor(hexString: "#DFDFDF")?.CGColor
+        separator.frame = CGRect(x: 0, y: headerView.frame.size.height - borderWidth, width: headerView.frame.size.width, height: borderWidth)
+        separator.borderWidth = borderWidth
+        headerView.layer.addSublayer(separator)
+//        headerView.layer.masksToBounds = true
     }
 }
 
@@ -93,18 +99,6 @@ extension SearchViewController: UITableViewDataSource {
         }
         
         return cell
-    }
-    
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier(SearchViewCellIdentifiers.headerCell)
-        cell?.backgroundView = UIView()
-        cell?.backgroundView?.backgroundColor = UIColor(hexString: "#DFDFDF")
-        
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
     }
 }
 

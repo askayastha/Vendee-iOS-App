@@ -28,6 +28,10 @@ protocol ScrollEventsDelegate: class {
 
 class FlickViewController: UICollectionViewController {
     
+    struct FlickViewCellIdentifiers {
+        static let flickPageCell = "FlickPageCell"
+    }
+    
     private(set) var loadingHUDPresent = false
     private(set) var requestingData = false
     private(set) var flickCount = 0
@@ -35,18 +39,15 @@ class FlickViewController: UICollectionViewController {
         return productCategory != nil || searchText != nil
     }
     
+    weak var delegate: ScrollEventsDelegate?
     var search: Search!
-    var brands = BrandsModel.sharedInstance().brands
+    var brandsModel = BrandsModel.sharedInstance()
     var indexPath: NSIndexPath?
     var productCategory: String!
     var searchText: String!
-    weak var delegate: ScrollEventsDelegate?
-    let transition = PopAnimationController()
     var selectedImage: UIImageView?
     
-    struct FlickViewCellIdentifiers {
-        static let flickPageCell = "FlickPageCell"
-    }
+    let transition = PopAnimationController()
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -115,7 +116,7 @@ class FlickViewController: UICollectionViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             if let brand = product.brand {
                 let brandName = JSON(brand)["name"].string
-                let brandImageURL = self.brands.filter { $0.nickname == brandName }.first?.picURL
+                let brandImageURL = self.brandsModel.brands.filter { $0.nickname == brandName }.first?.picURL
                 
                 if let imageURL = brandImageURL {
                     dispatch_async(dispatch_get_main_queue()) {
@@ -124,7 +125,7 @@ class FlickViewController: UICollectionViewController {
                 }
             } else if let retailer = product.retailer {
                 let retailerName = JSON(retailer)["name"].string
-                let retailerImageURL = self.brands.filter { $0.nickname == retailerName }.first?.picURL
+                let retailerImageURL = self.brandsModel.brands.filter { $0.nickname == retailerName }.first?.picURL
                 
                 if let imageURL = retailerImageURL {
                     dispatch_async(dispatch_get_main_queue()) {

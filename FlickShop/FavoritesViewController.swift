@@ -16,21 +16,22 @@ import NVActivityIndicatorView
 
 class FavoritesViewController: UICollectionViewController {
     
+    struct FavoritesViewCellIdentifiers {
+        static let customProductCell = "CustomPhotoCell"
+        static let headerCell = "HeaderCell"
+        static let footerCell = "FooterCell"
+    }
+    
     private(set) var productCount = 0
     private(set) var dataModelChanged = false
     private(set) var populatingData = false
     
     var animateSpinner: ((Bool)->())?
     var search: Search!
-    let brands = BrandsModel.sharedInstance().brands
     var scout: PhotoScout!
     var loadMoreIndicator: NVActivityIndicatorView!
     
-    struct FavoritesViewCellIdentifiers {
-        static let customProductCell = "CustomPhotoCell"
-        static let headerCell = "HeaderCell"
-        static let footerCell = "FooterCell"
-    }
+    let brandsModel = BrandsModel.sharedInstance()
     
     deinit {
         print("Deallocating FavoritesViewController!")
@@ -169,7 +170,7 @@ extension FavoritesViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             if let brand = product.brand {
                 let brandName = JSON(brand)["name"].string
-                let brandImageURL = self.brands.filter { $0.nickname == brandName }.first?.picURL
+                let brandImageURL = self.brandsModel.brands.filter { $0.nickname == brandName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = brandImageURL {
@@ -178,7 +179,7 @@ extension FavoritesViewController {
                 }
             } else if let retailer = product.retailer {
                 let retailerName = JSON(retailer)["name"].string
-                let retailerImageURL = self.brands.filter { $0.nickname == retailerName }.first?.picURL
+                let retailerImageURL = self.brandsModel.brands.filter { $0.nickname == retailerName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = retailerImageURL {

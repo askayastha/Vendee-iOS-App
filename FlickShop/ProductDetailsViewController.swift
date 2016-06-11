@@ -16,15 +16,19 @@ import FirebaseAnalytics
 
 class ProductDetailsViewController: UITableViewController {
     
+    struct ProductDetailsViewCellIdentifiers {
+        static let similarProductCell = "SimilarProductCell"
+        static let headerCell = "HeaderCell"
+    }
+    
     private(set) var requestingData = false
     private(set) var productDetailsHeight: CGFloat = 0
     
-    let search = Search()
-    var brands = BrandsModel.sharedInstance().brands
     weak var delegate: ScrollEventsDelegate?
     var product: Product!
-    
     var categoryIds: [String]!
+    
+    let search = Search()
     
     lazy private var spinner: UIActivityIndicatorView = {
         let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
@@ -37,11 +41,6 @@ class ProductDetailsViewController: UITableViewController {
     enum DocumentType {
         case PlainText
         case HtmlText
-    }
-    
-    struct ProductDetailsViewCellIdentifiers {
-        static let similarProductCell = "SimilarProductCell"
-        static let headerCell = "HeaderCell"
     }
     
     @IBOutlet weak var productTitleLabel: UILabel!

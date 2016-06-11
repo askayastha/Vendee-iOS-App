@@ -21,7 +21,7 @@ class BrowseViewController: UICollectionViewController {
     private(set) var populatingData = false
     private(set) var productCount = 0
     
-    let brands = BrandsModel.sharedInstance().brands
+    let brandsModel = BrandsModel.sharedInstance()
     let filtersModel: FiltersModel
     
     weak var delegate: SwipeDelegate?
@@ -310,7 +310,7 @@ extension BrowseViewController {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             if let brand = product.brand {
                 let brandName = JSON(brand)["name"].string
-                let brandImageURL = self.brands.filter { $0.nickname == brandName }.first?.picURL
+                let brandImageURL = self.brandsModel.brands.filter { $0.nickname == brandName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = brandImageURL {
@@ -319,7 +319,7 @@ extension BrowseViewController {
                 }
             } else if let retailer = product.retailer {
                 let retailerName = JSON(retailer)["name"].string
-                let retailerImageURL = self.brands.filter { $0.nickname == retailerName }.first?.picURL
+                let retailerImageURL = self.brandsModel.brands.filter { $0.nickname == retailerName }.first?.picURL
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     if let imageURL = retailerImageURL {

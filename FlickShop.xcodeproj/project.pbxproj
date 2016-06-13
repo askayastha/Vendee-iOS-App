@@ -1301,6 +1301,7 @@
 			baseConfigurationReference = 0B9B6E6478BCEB5831254ED1 /* Pods-FlickShop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FlickShop/FlickShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1325,6 +1326,7 @@
 			baseConfigurationReference = 9D27A612A85BE5496DF4B4D1 /* Pods-FlickShop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = FlickShop/FlickShop.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

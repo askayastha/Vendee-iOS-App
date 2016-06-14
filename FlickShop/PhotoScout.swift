@@ -31,7 +31,7 @@ class PhotoScout {
         let lastIndex = fromIndex + limit
         
         func populatePhotoSizeForProduct(product: Product) {
-            scout.scoutImageWithURI(product.smallImageURLs!.first!) { [unowned self] error, size, type in
+            scout.scoutImageWithURL(NSURL(string: product.smallImageURLs!.first!)!) { [unowned self] error, size, type in
                 
                 if let unwrappedError = error {
                     print(unwrappedError.code)

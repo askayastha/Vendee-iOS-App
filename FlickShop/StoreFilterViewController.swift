@@ -120,7 +120,7 @@ class StoreFilterViewController: UIViewController {
         searchController = UISearchController(searchResultsController: nil)
         
         let searchBar = searchController.searchBar
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = "Search all stores"
         searchBar.barTintColor = UIColor(hexString: "#F1F2F3")
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor(hexString: "#F1F2F3")?.CGColor
@@ -311,7 +311,7 @@ extension StoreFilterViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        searchController.searchBar.resignFirstResponder()
+        searchController.searchBar.resignFirstResponder()
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let storeName = (cell?.textLabel?.text)!

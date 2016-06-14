@@ -124,7 +124,7 @@ class BrandFilterViewController: UIViewController {
         searchController = UISearchController(searchResultsController: nil)
         
         let searchBar = searchController.searchBar
-        searchBar.placeholder = "Search"
+        searchBar.placeholder = "Search all brands"
         searchBar.barTintColor = UIColor(hexString: "#F1F2F3")
         searchBar.layer.borderWidth = 1.0
         searchBar.layer.borderColor = UIColor(hexString: "#F1F2F3")?.CGColor
@@ -315,7 +315,7 @@ extension BrandFilterViewController: UITableViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-//        searchController.searchBar.resignFirstResponder()
+        searchController.searchBar.resignFirstResponder()
         
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         let brandName = (cell?.textLabel?.text)!
